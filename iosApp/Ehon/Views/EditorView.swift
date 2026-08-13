@@ -42,11 +42,16 @@ struct EditorView: View {
                     .font(.ehUI(15.5, .black))
                     .foregroundStyle(Color.ehText)
                     .lineLimit(1)
+                    .truncationMode(.tail)
                 Text(Localized.s("editor.pageLabel", model.pageIndex + 1, model.book.pageCount))
                     .font(.ehUI(11, .medium))
                     .foregroundStyle(Color.ehMuted)
+                    .lineLimit(1)
             }
-            Spacer(minLength: 4)
+            // Compressible: without this the title claims its intrinsic width and shoves
+            // よむ / できた off the right edge on a narrower phone.
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .layoutPriority(-1)
             PillButton(title: Localized.s("editor.read"), tinted: true) {
                 app.openRead(model.book, page: model.pageIndex)
             }

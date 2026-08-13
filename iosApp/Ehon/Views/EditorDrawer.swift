@@ -197,7 +197,7 @@ private struct DrawPanel: View {
                     }
                     .buttonStyle(.plain)
                 }
-                Spacer()
+                Spacer(minLength: 6)
                 Button {
                     model.apply { $0.toggleEraser() }
                 } label: {
@@ -357,7 +357,7 @@ private struct TextPanel: View {
                     }
                     .buttonStyle(.plain)
                 }
-                Spacer()
+                Spacer(minLength: 6)
                 if model.book.isJapanese {
                     Button {
                         model.apply { $0.toggleFurigana() }
@@ -383,16 +383,23 @@ private struct TextPanel: View {
                 ForEach(0..<5, id: \.self) { index in
                     let colour = Organic.shared.textColor(index: Int32(index))
                     Button {
-                        model.apply { $0.setCrayon(index: Int32(index)) }
+                        model.apply { $0.setTextColour(index: Int32(index)) }
                     } label: {
                         Circle()
                             .fill(Color(colour.uiColor))
                             .frame(width: 32, height: 32)
                             .overlay(Circle().strokeBorder(Color.ehInk.opacity(0.12), lineWidth: 1))
+                            .overlay(
+                                Circle().strokeBorder(
+                                    Int(model.controller.textColorIndex) == index
+                                        ? Color.ehInk : .clear,
+                                    lineWidth: 2.5
+                                ).padding(-4)
+                            )
                     }
                     .buttonStyle(.plain)
                 }
-                Spacer()
+                Spacer(minLength: 6)
                 Button {
                     focused = false
                     model.apply { _ = $0.commitText() }

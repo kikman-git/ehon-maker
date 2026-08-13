@@ -72,6 +72,17 @@ class EditorController(
     var textSizeStep: Int = 2
         private set
 
+    /**
+     * Indexes [app.ehon.design.Organic.textColors] — deliberately *not* [crayonIndex].
+     *
+     * The crayon palette has nine entries including cream, which is the page ground colour
+     * and therefore invisible as text. The text palette has five, all legible on a light
+     * page. Sharing one index between them made a drawing choice restyle text and could
+     * select a colour that could not be seen.
+     */
+    var textColorIndex: Int = 0
+        private set
+
     var draftText: String = ""
         private set
 
@@ -114,8 +125,10 @@ class EditorController(
 
     fun setMode(next: EditorMode) = change {
         mode = next
-        selectedId = null
-        if (next != EditorMode.TEXT) clearDraft()
+        if (next != EditorMode.TEXT) {
+            selectedId = null
+            clearDraft()
+        }
     }
 
     fun setCategory(next: String) = change { category = next }
@@ -136,7 +149,15 @@ class EditorController(
     /** Returns the item now selected, or null if the tap landed on empty page. */
     fun selectAt(xPct: Float, yPct: Float, pageSize: Size): Item? {
         val hit = hitTest.at(page, xPct, yPct, pageSize)
-        change { selectedId = hit?.id }
+        change {
+            selectedId = hit?.id
+            if (hit is TextItem) {
+                mode = EditorMode.TEXT
+                textColorIndex = hit.colorIndex.coerceIn(app.ehon.design.Organic.textColors.indices)
+                textSizeStep = (TextItem.SIZES.indexOfFirst { it == hit.sizePct } + 1)
+                    .coerceIn(1, TextItem.SIZES.size)
+            }
+        }
         return hit
     }
 
@@ -224,8 +245,6 @@ class EditorController(
     fun setCrayon(index: Int) = change {
         crayonIndex = index
         eraser = false
-        // Recolouring a selected text item is the same gesture as picking a crayon.
-        if (isTextSelected) mapSelected { (it as TextItem).copy(colorIndex = index) }
     }
 
     fun setBrush(step: Int) = change {
@@ -322,6 +341,12 @@ class EditorController(
 
     fun toggleFurigana() = change { furiganaEnabled = !furiganaEnabled }
 
+    /** Applies immediately to a selected text item, so a colour tap is never a no-op. */
+    fun setTextColour(index: Int) = change {
+        textColorIndex = index.coerceIn(app.ehon.design.Organic.textColors.indices)
+        if (isTextSelected) mapSelected { (it as TextItem).copy(colorIndex = textColorIndex) }
+    }
+
     /** Commits the draft, or finishes editing an already-selected text item. */
     fun commitText(): Boolean {
         if (isTextSelected) {
@@ -348,9 +373,7 @@ class EditorController(
                                 y = 78f,
                                 text = draftText,
                                 ruby = draftRuby.ifBlank { null }.takeIf { book.isJapanese },
-                                // The cream crayon is invisible on a light page.
-                                colorIndex = if (crayonIndex == app.ehon.design.Organic.CREAM_CRAYON) 0
-                                else crayonIndex.coerceIn(app.ehon.design.Organic.textColors.indices),
+                                colorIndex = textColorIndex,
                                 sizePct = TextItem.SIZES[textSizeStep - 1],
                             ),
                         ),
