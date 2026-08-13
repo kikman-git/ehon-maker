@@ -68,4 +68,21 @@ object Organic {
     /** Index 8 is the page ground colour, so it needs a hairline to read at all. */
     const val CREAM_CRAYON = 8
     val hairline = Argb.hex("201e1d").withAlpha(0.16f)
+
+    // Indexed accessors, for Swift.
+    //
+    // A `List<Argb>` crosses the Obj-C boundary as `NSArray<id>` — Swift sees `[Any]` —
+    // because Argb is an inline value class and its erasure to Int32 does not survive
+    // inside a generic. A *function* returning Argb erases as intended, so these keep the
+    // Swift surface typed without boxing a colour per lookup.
+
+    fun crayon(index: Int): Argb = crayons[index]
+
+    fun textColor(index: Int): Argb = textColors[index]
+
+    fun pageBackground(index: Int): Argb = pageBackgrounds[index]
+
+    val crayonCount: Int get() = crayons.size
+
+    val pageBackgroundCount: Int get() = pageBackgrounds.size
 }

@@ -3,16 +3,23 @@ package app.ehon.model
 import app.ehon.design.Argb
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
-import kotlinx.datetime.Instant
+import kotlinx.collections.immutable.toPersistentList
 import kotlinx.serialization.Serializable
-import kotlin.jvm.JvmInline
 
-@JvmInline @Serializable value class BookId(val value: String)
+// Deliberately data classes rather than inline value classes. A value class over String
+// erases to `id` in the generated Obj-C header, so Swift would receive `Any` and every
+// call site would need a cast. `Argb` stays a value class because a value class over Int
+// erases to `int32_t`, which is both typed and free of boxing.
 
-@JvmInline @Serializable value class ItemId(val value: String)
+@Serializable
+data class BookId(val value: String)
+
+@Serializable
+data class ItemId(val value: String)
 
 /** `"いきもの:ねこ"` — category and name, matching the prototype's catalog keys. */
-@JvmInline @Serializable value class PartId(val value: String) {
+@Serializable
+data class PartId(val value: String) {
     val category get() = value.substringBefore(':')
     val name get() = value.substringAfter(':')
 }
@@ -30,7 +37,12 @@ data class Book(
     val contentLocale: String,
     val binding: Binding = Binding.LEFT,
     val pages: PersistentList<Page> = persistentListOf(),
-    val updatedAt: Instant,
+    /**
+     * Epoch milliseconds, not an `Instant`. Keeping kotlinx-datetime out of the public API
+     * stops a library type leaking into every Swift call site, and Firestore stores a
+     * millisecond timestamp regardless.
+     */
+    val updatedAtEpochMs: Long,
 ) {
     val pageCount get() = pages.size
 
@@ -41,6 +53,26 @@ data class Book(
 
     fun mapPage(index: Int, f: (Page) -> Page): Book =
         copy(pages = pages.set(index, f(pages[index])))
+
+    companion object {
+        /**
+         * Swift/Obj-C-safe constructor.
+         *
+         * The generated header declares `pages` as `NSArray` because that is how Kotlin
+         * `List` bridges — but the constructor's declared type is `PersistentList`, and an
+         * NSArray converts to a plain `List`, so calling the primary constructor from Swift
+         * throws a cast exception at runtime. This converts explicitly.
+         */
+        fun of(
+            id: BookId,
+            title: String,
+            shape: PageShape,
+            contentLocale: String,
+            binding: Binding,
+            pages: List<Page>,
+            updatedAtEpochMs: Long,
+        ) = Book(id, title, shape, contentLocale, binding, pages.toPersistentList(), updatedAtEpochMs)
+    }
 }
 
 @Serializable
@@ -53,6 +85,16 @@ data class Page(
     val strokes: PersistentList<Stroke> = persistentListOf(),
 ) {
     val isUntouched get() = items.isEmpty() && strokes.isEmpty()
+
+    companion object {
+        /** Swift/Obj-C-safe constructor — see [Book.Companion.of]. */
+        fun of(
+            background: Argb,
+            promptKey: String?,
+            items: List<Item>,
+            strokes: List<Stroke>,
+        ) = Page(background, promptKey, items.toPersistentList(), strokes.toPersistentList())
+    }
 }
 
 /**

@@ -78,7 +78,7 @@ class SceneBuilder(private val measurer: TextMeasurer) {
         )
         val fill = Organic.crayons[layer.colorIndex]
         // The cream crayon is the page ground colour, so it needs a hairline to read.
-        val hairline = if (layer.colorIndex == Organic.CREAM_CRAYON) Organic.hairline else null
+        val hairline = layer.colorIndex == Organic.CREAM_CRAYON
 
         val shape: SceneNode = when (layer.kind) {
             ShapeKind.CIRCLE -> SceneNode.Ellipse(rect, fill, hairline)
@@ -170,8 +170,9 @@ class SceneBuilder(private val measurer: TextMeasurer) {
         widthPx = Stroke.widthFraction(stroke.brushStep) * target.page.w,
         fill = when (val ink = stroke.ink) {
             is Ink.Crayon -> Organic.crayons[ink.index]
-            Ink.Eraser -> null
+            Ink.Eraser -> Organic.ink
         },
+        erase = stroke.ink == Ink.Eraser,
     )
 
     // ── chrome ───────────────────────────────────────────────────────────────

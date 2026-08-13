@@ -148,8 +148,7 @@ class SceneBuilderTest {
         val stroke = Stroke(Ink.Eraser, 2, persistentListOf(StrokePoint(0.2f, 0.2f)))
         val node = builder.build(page(strokes = listOf(stroke)), screenTarget())
             .nodes.filterIsInstance<SceneNode.StrokePath>().single()
-        assertTrue(node.isEraser)
-        assertNull(node.fill)
+        assertTrue(node.erase)
     }
 
     // ── export vs screen chrome ──────────────────────────────────────────────

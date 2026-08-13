@@ -84,7 +84,7 @@ class PageShapeTest {
             bookId = BookId("b1"),
             title = "t",
             contentLocale = "ja-JP",
-            now = kotlinx.datetime.Instant.fromEpochSeconds(0),
+            nowEpochMs = 0L,
         )
         assertEquals(Binding.LEFT, book.binding)
     }

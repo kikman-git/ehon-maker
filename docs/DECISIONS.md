@@ -108,6 +108,60 @@ Bugs and gaps found while porting, all fixed in the core rather than carried ove
   equivalent. Converted to even-odd fills, with the ratios derived from the gradient's
   `farthest-corner` default rather than eyeballed.
 
+## Kotlin/Native → Swift interop, learned the hard way
+
+Building the iOS side surfaced four things that would have quietly rotted had Android come
+first. All four are fixed in the core rather than worked around in Swift.
+
+**Inline value classes erase inconsistently.** `Argb` is `value class Argb(Int)`, and that
+is *good* — it crosses as `int32_t`, so a colour costs no allocation. But:
+
+| Kotlin | Obj-C header | Swift sees |
+|---|---|---|
+| `Argb` | `int32_t` | `Int32` ✅ |
+| `Argb?` | `id _Nullable` | `Any?` ✗ |
+| `List<Argb>` | `NSArray<id>` | `[Any]` ✗ |
+| `value class BookId(String)` | `id` | `Any` ✗ |
+
+So: ID types became **data classes**; nullable colours became **flags** (`hasHairline`,
+`erase` — which say what is meant anyway); and `Organic` gained indexed accessor
+*functions* (`crayon(index:)`) because a function's return type erases correctly where a
+generic's element type does not.
+
+**`PersistentList` is a runtime trap.** The header declares it as `NSArray` (that is how
+Kotlin `List` bridges), but an `NSArray` converts to a plain `List`, not a `PersistentList`
+— so calling the primary constructor from Swift throws a cast exception at *runtime*, with
+a header that compiled fine. `Book.of(...)` and `Page.of(...)` exist solely to convert
+explicitly. The deeper conclusion is below.
+
+**Third-party types leak into the public API.** `Instant` from kotlinx-datetime appeared in
+every `Book` call site even as an `implementation` dependency. Replaced with epoch
+milliseconds, which Firestore wants anyway; kotlinx-datetime is now gone entirely.
+
+**PDF pages are measured in points, not dots.** Building an export scene at 300dpi and
+writing it into a PDF would produce a 21-inch page. PDF is a vector format, so the scene is
+built at **72dpi** — the page is then its true physical size, and vector shapes, crayon
+strokes and text are resolution-independent in the output. Only raster parts have a fixed
+resolution, and a 1024px master inside a ~370pt box is ≈700dpi. Rasterising at 300dpi
+instead would make the *strokes* worse, not better.
+
+### Consequent design conclusion: mutation stays in Kotlin
+
+Because Swift cannot safely construct `Page`/`Book` values, the editor must not mutate the
+document from Swift at all. The next piece of the core is an intent-level controller:
+
+```kotlin
+class EditorController(store: DocumentStore) {
+    fun addPart(partId: PartId); fun moveSelected(xPct: Float, yPct: Float)
+    fun resizeSelected(up: Boolean); fun rotateSelected(); fun deleteSelected()
+    fun beginStroke(...); fun appendStroke(...); fun endStroke()
+    fun undo(); fun redo()
+}
+```
+
+This was going to be optional. It is now structural — and it is better, because editor
+*semantics* get written and tested once instead of twice.
+
 ## Open
 
 - **Watermark copy** 「ぺたぺた で つくったよ」is a placeholder pending the final name.

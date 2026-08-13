@@ -1,0 +1,75 @@
+# Generated into Ehon.xcodeproj by `xcodegen`. The .xcodeproj is NOT committed:
+# this file is the source of truth, which keeps the project diffable and avoids
+# .pbxproj merge conflicts. Run `xcodegen` after changing it.
+name: Ehon
+
+options:
+  bundleIdPrefix: app.ehon
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+    # Simulator builds and CI need no signing; the KMP framework is static, so
+    # there is nothing to embed or sign beyond the app itself.
+    CODE_SIGNING_ALLOWED: NO
+    CODE_SIGNING_REQUIRED: NO
+    CODE_SIGN_IDENTITY: ""
+
+targets:
+  Ehon:
+    type: application
+    platform: iOS
+    sources:
+      - path: Ehon
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.ehon.petapeta
+        INFOPLIST_FILE: Ehon/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        FRAMEWORK_SEARCH_PATHS:
+          - $(inherited)
+          - $(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)
+        OTHER_LDFLAGS:
+          - $(inherited)
+          - -framework
+          - EhonCore
+    preBuildScripts:
+      # `script:` invokes the file; `path:` would inline its contents, which loses the
+      # shebang and makes BASH_SOURCE point into DerivedData instead of the repo.
+      - script: exec "$SRCROOT/scripts/build-shared-framework.sh"
+        name: Build shared KMP framework
+        basedOnDependencyAnalysis: false
+
+  EhonTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: EhonTests
+    dependencies:
+      - target: Ehon
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.ehon.petapeta.tests
+        FRAMEWORK_SEARCH_PATHS:
+          - $(inherited)
+          - $(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)
+        OTHER_LDFLAGS:
+          - $(inherited)
+          - -framework
+          - EhonCore
+
+schemes:
+  Ehon:
+    build:
+      targets:
+        Ehon: all
+        EhonTests: [test]
+    test:
+      targets:
+        - EhonTests
+      gatherCoverageData: false

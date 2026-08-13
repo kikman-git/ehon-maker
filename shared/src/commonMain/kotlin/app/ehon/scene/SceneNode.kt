@@ -39,7 +39,7 @@ sealed interface SceneNode {
     data class Ellipse(
         val rect: Rect,
         val fill: Argb,
-        val hairline: Argb? = null,
+        val hasHairline: Boolean = false,
     ) : SceneNode
 
     /** [radii] is clockwise from top-left, in absolute units. */
@@ -47,13 +47,13 @@ sealed interface SceneNode {
         val rect: Rect,
         val radii: List<Float>,
         val fill: Argb,
-        val hairline: Argb? = null,
+        val hasHairline: Boolean = false,
     ) : SceneNode
 
     data class Polygon(
         val points: List<Point>,
         val fill: Argb,
-        val hairline: Argb? = null,
+        val hasHairline: Boolean = false,
     ) : SceneNode
 
     /**
@@ -109,11 +109,17 @@ sealed interface SceneNode {
     data class StrokePath(
         val points: List<Point>,
         val widthPx: Float,
-        val fill: Argb?,
-    ) : SceneNode {
-        /** Null fill means erase: the painter composites destination-out. */
-        val isEraser get() = fill == null
-    }
+        val fill: Argb,
+        /**
+         * When true the painter composites destination-out and [fill] is ignored.
+         *
+         * A boolean rather than a nullable [fill]: `Argb?` cannot erase to `int32_t`
+         * across the Obj-C boundary (primitives are not nullable), so it would box to
+         * `Any` and every Swift call site would need an unbox. The flag also says what
+         * is actually meant.
+         */
+        val erase: Boolean = false,
+    ) : SceneNode
 
     /** Dashed selection ring around the selected item. Screen only, never exported. */
     data class SelectionRing(

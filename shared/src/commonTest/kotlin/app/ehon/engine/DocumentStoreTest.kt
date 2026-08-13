@@ -6,7 +6,6 @@ import app.ehon.model.ItemId
 import app.ehon.model.PartId
 import app.ehon.model.PartItem
 import app.ehon.template.Templates
-import kotlinx.datetime.Instant
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -19,7 +18,7 @@ class DocumentStoreTest {
         bookId = BookId("b1"),
         title = "もりの ともだち",
         contentLocale = "ja-JP",
-        now = Instant.fromEpochSeconds(0),
+        nowEpochMs = 0L,
     )
 
     private fun Book.addPart(id: String) = mapPage(0) { page ->

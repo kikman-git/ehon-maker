@@ -11,7 +11,6 @@ import app.ehon.model.PageShape
 import app.ehon.model.PartItem
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
-import kotlinx.datetime.Instant
 
 /** A seeded part on a template page: part name, centre x%, centre y%, size%. */
 data class Seed(val partName: String, val x: Float, val y: Float, val sizePct: Float)
@@ -190,7 +189,7 @@ object Templates {
         bookId: BookId,
         title: String,
         contentLocale: String,
-        now: Instant,
+        nowEpochMs: Long,
         shapeOverride: PageShape? = null,
         idSource: IdSource = IdSource(),
     ): Book {
@@ -224,7 +223,7 @@ object Templates {
             contentLocale = contentLocale,
             binding = Binding.LEFT,
             pages = pages.toPersistentList(),
-            updatedAt = now,
+            updatedAtEpochMs = nowEpochMs,
         )
     }
 

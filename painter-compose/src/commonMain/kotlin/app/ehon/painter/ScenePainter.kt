@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import app.ehon.design.Argb
+import app.ehon.design.Organic
 import app.ehon.geom.Rect
 import app.ehon.scene.FontRole
 import app.ehon.scene.Scene
@@ -78,15 +79,18 @@ class ScenePainter(
 
             is SceneNode.Ellipse -> {
                 drawOval(node.fill.toColor(), node.rect.offset(), node.rect.size())
-                node.hairline?.let {
-                    drawOval(it.toColor(), node.rect.offset(), node.rect.size(), style = hairline())
+                if (node.hasHairline) {
+                    drawOval(
+                        Organic.hairline.toColor(), node.rect.offset(), node.rect.size(),
+                        style = hairline(),
+                    )
                 }
             }
 
             is SceneNode.RoundRect -> {
                 val path = roundRectPath(node.rect, node.radii)
                 drawPath(path, node.fill.toColor())
-                node.hairline?.let { drawPath(path, it.toColor(), style = hairline()) }
+                if (node.hasHairline) drawPath(path, Organic.hairline.toColor(), style = hairline())
             }
 
             is SceneNode.Polygon -> {
@@ -97,7 +101,7 @@ class ScenePainter(
                     close()
                 }
                 drawPath(path, node.fill.toColor())
-                node.hairline?.let { drawPath(path, it.toColor(), style = hairline()) }
+                if (node.hasHairline) drawPath(path, Organic.hairline.toColor(), style = hairline())
             }
 
             // The three former CSS radial-gradient masks. Even-odd rather than masking:
@@ -162,11 +166,11 @@ class ScenePainter(
                 }
                 drawPath(
                     path = path,
-                    color = node.fill?.toColor() ?: Color.Black,
+                    color = node.fill.toColor(),
                     style = DrawStroke(node.widthPx, cap = StrokeCap.Round, join = StrokeJoin.Round),
                     // Eraser lifts pixels rather than painting over them, so a stroke
                     // erased above a part reveals the page, not a coloured smear.
-                    blendMode = if (node.isEraser) BlendMode.Clear else BlendMode.SrcOver,
+                    blendMode = if (node.erase) BlendMode.Clear else BlendMode.SrcOver,
                 )
             }
 
