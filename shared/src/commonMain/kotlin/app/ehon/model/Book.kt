@@ -4,6 +4,7 @@ import app.ehon.design.Argb
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 // Deliberately data classes rather than inline value classes. A value class over String
@@ -35,7 +36,8 @@ data class Book(
     val title: String,
     val shape: PageShape,
     val contentLocale: String,
-    val binding: Binding = Binding.LEFT,
+    val binding: PageBinding = PageBinding.LEFT,
+    @Serializable(with = PersistentListSerializer::class)
     val pages: PersistentList<Page> = persistentListOf(),
     /**
      * Epoch milliseconds, not an `Instant`. Keeping kotlinx-datetime out of the public API
@@ -68,7 +70,7 @@ data class Book(
             title: String,
             shape: PageShape,
             contentLocale: String,
-            binding: Binding,
+            binding: PageBinding,
             pages: List<Page>,
             updatedAtEpochMs: Long,
         ) = Book(id, title, shape, contentLocale, binding, pages.toPersistentList(), updatedAtEpochMs)
@@ -81,7 +83,9 @@ data class Page(
     val background: Argb,
     /** Hint shown only while the page is completely untouched. */
     val promptKey: String? = null,
+    @Serializable(with = PersistentListSerializer::class)
     val items: PersistentList<Item> = persistentListOf(),
+    @Serializable(with = PersistentListSerializer::class)
     val strokes: PersistentList<Stroke> = persistentListOf(),
 ) {
     val isUntouched get() = items.isEmpty() && strokes.isEmpty()
@@ -102,6 +106,11 @@ data class Page(
  * exactly as the prototype stores them — which is what makes a page resolution
  * independent, and also why [PageShape] cannot change after creation.
  */
+/**
+ * Subtypes carry explicit [SerialName]s so the persisted discriminator is `"part"` /
+ * `"text"` rather than a fully-qualified class name — renaming a class must not orphan
+ * every book already saved on a device.
+ */
 @Serializable
 sealed interface Item {
     val id: ItemId
@@ -118,6 +127,7 @@ sealed interface Item {
 }
 
 @Serializable
+@SerialName("part")
 data class PartItem(
     override val id: ItemId,
     override val x: Float,
@@ -143,6 +153,7 @@ data class PartItem(
 }
 
 @Serializable
+@SerialName("text")
 data class TextItem(
     override val id: ItemId,
     override val x: Float,
@@ -177,6 +188,7 @@ data class Stroke(
     val ink: Ink,
     /** Brush step 1..3; painted width is `step * WIDTH_UNIT` in page-relative units. */
     val brushStep: Int,
+    @Serializable(with = PersistentListSerializer::class)
     val points: PersistentList<StrokePoint>,
 ) {
     companion object {
@@ -203,8 +215,10 @@ data class StrokePoint(val x: Float, val y: Float)
 @Serializable
 sealed interface Ink {
     @Serializable
+    @SerialName("crayon")
     data class Crayon(val index: Int) : Ink
 
     @Serializable
+    @SerialName("eraser")
     data object Eraser : Ink
 }

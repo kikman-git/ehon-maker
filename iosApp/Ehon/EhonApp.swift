@@ -4,7 +4,7 @@ import SwiftUI
 struct EhonApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }

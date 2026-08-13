@@ -9,7 +9,7 @@ export JAVA_HOME
 
 SIM ?= iPhone 16
 BUNDLE := app.ehon.petapeta
-XC := xcodebuild -project iosApp/Ehon.xcodeproj -scheme Ehon -sdk iphonesimulator
+XC := xcodebuild -project iosApp/Ehon.xcodeproj -scheme Ehon -sdk iphonesimulator CODE_SIGNING_ALLOWED=NO
 
 .PHONY: help
 help:
@@ -48,19 +48,45 @@ run: ios ## Build, install and launch on the simulator
 	  xcrun simctl launch "$(SIM)" $(BUNDLE) --args -templateIndex $${TEMPLATE:-0}
 	@open -a Simulator
 
+.PHONY: fonts
+fonts: ## Subset the UI font to shipped strings and stage the bundled set
+	@test -d tools/fonts-src || { \
+	  echo "fetching upstream Google Fonts into tools/fonts-src/"; \
+	  mkdir -p tools/fonts-src; \
+	  for f in ofl/yomogi/Yomogi-Regular.ttf \
+	           ofl/zenmarugothic/ZenMaruGothic-Regular.ttf \
+	           ofl/zenmarugothic/ZenMaruGothic-Medium.ttf \
+	           ofl/zenmarugothic/ZenMaruGothic-Bold.ttf \
+	           ofl/zenmarugothic/ZenMaruGothic-Black.ttf \
+	           ofl/caprasimo/Caprasimo-Regular.ttf; do \
+	    curl -sfL -o "tools/fonts-src/$$(basename $$f)" \
+	      "https://github.com/google/fonts/raw/main/$$f"; \
+	  done; }
+	./gradlew -q :shared:dumpShippedText
+	./tools/subset-fonts.sh
+
 .PHONY: shots
-shots: ios ## Screenshot every template into build/shots/
+shots: ios ## Screenshot every screen (Japanese) into build/shots/
 	@mkdir -p build/shots
 	@xcrun simctl boot "$(SIM)" 2>/dev/null || true
 	@xcrun simctl bootstatus "$(SIM)" -b >/dev/null
-	@APP=$$(find ~/Library/Developer/Xcode/DerivedData/Ehon-*/Build/Products/Debug-iphonesimulator \
-	          -maxdepth 1 -name 'Ehon.app' | head -1); xcrun simctl install "$(SIM)" "$$APP"
-	@for i in 0 1 2 3 4; do \
+	@APP=$$(ls -dt ~/Library/Developer/Xcode/DerivedData/Ehon-*/Build/Products/Debug-iphonesimulator/Ehon.app \
+	          | head -1); xcrun simctl install "$(SIM)" "$$APP"
+	@for s in shelf templates editor read done; do \
 	  xcrun simctl terminate "$(SIM)" $(BUNDLE) 2>/dev/null || true; \
-	  xcrun simctl launch "$(SIM)" $(BUNDLE) --args -templateIndex $$i >/dev/null; \
-	  sleep 5; \
-	  xcrun simctl io "$(SIM)" screenshot build/shots/t$$((i+1)).png >/dev/null 2>&1; \
-	  echo "  build/shots/t$$((i+1)).png"; \
+	  xcrun simctl launch "$(SIM)" $(BUNDLE) \
+	    -AppleLanguages "(ja)" -AppleLocale ja_JP -startScreen $$s >/dev/null; \
+	  sleep 6; \
+	  xcrun simctl io "$(SIM)" screenshot build/shots/$$s.png >/dev/null 2>&1; \
+	  echo "  build/shots/$$s.png"; \
+	done
+	@for m in draw text; do \
+	  xcrun simctl terminate "$(SIM)" $(BUNDLE) 2>/dev/null || true; \
+	  xcrun simctl launch "$(SIM)" $(BUNDLE) \
+	    -AppleLanguages "(ja)" -AppleLocale ja_JP -startScreen editor -mode $$m >/dev/null; \
+	  sleep 6; \
+	  xcrun simctl io "$(SIM)" screenshot build/shots/editor-$$m.png >/dev/null 2>&1; \
+	  echo "  build/shots/editor-$$m.png"; \
 	done
 
 .PHONY: clean

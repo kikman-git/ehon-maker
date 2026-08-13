@@ -162,6 +162,23 @@ class EditorController(store: DocumentStore) {
 This was going to be optional. It is now structural — and it is better, because editor
 *semantics* get written and tested once instead of twice.
 
+## Built, and verified running
+
+| Area | State |
+|---|---|
+| Shared core | model, catalog, scene graph, `EditorController`, codec, i18n — **80 tests** |
+| iOS painter | CoreGraphics, structural twin of the Compose one — **8 tests** |
+| Compose painter | compiles + renders on JVM, so the core has two consumers already |
+| Screens | shelf, templates, 1a editor (はる/かく/もじ), read with 3D fold, done |
+| Fonts | ZMG subset 14.4MB → **176KB**; Yomogi complete 3.9MB; total **4.1MB** |
+| Export | 2048px PNG + 300dpi PDF via the share sheet |
+| Persistence | JSON per book in `Documents` (iOS device backup covers it) |
+| Read-aloud | AVSpeechSynthesizer, voice from the book's `contentLocale` |
+| i18n | ja + en, ~330 shipped strings, English fallback for all other devices |
+
+Screens are reachable for screenshots via launch args: `make shots`, or
+`-startScreen editor -mode draw`.
+
 ## Open
 
 - **Watermark copy** 「ぺたぺた で つくったよ」is a placeholder pending the final name.

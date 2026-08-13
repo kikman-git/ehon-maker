@@ -41,6 +41,19 @@ enum SceneRenderer {
         }
     }
 
+    /// A single 2048px image of page 1, for LINE / Instagram / Photos.
+    ///
+    /// `watermark` is wired but always false in v1 — the paywall is deferred (decision #11)
+    /// and this is the seam it switches on.
+    static func shareImage(for book: Book, page: Int = 0, watermark: Bool = false) -> Data? {
+        let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+        let target = RenderTarget.Companion.shared.share(
+            shape: book.shape, longestEdgePx: 2048, watermark: watermark
+        )
+        let scene = builder.build(page: book.page(index: Int32(page)), target: target, promptText: nil)
+        return image(scene).pngData()
+    }
+
     /// Builds every page of a book at print size and writes one PDF.
     static func printablePdf(for book: Book, watermark: Bool = false) -> Data {
         let builder = SceneBuilder(measurer: UIKitTextMeasurer())

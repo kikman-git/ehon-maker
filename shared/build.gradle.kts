@@ -31,3 +31,19 @@ kotlin {
         }
     }
 }
+
+/**
+ * Emits every shipped UI string for the font subset step. Consumed by `make fonts`;
+ * see tools/subset-fonts.sh.
+ */
+tasks.register<JavaExec>("dumpShippedText") {
+    group = "ehon"
+    description = "Write all shipped UI strings to build/shipped-text.txt"
+    dependsOn("jvmMainClasses")
+    classpath = files(
+        layout.buildDirectory.dir("classes/kotlin/jvm/main"),
+        configurations.named("jvmRuntimeClasspath"),
+    )
+    mainClass.set("app.ehon.tools.DumpShippedTextKt")
+    args(layout.buildDirectory.file("shipped-text.txt").get().asFile.absolutePath)
+}

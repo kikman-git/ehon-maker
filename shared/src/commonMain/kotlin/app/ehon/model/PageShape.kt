@@ -36,4 +36,4 @@ enum class PageShape(val aspect: Float) {
 
 /** Which edge the pages are bound on. Horizontal-hiragana ehon are left-bound. */
 @Serializable
-enum class Binding { LEFT, RIGHT }
+enum class PageBinding { LEFT, RIGHT }

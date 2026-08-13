@@ -14,11 +14,12 @@ settings:
   base:
     SWIFT_VERSION: "5.0"
     ENABLE_USER_SCRIPT_SANDBOXING: NO
-    # Simulator builds and CI need no signing; the KMP framework is static, so
-    # there is nothing to embed or sign beyond the app itself.
-    CODE_SIGNING_ALLOWED: NO
-    CODE_SIGNING_REQUIRED: NO
-    CODE_SIGN_IDENTITY: ""
+    TARGETED_DEVICE_FAMILY: "1"
+    # Automatic signing so a real device works. Set your team once:
+    #   export EHON_DEVELOPMENT_TEAM=ABCDE12345   (Xcode > Settings > Accounts)
+    # then re-run `make xcodeproj`. Simulator builds need no team at all.
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: ${EHON_DEVELOPMENT_TEAM}
 
 targets:
   Ehon:

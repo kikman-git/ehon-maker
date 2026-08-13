@@ -258,6 +258,10 @@ extension Int32 {
     }
 }
 
+extension Int32 {
+    var uiColor: UIColor { UIColor(cgColor: cgColor) }
+}
+
 extension EhonCore.Rect {
     var cgRect: CGRect {
         CGRect(x: CGFloat(x), y: CGFloat(y), width: CGFloat(w), height: CGFloat(h))

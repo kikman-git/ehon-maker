@@ -2,7 +2,7 @@ package app.ehon.template
 
 import app.ehon.catalog.PartCatalog
 import app.ehon.design.Argb
-import app.ehon.model.Binding
+import app.ehon.model.PageBinding
 import app.ehon.model.Book
 import app.ehon.model.BookId
 import app.ehon.model.ItemId
@@ -221,7 +221,7 @@ object Templates {
             title = title,
             shape = shape,
             contentLocale = contentLocale,
-            binding = Binding.LEFT,
+            binding = PageBinding.LEFT,
             pages = pages.toPersistentList(),
             updatedAtEpochMs = nowEpochMs,
         )

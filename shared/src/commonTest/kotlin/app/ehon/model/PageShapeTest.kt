@@ -86,7 +86,7 @@ class PageShapeTest {
             contentLocale = "ja-JP",
             nowEpochMs = 0L,
         )
-        assertEquals(Binding.LEFT, book.binding)
+        assertEquals(PageBinding.LEFT, book.binding)
     }
 
     private companion object {
