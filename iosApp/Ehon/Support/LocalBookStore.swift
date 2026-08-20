@@ -21,8 +21,24 @@ final class LocalBookStore {
         try? FileManager.default.createDirectory(at: self.directory, withIntermediateDirectories: true)
     }
 
+    /// An imported archive carries its own id and title, so both are untrusted before they
+    /// reach a path component: `appendingPathComponent` walks out of the directory on `../`.
+    /// Leading dots go too — they would hide the file rather than escape it.
+    private static func pathSafe(_ raw: String) -> String {
+        let stripped = raw
+            .components(separatedBy: CharacterSet(charactersIn: "/\\:?%*|\"<>"))
+            .joined()
+        var name = String(stripped.drop(while: { $0 == "." || $0 == " " }))
+        // Counted in bytes, not characters: 200 kana still exceed the 255-byte name limit.
+        while name.utf8.count > 200 { name.removeLast() }
+        return name
+    }
+
     private func url(for id: BookId) -> URL {
-        directory.appendingPathComponent("\(id.value).\(BookCodec.shared.ARCHIVE_EXTENSION)")
+        let name = Self.pathSafe(id.value)
+        return directory.appendingPathComponent(
+            "\(name.isEmpty ? "untitled" : name).\(BookCodec.shared.ARCHIVE_EXTENSION)"
+        )
     }
 
     // MARK: - reads
@@ -59,10 +75,9 @@ final class LocalBookStore {
 
     /// Writes a shareable `.ehon` file to a temporary location and returns its URL.
     func exportArchive(_ book: Book) -> URL? {
-        let safeTitle = book.title
-            .components(separatedBy: CharacterSet(charactersIn: "/\\:?%*|\"<>"))
-            .joined()
-        let name = safeTitle.isEmpty ? book.id.value : safeTitle
+        let safeTitle = Self.pathSafe(book.title)
+        let fallback = Self.pathSafe(book.id.value)
+        let name = safeTitle.isEmpty ? (fallback.isEmpty ? "book" : fallback) : safeTitle
         let target = FileManager.default.temporaryDirectory
             .appendingPathComponent("\(name).\(BookCodec.shared.ARCHIVE_EXTENSION)")
         do {
