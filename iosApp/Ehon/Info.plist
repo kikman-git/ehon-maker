@@ -18,8 +18,13 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.1.0</string>
+	<!-- Must be unique per upload for a given short version; `make bump` increments it. -->
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
+	<!-- The only crypto is HTTPS (font downloads), which is exempt. Without this, App Store
+	     Connect asks the export-compliance question on every single upload. -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
@@ -39,6 +44,9 @@
 	<array>
 		<string>arm64</string>
 	</array>
+	<!-- Split View has no place in a child's book maker. -->
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<!-- iPhone: the app delegate narrows these per screen — portrait everywhere, landscape
 	     for よむ (decision #27). iPad rotates freely; see OrientationLock. -->
 	<key>UISupportedInterfaceOrientations</key>
@@ -47,9 +55,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<!-- Split View has no place in a child's book maker. -->
-	<key>UIRequiresFullScreen</key>
-	<true/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

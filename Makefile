@@ -11,6 +11,16 @@ SIM ?= iPhone 16
 BUNDLE := app.ehon.petapeta
 XC := xcodebuild -project iosApp/Ehon.xcodeproj -scheme Ehon -sdk iphonesimulator CODE_SIGNING_ALLOWED=NO
 
+PLIST := iosApp/Ehon/Info.plist
+ARCHIVE := build/Ehon.xcarchive
+
+# Team for signed device builds: the environment first, else whatever Xcode last wrote into
+# the generated project. Expanded immediately (`:=`), because `make xcodeproj` replaces that
+# literal with an unexpandable ${EHON_DEVELOPMENT_TEAM} reference partway through the run.
+TEAM := $(or $(EHON_DEVELOPMENT_TEAM),$(shell sed -n \
+          's/^[[:space:]]*DEVELOPMENT_TEAM = \([A-Z0-9]\{10\}\);/\1/p' \
+          iosApp/Ehon.xcodeproj/project.pbxproj 2>/dev/null | head -1))
+
 .PHONY: help
 help:
 	@grep -hE '^[a-z-]+:.*?##' $(MAKEFILE_LIST) | sed -E 's/:.*##/\t/' | expand -t22
@@ -88,6 +98,36 @@ shots: ios ## Screenshot every screen (Japanese) into build/shots/
 	  xcrun simctl io "$(SIM)" screenshot build/shots/editor-$$m.png >/dev/null 2>&1; \
 	  echo "  build/shots/editor-$$m.png"; \
 	done
+
+# sed, not PlistBuddy: PlistBuddy rewrites the whole file and drops the XML comments,
+# which is also what Xcode's plist editor does to it.
+.PHONY: bump
+bump: ## Increment CFBundleVersion; App Store Connect rejects a duplicate
+	@n=$$(sed -n '/<key>CFBundleVersion<\/key>/{n;s/.*<string>\(.*\)<\/string>.*/\1/p;}' $(PLIST)); \
+	  m=$$((n + 1)); \
+	  sed -i '' "/<key>CFBundleVersion<\/key>/{n;s|<string>$$n</string>|<string>$$m</string>|;}" $(PLIST); \
+	  echo "CFBundleVersion $$n -> $$m"
+
+.PHONY: archive
+archive: xcodeproj ## Signed device archive, Release Kotlin/Native
+	@test -n "$(TEAM)" || { echo "error: no team. export EHON_DEVELOPMENT_TEAM=<10-char id>" >&2; exit 1; }
+	xcodebuild -project iosApp/Ehon.xcodeproj -scheme Ehon \
+	  -destination 'generic/platform=iOS' -configuration Release \
+	  -archivePath $(ARCHIVE) DEVELOPMENT_TEAM=$(TEAM) -allowProvisioningUpdates archive
+
+.PHONY: testflight
+testflight: archive ## Archive and upload to TestFlight. Run `make bump` first
+	@printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>' \
+	  '<plist version="1.0"><dict>' \
+	  '<key>method</key><string>app-store-connect</string>' \
+	  '<key>teamID</key><string>$(TEAM)</string>' \
+	  '<key>destination</key><string>upload</string>' \
+	  '<key>uploadSymbols</key><true/>' \
+	  '<key>signingStyle</key><string>automatic</string>' \
+	  '</dict></plist>' > build/ExportOptions.plist
+	xcodebuild -exportArchive -archivePath $(ARCHIVE) \
+	  -exportOptionsPlist build/ExportOptions.plist -exportPath build/export \
+	  -allowProvisioningUpdates
 
 .PHONY: clean
 clean: ## Remove Gradle and Xcode build output
