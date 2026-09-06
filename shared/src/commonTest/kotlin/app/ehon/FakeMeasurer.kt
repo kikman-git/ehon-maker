@@ -1,6 +1,6 @@
 package app.ehon
 
-import app.ehon.scene.FontRole
+import app.ehon.model.FontFace
 import app.ehon.scene.TextMeasurer
 
 /**
@@ -11,7 +11,7 @@ import app.ehon.scene.TextMeasurer
  * that layout arithmetic can be asserted rather than eyeballed.
  */
 object FakeMeasurer : TextMeasurer {
-    override fun width(text: String, fontSizePx: Float, font: FontRole): Float =
+    override fun width(text: String, fontSizePx: Float, font: FontFace): Float =
         text.fold(0) { acc, ch -> acc + if (ch.isFullWidth()) 2 else 1 } / 2f * fontSizePx
 
     private fun Char.isFullWidth(): Boolean = code.let { c ->

@@ -4,15 +4,7 @@ import app.ehon.design.Argb
 import app.ehon.geom.Point
 import app.ehon.geom.Rect
 import app.ehon.geom.Size
-
-/** Which bundled face a text node draws with. See decision #10 on fonts. */
-enum class FontRole {
-    /** Yomogi, shipped complete: arbitrary user-typed text. */
-    BODY,
-
-    /** Zen Maru Gothic, subset to shipped strings: chrome only. */
-    UI,
-}
+import app.ehon.model.FontFace
 
 /**
  * A fully resolved page, in absolute coordinates of [size]. Pure data: no platform
@@ -102,7 +94,7 @@ sealed interface SceneNode {
         val rubyOrigin: Point? = null,
         val rubySizePx: Float = 0f,
         val fill: Argb,
-        val font: FontRole = FontRole.BODY,
+        val font: FontFace = FontFace.default,
     ) : SceneNode
 
     /** A finger stroke, already scaled into page units. */
@@ -135,5 +127,5 @@ sealed interface SceneNode {
  * decision #10 bundles the same font files rather than using system faces.
  */
 fun interface TextMeasurer {
-    fun width(text: String, fontSizePx: Float, font: FontRole): Float
+    fun width(text: String, fontSizePx: Float, font: FontFace): Float
 }

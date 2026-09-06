@@ -120,6 +120,9 @@ struct EditorPage: View {
             }()
             let y = max(origin.y + 4,
                         origin.y + CGFloat(item.y) / 100 * pageSize.height - itemHalfHeight - 26)
+            // Six buttons in おとな is ~340pt wide; keep it on the page for edge items.
+            let halfWidth: CGFloat = model.controller.canReorder ? 172 : 104
+            let x = min(max(centreX, origin.x + halfWidth), origin.x + pageSize.width - halfWidth)
 
             HStack(spacing: 5) {
                 toolbarButton(Localized.s("sel.smaller")) { model.apply { $0.resizeSelected(bigger: false) } }
@@ -134,6 +137,14 @@ struct EditorPage: View {
                         .padding(.vertical, 6)
                 }
                 .buttonStyle(.plain)
+                if model.controller.canReorder {
+                    toolbarButton(Localized.s("sel.backward")) { model.apply { $0.sendBackward() } }
+                        .disabled(!model.controller.canSendBackward)
+                        .opacity(model.controller.canSendBackward ? 1 : 0.4)
+                    toolbarButton(Localized.s("sel.forward")) { model.apply { $0.bringForward() } }
+                        .disabled(!model.controller.canBringForward)
+                        .opacity(model.controller.canBringForward ? 1 : 0.4)
+                }
                 Button {
                     model.apply { $0.deleteSelected() }
                 } label: {
@@ -150,7 +161,7 @@ struct EditorPage: View {
             .background(Capsule().fill(Color.ehInk))
             .ehElevation(1)
             .fixedSize()
-            .position(x: centreX, y: y)
+            .position(x: x, y: y)
         }
     }
 

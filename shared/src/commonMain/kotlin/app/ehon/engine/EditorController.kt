@@ -3,6 +3,7 @@ package app.ehon.engine
 import app.ehon.design.Argb
 import app.ehon.geom.Size
 import app.ehon.model.Book
+import app.ehon.model.FontFace
 import app.ehon.model.Ink
 import app.ehon.model.Item
 import app.ehon.model.ItemId
@@ -19,6 +20,13 @@ import kotlinx.collections.immutable.toPersistentList
 
 /** The editor's three tools. Model 1a: exactly three, always visible, never overlapping. */
 enum class EditorMode { STICK, DRAW, TEXT }
+
+/**
+ * こども / おとな — model 2a's basic/advanced switch. Not a kid/parent *mode* split
+ * (decision #12): one surface, and [ADULT] simply reveals furigana, z-order and send
+ * settings. [KID] also implies big targets on the platform side.
+ */
+enum class UiLevel { KID, ADULT }
 
 /**
  * Every editing intent the UI can express, and the only place the document is mutated.
@@ -83,6 +91,13 @@ class EditorController(
     var textColorIndex: Int = 0
         private set
 
+    var uiLevel: UiLevel = UiLevel.KID
+        private set
+
+    /** Face for the next text item; follows the selection so a font tap is never a no-op. */
+    var fontFace: FontFace = FontFace.default
+        private set
+
     var draftText: String = ""
         private set
 
@@ -99,8 +114,22 @@ class EditorController(
     val selected: Item? get() = selectedId?.let { id -> page.items.firstOrNull { it.id == id } }
     val isTextSelected: Boolean get() = selected is TextItem
 
-    /** Furigana is a Japanese-only concept, so the field only exists for a Japanese book. */
-    val showFuriganaField: Boolean get() = book.isJapanese && furiganaEnabled
+    val isAdult: Boolean get() = uiLevel == UiLevel.ADULT
+
+    /**
+     * Furigana is a Japanese-only concept, so the field only exists for a Japanese book —
+     * and only in おとな, where the person typing can read kanji in the first place.
+     */
+    val showFuriganaField: Boolean get() = book.isJapanese && furiganaEnabled && isAdult
+
+    /** まえ / うしろ are adult-only controls, and meaningless with one item on the page. */
+    val canReorder: Boolean get() = isAdult && selected != null && page.items.size > 1
+
+    val canBringForward: Boolean
+        get() = canReorder && selectedId?.let { page.indexOf(it) } != page.items.lastIndex
+
+    val canSendBackward: Boolean
+        get() = canReorder && selectedId?.let { page.indexOf(it) } != 0
 
     // ── navigation ───────────────────────────────────────────────────────────
 
@@ -123,6 +152,32 @@ class EditorController(
         toast = TOAST_PAGE_ADDED
     }
 
+    /** ならびかえ is an おとな control (2a), and meaningless with a single page. */
+    val canReorderPages: Boolean get() = isAdult && book.pageCount > 1
+
+    /**
+     * Moves one page to another slot. The current page follows the move, so the strip
+     * does not jump to a different page under the parent's finger.
+     */
+    fun movePage(from: Int, to: Int) = change {
+        val last = book.pageCount - 1
+        val f = from.coerceIn(0, last)
+        val t = to.coerceIn(0, last)
+        if (f == t) return@change
+        store.edit { current ->
+            val page = current.pages[f]
+            current.copy(pages = current.pages.removeAt(f).add(t, page), updatedAtEpochMs = clock())
+        }
+        pageIndex = when {
+            pageIndex == f -> t
+            f < t && pageIndex in (f + 1)..t -> pageIndex - 1
+            t < f && pageIndex in t..(f - 1) -> pageIndex + 1
+            else -> pageIndex
+        }
+        selectedId = null
+        toast = TOAST_PAGE_MOVED
+    }
+
     fun setMode(next: EditorMode) = change {
         mode = next
         if (next != EditorMode.TEXT) {
@@ -132,6 +187,8 @@ class EditorController(
     }
 
     fun setCategory(next: String) = change { category = next }
+
+    fun setUiLevel(level: UiLevel) = change { uiLevel = level }
 
     // ── parts ────────────────────────────────────────────────────────────────
 
@@ -156,6 +213,7 @@ class EditorController(
                 textColorIndex = hit.colorIndex.coerceIn(app.ehon.design.Organic.textColors.indices)
                 textSizeStep = (TextItem.SIZES.indexOfFirst { it == hit.sizePct } + 1)
                     .coerceIn(1, TextItem.SIZES.size)
+                fontFace = hit.font
             }
         }
         return hit
@@ -233,6 +291,29 @@ class EditorController(
         selectedId = null
     }
 
+    /** Moves the selection one step toward the front. Items draw in list order. */
+    fun bringForward() = change {
+        val id = selectedId ?: return@change
+        store.edit { current ->
+            current.mapPage(pageIndex) { p ->
+                val i = p.indexOf(id)
+                if (i < 0 || i == p.items.lastIndex) p
+                else p.copy(items = p.items.removeAt(i).add(i + 1, p.items[i]))
+            }.copy(updatedAtEpochMs = clock())
+        }
+    }
+
+    fun sendBackward() = change {
+        val id = selectedId ?: return@change
+        store.edit { current ->
+            current.mapPage(pageIndex) { p ->
+                val i = p.indexOf(id)
+                if (i <= 0) p
+                else p.copy(items = p.items.removeAt(i).add(i - 1, p.items[i]))
+            }.copy(updatedAtEpochMs = clock())
+        }
+    }
+
     fun setPageBackground(color: Argb) = change {
         store.edit { current ->
             current.mapPage(pageIndex) { it.copy(background = color) }
@@ -243,7 +324,7 @@ class EditorController(
     // ── drawing ──────────────────────────────────────────────────────────────
 
     fun setCrayon(index: Int) = change {
-        crayonIndex = index
+        crayonIndex = index.coerceIn(app.ehon.design.Organic.drawingCrayons.indices)
         eraser = false
     }
 
@@ -341,6 +422,12 @@ class EditorController(
 
     fun toggleFurigana() = change { furiganaEnabled = !furiganaEnabled }
 
+    /** Applies immediately to a selected text item, like [setTextColour]. */
+    fun setFont(face: FontFace) = change {
+        fontFace = if (face == FontFace.UI) FontFace.default else face
+        if (isTextSelected) mapSelected { (it as TextItem).copy(font = fontFace) }
+    }
+
     /** Applies immediately to a selected text item, so a colour tap is never a no-op. */
     fun setTextColour(index: Int) = change {
         textColorIndex = index.coerceIn(app.ehon.design.Organic.textColors.indices)
@@ -372,9 +459,10 @@ class EditorController(
                                 x = 50f,
                                 y = 78f,
                                 text = draftText,
-                                ruby = draftRuby.ifBlank { null }.takeIf { book.isJapanese },
+                                ruby = draftRuby.ifBlank { null }.takeIf { showFuriganaField },
                                 colorIndex = textColorIndex,
                                 sizePct = TextItem.SIZES[textSizeStep - 1],
+                                font = fontFace,
                             ),
                         ),
                     )
@@ -438,6 +526,7 @@ class EditorController(
 
         const val TOAST_PART_PLACED = "toast.partPlaced"
         const val TOAST_PAGE_ADDED = "toast.pageAdded"
+        const val TOAST_PAGE_MOVED = "toast.pageMoved"
         const val TOAST_ENTER_TEXT = "toast.enterText"
     }
 }

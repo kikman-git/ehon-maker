@@ -187,6 +187,7 @@ class EditorControllerTest {
         val c = controller()
         c.setMode(EditorMode.TEXT)
         c.setDraftText("くまさんは もりへ")
+        c.setUiLevel(UiLevel.ADULT)
         c.setDraftRuby("くまさんは もりへ")
         assertTrue(c.commitText())
 

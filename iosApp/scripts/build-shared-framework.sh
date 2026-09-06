@@ -26,7 +26,10 @@ SDK="${SDK_NAME:-iphonesimulator}"
 # On a simulator build Xcode may list both slices; cover all of them.
 ARCH_LIST="${ARCHS:-x86_64 arm64}"
 
-if [[ "${CONFIGURATION:-Debug}" == "Release" ]]; then
+# Debug Kotlin/Native runs several times slower than Release, visibly so on a phone, so a
+# device build always gets the optimised framework; simulator Debug keeps the fast link.
+# EHON_KN_DEBUG=1 opts out when Kotlin itself needs debugging on a device.
+if [[ "${CONFIGURATION:-Debug}" == "Release" || ( "$SDK" == iphoneos* && "${EHON_KN_DEBUG:-0}" != "1" ) ]]; then
   KN_CONFIG=Release; KN_DIR=releaseFramework
 else
   KN_CONFIG=Debug;   KN_DIR=debugFramework

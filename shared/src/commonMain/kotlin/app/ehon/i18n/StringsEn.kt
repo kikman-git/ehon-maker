@@ -11,6 +11,78 @@ package app.ehon.i18n
  */
 internal object StringsEn {
     val table: Map<String, String> = mapOf(
+        "toast.pageMoved" to "Moved the page",
+        // kid / adult, z-order (2a)
+        "ui.kid" to "Kid",
+        "ui.adult" to "Grown-up",
+        "ui.adultHint" to "Adds furigana, layering and sharing settings",
+        "sel.forward" to "Front",
+        "sel.backward" to "Back",
+
+        // fonts (2a)
+        "font.handwriting" to "Handwriting",
+        "font.rounded" to "Rounded",
+        "font.storybook" to "Storybook",
+        "font.pop" to "Pop",
+        "font.marker" to "Marker",
+        "font.boldRound" to "Bold",
+        "font.downloading" to "Loading…",
+        "font.downloadFailed" to "Couldn't download this font",
+
+        // read: bedtime + family voice (2a / 3b)
+        "read.night" to "Bedtime",
+        "read.nightHint" to "Bedtime reading — turns the page by itself every 7 seconds",
+        "read.goodnight" to "Good night",
+        "read.replyChip" to "%s's voice · %ss",
+        "read.replyPlaying" to "%s's voice",
+        "read.cannotSpeak" to "Can't read aloud right now",
+        "read.cannotPlayVoice" to "Can't play that voice",
+
+        // send to family (2a)
+        "share.title" to "Send to family",
+        "share.who" to "Who should get it?",
+        "share.whoHint" to "They can read it right on their phone.",
+        "share.include" to "Send along with it",
+        "share.voice" to "Read aloud in my own voice",
+        "share.voiceHint" to "Record yourself reading and attach it",
+        "share.printFile" to "A printable file",
+        "share.printFileHint" to "Print at home and make a real book",
+        "share.adultNote" to "Grown-up mode: allows comments and downloads after sending. In kid mode the link is family-only.",
+        "share.send" to "Send",
+        "share.sendCount" to "Send to %s",
+        "share.sent" to "Sent!",
+        "share.sentHint" to "They'll get a notification.",
+        "share.readMyself" to "Read it myself",
+        "share.pickSomeone" to "Pick someone to send it to",
+        "share.backToShelf" to "Back to the shelf",
+        "family.grandma" to "Grandma",
+        "family.grandma.sub" to "Grandmother",
+        "family.grandpa" to "Grandpa",
+        "family.grandpa.sub" to "Grandfather",
+        "family.mom" to "Mom",
+        "family.mom.sub" to "Mother",
+        "family.dad" to "Dad",
+        "family.dad.sub" to "Father",
+
+        // guest read screen (3b)
+        "guest.arrived" to "From %s",
+        "guest.holdToRecord" to "Hold to send your voice",
+        "guest.releaseToSend" to "Let go to send",
+        "guest.recording" to "Recording %ss",
+        "guest.hint" to "Send %s a message about this page",
+        "guest.tooShort" to "Hold a little longer",
+        "guest.sent" to "Your voice was sent",
+
+        // iPad (3a)
+        "tablet.makeTogether" to "Make it together",
+        "tablet.readSpread" to "Two pages at a time",
+        "tablet.backToMake" to "Back to making",
+        "tablet.rotateTitle" to "Turn it upright to make",
+        "tablet.rotateBody" to "Sideways is for reading two pages at once. To make, turn the iPad upright: the page gets bigger and the parts line up along the bottom.",
+        "tablet.gotIt" to "Got it",
+        "tablet.drawHint" to "Draw straight on the page with a finger or Apple Pencil. Top row is bold colours, bottom row is pastels.",
+        "tablet.textCardTitle" to "Add words",
+
         // home
         "home.greeting" to "Hello, %s",
         "home.shelf" to "Bookshelf",

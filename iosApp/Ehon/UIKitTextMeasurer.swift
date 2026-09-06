@@ -8,7 +8,7 @@ import EhonCore
 /// centring is `(baseWidth - rubyWidth) / 2` computed in shared code — if measurement and
 /// drawing diverge, the annotation lands off-centre and nothing catches it.
 final class UIKitTextMeasurer: TextMeasurer {
-    func width(text: String, fontSizePx: Float, font: FontRole) -> Float {
+    func width(text: String, fontSizePx: Float, font: FontFace) -> Float {
         let attributes = [NSAttributedString.Key.font: EhonFonts.font(for: font, size: CGFloat(fontSizePx))]
         return Float((text as NSString).size(withAttributes: attributes).width)
     }

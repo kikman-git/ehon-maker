@@ -1,5 +1,7 @@
 package app.ehon.scene
 
+import app.ehon.model.FontFace
+
 import app.ehon.FakeMeasurer
 import app.ehon.design.Argb
 import app.ehon.geom.Size
@@ -200,7 +202,7 @@ class SceneBuilderTest {
     private fun watermarks(target: RenderTarget) =
         builder.build(page(listOf(cat)), target)
             .nodes.filterIsInstance<SceneNode.Text>()
-            .filter { it.font == FontRole.UI }
+            .filter { it.font == FontFace.UI }
 
     private fun screenTarget() =
         RenderTarget.screen(PageShape.SQUARE, Size(370f, 332f))

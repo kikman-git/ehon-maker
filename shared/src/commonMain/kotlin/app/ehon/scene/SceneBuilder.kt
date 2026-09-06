@@ -10,6 +10,7 @@ import app.ehon.design.Organic
 import app.ehon.geom.Point
 import app.ehon.geom.Rect
 import app.ehon.geom.Size
+import app.ehon.model.FontFace
 import app.ehon.model.Ink
 import app.ehon.model.Page
 import app.ehon.model.PartItem
@@ -144,12 +145,12 @@ class SceneBuilder(private val measurer: TextMeasurer) {
         val cx = item.x / 100f * target.page.w
         val cy = item.y / 100f * target.page.h
 
-        val baseW = measurer.width(item.text, baseSize, FontRole.BODY)
+        val baseW = measurer.width(item.text, baseSize, item.font)
         val baseLineH = baseSize * BASE_LINE_HEIGHT
         val rubyLineH = if (item.hasRuby) rubySize * RUBY_LINE_HEIGHT else 0f
         val blockTop = cy - (baseLineH + rubyLineH) / 2f
 
-        val rubyW = if (item.hasRuby) measurer.width(item.ruby!!, rubySize, FontRole.BODY) else 0f
+        val rubyW = if (item.hasRuby) measurer.width(item.ruby!!, rubySize, item.font) else 0f
 
         val node = SceneNode.Text(
             base = item.text,
@@ -159,7 +160,7 @@ class SceneBuilder(private val measurer: TextMeasurer) {
             rubyOrigin = if (item.hasRuby) Point(cx - rubyW / 2f, blockTop) else null,
             rubySizePx = if (item.hasRuby) rubySize else 0f,
             fill = Organic.textColors[item.colorIndex.coerceIn(Organic.textColors.indices)],
-            font = FontRole.BODY,
+            font = item.font,
         )
         return if (item.rotationDeg == 0f) listOf(node)
         else listOf(SceneNode.Group(listOf(node), item.rotationDeg, Point(cx, cy)))
@@ -169,7 +170,7 @@ class SceneBuilder(private val measurer: TextMeasurer) {
         points = stroke.points.map { Point(it.x * target.page.w, it.y * target.page.h) },
         widthPx = Stroke.widthFraction(stroke.brushStep) * target.page.w,
         fill = when (val ink = stroke.ink) {
-            is Ink.Crayon -> Organic.crayons[ink.index]
+            is Ink.Crayon -> Organic.drawingCrayons[ink.index.coerceIn(Organic.drawingCrayons.indices)]
             Ink.Eraser -> Organic.ink
         },
         erase = stroke.ink == Ink.Eraser,
@@ -179,13 +180,13 @@ class SceneBuilder(private val measurer: TextMeasurer) {
 
     private fun promptNode(text: String, target: RenderTarget): SceneNode {
         val size = PROMPT_SIZE_PCT * target.page.w
-        val w = measurer.width(text, size, FontRole.BODY)
+        val w = measurer.width(text, size, FontFace.default)
         return SceneNode.Text(
             base = text,
             baseOrigin = Point((target.page.w - w) / 2f, PROMPT_TOP_PCT * target.page.h),
             baseSizePx = size,
             fill = Organic.text.withAlpha(0.28f),
-            font = FontRole.BODY,
+            font = FontFace.default,
         )
     }
 
@@ -198,7 +199,7 @@ class SceneBuilder(private val measurer: TextMeasurer) {
             is TextItem -> {
                 val fontPx = item.sizePct / 100f * target.page.w * TextItem.OPTICAL_SCALE
                 Size(
-                    measurer.width(item.text, fontPx, FontRole.BODY),
+                    measurer.width(item.text, fontPx, item.font),
                     fontPx * (BASE_LINE_HEIGHT + if (item.hasRuby) RUBY_LINE_HEIGHT * TextItem.RUBY_SCALE else 0f),
                 )
             }
@@ -220,7 +221,7 @@ class SceneBuilder(private val measurer: TextMeasurer) {
      */
     private fun watermarkNode(page: Page, target: RenderTarget): SceneNode {
         val size = WATERMARK_SIZE_PCT * target.page.w
-        val w = measurer.width(WATERMARK_TEXT, size, FontRole.UI)
+        val w = measurer.width(WATERMARK_TEXT, size, FontFace.UI)
         val inset = WATERMARK_INSET_PCT * target.page.w
         val onDark = luminance(page.background) < 0.5f
         return SceneNode.Text(
@@ -231,7 +232,7 @@ class SceneBuilder(private val measurer: TextMeasurer) {
             ),
             baseSizePx = size,
             fill = (if (onDark) Organic.surface else Organic.text).withAlpha(0.42f),
-            font = FontRole.UI,
+            font = FontFace.UI,
         )
     }
 

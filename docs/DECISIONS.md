@@ -4,8 +4,8 @@ Working name **ぺたぺた** (Petapeta). Needs checking against the App Store, 
 J-PlatPat (商標) and a domain before it's real.
 
 Source of truth for the design: Claude Design project `82f73dac`, files
-`Ehon Maker.dc.html` / `EhonApp.dc.html` / `EhonPart.dc.html`. Decoded copies live in
-`.design-ref/` for reference; they are not built.
+`Ehon Maker.dc.html` / `EhonApp.dc.html` / `EhonTablet.dc.html` / `EhonPart.dc.html`, plus
+`ehon-data.js` for the parts table. Read through the DesignSync tool (`/design-login`).
 
 ---
 
@@ -25,8 +25,8 @@ different scales, so what a child sees is structurally what prints.
 ```
 shared/            Kotlin, no UI, no platform types
   geom/            Size, Point, Rect, fitAspect
-  design/          Argb (+ OKLCH→sRGB), Organic tokens, 9 crayons
-  model/           Book, Page, Item, Stroke, PageShape, Binding
+  design/          Argb (+ OKLCH→sRGB), Organic tokens, 9 part colours + 14 crayons
+  model/           Book, Page, Item, Stroke, PageShape, Binding, FontFace, PageReply
   catalog/         PartDef, 10 shape primitives, 56 parts
   scene/           SceneNode, SceneBuilder, RenderTarget, TextMeasurer
   engine/          DocumentStore (undo), StrokeSimplify, HitTest
@@ -48,7 +48,7 @@ androidApp/        Compose screens                           ← phase 2
 | 3 | **Raster illustrations**; procedural 56 kept permanently as dev placeholder + test fixture | Engineering schedule stops waiting on the art schedule; goldens need no assets |
 | 4 | **Export = 2048px share + 300dpi PDF**, on-device, no server. Print-on-demand is v2 | PDF is the same painter pointed at a PDF context |
 | 5 | **Phone first, size-derived layout** — no fixed page pixels | iPad becomes a layout pass, not a rewrite |
-| 6 | **Read mode = drag-driven 3D fold** + paper material + sound + haptic | Same `rotationY` math on both platforms; no shaders. Curl was #8 of 8 on what creates book-feel |
+| 6 | **Read mode = a two-page spread with a drag-driven 3D fold** about the centre spine + paper material + haptic, landscape-locked on every device | A picture book is a double-page object — picture on one leaf, words on the other. Same `rotationY` math on both platforms; no shaders. Curl was #8 of 8 on what creates book-feel |
 | 7 | **Editor model 1a モードきりかえ** (はる / かく / もじ) | Tools and canvas never overlap — the safety property that matters for a 4-year-old's finger. Costs canvas size |
 | 8 | **Commission ~28 parts**, one illustrator, one style bible; later waves ship as app updates | Bounds cost and schedule; no CDN, no backend for content |
 | 9 | **Group ruby**, manual entry, 0.5em centred | The prototype's `<ruby>` is group ruby, not mono ruby — so it's two text runs, not a text engine. Sidesteps CoreText-vs-Android asymmetry entirely |
@@ -65,12 +65,18 @@ androidApp/        Compose screens                           ← phase 2
 | 20 | **Name: onomatopoeia direction.** ぺたぺた, ぺたぐる as backup | A three-year-old can say it and ask for it by name. Names the primary verb (はる). ASO bought back in the subtitle |
 | 21 | **iOS complete → App Store → then Android**, with the Compose painter built and JVM-tested in phase 1 | Real feedback months earlier, without letting the shared core quietly become iOS-shaped |
 | 22 | **First-party usage counters to Firestore**, one write per session | Decision #8 stakes a ¥150k wave-2 commission on knowing which parts get used. No third-party analytics SDK |
+| 23 | **Model 2a is the production editor**: 1a plus こども / おとな | Not a kid/parent mode split (#12) — one surface, and おとな reveals furigana, z-order and send settings. こども implies big targets |
+| 24 | **Two palettes, not one.** Parts keep the frozen 9-colour ramp; drawing gets 14 (7 原色 + 7 パステル) | They were one list until the design split them. Merging them again would recolour all 56 parts and every saved book. `BookCodec` v2 remaps v1 strokes |
+| 25 | **Six body faces, one bundled.** てがき ships; the other five download on first use, loaded via `CGFont` | A face a child types into must ship complete (#10); five complete Japanese fonts would triple the download. `CGFont` sidesteps the PostScript-name clash with the bundled ZMG subset |
+| 26 | **Family voice is document data**: `Page.reply` holds who/how long/a file ref, never audio | Keeps a book inside Firestore's 1MiB (#14) and lets the transport change without touching the model |
+| 27 | **iPad: たて＝つくる・よこ＝よむ.** Same `EditorModel`, two layouts; reading is the spread in either orientation; landscape つくる shows a rotate card. The **phone** locks よむ to landscape; the iPad cannot — iPadOS 26 answers an orientation the device is not in by windowing the app | The layout was already size-derived (#5), so the tablet is genuinely a pass, not a rewrite |
+| 28 | **Device builds link Kotlin/Native in Release; part tiles rasterise once; page thumbnails are `Equatable`** | An iPhone 13 stalled 1–2s on every mode switch with the Debug framework: each revision rebuilt every visible tile's scene and repainted every page through the interop boundary. Debug K/N runs several times slower than Release, and a phone build is for feel, not for stepping through Kotlin (`EHON_KN_DEBUG=1` when it is) |
 
 ## Deliberately not in v1
 
 - Paywall / IAP (#11) — seam is in place
 - Print-on-demand ordering (#4) — reuses the same PDF renderer
-- iPad / tablet layout (#5) — the layout is already size-derived
+- ~~iPad / tablet layout (#5)~~ — landed with 2a as decision #27; the size-derived layout made it a pass
 - Landscape-authored templates beyond t2 (#17)
 - Korean, zh-Hant (#18) — blocked on body-font licensing, not translation
 - Part recolouring — permanently unavailable once art is raster (#3)
@@ -87,6 +93,11 @@ androidApp/        Compose screens                           ← phase 2
    shipped string's glyphs exist in the subset is not optional. (#10)
 5. **Cross-platform painter drift** is only caught automatically within a platform. Tier 3
    is a human looking at two screenshots. (#19)
+6. **3b's guest link is not buildable here.** 「リンクを あけると よむ がめん・アプリ 不要」 is a
+   web page plus a backend. The app ships the *child side* (playback after よみあげ, the chip)
+   and an on-device recorder behind the same `PageReply`; the no-app link waits on #13/#14.
+7. **Font downloads come from GitHub raw.** Fine for testing, not for launch — move the five
+   faces to On-Demand Resources or a CDN you control before the store build. (#25)
 
 ## Corrections made to the prototype
 
@@ -162,14 +173,30 @@ class EditorController(store: DocumentStore) {
 This was going to be optional. It is now structural — and it is better, because editor
 *semantics* get written and tested once instead of twice.
 
+## Rendering, learned the hard way
+
+**`NSString.draw` paints into UIKit's *current* context, not the one you hold.** SwiftUI's
+`Canvas.withCGContext` hands the painter a context without making it current, so on screen
+every glyph went nowhere — while the painter tests stayed green, because
+`UIGraphicsImageRenderer` *does* make its context current. The painter now pushes the context
+it is given around the call, and `testTextDrawsIntoAContextUIKitDidNotMakeCurrent` paints into
+a bare bitmap context so the two paths cannot diverge again. Corollary: a green render test
+proves the export path, not the screen — look at the simulator.
+
+**A CGFont-loaded face wins over a registered subset of the same name.** The complete Zen Maru
+Gothic downloaded as まるまる renders kanji the bundled UI subset does not carry, because
+`CTFontCreateWithGraphicsFont` bypasses the name registry. Verified on the simulator with 森 in
+a `ROUNDED` text item.
+
 ## Built, and verified running
 
 | Area | State |
 |---|---|
-| Shared core | model, catalog, scene graph, `EditorController`, codec, i18n — **80 tests** |
-| iOS painter | CoreGraphics, structural twin of the Compose one — **8 tests** |
+| Shared core | model, catalog, scene graph, `EditorController`, codec (v2), i18n — **105 tests** |
+| iOS painter | CoreGraphics, structural twin of the Compose one — **9 tests** |
 | Compose painter | compiles + renders on JVM, so the core has two consumers already |
-| Screens | shelf, templates, 1a editor (はる/かく/もじ), read with 3D fold, done |
+| Screens | shelf, templates, 2a editor (はる/かく/もじ + こども/おとな, 14 crayons, 6 faces, z-order, long-press page reorder), two-page read with 3D fold + おやすみ + family voice, done, かぞくに おくる, guest |
+| iPad | portrait make with the bottom rail and floating text card; landscape two-page spread; rotate card |
 | Fonts | ZMG subset 14.4MB → **176KB**; Yomogi complete 3.9MB; total **4.1MB** |
 | Export | 2048px PNG + 300dpi PDF via the share sheet |
 | Persistence | JSON per book in `Documents` (iOS device backup covers it) |
@@ -184,3 +211,11 @@ Screens are reachable for screenshots via launch args: `make shots`, or
 - **Watermark copy** 「ぺたぺた で つくったよ」is a placeholder pending the final name.
 - **Page-turn sound assets** (2–3 randomised variants) not yet sourced.
 - **Illustrator not yet briefed.** Critical path for launch and for store screenshots.
+- **Harvesting testers' books as launch templates.** Today a `Template` is seeds only (part, x, y,
+  size, prompt) — it cannot carry strokes or text. Decide seeds-only distiller vs. full-page
+  templates before closed testing; either way strip `PageReply` and review every `TextItem`,
+  and keep every `BookCodec` version decodable.
+- **おやすみ interval** is 7s on the phone spec and 9s on the tablet spec; the app uses 7s on both.
+- **Confirm the iPhone 13 stalls are gone** with the Release framework and the tile/thumbnail
+  caching (#28). If not, the next suspect is `Canvas.withCGContext` per stroke point — profile
+  before touching the painter.

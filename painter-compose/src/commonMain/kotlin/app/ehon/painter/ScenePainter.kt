@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.TextUnitType
 import app.ehon.design.Argb
 import app.ehon.design.Organic
 import app.ehon.geom.Rect
-import app.ehon.scene.FontRole
+import app.ehon.model.FontFace
 import app.ehon.scene.Scene
 import app.ehon.scene.SceneNode
 import kotlin.math.min
@@ -190,7 +190,7 @@ class ScenePainter(
         origin: app.ehon.geom.Point,
         sizePx: Float,
         fill: Argb,
-        role: FontRole,
+        face: FontFace,
     ) {
         drawText(
             textMeasurer = textMeasurer,
@@ -199,7 +199,7 @@ class ScenePainter(
             style = TextStyle(
                 color = fill.toColor(),
                 fontSize = TextUnit(sizePx, TextUnitType.Sp),
-                fontFamily = if (role == FontRole.BODY) bodyFont else uiFont,
+                fontFamily = if (face == FontFace.UI) uiFont else bodyFont,
             ),
         )
     }

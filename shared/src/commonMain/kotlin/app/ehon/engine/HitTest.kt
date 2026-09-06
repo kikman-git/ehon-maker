@@ -5,7 +5,6 @@ import app.ehon.model.Item
 import app.ehon.model.Page
 import app.ehon.model.PartItem
 import app.ehon.model.TextItem
-import app.ehon.scene.FontRole
 import app.ehon.scene.TextMeasurer
 import kotlin.math.abs
 
@@ -40,7 +39,7 @@ class HitTest(private val measurer: TextMeasurer) {
                 val fontPx = item.sizePct / 100f * pageSize.w * TextItem.OPTICAL_SCALE
                 // Measured rather than estimated from character count: the prototype's
                 // `text.length * size * 1.05` is badly wrong for mixed kana and Latin.
-                measurer.width(item.text, fontPx, FontRole.BODY) to fontPx * TEXT_HEIGHT_FACTOR
+                measurer.width(item.text, fontPx, item.font) to fontPx * TEXT_HEIGHT_FACTOR
             }
         }
         return (wPx / 2f / pageSize.w * 100f) to (hPx / 2f / pageSize.h * 100f)

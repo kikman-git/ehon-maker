@@ -117,6 +117,43 @@ final class ScenePainterTests: XCTestCase {
         XCTAssertTrue(try isBackground(colour(of: small, atFractionX: 0.5, y: 0.1)))
     }
 
+    // MARK: - text
+
+    /// Canvas hands the painter a CGContext without making it UIKit's current one, and
+    /// `NSString.draw` only targets the current one. UIGraphicsImageRenderer hides that, so
+    /// this paints into a bare bitmap context the way the screen does.
+    func testTextDrawsIntoAContextUIKitDidNotMakeCurrent() throws {
+        let words = Page.companion.of(
+            background: cream, promptKey: nil,
+            items: [TextItem(id: ItemId(value: "t1"), x: 50, y: 50, rotationDeg: 0, text: "あいうえお",
+                             ruby: nil, colorIndex: 0, sizePct: 8.5, font: .handwriting)],
+            strokes: []
+        )
+        let side = 300
+        let target = RenderTarget.Companion.shared.screen(
+            shape: .square, available: Size(w: Float(side), h: Float(side)), selectedItem: nil
+        )
+        let scene = builder.build(page: words, target: target, promptText: nil)
+        let context = try XCTUnwrap(CGContext(
+            data: nil, width: side, height: side, bitsPerComponent: 8, bytesPerRow: 0,
+            space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+        ))
+        // The y-down, top-left space Canvas provides.
+        context.translateBy(x: 0, y: CGFloat(side))
+        context.scaleBy(x: 1, y: -1)
+        ScenePainter().draw(scene, into: context)
+
+        let image = UIImage(cgImage: try XCTUnwrap(context.makeImage()))
+        var inked = 0
+        for fx in stride(from: 0.3, through: 0.7, by: 0.02) {
+            for fy in stride(from: 0.44, through: 0.56, by: 0.02) {
+                if !isBackground(try colour(of: image, atFractionX: fx, y: fy)) { inked += 1 }
+            }
+        }
+        XCTAssertGreaterThan(inked, 0, "text drew nowhere: NSString.draw had no current UIKit context")
+    }
+
     // MARK: - export
 
     func testPrintablePdfHasOnePagePerBookPage() throws {

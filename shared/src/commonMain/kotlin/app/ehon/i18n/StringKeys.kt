@@ -51,16 +51,56 @@ object StringKeys {
         "mode.draw", "mode.draw.sub",
         "mode.text", "mode.text.sub",
         "editor.backgroundColour",
-        "sel.smaller", "sel.bigger", "sel.delete",
+        "sel.smaller", "sel.bigger", "sel.delete", "sel.forward", "sel.backward",
+        "ui.kid", "ui.adult", "ui.adultHint",
         "draw.eraser", "draw.undo", "draw.clearAll", "draw.clearAll.confirm", "draw.hint",
         "text.placeholder", "text.rubyPlaceholder", "text.ruby",
         "text.commit", "text.done", "text.panelTitle", "text.close",
-        "toast.partPlaced", "toast.pageAdded", "toast.enterText",
+        "toast.partPlaced", "toast.pageAdded", "toast.pageMoved", "toast.enterText",
     )
 
     val read = listOf(
         "read.aloud",
         "read.stop",
+        "read.night", "read.nightHint", "read.goodnight",
+        "read.replyChip", // 「%s の こえ · %sびょう」
+        "read.replyPlaying",
+        "read.cannotSpeak", "read.cannotPlayVoice",
+    )
+
+    /** The six selectable faces plus download states. Decision 2a. */
+    val fonts = listOf(
+        "font.handwriting", "font.rounded", "font.storybook",
+        "font.pop", "font.marker", "font.boldRound",
+        "font.downloading", "font.downloadFailed",
+    )
+
+    /** かぞくに おくる. */
+    val share = listOf(
+        "share.title", "share.who", "share.whoHint",
+        "share.include", "share.voice", "share.voiceHint",
+        "share.printFile", "share.printFileHint", "share.adultNote",
+        "share.send", "share.sendCount", "share.sent", "share.sentHint",
+        "share.readMyself", "share.pickSomeone", "share.backToShelf",
+        "family.grandma", "family.grandma.sub",
+        "family.grandpa", "family.grandpa.sub",
+        "family.mom", "family.mom.sub",
+        "family.dad", "family.dad.sub",
+    )
+
+    /** The link-opened read screen a family member sees. Decision 3b. */
+    val guest = listOf(
+        "guest.arrived", // 「%sちゃん から とどきました」
+        "guest.holdToRecord", "guest.releaseToSend",
+        "guest.recording", // 「ろくおん ちゅう %sびょう」
+        "guest.hint", "guest.tooShort", "guest.sent",
+    )
+
+    /** iPad chrome. Decision 3a. */
+    val tablet = listOf(
+        "tablet.makeTogether", "tablet.readSpread", "tablet.backToMake",
+        "tablet.rotateTitle", "tablet.rotateBody", "tablet.gotIt",
+        "tablet.drawHint", "tablet.textCardTitle",
     )
 
     val done = listOf(
@@ -100,5 +140,6 @@ object StringKeys {
         app.ehon.catalog.PartCatalog.all.map { "part.${it.nameKey}" }
 
     val all: List<String> =
-        home + templates + editor + read + done + settings + shapes + categories + parts
+        home + templates + editor + read + fonts + share + guest + tablet +
+            done + settings + shapes + categories + parts
 }

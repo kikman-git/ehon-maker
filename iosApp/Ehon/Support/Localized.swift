@@ -24,6 +24,13 @@ enum Localized {
 
     static func partName(_ part: Part) -> String { s("part.\(part.nameKey)") }
 
+    static func fontName(_ face: FontFace) -> String { s(face.nameKey) }
+
+    /// 「ばあば の こえ · 3.4びょう」
+    static func replyChip(_ reply: PageReply) -> String {
+        s("read.replyChip", reply.from, String(format: "%.1f", reply.seconds))
+    }
+
     static func categoryName(_ category: String) -> String {
         switch category {
         case PartCatalog.shared.CAT_SHAPES: return s("cat.shapes")

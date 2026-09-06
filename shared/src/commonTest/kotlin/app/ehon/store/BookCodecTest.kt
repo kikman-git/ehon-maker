@@ -4,6 +4,7 @@ import app.ehon.FakeMeasurer
 import app.ehon.design.Organic
 import app.ehon.engine.EditorController
 import app.ehon.engine.EditorMode
+import app.ehon.engine.UiLevel
 import app.ehon.model.BookId
 import app.ehon.model.PartId
 import app.ehon.model.TextItem
@@ -30,6 +31,7 @@ class BookCodecTest {
         FakeMeasurer,
         IdSource("new"),
     ).apply {
+        setUiLevel(UiLevel.ADULT) // furigana is an おとな control
         addPart(PartId("いきもの:くま"))
         rotateSelected()
         resizeSelected(bigger = true)
@@ -107,7 +109,8 @@ class BookCodecTest {
 
     @Test
     fun `a payload from a newer format is refused, not silently mangled`() {
-        val forward = BookCodec.encode(richBook()).replace("\"version\":1", "\"version\":99")
+        val forward = BookCodec.encode(richBook())
+            .replace("\"version\":${BookCodec.FORMAT_VERSION}", "\"version\":99")
         assertFailsWith<IllegalArgumentException> { BookCodec.decode(forward) }
         assertNull(BookCodec.decodeOrNull(forward))
     }

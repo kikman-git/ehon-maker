@@ -8,6 +8,10 @@ enum Screen: Equatable {
     case editor(BookId)
     case read(BookId, page: Int)
     case done(BookId)
+    /// かぞくに おくる — model 2a.
+    case share(BookId)
+    /// What a family member sees when they open the link — model 3b.
+    case guest(BookId)
 }
 
 @MainActor
@@ -19,6 +23,19 @@ final class AppModel: ObservableObject {
 
     /// Decision #12: `bigTargets` is a plain accessibility setting, not a kid/parent mode.
     @AppStorage("bigTargets") var bigTargets = false
+
+    /// こども / おとな (model 2a). Stored as its Kotlin id; kid also implies big targets.
+    @AppStorage("uiLevel") private var uiLevelRaw = "kid"
+
+    var uiLevel: UiLevel {
+        get { uiLevelRaw == "adult" ? .adult : .kid }
+        set {
+            uiLevelRaw = newValue == .adult ? "adult" : "kid"
+            editor?.setUiLevel(newValue)
+        }
+    }
+
+    var effectiveBigTargets: Bool { bigTargets || uiLevel == .kid }
 
     private let store = LocalBookStore.shared
 
@@ -35,6 +52,7 @@ final class AppModel: ObservableObject {
         let templateId = defaults.string(forKey: "template") ?? "t1"
         guard route != "shelf" else { return }
         if route == "templates" { screen = .templates; return }
+        if let level = defaults.string(forKey: "uiLevel") { uiLevelRaw = level }
 
         let book = books.first ?? {
             guard let template = Templates.shared.find(id: templateId) else { return nil }
@@ -56,6 +74,8 @@ final class AppModel: ObservableObject {
         case "editor": open(book)
         case "read": openRead(book)
         case "done": openDone(book)
+        case "share": openShare(book)
+        case "guest": openGuest(book)
         default: break
         }
 
@@ -98,12 +118,35 @@ final class AppModel: ObservableObject {
     }
 
     func open(_ book: Book) {
-        editor = EditorModel(book: book)
+        editor = EditorModel(book: book, uiLevel: uiLevel)
         screen = .editor(book.id)
+    }
+
+    func openShare(_ book: Book) {
+        editor?.saveNow()
+        reload()
+        screen = .share(book.id)
+    }
+
+    func openGuest(_ book: Book) {
+        editor?.saveNow()
+        reload()
+        screen = .guest(book.id)
+    }
+
+    /// A reply arrived (in v1: recorded on this device). Persist it and refresh the shelf.
+    func attach(reply: PageReply?, toPage page: Int, of book: Book) {
+        store.save(book.withReply(pageIndex: Int32(page), reply: reply))
+        reload()
     }
 
     func openRead(_ book: Book, page: Int = 0) {
         editor?.saveNow()
+        // The tablet read view is a mode of the tablet editor, so it needs the model even
+        // when reading starts from the shelf rather than from つくる.
+        if UIDevice.current.userInterfaceIdiom == .pad, editor?.bookId != book.id {
+            editor = EditorModel(book: book, uiLevel: uiLevel)
+        }
         screen = .read(book.id, page: page)
     }
 

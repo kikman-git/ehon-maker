@@ -37,7 +37,7 @@ struct DoneView: View {
 
             VStack(spacing: 10) {
                 PillButton(title: Localized.s("done.sendToFamily"), filled: true, big: true) {
-                    exportImage()
+                    app.openShare(book)
                 }
                 PillButton(title: Localized.s("done.print"), tinted: true, big: true) {
                     exportPdf()
@@ -100,12 +100,15 @@ struct DoneView: View {
 
     // MARK: - export
 
+    /// Read on the main actor before detaching; the view's state is not reachable from a detached task.
+    private var exportName: String { book.title.isEmpty ? "ehon" : book.title }
+
     private func exportImage() {
         busy = true
+        let book = self.book, name = exportName
         Task.detached {
             let data = await MainActor.run { SceneRenderer.shareImage(for: book) }
-            let url = FileManager.default.temporaryDirectory
-                .appendingPathComponent("\(book.title.isEmpty ? "ehon" : book.title).png")
+            let url = FileManager.default.temporaryDirectory.appendingPathComponent("\(name).png")
             try? data?.write(to: url)
             await MainActor.run {
                 busy = false
@@ -116,10 +119,10 @@ struct DoneView: View {
 
     private func exportPdf() {
         busy = true
+        let book = self.book, name = exportName
         Task.detached {
             let data = await MainActor.run { SceneRenderer.printablePdf(for: book) }
-            let url = FileManager.default.temporaryDirectory
-                .appendingPathComponent("\(book.title.isEmpty ? "ehon" : book.title).pdf")
+            let url = FileManager.default.temporaryDirectory.appendingPathComponent("\(name).pdf")
             try? data.write(to: url)
             await MainActor.run {
                 busy = false

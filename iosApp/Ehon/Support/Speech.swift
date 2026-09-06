@@ -13,6 +13,7 @@ final class Speech: NSObject, ObservableObject {
     @Published private(set) var isSpeaking = false
 
     private let synthesizer = AVSpeechSynthesizer()
+    private var onFinish: (() -> Void)?
 
     private override init() {
         super.init()
@@ -20,13 +21,27 @@ final class Speech: NSObject, ObservableObject {
     }
 
     /// Reads a page's text items in order, falling back to its prompt when it has none.
-    func speak(page: Page, locale: String, fallback: String?) {
-        stop()
+    /// `onFinish` runs only when the utterance completes — never on `stop()`, so a chained
+    /// action (the next bedtime page, a family voice) cannot fire after the child left.
+    func speak(page: Page, locale: String, fallback: String?, onFinish: (() -> Void)? = nil) {
+        speak(text: Self.text(of: page, locale: locale, fallback: fallback), locale: locale, onFinish: onFinish)
+    }
+
+    /// A page's spoken text: its text items in order, or its prompt when it has none.
+    static func text(of page: Page, locale: String, fallback: String?) -> String {
         let text = page.items
             .compactMap { ($0 as? TextItem)?.text }
             .joined(separator: locale.hasPrefix("ja") ? "。" : ". ")
-        let spoken = text.isEmpty ? (fallback ?? "") : text
-        guard !spoken.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        return text.isEmpty ? (fallback ?? "") : text
+    }
+
+    func speak(text spoken: String, locale: String, onFinish: (() -> Void)? = nil) {
+        stop()
+        self.onFinish = onFinish
+        guard !spoken.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            let done = onFinish; self.onFinish = nil; done?()
+            return
+        }
 
         let utterance = AVSpeechUtterance(string: spoken)
         utterance.voice = AVSpeechSynthesisVoice(language: bcp47(locale))
@@ -37,8 +52,16 @@ final class Speech: NSObject, ObservableObject {
     }
 
     func stop() {
+        onFinish = nil
         if synthesizer.isSpeaking { synthesizer.stopSpeaking(at: .immediate) }
         isSpeaking = false
+    }
+
+    fileprivate func finished() {
+        isSpeaking = false
+        let done = onFinish
+        onFinish = nil
+        done?()
     }
 
     /// `ja-JP` / `en-US` are already BCP-47; a bare `ja` needs a region to pick a voice.
@@ -52,7 +75,7 @@ extension Speech: AVSpeechSynthesizerDelegate {
     nonisolated func speechSynthesizer(
         _ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance
     ) {
-        Task { @MainActor in self.isSpeaking = false }
+        Task { @MainActor in self.finished() }
     }
 
     nonisolated func speechSynthesizer(

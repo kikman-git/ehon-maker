@@ -8,6 +8,78 @@ package app.ehon.i18n
  */
 internal object StringsJa {
     val table: Map<String, String> = mapOf(
+        "toast.pageMoved" to "ページを うごかしたよ",
+        // こども / おとな, z-order (2a)
+        "ui.kid" to "こども",
+        "ui.adult" to "おとな",
+        "ui.adultHint" to "ふりがな・ならびかえ・おくる せってい つき",
+        "sel.forward" to "まえ",
+        "sel.backward" to "うしろ",
+
+        // fonts (2a)
+        "font.handwriting" to "てがき",
+        "font.rounded" to "まるまる",
+        "font.storybook" to "えほん",
+        "font.pop" to "ぽっぷ",
+        "font.marker" to "マーカー",
+        "font.boldRound" to "ふとまる",
+        "font.downloading" to "よみこみ ちゅう…",
+        "font.downloadFailed" to "ダウンロード できませんでした",
+
+        // read: おやすみ + family voice (2a / 3b)
+        "read.night" to "おやすみ",
+        "read.nightHint" to "おやすみ よみ — 7びょう ごとに ひとりで めくります",
+        "read.goodnight" to "おやすみなさい",
+        "read.replyChip" to "%s の こえ · %sびょう",
+        "read.replyPlaying" to "%s の こえ",
+        "read.cannotSpeak" to "よみあげ できません",
+        "read.cannotPlayVoice" to "こえを ならせません",
+
+        // かぞくに おくる (2a)
+        "share.title" to "かぞくに おくる",
+        "share.who" to "だれに おくる？",
+        "share.whoHint" to "えらんだ ひとの スマホで そのまま よめます。",
+        "share.include" to "いっしょに おくる もの",
+        "share.voice" to "じぶんの こえで よみあげ",
+        "share.voiceHint" to "よんだ こえを ろくおん して つける",
+        "share.printFile" to "プリント できる ファイル",
+        "share.printFileHint" to "おうちで いんさつ して ほんに できる",
+        "share.adultNote" to "おとなモード：おくった あとの コメント と ダウンロード を きょか します。こどもモード では リンク は かぞく だけ。",
+        "share.send" to "おくる",
+        "share.sendCount" to "%sにん に おくる",
+        "share.sent" to "おくりました！",
+        "share.sentHint" to "おしらせ が とどきます。",
+        "share.readMyself" to "じぶんでも よむ",
+        "share.pickSomeone" to "おくる ひとを えらんでね",
+        "share.backToShelf" to "ほんだな に もどる",
+        "family.grandma" to "ばあば",
+        "family.grandma.sub" to "おばあちゃん",
+        "family.grandpa" to "じいじ",
+        "family.grandpa.sub" to "おじいちゃん",
+        "family.mom" to "ママ",
+        "family.mom.sub" to "おかあさん",
+        "family.dad" to "パパ",
+        "family.dad.sub" to "おとうさん",
+
+        // guest read screen (3b)
+        "guest.arrived" to "%sちゃん から とどきました",
+        "guest.holdToRecord" to "ながおし で こえを おくる",
+        "guest.releaseToSend" to "ゆびを はなすと おくります",
+        "guest.recording" to "ろくおん ちゅう %sびょう",
+        "guest.hint" to "この ページ に むけて、%sちゃん に こえを かえせます",
+        "guest.tooShort" to "もう すこし ながく おしてね",
+        "guest.sent" to "こえを おくりました",
+
+        // iPad (3a)
+        "tablet.makeTogether" to "おやこで つくる",
+        "tablet.readSpread" to "2ページ ならべて よむ",
+        "tablet.backToMake" to "つくる に もどる",
+        "tablet.rotateTitle" to "たてに むけると つくれます",
+        "tablet.rotateBody" to "よこもち は 2ページ ならべて よむ かたち。つくる ときは たてに むけると、ページが おおきく なって パーツ が したの レール に ならびます。",
+        "tablet.gotIt" to "わかった",
+        "tablet.drawHint" to "ゆびでも Apple Pencil でも ページに ちょくせつ かけます。うえの れつ が げんしょく、したの れつ が パステル。",
+        "tablet.textCardTitle" to "もじを いれる",
+
         // home
         "home.greeting" to "こんにちは、%sちゃん",
         "home.shelf" to "ほんだな",

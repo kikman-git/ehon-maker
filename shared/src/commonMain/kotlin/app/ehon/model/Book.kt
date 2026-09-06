@@ -56,6 +56,10 @@ data class Book(
     fun mapPage(index: Int, f: (Page) -> Page): Book =
         copy(pages = pages.set(index, f(pages[index])))
 
+    /** Attaches (or clears) a family member's voice on one page. Swift cannot copy a Page. */
+    fun withReply(pageIndex: Int, reply: PageReply?): Book =
+        mapPage(pageIndex.coerceIn(0, pages.lastIndex)) { it.copy(reply = reply) }
+
     companion object {
         /**
          * Swift/Obj-C-safe constructor.
@@ -87,8 +91,15 @@ data class Page(
     val items: PersistentList<Item> = persistentListOf(),
     @Serializable(with = PersistentListSerializer::class)
     val strokes: PersistentList<Stroke> = persistentListOf(),
+    /** A family member's voice for this page, if one has arrived. Decision 3b. */
+    val reply: PageReply? = null,
 ) {
     val isUntouched get() = items.isEmpty() && strokes.isEmpty()
+
+    val hasReply get() = reply != null
+
+    /** Front-most item is last, so this is the index [Item] draws at. */
+    fun indexOf(id: ItemId): Int = items.indexOfFirst { it.id == id }
 
     companion object {
         /** Swift/Obj-C-safe constructor — see [Book.Companion.of]. */
@@ -100,6 +111,22 @@ data class Page(
         ) = Page(background, promptKey, items.toPersistentList(), strokes.toPersistentList())
     }
 }
+
+/**
+ * A voice message a family member left on one page — 「ばあば の こえ · 3.4びょう」.
+ *
+ * The audio itself is a platform file; the document holds only a reference, because a
+ * book must stay well inside Firestore's 1MiB document ceiling (decision #14).
+ */
+@Serializable
+data class PageReply(
+    /** Display name as the sender chose it: ばあば, じいじ, ママ… */
+    val from: String,
+    val seconds: Float,
+    /** Platform-resolved audio id; null for a reply whose audio has not arrived yet. */
+    val audioRef: String? = null,
+    val recordedAtEpochMs: Long = 0L,
+)
 
 /**
  * Anything placed on a page. Positions are percent-of-page and centre-anchored,
@@ -165,14 +192,15 @@ data class TextItem(
     val colorIndex: Int = 0,
     /** Percent of page width; one of [SIZES]. */
     val sizePct: Float = SIZES[1],
+    val font: FontFace = FontFace.default,
 ) : Item {
     override fun movedTo(x: Float, y: Float) = copy(x = x, y = y)
 
     val hasRuby get() = !ruby.isNullOrBlank()
 
     companion object {
-        /** ちいさい / ふつう / おおきい, from the prototype's `[5.5, 7, 9]`. */
-        val SIZES = listOf(5.5f, 7f, 9f)
+        /** ちいさい / ふつう / おおきい, from the 2a prototype's `[5, 6.5, 8.5]`. */
+        val SIZES = listOf(5f, 6.5f, 8.5f)
 
         /** Text renders slightly larger than its nominal percentage, per the prototype. */
         const val OPTICAL_SCALE = 1.05f

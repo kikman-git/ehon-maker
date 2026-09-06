@@ -140,10 +140,10 @@ struct ScenePainter {
         case let text as SceneNodeText:
             if let ruby = text.ruby, let origin = text.rubyOrigin {
                 Self.drawString(ruby, at: origin.cgPoint, size: CGFloat(text.rubySizePx),
-                                fill: text.fill, role: text.font)
+                                fill: text.fill, role: text.font, into: ctx)
             }
             Self.drawString(text.base, at: text.baseOrigin.cgPoint, size: CGFloat(text.baseSizePx),
-                            fill: text.fill, role: text.font)
+                            fill: text.fill, role: text.font, into: ctx)
 
         case let stroke as SceneNodeStrokePath:
             guard let first = stroke.points.first else { break }
@@ -185,10 +185,13 @@ struct ScenePainter {
     // MARK: - helpers
 
     private static func drawString(
-        _ text: String, at origin: CGPoint, size: CGFloat, fill: Int32, role: FontRole
+        _ text: String, at origin: CGPoint, size: CGFloat, fill: Int32, role: FontFace,
+        into ctx: CGContext
     ) {
-        // NSString.draw(at:) takes a TOP-LEFT origin and honours the y-down context, which
-        // is exactly the convention SceneBuilder emits. Same call the measurer uses.
+        // NSString.draw targets UIKit's *current* context, which Canvas.withCGContext never sets.
+        UIGraphicsPushContext(ctx)
+        defer { UIGraphicsPopContext() }
+        // Top-left origin in a y-down context, the convention SceneBuilder emits; same call the measurer uses.
         (text as NSString).draw(at: origin, withAttributes: [
             .font: EhonFonts.font(for: role, size: size),
             .foregroundColor: UIColor(cgColor: fill.cgColor),

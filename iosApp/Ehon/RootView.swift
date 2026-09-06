@@ -19,6 +19,10 @@ struct RootView: View {
 
     @Environment(\.scenePhase) private var scenePhaseValue
 
+    /// Decision 3a: the iPad gets its own make/read layouts; every other screen is
+    /// size-derived (decision #5) and simply renders wider.
+    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+
     @ViewBuilder
     private var content: some View {
         switch app.screen {
@@ -28,19 +32,35 @@ struct RootView: View {
             TemplatesView()
         case .editor(let id):
             if let editor = app.editor, editor.bookId == id {
-                EditorView(model: editor)
+                if isPad { TabletRootView(model: editor, startReading: false) } else { EditorView(model: editor) }
             } else {
                 recovery
             }
         case .read(let id, let page):
             if let book = app.book(id) {
-                ReadView(book: book, startPage: page)
+                if isPad, let editor = app.editor, editor.bookId == id {
+                    TabletRootView(model: editor, startReading: true, startPage: page)
+                } else {
+                    ReadView(book: book, startPage: page)
+                }
             } else {
                 recovery
             }
         case .done(let id):
             if let book = app.book(id) {
                 DoneView(book: book)
+            } else {
+                recovery
+            }
+        case .share(let id):
+            if let book = app.book(id) {
+                ShareView(book: book)
+            } else {
+                recovery
+            }
+        case .guest(let id):
+            if let book = app.book(id) {
+                GuestView(book: book)
             } else {
                 recovery
             }

@@ -19,15 +19,24 @@ struct EditorView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.vertical, 4)
             modeBar
-            EditorDrawer(model: model, bigTargets: app.bigTargets)
+            EditorDrawer(model: model, bigTargets: app.effectiveBigTargets)
         }
         .background(Color.ehBg)
         .overlay(alignment: .bottom) {
-            if let toast = model.toastText {
-                ToastView(text: toast)
-                    .padding(.bottom, EditorDrawer.height(bigTargets: app.bigTargets) + 24)
+            if model.mode == .text {
+                TextCard(model: model)
+                    .padding(.horizontal, 14)
+                    .padding(.bottom, EditorDrawer.height(bigTargets: app.effectiveBigTargets) + 12)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
+        .overlay(alignment: .bottom) {
+            if let toast = model.toastText {
+                ToastView(text: toast)
+                    .padding(.bottom, EditorDrawer.height(bigTargets: app.effectiveBigTargets) + 24)
+            }
+        }
+        .animation(.easeOut(duration: 0.18), value: model.mode)
         .animation(.easeOut(duration: 0.2), value: model.toastText)
     }
 
@@ -52,6 +61,7 @@ struct EditorView: View {
             // よむ / できた off the right edge on a narrower phone.
             .frame(maxWidth: .infinity, alignment: .leading)
             .layoutPriority(-1)
+            uiLevelToggle
             PillButton(title: Localized.s("editor.read"), tinted: true) {
                 app.openRead(model.book, page: model.pageIndex)
             }
@@ -61,6 +71,23 @@ struct EditorView: View {
         }
         .padding(.horizontal, 14)
         .padding(.bottom, 6)
+    }
+
+    /// こども / おとな — one surface, gated controls (decision #12), never a mode split.
+    private var uiLevelToggle: some View {
+        let adult = app.uiLevel == .adult
+        return Button {
+            app.uiLevel = adult ? .kid : .adult
+        } label: {
+            Text(Localized.s(adult ? "ui.adult" : "ui.kid"))
+                .font(.ehUI(12.5))
+                .foregroundStyle(adult ? Color.ehSurface : .ehMuted)
+                .padding(.horizontal, 12)
+                .frame(height: 42)
+                .background(Capsule().fill(adult ? Color.ehInk : Color.ehSunken))
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint(Localized.s("ui.adultHint"))
     }
 
     private var thumbnails: some View {
@@ -74,6 +101,8 @@ struct EditorView: View {
                     ) {
                         model.apply { $0.goToPage(index: Int32(index)) }
                     }
+                    .equatable()
+                    .pageReorderable(model: model, index: index)
                 }
                 Button {
                     model.apply { $0.addPage() }
@@ -123,7 +152,7 @@ struct EditorView: View {
             }
             .foregroundStyle(active ? Color.ehSurface : .ehMuted)
             .frame(maxWidth: .infinity)
-            .frame(height: app.bigTargets ? 60 : 50)
+            .frame(height: app.effectiveBigTargets ? 60 : 50)
             .background(Capsule().fill(active ? Color.ehInk : .clear))
         }
         .buttonStyle(.plain)
@@ -131,11 +160,17 @@ struct EditorView: View {
 }
 
 /// A page in the strip, rendered through the same painter at thumbnail scale.
-private struct PageThumbnail: View {
+private struct PageThumbnail: View, Equatable {
     let book: Book
     let index: Int
     let selected: Bool
     let action: () -> Void
+
+    // Only the page that changed repaints: every stroke point bumps the revision.
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.index == rhs.index && lhs.selected == rhs.selected && lhs.book.shape == rhs.book.shape
+            && lhs.book.page(index: Int32(lhs.index)).isEqual(rhs.book.page(index: Int32(rhs.index)))
+    }
 
     private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
     private static let painter = ScenePainter()

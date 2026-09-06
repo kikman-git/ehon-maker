@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>ページに むけて こえを おくる ために マイクを つかいます。</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ZenMaruGothic-Regular.ttf</string>
@@ -37,10 +39,28 @@
 	<array>
 		<string>arm64</string>
 	</array>
-	<!-- Phone-first, portrait only. Decision #5. -->
+	<!-- iPhone: the app delegate narrows these per screen — portrait everywhere, landscape
+	     for よむ (decision #27). iPad rotates freely; see OrientationLock. -->
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<!-- Split View has no place in a child's book maker. -->
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<!-- Organic is a fixed light-paper palette with no dark variant, so anything the
+	     system colours for us — cursors, selection, placeholders, the keyboard — must
+	     not adapt or it fights the design. -->
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
