@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 330" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>はなびを みる たぬきさん</title>
+<path d="M92 300h30v16H92ZM138 300h30v16h-30Z" fill="#d9c3a0"/>
+<path d="M76 150C56 190 56 250 72 300L188 300C204 250 204 190 184 150Z" fill="#9c8465"/>
+<path d="M98 150h64l12 96H86Z" fill="#7f9f6a"/>
+<path d="M78 166C58 180 50 216 60 248Q64 262 74 258L88 204Z" fill="#9c8465"/><path d="M182 166C202 180 210 216 200 248Q196 262 186 258L172 204Z" fill="#9c8465"/>
+<circle cx="66" cy="262" r="10" fill="#d9c3a0"/><circle cx="194" cy="262" r="10" fill="#d9c3a0"/>
+<circle cx="84" cy="66" r="16" fill="#9c8465"/><circle cx="176" cy="66" r="16" fill="#9c8465"/>
+<path d="M76 92C76 56 106 42 130 42C154 42 184 56 184 92C184 122 160 140 130 140C100 140 76 122 76 92Z" fill="#9c8465"/>
+<path d="M84 90C90 74 116 76 122 92Q108 108 84 90ZM176 90C170 74 144 76 138 92Q152 108 176 90Z" fill="#5a4a3e" stroke-width="1.2"/>
+<ellipse cx="104" cy="90" rx="3.0" ry="4.5" fill="#fff" stroke="none"/><ellipse cx="156" cy="90" rx="3.0" ry="4.5" fill="#fff" stroke="none"/>
+<ellipse cx="130" cy="114" rx="26" ry="18" fill="#d9c3a0" stroke-width="1.3"/>
+<path d="M124 106q6-4 12 0l-6 6Z" fill="#69584d" stroke-width="1"/>
+<path d="M130 112v6M120 120q10 8 20 0" stroke-width="1.3"/>
+<path d="M70 46Q130 26 190 46L194 56Q130 38 66 56Z" fill="#c8553d" stroke-width="1.3"/>
+<path d="M190 50l16-10l-4 14l12 6" fill="#c8553d" stroke-width="1.3"/>
+</svg>

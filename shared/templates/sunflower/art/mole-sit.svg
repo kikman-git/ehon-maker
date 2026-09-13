@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 200" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>たねを もつ モグ</title>
+<path d="M40 192C30 132 60 92 90 92C120 92 150 132 140 192Z" fill="#8d7a6e"/>
+<ellipse cx="90" cy="152" rx="30" ry="30" fill="#b3a396" stroke-width="1.2"/>
+<circle cx="90" cy="72" r="40" fill="#8d7a6e"/>
+<ellipse cx="90" cy="98" rx="18" ry="13" fill="#8d7a6e"/>
+<circle cx="90" cy="106" r="8" fill="#e3a49a" stroke-width="1.2"/>
+<path d="M64 68q7-5 14 0M102 68q7-5 14 0" stroke-width="1.6"/>
+<path d="M70 102l-14-2M70 108l-12 4M110 102l14-2M110 108l12 4" stroke-width="1.1"/>
+<ellipse cx="80" cy="82" rx="7" ry="4" fill="#e2b7aa" opacity=".5" stroke="none"/><ellipse cx="100" cy="82" rx="7" ry="4" fill="#e2b7aa" opacity=".5" stroke="none"/>
+<path d="M90 118C102 130 106 146 90 158C74 146 78 130 90 118Z" fill="#5a4636" stroke-width="1.2"/>
+<path d="M84 132q6 5 12 0M84 142q6 5 12 0" stroke="#e9d8a6" stroke-width="1.4"/>
+<ellipse cx="70" cy="140" rx="15" ry="11" fill="#e9c9a0"/><path d="M62 129l-2-7M70 128l0-8M78 129l2-7" stroke-width="1.6"/><ellipse cx="110" cy="140" rx="15" ry="11" fill="#e9c9a0"/><path d="M102 129l-2-7M110 128l0-8M118 129l2-7" stroke-width="1.6"/>
+</svg>

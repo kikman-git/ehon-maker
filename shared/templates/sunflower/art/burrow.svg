@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 170" fill="none" stroke="#69584d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<title>モグの おうち</title>
+<path d="M10 160C10 70 60 14 130 14C200 14 250 70 250 160Z" fill="#7d5c40" stroke="#6b4b31"/>
+<path d="M30 160C30 90 74 40 130 40C186 40 230 90 230 160Z" fill="#8f6b4a" stroke="none"/>
+<path d="M56 110h40M164 104h42" stroke="#6b4b31" stroke-width="3"/>
+<path d="M66 108C62 94 76 90 78 100Q80 108 66 108Z" fill="#c9a37c" stroke-width="1.2"/><path d="M62 96q8-6 16 0" stroke-width="1.2"/>
+<path d="M176 102h20v-16h-20Z" fill="#e9bf64" stroke-width="1.2"/><path d="M182 86v-8h8v8" stroke-width="1.2"/>
+</svg>

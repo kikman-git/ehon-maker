@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>とびこむ ちゅん</title>
+<path d="M40 26q3-7 6 0q1 5-3 5t-3-5ZM170 30q3-7 6 0q1 5-3 5t-3-5ZM90 150q3-7 6 0q1 5-3 5t-3-5ZM24 96q3-7 6 0q1 5-3 5t-3-5Z" fill="#cfe0e6" stroke-width="1"/>
+<path d="M78 78C56 44 24 36 6 46Q-2 54 8 60C30 60 56 74 74 94Z" fill="#8c6a4a"/>
+<path d="M120 78C138 44 172 34 194 42Q202 50 192 56C170 58 146 74 130 94Z" fill="#8c6a4a"/>
+<path d="M20 54l14 6M30 48l12 10M40 46l10 12M176 46l-14 8M166 42l-12 12M154 42l-8 14" stroke="#fff0d9" stroke-width="1.1" opacity=".7"/>
+<path d="M64 100L34 118L42 104L30 100Z" fill="#8c6a4a"/>
+<path d="M62 88C62 64 84 52 106 54C132 56 148 76 144 100Q138 122 106 124Q70 122 62 88Z" fill="#b8926a"/>
+<path d="M72 100C82 122 130 122 140 100Q120 110 106 110Q88 110 72 100Z" fill="#fff0d9"/>
+<path d="M98 122l-4 12M110 124l2 12" stroke-width="1.5"/>
+<circle cx="130" cy="66" r="21" fill="#b8926a"/>
+<path d="M148 72Q142 86 126 86Q118 86 116 76Q124 70 134 68Q142 66 148 72Z" fill="#fff0d9" stroke-width="1.2"/>
+<ellipse cx="134" cy="78" rx="4.5" ry="3.5" fill="#69584d" stroke="none"/>
+<ellipse cx="136" cy="62" rx="2.8" ry="4.5" fill="#69584d" stroke="none"/>
+<path d="M150 68l14 3l-14 4Z" fill="#e0b26a" stroke-width="1.2"/>
+</svg>

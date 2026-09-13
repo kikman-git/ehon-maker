@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 260" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ひなたの おうち</title>
+<path d="M40 120h200v130H40Z" fill="#f3e7d3"/>
+<path d="M20 124L140 30L260 124Z" fill="#c97978"/>
+<path d="M190 40h26v40h-26Z" fill="#a67b57"/>
+<path d="M118 250v-70q22-14 44 0v70Z" fill="#8c6a4a"/>
+<circle cx="152" cy="216" r="3" fill="#e9bf64" stroke-width="1"/>
+<path d="M60 150h40v36H60ZM180 150h40v36h-40Z" fill="#cfe0e6"/>
+<path d="M80 150v36M60 168h40M200 150v36M180 168h40" stroke-width="1.2"/>
+<path d="M56 146h48M176 146h48" stroke-width="3"/>
+</svg>

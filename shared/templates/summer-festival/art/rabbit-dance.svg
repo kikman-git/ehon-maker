@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>おどる うさぎ</title>
+<path d="M96 300h18v14H96ZM126 300h18v14h-18Z" fill="#69584d"/>
+<path d="M85 170L155 170L168 302L72 302Z" fill="#e8a5a5"/>
+<path d="M98 170L120 214L142 170" fill="#fff0d9" stroke-width="1.3"/>
+<path d="M78 218h84v18H78Z" fill="#c8553d"/>
+<path d="M92 176C74 158 62 130 58 106Q56 94 66 96Q74 114 86 130L104 160Z" fill="#e8a5a5"/>
+<path d="M148 176C166 158 178 130 182 106Q184 94 174 96Q166 114 154 130L136 160Z" fill="#e8a5a5"/>
+<path d="M92 76C78 40 84 6 100 8Q112 12 110 70ZM148 76C162 40 156 6 140 8Q128 12 130 70Z" fill="#fff0d9"/><path d="M96 66C90 40 92 18 100 18Q106 24 104 66ZM144 66C150 40 148 18 140 18Q134 24 136 66Z" fill="#edc5bb" stroke="none"/><circle cx="62" cy="94" r="9" fill="#fff0d9"/><circle cx="178" cy="94" r="9" fill="#fff0d9"/>
+<circle cx="120" cy="112" r="46" fill="#fff0d9"/>
+<path d="M98 108q6-7 12 0M130 108q6-7 12 0" stroke-width="1.7"/><path d="M116 122q4-3 8 0l-4 4Z" fill="#d99794" stroke-width="1"/><path d="M112 130q8 6 16 0" stroke-width="1.3"/><ellipse cx="92" cy="122" rx="7" ry="4" fill="#e9a28f" opacity=".5" stroke="none"/><ellipse cx="148" cy="122" rx="7" ry="4" fill="#e9a28f" opacity=".5" stroke="none"/>
+</svg>

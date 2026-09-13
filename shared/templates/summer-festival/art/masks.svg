@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>おめんの いた</title>
+<path d="M10 10h200v160H10Z" fill="#b58f68"/>
+<path d="M36 74C36 44 60 34 78 36C96 34 120 44 120 74Q118 104 78 108Q38 104 36 74Z" fill="#fff0d9"/>
+<path d="M40 60L30 30L60 48ZM116 60L126 30L96 48Z" fill="#fff0d9"/>
+<path d="M56 72q8-6 14 2M86 74q8-8 14-2" stroke="#d9705f" stroke-width="2.4"/><path d="M74 90q4-3 8 0" stroke="#d9705f" stroke-width="2"/>
+<path d="M130 120C130 96 150 86 164 88C178 86 198 96 198 120Q196 144 164 148Q132 144 130 120Z" fill="#fbf6ea"/>
+<path d="M134 108L128 84L150 100ZM194 108L200 84L178 100Z" fill="#fbf6ea"/>
+<path d="M148 118q6-6 12 0M168 118q6-6 12 0M158 132q6 4 12 0" stroke-width="1.6"/><path d="M162 126q2-2 4 0" stroke="#d9705f" stroke-width="2"/>
+</svg>

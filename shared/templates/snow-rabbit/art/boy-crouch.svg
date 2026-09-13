@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ゆきを かためる そら</title>
+<path d="M58 246Q52 222 76 216L100 246Z" fill="#8c6a4a"/>
+<path d="M60 246C48 186 88 140 140 138C188 138 214 170 216 216L218 246Z" fill="#e0b14a"/>
+<path d="M110 150Q140 168 172 150L176 164Q142 184 106 164Z" fill="#7f9f6a" stroke-width="1.4"/>
+<path d="M164 170C190 182 216 212 232 238Q236 248 226 248Q214 236 196 214L156 186Z" fill="#e0b14a"/>
+<circle cx="236" cy="244" r="11" fill="#c8553d"/>
+<path d="M120 42L108 -2L148 26Z" fill="none" stroke="none"/>
+<path d="M114 86C110 108 120 130 128 132L172 132C180 130 190 108 186 86Z" fill="#5a4636"/>
+<ellipse cx="150" cy="102" rx="32" ry="34" fill="#f6dfc8"/>
+<path d="M118 90Q140 66 182 88Q170 90 162 80Q150 94 138 80Q128 92 118 90Z" fill="#5a4636" stroke-width="1.4"/>
+<path d="M110 82C108 40 134 26 150 26C166 26 192 40 190 82Z" fill="#c8553d"/>
+<path d="M108 74h84v14h-84Z" fill="#fff0d9" stroke-width="1.4"/>
+<path d="M116 81v-6M128 81v-6M140 81v-6M152 81v-6M164 81v-6M176 81v-6" stroke="#d9c3a0" stroke-width="1.2"/>
+<circle cx="150" cy="24" r="10" fill="#fff0d9"/>
+<ellipse cx="138" cy="104" rx="3" ry="4.8" fill="#69584d" stroke="none"/><ellipse cx="162" cy="104" rx="3" ry="4.8" fill="#69584d" stroke="none"/>
+<path d="M142 118q8 7 16 0" stroke-width="1.4"/>
+<ellipse cx="128" cy="114" rx="7" ry="4" fill="#e9a28f" opacity=".55" stroke="none"/><ellipse cx="172" cy="114" rx="7" ry="4" fill="#e9a28f" opacity=".55" stroke="none"/>
+</svg>

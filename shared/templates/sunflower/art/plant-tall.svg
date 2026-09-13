@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 760" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>せのびする ひまわり</title>
+<path d="M170 756V110" stroke="#6f9460" stroke-width="10"/>
+<path d="M173 756V110" stroke="#69584d" stroke-width="1.4"/>
+<g transform="translate(166 660) scale(1.9 1.9)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g><g transform="translate(174 660) scale(-1.9 1.9)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g>
+<g transform="translate(166 520) scale(1.7 1.7)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g><g transform="translate(174 512) scale(-1.7 1.7)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g>
+<g transform="translate(166 390) scale(1.45 1.45)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g><g transform="translate(174 380) scale(-1.45 1.45)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g>
+<g transform="translate(166 270) scale(1.1 1.1)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g><g transform="translate(174 262) scale(-1.1 1.1)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g>
+<path d="M170 128C124 128 108 66 170 30C232 66 216 128 170 128Z" fill="#8fb27a"/>
+<path d="M170 128C142 118 132 82 170 54C208 82 198 118 170 128Z" fill="#6f9460" stroke-width="1.3"/>
+<path d="M150 120l-26-6M190 120l26-6M136 98l-22-2M204 98l22-2M144 72l-16-10M196 72l16-10" stroke="#6f9460" stroke-width="3.4"/>
+<path d="M170 54q-10 6-10 20M170 54q10 6 10 20M170 52v18" stroke="#f0c453" stroke-width="3.4"/>
+</svg>

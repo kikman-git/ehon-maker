@@ -1,0 +1,2098 @@
+{
+ "id": "doc-summer-festival",
+ "order": 3,
+ "description": {
+  "ja": "こぎつねの コンが ひとりで いった なつまつり。ひゃくえん ひとつ、やぶれた ポイ、たぬきさんの おまけと はなび。表紙と 8つの 見開き。",
+  "en": "Kon the fox cub goes to the summer festival alone with one coin: a torn goldfish net, a kind stall owner, the bon dance and fireworks. A cover and eight editable spreads."
+ },
+ "book": {
+  "id": {
+   "value": "template-summer-festival"
+  },
+  "title": "はじめての なつまつり",
+  "shape": "PORTRAIT",
+  "contentLocale": "ja-JP",
+  "updatedAtEpochMs": 0,
+  "art": {
+   "fox-coin": {
+    "name": "ひゃくえんを もつ コン",
+    "file": "fox-coin.svg"
+   },
+   "fox-look": {
+    "name": "きょろきょろする コン",
+    "file": "fox-look.svg"
+   },
+   "fox-scoop": {
+    "name": "きんぎょを すくう コン",
+    "file": "fox-scoop.svg"
+   },
+   "fox-sad": {
+    "name": "しょんぼりする コン",
+    "file": "fox-sad.svg"
+   },
+   "fox-dance": {
+    "name": "おどる コン",
+    "file": "fox-dance.svg"
+   },
+   "fox-bag": {
+    "name": "きんぎょの ふくろを もつ コン",
+    "file": "fox-bag.svg"
+   },
+   "fox-back": {
+    "name": "かえる コン",
+    "file": "fox-back.svg"
+   },
+   "tanuki-stall": {
+    "name": "きんぎょやの たぬきさん",
+    "file": "tanuki-stall.svg"
+   },
+   "tanuki-give": {
+    "name": "きんぎょを さしだす たぬきさん",
+    "file": "tanuki-give.svg"
+   },
+   "tanuki-look": {
+    "name": "はなびを みる たぬきさん",
+    "file": "tanuki-look.svg"
+   },
+   "rabbit-dance": {
+    "name": "おどる うさぎ",
+    "file": "rabbit-dance.svg"
+   },
+   "bear-dance": {
+    "name": "おどる こぐま",
+    "file": "bear-dance.svg"
+   },
+   "coin": {
+    "name": "ひゃくえん",
+    "file": "coin.svg"
+   },
+   "poi": {
+    "name": "ポイ",
+    "file": "poi.svg"
+   },
+   "poi-torn": {
+    "name": "やぶれた ポイ",
+    "file": "poi-torn.svg"
+   },
+   "goldfish": {
+    "name": "あかい きんぎょ",
+    "file": "goldfish.svg"
+   },
+   "goldfish-bag": {
+    "name": "きんぎょの ふくろ",
+    "file": "goldfish-bag.svg"
+   },
+   "stall": {
+    "name": "やたいの おく",
+    "file": "stall.svg"
+   },
+   "counter": {
+    "name": "やたいの だい",
+    "file": "counter.svg"
+   },
+   "cotton-candy": {
+    "name": "わたあめ",
+    "file": "cotton-candy.svg"
+   },
+   "shaved-ice": {
+    "name": "かきごおり",
+    "file": "shaved-ice.svg"
+   },
+   "tank": {
+    "name": "きんぎょの すいそう",
+    "file": "tank.svg"
+   },
+   "masks": {
+    "name": "おめんの いた",
+    "file": "masks.svg"
+   },
+   "lantern": {
+    "name": "あかい ちょうちん",
+    "file": "lantern.svg"
+   },
+   "lantern-string": {
+    "name": "ちょうちんの れつ",
+    "file": "lantern-string.svg"
+   },
+   "torii": {
+    "name": "とりい",
+    "file": "torii.svg"
+   },
+   "steps": {
+    "name": "いしだん",
+    "file": "steps.svg"
+   },
+   "yagura": {
+    "name": "やぐら",
+    "file": "yagura.svg"
+   },
+   "night-sky": {
+    "name": "なつの よぞら",
+    "file": "night-sky.svg"
+   },
+   "path": {
+    "name": "おまつりの みち",
+    "file": "path.svg"
+   },
+   "moon": {
+    "name": "つき",
+    "file": "moon.svg"
+   },
+   "notes": {
+    "name": "おまつりの おと",
+    "file": "notes.svg"
+   },
+   "firework-red": {
+    "name": "あかい はなび",
+    "file": "firework-red.svg"
+   },
+   "firework-gold": {
+    "name": "きんいろの はなび",
+    "file": "firework-gold.svg"
+   },
+   "firework-green": {
+    "name": "みどりの はなび",
+    "file": "firework-green.svg"
+   }
+  },
+  "pages": [
+   {
+    "id": "cover",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-night-sky-2"
+      },
+      "x": 50,
+      "y": 44.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-path-3"
+      },
+      "x": 50,
+      "y": 80,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-firework-red-4"
+      },
+      "x": 56,
+      "y": 34,
+      "partId": {
+       "value": "art:firework-red"
+      },
+      "sizePct": 40,
+      "heightPct": 30.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-firework-gold-5"
+      },
+      "x": 20,
+      "y": 32,
+      "partId": {
+       "value": "art:firework-gold"
+      },
+      "sizePct": 30,
+      "heightPct": 22.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-firework-green-6"
+      },
+      "x": 84,
+      "y": 46,
+      "partId": {
+       "value": "art:firework-green"
+      },
+      "sizePct": 26,
+      "heightPct": 19.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-fox-bag-1"
+      },
+      "x": 50.0,
+      "y": 68.75,
+      "partId": {
+       "value": "art:fox-bag"
+      },
+      "sizePct": 40,
+      "heightPct": 40.0
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "cover-text-7"
+      },
+      "x": 50,
+      "y": 6.5,
+      "text": "はじめての なつまつり",
+      "font": "yomogi",
+      "sizePct": 8.5
+     }
+    ]
+   },
+   {
+    "id": "title",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "title-text-8"
+      },
+      "x": 50,
+      "y": 36,
+      "text": "なつの よるの おはなし",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "title-text-9"
+      },
+      "x": 50,
+      "y": 46,
+      "text": "はじめての なつまつり",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "title-lantern-10"
+      },
+      "x": 50,
+      "y": 70,
+      "partId": {
+       "value": "art:lantern"
+      },
+      "sizePct": 12,
+      "heightPct": 13.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "title-coin-11"
+      },
+      "x": 40,
+      "y": 86,
+      "partId": {
+       "value": "art:coin"
+      },
+      "sizePct": 6,
+      "heightPct": 4.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "title-goldfish-12"
+      },
+      "x": 58,
+      "y": 86,
+      "partId": {
+       "value": "art:goldfish"
+      },
+      "sizePct": 10,
+      "heightPct": 5.25
+     }
+    ]
+   },
+   {
+    "id": "p1",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-night-sky-13"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-lantern-string-14"
+      },
+      "x": 50,
+      "y": 12,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 100,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-moon-15"
+      },
+      "x": 84,
+      "y": 30,
+      "partId": {
+       "value": "art:moon"
+      },
+      "sizePct": 12,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-path-16"
+      },
+      "x": 50,
+      "y": 76.25,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-torii-17"
+      },
+      "x": 50.0,
+      "y": 61.98,
+      "partId": {
+       "value": "art:torii"
+      },
+      "sizePct": 54,
+      "heightPct": 45.562
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-fox-coin-18"
+      },
+      "x": 50.0,
+      "y": 76.6,
+      "partId": {
+       "value": "art:fox-coin"
+      },
+      "sizePct": 32,
+      "heightPct": 32.0
+     }
+    ]
+   },
+   {
+    "id": "p2",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-19"
+      },
+      "x": 50,
+      "y": 27.0,
+      "text": "なつの ゆうがた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-20"
+      },
+      "x": 50,
+      "y": 35.0,
+      "text": "こぎつねの コンは、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-21"
+      },
+      "x": 50,
+      "y": 43.0,
+      "text": "はじめて ひとりで おまつりへ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-22"
+      },
+      "x": 50,
+      "y": 51.0,
+      "text": "ポケットには、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-23"
+      },
+      "x": 50,
+      "y": 59.0,
+      "text": "ぴかぴかの ひゃくえん ひとつ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-24"
+      },
+      "x": 50,
+      "y": 67.0,
+      "text": "「なにに つかおうかな。」",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p3",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-night-sky-31"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-lantern-string-32"
+      },
+      "x": 50,
+      "y": 12,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 100,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-path-33"
+      },
+      "x": 50,
+      "y": 76.25,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-stall-25"
+      },
+      "x": 26.0,
+      "y": 71.38,
+      "partId": {
+       "value": "art:stall"
+      },
+      "sizePct": 48,
+      "heightPct": 33.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-stall-28"
+      },
+      "x": 76.0,
+      "y": 71.38,
+      "partId": {
+       "value": "art:stall"
+      },
+      "sizePct": 48,
+      "heightPct": 33.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-counter-26"
+      },
+      "x": 26.0,
+      "y": 80.49,
+      "partId": {
+       "value": "art:counter"
+      },
+      "sizePct": 48,
+      "heightPct": 7.875
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-counter-29"
+      },
+      "x": 76.0,
+      "y": 80.49,
+      "partId": {
+       "value": "art:counter"
+      },
+      "sizePct": 48,
+      "heightPct": 7.875
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-cotton-candy-34"
+      },
+      "x": 18.0,
+      "y": 73.36,
+      "partId": {
+       "value": "art:cotton-candy"
+      },
+      "sizePct": 6,
+      "heightPct": 7.65
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-cotton-candy-35"
+      },
+      "x": 26.0,
+      "y": 73.36,
+      "partId": {
+       "value": "art:cotton-candy"
+      },
+      "sizePct": 6,
+      "heightPct": 7.65
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-cotton-candy-36"
+      },
+      "x": 34.0,
+      "y": 73.36,
+      "partId": {
+       "value": "art:cotton-candy"
+      },
+      "sizePct": 6,
+      "heightPct": 7.65
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-shaved-ice-37"
+      },
+      "x": 68.0,
+      "y": 74.35,
+      "partId": {
+       "value": "art:shaved-ice"
+      },
+      "sizePct": 6,
+      "heightPct": 5.85
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-shaved-ice-38"
+      },
+      "x": 76.0,
+      "y": 74.35,
+      "partId": {
+       "value": "art:shaved-ice"
+      },
+      "sizePct": 6,
+      "heightPct": 5.85
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-shaved-ice-39"
+      },
+      "x": 84.0,
+      "y": 74.35,
+      "partId": {
+       "value": "art:shaved-ice"
+      },
+      "sizePct": 6,
+      "heightPct": 5.85
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p3-text-27"
+      },
+      "x": 26,
+      "y": 70.92999999999999,
+      "text": "わたあめ",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p3-text-30"
+      },
+      "x": 76,
+      "y": 70.92999999999999,
+      "text": "かきごおり",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-fox-look-40"
+      },
+      "x": 50.0,
+      "y": 83.49,
+      "partId": {
+       "value": "art:fox-look"
+      },
+      "sizePct": 26,
+      "heightPct": 26.0
+     }
+    ]
+   },
+   {
+    "id": "p4",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-night-sky-47"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-lantern-string-48"
+      },
+      "x": 50,
+      "y": 12,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 100,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-path-49"
+      },
+      "x": 50,
+      "y": 76.25,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-stall-41"
+      },
+      "x": 26.0,
+      "y": 71.38,
+      "partId": {
+       "value": "art:stall"
+      },
+      "sizePct": 48,
+      "heightPct": 33.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-stall-44"
+      },
+      "x": 76.0,
+      "y": 71.38,
+      "partId": {
+       "value": "art:stall"
+      },
+      "sizePct": 48,
+      "heightPct": 33.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-tanuki-stall-50"
+      },
+      "x": 42.0,
+      "y": 73.92,
+      "partId": {
+       "value": "art:tanuki-stall"
+      },
+      "sizePct": 20,
+      "heightPct": 11.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-masks-51"
+      },
+      "x": 76,
+      "y": 71.2,
+      "partId": {
+       "value": "art:masks"
+      },
+      "sizePct": 12,
+      "heightPct": 7.364
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-counter-42"
+      },
+      "x": 26.0,
+      "y": 80.49,
+      "partId": {
+       "value": "art:counter"
+      },
+      "sizePct": 48,
+      "heightPct": 7.875
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-counter-45"
+      },
+      "x": 76.0,
+      "y": 80.49,
+      "partId": {
+       "value": "art:counter"
+      },
+      "sizePct": 48,
+      "heightPct": 7.875
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-tank-52"
+      },
+      "x": 20.0,
+      "y": 73.83,
+      "partId": {
+       "value": "art:tank"
+      },
+      "sizePct": 22,
+      "heightPct": 7.615
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-poi-53"
+      },
+      "x": 34.0,
+      "y": 74.42,
+      "partId": {
+       "value": "art:poi"
+      },
+      "sizePct": 5,
+      "heightPct": 5.625
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-poi-54"
+      },
+      "x": 36.5,
+      "y": 73.82,
+      "partId": {
+       "value": "art:poi"
+      },
+      "sizePct": 5,
+      "heightPct": 5.625
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-43"
+      },
+      "x": 26,
+      "y": 70.92999999999999,
+      "text": "きんぎょ",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-46"
+      },
+      "x": 76,
+      "y": 70.92999999999999,
+      "text": "おめん",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p4-rabbit-dance-55"
+      },
+      "x": 88.0,
+      "y": 85.41,
+      "partId": {
+       "value": "art:rabbit-dance"
+      },
+      "sizePct": 22,
+      "heightPct": 22.0
+     }
+    ]
+   },
+   {
+    "id": "p5",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-night-sky-60"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-lantern-string-61"
+      },
+      "x": 50,
+      "y": 12,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 100,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-path-62"
+      },
+      "x": 50,
+      "y": 76.25,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-stall-56"
+      },
+      "x": 54.0,
+      "y": 70.06,
+      "partId": {
+       "value": "art:stall"
+      },
+      "sizePct": 72,
+      "heightPct": 50.625
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-tanuki-stall-63"
+      },
+      "x": 78.0,
+      "y": 71.85,
+      "partId": {
+       "value": "art:tanuki-stall"
+      },
+      "sizePct": 34,
+      "heightPct": 19.125
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-counter-57"
+      },
+      "x": 54.0,
+      "y": 83.73,
+      "partId": {
+       "value": "art:counter"
+      },
+      "sizePct": 72,
+      "heightPct": 11.812
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-tank-64"
+      },
+      "x": 56.0,
+      "y": 73.31,
+      "partId": {
+       "value": "art:tank"
+      },
+      "sizePct": 36,
+      "heightPct": 12.462
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p5-text-58"
+      },
+      "x": 54,
+      "y": 69.385,
+      "text": "きんぎょすくい",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-fox-scoop-59"
+      },
+      "x": 32.0,
+      "y": 71.64,
+      "partId": {
+       "value": "art:fox-scoop"
+      },
+      "sizePct": 34,
+      "heightPct": 34.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-poi-torn-65"
+      },
+      "x": 43.9,
+      "y": 73.67,
+      "partId": {
+       "value": "art:poi-torn"
+      },
+      "sizePct": 15,
+      "heightPct": 16.875,
+      "rotationDeg": 180
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-goldfish-66"
+      },
+      "x": 66,
+      "y": 60,
+      "partId": {
+       "value": "art:goldfish"
+      },
+      "sizePct": 9,
+      "heightPct": 4.725,
+      "rotationDeg": -35
+     }
+    ]
+   },
+   {
+    "id": "p6",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-67"
+      },
+      "x": 50,
+      "y": 23.0,
+      "text": "コンが えらんだのは、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-68"
+      },
+      "x": 50,
+      "y": 31.0,
+      "text": "きんぎょすくい。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-69"
+      },
+      "x": 50,
+      "y": 39.0,
+      "text": "ひゃくえんで ポイが ひとつ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-70"
+      },
+      "x": 50,
+      "y": 47.0,
+      "text": "そっと、そっと…。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-71"
+      },
+      "x": 50,
+      "y": 55.0,
+      "text": "びりっ！",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-72"
+      },
+      "x": 50,
+      "y": 63.0,
+      "text": "きんぎょは すいっと にげた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-73"
+      },
+      "x": 50,
+      "y": 71.0,
+      "text": "ポイには おおきな あな。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p7",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-night-sky-74"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-lantern-string-75"
+      },
+      "x": 50,
+      "y": 12,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 100,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-lantern-76"
+      },
+      "x": 12,
+      "y": 32,
+      "partId": {
+       "value": "art:lantern"
+      },
+      "sizePct": 12,
+      "heightPct": 13.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-steps-77"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:steps"
+      },
+      "sizePct": 100,
+      "heightPct": 27.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-fox-sad-78"
+      },
+      "x": 40.0,
+      "y": 69.23,
+      "partId": {
+       "value": "art:fox-sad"
+      },
+      "sizePct": 40,
+      "heightPct": 30.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-poi-torn-79"
+      },
+      "x": 68,
+      "y": 82,
+      "partId": {
+       "value": "art:poi-torn"
+      },
+      "sizePct": 10,
+      "heightPct": 11.25,
+      "rotationDeg": 75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-notes-80"
+      },
+      "x": 80,
+      "y": 40,
+      "partId": {
+       "value": "art:notes"
+      },
+      "sizePct": 14,
+      "heightPct": 9.625
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-notes-81"
+      },
+      "x": 90,
+      "y": 54,
+      "partId": {
+       "value": "art:notes"
+      },
+      "sizePct": 9,
+      "heightPct": 6.188
+     }
+    ]
+   },
+   {
+    "id": "p8",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-82"
+      },
+      "x": 50,
+      "y": 27.0,
+      "text": "コンは いしだんに すわった。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-83"
+      },
+      "x": 50,
+      "y": 35.0,
+      "text": "ひざを だいて、しょんぼり。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-84"
+      },
+      "x": 50,
+      "y": 43.0,
+      "text": "「ひゃくえん、なくなっちゃった。」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-85"
+      },
+      "x": 50,
+      "y": 51.0,
+      "text": "どん、どん、どどん。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-86"
+      },
+      "x": 50,
+      "y": 59.0,
+      "text": "とおくで たいこの おと。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-87"
+      },
+      "x": 50,
+      "y": 67.0,
+      "text": "みんな たのしそう。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p9",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-night-sky-88"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-lantern-string-89"
+      },
+      "x": 50,
+      "y": 12,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 100,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-lantern-90"
+      },
+      "x": 12,
+      "y": 32,
+      "partId": {
+       "value": "art:lantern"
+      },
+      "sizePct": 12,
+      "heightPct": 13.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-steps-91"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:steps"
+      },
+      "sizePct": 100,
+      "heightPct": 27.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-tanuki-give-92"
+      },
+      "x": 34.0,
+      "y": 69.77,
+      "partId": {
+       "value": "art:tanuki-give"
+      },
+      "sizePct": 46,
+      "heightPct": 32.344
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-fox-look-93"
+      },
+      "x": 78.0,
+      "y": 70.53,
+      "partId": {
+       "value": "art:fox-look"
+      },
+      "sizePct": 28,
+      "heightPct": 28.0
+     }
+    ]
+   },
+   {
+    "id": "p10",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-94"
+      },
+      "x": 50,
+      "y": 20.75,
+      "text": "「ぼうや。」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-95"
+      },
+      "x": 50,
+      "y": 28.25,
+      "text": "きんぎょやの たぬきさんが",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-96"
+      },
+      "x": 50,
+      "y": 35.75,
+      "text": "やってきた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-97"
+      },
+      "x": 50,
+      "y": 43.25,
+      "text": "てには、きんぎょの ふくろ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-98"
+      },
+      "x": 50,
+      "y": 50.75,
+      "text": "「はじめての おまつりだろう？」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-99"
+      },
+      "x": 50,
+      "y": 58.25,
+      "text": "「これは おまけだ。」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-100"
+      },
+      "x": 50,
+      "y": 65.75,
+      "text": "ふくろの なかで、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-101"
+      },
+      "x": 50,
+      "y": 73.25,
+      "text": "あかい きんぎょが ひらひら。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p11",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-night-sky-102"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-lantern-string-103"
+      },
+      "x": 50,
+      "y": 12,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 100,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-path-104"
+      },
+      "x": 50,
+      "y": 76.25,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-yagura-105"
+      },
+      "x": 100.0,
+      "y": 63.0,
+      "partId": {
+       "value": "art:yagura"
+      },
+      "sizePct": 60,
+      "heightPct": 58.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-rabbit-dance-106"
+      },
+      "x": 22.0,
+      "y": 79.56,
+      "partId": {
+       "value": "art:rabbit-dance"
+      },
+      "sizePct": 30,
+      "heightPct": 30.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-fox-dance-107"
+      },
+      "x": 60.0,
+      "y": 80.67,
+      "partId": {
+       "value": "art:fox-dance"
+      },
+      "sizePct": 30,
+      "heightPct": 27.692
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-notes-108"
+      },
+      "x": 40,
+      "y": 40,
+      "partId": {
+       "value": "art:notes"
+      },
+      "sizePct": 12,
+      "heightPct": 8.25
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p11-text-109"
+      },
+      "x": 42,
+      "y": 27,
+      "text": "どん どん どどん",
+      "font": "yomogi",
+      "sizePct": 6.5,
+      "colorIndex": 1
+     }
+    ]
+   },
+   {
+    "id": "p12",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p12-night-sky-110"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p12-lantern-string-111"
+      },
+      "x": 50,
+      "y": 12,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 100,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p12-path-112"
+      },
+      "x": 50,
+      "y": 76.25,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p12-yagura-113"
+      },
+      "x": 0.0,
+      "y": 63.0,
+      "partId": {
+       "value": "art:yagura"
+      },
+      "sizePct": 60,
+      "heightPct": 58.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p12-bear-dance-114"
+      },
+      "x": 42.0,
+      "y": 79.56,
+      "partId": {
+       "value": "art:bear-dance"
+      },
+      "sizePct": 30,
+      "heightPct": 30.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p12-rabbit-dance-115"
+      },
+      "x": 80.0,
+      "y": 78.45,
+      "partId": {
+       "value": "art:rabbit-dance"
+      },
+      "sizePct": 24,
+      "heightPct": 24.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p12-notes-116"
+      },
+      "x": 66,
+      "y": 42,
+      "partId": {
+       "value": "art:notes"
+      },
+      "sizePct": 12,
+      "heightPct": 8.25
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-117"
+      },
+      "x": 66,
+      "y": 27,
+      "text": "あ、それ！",
+      "font": "yomogi",
+      "sizePct": 6.5,
+      "colorIndex": 1
+     }
+    ]
+   },
+   {
+    "id": "p13",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-night-sky-118"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-path-119"
+      },
+      "x": 50,
+      "y": 76.25,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-firework-red-120"
+      },
+      "x": 60,
+      "y": 22,
+      "partId": {
+       "value": "art:firework-red"
+      },
+      "sizePct": 44,
+      "heightPct": 33.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-firework-gold-121"
+      },
+      "x": 22,
+      "y": 30,
+      "partId": {
+       "value": "art:firework-gold"
+      },
+      "sizePct": 34,
+      "heightPct": 25.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-firework-green-122"
+      },
+      "x": 86,
+      "y": 44,
+      "partId": {
+       "value": "art:firework-green"
+      },
+      "sizePct": 28,
+      "heightPct": 21.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-fox-bag-123"
+      },
+      "x": 34.0,
+      "y": 75.64,
+      "partId": {
+       "value": "art:fox-bag"
+      },
+      "sizePct": 34,
+      "heightPct": 34.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-tanuki-look-124"
+      },
+      "x": 66.0,
+      "y": 76.32,
+      "partId": {
+       "value": "art:tanuki-look"
+      },
+      "sizePct": 36,
+      "heightPct": 34.269
+     }
+    ]
+   },
+   {
+    "id": "p14",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-125"
+      },
+      "x": 50,
+      "y": 23.0,
+      "text": "ひゅ〜〜〜、どーん！",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-126"
+      },
+      "x": 50,
+      "y": 31.0,
+      "text": "よぞらに おおきな はなび。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-127"
+      },
+      "x": 50,
+      "y": 39.0,
+      "text": "あかい はな、きんいろの はな。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-128"
+      },
+      "x": 50,
+      "y": 47.0,
+      "text": "みんなの かおが、ぱっと あかるく。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-129"
+      },
+      "x": 50,
+      "y": 55.0,
+      "text": "「きれい…！」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-130"
+      },
+      "x": 50,
+      "y": 63.0,
+      "text": "ふくろの なかの きんぎょも、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-131"
+      },
+      "x": 50,
+      "y": 71.0,
+      "text": "ゆらゆら みあげていた。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p15",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-night-sky-132"
+      },
+      "x": 50,
+      "y": 28.75,
+      "partId": {
+       "value": "art:night-sky"
+      },
+      "sizePct": 100,
+      "heightPct": 57.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-moon-133"
+      },
+      "x": 78,
+      "y": 16,
+      "partId": {
+       "value": "art:moon"
+      },
+      "sizePct": 14,
+      "heightPct": 10.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-lantern-string-134"
+      },
+      "x": 30,
+      "y": 8,
+      "partId": {
+       "value": "art:lantern-string"
+      },
+      "sizePct": 60,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-path-135"
+      },
+      "x": 50,
+      "y": 76.25,
+      "partId": {
+       "value": "art:path"
+      },
+      "sizePct": 100,
+      "heightPct": 47.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-torii-136"
+      },
+      "x": 50.0,
+      "y": 52.21,
+      "partId": {
+       "value": "art:torii"
+      },
+      "sizePct": 24,
+      "heightPct": 20.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-fox-back-137"
+      },
+      "x": 50.0,
+      "y": 73.64,
+      "partId": {
+       "value": "art:fox-back"
+      },
+      "sizePct": 34,
+      "heightPct": 34.0
+     }
+    ]
+   },
+   {
+    "id": "p16",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-138"
+      },
+      "x": 50,
+      "y": 18,
+      "text": "かえりみち。",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-139"
+      },
+      "x": 50,
+      "y": 28,
+      "text": "ふくろの なかで、",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-140"
+      },
+      "x": 50,
+      "y": 38,
+      "text": "きんぎょが ひらり。",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-141"
+      },
+      "x": 50,
+      "y": 48,
+      "text": "「おまえの なまえは、",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-142"
+      },
+      "x": 50,
+      "y": 58,
+      "text": "はなび。」",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-143"
+      },
+      "x": 50,
+      "y": 68,
+      "text": "「らいねんも、いこうね。」",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p16-goldfish-bag-144"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:goldfish-bag"
+      },
+      "sizePct": 10,
+      "heightPct": 10.625
+     }
+    ]
+   },
+   {
+    "id": "back",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "back-goldfish-145"
+      },
+      "x": 50,
+      "y": 38,
+      "partId": {
+       "value": "art:goldfish"
+      },
+      "sizePct": 12,
+      "heightPct": 6.3
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-146"
+      },
+      "x": 62,
+      "y": 60,
+      "text": "発行 2026.8.15",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-147"
+      },
+      "x": 59,
+      "y": 68,
+      "text": "さく ○○○○",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-148"
+      },
+      "x": 51,
+      "y": 76,
+      "text": "え ○○○○",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   }
+  ]
+ }
+}

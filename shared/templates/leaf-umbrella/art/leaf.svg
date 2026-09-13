@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 300" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>おおきな はっぱの かさ</title>
+<path d="M160 296Q158 240 162 182" stroke="#7a9a5a" stroke-width="6"/>
+<path d="M163 294Q161 240 165 184" stroke="#69584d" stroke-width="1.2"/>
+<path d="M14 150C30 96 80 40 160 30C240 40 290 96 306 150C280 168 250 152 226 168C200 184 176 164 160 178C144 164 120 184 94 168C70 152 40 168 14 150Z" fill="#8fb27a"/>
+<path d="M44 108C70 70 110 46 160 40C120 52 84 76 60 116Z" fill="#a9c48f" stroke="none"/>
+<path d="M160 178L40 122M160 178L86 62M160 178L160 34M160 178L234 62M160 178L280 122" stroke="#6f8f4e" stroke-width="1.6"/>
+<path d="M112 46q4-8 8 0q1 6-4 6t-4-6ZM210 60q4-8 8-1q1 6-4 6t-4-5ZM66 92q4-8 8 0q1 6-4 6t-4-6Z" fill="#dfe9ee" stroke-width="1"/>
+</svg>

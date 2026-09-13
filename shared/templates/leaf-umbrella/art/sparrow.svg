@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>すずめの ちゅん</title>
+<path d="M102 76L124 92L114 80L124 74Z" fill="#8c6a4a"/>
+<path d="M54 110l-4 14M70 110l2 14M42 124l8 0l4-4M66 124l10 0l-4-4" stroke-width="1.5"/>
+<path d="M24 74C24 46 46 30 70 32C96 34 110 56 106 82Q100 108 68 112Q30 110 24 74Z" fill="#b8926a"/>
+<path d="M28 84C42 108 84 108 100 86Q80 96 62 96Q42 96 28 84Z" fill="#fff0d9"/>
+<path d="M58 58C82 48 106 62 102 86Q84 96 66 88Q54 76 58 58Z" fill="#8c6a4a"/>
+<path d="M66 68l12 6M72 60l14 8M64 78l14 4" stroke="#fff0d9" stroke-width="1.2" opacity=".7"/>
+<circle cx="42" cy="44" r="21" fill="#b8926a"/>
+<path d="M24 50Q30 64 46 64Q54 64 56 54Q48 48 38 46Q30 44 24 50Z" fill="#fff0d9" stroke-width="1.2"/>
+<ellipse cx="38" cy="56" rx="4.5" ry="3.5" fill="#69584d" stroke="none"/>
+<ellipse cx="36" cy="40" rx="2.8" ry="4.5" fill="#69584d" stroke="none"/>
+<path d="M22 46l-14 3l14 4Z" fill="#e0b26a" stroke-width="1.2"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 250" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>はっぱを もつ ケロ</title>
+<path d="M76 216C52 208 30 220 26 238Q24 248 36 248L90 246Q94 232 76 216Z" fill="#9dbb6f"/>
+<path d="M154 216C178 208 200 220 204 238Q206 248 194 248L140 246Q136 232 154 216Z" fill="#9dbb6f"/>
+<circle cx="30" cy="252" r="4" fill="#9dbb6f" stroke-width="1.3"/><circle cx="42" cy="256" r="4" fill="#9dbb6f" stroke-width="1.3"/><circle cx="56" cy="254" r="4" fill="#9dbb6f" stroke-width="1.3"/>
+<circle cx="200" cy="252" r="4" fill="#9dbb6f" stroke-width="1.3"/><circle cx="188" cy="256" r="4" fill="#9dbb6f" stroke-width="1.3"/><circle cx="174" cy="254" r="4" fill="#9dbb6f" stroke-width="1.3"/>
+<path d="M84 148C60 160 50 190 56 216C62 236 90 242 115 242C140 242 168 236 174 216C180 190 170 160 146 148Z" fill="#9dbb6f"/>
+<ellipse cx="115" cy="200" rx="34" ry="30" fill="#eaf0d3" stroke-width="1.2"/>
+<path d="M86 154C62 160 44 184 48 208Q50 220 62 218Q68 200 82 186Q92 176 94 160Z" fill="#9dbb6f"/>
+<path d="M54 216l-10 6M56 220l-3 10M60 220l7 9" stroke-width="2"/>
+<path d="M150 150C170 138 186 118 190 96Q192 84 200 78L212 70Q202 64 190 72Q176 86 170 108Q164 126 144 138Z" fill="#9dbb6f"/>
+<path d="M136 150C154 152 178 132 188 108Q194 96 206 88L214 78" stroke-width="1.4"/>
+<circle cx="208" cy="72" r="12" fill="#9dbb6f"/>
+<path d="M200 66q4 5 8 0q4 5 8 0M204 80l2 6M212 78l4 5" stroke-width="1.2"/>
+<path d="M48 118C36 82 62 52 115 52C168 52 194 82 182 118C176 140 150 152 115 152C80 152 54 140 48 118Z" fill="#9dbb6f"/>
+<circle cx="78" cy="58" r="21" fill="#9dbb6f"/><circle cx="152" cy="58" r="21" fill="#9dbb6f"/>
+<circle cx="78" cy="60" r="15" fill="#fff8ec"/><circle cx="152" cy="60" r="15" fill="#fff8ec"/>
+<ellipse cx="80" cy="62" rx="5" ry="7" fill="#69584d" stroke="none"/><ellipse cx="150" cy="62" rx="5" ry="7" fill="#69584d" stroke="none"/>
+<circle cx="78" cy="58" r="1.8" fill="#fff8ec" stroke="none"/><circle cx="148" cy="58" r="1.8" fill="#fff8ec" stroke="none"/>
+<path d="M105 100l1 1M125 100l1 1" stroke-width="2.6"/>
+<path d="M72 118Q115 148 158 118"/>
+<ellipse cx="66" cy="126" rx="9" ry="5" fill="#e2b7aa" opacity=".5" stroke="none"/><ellipse cx="164" cy="126" rx="9" ry="5" fill="#e2b7aa" opacity=".5" stroke="none"/>
+</svg>

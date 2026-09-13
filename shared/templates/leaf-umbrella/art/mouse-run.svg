@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 170" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>かけてくる チュウ</title>
+<path d="M42 122C20 116 8 96 20 80Q28 70 34 78" stroke="#d9a99f" stroke-width="3.5"/>
+<path d="M12 128l-12 0M16 112l-10 0M14 142l-10 0" stroke="#b9c9cf" stroke-width="1.6"/>
+<path d="M150 128C160 132 178 144 182 156Q184 162 176 160Q160 150 146 140Z" fill="#c9c0b5"/>
+<path d="M166 124C178 126 196 132 204 140Q208 146 200 146Q184 142 162 134Z" fill="#c9c0b5"/>
+<path d="M72 130C60 136 44 148 38 158Q36 164 44 163Q60 154 82 140Z" fill="#c9c0b5"/>
+<path d="M58 124C46 122 30 122 20 126Q14 130 22 132Q40 132 60 132Z" fill="#c9c0b5"/>
+<path d="M40 118C40 84 70 60 108 62C146 62 176 82 178 114Q178 134 158 140L60 142Q40 138 40 118Z" fill="#c9c0b5"/>
+<path d="M70 132Q110 146 150 130Q130 118 108 118Q86 118 70 132Z" fill="#ddd6cc" stroke="none"/>
+<circle cx="150" cy="58" r="15" fill="#c9c0b5"/><circle cx="150" cy="58" r="9" fill="#e8b8b0" stroke-width="1"/>
+<path d="M140 84C140 60 158 50 176 52C196 56 214 84 216 100Q214 106 206 104L150 106Q140 100 140 84Z" fill="#c9c0b5"/>
+<circle cx="178" cy="50" r="13" fill="#c9c0b5"/><circle cx="178" cy="50" r="8" fill="#e8b8b0" stroke-width="1"/>
+<circle cx="214" cy="101" r="3.5" fill="#d99794" stroke-width="1"/>
+<ellipse cx="188" cy="82" rx="3" ry="4.5" fill="#69584d" stroke="none"/>
+<path d="M204 96l14-4M204 100l16 2M204 104l12 6" stroke-width="1.1"/>
+<ellipse cx="180" cy="96" rx="7" ry="4" fill="#e2b7aa" opacity=".5" stroke="none"/>
+</svg>

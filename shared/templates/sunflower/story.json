@@ -1,0 +1,2202 @@
+{
+ "id": "doc-sunflower",
+ "order": 2,
+ "description": {
+  "ja": "ひなたが うめた ひまわりの たね。つちの なかでは もぐらの モグが ねっこを みまもる。はるから あきへ、そだてる おはなし。表紙と 8つの 見開き。",
+  "en": "Hinata plants a sunflower seed; underground, Mogu the mole watches the roots grow and holds them through a storm. A cover and eight editable spreads from spring to autumn."
+ },
+ "book": {
+  "id": {
+   "value": "template-sunflower"
+  },
+  "title": "おおきく なあれ",
+  "shape": "PORTRAIT",
+  "contentLocale": "ja-JP",
+  "updatedAtEpochMs": 0,
+  "art": {
+   "girl-plant": {
+    "name": "たねを うめる ひなた",
+    "file": "girl-plant.svg"
+   },
+   "girl-water": {
+    "name": "みずを やる ひなた",
+    "file": "girl-water.svg"
+   },
+   "girl-look": {
+    "name": "みあげる ひなた",
+    "file": "girl-look.svg"
+   },
+   "girl-bowl": {
+    "name": "たねを もつ ひなた",
+    "file": "girl-bowl.svg"
+   },
+   "window": {
+    "name": "まどの ひなた",
+    "file": "window.svg"
+   },
+   "mole-sleep": {
+    "name": "ねむる モグ",
+    "file": "mole-sleep.svg"
+   },
+   "mole-look": {
+    "name": "みあげる モグ",
+    "file": "mole-look.svg"
+   },
+   "mole-hold": {
+    "name": "ねっこを ささえる モグ",
+    "file": "mole-hold.svg"
+   },
+   "mole-peek": {
+    "name": "かおを だす モグ",
+    "file": "mole-peek.svg"
+   },
+   "mole-sit": {
+    "name": "たねを もつ モグ",
+    "file": "mole-sit.svg"
+   },
+   "seed": {
+    "name": "ひまわりの たね",
+    "file": "seed.svg"
+   },
+   "hole": {
+    "name": "ちいさな あな",
+    "file": "hole.svg"
+   },
+   "sprout": {
+    "name": "ふたば",
+    "file": "sprout.svg"
+   },
+   "plant-small": {
+    "name": "ちいさな ひまわり",
+    "file": "plant-small.svg"
+   },
+   "plant-tall": {
+    "name": "せのびする ひまわり",
+    "file": "plant-tall.svg"
+   },
+   "sunflower": {
+    "name": "おおきな ひまわり",
+    "file": "sunflower.svg"
+   },
+   "sunflower-bow": {
+    "name": "おじぎする ひまわり",
+    "file": "sunflower-bow.svg"
+   },
+   "sunflower-bent": {
+    "name": "あらしに ゆれる ひまわり",
+    "file": "sunflower-bent.svg"
+   },
+   "leaf-fly": {
+    "name": "とばされた はっぱ",
+    "file": "leaf-fly.svg"
+   },
+   "root-small": {
+    "name": "ちいさな ねっこ",
+    "file": "root-small.svg"
+   },
+   "roots": {
+    "name": "おおきな ねっこ",
+    "file": "roots.svg"
+   },
+   "soil": {
+    "name": "つちの なか",
+    "file": "soil.svg"
+   },
+   "burrow": {
+    "name": "モグの おうち",
+    "file": "burrow.svg"
+   },
+   "fence": {
+    "name": "しろい かきね",
+    "file": "fence.svg"
+   },
+   "house": {
+    "name": "ひなたの おうち",
+    "file": "house.svg"
+   },
+   "sun": {
+    "name": "おひさま",
+    "file": "sun.svg"
+   },
+   "cloud": {
+    "name": "くも",
+    "file": "cloud.svg"
+   },
+   "storm-clouds": {
+    "name": "あらしの くも",
+    "file": "storm-clouds.svg"
+   },
+   "rain-heavy": {
+    "name": "ざあざあ あめ",
+    "file": "rain-heavy.svg"
+   },
+   "wind": {
+    "name": "びゅうびゅう かぜ",
+    "file": "wind.svg"
+   },
+   "water": {
+    "name": "じゃあ〜と みず",
+    "file": "water.svg"
+   },
+   "ladybug": {
+    "name": "てんとうむし",
+    "file": "ladybug.svg"
+   },
+   "bee": {
+    "name": "みつばち",
+    "file": "bee.svg"
+   },
+   "sparrow": {
+    "name": "すずめ",
+    "file": "sparrow.svg"
+   },
+   "jar": {
+    "name": "たねの びん",
+    "file": "jar.svg"
+   }
+  },
+  "pages": [
+   {
+    "id": "cover",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-sun-2"
+      },
+      "x": 86,
+      "y": 30,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 16,
+      "heightPct": 12.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-cloud-3"
+      },
+      "x": 16,
+      "y": 34,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 18,
+      "heightPct": 7.425
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-soil-4"
+      },
+      "x": 50,
+      "y": 95,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-sunflower-1"
+      },
+      "x": 58.0,
+      "y": 57.79,
+      "partId": {
+       "value": "art:sunflower"
+      },
+      "sizePct": 24,
+      "heightPct": 42.353
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-bee-5"
+      },
+      "x": 76,
+      "y": 30,
+      "partId": {
+       "value": "art:bee"
+      },
+      "sizePct": 6,
+      "heightPct": 4.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-girl-look-6"
+      },
+      "x": 30.0,
+      "y": 64.26,
+      "partId": {
+       "value": "art:girl-look"
+      },
+      "sizePct": 28,
+      "heightPct": 31.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-mole-peek-7"
+      },
+      "x": 46.0,
+      "y": 75.11,
+      "partId": {
+       "value": "art:mole-peek"
+      },
+      "sizePct": 14,
+      "heightPct": 8.4
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "cover-text-8"
+      },
+      "x": 50,
+      "y": 12,
+      "text": "おおきく なあれ",
+      "font": "yomogi",
+      "sizePct": 8.5
+     }
+    ]
+   },
+   {
+    "id": "title",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "title-text-9"
+      },
+      "x": 50,
+      "y": 36,
+      "text": "ひまわりの おはなし",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "title-text-10"
+      },
+      "x": 50,
+      "y": 46,
+      "text": "おおきく なあれ",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "title-sprout-11"
+      },
+      "x": 50,
+      "y": 70,
+      "partId": {
+       "value": "art:sprout"
+      },
+      "sizePct": 14,
+      "heightPct": 12.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "title-seed-12"
+      },
+      "x": 50,
+      "y": 84,
+      "partId": {
+       "value": "art:seed"
+      },
+      "sizePct": 4,
+      "heightPct": 4.5
+     }
+    ]
+   },
+   {
+    "id": "p1",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-sun-14"
+      },
+      "x": 84,
+      "y": 12,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 20,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-cloud-15"
+      },
+      "x": 18,
+      "y": 15,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 20,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-house-16"
+      },
+      "x": 78.0,
+      "y": 52.86,
+      "partId": {
+       "value": "art:house"
+      },
+      "sizePct": 30,
+      "heightPct": 20.893
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-fence-17"
+      },
+      "x": 50.0,
+      "y": 51.25,
+      "partId": {
+       "value": "art:fence"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-soil-18"
+      },
+      "x": 50,
+      "y": 78.75,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-burrow-19"
+      },
+      "x": 48,
+      "y": 80,
+      "partId": {
+       "value": "art:burrow"
+      },
+      "sizePct": 34,
+      "heightPct": 16.673
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-mole-sleep-20"
+      },
+      "x": 48.0,
+      "y": 80.92,
+      "partId": {
+       "value": "art:mole-sleep"
+      },
+      "sizePct": 22,
+      "heightPct": 11.786
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-hole-21"
+      },
+      "x": 48,
+      "y": 62.5,
+      "partId": {
+       "value": "art:hole"
+      },
+      "sizePct": 8,
+      "heightPct": 3.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-seed-22"
+      },
+      "x": 44.1,
+      "y": 62.81,
+      "partId": {
+       "value": "art:seed"
+      },
+      "sizePct": 3,
+      "heightPct": 3.375
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-girl-plant-13"
+      },
+      "x": 32.0,
+      "y": 53.17,
+      "partId": {
+       "value": "art:girl-plant"
+      },
+      "sizePct": 32,
+      "heightPct": 22.222
+     }
+    ]
+   },
+   {
+    "id": "p2",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-23"
+      },
+      "x": 50,
+      "y": 27.0,
+      "text": "はるの あさ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-24"
+      },
+      "x": 50,
+      "y": 35.0,
+      "text": "ひなたは ちいさな たねを、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-25"
+      },
+      "x": 50,
+      "y": 43.0,
+      "text": "つちに うめた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-26"
+      },
+      "x": 50,
+      "y": 51.0,
+      "text": "「おおきく なあれ。」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-27"
+      },
+      "x": 50,
+      "y": 59.0,
+      "text": "つちの したでは、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-28"
+      },
+      "x": 50,
+      "y": 67.0,
+      "text": "もぐらの モグが ぐっすり。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p3",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-sun-30"
+      },
+      "x": 84,
+      "y": 12,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 20,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-cloud-31"
+      },
+      "x": 18,
+      "y": 15,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 20,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-house-32"
+      },
+      "x": 78.0,
+      "y": 52.86,
+      "partId": {
+       "value": "art:house"
+      },
+      "sizePct": 30,
+      "heightPct": 20.893
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-fence-33"
+      },
+      "x": 50.0,
+      "y": 51.25,
+      "partId": {
+       "value": "art:fence"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-soil-34"
+      },
+      "x": 50,
+      "y": 78.75,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-burrow-35"
+      },
+      "x": 48,
+      "y": 80,
+      "partId": {
+       "value": "art:burrow"
+      },
+      "sizePct": 34,
+      "heightPct": 16.673
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-mole-look-36"
+      },
+      "x": 48.0,
+      "y": 80.87,
+      "partId": {
+       "value": "art:mole-look"
+      },
+      "sizePct": 16,
+      "heightPct": 13.333
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-root-small-37"
+      },
+      "x": 48,
+      "y": 68.2,
+      "partId": {
+       "value": "art:root-small"
+      },
+      "sizePct": 8,
+      "heightPct": 10.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-sprout-38"
+      },
+      "x": 48.0,
+      "y": 58.38,
+      "partId": {
+       "value": "art:sprout"
+      },
+      "sizePct": 10,
+      "heightPct": 8.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-girl-water-29"
+      },
+      "x": 22.0,
+      "y": 49.39,
+      "partId": {
+       "value": "art:girl-water"
+      },
+      "sizePct": 38,
+      "heightPct": 28.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-water-39"
+      },
+      "x": 45.88,
+      "y": 52.46,
+      "partId": {
+       "value": "art:water"
+      },
+      "sizePct": 14,
+      "heightPct": 8.925
+     }
+    ]
+   },
+   {
+    "id": "p4",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-40"
+      },
+      "x": 50,
+      "y": 23.0,
+      "text": "まいにち、じょうろで じゃあ〜。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-41"
+      },
+      "x": 50,
+      "y": 31.0,
+      "text": "あめの ひは おやすみ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-42"
+      },
+      "x": 50,
+      "y": 39.0,
+      "text": "ぴょこん。ふたばが でた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-43"
+      },
+      "x": 50,
+      "y": 47.0,
+      "text": "つちの したでは、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-44"
+      },
+      "x": 50,
+      "y": 55.0,
+      "text": "ねっこが のびて、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-45"
+      },
+      "x": 50,
+      "y": 63.0,
+      "text": "モグの おうちに こんにちは。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-46"
+      },
+      "x": 50,
+      "y": 71.0,
+      "text": "「なんだ なんだ？」",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p5",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-sun-48"
+      },
+      "x": 84,
+      "y": 12,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 20,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-cloud-49"
+      },
+      "x": 18,
+      "y": 15,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 20,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-house-50"
+      },
+      "x": 78.0,
+      "y": 52.86,
+      "partId": {
+       "value": "art:house"
+      },
+      "sizePct": 30,
+      "heightPct": 20.893
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-fence-51"
+      },
+      "x": 50.0,
+      "y": 51.25,
+      "partId": {
+       "value": "art:fence"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-soil-52"
+      },
+      "x": 50,
+      "y": 78.75,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-roots-53"
+      },
+      "x": 54,
+      "y": 71.3,
+      "partId": {
+       "value": "art:roots"
+      },
+      "sizePct": 26,
+      "heightPct": 15.844
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-mole-sleep-54"
+      },
+      "x": 54.0,
+      "y": 79.93,
+      "partId": {
+       "value": "art:mole-sleep"
+      },
+      "sizePct": 20,
+      "heightPct": 10.714
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-plant-small-47"
+      },
+      "x": 54.0,
+      "y": 51.55,
+      "partId": {
+       "value": "art:plant-small"
+      },
+      "sizePct": 24,
+      "heightPct": 22.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-ladybug-55"
+      },
+      "x": 47.94,
+      "y": 54.29,
+      "partId": {
+       "value": "art:ladybug"
+      },
+      "sizePct": 4,
+      "heightPct": 3.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-girl-look-56"
+      },
+      "x": 26.0,
+      "y": 46.98,
+      "partId": {
+       "value": "art:girl-look"
+      },
+      "sizePct": 30,
+      "heightPct": 33.75
+     }
+    ]
+   },
+   {
+    "id": "p6",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-57"
+      },
+      "x": 50,
+      "y": 23.0,
+      "text": "はっぱが どんどん ひろがる。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-58"
+      },
+      "x": 50,
+      "y": 31.0,
+      "text": "てんとうむしも あそびに きた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-59"
+      },
+      "x": 50,
+      "y": 39.0,
+      "text": "ひなたの ひざより たかく、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-60"
+      },
+      "x": 50,
+      "y": 47.0,
+      "text": "おなかより たかく。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-61"
+      },
+      "x": 50,
+      "y": 55.0,
+      "text": "つちの したでは、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-62"
+      },
+      "x": 50,
+      "y": 63.0,
+      "text": "ねっこの あいだで、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-63"
+      },
+      "x": 50,
+      "y": 71.0,
+      "text": "モグが おひるね。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p7",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-sun-64"
+      },
+      "x": 84,
+      "y": 12,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 20,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-cloud-65"
+      },
+      "x": 18,
+      "y": 15,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 20,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-house-66"
+      },
+      "x": 82.0,
+      "y": 52.86,
+      "partId": {
+       "value": "art:house"
+      },
+      "sizePct": 30,
+      "heightPct": 20.893
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-fence-67"
+      },
+      "x": 50.0,
+      "y": 51.25,
+      "partId": {
+       "value": "art:fence"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-soil-68"
+      },
+      "x": 50,
+      "y": 78.75,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-roots-69"
+      },
+      "x": 56,
+      "y": 71.3,
+      "partId": {
+       "value": "art:roots"
+      },
+      "sizePct": 34,
+      "heightPct": 20.719
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-mole-look-70"
+      },
+      "x": 56.0,
+      "y": 87.25,
+      "partId": {
+       "value": "art:mole-look"
+      },
+      "sizePct": 15,
+      "heightPct": 12.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-plant-tall-71"
+      },
+      "x": 56.0,
+      "y": 42.59,
+      "partId": {
+       "value": "art:plant-tall"
+      },
+      "sizePct": 24,
+      "heightPct": 40.235
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-bee-72"
+      },
+      "x": 72,
+      "y": 22,
+      "partId": {
+       "value": "art:bee"
+      },
+      "sizePct": 6,
+      "heightPct": 4.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-girl-look-73"
+      },
+      "x": 26.0,
+      "y": 46.98,
+      "partId": {
+       "value": "art:girl-look"
+      },
+      "sizePct": 30,
+      "heightPct": 33.75
+     }
+    ]
+   },
+   {
+    "id": "p8",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-74"
+      },
+      "x": 50,
+      "y": 27.0,
+      "text": "なつ。ひまわりは",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-75"
+      },
+      "x": 50,
+      "y": 35.0,
+      "text": "ひなたより たかく、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-76"
+      },
+      "x": 50,
+      "y": 43.0,
+      "text": "かきねより たかく のびた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-77"
+      },
+      "x": 50,
+      "y": 51.0,
+      "text": "「まだ さかないの？」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-78"
+      },
+      "x": 50,
+      "y": 59.0,
+      "text": "おおきな つぼみは、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-79"
+      },
+      "x": 50,
+      "y": 67.0,
+      "text": "まだ ぎゅっと とじたまま。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p9",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-storm-clouds-80"
+      },
+      "x": 50,
+      "y": 16.25,
+      "partId": {
+       "value": "art:storm-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 32.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-rain-heavy-81"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain-heavy"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-wind-82"
+      },
+      "x": 22,
+      "y": 34,
+      "partId": {
+       "value": "art:wind"
+      },
+      "sizePct": 32,
+      "heightPct": 12.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-wind-83"
+      },
+      "x": 30,
+      "y": 14,
+      "partId": {
+       "value": "art:wind"
+      },
+      "sizePct": 26,
+      "heightPct": 10.359
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-soil-84"
+      },
+      "x": 50,
+      "y": 78.75,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-window-85"
+      },
+      "x": 84,
+      "y": 52.75,
+      "partId": {
+       "value": "art:window"
+      },
+      "sizePct": 26,
+      "heightPct": 19.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-roots-86"
+      },
+      "x": 44,
+      "y": 71.3,
+      "partId": {
+       "value": "art:roots"
+      },
+      "sizePct": 34,
+      "heightPct": 20.719
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-mole-hold-87"
+      },
+      "x": 44.0,
+      "y": 82.78,
+      "partId": {
+       "value": "art:mole-hold"
+      },
+      "sizePct": 26,
+      "heightPct": 20.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-sunflower-bent-88"
+      },
+      "x": 53.57,
+      "y": 37.98,
+      "partId": {
+       "value": "art:sunflower-bent"
+      },
+      "sizePct": 40,
+      "heightPct": 49.565
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-leaf-fly-89"
+      },
+      "x": 72,
+      "y": 20,
+      "partId": {
+       "value": "art:leaf-fly"
+      },
+      "sizePct": 6,
+      "heightPct": 3.375,
+      "rotationDeg": 30
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-leaf-fly-90"
+      },
+      "x": 34,
+      "y": 24,
+      "partId": {
+       "value": "art:leaf-fly"
+      },
+      "sizePct": 5,
+      "heightPct": 2.812,
+      "rotationDeg": -20
+     }
+    ]
+   },
+   {
+    "id": "p10",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-91"
+      },
+      "x": 50,
+      "y": 20.75,
+      "text": "よる。あらしが きた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-92"
+      },
+      "x": 50,
+      "y": 28.25,
+      "text": "びゅうびゅう、ざあざあ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-93"
+      },
+      "x": 50,
+      "y": 35.75,
+      "text": "ひまわりが ゆれる、ゆれる。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-94"
+      },
+      "x": 50,
+      "y": 43.25,
+      "text": "ひなたは まどから みていた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-95"
+      },
+      "x": 50,
+      "y": 50.75,
+      "text": "「たおれないで…！」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-96"
+      },
+      "x": 50,
+      "y": 58.25,
+      "text": "つちの したでは、モグが",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-97"
+      },
+      "x": 50,
+      "y": 65.75,
+      "text": "ねっこを ぎゅっと だきしめた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-98"
+      },
+      "x": 50,
+      "y": 73.25,
+      "text": "「ぼくが ささえる！」",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p11",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-sun-99"
+      },
+      "x": 84,
+      "y": 12,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 20,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-cloud-100"
+      },
+      "x": 18,
+      "y": 15,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 20,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-house-101"
+      },
+      "x": 82.0,
+      "y": 52.86,
+      "partId": {
+       "value": "art:house"
+      },
+      "sizePct": 30,
+      "heightPct": 20.893
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-fence-102"
+      },
+      "x": 50.0,
+      "y": 51.25,
+      "partId": {
+       "value": "art:fence"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-soil-103"
+      },
+      "x": 50,
+      "y": 78.75,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-roots-104"
+      },
+      "x": 56,
+      "y": 71.3,
+      "partId": {
+       "value": "art:roots"
+      },
+      "sizePct": 34,
+      "heightPct": 20.719
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-sunflower-105"
+      },
+      "x": 56.0,
+      "y": 39.79,
+      "partId": {
+       "value": "art:sunflower"
+      },
+      "sizePct": 26,
+      "heightPct": 45.882
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-mole-peek-106"
+      },
+      "x": 40.0,
+      "y": 58.52,
+      "partId": {
+       "value": "art:mole-peek"
+      },
+      "sizePct": 16,
+      "heightPct": 9.6
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-girl-look-107"
+      },
+      "x": 24.0,
+      "y": 46.98,
+      "partId": {
+       "value": "art:girl-look"
+      },
+      "sizePct": 30,
+      "heightPct": 33.75
+     }
+    ]
+   },
+   {
+    "id": "p12",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-108"
+      },
+      "x": 50,
+      "y": 23.0,
+      "text": "あさ。あらしは いってしまった。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-109"
+      },
+      "x": 50,
+      "y": 31.0,
+      "text": "ひまわりは、まっすぐ たっていた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-110"
+      },
+      "x": 50,
+      "y": 39.0,
+      "text": "そして、ぱっ！",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-111"
+      },
+      "x": 50,
+      "y": 47.0,
+      "text": "おおきな おおきな はなが さいた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-112"
+      },
+      "x": 50,
+      "y": 55.0,
+      "text": "もこもこ。つちが うごく。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-113"
+      },
+      "x": 50,
+      "y": 63.0,
+      "text": "「きみが ささえてくれたの？」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-114"
+      },
+      "x": 50,
+      "y": 71.0,
+      "text": "モグは てれて、はなを こすった。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p13",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-sun-116"
+      },
+      "x": 84,
+      "y": 12,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 20,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-cloud-117"
+      },
+      "x": 18,
+      "y": 15,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 20,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-house-118"
+      },
+      "x": 82.0,
+      "y": 52.86,
+      "partId": {
+       "value": "art:house"
+      },
+      "sizePct": 30,
+      "heightPct": 20.893
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-fence-119"
+      },
+      "x": 50.0,
+      "y": 51.25,
+      "partId": {
+       "value": "art:fence"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-soil-120"
+      },
+      "x": 50,
+      "y": 78.75,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-roots-121"
+      },
+      "x": 60,
+      "y": 71.3,
+      "partId": {
+       "value": "art:roots"
+      },
+      "sizePct": 30,
+      "heightPct": 18.281
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-sunflower-bow-115"
+      },
+      "x": 60.0,
+      "y": 40.62,
+      "partId": {
+       "value": "art:sunflower-bow"
+      },
+      "sizePct": 28,
+      "heightPct": 44.211
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-sparrow-122"
+      },
+      "x": 64.42,
+      "y": 25.86,
+      "partId": {
+       "value": "art:sparrow"
+      },
+      "sizePct": 7,
+      "heightPct": 5.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-sparrow-123"
+      },
+      "x": 80.0,
+      "y": 60.12,
+      "partId": {
+       "value": "art:sparrow"
+      },
+      "sizePct": 7,
+      "heightPct": 5.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-girl-bowl-124"
+      },
+      "x": 26.0,
+      "y": 46.98,
+      "partId": {
+       "value": "art:girl-bowl"
+      },
+      "sizePct": 30,
+      "heightPct": 33.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-mole-sit-125"
+      },
+      "x": 44.0,
+      "y": 57.13,
+      "partId": {
+       "value": "art:mole-sit"
+      },
+      "sizePct": 14,
+      "heightPct": 11.667
+     }
+    ]
+   },
+   {
+    "id": "p14",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-126"
+      },
+      "x": 50,
+      "y": 27.0,
+      "text": "あき。はなは おもたそうに",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-127"
+      },
+      "x": 50,
+      "y": 35.0,
+      "text": "おじぎを した。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-128"
+      },
+      "x": 50,
+      "y": 43.0,
+      "text": "なかには たねが ぎっしり。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-129"
+      },
+      "x": 50,
+      "y": 51.0,
+      "text": "ことりたちが ついばむ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-130"
+      },
+      "x": 50,
+      "y": 59.0,
+      "text": "ひなたと モグも ひとつぶ ずつ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-131"
+      },
+      "x": 50,
+      "y": 67.0,
+      "text": "「らいねんも いっしょに、ね。」",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p15",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-sun-132"
+      },
+      "x": 84,
+      "y": 12,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 20,
+      "heightPct": 15.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-cloud-133"
+      },
+      "x": 18,
+      "y": 15,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 20,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-house-134"
+      },
+      "x": 78.0,
+      "y": 52.86,
+      "partId": {
+       "value": "art:house"
+      },
+      "sizePct": 30,
+      "heightPct": 20.893
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-fence-135"
+      },
+      "x": 50.0,
+      "y": 51.25,
+      "partId": {
+       "value": "art:fence"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-soil-136"
+      },
+      "x": 50,
+      "y": 78.75,
+      "partId": {
+       "value": "art:soil"
+      },
+      "sizePct": 100,
+      "heightPct": 42.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-root-small-137"
+      },
+      "x": 44,
+      "y": 66,
+      "partId": {
+       "value": "art:root-small"
+      },
+      "sizePct": 4,
+      "heightPct": 5.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-root-small-138"
+      },
+      "x": 56,
+      "y": 66,
+      "partId": {
+       "value": "art:root-small"
+      },
+      "sizePct": 4,
+      "heightPct": 5.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-root-small-139"
+      },
+      "x": 68,
+      "y": 66,
+      "partId": {
+       "value": "art:root-small"
+      },
+      "sizePct": 4,
+      "heightPct": 5.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-root-small-140"
+      },
+      "x": 80,
+      "y": 66,
+      "partId": {
+       "value": "art:root-small"
+      },
+      "sizePct": 4,
+      "heightPct": 5.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-sprout-141"
+      },
+      "x": 44.0,
+      "y": 59.61,
+      "partId": {
+       "value": "art:sprout"
+      },
+      "sizePct": 7,
+      "heightPct": 6.125
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-sprout-142"
+      },
+      "x": 56.0,
+      "y": 59.61,
+      "partId": {
+       "value": "art:sprout"
+      },
+      "sizePct": 7,
+      "heightPct": 6.125
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-sprout-143"
+      },
+      "x": 68.0,
+      "y": 59.61,
+      "partId": {
+       "value": "art:sprout"
+      },
+      "sizePct": 7,
+      "heightPct": 6.125
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-sprout-144"
+      },
+      "x": 80.0,
+      "y": 59.61,
+      "partId": {
+       "value": "art:sprout"
+      },
+      "sizePct": 7,
+      "heightPct": 6.125
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-jar-145"
+      },
+      "x": 34.0,
+      "y": 58.9,
+      "partId": {
+       "value": "art:jar"
+      },
+      "sizePct": 8,
+      "heightPct": 8.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-girl-plant-146"
+      },
+      "x": 16.0,
+      "y": 53.17,
+      "partId": {
+       "value": "art:girl-plant"
+      },
+      "sizePct": 32,
+      "heightPct": 22.222
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-mole-peek-147"
+      },
+      "x": 90.0,
+      "y": 59.4,
+      "partId": {
+       "value": "art:mole-peek"
+      },
+      "sizePct": 13,
+      "heightPct": 7.8
+     }
+    ]
+   },
+   {
+    "id": "p16",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-148"
+      },
+      "x": 50,
+      "y": 20,
+      "text": "つぎの はる。",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-149"
+      },
+      "x": 50,
+      "y": 30,
+      "text": "ひなたと モグは",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-150"
+      },
+      "x": 50,
+      "y": 40,
+      "text": "たねを いっぱい うめた。",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-151"
+      },
+      "x": 50,
+      "y": 50,
+      "text": "「おおきく なあれ。」",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-152"
+      },
+      "x": 50,
+      "y": 60,
+      "text": "「おおきく なあれ。」",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p16-sprout-153"
+      },
+      "x": 50,
+      "y": 80,
+      "partId": {
+       "value": "art:sprout"
+      },
+      "sizePct": 12,
+      "heightPct": 10.5
+     }
+    ]
+   },
+   {
+    "id": "back",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "back-seed-154"
+      },
+      "x": 50,
+      "y": 38,
+      "partId": {
+       "value": "art:seed"
+      },
+      "sizePct": 5,
+      "heightPct": 5.625
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-155"
+      },
+      "x": 62,
+      "y": 60,
+      "text": "発行 2026.8.8",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-156"
+      },
+      "x": 59,
+      "y": 68,
+      "text": "さく ○○○○",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-157"
+      },
+      "x": 51,
+      "y": 76,
+      "text": "え ○○○○",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   }
+  ]
+ }
+}

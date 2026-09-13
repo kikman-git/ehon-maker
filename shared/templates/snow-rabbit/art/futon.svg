@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ねむる そら</title>
+<path d="M20 100h280q10 0 10 10v50q0 10-10 10H20q-10 0-10-10v-50q0-10 10-10Z" fill="#8fb0c9"/>
+<path d="M60 120q20-8 40 0M160 140q20-8 40 0M240 118q20-8 40 0" stroke="#fff0d9" stroke-width="2"/>
+<path d="M10 100Q40 60 80 70Q110 76 120 100Z" fill="#fff0d9"/>
+<path d="M34 56C30 78 40 100 48 102L92 102C100 100 110 78 106 56Z" fill="#5a4636"/>
+<ellipse cx="70" cy="72" rx="32" ry="34" fill="#f6dfc8"/>
+<path d="M38 60Q60 36 102 58Q90 60 82 50Q70 64 58 50Q48 62 38 60Z" fill="#5a4636" stroke-width="1.4"/>
+<path d="M32 60C26 20 56 4 70 4C84 4 114 20 108 60Z" fill="#5a4636"/>
+<path d="M52 74q6 5 12 0M76 74q6 5 12 0" stroke-width="1.6"/>
+<path d="M62 88q8 7 16 0" stroke-width="1.4"/>
+<ellipse cx="48" cy="84" rx="7" ry="4" fill="#e9a28f" opacity=".55" stroke="none"/><ellipse cx="92" cy="84" rx="7" ry="4" fill="#e9a28f" opacity=".55" stroke="none"/>
+<path d="M250 40l12 0l-12 12l12 0M272 24l9 0l-9 9l9 0" stroke="#9aa4ad" stroke-width="2"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" fill="none" stroke="#69584d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<title>つちの なか</title>
+<path d="M0 42Q50 30 100 42T200 40T300 44T400 38T500 44T600 40V340H0Z" fill="#c69a6b" stroke="none"/>
+<path d="M0 150Q150 128 300 152T600 144V340H0Z" fill="#b0835a" stroke="none"/>
+<path d="M0 42Q50 30 100 42T200 40T300 44T400 38T500 44T600 40" stroke="#7fa35e" stroke-width="2"/>
+<path d="M22 40l-4-14M30 41l3-12M118 40l-3-13M124 40l4-10M212 38l-4-14M218 39l3-11M330 44l-5-14M337 44l4-12M452 40l-3-13M458 41l4-10M548 42l-4-14M554 42l3-11" stroke="#7fa35e" stroke-width="1.6"/>
+<ellipse cx="80" cy="120" rx="14" ry="9" fill="#a67b57" stroke="#8a6a4c" stroke-width="1.2"/><ellipse cx="470" cy="100" rx="11" ry="7" fill="#a67b57" stroke="#8a6a4c" stroke-width="1.2"/><ellipse cx="540" cy="250" rx="16" ry="10" fill="#9a7550" stroke="#8a6a4c" stroke-width="1.2"/><ellipse cx="150" cy="280" rx="12" ry="8" fill="#9a7550" stroke="#8a6a4c" stroke-width="1.2"/>
+<path d="M380 300q10-18 22-4t22-6" stroke="#e3a49a" stroke-width="5"/>
+<circle cx="425" cy="290" r="1.4" fill="#69584d" stroke="none"/>
+<path d="M40 60q4 10 2 22M560 70q-3 12 1 24M250 62q5 14 0 26" stroke="#a67b57" stroke-width="1.2"/>
+</svg>

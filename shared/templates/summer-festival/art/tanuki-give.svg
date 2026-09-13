@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 300" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>きんぎょを さしだす たぬきさん</title>
+<path d="M60 230C54 250 74 264 100 262Q118 262 124 246L120 210Z" fill="#9c8465"/>
+<path d="M170 210C176 250 200 268 224 262Q238 258 234 244L214 206Z" fill="#9c8465"/>
+<path d="M70 160C56 190 60 230 88 246Q140 262 190 246C218 230 222 190 208 160Z" fill="#9c8465"/>
+<path d="M92 160h94l10 72H84Z" fill="#7f9f6a"/>
+<path d="M96 268h30v14H96ZM196 268h30v14h-30Z" fill="#d9c3a0"/>
+<path d="M196 176C230 186 262 196 284 200Q296 204 290 212Q262 214 232 208L190 200Z" fill="#9c8465"/>
+<circle cx="290" cy="208" r="10" fill="#d9c3a0"/>
+<path d="M286 214L280 226Q262 236 264 262Q266 282 288 284Q310 282 312 262Q314 236 296 226L292 214Z" fill="#dfeef2" fill-opacity=".9"/>
+<path d="M280 238q-6 20 8 32" stroke="#fff" stroke-width="2.2" opacity=".8"/>
+<path d="M278 268C282 258 298 256 302 266Q298 276 286 274L276 280L278 268Z" fill="#d9705f" stroke-width="1.2"/><circle cx="297" cy="265" r="1.3" fill="#69584d"/>
+<path d="M274 210q10 2 18 8" stroke="#8fb0c9" stroke-width="1.6"/>
+<circle cx="130" cy="120" r="24" fill="#9c8465"/>
+<circle cx="96" cy="72" r="15" fill="#9c8465"/><circle cx="184" cy="72" r="15" fill="#9c8465"/>
+<path d="M89 96C89 62 117 49 140 49C163 49 191 62 191 96C191 125 168 142 140 142C112 142 89 125 89 96Z" fill="#9c8465"/>
+<path d="M96 94C102 79 127 81 132 96Q119 111 96 94ZM184 94C178 79 153 81 148 96Q161 111 184 94Z" fill="#5a4a3e" stroke-width="1.2"/>
+<ellipse cx="115" cy="94" rx="2.8" ry="4.3" fill="#fff" stroke="none"/><ellipse cx="165" cy="94" rx="2.8" ry="4.3" fill="#fff" stroke="none"/>
+<ellipse cx="140" cy="117" rx="25" ry="17" fill="#d9c3a0" stroke-width="1.3"/>
+<path d="M134 110q6-4 12 0l-6 6Z" fill="#69584d" stroke-width="1"/>
+<path d="M140 115v6M130 123q10 8 20 0" stroke-width="1.3"/>
+<path d="M83 52Q140 34 197 52L201 62Q140 45 79 62Z" fill="#c8553d" stroke-width="1.3"/>
+<path d="M197 56l16-10l-4 14l12 6" fill="#c8553d" stroke-width="1.3"/>
+</svg>

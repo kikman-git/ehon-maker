@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>かえる コン（うしろ）</title>
+<path d="M96 300h18v14H96ZM126 300h18v14h-18Z" fill="#69584d"/>
+<path d="M85 170L155 170L168 302L72 302Z" fill="#8fb0c9"/>
+<circle cx="100" cy="220" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="136" cy="206" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="116" cy="262" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="148" cy="270" r="2.6" fill="#fff0d9" stroke="none"/>
+<path d="M78 216h84v18H78Z" fill="#c8553d"/>
+<path d="M104 216q16-14 32 0l-6 24h-20Z" fill="#c8553d" stroke-width="1.4"/>
+<g transform="translate(120 236) scale(1.05 1.05)"><path d="M0 0C30-10 60 10 66 40Q70 66 44 70Q30 56 22 30Q14 10 0 0Z" fill="#e0955a"/><path d="M50 44Q66 44 66 40Q70 66 44 70Q34 60 30 48Q40 40 50 44Z" fill="#fff0d9" stroke-width="1.2"/></g>
+<path d="M86 176C70 196 68 220 84 232L96 240Q100 250 106 236L92 218Q86 204 96 190Z" fill="#8fb0c9"/>
+<path d="M154 176C170 196 172 220 156 232L144 238Q140 248 136 236L148 218Q154 204 144 190Z" fill="#8fb0c9"/>
+<circle cx="90" cy="238" r="9" fill="#e0955a"/>
+<path d="M148 236L142 250Q124 260 126 286Q128 306 150 308Q172 306 174 286Q176 260 158 250Z" fill="#dfeef2" fill-opacity=".9"/>
+<path d="M142 262q-6 20 8 32" stroke="#fff" stroke-width="2.2" opacity=".8"/>
+<path d="M140 292C144 282 160 280 164 290Q160 300 148 298L138 304L140 292Z" fill="#d9705f" stroke-width="1.2"/>
+<g transform="translate(0 24)">
+<path d="M74 82L62 38L102 66Z" fill="#e0955a"/><path d="M166 82L178 38L138 66Z" fill="#e0955a"/>
+<path d="M64 98C62 68 90 60 120 62C150 60 178 68 176 98C178 130 152 148 120 148C88 148 62 130 64 98Z" fill="#e0955a"/>
+</g>
+</svg>

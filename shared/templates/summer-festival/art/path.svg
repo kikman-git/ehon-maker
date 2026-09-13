@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" fill="#e6dccb" stroke="#c8bba4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+<title>おまつりの みち</title>
+<path d="M0 20Q150 0 300 16T600 12V380H0Z" stroke="none"/>
+<path d="M0 20Q150 0 300 16T600 12" stroke="#d3c7b0" stroke-width="2"/>
+<path d="M60 120q20-6 40 0M300 100q20-6 40 0M500 150q20-6 40 0M160 220q20-6 40 0M420 260q20-6 40 0M240 330q20-6 40 0" fill="none"/>
+</svg>

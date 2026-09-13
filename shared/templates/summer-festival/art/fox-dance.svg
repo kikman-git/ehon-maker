@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 320" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>おどる コン</title>
+<g transform="translate(160 200) scale(1.0 1.0)"><path d="M0 0C30-10 60 10 66 40Q70 66 44 70Q30 56 22 30Q14 10 0 0Z" fill="#e0955a"/><path d="M50 44Q66 44 66 40Q70 66 44 70Q34 60 30 48Q40 40 50 44Z" fill="#fff0d9" stroke-width="1.2"/></g>
+<path d="M100 300h18v14h-18Z" fill="#69584d"/>
+<path d="M150 262C168 256 186 262 190 276Q192 286 180 286L146 282Z" fill="#8fb0c9"/><path d="M182 270h18v14h-18Z" fill="#69584d" transform="rotate(-20 190 277)"/>
+<path d="M91.44 170L160.56 170L174.0 300L78.0 300Z" fill="#8fb0c9"/>
+<path d="M104.88 170L126 214.2L147.12 170" fill="#fff0d9" stroke-width="1.3"/>
+<circle cx="99.12" cy="215.5" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="135.6" cy="206.4" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="121.2" cy="248.0" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="154.8" cy="250.6" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="97.2" cy="276.6" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="143.28" cy="281.8" r="2.6" fill="#fff0d9" stroke="none"/>
+<path d="M85.68 216.8h80.64v18.200000000000003h-80.64Z" fill="#c8553d"/>
+<path d="M92 176C74 158 62 130 58 106Q56 94 66 96Q74 114 86 130L104 160Z" fill="#8fb0c9"/>
+<path d="M160 176C178 158 190 130 194 106Q196 94 186 96Q178 114 166 130L148 160Z" fill="#8fb0c9"/>
+<circle cx="62" cy="94" r="9" fill="#e0955a"/><circle cx="190" cy="94" r="9" fill="#e0955a"/>
+<g transform="translate(0 22)">
+<path d="M80 82L68 38L108 66Z" fill="#e0955a"/><path d="M172 82L184 38L144 66Z" fill="#e0955a"/>
+<path d="M80 78L74 52L98 68Z" fill="#69584d" stroke="none"/><path d="M172 78L178 52L154 68Z" fill="#69584d" stroke="none"/>
+<path d="M70 98C68 68 96 60 126 62C156 60 184 68 182 98C180 130 156 148 126 148C96 148 72 130 70 98Z" fill="#e0955a"/>
+<path d="M90 114C96 134 114 148 126 148C138 148 156 134 162 114Q144 128 126 118Q108 128 90 114Z" fill="#fff0d9" stroke-width="1.3"/>
+<path d="M121 130q5-3 10 0l-5 5Z" fill="#69584d" stroke-width="1"/>
+<path d="M126 135v5M119 141q7 6 14 0" stroke-width="1.3"/>
+<path d="M104 112q6-7 12 0M136 112q6-7 12 0" stroke-width="1.7"/><ellipse cx="98" cy="122" rx="8" ry="4" fill="#e9a28f" opacity=".5" stroke="none"/><ellipse cx="154" cy="122" rx="8" ry="4" fill="#e9a28f" opacity=".5" stroke="none"/>
+</g>
+</svg>

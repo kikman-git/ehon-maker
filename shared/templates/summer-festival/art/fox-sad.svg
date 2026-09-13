@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>しょんぼりする コン</title>
+<g transform="translate(176 150) scale(.9 .9)"><path d="M0 0C30-10 60 10 66 40Q70 66 44 70Q30 56 22 30Q14 10 0 0Z" fill="#e0955a"/><path d="M50 44Q66 44 66 40Q70 66 44 70Q34 60 30 48Q40 40 50 44Z" fill="#fff0d9" stroke-width="1.2"/></g>
+<path d="M72 134C56 152 50 190 54 226Q58 244 78 246L182 246Q202 244 206 226C210 190 204 152 188 134Z" fill="#8fb0c9"/>
+<path d="M56 176h148v14H56Z" fill="#c8553d"/>
+<path d="M74 228C70 196 90 176 110 178Q130 182 132 210V228Z" fill="#8fb0c9"/>
+<path d="M186 228C190 196 170 176 150 178Q130 182 128 210V228Z" fill="#8fb0c9"/>
+<path d="M82 216Q82 202 98 202H162Q178 202 178 216Q178 232 162 232H98Q82 232 82 216Z" fill="#8fb0c9"/>
+<circle cx="118" cy="220" r="10" fill="#e0955a"/><circle cx="142" cy="220" r="10" fill="#e0955a"/>
+<path d="M86 246h22v12H86ZM152 246h22v12h-22Z" fill="#69584d"/>
+<path d="M84 96L72 52L112 80Z" fill="#e0955a"/><path d="M176 96L188 52L148 80Z" fill="#e0955a"/>
+<path d="M84 92L78 66L102 82Z" fill="#69584d" stroke="none"/><path d="M176 92L182 66L158 82Z" fill="#69584d" stroke="none"/>
+<path d="M74 112C72 82 100 74 130 76C160 74 188 82 186 112C184 144 160 162 130 162C100 162 76 144 74 112Z" fill="#e0955a"/>
+<path d="M94 128C100 148 118 162 130 162C142 162 160 148 166 128Q148 142 130 132Q112 142 94 128Z" fill="#fff0d9" stroke-width="1.3"/>
+<path d="M125 144q5-3 10 0l-5 5Z" fill="#69584d" stroke-width="1"/>
+<path d="M130 149v5M124 158q6-4 12 0" stroke-width="1.3"/>
+<path d="M104 122q6 6 12 0M144 122q6 6 12 0" stroke-width="1.7"/>
+<path d="M110 128q-6 10-2 20q4 6 7 0q2-10-5-20Z" fill="#cfe0e6" stroke="#8fb0c9" stroke-width="1.2"/>
+</svg>

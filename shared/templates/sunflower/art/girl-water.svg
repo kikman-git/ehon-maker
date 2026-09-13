@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>みずを やる ひなた</title>
+<path d="M104 236h16v28h-16ZM132 236h16v28h-16Z" fill="#f6dfc8"/>
+<path d="M98 264h28v18q0 6-6 6h-18q-4 0-4-6ZM126 264h28v18q0 6-6 6h-18q-4 0-4-6Z" fill="#e9bf64"/>
+<path d="M98 128C84 170 76 210 74 236H178C176 210 166 170 154 128Z" fill="#d67c69"/>
+<path d="M112 128Q128 142 144 128" fill="#fff1d9" stroke-width="1.3"/>
+<path d="M150 138C174 148 200 160 214 170Q222 178 214 182Q200 180 186 174L146 160Z" fill="#f6dfc8"/>
+<path d="M206 158h56v46q0 8-8 8h-40q-8 0-8-8Z" fill="#8fb0c9"/>
+<path d="M262 170L288 140L294 146L266 184Z" fill="#8fb0c9"/>
+<circle cx="291" cy="142" r="8" fill="#8fb0c9"/>
+<path d="M288 139l1 1M292 138l1 1M290 144l1 1M294 143l1 1" stroke-width="1.6"/>
+<path d="M216 158Q234 130 254 158" stroke-width="3.2"/>
+<circle cx="220" cy="176" r="9" fill="#f6dfc8"/>
+<path d="M90 68C86 38 116 24 146 32C166 38 168 62 162 74Z" fill="#5a4636"/>
+<circle cx="126" cy="78" r="34" fill="#f6dfc8"/>
+<path d="M92 70Q102 38 142 44Q156 48 160 66Q148 56 136 60Q118 70 92 70Z" fill="#5a4636" stroke-width="1.4"/>
+<ellipse cx="142" cy="80" rx="2.8" ry="4.8" fill="#69584d" stroke="none"/>
+<path d="M134 68q8-5 14 0" stroke-width="1.3"/>
+<path d="M146 94q6 4 10-2" stroke-width="1.4"/>
+<ellipse cx="144" cy="90" rx="7" ry="4" fill="#e2b7aa" opacity=".55" stroke="none"/>
+<ellipse cx="122" cy="42" rx="62" ry="12" fill="#e9d8a6"/>
+<path d="M82 42C82 14 98 2 126 2C152 2 168 14 168 42Z" fill="#e9d8a6"/>
+<path d="M84 34Q126 44 167 34L168 40Q126 50 83 40Z" fill="#c8553d" stroke-width="1.2"/>
+</svg>

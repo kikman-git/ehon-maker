@@ -155,35 +155,36 @@ for (const id of ['t2', 't3', 't4', 't5']) {
   });
 }
 
-test('a document template is three layered pages of vector art under editable captions', async ({ page }) => {
+test('a story template opens as a bound book: vector pieces on the picture pages, editable words facing them', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.locator('.file-menu > summary').click();
-  await page.getByRole('combobox', { name: 'テンプレート', exact: true }).selectOption('doc-snow');
+  await page.getByRole('combobox', { name: 'テンプレート', exact: true }).selectOption('doc-leaf-umbrella');
   await page.locator('.file-menu > summary').click();
-  await expect(page.getByText('1 / 3 ページ')).toBeVisible();
+  await expect(page.getByText('1 / 19 ページ')).toBeVisible();
   const { book } = await savedBook(page);
-  expect(book.pages).toHaveLength(3);
-  for (const [index, current] of book.pages.entries()) {
-    const captions = current.items.filter((item) => item.type === 'text');
-    expect(current.items[0]).toMatchObject({ type: 'part', x: 50, y: 50 });
-    expect(current.items.filter((item) => item.type === 'part').length).toBeGreaterThan(1);
-    expect(captions.map((item) => item.y)).toEqual([84.5, 91.5]);
-    expect(captions[1].text).toContain(['まっしろ', 'バケツ', 'みかん'][index]);
-  }
-  // The bear is vector art painted by the core: brown where it stands, paper below the caption.
-  const canvas = page.getByLabel('えほんの ページ');
-  const bear = await canvas.evaluate((element) => {
+  // Cover and title page, then the storyboard's picture-left, words-right spreads, then the back cover.
+  expect(book.pages.slice(0, 4).map((current) => current.id)).toEqual(['cover', 'title', 'p1', 'p2']);
+  expect(book.pages.at(-1)!.id).toBe('back');
+  const picture = book.pages[2];
+  expect(picture.items[0]).toMatchObject({ type: 'part', x: 50 });
+  expect(picture.items.filter((item) => item.type === 'part').length).toBeGreaterThan(3);
+  const words = book.pages[3];
+  expect(words.items.every((item) => item.type === 'text')).toBe(true);
+  expect(words.items[0].text).toBe('ぽつ、ぽつ、ぽつ。');
+  // The bear on the cover is vector art painted by the core: brown fur where he stands.
+  const cover = page.locator('[data-frame="0"] canvas');
+  const bear = await cover.evaluate((element) => {
     const c = element as HTMLCanvasElement;
-    const [r, g, b] = c.getContext('2d')!.getImageData(Math.round(c.width * .31), Math.round(c.height * .66), 1, 1).data;
+    const [r, g, b] = c.getContext('2d')!.getImageData(Math.round(c.width * .5), Math.round(c.height * .72), 1, 1).data;
     return { r, g, b };
   });
   expect(bear.r).toBeGreaterThan(bear.b + 40);
   await page.getByRole('button', { name: '素材', exact: true }).click();
-  await expect(page.getByRole('button', { name: /^ゆきだるま/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^かえるの ケロ/ })).toBeVisible();
   await page.getByRole('button', { name: '選択', exact: true }).click();
-  const box = (await canvas.boundingBox())!;
-  await page.mouse.click(box.x + box.width * .5, box.y + box.height * .845);
-  await expect(page.getByLabel('ことば', { exact: true })).toHaveValue('しんしん、ゆきが ふる。');
+  const box = (await cover.boundingBox())!;
+  await page.mouse.click(box.x + box.width * .5, box.y + box.height * .14);
+  await expect(page.getByLabel('ことば', { exact: true })).toHaveValue('はっぱの かさ');
   expect(errors).toEqual([]);
 });

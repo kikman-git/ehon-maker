@@ -23,7 +23,8 @@ is structured from now on: a Japanese picture book, bound the way the storyboard
 The sources are `story.json` and the SVG pieces in `art/`; the original photographs are not
 bundled. Build with `make web-core`; the assembled, portable document is
 `shared/build/templates/doc-love-letter.ehon.json`, checked with
-`cd web && pnpm ehon-check ../shared/build/templates/doc-love-letter.ehon.json`.
+`cd web && pnpm ehon-check ../shared/build/templates/doc-love-letter.ehon.json`, and published with
+`make templates-upload` (decision #60).
 
 The table uses **draft page numbers**. The template's index includes the cover and title page,
 so **template pages 15–22 are draft pages 13–20** (`p13`–`p20` in `story.json`). These four

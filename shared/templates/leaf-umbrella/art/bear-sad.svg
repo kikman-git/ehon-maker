@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 430" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>しょんぼりする くま</title>
+<circle cx="128" cy="62" r="26" fill="#b58f68"/><circle cx="130" cy="64" r="14" fill="#d9b48c" stroke-width="1"/>
+<circle cx="272" cy="62" r="26" fill="#b58f68"/><circle cx="270" cy="64" r="14" fill="#d9b48c" stroke-width="1"/>
+<path d="M118 178C76 206 56 270 60 340Q64 380 100 392L300 392Q336 380 340 340C344 270 324 206 282 178Z" fill="#b58f68"/>
+<path d="M112 322H176V392H112Z" fill="#b58f68"/><path d="M224 322H288V392H224Z" fill="#b58f68"/>
+<ellipse cx="140" cy="398" rx="46" ry="22" fill="#b58f68"/><ellipse cx="260" cy="398" rx="46" ry="22" fill="#b58f68"/>
+<ellipse cx="140" cy="402" rx="18" ry="8" fill="#d9b48c" stroke-width="1"/><ellipse cx="260" cy="402" rx="18" ry="8" fill="#d9b48c" stroke-width="1"/>
+<path d="M120 392l1 1M140 388l1 1M160 392l1 1M240 392l1 1M260 388l1 1M280 392l1 1" stroke-width="3.4"/>
+<path d="M96 300C90 250 120 220 150 222Q184 226 190 264V300Z" fill="#b58f68"/>
+<path d="M304 300C310 250 280 220 250 222Q216 226 210 264V300Z" fill="#b58f68"/>
+<path d="M108 196C74 224 62 268 74 306L106 312L134 224Z" fill="#b58f68"/>
+<path d="M292 196C326 224 338 268 326 306L294 312L266 224Z" fill="#b58f68"/>
+<path d="M76 300Q76 280 98 280H302Q324 280 324 300Q324 326 302 326H98Q76 326 76 300Z" fill="#b58f68"/>
+<ellipse cx="180" cy="306" rx="24" ry="17" fill="#b58f68"/><ellipse cx="222" cy="306" rx="24" ry="17" fill="#b58f68"/>
+<path d="M168 316l3 5M180 318l1 6M192 316l-3 5M210 316l3 5M222 318l1 6M234 316l-3 5" stroke-width="1.2"/>
+<path d="M112 140C90 86 138 42 200 40C262 38 310 86 288 140Q272 180 200 184Q128 180 112 140Z" fill="#b58f68"/>
+<ellipse cx="200" cy="142" rx="40" ry="28" fill="#e9c9a0" stroke-width="1.4"/>
+<path d="M186 130q14-8 28 0l-14 12Z" fill="#69584d" stroke-width="1"/>
+<path d="M200 142v8M188 162q12-8 24 0" stroke-width="1.4"/>
+<path d="M154 118q10 8 20 0M226 118q10 8 20 0"/>
+<path d="M148 100q12-4 24 4M228 104q12-8 24-4" stroke-width="1.5"/>
+<ellipse cx="150" cy="146" rx="12" ry="6" fill="#e2b7aa" opacity=".4" stroke="none"/><ellipse cx="250" cy="146" rx="12" ry="6" fill="#e2b7aa" opacity=".4" stroke="none"/>
+<path d="M170 128q-5 10-1 20q4 6 7 0q2-10-6-20Z" fill="#cfe0e6" stroke="#8fb0c9" stroke-width="1.2"/>
+<path d="M340 130q4-9 8 0q1 6-4 7t-4-7ZM52 170q4-9 8 0q1 6-4 7t-4-7ZM200 14q4-9 8 0q1 6-4 7t-4-7Z" fill="#cfe0e6" stroke-width="1"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ちいさな ひまわり</title>
+<path d="M120 296V60" stroke="#6f9460" stroke-width="6"/>
+<path d="M122 296V60" stroke="#69584d" stroke-width="1.2"/>
+<g transform="translate(118 240) scale(1.1 1.1)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g><g transform="translate(122 240) scale(-1.1 1.1)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g>
+<g transform="translate(118 176) scale(0.95 0.95)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g><g transform="translate(122 172) scale(-0.95 0.95)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g>
+<g transform="translate(118 122) scale(0.7 0.7)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g><g transform="translate(122 118) scale(-0.7 0.7)"><path d="M0 0C-26 4-58-10-64-38C-70-66-46-84-20-74Q-2-44 0 0Z" fill="#8fb27a"/><path d="M-4-6Q-30-30-46-58" stroke="#6f9460" stroke-width="1.2"/></g>
+<path d="M120 62C102 60 96 40 106 34Q118 28 120 46Q122 28 134 34Q144 40 126 60Z" fill="#6f9460" stroke-width="1.4"/>
+</svg>

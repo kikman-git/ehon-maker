@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>きんぎょを すくう コン</title>
+<g transform="translate(150 200) scale(1.0 1.0)"><path d="M0 0C30-10 60 10 66 40Q70 66 44 70Q30 56 22 30Q14 10 0 0Z" fill="#e0955a"/><path d="M50 44Q66 44 66 40Q70 66 44 70Q34 60 30 48Q40 40 50 44Z" fill="#fff0d9" stroke-width="1.2"/></g>
+<path d="M96 300h18v14H96ZM126 300h18v14h-18Z" fill="#69584d"/>
+<path d="M85 170L155 170L168 302L72 302Z" fill="#8fb0c9"/>
+<path d="M98 170L120 214L142 170" fill="#fff0d9" stroke-width="1.3"/>
+<circle cx="93" cy="216" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="130" cy="207" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="115" cy="249" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="149" cy="251" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="91" cy="278" r="2.6" fill="#fff0d9" stroke="none"/><circle cx="137" cy="283" r="2.6" fill="#fff0d9" stroke="none"/>
+<path d="M78 218h84v18H78Z" fill="#c8553d"/>
+<path d="M86 176C70 190 62 214 66 236Q68 246 78 244Q84 224 96 208Z" fill="#8fb0c9"/>
+<path d="M154 176C176 160 194 140 204 118Q208 108 198 108Q188 122 176 136L150 160Z" fill="#8fb0c9"/>
+<circle cx="72" cy="246" r="9" fill="#e0955a"/><circle cx="204" cy="106" r="9" fill="#e0955a"/>
+<g transform="translate(0 22)">
+<path d="M74 82L62 38L102 66Z" fill="#e0955a"/><path d="M166 82L178 38L138 66Z" fill="#e0955a"/>
+<path d="M74 78L68 52L92 68Z" fill="#69584d" stroke="none"/><path d="M166 78L172 52L148 68Z" fill="#69584d" stroke="none"/>
+<path d="M64 98C62 68 90 60 120 62C150 60 178 68 176 98C174 130 150 148 120 148C90 148 66 130 64 98Z" fill="#e0955a"/>
+<path d="M84 114C90 134 108 148 120 148C132 148 150 134 156 114Q138 128 120 118Q102 128 84 114Z" fill="#fff0d9" stroke-width="1.3"/>
+<path d="M115 130q5-3 10 0l-5 5Z" fill="#69584d" stroke-width="1"/>
+<path d="M120 135v5M113 141q7 6 14 0" stroke-width="1.3"/>
+<ellipse cx="104" cy="110" rx="3.0" ry="5.0" fill="#69584d" stroke="none"/><ellipse cx="136" cy="110" rx="3.0" ry="5.0" fill="#69584d" stroke="none"/><ellipse cx="92" cy="122" rx="8" ry="4" fill="#e9a28f" opacity=".5" stroke="none"/><ellipse cx="148" cy="122" rx="8" ry="4" fill="#e9a28f" opacity=".5" stroke="none"/>
+
+</g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 80" fill="none" stroke="#69584d" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+<title>みつばち</title>
+<ellipse cx="34" cy="26" rx="16" ry="10" fill="#eef3f5" opacity=".9"/><ellipse cx="56" cy="24" rx="16" ry="10" fill="#eef3f5" opacity=".9"/>
+<ellipse cx="46" cy="48" rx="26" ry="18" fill="#f0c453"/>
+<path d="M36 32v32M48 30v36M60 34v28" stroke="#69584d" stroke-width="5"/>
+<circle cx="22" cy="46" r="12" fill="#69584d"/>
+<circle cx="18" cy="43" r="2" fill="#fff8ec" stroke="none"/>
+<path d="M14 36l-6-8M22 34l0-10" stroke-width="1.6"/>
+<path d="M72 50l12 2" stroke-width="1.6"/>
+</svg>

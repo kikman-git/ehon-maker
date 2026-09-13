@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" fill="#efe3c8" stroke="#a67b57" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<title>おおきな ねっこ</title>
+<path d="M148 4h24l10 70l-4 100l-14 82h-8l-14-82l-4-100Z"/>
+<path d="M156 40C120 44 80 70 56 110Q40 140 20 150" fill="none" stroke-width="5"/>
+<path d="M164 40C200 44 240 70 264 110Q280 140 300 150" fill="none" stroke-width="5"/>
+<path d="M158 90C130 100 100 130 90 170Q84 196 70 214" fill="none" stroke-width="4"/>
+<path d="M162 90C190 100 220 130 230 170Q236 196 250 214" fill="none" stroke-width="4"/>
+<path d="M160 150C140 170 130 200 126 240M160 150C180 170 190 200 194 240" fill="none" stroke-width="3"/>
+<path d="M56 110q-10 20-30 26M264 110q10 20 30 26M90 170q-14 8-30 6M230 170q14 8 30 6" fill="none" stroke-width="2.4"/>
+</svg>

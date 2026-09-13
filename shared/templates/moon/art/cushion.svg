@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
-<path d="M120 520 Q 500 440 880 520 L 900 700 Q 500 780 100 700 Z" fill="#4a5a86"/>
-<path d="M100 700 Q 500 780 900 700 L 900 740 Q 500 820 100 740 Z" fill="#3b4870"/>
-<g fill="#c9c9e6" opacity=".8"><circle cx="300" cy="600" r="14"/><circle cx="500" cy="560" r="14"/><circle cx="700" cy="600" r="14"/><circle cx="400" cy="680" r="12"/><circle cx="600" cy="680" r="12"/></g>
-<g fill="#f4cfd4"><circle cx="120" cy="520" r="18"/><circle cx="880" cy="520" r="18"/><circle cx="100" cy="700" r="18"/><circle cx="900" cy="700" r="18"/></g>
-</svg>

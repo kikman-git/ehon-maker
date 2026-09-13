@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 260" fill="none" stroke="#7f8b95" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<title>あらしの くも</title>
+<path d="M0 0H600V120C560 100 520 132 480 116C450 160 380 162 340 126C300 176 210 176 176 134C140 170 76 160 56 120C36 140 12 136 0 124Z" fill="#9aa4ad" stroke="none"/>
+<path d="M0 124C12 136 36 140 56 120C76 160 140 170 176 134C210 176 300 176 340 126C380 162 450 160 480 116C520 132 560 100 600 120"/>
+<path d="M0 0H600V60C550 44 500 76 460 56C420 100 340 96 300 62C260 106 170 100 140 66C100 96 40 90 20 60Q8 48 0 56Z" fill="#b3bcc3" stroke="none"/>
+<path d="M0 56Q8 48 20 60C40 90 100 96 140 66C170 100 260 106 300 62C340 96 420 100 460 56C500 76 550 44 600 60" stroke="#98a3ab"/>
+</svg>

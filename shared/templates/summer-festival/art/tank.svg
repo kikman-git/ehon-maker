@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 120" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>きんぎょの すいそう</title>
+<path d="M14 40h232l-12 70H26Z" fill="#8fb0c9"/>
+<path d="M14 40h232v10H14Z" fill="#a9c4cf" stroke-width="1.3"/>
+<ellipse cx="130" cy="44" rx="112" ry="10" fill="#dfeef2" stroke-width="1.3"/>
+<path d="M60 74C66 62 88 62 92 72Q86 84 70 82L56 90Z" fill="#d9705f" stroke-width="1.2"/>
+<path d="M150 66C156 56 176 56 180 66Q174 78 158 76L146 84Z" fill="#d9705f" stroke-width="1.2"/>
+<path d="M190 88C194 80 208 80 212 88Q208 96 196 94L186 100Z" fill="#d9705f" stroke-width="1.2"/>
+<path d="M110 60q-3-8 2-10M200 62q-3-8 2-10" stroke="#fff" stroke-width="1.6"/>
+</svg>

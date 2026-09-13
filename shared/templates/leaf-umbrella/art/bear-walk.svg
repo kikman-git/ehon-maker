@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 480" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>あるく くま</title>
+<circle cx="54" cy="340" r="18" fill="#b58f68"/>
+<path d="M110 380C84 392 64 424 70 452Q74 464 90 464L146 462Q154 448 146 424Z" fill="#b58f68"/>
+<path d="M190 236C150 262 118 280 106 306Q98 322 112 324Q126 322 140 308C160 288 194 276 222 258Z" fill="#b58f68"/>
+<path d="M120 150C60 190 40 300 70 400Q90 430 150 436L280 436Q330 424 326 360C322 260 290 190 232 150Z" fill="#b58f68"/>
+<path d="M232 180C290 250 296 350 276 420Q250 400 242 320Q238 240 232 180Z" fill="#c9a37c" stroke-width="1.3"/>
+<path d="M226 380C262 380 296 404 300 446Q300 462 284 462L232 460Q216 446 218 420Z" fill="#b58f68"/>
+<ellipse cx="108" cy="466" rx="40" ry="16" fill="#b58f68"/><ellipse cx="270" cy="466" rx="42" ry="16" fill="#b58f68"/>
+<path d="M90 462l1 1M108 458l1 1M126 462l1 1M252 462l1 1M270 458l1 1M288 462l1 1" stroke-width="3.4"/>
+<path d="M236 196C280 236 310 290 304 340Q302 358 286 358Q272 356 272 340C272 300 248 258 214 232Z" fill="#b58f68"/>
+<ellipse cx="286" cy="360" rx="20" ry="15" fill="#b58f68"/>
+<path d="M276 370l3 5M286 372l1 6M296 370l-3 5" stroke-width="1.2"/>
+<circle cx="112" cy="58" r="24" fill="#b58f68"/><circle cx="114" cy="60" r="13" fill="#d9b48c" stroke-width="1"/>
+<circle cx="150" cy="112" r="62" fill="#b58f68"/>
+<ellipse cx="212" cy="128" rx="30" ry="21" fill="#e9c9a0" stroke-width="1.4"/>
+<path d="M232 118q12 0 12 8q-6 8-16 2Z" fill="#69584d" stroke-width="1"/>
+<path d="M214 138q10 6 20-2" stroke-width="1.4"/>
+<ellipse cx="174" cy="102" rx="4" ry="7" fill="#69584d" stroke="none"/>
+<path d="M160 84q12-8 26-2" stroke-width="1.5"/>
+<ellipse cx="184" cy="130" rx="12" ry="6" fill="#e2b7aa" opacity=".45" stroke="none"/>
+</svg>

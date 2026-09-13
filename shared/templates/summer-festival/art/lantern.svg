@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 130" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>あかい ちょうちん</title>
+<path d="M45 0v12" stroke-width="2"/>
+<path d="M28 14h34v8H28ZM28 108h34v8H28Z" fill="#69584d"/>
+<path d="M30 22C6 40 6 90 30 108H60C84 90 84 40 60 22Z" fill="#d9705f"/>
+<path d="M22 40q23 6 46 0M14 62h62M22 88q23 6 46 0" stroke="#a84c40" stroke-width="1.2"/>
+<path d="M32 52C36 46 46 46 50 52Q46 60 40 60Q32 60 32 52Z" fill="#f2c979" opacity=".7" stroke="none"/>
+</svg>

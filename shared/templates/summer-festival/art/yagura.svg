@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>やぐら</title>
+<path d="M80 200L60 500M320 200L340 500M140 200L120 500M260 200L280 500" stroke="#b58f68" stroke-width="10"/>
+<path d="M60 300h280M60 400h280" stroke="#b58f68" stroke-width="8"/>
+<path d="M40 190h320v22H40Z" fill="#b58f68"/>
+<path d="M60 190h280v-20H60Z" fill="#d9b48c"/>
+<path d="M120 70l160 0l40 100H80Z" fill="#d9705f"/>
+<path d="M60 170h280" stroke-width="2"/>
+<path d="M150 118h100v54H150Z" fill="#d9705f" stroke-width="1.6"/>
+<circle cx="200" cy="145" r="24" fill="#fff0d9" stroke-width="1.6"/><circle cx="200" cy="145" r="14" fill="none" stroke="#d9705f" stroke-width="2"/>
+<circle cx="200" cy="80" r="26" fill="#9c8465"/>
+<path d="M186 74q6-5 12 0M202 74q6-5 12 0" stroke-width="1.5"/>
+<path d="M170 44Q200 32 230 44L232 52Q200 42 168 52Z" fill="#c8553d" stroke-width="1.3"/>
+<path d="M160 100Q150 130 140 150M240 100Q250 130 260 150" stroke-width="6"/>
+<path d="M70 212v10" stroke-width="1.6"/><path d="M60 222h20v5h-20ZM60 262h20v5h-20Z" fill="#69584d"/><path d="M61 227C48 236 48 254 61 262H79C92 254 92 236 79 227Z" fill="#d9705f"/><path d="M114 212v10" stroke-width="1.6"/><path d="M104 222h20v5h-20ZM104 262h20v5h-20Z" fill="#69584d"/><path d="M105 227C92 236 92 254 105 262H123C136 254 136 236 123 227Z" fill="#d9705f"/><path d="M158 212v10" stroke-width="1.6"/><path d="M148 222h20v5h-20ZM148 262h20v5h-20Z" fill="#69584d"/><path d="M149 227C136 236 136 254 149 262H167C180 254 180 236 167 227Z" fill="#d9705f"/><path d="M202 212v10" stroke-width="1.6"/><path d="M192 222h20v5h-20ZM192 262h20v5h-20Z" fill="#69584d"/><path d="M193 227C180 236 180 254 193 262H211C224 254 224 236 211 227Z" fill="#d9705f"/><path d="M246 212v10" stroke-width="1.6"/><path d="M236 222h20v5h-20ZM236 262h20v5h-20Z" fill="#69584d"/><path d="M237 227C224 236 224 254 237 262H255C268 254 268 236 255 227Z" fill="#d9705f"/><path d="M290 212v10" stroke-width="1.6"/><path d="M280 222h20v5h-20ZM280 262h20v5h-20Z" fill="#69584d"/><path d="M281 227C268 236 268 254 281 262H299C312 254 312 236 299 227Z" fill="#d9705f"/><path d="M334 212v10" stroke-width="1.6"/><path d="M324 222h20v5h-20ZM324 262h20v5h-20Z" fill="#69584d"/><path d="M325 227C312 236 312 254 325 262H343C356 254 356 236 343 227Z" fill="#d9705f"/>
+</svg>

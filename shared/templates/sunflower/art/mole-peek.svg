@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>かおを だす モグ</title>
+<path d="M8 158C18 118 60 104 100 104C140 104 182 118 192 158Z" fill="#a97e58"/>
+<path d="M30 136q10-4 20 0M150 140q10-4 20 0M40 150q8-3 16 0" stroke="#8a6a4c" stroke-width="1.3"/>
+<circle cx="100" cy="82" r="36" fill="#8d7a6e"/>
+<ellipse cx="100" cy="106" rx="18" ry="12" fill="#8d7a6e"/>
+<circle cx="100" cy="114" r="8" fill="#e3a49a" stroke-width="1.2"/>
+<path d="M74 78q7-5 14 0M112 78q7-5 14 0" stroke-width="1.6"/>
+<path d="M80 108l-14-2M80 114l-12 4M120 108l14-2M120 114l12 4" stroke-width="1.1"/>
+<ellipse cx="60" cy="112" rx="15" ry="11" fill="#e9c9a0"/><path d="M52 101l-2-7M60 100l0-8M68 101l2-7" stroke-width="1.6"/><ellipse cx="140" cy="112" rx="15" ry="11" fill="#e9c9a0"/><path d="M132 101l-2-7M140 100l0-8M148 101l2-7" stroke-width="1.6"/>
+<path d="M24 96l-4-8M40 84l-2-10M170 92l4-8M158 82l2-10" stroke="#a97e58" stroke-width="2.4"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 170" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>かたつむりの でんでん</title>
+<path d="M186 152q16-6 34-2" stroke="#c8dbe0" stroke-width="2.4"/>
+<path d="M40 96C26 100 8 118 8 136Q8 152 24 152H166Q184 152 182 138Q176 124 150 122L96 122Q66 122 40 96Z" fill="#ead6b8"/>
+<path d="M38 78Q34 60 26 52M52 78Q56 60 62 50" stroke-width="2"/>
+<circle cx="26" cy="51" r="6" fill="#ead6b8"/><circle cx="62" cy="49" r="6" fill="#ead6b8"/>
+<circle cx="25" cy="51" r="1.9" fill="#69584d" stroke="none"/><circle cx="61" cy="49" r="1.9" fill="#69584d" stroke="none"/>
+<circle cx="44" cy="96" r="21" fill="#ead6b8"/>
+<path d="M36 104q6 4 12 0" stroke-width="1.2"/>
+<ellipse cx="32" cy="100" rx="6" ry="3.5" fill="#e2b7aa" opacity=".5" stroke="none"/>
+<circle cx="128" cy="86" r="52" fill="#d9a97a"/>
+<path d="M128 86C128 56 162 58 162 88C162 114 134 120 122 100C114 84 132 72 142 82" stroke="#a67b57" stroke-width="2.2"/>
+<path d="M78 90C82 56 106 36 128 34" stroke="#a67b57" stroke-width="1.4"/>
+<circle cx="100" cy="60" r="4" fill="#c4915f" stroke="none"/><circle cx="150" cy="120" r="4" fill="#c4915f" stroke="none"/><circle cx="86" cy="112" r="3" fill="#c4915f" stroke="none"/>
+</svg>

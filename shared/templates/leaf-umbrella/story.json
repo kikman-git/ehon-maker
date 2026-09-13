@@ -1,0 +1,2017 @@
+{
+ "id": "doc-leaf-umbrella",
+ "order": 1,
+ "description": {
+  "ja": "あめの ひ、かえるの はっぱの かさに なかまが つぎつぎ。おおきすぎる くまの ばんは？ 表紙と 8つの 見開き。",
+  "en": "On a rainy day a frog's leaf umbrella fills up with friends, until a bear far too big for it arrives. A cover and eight editable spreads."
+ },
+ "book": {
+  "id": {
+   "value": "template-leaf-umbrella"
+  },
+  "title": "はっぱの かさ",
+  "shape": "PORTRAIT",
+  "contentLocale": "ja-JP",
+  "updatedAtEpochMs": 0,
+  "art": {
+   "frog": {
+    "name": "かえるの ケロ",
+    "file": "frog.svg"
+   },
+   "leaf": {
+    "name": "はっぱの かさ",
+    "file": "leaf.svg"
+   },
+   "mouse-run": {
+    "name": "かけてくる チュウ",
+    "file": "mouse-run.svg"
+   },
+   "mouse": {
+    "name": "ねずみの チュウ",
+    "file": "mouse.svg"
+   },
+   "snail": {
+    "name": "かたつむりの でんでん",
+    "file": "snail.svg"
+   },
+   "sparrow-fly": {
+    "name": "とびこむ ちゅん",
+    "file": "sparrow-fly.svg"
+   },
+   "sparrow": {
+    "name": "すずめの ちゅん",
+    "file": "sparrow.svg"
+   },
+   "bear-loom": {
+    "name": "ずぶぬれの くま",
+    "file": "bear-loom.svg"
+   },
+   "bear-sad": {
+    "name": "しょんぼりする くま",
+    "file": "bear-sad.svg"
+   },
+   "bear-happy": {
+    "name": "わらう くま",
+    "file": "bear-happy.svg"
+   },
+   "bear-walk": {
+    "name": "あるく くま",
+    "file": "bear-walk.svg"
+   },
+   "rain-clouds": {
+    "name": "あめぐも",
+    "file": "rain-clouds.svg"
+   },
+   "rain": {
+    "name": "ぽつぽつ あめ",
+    "file": "rain.svg"
+   },
+   "rain-heavy": {
+    "name": "ざあざあ あめ",
+    "file": "rain-heavy.svg"
+   },
+   "puddle": {
+    "name": "みずたまり",
+    "file": "puddle.svg"
+   },
+   "ground": {
+    "name": "くさの じめん",
+    "file": "ground.svg"
+   },
+   "hydrangea": {
+    "name": "あじさい",
+    "file": "hydrangea.svg"
+   },
+   "sun": {
+    "name": "あめあがりの おひさま",
+    "file": "sun.svg"
+   },
+   "rainbow": {
+    "name": "おおきな にじ",
+    "file": "rainbow.svg"
+   },
+   "drops": {
+    "name": "とびちる しずく",
+    "file": "drops.svg"
+   },
+   "cloud": {
+    "name": "くも",
+    "file": "cloud.svg"
+   },
+   "idea": {
+    "name": "ひらめき",
+    "file": "idea.svg"
+   }
+  },
+  "pages": [
+   {
+    "id": "cover",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-drops-4"
+      },
+      "x": 16,
+      "y": 30,
+      "partId": {
+       "value": "art:drops"
+      },
+      "sizePct": 12,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-drops-5"
+      },
+      "x": 84,
+      "y": 26,
+      "partId": {
+       "value": "art:drops"
+      },
+      "sizePct": 10,
+      "heightPct": 7.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-puddle-6"
+      },
+      "x": 50,
+      "y": 91,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 44,
+      "heightPct": 9.9
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-bear-happy-1"
+      },
+      "x": 50,
+      "y": 64,
+      "partId": {
+       "value": "art:bear-happy"
+      },
+      "sizePct": 48,
+      "heightPct": 50.4
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-snail-7"
+      },
+      "x": 30.56,
+      "y": 62.72,
+      "partId": {
+       "value": "art:snail"
+      },
+      "sizePct": 10,
+      "heightPct": 5.543
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-mouse-8"
+      },
+      "x": 44.0,
+      "y": 39.43,
+      "partId": {
+       "value": "art:mouse"
+      },
+      "sizePct": 10,
+      "heightPct": 10.547
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-sparrow-9"
+      },
+      "x": 57.44,
+      "y": 41.84,
+      "partId": {
+       "value": "art:sparrow"
+      },
+      "sizePct": 8,
+      "heightPct": 6.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-frog-2"
+      },
+      "x": 50.0,
+      "y": 37.32,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 14,
+      "heightPct": 11.413
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "cover-leaf-3"
+      },
+      "x": 55.66,
+      "y": 26.69,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 24,
+      "heightPct": 16.875
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "cover-text-10"
+      },
+      "x": 50,
+      "y": 14,
+      "text": "はっぱの かさ",
+      "font": "yomogi",
+      "sizePct": 8.5
+     }
+    ]
+   },
+   {
+    "id": "title",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "title-text-11"
+      },
+      "x": 50,
+      "y": 36,
+      "text": "あめの ひの おはなし",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "title-text-12"
+      },
+      "x": 50,
+      "y": 46,
+      "text": "はっぱの かさ",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "title-leaf-13"
+      },
+      "x": 50,
+      "y": 70,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 18,
+      "heightPct": 12.656
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "title-puddle-14"
+      },
+      "x": 50,
+      "y": 82,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 24,
+      "heightPct": 5.4
+     }
+    ]
+   },
+   {
+    "id": "p1",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-rain-clouds-17"
+      },
+      "x": 50,
+      "y": 12.5,
+      "partId": {
+       "value": "art:rain-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-rain-18"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-hydrangea-19"
+      },
+      "x": 18,
+      "y": 74,
+      "partId": {
+       "value": "art:hydrangea"
+      },
+      "sizePct": 32,
+      "heightPct": 24.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-ground-20"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-puddle-21"
+      },
+      "x": 62,
+      "y": 92.5,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 44,
+      "heightPct": 9.9
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-frog-15"
+      },
+      "x": 54.0,
+      "y": 71.91,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 40,
+      "heightPct": 32.609
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p1-leaf-16"
+      },
+      "x": 70.17,
+      "y": 49.26,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 46,
+      "heightPct": 32.344
+     }
+    ]
+   },
+   {
+    "id": "p2",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-22"
+      },
+      "x": 50,
+      "y": 31.0,
+      "text": "ぽつ、ぽつ、ぽつ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-23"
+      },
+      "x": 50,
+      "y": 39.0,
+      "text": "あめが ふってきた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-24"
+      },
+      "x": 50,
+      "y": 47.0,
+      "text": "かえるの ケロは、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-25"
+      },
+      "x": 50,
+      "y": 55.0,
+      "text": "おおきな はっぱを みつけた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p2-text-26"
+      },
+      "x": 50,
+      "y": 63.0,
+      "text": "「これは いい かさだ！」",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p3",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-rain-clouds-29"
+      },
+      "x": 50,
+      "y": 12.5,
+      "partId": {
+       "value": "art:rain-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-rain-30"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-hydrangea-31"
+      },
+      "x": 12,
+      "y": 68,
+      "partId": {
+       "value": "art:hydrangea"
+      },
+      "sizePct": 26,
+      "heightPct": 19.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-ground-32"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-puddle-33"
+      },
+      "x": 70,
+      "y": 92.5,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 40,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-mouse-run-34"
+      },
+      "x": 24.0,
+      "y": 81.66,
+      "partId": {
+       "value": "art:mouse-run"
+      },
+      "sizePct": 30,
+      "heightPct": 16.63
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-frog-27"
+      },
+      "x": 62.0,
+      "y": 71.91,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 40,
+      "heightPct": 32.609
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p3-leaf-28"
+      },
+      "x": 78.17,
+      "y": 49.26,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 46,
+      "heightPct": 32.344
+     }
+    ]
+   },
+   {
+    "id": "p4",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-35"
+      },
+      "x": 50,
+      "y": 33.5,
+      "text": "「いれて、いれて！」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-36"
+      },
+      "x": 50,
+      "y": 42.5,
+      "text": "ねずみの チュウが かけてきた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-37"
+      },
+      "x": 50,
+      "y": 51.5,
+      "text": "「どうぞ、どうぞ。」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p4-text-38"
+      },
+      "x": 50,
+      "y": 60.5,
+      "text": "ふたりで はっぱの かさ。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p5",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-rain-clouds-41"
+      },
+      "x": 50,
+      "y": 12.5,
+      "partId": {
+       "value": "art:rain-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-rain-42"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-hydrangea-43"
+      },
+      "x": 10,
+      "y": 70,
+      "partId": {
+       "value": "art:hydrangea"
+      },
+      "sizePct": 22,
+      "heightPct": 16.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-ground-44"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-puddle-45"
+      },
+      "x": 40,
+      "y": 93,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 40,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-frog-39"
+      },
+      "x": 40.0,
+      "y": 72.77,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 38,
+      "heightPct": 30.978
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-mouse-46"
+      },
+      "x": 58.0,
+      "y": 79.11,
+      "partId": {
+       "value": "art:mouse"
+      },
+      "sizePct": 20,
+      "heightPct": 21.094
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-leaf-40"
+      },
+      "x": 55.37,
+      "y": 49.78,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 48,
+      "heightPct": 33.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p5-snail-47"
+      },
+      "x": 86.0,
+      "y": 82.88,
+      "partId": {
+       "value": "art:snail"
+      },
+      "sizePct": 28,
+      "heightPct": 15.522
+     }
+    ]
+   },
+   {
+    "id": "p6",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-48"
+      },
+      "x": 50,
+      "y": 27.0,
+      "text": "「まって、まって〜。」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-49"
+      },
+      "x": 50,
+      "y": 35.0,
+      "text": "かたつむりの でんでんが、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-50"
+      },
+      "x": 50,
+      "y": 43.0,
+      "text": "のろのろ、のろのろ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-51"
+      },
+      "x": 50,
+      "y": 51.0,
+      "text": "「おうちが あるのに？」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-52"
+      },
+      "x": 50,
+      "y": 59.0,
+      "text": "「だって、ひとりは さみしいもん。」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p6-text-53"
+      },
+      "x": 50,
+      "y": 67.0,
+      "text": "みんなで はっぱの かさ。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p7",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-rain-clouds-56"
+      },
+      "x": 50,
+      "y": 12.5,
+      "partId": {
+       "value": "art:rain-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-rain-57"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-hydrangea-58"
+      },
+      "x": 90,
+      "y": 70,
+      "partId": {
+       "value": "art:hydrangea"
+      },
+      "sizePct": 22,
+      "heightPct": 16.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-ground-59"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-puddle-60"
+      },
+      "x": 50,
+      "y": 93,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 44,
+      "heightPct": 9.9
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-frog-54"
+      },
+      "x": 46.0,
+      "y": 72.77,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 38,
+      "heightPct": 30.978
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-mouse-61"
+      },
+      "x": 64.0,
+      "y": 79.11,
+      "partId": {
+       "value": "art:mouse"
+      },
+      "sizePct": 20,
+      "heightPct": 21.094
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-snail-62"
+      },
+      "x": 74.0,
+      "y": 84.19,
+      "partId": {
+       "value": "art:snail"
+      },
+      "sizePct": 22,
+      "heightPct": 12.196
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-leaf-55"
+      },
+      "x": 61.37,
+      "y": 49.09,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 50,
+      "heightPct": 35.156
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-drops-63"
+      },
+      "x": 22,
+      "y": 34,
+      "partId": {
+       "value": "art:drops"
+      },
+      "sizePct": 14,
+      "heightPct": 10.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p7-sparrow-fly-64"
+      },
+      "x": 20,
+      "y": 44,
+      "partId": {
+       "value": "art:sparrow-fly"
+      },
+      "sizePct": 30,
+      "heightPct": 18.0,
+      "rotationDeg": 14
+     }
+    ]
+   },
+   {
+    "id": "p8",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-65"
+      },
+      "x": 50,
+      "y": 31.0,
+      "text": "ばさばさ、びしょびしょ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-66"
+      },
+      "x": 50,
+      "y": 39.0,
+      "text": "すずめの ちゅんが とびこんできた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-67"
+      },
+      "x": 50,
+      "y": 47.0,
+      "text": "「ぼくも いれて！」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-68"
+      },
+      "x": 50,
+      "y": 55.0,
+      "text": "ぎゅうぎゅう、ぎゅうぎゅう。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p8-text-69"
+      },
+      "x": 50,
+      "y": 63.0,
+      "text": "はっぱの かさは まんいん。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p9",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-rain-clouds-72"
+      },
+      "x": 50,
+      "y": 12.5,
+      "partId": {
+       "value": "art:rain-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-rain-heavy-73"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain-heavy"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-ground-74"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-puddle-75"
+      },
+      "x": 60,
+      "y": 93,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 40,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-frog-70"
+      },
+      "x": 36.0,
+      "y": 74.48,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 34,
+      "heightPct": 27.717
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-mouse-76"
+      },
+      "x": 52.0,
+      "y": 80.59,
+      "partId": {
+       "value": "art:mouse"
+      },
+      "sizePct": 17,
+      "heightPct": 17.93
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-snail-77"
+      },
+      "x": 64.0,
+      "y": 84.63,
+      "partId": {
+       "value": "art:snail"
+      },
+      "sizePct": 20,
+      "heightPct": 11.087
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-sparrow-78"
+      },
+      "x": 22.0,
+      "y": 84.92,
+      "partId": {
+       "value": "art:sparrow"
+      },
+      "sizePct": 12,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p9-leaf-71"
+      },
+      "x": 49.75,
+      "y": 53.55,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 44,
+      "heightPct": 30.938
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p9-text-79"
+      },
+      "x": 50,
+      "y": 31,
+      "text": "ざあざあ、ざあざあ。",
+      "font": "yomogi",
+      "sizePct": 6.5
+     }
+    ]
+   },
+   {
+    "id": "p10",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p10-rain-clouds-80"
+      },
+      "x": 50,
+      "y": 12.5,
+      "partId": {
+       "value": "art:rain-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p10-rain-heavy-81"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain-heavy"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p10-ground-82"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p10-puddle-83"
+      },
+      "x": 50,
+      "y": 93.5,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 60,
+      "heightPct": 13.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p10-bear-loom-84"
+      },
+      "x": 60.0,
+      "y": 57.0,
+      "partId": {
+       "value": "art:bear-loom"
+      },
+      "sizePct": 60,
+      "heightPct": 65.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p10-drops-85"
+      },
+      "x": 16,
+      "y": 52,
+      "partId": {
+       "value": "art:drops"
+      },
+      "sizePct": 12,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p10-drops-86"
+      },
+      "x": 90,
+      "y": 36,
+      "partId": {
+       "value": "art:drops"
+      },
+      "sizePct": 11,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p10-drops-87"
+      },
+      "x": 88,
+      "y": 66,
+      "partId": {
+       "value": "art:drops"
+      },
+      "sizePct": 10,
+      "heightPct": 7.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p10-text-88"
+      },
+      "x": 22,
+      "y": 34,
+      "text": "「いれて…。」",
+      "font": "yomogi",
+      "sizePct": 6.5
+     }
+    ]
+   },
+   {
+    "id": "p11",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-rain-clouds-91"
+      },
+      "x": 50,
+      "y": 12.5,
+      "partId": {
+       "value": "art:rain-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-rain-92"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-ground-93"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-puddle-94"
+      },
+      "x": 66,
+      "y": 93,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 44,
+      "heightPct": 9.9
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-bear-sad-95"
+      },
+      "x": 66.0,
+      "y": 67.47,
+      "partId": {
+       "value": "art:bear-sad"
+      },
+      "sizePct": 56,
+      "heightPct": 45.15
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-frog-89"
+      },
+      "x": 22.0,
+      "y": 76.18,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 30,
+      "heightPct": 24.457
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-mouse-96"
+      },
+      "x": 36.0,
+      "y": 81.58,
+      "partId": {
+       "value": "art:mouse"
+      },
+      "sizePct": 15,
+      "heightPct": 15.82
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-snail-97"
+      },
+      "x": 44.0,
+      "y": 85.29,
+      "partId": {
+       "value": "art:snail"
+      },
+      "sizePct": 17,
+      "heightPct": 9.424
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-sparrow-98"
+      },
+      "x": 10.0,
+      "y": 85.26,
+      "partId": {
+       "value": "art:sparrow"
+      },
+      "sizePct": 11,
+      "heightPct": 8.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-leaf-90"
+      },
+      "x": 34.13,
+      "y": 57.99,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 38,
+      "heightPct": 26.719
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p11-idea-99"
+      },
+      "x": 32,
+      "y": 40,
+      "partId": {
+       "value": "art:idea"
+      },
+      "sizePct": 8,
+      "heightPct": 8.0
+     }
+    ]
+   },
+   {
+    "id": "p12",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-100"
+      },
+      "x": 50,
+      "y": 27.0,
+      "text": "くまは おおきすぎて、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-101"
+      },
+      "x": 50,
+      "y": 35.0,
+      "text": "はっぱの したに はいれない。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-102"
+      },
+      "x": 50,
+      "y": 43.0,
+      "text": "「ぼくは いいよ…。」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-103"
+      },
+      "x": 50,
+      "y": 51.0,
+      "text": "くまは しょんぼり。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-104"
+      },
+      "x": 50,
+      "y": 59.0,
+      "text": "みんなは かんがえた。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p12-text-105"
+      },
+      "x": 50,
+      "y": 67.0,
+      "text": "「そうだ！」",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p13",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-rain-clouds-109"
+      },
+      "x": 50,
+      "y": 12.5,
+      "partId": {
+       "value": "art:rain-clouds"
+      },
+      "sizePct": 100,
+      "heightPct": 25.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-rain-110"
+      },
+      "x": 50,
+      "y": 50,
+      "partId": {
+       "value": "art:rain"
+      },
+      "sizePct": 100,
+      "heightPct": 100.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-ground-111"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-puddle-112"
+      },
+      "x": 30,
+      "y": 94,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 36,
+      "heightPct": 8.1
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-puddle-113"
+      },
+      "x": 76,
+      "y": 92,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 30,
+      "heightPct": 6.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-bear-happy-106"
+      },
+      "x": 50.0,
+      "y": 58.98,
+      "partId": {
+       "value": "art:bear-happy"
+      },
+      "sizePct": 58,
+      "heightPct": 60.9
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-snail-114"
+      },
+      "x": 26.51,
+      "y": 57.45,
+      "partId": {
+       "value": "art:snail"
+      },
+      "sizePct": 12,
+      "heightPct": 6.652
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-mouse-115"
+      },
+      "x": 42.75,
+      "y": 29.34,
+      "partId": {
+       "value": "art:mouse"
+      },
+      "sizePct": 12,
+      "heightPct": 12.656
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-sparrow-116"
+      },
+      "x": 58.99,
+      "y": 32.43,
+      "partId": {
+       "value": "art:sparrow"
+      },
+      "sizePct": 9,
+      "heightPct": 6.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-frog-107"
+      },
+      "x": 50.0,
+      "y": 27.13,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 16,
+      "heightPct": 13.043
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p13-leaf-108"
+      },
+      "x": 56.47,
+      "y": 14.78,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 28,
+      "heightPct": 19.688
+     }
+    ]
+   },
+   {
+    "id": "p14",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-117"
+      },
+      "x": 50,
+      "y": 23.0,
+      "text": "みんなで くまの あたまに、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-118"
+      },
+      "x": 50,
+      "y": 31.0,
+      "text": "よじよじ、のぼった。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-119"
+      },
+      "x": 50,
+      "y": 39.0,
+      "text": "くまの あたまの うえで、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-120"
+      },
+      "x": 50,
+      "y": 47.0,
+      "text": "はっぱの かさ。",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-121"
+      },
+      "x": 50,
+      "y": 55.0,
+      "text": "「あたまだけ ぬれなければ、",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-122"
+      },
+      "x": 50,
+      "y": 63.0,
+      "text": "へいき、へいき！」",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p14-text-123"
+      },
+      "x": 50,
+      "y": 71.0,
+      "text": "くまは おおきく わらった。",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   },
+   {
+    "id": "p15",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-sun-127"
+      },
+      "x": 84,
+      "y": 14,
+      "partId": {
+       "value": "art:sun"
+      },
+      "sizePct": 22,
+      "heightPct": 16.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-rainbow-128"
+      },
+      "x": 50,
+      "y": 32,
+      "partId": {
+       "value": "art:rainbow"
+      },
+      "sizePct": 100,
+      "heightPct": 41.25
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-cloud-129"
+      },
+      "x": 18,
+      "y": 20,
+      "partId": {
+       "value": "art:cloud"
+      },
+      "sizePct": 22,
+      "heightPct": 9.075
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-ground-130"
+      },
+      "x": 50,
+      "y": 86,
+      "partId": {
+       "value": "art:ground"
+      },
+      "sizePct": 100,
+      "heightPct": 20.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-puddle-131"
+      },
+      "x": 26,
+      "y": 93.5,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 40,
+      "heightPct": 9.0
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-puddle-132"
+      },
+      "x": 78,
+      "y": 92,
+      "partId": {
+       "value": "art:puddle"
+      },
+      "sizePct": 30,
+      "heightPct": 6.75
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-mouse-133"
+      },
+      "x": 32.5,
+      "y": 59.68,
+      "partId": {
+       "value": "art:mouse"
+      },
+      "sizePct": 10,
+      "heightPct": 10.547
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-bear-walk-124"
+      },
+      "x": 50.0,
+      "y": 68.38,
+      "partId": {
+       "value": "art:bear-walk"
+      },
+      "sizePct": 50,
+      "heightPct": 40.909
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-sparrow-fly-134"
+      },
+      "x": 78,
+      "y": 42,
+      "partId": {
+       "value": "art:sparrow-fly"
+      },
+      "sizePct": 16,
+      "heightPct": 9.6
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-frog-125"
+      },
+      "x": 42.05,
+      "y": 46.38,
+      "partId": {
+       "value": "art:frog"
+      },
+      "sizePct": 14,
+      "heightPct": 11.413
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-leaf-126"
+      },
+      "x": 47.71,
+      "y": 36.43,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 22,
+      "heightPct": 15.469
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p15-snail-135"
+      },
+      "x": 47.91,
+      "y": 28.59,
+      "partId": {
+       "value": "art:snail"
+      },
+      "sizePct": 9,
+      "heightPct": 4.989
+     }
+    ]
+   },
+   {
+    "id": "p16",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-136"
+      },
+      "x": 50,
+      "y": 20,
+      "text": "あめが やんだ。",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-137"
+      },
+      "x": 50,
+      "y": 30,
+      "text": "おそらに おおきな にじ。",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-138"
+      },
+      "x": 50,
+      "y": 40,
+      "text": "「つぎの あめの ひも、",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-139"
+      },
+      "x": 50,
+      "y": 50,
+      "text": "また みんなで",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "p16-text-140"
+      },
+      "x": 50,
+      "y": 60,
+      "text": "はっぱの かさ！」",
+      "font": "yomogi",
+      "sizePct": 6.5
+     },
+     {
+      "type": "part",
+      "id": {
+       "value": "p16-leaf-141"
+      },
+      "x": 50,
+      "y": 80,
+      "partId": {
+       "value": "art:leaf"
+      },
+      "sizePct": 16,
+      "heightPct": 11.25
+     }
+    ]
+   },
+   {
+    "id": "back",
+    "background": "#f9f4ed",
+    "items": [
+     {
+      "type": "part",
+      "id": {
+       "value": "back-snail-142"
+      },
+      "x": 50,
+      "y": 38,
+      "partId": {
+       "value": "art:snail"
+      },
+      "sizePct": 14,
+      "heightPct": 7.761
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-143"
+      },
+      "x": 62,
+      "y": 60,
+      "text": "発行 2026.6.6",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-144"
+      },
+      "x": 59,
+      "y": 68,
+      "text": "さく ○○○○",
+      "font": "yomogi",
+      "sizePct": 5
+     },
+     {
+      "type": "text",
+      "id": {
+       "value": "back-text-145"
+      },
+      "x": 51,
+      "y": 76,
+      "text": "え ○○○○",
+      "font": "yomogi",
+      "sizePct": 5
+     }
+    ]
+   }
+  ]
+ }
+}
