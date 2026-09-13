@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 170" fill="none" stroke="#6c5849" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+<title>もくせいの ふぐ</title>
+<path d="M30 82L8 60L10 112L32 100Q46 142 100 142Q158 142 176 104Q192 96 178 84Q184 70 170 70Q150 36 100 38Q52 36 30 82Z" fill="#b5c595"/>
+<path d="M74 40L84 18L106 34Z" fill="#96ae80" stroke-width="1.2"/><path d="M96 138L104 158L118 136Z" fill="#96ae80" stroke-width="1.2"/>
+<g fill="#d5dfb8" stroke-width="1"><circle cx="58" cy="70" r="6"/><circle cx="82" cy="56" r="6"/><circle cx="104" cy="62" r="5"/><circle cx="56" cy="108" r="6"/><circle cx="84" cy="120" r="6"/><circle cx="116" cy="118" r="5"/><circle cx="150" cy="60" r="4"/></g>
+<circle cx="130" cy="84" r="18" fill="#fff0d9"/><circle cx="134" cy="86" r="9" fill="#6c5849"/><circle cx="130" cy="80" r="3" fill="#fff0d9" stroke="none"/>
+<ellipse cx="166" cy="108" rx="6" ry="4.5" fill="#dc9688" stroke-width="1.2"/>
+<path d="M14 72l10 12M14 100l10-8" stroke-width="1"/>
+</svg>

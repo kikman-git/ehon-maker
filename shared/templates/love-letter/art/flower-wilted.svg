@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 245" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
+<title>しょんぼりした はな</title>
+<path d="M80 228C78 190 70 150 82 112C90 88 116 84 124 102C130 116 120 128 110 134" stroke="#8f967b" stroke-width="2"/>
+<path d="M79 190Q42 190 36 168Q60 160 79 190ZM80 168Q104 146 118 158Q110 176 80 176Z" fill="#96ae80" stroke-width="1.1"/>
+<g transform="translate(110 138)" fill="#fff0d9" stroke-width="1.2"><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(-72)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(-40)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(-14)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(12)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(38)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(72)"/><ellipse cx="0" cy="0" rx="10" ry="9" fill="#e4d29e"/></g>
+</svg>

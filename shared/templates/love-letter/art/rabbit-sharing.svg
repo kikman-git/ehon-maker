@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 255" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
+<title>にんじんを たべる うさぎ</title>
+<ellipse cx="113" cy="236" rx="65" ry="6" fill="#c4ae89" opacity=".17"/>
+<ellipse cx="52" cy="204" rx="15" ry="16" fill="#fff0d9" />
+<path d="M102 145C75 149 60 170 66 201C71 222 100 231 126 222L156 210Q158 193 134 194Q152 164 132 148Z" fill="#fff0d9" />
+<path d="M83 210Q115 197 141 205Q151 209 145 218L128 225L180 225Q194 231 182 235L114 237Q84 235 83 210Z" fill="#fff0d9" />
+<path d="M99 78Q65 50 58 29Q45 9 30 21Q24 31 31 45Q38 50 43 41Q49 32 56 48L75 90Z" fill="#fff0d9" />
+<path d="M102 86Q105 45 130 19Q144 8 154 19Q160 31 145 42Q127 64 125 91Z" fill="#fff0d9" />
+<path d="M45 30Q58 26 66 48L85 77M140 25Q118 44 116 74" fill="none" stroke="#deb5a8" stroke-width="2" />
+<path d="M83 80C106 64 141 74 148 103L166 114Q170 126 151 132C139 153 113 161 93 148C71 139 68 99 83 80Z" fill="#fff0d9" />
+<path d="M124 102q8-8 15 1M124 104l-2-4M129 100l-1-4M134 100l1-4M162 113q8 0 4 6l-6-2ZM147 127q-10 8-19 1" fill="none" stroke-width="1.2" />
+<ellipse cx="143" cy="120" rx="8" ry="4" fill="#e6b3a4" opacity=".55"/>
+<path d="M105 163Q123 154 140 165Q151 154 160 163Q169 172 156 180L134 184Q116 185 109 176M127 147Q141 144 153 157" fill="#fff0d9" stroke-width="1.5" />
+<g transform="translate(84 86)"><ellipse cx="0" cy="-8" rx="5" ry="8" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="8" cy="-2" rx="8" ry="5" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="5" cy="7" rx="5" ry="8" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="-6" cy="6" rx="5" ry="8" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="-8" cy="-3" rx="8" ry="5" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="0" cy="0" rx="4" ry="4" fill="#c9a368" stroke-width="1" /></g><path d="M155 232l1 3M164 231l1 4" fill="none" stroke-width="1" /></svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 280" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
+<title>はんぶんこする くま</title>
+<ellipse cx="129" cy="258" rx="83" ry="7" fill="#c4ae89" opacity=".16"/>
+<ellipse cx="204" cy="205" rx="14" ry="15" fill="#cea473" />
+<path d="M110 146Q153 137 175 163Q201 184 195 215Q182 245 149 240L99 229L94 181Z" fill="#8db6c3" />
+<path d="M116 151L114 187Q134 198 155 185L150 150M120 197h27v20h-27Z" fill="none" stroke-width="1.4" />
+<path d="M130 200Q93 188 76 211Q60 232 89 241L130 239Q151 222 130 200Z" fill="#8db6c3" />
+<path d="M90 229L80 247L52 248Q37 251 44 259L104 259Q119 256 116 239M145 231L135 249L115 253Q106 260 123 262L173 261Q189 252 171 236" fill="#96ae80" />
+<path d="M107 153Q82 149 68 160L55 175Q55 190 70 187L91 175L121 182M128 171Q101 171 83 187Q70 182 60 193Q56 207 74 211Q95 211 105 202L139 194" fill="#cea473" />
+<ellipse cx="168" cy="66" rx="18" ry="19" fill="#cea473" />
+<ellipse cx="168" cy="66" rx="9" ry="10" fill="#ebcc9f" stroke-width="1" />
+<path d="M111 60C140 51 174 73 177 101C183 130 159 151 132 154Q104 156 86 137Q58 140 55 125Q53 114 72 108Q77 70 111 60Z" fill="#cea473" />
+<path d="M74 110Q90 108 97 122Q99 137 82 140Q60 141 55 128Q50 116 60 113Z" fill="#fff0d9" stroke-width="1.4" />
+<path d="M91 97q8-7 15 2M57 115q-7-3-8 4q1 7 9 5ZM61 128q12 13 24-2" fill="none" stroke-width="1.2" />
+<path d="M89 74Q85 39 111 26Q143 11 166 37L184 79L220 89Q213 100 185 91Q111 67 50 91Q42 85 61 79Z" fill="#96ae80" />
+<path d="M89 74Q131 60 184 79M100 40Q117 28 133 31" fill="none" stroke-width="1.2" />
+<g transform="translate(122 54) scale(.5)"><path d="M0 12C-6 4-18-4-12-14C-6-22 0-14 0-8C0-14 6-22 12-14C18-4 6 4 0 12Z" fill="#dc9688"/></g><g transform="translate(147 47) rotate(18)"><path d="M-4 0Q0-3 4 0L1 16Q0 18-1 16Z" fill="#dfa36c" stroke-width="1"/>
+<path d="M-2 0Q-6-6-2-9Q1-4 0 0M2 0Q6-6 2-9Q-1-4 0 0" fill="#96ae80" stroke-width=".8"/></g><path d="M167 149L201 144L221 161L197 164L178 156Z" fill="#dfa36c" stroke-width="1.2" />
+<path d="M135 169Q126 157 119 165Q114 174 132 184Q151 171 145 164Q139 160 135 169Z" fill="#dc9688" opacity=".65"/>
+<path d="M199 225l6-4M191 232l6-4M76 254l1 3M141 255l1 3" fill="none" stroke-width="1" /></svg>

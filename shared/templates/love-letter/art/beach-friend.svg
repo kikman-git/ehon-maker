@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
+<title>はしっこの なかま</title>
+<g transform="translate(-5 0)"><path d="M61 140Q31 128 23 85L16 53Q6 43 8 33Q14 31 19 44L19 24Q23 19 25 42L30 24Q36 24 31 46Q42 39 45 45L39 68Q40 111 79 126Z" fill="#deb783"/>
+<path d="M132 133Q157 107 163 65L161 44Q155 34 159 31L170 40L169 21Q175 18 177 40L181 22Q188 22 185 45L190 37Q198 36 193 50L187 67Q188 123 151 159Z" fill="#deb783"/></g><path d="M60 138Q100 150 140 136L150 200Q101 214 54 198Z" fill="#dc9688"/>
+<path d="M78 146Q100 156 122 144" fill="none" stroke-width="1.2"/>
+<path d="M56 196Q101 212 148 196L147 222L110 226L101 212L92 227L54 216Z" fill="#fff0d9"/>
+<path d="M60 220Q58 256 70 260Q82 264 88 228M114 226Q120 260 132 256Q144 252 140 222" fill="#deb783"/>
+<path d="M62 60Q40 58 34 96Q36 122 56 118Q70 110 64 80Z" fill="#b98f5c"/>
+<path d="M138 60Q160 58 166 96Q164 122 144 118Q130 110 136 80Z" fill="#b98f5c"/>
+<circle cx="100" cy="90" r="44" fill="#deb783"/>
+<path d="M112 50Q140 46 146 74Q138 88 120 78Q108 64 112 50Z" fill="#b98f5c"/>
+<ellipse cx="100" cy="106" rx="22" ry="16" fill="#fff0d9" stroke-width="1.4"/>
+<path d="M92 100q8-5 16 0l-8 8Z" fill="#6c5849" stroke-width="1"/>
+<path d="M100 108v6m-9 0q9 9 18 0" fill="none" stroke-width="1.2"/>
+<path d="M76 72q8-6 15 0M109 72q8-6 15 0" fill="none" stroke-width="1.2"/>
+<ellipse cx="84" cy="86" rx="2.2" ry="4" fill="#6c5849"/>
+<ellipse cx="116" cy="86" rx="2.2" ry="4" fill="#6c5849"/>
+<ellipse cx="72" cy="102" rx="6" ry="3.5" fill="#e6b3a4" opacity=".55"/>
+<ellipse cx="128" cy="102" rx="6" ry="3.5" fill="#e6b3a4" opacity=".55"/></svg>

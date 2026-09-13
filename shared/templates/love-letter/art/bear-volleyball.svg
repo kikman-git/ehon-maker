@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 280" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
+<title>バレーボールの くま</title>
+<path d="M61 140Q31 128 23 85L16 53Q6 43 8 33Q14 31 19 44L19 24Q23 19 25 42L30 24Q36 24 31 46Q42 39 45 45L39 68Q40 111 79 126Z" fill="#cea473"/>
+<path d="M132 133Q157 107 163 65L161 44Q155 34 159 31L170 40L169 21Q175 18 177 40L181 22Q188 22 185 45L190 37Q198 36 193 50L187 67Q188 123 151 159Z" fill="#cea473"/>
+<path d="M61 132Q104 146 145 128L157 201Q107 218 57 200Z" fill="#8db6c3"/>
+<path d="M60 194Q104 210 154 194L153 223L115 228L105 211L94 229L56 218Z" fill="#fff0d9"/>
+<path d="M70 199v21M84 204v22M124 204v22M140 199v19" fill="none" stroke="#8db6c3" stroke-width="2.2" opacity=".7"/>
+<path d="M63 222Q60 259 72 262Q85 268 91 229M119 228Q125 263 138 257Q151 253 145 223" fill="#cea473"/>
+<path d="M57 207q22 8 40 7M116 215l34-6" fill="none" stroke-width="1.2"/>
+<g transform="translate(4 14) scale(.93)"><ellipse cx="56" cy="43" rx="17" ry="18" fill="#cea473"/>
+<ellipse cx="150" cy="40" rx="16" ry="18" fill="#cea473"/>
+<ellipse cx="57" cy="43" rx="9" ry="11" fill="#fff0d9" stroke-width="0.9"/>
+<ellipse cx="150" cy="40" rx="8" ry="10" fill="#fff0d9" stroke-width="0.9"/>
+<path d="M49 56C35 75 40 113 63 131C86 151 126 151 151 127C177 103 173 64 151 48C122 27 75 28 49 56Z" fill="#cea473"/>
+<ellipse cx="102" cy="114" rx="27" ry="22" fill="#fff0d9" stroke-width="1.4"/>
+<path d="M65 77q9-7 17-1M122 74q9-7 16 0" fill="none" stroke-width="1.2"/>
+<ellipse cx="75" cy="92" rx="2" ry="4" fill="#6c5849" stroke-width="0.4"/>
+<ellipse cx="129" cy="90" rx="2" ry="4" fill="#6c5849" stroke-width="0.4"/>
+<path d="M101 117v8m-10-1q9 10 20-1" fill="none" stroke-width="1.2"/>
+<path d="M97 111q6-4 13 0l-6 6Z" fill="#6c5849" stroke-width="1"/></g></svg>

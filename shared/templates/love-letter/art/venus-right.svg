@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke-linecap="round">
+<title>きんせいの ちへいせん（みぎ）</title>
+<path d="M0 330C200 370 400 400 600 420V800H0Z" fill="#e3e5c7"/>
+<path d="M0 330C200 370 400 400 600 420" stroke="#a1b58c" stroke-width="2"/>
+<path d="M0 654Q100 640 200 660T400 662T600 650V800H0Z" fill="#e5caa1"/>
+<path d="M0 654Q100 640 200 660T400 662T600 650" stroke="#b8a079" stroke-width="1.5"/>
+<path d="M90 730l18-2M380 716l20 2" stroke="#b8a079" stroke-width="1.5"/>
+</svg>

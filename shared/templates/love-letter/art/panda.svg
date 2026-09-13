@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 255" fill="none" stroke="#6c5849" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+<title>なかまの パンダ</title>
+<ellipse cx="96" cy="81" rx="19" ry="18" fill="#6c5849"/>
+<ellipse cx="166" cy="90" rx="17" ry="17" fill="#6c5849"/>
+<path d="M89 145Q58 150 60 190Q62 214 83 227Q126 250 155 212L162 166Z" fill="#fff0d9"/>
+<path d="M91 157Q111 171 127 167Q131 191 118 196Q91 190 71 179Z" fill="#99978c"/>
+<path d="M70 204Q53 224 64 238Q81 245 94 220M134 216Q134 244 151 240Q166 235 153 212" fill="#6c5849"/>
+<path d="M87 90Q99 63 132 69Q173 72 176 112Q180 147 146 165Q105 170 81 144Q71 117 87 90Z" fill="#fff0d9"/>
+<ellipse cx="101" cy="118" rx="12" ry="17" fill="#9b998e"/>
+<ellipse cx="147" cy="122" rx="12" ry="17" fill="#9b998e"/>
+<ellipse cx="100" cy="115" rx="3" ry="5" fill="#6c5849" stroke-width=".5"/>
+<ellipse cx="143" cy="119" rx="3" ry="5" fill="#6c5849" stroke-width=".5"/>
+<ellipse cx="123" cy="144" rx="15" ry="13" fill="#f9f4ed"/>
+<path d="M118 138l9 1-5 6ZM122 145v5m-5-1q5 6 10 1" stroke-width="1.1"/>
+<path d="M150 166Q112 172 72 200Q62 210 70 218Q80 222 88 214Q120 192 158 188Z" fill="#6c5849"/>
+<path d="M82 156Q58 172 44 196Q40 206 48 212Q58 214 64 206Q78 184 98 172Z" fill="#6c5849"/>
+<path d="M47 200l5 5M53 194l5 5M71 206l5 5M77 200l5 5" stroke="#9b998e" stroke-width="1"/>
+</svg>

@@ -1,0 +1,3051 @@
+{
+  "id": "doc-love-letter",
+  "order": 0,
+  "description": {
+    "ja": "くまと げんきばなの、あいを さがす たび。手描きの 原稿から、表紙と 11の 見開きへ。",
+    "en": "A bear, a talking flower, and a search for love. A cover and eleven editable spreads recreated from your storyboard."
+  },
+  "book": {
+    "id": {
+      "value": "template-love-letter"
+    },
+    "title": "きみへの ことばを さがして",
+    "shape": "PORTRAIT",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "bear-volleyball": {
+        "name": "バレーボールの くま",
+        "file": "bear-volleyball.svg"
+      },
+      "panda": {
+        "name": "なかまの パンダ",
+        "file": "panda.svg"
+      },
+      "bear-lonely": {
+        "name": "さみしい くま",
+        "file": "bear-lonely.svg"
+      },
+      "bear-question": {
+        "name": "ふしぎそうな くま",
+        "file": "bear-question.svg"
+      },
+      "bear-astronaut": {
+        "name": "おめかしした くま",
+        "file": "bear-astronaut.svg"
+      },
+      "sun": {
+        "name": "えがおの おひさま",
+        "file": "sun.svg"
+      },
+      "volleyball": {
+        "name": "バレーボール",
+        "file": "volleyball.svg"
+      },
+      "ground": {
+        "name": "くさと ちいさな おか",
+        "file": "ground.svg"
+      },
+      "flower-wilted": {
+        "name": "しょんぼりした はな",
+        "file": "flower-wilted.svg"
+      },
+      "flower": {
+        "name": "はなしかける げんきばな",
+        "file": "flower.svg"
+      },
+      "heart": {
+        "name": "あいの かたち",
+        "file": "heart.svg"
+      },
+      "star": {
+        "name": "てがきの ほし",
+        "file": "star.svg"
+      },
+      "mercury": {
+        "name": "すいせい",
+        "file": "mercury.svg"
+      },
+      "venus": {
+        "name": "きんせい",
+        "file": "venus.svg"
+      },
+      "earth": {
+        "name": "ちきゅう",
+        "file": "earth.svg"
+      },
+      "mars": {
+        "name": "かせい",
+        "file": "mars.svg"
+      },
+      "jupiter": {
+        "name": "もくせい",
+        "file": "jupiter.svg"
+      },
+      "saturn": {
+        "name": "どせい",
+        "file": "saturn.svg"
+      },
+      "uranus": {
+        "name": "てんのうせい",
+        "file": "uranus.svg"
+      },
+      "neptune": {
+        "name": "かいおうせい",
+        "file": "neptune.svg"
+      },
+      "moon": {
+        "name": "つき",
+        "file": "moon.svg"
+      },
+      "comet": {
+        "name": "ながれぼし",
+        "file": "comet.svg"
+      },
+      "rocket": {
+        "name": "くまの ロケット",
+        "file": "rocket.svg"
+      },
+      "satellite": {
+        "name": "じんこうえいせい",
+        "file": "satellite.svg"
+      },
+      "cat": {
+        "name": "かせいの ねこ",
+        "file": "cat.svg"
+      },
+      "flames": {
+        "name": "かせいの ほのお",
+        "file": "flames.svg"
+      },
+      "pufferfish": {
+        "name": "もくせいの ふぐ",
+        "file": "pufferfish.svg"
+      },
+      "little-fish": {
+        "name": "ちいさな さかな",
+        "file": "little-fish.svg"
+      },
+      "seaweed": {
+        "name": "もくせいの みずくさ",
+        "file": "seaweed.svg"
+      },
+      "carrot": {
+        "name": "おおきな にんじん",
+        "file": "carrot.svg"
+      },
+      "beach-friend": {
+        "name": "はしっこの なかま",
+        "file": "beach-friend.svg"
+      },
+      "beach-sea": {
+        "name": "なつの うみ",
+        "file": "beach-sea.svg"
+      },
+      "beach-sand": {
+        "name": "ビーチの すなはま",
+        "file": "beach-sand.svg"
+      },
+      "hill": {
+        "name": "ちいさな おか",
+        "file": "hill.svg"
+      },
+      "garden-left": {
+        "name": "ふたりの はたけ（ひだり）",
+        "file": "garden-left.svg"
+      },
+      "garden-right": {
+        "name": "ふたりの はたけ（みぎ）",
+        "file": "garden-right.svg"
+      },
+      "moon-smile": {
+        "name": "みまもる おつきさま",
+        "file": "moon-smile.svg"
+      },
+      "rabbit-sharing": {
+        "name": "にんじんを たべる うさぎ",
+        "file": "rabbit-sharing.svg"
+      },
+      "bear-sharing": {
+        "name": "はんぶんこする くま",
+        "file": "bear-sharing.svg"
+      },
+      "carrot-half-tip": {
+        "name": "はんぶんの にんじん（さき）",
+        "file": "carrot-half-tip.svg"
+      },
+      "carrot-half-top": {
+        "name": "はんぶんの にんじん（はっぱ）",
+        "file": "carrot-half-top.svg"
+      },
+      "rabbit-peek": {
+        "name": "ぴょこんと のぞく うさぎ",
+        "file": "rabbit-peek.svg"
+      },
+      "red-tulip": {
+        "name": "あかい チューリップ",
+        "file": "red-tulip.svg"
+      },
+      "heart-box": {
+        "name": "ハートの はこ",
+        "file": "heart-box.svg"
+      },
+      "net": {
+        "name": "ビーチバレーの ネット",
+        "file": "net.svg"
+      },
+      "bubbles": {
+        "name": "あわ",
+        "file": "bubbles.svg"
+      },
+      "mars-left": {
+        "name": "かせいの ちへいせん（ひだり）",
+        "file": "mars-left.svg"
+      },
+      "mars-right": {
+        "name": "かせいの ちへいせん（みぎ）",
+        "file": "mars-right.svg"
+      },
+      "jupiter-left": {
+        "name": "もくせいの ちへいせん（ひだり）",
+        "file": "jupiter-left.svg"
+      },
+      "jupiter-right": {
+        "name": "もくせいの ちへいせん（みぎ）",
+        "file": "jupiter-right.svg"
+      },
+      "corner-earth": {
+        "name": "とおくの ちきゅう",
+        "file": "corner-earth.svg"
+      },
+      "corner-mars": {
+        "name": "とおくの かせい",
+        "file": "corner-mars.svg"
+      },
+      "corner-jupiter": {
+        "name": "とおくの もくせい",
+        "file": "corner-jupiter.svg"
+      },
+      "bear-kneel-rose": {
+        "name": "バラを さしだす くま",
+        "file": "bear-kneel-rose.svg"
+      },
+      "bear-kneel-hyacinth": {
+        "name": "ヒヤシンスを さしだす くま",
+        "file": "bear-kneel-hyacinth.svg"
+      },
+      "bear-watering": {
+        "name": "にんじんに みずを やる くま",
+        "file": "bear-watering.svg"
+      },
+      "rabbit-hide": {
+        "name": "はたけに かくれる うさぎ",
+        "file": "rabbit-hide.svg"
+      },
+      "venus-left": {
+        "name": "きんせいの ちへいせん（ひだり）",
+        "file": "venus-left.svg"
+      },
+      "venus-right": {
+        "name": "きんせいの ちへいせん（みぎ）",
+        "file": "venus-right.svg"
+      },
+      "leaf-tuft": {
+        "name": "にんじんの はっぱ",
+        "file": "leaf-tuft.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "cover",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-star-1"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 14,
+            "y": 44,
+            "sizePct": 9,
+            "heightPct": 6.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-star-2"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 86,
+            "y": 34,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-bear-astronaut-3"
+            },
+            "partId": {
+              "value": "art:bear-astronaut"
+            },
+            "x": 50,
+            "y": 63,
+            "sizePct": 56,
+            "heightPct": 54.409
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-heart-box-4"
+            },
+            "partId": {
+              "value": "art:heart-box"
+            },
+            "x": 33,
+            "y": 78,
+            "sizePct": 14,
+            "heightPct": 9.625
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-red-tulip-5"
+            },
+            "partId": {
+              "value": "art:red-tulip"
+            },
+            "x": 70,
+            "y": 64,
+            "sizePct": 15,
+            "heightPct": 16.875,
+            "rotationDeg": 22
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-1"
+            },
+            "x": 50,
+            "y": 14,
+            "text": "きみへの ことばを",
+            "font": "yomogi",
+            "sizePct": 8.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-2"
+            },
+            "x": 50,
+            "y": 25,
+            "text": "さがして",
+            "font": "yomogi",
+            "sizePct": 8.5
+          }
+        ]
+      },
+      {
+        "id": "title",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "title-red-tulip-6"
+            },
+            "partId": {
+              "value": "art:red-tulip"
+            },
+            "x": 50,
+            "y": 74,
+            "sizePct": 14,
+            "heightPct": 15.75
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-3"
+            },
+            "x": 50,
+            "y": 38,
+            "text": "Love letter 絵本",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-4"
+            },
+            "x": 50,
+            "y": 48,
+            "text": "きみへの ことばを",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-5"
+            },
+            "x": 50,
+            "y": 56,
+            "text": "さがして",
+            "font": "yomogi",
+            "sizePct": 6.5
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-beach-sea-1"
+            },
+            "partId": {
+              "value": "art:beach-sea"
+            },
+            "x": 50,
+            "y": 66,
+            "sizePct": 100,
+            "heightPct": 27.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-beach-sand-2"
+            },
+            "partId": {
+              "value": "art:beach-sand"
+            },
+            "x": 50,
+            "y": 84,
+            "sizePct": 100,
+            "heightPct": 35.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-sun-3"
+            },
+            "partId": {
+              "value": "art:sun"
+            },
+            "x": 78,
+            "y": 21,
+            "sizePct": 38,
+            "heightPct": 28.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-volleyball-4"
+            },
+            "partId": {
+              "value": "art:volleyball"
+            },
+            "x": 33,
+            "y": 31,
+            "sizePct": 27,
+            "heightPct": 18.463
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-beach-friend-5"
+            },
+            "partId": {
+              "value": "art:beach-friend"
+            },
+            "x": 3,
+            "y": 64,
+            "sizePct": 30,
+            "heightPct": 31.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-net-6"
+            },
+            "partId": {
+              "value": "art:net"
+            },
+            "x": 13,
+            "y": 68,
+            "sizePct": 26,
+            "heightPct": 46.8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-bear-volleyball-7"
+            },
+            "partId": {
+              "value": "art:bear-volleyball"
+            },
+            "x": 46,
+            "y": 65,
+            "sizePct": 54,
+            "heightPct": 54.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-panda-8"
+            },
+            "partId": {
+              "value": "art:panda"
+            },
+            "x": 79,
+            "y": 73,
+            "sizePct": 40,
+            "heightPct": 38.25
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-text-1"
+            },
+            "x": 46,
+            "y": 71,
+            "text": "ファット",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-1"
+            },
+            "x": 50,
+            "y": 16,
+            "text": "いつもの ぼく",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-2"
+            },
+            "x": 50,
+            "y": 27,
+            "text": "なかまと",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-3"
+            },
+            "x": 50,
+            "y": 38,
+            "text": "バレーボール",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-4"
+            },
+            "x": 50,
+            "y": 49,
+            "text": "つくる しごと",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-5"
+            },
+            "x": 50,
+            "y": 60,
+            "text": "おいしい ごはん",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-6"
+            },
+            "x": 50,
+            "y": 71,
+            "text": "たのしい",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-7"
+            },
+            "x": 50,
+            "y": 82,
+            "text": "まいにち",
+            "font": "yomogi",
+            "sizePct": 6.5
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-hill-1"
+            },
+            "partId": {
+              "value": "art:hill"
+            },
+            "x": 22,
+            "y": 54,
+            "sizePct": 44,
+            "heightPct": 49.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-ground-2"
+            },
+            "partId": {
+              "value": "art:ground"
+            },
+            "x": 52,
+            "y": 87,
+            "sizePct": 92,
+            "heightPct": 22.685
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-flower-wilted-3"
+            },
+            "partId": {
+              "value": "art:flower-wilted"
+            },
+            "x": 20,
+            "y": 29,
+            "sizePct": 30,
+            "heightPct": 30.625
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-bear-lonely-4"
+            },
+            "partId": {
+              "value": "art:bear-lonely"
+            },
+            "x": 63,
+            "y": 72,
+            "sizePct": 52,
+            "heightPct": 39.0
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-1"
+            },
+            "x": 50,
+            "y": 25,
+            "text": "でも…",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-2"
+            },
+            "x": 50,
+            "y": 35,
+            "text": "えいがを みたとき",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-3"
+            },
+            "x": 50,
+            "y": 45,
+            "text": "おいしい おみせを",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-4"
+            },
+            "x": 50,
+            "y": 55,
+            "text": "みつけたとき",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-5"
+            },
+            "x": 50,
+            "y": 65,
+            "text": "たいへんだったとき",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-6"
+            },
+            "x": 50,
+            "y": 75,
+            "text": "げんきが なくなる",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p5",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-ground-1"
+            },
+            "partId": {
+              "value": "art:ground"
+            },
+            "x": 50,
+            "y": 87,
+            "sizePct": 90,
+            "heightPct": 22.192
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-flower-2"
+            },
+            "partId": {
+              "value": "art:flower"
+            },
+            "x": 22,
+            "y": 70,
+            "sizePct": 31,
+            "heightPct": 31.419
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-bear-question-3"
+            },
+            "partId": {
+              "value": "art:bear-question"
+            },
+            "x": 63,
+            "y": 66,
+            "sizePct": 64,
+            "heightPct": 57.366
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p5-text-1"
+            },
+            "x": 23,
+            "y": 37,
+            "text": "？",
+            "font": "yomogi",
+            "sizePct": 8.5
+          }
+        ]
+      },
+      {
+        "id": "p6",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-1"
+            },
+            "x": 50,
+            "y": 32,
+            "text": "なにかが",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-2"
+            },
+            "x": 50,
+            "y": 50,
+            "text": "みたされない…！",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-3"
+            },
+            "x": 50,
+            "y": 68,
+            "text": "どうして？",
+            "font": "yomogi",
+            "sizePct": 6.5
+          }
+        ]
+      },
+      {
+        "id": "p7",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-flower-1"
+            },
+            "partId": {
+              "value": "art:flower"
+            },
+            "x": 64,
+            "y": 53,
+            "sizePct": 64,
+            "heightPct": 64.865
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-bear-question-2"
+            },
+            "partId": {
+              "value": "art:bear-question"
+            },
+            "x": 13,
+            "y": 87,
+            "sizePct": 29,
+            "heightPct": 25.994
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-heart-3"
+            },
+            "partId": {
+              "value": "art:heart"
+            },
+            "x": 23,
+            "y": 53,
+            "sizePct": 24,
+            "heightPct": 16.667
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p7-text-1"
+            },
+            "x": 30,
+            "y": 67,
+            "text": "こんな かたち",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p8",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-1"
+            },
+            "x": 50,
+            "y": 18,
+            "text": "あい という",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-2"
+            },
+            "x": 50,
+            "y": 28,
+            "text": "あまくて",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-3"
+            },
+            "x": 50,
+            "y": 38,
+            "text": "すこし すっぱくて",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-4"
+            },
+            "x": 50,
+            "y": 48,
+            "text": "ときどき ほろにがい",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-5"
+            },
+            "x": 50,
+            "y": 58,
+            "text": "ものが あるよ。",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-6"
+            },
+            "x": 50,
+            "y": 68,
+            "text": "それを さがすと",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-7"
+            },
+            "x": 50,
+            "y": 78,
+            "text": "みたされるよ。",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p9",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-sun-1"
+            },
+            "partId": {
+              "value": "art:sun"
+            },
+            "x": 9,
+            "y": 52,
+            "sizePct": 35,
+            "heightPct": 26.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-mercury-2"
+            },
+            "partId": {
+              "value": "art:mercury"
+            },
+            "x": 27,
+            "y": 55,
+            "sizePct": 12,
+            "heightPct": 8.206
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-venus-3"
+            },
+            "partId": {
+              "value": "art:venus"
+            },
+            "x": 40,
+            "y": 55,
+            "sizePct": 17,
+            "heightPct": 11.625
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-earth-4"
+            },
+            "partId": {
+              "value": "art:earth"
+            },
+            "x": 60,
+            "y": 55,
+            "sizePct": 23,
+            "heightPct": 15.728
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-moon-5"
+            },
+            "partId": {
+              "value": "art:moon"
+            },
+            "x": 71,
+            "y": 63,
+            "sizePct": 9,
+            "heightPct": 6.49
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-mars-6"
+            },
+            "partId": {
+              "value": "art:mars"
+            },
+            "x": 80,
+            "y": 55,
+            "sizePct": 16,
+            "heightPct": 10.941
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-jupiter-7"
+            },
+            "partId": {
+              "value": "art:jupiter"
+            },
+            "x": 100,
+            "y": 55,
+            "sizePct": 32,
+            "heightPct": 21.882
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-satellite-8"
+            },
+            "partId": {
+              "value": "art:satellite"
+            },
+            "x": 25,
+            "y": 78,
+            "sizePct": 26,
+            "heightPct": 16.355,
+            "rotationDeg": -20
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-bear-question-9"
+            },
+            "partId": {
+              "value": "art:bear-question"
+            },
+            "x": 12,
+            "y": 94,
+            "sizePct": 25,
+            "heightPct": 22.409
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-star-10"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 77,
+            "y": 28,
+            "sizePct": 11,
+            "heightPct": 8.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-star-11"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 64,
+            "y": 80,
+            "sizePct": 10,
+            "heightPct": 7.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p9-text-1"
+            },
+            "x": 50,
+            "y": 13,
+            "text": "それは どこに あるの？",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p9-text-2"
+            },
+            "x": 27,
+            "y": 68,
+            "text": "MERCURY",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p9-text-3"
+            },
+            "x": 40,
+            "y": 40,
+            "text": "VENUS",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p9-text-4"
+            },
+            "x": 60,
+            "y": 72,
+            "text": "EARTH",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p9-text-5"
+            },
+            "x": 80,
+            "y": 43,
+            "text": "MARS",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p10",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-jupiter-continuation"
+            },
+            "partId": {
+              "value": "art:jupiter"
+            },
+            "x": 0,
+            "y": 55,
+            "sizePct": 32,
+            "heightPct": 21.882
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-saturn-1"
+            },
+            "partId": {
+              "value": "art:saturn"
+            },
+            "x": 28,
+            "y": 55,
+            "sizePct": 38,
+            "heightPct": 22.393,
+            "rotationDeg": -12
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-uranus-2"
+            },
+            "partId": {
+              "value": "art:uranus"
+            },
+            "x": 61,
+            "y": 55,
+            "sizePct": 23,
+            "heightPct": 13.554
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-neptune-3"
+            },
+            "partId": {
+              "value": "art:neptune"
+            },
+            "x": 80,
+            "y": 55,
+            "sizePct": 18,
+            "heightPct": 12.309
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-moon-4"
+            },
+            "partId": {
+              "value": "art:moon"
+            },
+            "x": 87,
+            "y": 60,
+            "sizePct": 10,
+            "heightPct": 7.212
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-comet-5"
+            },
+            "partId": {
+              "value": "art:comet"
+            },
+            "x": 91,
+            "y": 35,
+            "sizePct": 24,
+            "heightPct": 16.8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-rocket-6"
+            },
+            "partId": {
+              "value": "art:rocket"
+            },
+            "x": 23,
+            "y": 78,
+            "sizePct": 22,
+            "heightPct": 22.0,
+            "rotationDeg": -28
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-flower-7"
+            },
+            "partId": {
+              "value": "art:flower"
+            },
+            "x": 91,
+            "y": 88,
+            "sizePct": 26,
+            "heightPct": 26.351
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-star-8"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 22,
+            "y": 26,
+            "sizePct": 11,
+            "heightPct": 8.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-star-9"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 63,
+            "y": 71,
+            "sizePct": 9,
+            "heightPct": 6.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-star-10"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 50,
+            "y": 88,
+            "sizePct": 10,
+            "heightPct": 7.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p10-text-1"
+            },
+            "x": 50,
+            "y": 13,
+            "text": "うちゅう だよ。",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p10-text-2"
+            },
+            "x": 28,
+            "y": 30,
+            "text": "SATURN",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p10-text-3"
+            },
+            "x": 61,
+            "y": 37,
+            "text": "URANUS",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p10-text-4"
+            },
+            "x": 78,
+            "y": 65,
+            "text": "NEPTUNE",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p10-text-5"
+            },
+            "x": 87,
+            "y": 74,
+            "text": "PLUTO",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p11",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-bear-astronaut-1"
+            },
+            "partId": {
+              "value": "art:bear-astronaut"
+            },
+            "x": 52,
+            "y": 59,
+            "sizePct": 78,
+            "heightPct": 75.784
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-star-2"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 17,
+            "y": 24,
+            "sizePct": 9,
+            "heightPct": 6.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-star-3"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 86,
+            "y": 70,
+            "sizePct": 8,
+            "heightPct": 6.0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p11-text-1"
+            },
+            "x": 24,
+            "y": 14,
+            "text": "うちゅうへ",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p11-text-2"
+            },
+            "x": 20,
+            "y": 27,
+            "text": "GO！",
+            "font": "yomogi",
+            "sizePct": 6.5
+          }
+        ]
+      },
+      {
+        "id": "p12",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-1"
+            },
+            "x": 50,
+            "y": 24,
+            "text": "ぼくは",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-2"
+            },
+            "x": 50,
+            "y": 34,
+            "text": "おめかしして",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-3"
+            },
+            "x": 50,
+            "y": 44,
+            "text": "うちゅうへ",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-4"
+            },
+            "x": 50,
+            "y": 54,
+            "text": "あいという ものを",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-5"
+            },
+            "x": 50,
+            "y": 64,
+            "text": "さがしに いくことに",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-6"
+            },
+            "x": 50,
+            "y": 74,
+            "text": "しました。",
+            "font": "yomogi",
+            "sizePct": 6.5
+          }
+        ]
+      },
+      {
+        "id": "p13",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-mars-left-1"
+            },
+            "partId": {
+              "value": "art:mars-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-star-2"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 88,
+            "y": 14,
+            "sizePct": 8,
+            "heightPct": 6.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-flames-3"
+            },
+            "partId": {
+              "value": "art:flames"
+            },
+            "x": 50,
+            "y": 74,
+            "sizePct": 100,
+            "heightPct": 52.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-cat-4"
+            },
+            "partId": {
+              "value": "art:cat"
+            },
+            "x": 34,
+            "y": 70,
+            "sizePct": 46,
+            "heightPct": 44.85
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p13-text-1"
+            },
+            "x": 44,
+            "y": 7,
+            "text": "さいしょに ついたのは",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p13-text-2"
+            },
+            "x": 58,
+            "y": 22,
+            "text": "MARS",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "rotationDeg": 14
+          }
+        ]
+      },
+      {
+        "id": "p14",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-mars-right-1"
+            },
+            "partId": {
+              "value": "art:mars-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-corner-earth-2"
+            },
+            "partId": {
+              "value": "art:corner-earth"
+            },
+            "x": 80,
+            "y": 15,
+            "sizePct": 40,
+            "heightPct": 30.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-star-3"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 12,
+            "y": 30,
+            "sizePct": 8,
+            "heightPct": 6.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-star-4"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 48,
+            "y": 7,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-star-5"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 90,
+            "y": 44,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-star-6"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 76,
+            "y": 70,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-star-7"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 22,
+            "y": 12,
+            "sizePct": 5,
+            "heightPct": 3.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-rocket-9"
+            },
+            "partId": {
+              "value": "art:rocket"
+            },
+            "x": 70,
+            "y": 34,
+            "sizePct": 32,
+            "heightPct": 32.0,
+            "rotationDeg": -30
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-bear-kneel-rose-10"
+            },
+            "partId": {
+              "value": "art:bear-kneel-rose"
+            },
+            "x": 30,
+            "y": 67,
+            "sizePct": 58,
+            "heightPct": 45.312
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-1"
+            },
+            "x": 86,
+            "y": 11,
+            "text": "EARTH",
+            "font": "yomogi",
+            "sizePct": 5,
+            "rotationDeg": -40
+          }
+        ]
+      },
+      {
+        "id": "p15",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-jupiter-left-1"
+            },
+            "partId": {
+              "value": "art:jupiter-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-star-2"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 88,
+            "y": 14,
+            "sizePct": 8,
+            "heightPct": 6.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-seaweed-3"
+            },
+            "partId": {
+              "value": "art:seaweed"
+            },
+            "x": 10,
+            "y": 88,
+            "sizePct": 20,
+            "heightPct": 21.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-seaweed-4"
+            },
+            "partId": {
+              "value": "art:seaweed"
+            },
+            "x": 20,
+            "y": 92,
+            "sizePct": 16,
+            "heightPct": 16.8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-seaweed-5"
+            },
+            "partId": {
+              "value": "art:seaweed"
+            },
+            "x": 88,
+            "y": 86,
+            "sizePct": 20,
+            "heightPct": 21.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-seaweed-6"
+            },
+            "partId": {
+              "value": "art:seaweed"
+            },
+            "x": 76,
+            "y": 92,
+            "sizePct": 15,
+            "heightPct": 15.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-little-fish-7"
+            },
+            "partId": {
+              "value": "art:little-fish"
+            },
+            "x": 10,
+            "y": 50,
+            "sizePct": 11,
+            "heightPct": 6.875,
+            "rotationDeg": -10
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-little-fish-8"
+            },
+            "partId": {
+              "value": "art:little-fish"
+            },
+            "x": 26,
+            "y": 42,
+            "sizePct": 10,
+            "heightPct": 6.25,
+            "rotationDeg": 15
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-little-fish-9"
+            },
+            "partId": {
+              "value": "art:little-fish"
+            },
+            "x": 44,
+            "y": 38,
+            "sizePct": 9,
+            "heightPct": 5.625
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-little-fish-10"
+            },
+            "partId": {
+              "value": "art:little-fish"
+            },
+            "x": 74,
+            "y": 50,
+            "sizePct": 11,
+            "heightPct": 6.875,
+            "rotationDeg": 10
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-little-fish-11"
+            },
+            "partId": {
+              "value": "art:little-fish"
+            },
+            "x": 86,
+            "y": 68,
+            "sizePct": 10,
+            "heightPct": 6.25,
+            "rotationDeg": -15
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-little-fish-12"
+            },
+            "partId": {
+              "value": "art:little-fish"
+            },
+            "x": 12,
+            "y": 72,
+            "sizePct": 10,
+            "heightPct": 6.25,
+            "rotationDeg": 10
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-little-fish-13"
+            },
+            "partId": {
+              "value": "art:little-fish"
+            },
+            "x": 56,
+            "y": 90,
+            "sizePct": 10,
+            "heightPct": 6.25,
+            "rotationDeg": -10
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-little-fish-14"
+            },
+            "partId": {
+              "value": "art:little-fish"
+            },
+            "x": 40,
+            "y": 92,
+            "sizePct": 9,
+            "heightPct": 5.625,
+            "rotationDeg": 15
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-bubbles-15"
+            },
+            "partId": {
+              "value": "art:bubbles"
+            },
+            "x": 70,
+            "y": 52,
+            "sizePct": 7,
+            "heightPct": 8.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-bubbles-16"
+            },
+            "partId": {
+              "value": "art:bubbles"
+            },
+            "x": 78,
+            "y": 42,
+            "sizePct": 6,
+            "heightPct": 7.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-pufferfish-17"
+            },
+            "partId": {
+              "value": "art:pufferfish"
+            },
+            "x": 40,
+            "y": 66,
+            "sizePct": 62,
+            "heightPct": 39.525
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p15-text-1"
+            },
+            "x": 44,
+            "y": 7,
+            "text": "つぎに ついたのは",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p15-text-2"
+            },
+            "x": 60,
+            "y": 21,
+            "text": "Jupiter",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "rotationDeg": 12
+          }
+        ]
+      },
+      {
+        "id": "p16",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-jupiter-right-1"
+            },
+            "partId": {
+              "value": "art:jupiter-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-corner-mars-2"
+            },
+            "partId": {
+              "value": "art:corner-mars"
+            },
+            "x": 80,
+            "y": 15,
+            "sizePct": 40,
+            "heightPct": 30.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-star-3"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 12,
+            "y": 30,
+            "sizePct": 8,
+            "heightPct": 6.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-star-4"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 48,
+            "y": 7,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-star-5"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 90,
+            "y": 44,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-star-6"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 76,
+            "y": 70,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-star-7"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 22,
+            "y": 12,
+            "sizePct": 5,
+            "heightPct": 3.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-rocket-9"
+            },
+            "partId": {
+              "value": "art:rocket"
+            },
+            "x": 70,
+            "y": 34,
+            "sizePct": 32,
+            "heightPct": 32.0,
+            "rotationDeg": -30
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-bear-kneel-hyacinth-10"
+            },
+            "partId": {
+              "value": "art:bear-kneel-hyacinth"
+            },
+            "x": 30,
+            "y": 67,
+            "sizePct": 58,
+            "heightPct": 45.312
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-1"
+            },
+            "x": 86,
+            "y": 11,
+            "text": "MARS",
+            "font": "yomogi",
+            "sizePct": 5,
+            "rotationDeg": -40
+          }
+        ]
+      },
+      {
+        "id": "p17",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-venus-left-1"
+            },
+            "partId": {
+              "value": "art:venus-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-star-2"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 88,
+            "y": 14,
+            "sizePct": 8,
+            "heightPct": 6.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-leaf-tuft-3"
+            },
+            "partId": {
+              "value": "art:leaf-tuft"
+            },
+            "x": 12,
+            "y": 80,
+            "sizePct": 8,
+            "heightPct": 4.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-leaf-tuft-4"
+            },
+            "partId": {
+              "value": "art:leaf-tuft"
+            },
+            "x": 30,
+            "y": 79,
+            "sizePct": 7,
+            "heightPct": 3.938
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-leaf-tuft-5"
+            },
+            "partId": {
+              "value": "art:leaf-tuft"
+            },
+            "x": 68,
+            "y": 80,
+            "sizePct": 8,
+            "heightPct": 4.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-leaf-tuft-6"
+            },
+            "partId": {
+              "value": "art:leaf-tuft"
+            },
+            "x": 86,
+            "y": 79,
+            "sizePct": 7,
+            "heightPct": 3.938
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-leaf-tuft-7"
+            },
+            "partId": {
+              "value": "art:leaf-tuft"
+            },
+            "x": 50,
+            "y": 81,
+            "sizePct": 6,
+            "heightPct": 3.375
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-rabbit-hide-8"
+            },
+            "partId": {
+              "value": "art:rabbit-hide"
+            },
+            "x": 50,
+            "y": 65.9,
+            "sizePct": 36,
+            "heightPct": 32.684
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-carrot-9"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 6,
+            "y": 86,
+            "sizePct": 14,
+            "heightPct": 14.152
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-carrot-10"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 18,
+            "y": 85,
+            "sizePct": 15,
+            "heightPct": 15.163
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-carrot-11"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 30,
+            "y": 87,
+            "sizePct": 13,
+            "heightPct": 13.141
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-carrot-12"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 40,
+            "y": 85,
+            "sizePct": 15,
+            "heightPct": 15.163
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-carrot-13"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 61,
+            "y": 85,
+            "sizePct": 15,
+            "heightPct": 15.163
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-carrot-14"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 72,
+            "y": 87,
+            "sizePct": 13,
+            "heightPct": 13.141
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-carrot-15"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 83,
+            "y": 85,
+            "sizePct": 15,
+            "heightPct": 15.163
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-carrot-16"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 94,
+            "y": 86,
+            "sizePct": 14,
+            "heightPct": 14.152
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p17-text-1"
+            },
+            "x": 44,
+            "y": 7,
+            "text": "さいごに ついたのは",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p17-text-2"
+            },
+            "x": 58,
+            "y": 22,
+            "text": "Venus",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "rotationDeg": 14
+          }
+        ]
+      },
+      {
+        "id": "p18",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-venus-right-1"
+            },
+            "partId": {
+              "value": "art:venus-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-corner-jupiter-2"
+            },
+            "partId": {
+              "value": "art:corner-jupiter"
+            },
+            "x": 80,
+            "y": 15,
+            "sizePct": 40,
+            "heightPct": 30.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-star-3"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 12,
+            "y": 30,
+            "sizePct": 8,
+            "heightPct": 6.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-star-4"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 48,
+            "y": 7,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-star-5"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 90,
+            "y": 44,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-star-6"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 76,
+            "y": 70,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-star-7"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 22,
+            "y": 12,
+            "sizePct": 5,
+            "heightPct": 3.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-rocket-9"
+            },
+            "partId": {
+              "value": "art:rocket"
+            },
+            "x": 70,
+            "y": 34,
+            "sizePct": 32,
+            "heightPct": 32.0,
+            "rotationDeg": -30
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-carrot-10"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 88,
+            "y": 87,
+            "sizePct": 13,
+            "heightPct": 13.141
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-carrot-11"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 97,
+            "y": 86,
+            "sizePct": 12,
+            "heightPct": 12.13
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-leaf-tuft-12"
+            },
+            "partId": {
+              "value": "art:leaf-tuft"
+            },
+            "x": 80,
+            "y": 80,
+            "sizePct": 7,
+            "heightPct": 3.938
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-bear-watering-13"
+            },
+            "partId": {
+              "value": "art:bear-watering"
+            },
+            "x": 30,
+            "y": 66,
+            "sizePct": 54,
+            "heightPct": 45.36
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p18-text-1"
+            },
+            "x": 86,
+            "y": 11,
+            "text": "Jupiter",
+            "font": "yomogi",
+            "sizePct": 5,
+            "rotationDeg": -40
+          }
+        ]
+      },
+      {
+        "id": "p19",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-garden-left-18"
+            },
+            "partId": {
+              "value": "art:garden-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-star-19"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 88,
+            "y": 9,
+            "sizePct": 9,
+            "heightPct": 6.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-carrot-20"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 14,
+            "y": 80,
+            "sizePct": 15,
+            "heightPct": 15.163
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-carrot-21"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 86,
+            "y": 78,
+            "sizePct": 16,
+            "heightPct": 16.174
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-carrot-22"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 30,
+            "y": 88,
+            "sizePct": 12,
+            "heightPct": 12.13
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-rabbit-sharing-23"
+            },
+            "partId": {
+              "value": "art:rabbit-sharing"
+            },
+            "x": 48,
+            "y": 69,
+            "sizePct": 42,
+            "heightPct": 36.511
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-carrot-half-tip-24"
+            },
+            "partId": {
+              "value": "art:carrot-half-tip"
+            },
+            "x": 60,
+            "y": 74,
+            "sizePct": 9,
+            "heightPct": 8.526,
+            "rotationDeg": -30
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p19-text-7"
+            },
+            "x": 18,
+            "y": 8,
+            "text": "Venus",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p19-text-8"
+            },
+            "x": 50,
+            "y": 17,
+            "text": "「おいしいね。",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p19-text-9"
+            },
+            "x": 50,
+            "y": 24,
+            "text": "ひとりで たべるより、",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p19-text-10"
+            },
+            "x": 50,
+            "y": 31,
+            "text": "ふたりで たべるほうが",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p19-text-11"
+            },
+            "x": 50,
+            "y": 38,
+            "text": "おいしいね」",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p19-text-12"
+            },
+            "x": 50,
+            "y": 45,
+            "text": "にんじんを はんぶんに。ぽきん。",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p20",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-garden-right-25"
+            },
+            "partId": {
+              "value": "art:garden-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-moon-smile-26"
+            },
+            "partId": {
+              "value": "art:moon-smile"
+            },
+            "x": 86,
+            "y": 12,
+            "sizePct": 18,
+            "heightPct": 16.293
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-star-27"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 58,
+            "y": 7,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-star-28"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 94,
+            "y": 29,
+            "sizePct": 6,
+            "heightPct": 4.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-star-29"
+            },
+            "partId": {
+              "value": "art:star"
+            },
+            "x": 8,
+            "y": 22,
+            "sizePct": 7,
+            "heightPct": 5.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-carrot-30"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 12,
+            "y": 82,
+            "sizePct": 15,
+            "heightPct": 15.163
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-carrot-31"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 28,
+            "y": 88,
+            "sizePct": 12,
+            "heightPct": 12.13
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-carrot-32"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 88,
+            "y": 84,
+            "sizePct": 16,
+            "heightPct": 16.174
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-carrot-33"
+            },
+            "partId": {
+              "value": "art:carrot"
+            },
+            "x": 72,
+            "y": 90,
+            "sizePct": 12,
+            "heightPct": 12.13
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-bear-sharing-34"
+            },
+            "partId": {
+              "value": "art:bear-sharing"
+            },
+            "x": 42,
+            "y": 67,
+            "sizePct": 46,
+            "heightPct": 39.429
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-carrot-half-top-1"
+            },
+            "partId": {
+              "value": "art:carrot-half-top"
+            },
+            "x": 31,
+            "y": 70,
+            "sizePct": 9,
+            "heightPct": 9.205,
+            "rotationDeg": 20
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-13"
+            },
+            "x": 40,
+            "y": 14,
+            "text": "ふたりで、むしゃむしゃ。",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-14"
+            },
+            "x": 40,
+            "y": 21,
+            "text": "ぽりぽり。",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-15"
+            },
+            "x": 40,
+            "y": 28,
+            "text": "くまの むねが、ぽっと",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-16"
+            },
+            "x": 40,
+            "y": 35,
+            "text": "あたたかく なりました。",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-17"
+            },
+            "x": 40,
+            "y": 42,
+            "text": "そして、くまは いいました。",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p21",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-rabbit-peek-35"
+            },
+            "partId": {
+              "value": "art:rabbit-peek"
+            },
+            "x": 50,
+            "y": 83,
+            "sizePct": 44,
+            "heightPct": 39.947
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p21-text-18"
+            },
+            "x": 34,
+            "y": 24,
+            "text": "ぼくの",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p21-text-19"
+            },
+            "x": 56,
+            "y": 38,
+            "text": "うさぎに",
+            "font": "yomogi",
+            "sizePct": 6.5
+          }
+        ]
+      },
+      {
+        "id": "p22",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p22-red-tulip-36"
+            },
+            "partId": {
+              "value": "art:red-tulip"
+            },
+            "x": 66,
+            "y": 40,
+            "sizePct": 34,
+            "heightPct": 38.25,
+            "rotationDeg": -32
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-20"
+            },
+            "x": 30,
+            "y": 28,
+            "text": "なって",
+            "font": "yomogi",
+            "sizePct": 6.5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-21"
+            },
+            "x": 42,
+            "y": 60,
+            "text": "くれない？",
+            "font": "yomogi",
+            "sizePct": 6.5
+          }
+        ]
+      },
+      {
+        "id": "back",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "back-heart-37"
+            },
+            "partId": {
+              "value": "art:heart"
+            },
+            "x": 50,
+            "y": 38,
+            "sizePct": 10,
+            "heightPct": 6.944
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-22"
+            },
+            "x": 62,
+            "y": 60,
+            "text": "発行 2026.10.10",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-23"
+            },
+            "x": 59,
+            "y": 68,
+            "text": "さく ファット",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-24"
+            },
+            "x": 51,
+            "y": 76,
+            "text": "え きか",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      }
+    ]
+  }
+}

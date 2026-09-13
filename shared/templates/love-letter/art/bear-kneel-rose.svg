@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 250" fill="none" stroke="#6c5849" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+<title>バラを さしだす くま</title>
+<ellipse cx="128" cy="240" rx="98" ry="6" fill="#c4ae89" stroke="none" opacity=".16"/>
+<path d="M112 200Q168 194 214 206Q226 220 212 232L120 234Q100 224 112 200Z" fill="#cea473"/>
+<ellipse cx="214" cy="221" rx="13" ry="11" fill="#ebcc9f" stroke-width="1"/>
+<path d="M96 96Q152 82 172 112Q188 150 172 196L104 200Q86 160 96 96Z" fill="#8db6c3" stroke-width="1.8"/>
+<path d="M112 104L150 100L156 140L108 142Z" fill="#fff0d9" stroke-width="1.2"/>
+<path d="M116 156Q66 150 46 178Q36 204 50 226L82 228Q78 206 92 190Q108 178 130 180Z" fill="#cea473"/>
+<ellipse cx="60" cy="228" rx="20" ry="10" fill="#cea473" stroke-width="1.5"/>
+<path d="M108 146Q70 148 46 168Q40 180 52 184Q80 180 114 172Z" fill="#cea473"/>
+<circle cx="50" cy="176" r="11" fill="#cea473" stroke-width="1.5"/>
+<ellipse cx="92" cy="44" rx="15" ry="16" fill="#cea473"/><ellipse cx="93" cy="45" rx="7" ry="8" fill="#ebcc9f" stroke-width="1"/>
+<ellipse cx="152" cy="42" rx="15" ry="16" fill="#cea473"/><ellipse cx="151" cy="43" rx="7" ry="8" fill="#ebcc9f" stroke-width="1"/>
+<circle cx="120" cy="78" r="42" fill="#cea473" stroke-width="1.8"/>
+<ellipse cx="86" cy="104" rx="18" ry="14" fill="#fff0d9" stroke-width="1.4"/>
+<path d="M72 100q7-4 14 0l-7 6Z" fill="#6c5849" stroke-width="1"/>
+<path d="M96 90q6 5 12 0M126 84q6 5 12 0" stroke-width="1.6"/>
+<path d="M94 78q8-6 14-2M124 72q8-4 14 2" stroke-width="1.2"/>
+<path d="M84 114q6 3 12 0" stroke-width="1.2"/>
+<ellipse cx="148" cy="98" rx="7" ry="4" fill="#e6b3a4" stroke="none" opacity=".55"/>
+<path d="M104 130Q62 128 34 148Q26 160 38 166Q68 162 108 156Z" fill="#cea473"/>
+<circle cx="36" cy="158" r="11" fill="#cea473" stroke-width="1.5"/>
+<path d="M30 152l3 4M36 150l2 4M44 170l3 4M50 168l2 4" stroke-width="1"/>
+<path d="M36 152Q24 122 36 98" stroke="#899577" stroke-width="2"/>
+<path d="M28 128Q8 128 12 114Q26 114 28 128Z" fill="#96ae80" stroke-width="1.1"/>
+<path d="M38 98Q16 92 20 76Q20 66 34 68Q40 56 52 66Q70 66 66 82Q60 98 38 98Z" fill="#dc9688" stroke-width="1.5"/>
+<path d="M28 82Q52 76 49 90Q38 100 32 86Q40 78 46 86M20 88Q24 96 38 98" stroke-width="1.1"/>
+<path d="M112 104L102 98L101 112L114 108L124 114L126 98L113 106Z" fill="#dc9688" stroke-width="1.1"/>
+</svg>

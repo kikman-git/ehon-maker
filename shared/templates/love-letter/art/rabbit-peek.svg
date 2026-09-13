@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 230" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
+<title>ぴょこんと のぞく うさぎ</title>
+<path d="M75 184Q50 121 35 70Q30 36 50 39Q68 37 82 74L98 169M108 175Q121 122 144 91Q166 76 174 91Q180 106 162 116L132 190" fill="#fff0d9" />
+<path d="M49 50Q66 53 72 80L91 154M158 96Q140 113 121 163" fill="none" stroke="#deb5a8" stroke-width="2" />
+<path d="M30 230Q29 190 62 171Q103 150 142 176Q170 192 174 230Z" fill="#fff0d9" />
+<g transform="translate(94 178)"><ellipse cx="0" cy="-8" rx="5" ry="8" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="8" cy="-2" rx="8" ry="5" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="5" cy="7" rx="5" ry="8" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="-6" cy="6" rx="5" ry="8" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="-8" cy="-3" rx="8" ry="5" fill="#e9bf64" stroke-width="1" />
+<ellipse cx="0" cy="0" rx="4" ry="4" fill="#c9a368" stroke-width="1" /></g></svg>
