@@ -5,6 +5,9 @@ import app.ehon.geom.Point
 import app.ehon.geom.Rect
 import app.ehon.geom.Size
 import app.ehon.model.FontFace
+import app.ehon.vector.LineCap
+import app.ehon.vector.LineJoin
+import app.ehon.vector.PathCommand
 
 /**
  * A fully resolved page, in absolute coordinates of [size]. Pure data: no platform
@@ -71,6 +74,22 @@ sealed interface SceneNode {
         val rect: Rect,
         val innerRatio: Float,
         val fill: Argb,
+    ) : SceneNode
+
+    /**
+     * One outline of embedded vector art, already in page units. Colours are the art's own; a
+     * zero [strokeWidthPx] means no stroke, and the flags stand in for nullable colours, which
+     * would box across the Obj-C boundary.
+     */
+    data class Path(
+        val commands: List<PathCommand>,
+        val fill: Argb,
+        val hasFill: Boolean,
+        val stroke: Argb,
+        val strokeWidthPx: Float,
+        val evenOdd: Boolean,
+        val lineCap: LineCap,
+        val lineJoin: LineJoin,
     ) : SceneNode
 
     /** Commissioned raster part. [assetName] resolves per platform. */

@@ -4,19 +4,26 @@ import app.ehon.catalog.Layer
 import app.ehon.catalog.MaskGeometry
 import app.ehon.catalog.PartCatalog
 import app.ehon.catalog.PartDef
+import app.ehon.catalog.PartResolver
 import app.ehon.catalog.ShapeKind
 import app.ehon.design.Argb
 import app.ehon.design.Organic
 import app.ehon.geom.Point
 import app.ehon.geom.Rect
 import app.ehon.geom.Size
+import app.ehon.model.Artwork
 import app.ehon.model.FontFace
 import app.ehon.model.Ink
 import app.ehon.model.Page
+import app.ehon.model.PartId
 import app.ehon.model.PartItem
 import app.ehon.model.Stroke
 import app.ehon.model.TextItem
+import app.ehon.vector.Affine
+import app.ehon.vector.SvgParser
+import app.ehon.vector.VectorArt
 import kotlin.math.min
+import kotlin.math.sqrt
 
 /**
  * Turns a [Page] into a [Scene]. The one place page layout exists.
@@ -26,15 +33,26 @@ import kotlin.math.min
  * thin walkers over the result, so a layout bug is a bug in one file and a golden
  * test failure rather than a discrepancy nobody notices until a page is printed.
  */
-class SceneBuilder(private val measurer: TextMeasurer) {
+class SceneBuilder(private val measurer: TextMeasurer, private val resolver: PartResolver) {
 
-    fun build(page: Page, target: RenderTarget, promptText: String? = null): Scene {
+    // Kotlin default arguments do not produce a one-argument Swift initializer.
+    constructor(measurer: TextMeasurer) : this(measurer, PartCatalog)
+
+    fun build(page: Page, target: RenderTarget, promptText: String? = null): Scene =
+        build(page, target, promptText, emptyMap())
+
+    /** [art] is the owning book's embedded pictures, which `art:` items resolve against. */
+    fun build(page: Page, target: RenderTarget, promptText: String?, art: Map<String, Artwork>): Scene {
         val nodes = buildList {
             if (page.isUntouched && promptText != null && !target.isExport) {
                 add(promptNode(promptText, target))
             }
-            page.items.filterIsInstance<PartItem>().forEach { addAll(partNodes(it, target)) }
-            page.items.filterIsInstance<TextItem>().forEach { addAll(textNodes(it, target)) }
+            page.items.forEach {
+                addAll(when (it) {
+                    is PartItem -> partNodes(it, target, art)
+                    is TextItem -> textNodes(it, target)
+                })
+            }
             page.strokes.forEach { add(strokeNode(it, target)) }
             if (!target.isExport) {
                 target.selectedItem
@@ -53,20 +71,44 @@ class SceneBuilder(private val measurer: TextMeasurer) {
 
     // ── items ────────────────────────────────────────────────────────────────
 
-    private fun partNodes(item: PartItem, target: RenderTarget): List<SceneNode> {
-        val side = item.sizePct / 100f * target.page.w
+    private fun partNodes(item: PartItem, target: RenderTarget, art: Map<String, Artwork>): List<SceneNode> {
         val box = Rect.centred(
             cx = item.x / 100f * target.page.w,
             cy = item.y / 100f * target.page.h,
-            size = Size(side, side),
+            size = item.dimensions(target.page),
         )
-        val part = PartCatalog.find(item.partId) ?: return emptyList()
-        val inner = when (val def = part.def) {
+        val def = definition(item.partId, art) ?: return emptyList()
+        val inner = when (def) {
             is PartDef.Primitives -> def.layers.map { layerNode(it, box) }
-            is PartDef.Raster -> listOf(SceneNode.Image(def.assetName, box))
-            is PartDef.Vector -> emptyList()
+            is PartDef.Raster -> listOf(SceneNode.Image(def.assetRef, box))
+            is PartDef.Vector -> vectorNodes(def.art, box)
         }
         return listOf(SceneNode.Group(inner, item.rotationDeg, box.center))
+    }
+
+    /** The book's own art first; library, pack and catalog parts through the resolver. */
+    private fun definition(partId: PartId, art: Map<String, Artwork>): PartDef? =
+        if (partId.category == Artwork.CATEGORY) art[partId.name]?.let { PartDef.Vector(SvgParser.cached(it.svg)) }
+        else resolver.find(partId)?.def
+
+    /** Maps the art's viewBox onto the part box; a non-square viewBox stretches unless heightPct matches. */
+    private fun vectorNodes(art: VectorArt, box: Rect): List<SceneNode> {
+        val sx = box.w / art.viewBox.w
+        val sy = box.h / art.viewBox.h
+        val place = Affine.translate(box.x, box.y) * Affine.scale(sx, sy) * Affine.translate(-art.viewBox.x, -art.viewBox.y)
+        val strokeScale = sqrt(sx * sy)
+        return art.layers.map { layer ->
+            SceneNode.Path(
+                commands = layer.commands.map { it.transformed(place) },
+                fill = layer.fill,
+                hasFill = layer.hasFill,
+                stroke = layer.stroke,
+                strokeWidthPx = layer.strokeWidth * strokeScale,
+                evenOdd = layer.evenOdd,
+                lineCap = layer.lineCap,
+                lineJoin = layer.lineJoin,
+            )
+        }
     }
 
     /** One coloured shape inside a part. Layer coordinates are percent of the part box. */
@@ -192,10 +234,7 @@ class SceneBuilder(private val measurer: TextMeasurer) {
 
     private fun selectionRing(item: app.ehon.model.Item, target: RenderTarget): SceneNode {
         val box = when (item) {
-            is PartItem -> {
-                val side = item.sizePct / 100f * target.page.w
-                Size(side, side)
-            }
+            is PartItem -> item.dimensions(target.page)
             is TextItem -> {
                 val fontPx = item.sizePct / 100f * target.page.w * TextItem.OPTICAL_SCALE
                 Size(
@@ -204,7 +243,7 @@ class SceneBuilder(private val measurer: TextMeasurer) {
                 )
             }
         }
-        return SceneNode.SelectionRing(
+        val ring = SceneNode.SelectionRing(
             Rect.centred(
                 item.x / 100f * target.page.w,
                 item.y / 100f * target.page.h,
@@ -212,6 +251,8 @@ class SceneBuilder(private val measurer: TextMeasurer) {
             ),
             Organic.accent,
         )
+        return if (item.rotationDeg == 0f) ring
+        else SceneNode.Group(listOf(ring), item.rotationDeg, ring.rect.center)
     }
 
     /**

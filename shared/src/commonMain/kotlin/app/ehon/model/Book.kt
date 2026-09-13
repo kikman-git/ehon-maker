@@ -1,11 +1,15 @@
 package app.ehon.model
 
 import app.ehon.design.Argb
+import app.ehon.design.ArgbSerializer
+import app.ehon.geom.Size
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 // Deliberately data classes rather than inline value classes. A value class over String
 // erases to `id` in the generated Obj-C header, so Swift would receive `Any` and every
@@ -45,6 +49,11 @@ data class Book(
      * millisecond timestamp regardless.
      */
     val updatedAtEpochMs: Long,
+    /**
+     * Pictures that travel with the book, keyed by the name after `art:` in a [PartItem.partId].
+     * Decision #55: this is what lets one text document carry a whole illustrated book.
+     */
+    val art: Map<String, Artwork> = emptyMap(),
 ) {
     val pageCount get() = pages.size
 
@@ -81,9 +90,30 @@ data class Book(
     }
 }
 
+/**
+ * A vector picture embedded in a book. [svg] uses the subset in `docs/EHON_FORMAT.md`, parsed by
+ * [app.ehon.vector.SvgParser]; [name] is what the drawer and read-aloud call it.
+ */
+@Serializable
+data class Artwork(val svg: String, val name: String = "") {
+    companion object {
+        const val CATEGORY = "art"
+
+        /** Book metadata syncs as one Firestore document under a 100 KB rule; art rides inside it. */
+        const val MAX_TOTAL_SVG_CHARS = 64_000
+
+        private val KEY = Regex("[A-Za-z0-9_-]{1,64}")
+
+        fun isKey(key: String) = KEY.matches(key)
+
+        fun partId(key: String) = PartId("$CATEGORY:$key")
+    }
+}
+
 @Serializable
 data class Page(
     /** Solid background from [app.ehon.design.Organic.pageBackgrounds]. Not artwork. */
+    @Serializable(with = ArgbSerializer::class)
     val background: Argb,
     /** Hint shown only while the page is completely untouched. */
     val promptKey: String? = null,
@@ -93,6 +123,8 @@ data class Page(
     val strokes: PersistentList<Stroke> = persistentListOf(),
     /** A family member's voice for this page, if one has arrived. Decision 3b. */
     val reply: PageReply? = null,
+    /** Stable across edits and reordering; also the page's sync document key. */
+    val id: String = newPageId(),
 ) {
     val isUntouched get() = items.isEmpty() && strokes.isEmpty()
 
@@ -111,6 +143,9 @@ data class Page(
         ) = Page(background, promptKey, items.toPersistentList(), strokes.toPersistentList())
     }
 }
+
+@OptIn(ExperimentalUuidApi::class)
+private fun newPageId(): String = "p-${Uuid.random()}"
 
 /**
  * A voice message a family member left on one page — 「ばあば の こえ · 3.4びょう」.
@@ -161,12 +196,28 @@ data class PartItem(
     override val y: Float,
     override val rotationDeg: Float = 0f,
     val partId: PartId,
-    /** Percent of page *width*. Parts are square, so this drives both dimensions. */
+    /** Percent of page width. */
     val sizePct: Float = 26f,
+    /** Percent of page height; null preserves the legacy physical square. */
+    val heightPct: Float? = null,
 ) : Item {
+    init {
+        require(sizePct.isFinite() && sizePct > 0f)
+        require(heightPct == null || (heightPct.isFinite() && heightPct > 0f))
+    }
+
     override fun movedTo(x: Float, y: Float) = copy(x = x, y = y)
 
-    fun resizedBy(factor: Float) = copy(sizePct = (sizePct * factor).coerceIn(MIN, MAX))
+    fun dimensions(page: Size): Size {
+        val width = sizePct / 100f * page.w
+        return Size(width, heightPct?.let { it / 100f * page.h } ?: width)
+    }
+
+    fun resizedBy(factor: Float): PartItem {
+        require(factor.isFinite() && factor > 0f)
+        val width = (sizePct * factor).coerceIn(MIN, maxOf(MAX, sizePct))
+        return copy(sizePct = width, heightPct = heightPct?.let { it * (width / sizePct) })
+    }
 
     fun rotatedBy(deg: Float) = copy(rotationDeg = (rotationDeg + deg).mod(360f))
 
@@ -192,6 +243,7 @@ data class TextItem(
     val colorIndex: Int = 0,
     /** Percent of page width; one of [SIZES]. */
     val sizePct: Float = SIZES[1],
+    @Serializable(with = FontFaceSerializer::class)
     val font: FontFace = FontFace.default,
 ) : Item {
     override fun movedTo(x: Float, y: Float) = copy(x = x, y = y)

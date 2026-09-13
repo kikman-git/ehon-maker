@@ -25,6 +25,8 @@ class DocumentStore(initial: Book, private val capacity: Int = DEFAULT_CAPACITY)
 
     val canUndo get() = past.isNotEmpty()
     val canRedo get() = future.isNotEmpty()
+    val isGestureActive get() = gestureBaseline != null
+    val hasGestureChanges get() = gestureBaseline?.let { it != current } ?: false
 
     /** A discrete edit: one undo step. */
     fun edit(transform: (Book) -> Book) {

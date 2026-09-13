@@ -22,7 +22,7 @@ import app.ehon.model.PartId
  * raster art lands, because they are deterministic and need no assets — see
  * [PartDef.Primitives].
  */
-object PartCatalog {
+object PartCatalog : PartResolver {
 
     const val CAT_SHAPES = "かたち"
     const val CAT_CREATURES = "いきもの"
@@ -307,7 +307,7 @@ object PartCatalog {
 
     private val byId: Map<PartId, Part> = all.associateBy { it.id }
 
-    fun find(id: PartId): Part? = byId[id]
+    override fun find(id: PartId): Part? = byId[id]
 
     fun inCategory(category: String): List<Part> = all.filter { it.category == category }
 

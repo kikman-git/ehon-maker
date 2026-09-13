@@ -122,11 +122,11 @@ data class Layer(
 sealed interface PartDef {
     data class Primitives(val layers: List<Layer>) : PartDef
 
-    /** Commissioned raster art. 1024px masters, WebP with alpha, square box. */
-    data class Raster(val assetName: String) : PartDef
+    /** Opaque asset reference (e.g. a/<sha256>), resolved by the platform's asset loader. */
+    data class Raster(val assetRef: String) : PartDef
 
-    /** Reserved: build-time-converted vector art, should the catalog ever move to SVG. */
-    data class Vector(val pathData: String) : PartDef
+    /** Parsed SVG, from a book's embedded [app.ehon.model.Artwork]. Decision #55. */
+    data class Vector(val art: app.ehon.vector.VectorArt) : PartDef
 }
 
 data class Part(

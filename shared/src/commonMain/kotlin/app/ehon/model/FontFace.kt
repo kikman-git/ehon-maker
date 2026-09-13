@@ -1,6 +1,12 @@
 package app.ehon.model
 
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 
 /**
  * Every face a text node can draw with. Six are offered in the もじ drawer; [UI] is chrome.
@@ -43,5 +49,17 @@ enum class FontFace(
         // Indexed accessors for Swift: an enum's `entries` bridges as NSArray<id>.
         val selectableCount: Int get() = selectable.size
         fun selectableAt(index: Int): FontFace = selectable[index.coerceIn(selectable.indices)]
+    }
+}
+
+/** Enum names on the wire as before; a hand-written document may use the picker id (`"maru"`). */
+object FontFaceSerializer : KSerializer<FontFace> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("app.ehon.model.FontFace", PrimitiveKind.STRING)
+
+    override fun serialize(encoder: Encoder, value: FontFace) = encoder.encodeString(value.name)
+
+    override fun deserialize(decoder: Decoder): FontFace {
+        val text = decoder.decodeString()
+        return FontFace.entries.firstOrNull { it.name == text } ?: FontFace.fromId(text)
     }
 }

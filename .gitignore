@@ -28,3 +28,29 @@ shared/src/commonMain/resources/fonts/*.subset.ttf
 
 # Upstream Google Fonts releases, staged for the subset step. Fetch with `make fonts`.
 tools/fonts-src/
+
+# Web dependencies, generated Kotlin/JS package and browser test output.
+node_modules/
+web/vendor/
+web/public/licenses/
+web/public/fonts/
+web/src/fonts.generated.ts
+web/.lighthouseci/
+web/dist/
+web/test-results/
+web/playwright-report/
+web/.env*.local
+
+# Local backend credentials, emulator state and compiled functions.
+backend/functions/lib/
+backend/functions/.blobs/
+backend/.firebase/
+backend/*-debug.log*
+backend/**/.env*
+!backend/**/.env.example
+backend/**/.secret*
+!backend/**/.secret.example
+backend/.wrangler/
+backend/assets-worker/.wrangler/
+iosApp/Ehon/GoogleService-Info.plist
+iosApp/Config/Cloud.local.xcconfig

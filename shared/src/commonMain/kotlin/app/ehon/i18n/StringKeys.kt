@@ -82,6 +82,8 @@ object StringKeys {
         "share.printFile", "share.printFileHint", "share.adultNote",
         "share.send", "share.sendCount", "share.sent", "share.sentHint",
         "share.readMyself", "share.pickSomeone", "share.backToShelf",
+        "share.link", "share.linkHint", "share.linkSignIn", "share.linkPending", "share.linkFailed",
+        "share.linkRevoke", "share.linkNone", "share.linkFor", "share.linkOpens",
         "family.grandma", "family.grandma.sub",
         "family.grandpa", "family.grandpa.sub",
         "family.mom", "family.mom.sub",
@@ -135,11 +137,15 @@ object StringKeys {
         "cat.shapes", "cat.creatures", "cat.seaSky", "cat.nature", "cat.magic",
     )
 
+    val account = listOf("account.offline", "account.retry", "account.google", "account.signOut", "account.localOnly",
+        "account.cloudUnavailable", "account.close", "sync.diskError", "sync.pending", "sync.saved", "sync.retrying",
+        "sync.lease", "sync.read", "sync.localCopy", "sync.invalidId")
+
     /** Part display names, keyed `part.<catalog name>`. */
     val parts: List<String> =
         app.ehon.catalog.PartCatalog.all.map { "part.${it.nameKey}" }
 
     val all: List<String> =
         home + templates + editor + read + fonts + share + guest + tablet +
-            done + settings + shapes + categories + parts
+            done + settings + shapes + categories + parts + account
 }

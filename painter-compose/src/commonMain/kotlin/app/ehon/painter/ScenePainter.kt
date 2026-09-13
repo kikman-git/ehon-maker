@@ -30,6 +30,9 @@ import app.ehon.geom.Rect
 import app.ehon.model.FontFace
 import app.ehon.scene.Scene
 import app.ehon.scene.SceneNode
+import app.ehon.vector.LineCap
+import app.ehon.vector.LineJoin
+import app.ehon.vector.PathCommand
 import kotlin.math.min
 
 /**
@@ -130,6 +133,40 @@ class ScenePainter(
                     )
                 }
                 drawPath(Path().apply { op(body, cut, PathOperation.Difference) }, node.fill.toColor())
+            }
+
+            is SceneNode.Path -> {
+                val path = Path().apply {
+                    fillType = if (node.evenOdd) PathFillType.EvenOdd else PathFillType.NonZero
+                    node.commands.forEach { command ->
+                        when (command) {
+                            is PathCommand.MoveTo -> moveTo(command.x, command.y)
+                            is PathCommand.LineTo -> lineTo(command.x, command.y)
+                            is PathCommand.QuadTo -> quadraticBezierTo(command.x1, command.y1, command.x, command.y)
+                            is PathCommand.CubicTo -> cubicTo(command.x1, command.y1, command.x2, command.y2, command.x, command.y)
+                            PathCommand.Close -> close()
+                        }
+                    }
+                }
+                if (node.hasFill) drawPath(path, node.fill.toColor())
+                if (node.strokeWidthPx > 0f) {
+                    drawPath(
+                        path, node.stroke.toColor(),
+                        style = DrawStroke(
+                            width = node.strokeWidthPx,
+                            cap = when (node.lineCap) {
+                                LineCap.BUTT -> StrokeCap.Butt
+                                LineCap.ROUND -> StrokeCap.Round
+                                LineCap.SQUARE -> StrokeCap.Square
+                            },
+                            join = when (node.lineJoin) {
+                                LineJoin.MITER -> StrokeJoin.Miter
+                                LineJoin.ROUND -> StrokeJoin.Round
+                                LineJoin.BEVEL -> StrokeJoin.Bevel
+                            },
+                        ),
+                    )
+                }
             }
 
             is SceneNode.Image ->

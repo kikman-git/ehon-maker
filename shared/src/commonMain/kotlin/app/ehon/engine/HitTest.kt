@@ -7,6 +7,9 @@ import app.ehon.model.PartItem
 import app.ehon.model.TextItem
 import app.ehon.scene.TextMeasurer
 import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.PI
 
 /**
  * Which item a tap lands on. Front-most wins, so later-placed items sit on top.
@@ -20,8 +23,13 @@ class HitTest(private val measurer: TextMeasurer) {
         for (i in page.items.indices.reversed()) {
             val item = page.items[i]
             val (halfXPct, halfYPct) = halfExtentsPct(item, pageSize)
-            if (abs(xPct - item.x) < halfXPct + TOUCH_SLOP_PCT &&
-                abs(yPct - item.y) < halfYPct + TOUCH_SLOP_PCT
+            val angle = -item.rotationDeg * PI.toFloat() / 180f
+            val dx = (xPct - item.x) * pageSize.w / 100f
+            val dy = (yPct - item.y) * pageSize.h / 100f
+            val localX = (dx * cos(angle) - dy * sin(angle)) / pageSize.w * 100f
+            val localY = (dx * sin(angle) + dy * cos(angle)) / pageSize.h * 100f
+            if (abs(localX) < halfXPct + TOUCH_SLOP_PCT &&
+                abs(localY) < halfYPct + TOUCH_SLOP_PCT
             ) {
                 return item
             }
@@ -32,8 +40,8 @@ class HitTest(private val measurer: TextMeasurer) {
     private fun halfExtentsPct(item: Item, pageSize: Size): Pair<Float, Float> {
         val (wPx, hPx) = when (item) {
             is PartItem -> {
-                val side = item.sizePct / 100f * pageSize.w
-                side to side
+                val size = item.dimensions(pageSize)
+                size.w to size.h
             }
             is TextItem -> {
                 val fontPx = item.sizePct / 100f * pageSize.w * TextItem.OPTICAL_SCALE

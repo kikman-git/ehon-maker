@@ -48,12 +48,18 @@ class EditorController(
     private val store = DocumentStore(initial)
     private val hitTest = HitTest(measurer)
 
+    init {
+        require(initial.pages.isNotEmpty()) { "an editor needs at least one page" }
+    }
+
     var revision: Int = 0
         private set
 
     val book: Book get() = store.current
     val canUndo: Boolean get() = store.canUndo
     val canRedo: Boolean get() = store.canRedo
+    /** Sync waits for a gesture to finish before replacing the controller's document. */
+    val isGestureActive: Boolean get() = store.isGestureActive
 
     var pageIndex: Int = 0
         private set
@@ -192,11 +198,25 @@ class EditorController(
 
     // ── parts ────────────────────────────────────────────────────────────────
 
-    fun addPart(partId: PartId) = change {
-        val id = idSource.next()
+    fun addPart(partId: PartId) = addPartAt(partId, 50f, 52f, 26f)
+
+    fun addPartAt(
+        partId: PartId,
+        xPct: Float,
+        yPct: Float,
+        sizePct: Float,
+        heightPct: Float? = null,
+    ) = change {
+        require(xPct.isFinite() && yPct.isFinite())
+        require(sizePct.isFinite() && sizePct > 0f)
+        require(heightPct == null || (heightPct.isFinite() && heightPct > 0f))
+        val id = nextItemId()
         store.edit { current ->
             current.mapPage(pageIndex) { p ->
-                p.copy(items = p.items.add(PartItem(id = id, x = 50f, y = 52f, partId = partId)))
+                p.copy(items = p.items.add(PartItem(
+                    id = id, x = xPct.coerceIn(0f, 100f), y = yPct.coerceIn(0f, 100f),
+                    partId = partId, sizePct = sizePct, heightPct = heightPct,
+                )))
             }.copy(updatedAtEpochMs = clock())
         }
         selectedId = id
@@ -221,6 +241,20 @@ class EditorController(
 
     fun clearSelection() = change { selectedId = null }
 
+    fun selectItem(id: ItemId) {
+        require(page.items.any { it.id == id }) { "unknown item ${id.value}" }
+        val item = page.items.first { it.id == id }
+        change {
+            selectedId = id
+            if (item is TextItem) {
+                mode = EditorMode.TEXT
+                fontFace = item.font
+                textColorIndex = item.colorIndex
+                textSizeStep = (TextItem.SIZES.indexOf(item.sizePct) + 1).coerceIn(1, TextItem.SIZES.size)
+            }
+        }
+    }
+
     // ── dragging: one gesture is one undo step ───────────────────────────────
 
     fun beginDrag() {
@@ -228,6 +262,7 @@ class EditorController(
     }
 
     fun dragTo(xPct: Float, yPct: Float) = change {
+        require(xPct.isFinite() && yPct.isFinite())
         val id = selectedId ?: return@change
         store.update { current ->
             current.mapPage(pageIndex) { p ->
@@ -249,9 +284,11 @@ class EditorController(
     fun endDrag() = change {
         // Inside the gesture, not after it: a separate edit would become its own history
         // entry, and the child's first undo tap would change nothing they can see.
-        store.update { it.copy(updatedAtEpochMs = clock()) }
+        if (store.hasGestureChanges) store.update { it.copy(updatedAtEpochMs = clock()) }
         store.endGesture()
     }
+
+    fun cancelDrag() = change { store.cancelGesture() }
 
     // ── selected-item actions ────────────────────────────────────────────────
 
@@ -448,7 +485,7 @@ class EditorController(
             change { toast = TOAST_ENTER_TEXT }
             return false
         }
-        val id = idSource.next()
+        val id = nextItemId()
         change {
             store.edit { current ->
                 current.mapPage(pageIndex) { p ->
@@ -493,6 +530,65 @@ class EditorController(
         return value
     }
 
+    /** Stage first: a malformed batch cannot leave half an AI edit or destroy redo history. */
+    fun applyBatch(intents: List<EditorIntent>) {
+        require(intents.size <= 100) { "too many intents" }
+        check(!store.isGestureActive) { "finish the current gesture before applying intents" }
+        if (intents.isEmpty()) return
+        val staged = EditorController(book, measurer, idSource, clock)
+        staged.copyCompositionState(this)
+        intents.forEach { staged.applyIntent(it) }
+        store.beginGesture()
+        store.update { staged.book }
+        store.endGesture()
+        copyCompositionState(staged)
+        revision++
+    }
+
+    private fun applyIntent(intent: EditorIntent) {
+        when (intent) {
+            is EditorIntent.AddPart -> addPartAt(PartId(intent.partId), intent.xPct, intent.yPct, intent.sizePct, intent.heightPct)
+            is EditorIntent.SelectItem -> selectItem(ItemId(intent.id))
+            is EditorIntent.MoveSelected -> { beginDrag(); dragTo(intent.xPct, intent.yPct); endDrag() }
+            is EditorIntent.ResizeSelected -> resizeSelected(intent.bigger)
+            EditorIntent.RotateSelected -> rotateSelected()
+            EditorIntent.DeleteSelected -> deleteSelected()
+            EditorIntent.BringForward -> bringForward()
+            EditorIntent.SendBackward -> sendBackward()
+            EditorIntent.ClearSelection -> clearSelection()
+            is EditorIntent.SetBackground -> setPageBackground(Argb(intent.argb))
+            is EditorIntent.SetDraftText -> setDraftText(intent.text)
+            is EditorIntent.SetDraftRuby -> setDraftRuby(intent.ruby)
+            is EditorIntent.SetTextSize -> setTextSize(intent.step)
+            is EditorIntent.SetFont -> setFont(FontFace.fromId(intent.id))
+            is EditorIntent.SetTextColour -> setTextColour(intent.index)
+            EditorIntent.CommitText -> require(commitText()) { "text is empty" }
+            is EditorIntent.GoToPage -> {
+                require(intent.index in book.pages.indices)
+                goToPage(intent.index)
+            }
+            EditorIntent.AddPage -> addPage()
+            is EditorIntent.MovePage -> {
+                require(intent.from in book.pages.indices && intent.to in book.pages.indices)
+                movePage(intent.from, intent.to)
+            }
+        }
+    }
+
+    private fun copyCompositionState(other: EditorController) {
+        pageIndex = other.pageIndex
+        selectedId = other.selectedId
+        mode = other.mode
+        uiLevel = other.uiLevel
+        textSizeStep = other.textSizeStep
+        textColorIndex = other.textColorIndex
+        fontFace = other.fontFace
+        draftText = other.draftText
+        draftRuby = other.draftRuby
+        furiganaEnabled = other.furiganaEnabled
+        toast = other.toast
+    }
+
     // ── internals ────────────────────────────────────────────────────────────
 
     private fun clampAfterHistory() {
@@ -503,6 +599,13 @@ class EditorController(
     private fun clearDraft() {
         draftText = ""
         draftRuby = ""
+    }
+
+    private fun nextItemId(): ItemId {
+        val used = book.pages.flatMap { it.items }.mapTo(mutableSetOf()) { it.id }
+        var id = idSource.next()
+        while (id in used) id = idSource.next()
+        return id
     }
 
     private inline fun mapSelected(crossinline transform: (Item) -> Item) {

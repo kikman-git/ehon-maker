@@ -1,6 +1,16 @@
 package app.ehon.design
 
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.JsonDecoder
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.int
 import kotlin.jvm.JvmInline
 import kotlin.math.PI
 import kotlin.math.cos
@@ -23,8 +33,11 @@ value class Argb(val packed: Int) {
     override fun toString() = "#" + packed.toUInt().toString(16).padStart(8, '0')
 
     companion object {
+        /** `#rgb` and `#rrggbb` are opaque; eight digits are `aarrggbb`, as [toString] writes. */
         fun hex(rgb: String): Argb {
-            val s = rgb.removePrefix("#")
+            val raw = rgb.trim().removePrefix("#")
+            val s = if (raw.length == 3) raw.map { "$it$it" }.joinToString("") else raw
+            require(s.length == 6 || s.length == 8) { "not a colour: '$rgb'" }
             val v = s.toLong(16).toInt()
             return if (s.length == 6) Argb(v or (0xFF shl 24)) else Argb(v)
         }
@@ -70,5 +83,22 @@ value class Argb(val packed: Int) {
             val srgb = if (c <= 0.0031308f) 12.92f * c else 1.055f * c.pow(1f / 2.4f) - 0.055f
             return (srgb * 255f).roundToInt().coerceIn(0, 255)
         }
+    }
+}
+
+/**
+ * Packed int on the wire, as every existing book has it, but a document written by hand or by a
+ * model may say `"#f9f4ed"` instead.
+ */
+object ArgbSerializer : KSerializer<Argb> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("app.ehon.design.Argb", PrimitiveKind.INT)
+
+    override fun serialize(encoder: Encoder, value: Argb) = encoder.encodeInt(value.packed)
+
+    override fun deserialize(decoder: Decoder): Argb {
+        val json = decoder as? JsonDecoder ?: return Argb(decoder.decodeInt())
+        val primitive = json.decodeJsonElement() as? JsonPrimitive
+            ?: throw SerializationException("a colour is a number or a hex string")
+        return if (primitive.isString) Argb.hex(primitive.content) else Argb(primitive.int)
     }
 }
