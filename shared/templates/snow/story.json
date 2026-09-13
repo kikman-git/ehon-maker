@@ -1,0 +1,308 @@
+{
+  "id": "doc-snow",
+  "order": 6,
+  "description": {
+    "ja": "こぐまと すずめの、まっしろな いちにち。",
+    "en": "A bear cub and a sparrow's white day."
+  },
+  "book": {
+    "id": {
+      "value": "template-snow"
+    },
+    "title": "ゆきのひの ともだち",
+    "shape": "SQUARE",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "bg-1": {
+        "name": "ゆきの あさ",
+        "file": "bg-1.svg"
+      },
+      "bg-2": {
+        "name": "ゆきの にわ",
+        "file": "bg-2.svg"
+      },
+      "bg-3": {
+        "name": "あたたかい へや",
+        "file": "bg-3.svg"
+      },
+      "bear": {
+        "name": "こぐま",
+        "file": "bear.svg"
+      },
+      "bear-push": {
+        "name": "こぐま（おす）",
+        "file": "bear-push.svg"
+      },
+      "bear-sit": {
+        "name": "こぐま（すわる）",
+        "file": "bear-sit.svg"
+      },
+      "sparrow": {
+        "name": "すずめ",
+        "file": "sparrow.svg"
+      },
+      "yukidaruma": {
+        "name": "ゆきだるま",
+        "file": "yukidaruma.svg"
+      },
+      "yukiusagi": {
+        "name": "ゆきうさぎ",
+        "file": "yukiusagi.svg"
+      },
+      "snowball": {
+        "name": "ゆきのたま",
+        "file": "snowball.svg"
+      },
+      "kotatsu": {
+        "name": "こたつ",
+        "file": "kotatsu.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-1"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-1"
+            },
+            "x": 31,
+            "y": 62,
+            "partId": {
+              "value": "art:bear"
+            },
+            "sizePct": 22
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-2"
+            },
+            "x": 56,
+            "y": 71,
+            "partId": {
+              "value": "art:sparrow"
+            },
+            "sizePct": 8
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "しんしん、ゆきが ふる。",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "とを あけたら、まっしろ。",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-2"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-1"
+            },
+            "x": 72,
+            "y": 60,
+            "partId": {
+              "value": "art:yukidaruma"
+            },
+            "sizePct": 28
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-2"
+            },
+            "x": 90,
+            "y": 73,
+            "partId": {
+              "value": "art:yukiusagi"
+            },
+            "sizePct": 9
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-3"
+            },
+            "x": 30,
+            "y": 66,
+            "partId": {
+              "value": "art:bear-push"
+            },
+            "sizePct": 24
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-4"
+            },
+            "x": 47,
+            "y": 70,
+            "partId": {
+              "value": "art:snowball"
+            },
+            "sizePct": 15
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-5"
+            },
+            "x": 58,
+            "y": 77,
+            "partId": {
+              "value": "art:sparrow"
+            },
+            "sizePct": 7
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "ころころ、ゆきだるま。",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "あかい バケツを、かぶせよう。",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-3"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-1"
+            },
+            "x": 50,
+            "y": 49,
+            "partId": {
+              "value": "art:bear-sit"
+            },
+            "sizePct": 22
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-2"
+            },
+            "x": 50,
+            "y": 61,
+            "partId": {
+              "value": "art:kotatsu"
+            },
+            "sizePct": 38
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-3"
+            },
+            "x": 66,
+            "y": 57,
+            "partId": {
+              "value": "art:sparrow"
+            },
+            "sizePct": 7
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p3-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "おうちに かえって、ぬくぬく。",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p3-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "こたつで みかん、あったかいね。",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+<g fill="#f4c7d2">
+<path d="M200 260 Q 260 200 300 260 Q 260 320 200 260 Z"/>
+<path d="M420 160 Q 480 100 520 160 Q 480 220 420 160 Z" transform="rotate(30 470 160)"/>
+<path d="M700 220 Q 760 160 800 220 Q 760 280 700 220 Z" transform="rotate(-20 750 220)"/>
+<path d="M300 480 Q 360 420 400 480 Q 360 540 300 480 Z" transform="rotate(50 350 480)"/>
+<path d="M600 440 Q 660 380 700 440 Q 660 500 600 440 Z" transform="rotate(10 650 440)"/>
+<path d="M820 520 Q 880 460 920 520 Q 880 580 820 520 Z" transform="rotate(-40 870 520)"/>
+<path d="M160 700 Q 220 640 260 700 Q 220 760 160 700 Z" transform="rotate(20 210 700)"/>
+<path d="M480 720 Q 540 660 580 720 Q 540 780 480 720 Z" transform="rotate(-30 530 720)"/>
+<path d="M740 800 Q 800 740 840 800 Q 800 860 740 800 Z" transform="rotate(40 790 800)"/>
+</g>
+<g fill="#e9a7ba" opacity=".8"><circle cx="250" cy="260" r="6"/><circle cx="470" cy="160" r="6"/><circle cx="750" cy="220" r="6"/><circle cx="350" cy="480" r="6"/><circle cx="650" cy="440" r="6"/><circle cx="870" cy="520" r="6"/><circle cx="210" cy="700" r="6"/><circle cx="530" cy="720" r="6"/><circle cx="790" cy="800" r="6"/></g>
+</svg>

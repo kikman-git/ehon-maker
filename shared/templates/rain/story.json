@@ -1,0 +1,296 @@
+{
+  "id": "doc-rain",
+  "order": 3,
+  "description": {
+    "ja": "あかい かさと、かえると、にじを さがしに。",
+    "en": "A red umbrella, a frog and a rainbow to find."
+  },
+  "book": {
+    "id": {
+      "value": "template-rain"
+    },
+    "title": "あめのひの おくりもの",
+    "shape": "SQUARE",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "bg-1": {
+        "name": "あめの いえ",
+        "file": "bg-1.svg"
+      },
+      "bg-2": {
+        "name": "みずたまりの みち",
+        "file": "bg-2.svg"
+      },
+      "bg-3": {
+        "name": "あめあがり",
+        "file": "bg-3.svg"
+      },
+      "child": {
+        "name": "こども",
+        "file": "child.svg"
+      },
+      "child-jump": {
+        "name": "こども（ジャンプ）",
+        "file": "child-jump.svg"
+      },
+      "child-look": {
+        "name": "こども（みあげる）",
+        "file": "child-look.svg"
+      },
+      "frog": {
+        "name": "かえる",
+        "file": "frog.svg"
+      },
+      "frog-jump": {
+        "name": "かえる（ジャンプ）",
+        "file": "frog-jump.svg"
+      },
+      "rainbow": {
+        "name": "にじ",
+        "file": "rainbow.svg"
+      },
+      "hydrangea": {
+        "name": "あじさい",
+        "file": "hydrangea.svg"
+      },
+      "splash": {
+        "name": "みずしぶき",
+        "file": "splash.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-1"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-hydrangea"
+            },
+            "x": 20,
+            "y": 66,
+            "partId": {
+              "value": "art:hydrangea"
+            },
+            "sizePct": 16
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-child"
+            },
+            "x": 50,
+            "y": 58,
+            "partId": {
+              "value": "art:child"
+            },
+            "sizePct": 30
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-frog"
+            },
+            "x": 76,
+            "y": 73,
+            "partId": {
+              "value": "art:frog"
+            },
+            "sizePct": 8
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "ぽつん、ぽつん。あめの おと。",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "あかい かさで、でかけよう。",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-2"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-splash"
+            },
+            "x": 44,
+            "y": 75,
+            "partId": {
+              "value": "art:splash"
+            },
+            "sizePct": 24
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-child"
+            },
+            "x": 44,
+            "y": 54,
+            "partId": {
+              "value": "art:child-jump"
+            },
+            "sizePct": 30
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-frog"
+            },
+            "x": 68,
+            "y": 60,
+            "partId": {
+              "value": "art:frog-jump"
+            },
+            "sizePct": 10
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "かえるさんも、ぴょん！",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "みずたまりで、いっしょに ぴょん！",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-3"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-rainbow"
+            },
+            "x": 62,
+            "y": 30,
+            "partId": {
+              "value": "art:rainbow"
+            },
+            "sizePct": 60
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-child"
+            },
+            "x": 36,
+            "y": 60,
+            "partId": {
+              "value": "art:child-look"
+            },
+            "sizePct": 28
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-frog"
+            },
+            "x": 58,
+            "y": 74,
+            "partId": {
+              "value": "art:frog"
+            },
+            "sizePct": 8
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p3-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "あめが やんだら、にじが でた。",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p3-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "おそらからの、おくりもの。",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      }
+    ]
+  }
+}

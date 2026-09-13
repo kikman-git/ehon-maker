@@ -9,6 +9,7 @@ import app.ehon.model.ItemId
 import app.ehon.model.Page
 import app.ehon.model.PageShape
 import app.ehon.model.PartItem
+import app.ehon.store.BookCodec
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
 
@@ -179,6 +180,14 @@ object Templates {
 
     fun find(id: String) = all.firstOrNull { it.id == id }
 
+    /** A new shelf copy keeps the story's art, page pairs and original text language. */
+    fun instantiateDocument(templateId: String, bookId: BookId, nowEpochMs: Long): Book {
+        require(bookId.value.isNotBlank())
+        require(nowEpochMs >= 0)
+        val template = requireNotNull(DocumentTemplates.find(templateId)) { "unknown document template $templateId" }
+        return BookCodec.decode(template.json).copy(id = bookId, updatedAtEpochMs = nowEpochMs)
+    }
+
     /**
      * Instantiates a template into a real book.
      *
@@ -199,6 +208,7 @@ object Templates {
         val pages = (0 until template.pageCount).map { index ->
             val source = template.pages.getOrNull(index)
             Page(
+                id = "p${index + 1}",
                 background = template.background,
                 promptKey = source?.promptKey ?: CONTINUATION_PROMPT_KEY,
                 items = (source?.seeds ?: emptyList()).mapNotNull { seed ->

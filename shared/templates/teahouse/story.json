@@ -1,0 +1,646 @@
+{
+  "id": "doc-teahouse",
+  "order": 8,
+  "description": {
+    "ja": "のれんを くぐって、おちゃと おだんご。ほっとする おはなし。",
+    "en": "A little fox welcomes a friend for tea and dango at a woodland tea shop."
+  },
+  "book": {
+    "id": {
+      "value": "template-teahouse"
+    },
+    "title": "こぎつねの おちゃやさん",
+    "shape": "SQUARE",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "garden": {
+        "name": "おちゃやさんの にわ",
+        "file": "garden.svg"
+      },
+      "ground": {
+        "name": "こみちと くさはら",
+        "file": "ground.svg"
+      },
+      "fox": {
+        "name": "おちゃやの こぎつね",
+        "file": "fox.svg"
+      },
+      "rabbit": {
+        "name": "おきゃくの うさぎ",
+        "file": "rabbit.svg"
+      },
+      "cloud": {
+        "name": "ひるの くも",
+        "file": "cloud.svg"
+      },
+      "shop": {
+        "name": "ちいさな おちゃやさん",
+        "file": "shop.svg"
+      },
+      "curtain": {
+        "name": "みどりの のれん",
+        "file": "curtain.svg"
+      },
+      "maple": {
+        "name": "こもれびの き",
+        "file": "maple.svg"
+      },
+      "table": {
+        "name": "えんがわの ちゃぶだい",
+        "file": "table.svg"
+      },
+      "teapot": {
+        "name": "きゅうす",
+        "file": "teapot.svg"
+      },
+      "cup": {
+        "name": "おちゃの ゆのみ",
+        "file": "cup.svg"
+      },
+      "dango": {
+        "name": "さんしょく だんご",
+        "file": "dango.svg"
+      },
+      "cushion": {
+        "name": "ざぶとん",
+        "file": "cushion.svg"
+      },
+      "steam": {
+        "name": "おちゃの ゆげ",
+        "file": "steam.svg"
+      },
+      "flowers": {
+        "name": "にわの おはな",
+        "file": "flowers.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-garden-1"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:garden"
+            },
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-ground-2"
+            },
+            "x": 50,
+            "y": 63,
+            "partId": {
+              "value": "art:ground"
+            },
+            "sizePct": 96,
+            "heightPct": 28.8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-cloud-3"
+            },
+            "x": 20,
+            "y": 21,
+            "partId": {
+              "value": "art:cloud"
+            },
+            "sizePct": 23,
+            "heightPct": 10.952
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-maple-4"
+            },
+            "x": 79,
+            "y": 35,
+            "partId": {
+              "value": "art:maple"
+            },
+            "sizePct": 36,
+            "heightPct": 34.364
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-shop-5"
+            },
+            "x": 40,
+            "y": 44,
+            "partId": {
+              "value": "art:shop"
+            },
+            "sizePct": 58,
+            "heightPct": 53.029
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-curtain-6"
+            },
+            "x": 33,
+            "y": 45,
+            "partId": {
+              "value": "art:curtain"
+            },
+            "sizePct": 21,
+            "heightPct": 13.65
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-fox-7"
+            },
+            "x": 64,
+            "y": 60,
+            "partId": {
+              "value": "art:fox"
+            },
+            "sizePct": 25,
+            "heightPct": 30.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-flowers-8"
+            },
+            "x": 18,
+            "y": 71,
+            "partId": {
+              "value": "art:flowers"
+            },
+            "sizePct": 24,
+            "heightPct": 13.895
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-flowers-9"
+            },
+            "x": 85,
+            "y": 68,
+            "partId": {
+              "value": "art:flowers"
+            },
+            "sizePct": 15,
+            "heightPct": 8.684
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-caption-1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "こぎつねの おちゃやさん。",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-caption-2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "きょうも のれんを、ゆらして。",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-garden-1"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:garden"
+            },
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-ground-2"
+            },
+            "x": 50,
+            "y": 64,
+            "partId": {
+              "value": "art:ground"
+            },
+            "sizePct": 96,
+            "heightPct": 28.8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-maple-3"
+            },
+            "x": 20,
+            "y": 35,
+            "partId": {
+              "value": "art:maple"
+            },
+            "sizePct": 38,
+            "heightPct": 36.273
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-cloud-4"
+            },
+            "x": 69,
+            "y": 19,
+            "partId": {
+              "value": "art:cloud"
+            },
+            "sizePct": 27,
+            "heightPct": 12.857
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-cushion-5"
+            },
+            "x": 31,
+            "y": 70,
+            "partId": {
+              "value": "art:cushion"
+            },
+            "sizePct": 27,
+            "heightPct": 21.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-cushion-6"
+            },
+            "x": 76,
+            "y": 70,
+            "partId": {
+              "value": "art:cushion"
+            },
+            "sizePct": 27,
+            "heightPct": 21.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-rabbit-7"
+            },
+            "x": 28,
+            "y": 55,
+            "partId": {
+              "value": "art:rabbit"
+            },
+            "sizePct": 30,
+            "heightPct": 36.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-fox-8"
+            },
+            "x": 74,
+            "y": 55,
+            "partId": {
+              "value": "art:fox"
+            },
+            "sizePct": 30,
+            "heightPct": 36.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-table-9"
+            },
+            "x": 51,
+            "y": 67,
+            "partId": {
+              "value": "art:table"
+            },
+            "sizePct": 31,
+            "heightPct": 27.125
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-teapot-10"
+            },
+            "x": 48,
+            "y": 56,
+            "partId": {
+              "value": "art:teapot"
+            },
+            "sizePct": 15,
+            "heightPct": 11.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-cup-11"
+            },
+            "x": 60,
+            "y": 56,
+            "partId": {
+              "value": "art:cup"
+            },
+            "sizePct": 9,
+            "heightPct": 8.654
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-dango-12"
+            },
+            "x": 53,
+            "y": 62,
+            "partId": {
+              "value": "art:dango"
+            },
+            "sizePct": 12,
+            "heightPct": 10.588
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-steam-13"
+            },
+            "x": 50,
+            "y": 44,
+            "partId": {
+              "value": "art:steam"
+            },
+            "sizePct": 12,
+            "heightPct": 9.429
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-flowers-14"
+            },
+            "x": 12,
+            "y": 70,
+            "partId": {
+              "value": "art:flowers"
+            },
+            "sizePct": 17,
+            "heightPct": 9.842
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-caption-1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "どうぞ、おちゃを めしあがれ。",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-caption-2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "おだんごも、ひとつ どうぞ。",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-garden-1"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:garden"
+            },
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-ground-2"
+            },
+            "x": 50,
+            "y": 64,
+            "partId": {
+              "value": "art:ground"
+            },
+            "sizePct": 96,
+            "heightPct": 28.8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-shop-3"
+            },
+            "x": 75,
+            "y": 38,
+            "partId": {
+              "value": "art:shop"
+            },
+            "sizePct": 36,
+            "heightPct": 32.914
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-curtain-4"
+            },
+            "x": 71,
+            "y": 39,
+            "partId": {
+              "value": "art:curtain"
+            },
+            "sizePct": 13,
+            "heightPct": 8.45
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-maple-5"
+            },
+            "x": 21,
+            "y": 34,
+            "partId": {
+              "value": "art:maple"
+            },
+            "sizePct": 35,
+            "heightPct": 33.409
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-cushion-6"
+            },
+            "x": 35,
+            "y": 69,
+            "partId": {
+              "value": "art:cushion"
+            },
+            "sizePct": 27,
+            "heightPct": 21.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-cushion-7"
+            },
+            "x": 64,
+            "y": 69,
+            "partId": {
+              "value": "art:cushion"
+            },
+            "sizePct": 27,
+            "heightPct": 21.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-rabbit-8"
+            },
+            "x": 34,
+            "y": 55,
+            "partId": {
+              "value": "art:rabbit"
+            },
+            "sizePct": 30,
+            "heightPct": 36.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-fox-9"
+            },
+            "x": 64,
+            "y": 55,
+            "partId": {
+              "value": "art:fox"
+            },
+            "sizePct": 30,
+            "heightPct": 36.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-table-10"
+            },
+            "x": 50,
+            "y": 68,
+            "partId": {
+              "value": "art:table"
+            },
+            "sizePct": 27,
+            "heightPct": 23.625
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-cup-11"
+            },
+            "x": 44,
+            "y": 59,
+            "partId": {
+              "value": "art:cup"
+            },
+            "sizePct": 9,
+            "heightPct": 8.654
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-cup-12"
+            },
+            "x": 56,
+            "y": 59,
+            "partId": {
+              "value": "art:cup"
+            },
+            "sizePct": 9,
+            "heightPct": 8.654
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-steam-13"
+            },
+            "x": 51,
+            "y": 47,
+            "partId": {
+              "value": "art:steam"
+            },
+            "sizePct": 16,
+            "heightPct": 12.571
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-flowers-14"
+            },
+            "x": 84,
+            "y": 70,
+            "partId": {
+              "value": "art:flowers"
+            },
+            "sizePct": 22,
+            "heightPct": 12.737
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p3-caption-1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "ふう、ふう。ほっと ひといき。",
+            "font": "yomogi",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p3-caption-2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "いっしょだと、もっと おいしい。",
+            "font": "yomogi",
+            "sizePct": 5
+          }
+        ]
+      }
+    ]
+  }
+}

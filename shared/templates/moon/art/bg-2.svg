@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+<rect width="1000" height="1000" fill="#f9f4ed"/>
+<rect width="1000" height="780" fill="#2f3a5c"/>
+<rect y="300" width="1000" height="300" fill="#3d4a72" opacity=".7"/>
+<ellipse cx="720" cy="420" rx="420" ry="130" fill="#26304c"/>
+<ellipse cx="240" cy="450" rx="320" ry="100" fill="#2b3554"/>
+<path d="M0 500 Q 300 470 520 500 T 1000 490 L1000 640 L0 640 Z" fill="#3f4d3a"/>
+<ellipse cx="640" cy="560" rx="150" ry="30" fill="#4d6d94"/>
+<ellipse cx="640" cy="560" rx="60" ry="10" fill="#8aa6c4" opacity=".7"/>
+<g stroke="#b9b48f" stroke-width="5" stroke-linecap="round"><path d="M120 560 Q 130 480 160 440"/><path d="M170 570 Q 185 490 220 450"/><path d="M230 570 Q 240 500 270 460"/><path d="M880 560 Q 890 490 920 450"/><path d="M930 570 Q 940 500 970 460"/><path d="M820 570 Q 830 510 860 470"/></g>
+<g fill="#e5dcc0"><ellipse cx="160" cy="436" rx="11" ry="20"/><ellipse cx="220" cy="446" rx="11" ry="20"/><ellipse cx="270" cy="456" rx="11" ry="20"/><ellipse cx="920" cy="446" rx="11" ry="20"/><ellipse cx="970" cy="456" rx="11" ry="20"/><ellipse cx="860" cy="466" rx="11" ry="20"/></g>
+<g><rect x="430" y="440" width="50" height="100" fill="#6a6a6a"/><rect x="415" y="410" width="80" height="30" rx="6" fill="#585858"/><rect x="440" y="450" width="30" height="36" fill="#f2b27a"/><rect x="410" y="540" width="90" height="16" fill="#585858"/></g>
+<g fill="#7d5a3c"><rect x="0" y="640" width="1000" height="170"/></g>
+<g stroke="#6a4a30" stroke-width="4"><line x1="0" y1="680" x2="1000" y2="680"/><line x1="0" y1="720" x2="1000" y2="720"/><line x1="0" y1="760" x2="1000" y2="760"/></g>
+<rect x="0" y="632" width="1000" height="14" fill="#5a3f2c"/>
+<rect x="0" y="0" width="60" height="640" fill="#7d5a3c"/>
+<rect x="60" y="0" width="30" height="640" fill="#f4eee0" opacity=".9"/>
+<rect x="960" y="0" width="40" height="640" fill="#7d5a3c"/>
+<rect y="710" width="1000" height="50" fill="#f9f4ed" opacity=".35"/>
+<rect y="760" width="1000" height="48" fill="#f9f4ed" opacity=".65"/>
+<rect y="808" width="1000" height="192" fill="#f9f4ed"/>
+</svg>

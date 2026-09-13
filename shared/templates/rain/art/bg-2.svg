@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+<rect width="1000" height="1000" fill="#f9f4ed"/>
+<rect width="1000" height="780" fill="#c2ccd6"/>
+<ellipse cx="220" cy="430" rx="420" ry="120" fill="#a9b7c4"/>
+<ellipse cx="800" cy="450" rx="400" ry="110" fill="#b6c2cc"/>
+<rect x="80" y="330" width="240" height="150" fill="#8b6a4c" opacity=".8"/>
+<path d="M60 336 L200 240 L340 336 Z" fill="#3b3630" opacity=".8"/>
+<rect x="150" y="370" width="60" height="60" rx="6" fill="#f3c977"/>
+<path d="M0 520 Q 300 500 520 520 T 1000 510 L1000 810 L0 810 Z" fill="#9fae7f"/>
+<path d="M0 600 Q 500 560 1000 600 L1000 810 L0 810 Z" fill="#cfc6b8"/>
+<g fill="#b8b0a2"><ellipse cx="140" cy="640" rx="80" ry="22"/><ellipse cx="440" cy="620" rx="90" ry="22"/><ellipse cx="760" cy="640" rx="90" ry="24"/><ellipse cx="960" cy="700" rx="70" ry="20"/><ellipse cx="260" cy="740" rx="80" ry="22"/><ellipse cx="620" cy="760" rx="90" ry="24"/></g>
+<g fill="#a9c6d8"><ellipse cx="300" cy="690" rx="150" ry="34"/><ellipse cx="720" cy="720" rx="130" ry="30"/><ellipse cx="520" cy="660" rx="90" ry="20"/></g>
+<g fill="none" stroke="#dbe7f0" stroke-width="4"><ellipse cx="300" cy="690" rx="70" ry="14"/><ellipse cx="720" cy="720" rx="60" ry="12"/></g>
+<g fill="#8f8fbf"><ellipse cx="60" cy="560" rx="70" ry="60"/><ellipse cx="920" cy="560" rx="70" ry="60"/><ellipse cx="850" cy="600" rx="50" ry="45"/></g>
+<g fill="#6f8a5a"><ellipse cx="120" cy="600" rx="50" ry="26"/><ellipse cx="960" cy="610" rx="40" ry="24"/></g>
+<g stroke="#e3ebf1" stroke-width="5" stroke-linecap="round" opacity=".8"><line x1="100" y1="60" x2="90" y2="110"/><line x1="300" y1="120" x2="290" y2="170"/><line x1="500" y1="40" x2="490" y2="90"/><line x1="700" y1="120" x2="690" y2="170"/><line x1="900" y1="60" x2="890" y2="110"/><line x1="200" y1="260" x2="190" y2="310"/><line x1="440" y1="220" x2="430" y2="270"/><line x1="620" y1="300" x2="610" y2="350"/><line x1="820" y1="260" x2="810" y2="310"/><line x1="360" y1="400" x2="350" y2="450"/><line x1="560" y1="440" x2="550" y2="490"/><line x1="760" y1="400" x2="750" y2="450"/><line x1="960" y1="380" x2="950" y2="430"/><line x1="40" y1="440" x2="30" y2="490"/></g>
+<rect y="710" width="1000" height="50" fill="#f9f4ed" opacity=".35"/>
+<rect y="760" width="1000" height="48" fill="#f9f4ed" opacity=".65"/>
+<rect y="808" width="1000" height="192" fill="#f9f4ed"/>
+</svg>

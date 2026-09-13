@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+<rect width="1000" height="1000" fill="#f9f4ed"/>
+<rect width="1000" height="780" fill="#2f3a5c"/>
+<g fill="#ffffff" opacity=".6"><circle cx="100" cy="300" r="3"/><circle cx="900" cy="280" r="3"/><circle cx="500" cy="320" r="3"/></g>
+<g fill="#b9463a"><path d="M40 120 L960 120 L960 260 L40 260 Z"/></g>
+<g fill="#f3e3c6"><rect x="120" y="120" width="80" height="140"/><rect x="280" y="120" width="80" height="140"/><rect x="440" y="120" width="80" height="140"/><rect x="600" y="120" width="80" height="140"/><rect x="760" y="120" width="80" height="140"/></g>
+<g fill="#b9463a"><circle cx="80" cy="262" r="20"/><circle cx="160" cy="262" r="20"/><circle cx="240" cy="262" r="20"/><circle cx="320" cy="262" r="20"/><circle cx="400" cy="262" r="20"/><circle cx="480" cy="262" r="20"/><circle cx="560" cy="262" r="20"/><circle cx="640" cy="262" r="20"/><circle cx="720" cy="262" r="20"/><circle cx="800" cy="262" r="20"/><circle cx="880" cy="262" r="20"/><circle cx="960" cy="262" r="20"/></g>
+<g fill="#7d5a3c"><rect x="60" y="260" width="24" height="440"/><rect x="916" y="260" width="24" height="440"/></g>
+<g fill="#e05a4a"><ellipse cx="200" cy="330" rx="30" ry="40"/><ellipse cx="800" cy="330" rx="30" ry="40"/></g>
+<g fill="#f7dd8f" opacity=".8"><ellipse cx="200" cy="330" rx="14" ry="24"/><ellipse cx="800" cy="330" rx="14" ry="24"/></g>
+<rect x="120" y="560" width="760" height="180" rx="14" fill="#a9805a"/>
+<rect x="120" y="560" width="760" height="30" rx="8" fill="#7d5a3c"/>
+<path d="M140 420 L860 420 L880 560 L120 560 Z" fill="#4a7fa8"/>
+<path d="M170 440 L830 440 L846 540 L154 540 Z" fill="#6fa8d0"/>
+<g fill="#ffffff" opacity=".5"><ellipse cx="300" cy="470" rx="70" ry="10"/><ellipse cx="620" cy="510" rx="90" ry="12"/></g>
+<g><rect x="720" y="580" width="90" height="90" rx="45" fill="#f3e3c6"/><rect x="805" y="618" width="60" height="14" rx="7" fill="#7d5a3c"/><rect x="600" y="600" width="80" height="60" rx="30" fill="#ffffff"/><rect x="200" y="600" width="90" height="60" rx="30" fill="#ffffff"/></g>
+<path d="M0 740 L1000 740 L1000 810 L0 810 Z" fill="#8f8a7a"/>
+<rect y="710" width="1000" height="50" fill="#f9f4ed" opacity=".35"/>
+<rect y="760" width="1000" height="48" fill="#f9f4ed" opacity=".65"/>
+<rect y="808" width="1000" height="192" fill="#f9f4ed"/>
+</svg>

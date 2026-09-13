@@ -1,0 +1,292 @@
+{
+  "id": "doc-sakura",
+  "order": 1,
+  "description": {
+    "ja": "こねこと はなびらの、はるの おさんぽ。",
+    "en": "A kitten and the petals on a spring walk."
+  },
+  "book": {
+    "id": {
+      "value": "template-sakura"
+    },
+    "title": "さくらの みち",
+    "shape": "SQUARE",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "bg-1": {
+        "name": "さくらの みち",
+        "file": "bg-1.svg"
+      },
+      "bg-2": {
+        "name": "はし",
+        "file": "bg-2.svg"
+      },
+      "bg-3": {
+        "name": "おおきな さくら",
+        "file": "bg-3.svg"
+      },
+      "kitten": {
+        "name": "こねこ",
+        "file": "kitten.svg"
+      },
+      "kitten-run": {
+        "name": "こねこ（はしる）",
+        "file": "kitten-run.svg"
+      },
+      "kitten-look": {
+        "name": "こねこ（みあげる）",
+        "file": "kitten-look.svg"
+      },
+      "mejiro": {
+        "name": "めじろ",
+        "file": "mejiro.svg"
+      },
+      "petals": {
+        "name": "はなびら",
+        "file": "petals.svg"
+      },
+      "dango": {
+        "name": "おだんご",
+        "file": "dango.svg"
+      },
+      "cloth": {
+        "name": "しきもの",
+        "file": "cloth.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-1"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-petals"
+            },
+            "x": 56,
+            "y": 40,
+            "partId": {
+              "value": "art:petals"
+            },
+            "sizePct": 26
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-kitten"
+            },
+            "x": 74,
+            "y": 66,
+            "partId": {
+              "value": "art:kitten"
+            },
+            "sizePct": 20
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "はるの かぜが、ふわり。",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p1-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "さくらの はなびらが、まいおりた。",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-2"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-petals"
+            },
+            "x": 26,
+            "y": 30,
+            "partId": {
+              "value": "art:petals"
+            },
+            "sizePct": 22
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-mejiro"
+            },
+            "x": 78,
+            "y": 30,
+            "partId": {
+              "value": "art:mejiro"
+            },
+            "sizePct": 12
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p2-kitten"
+            },
+            "x": 46,
+            "y": 46,
+            "partId": {
+              "value": "art:kitten-run"
+            },
+            "sizePct": 22
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "ひらり、ひらり。おいかけて。",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "はなびらは、どこへ いくの？",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-bg"
+            },
+            "x": 50,
+            "y": 50,
+            "partId": {
+              "value": "art:bg-3"
+            },
+            "sizePct": 100,
+            "heightPct": 100
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-cloth"
+            },
+            "x": 50,
+            "y": 66,
+            "partId": {
+              "value": "art:cloth"
+            },
+            "sizePct": 40
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-kitten"
+            },
+            "x": 41,
+            "y": 61,
+            "partId": {
+              "value": "art:kitten-look"
+            },
+            "sizePct": 21
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-mejiro"
+            },
+            "x": 66,
+            "y": 66,
+            "partId": {
+              "value": "art:mejiro"
+            },
+            "sizePct": 9
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-dango"
+            },
+            "x": 56,
+            "y": 71,
+            "partId": {
+              "value": "art:dango"
+            },
+            "sizePct": 12
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p3-t1"
+            },
+            "x": 50,
+            "y": 84.5,
+            "text": "おだんご もって、おはなみ。",
+            "font": "maru",
+            "sizePct": 5
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p3-t2"
+            },
+            "x": 50,
+            "y": 91.5,
+            "text": "みんなで みると、もっと きれい。",
+            "font": "maru",
+            "sizePct": 5
+          }
+        ]
+      }
+    ]
+  }
+}
