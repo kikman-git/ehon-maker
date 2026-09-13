@@ -12,7 +12,7 @@ final class LocalBookStore {
 
     static let shared = LocalBookStore()
 
-    private let directory: URL
+    let directory: URL
 
     init(directory: URL? = nil) {
         self.directory = directory ?? FileManager.default
@@ -62,9 +62,11 @@ final class LocalBookStore {
 
     // MARK: - writes
 
-    func save(_ book: Book) {
+    @discardableResult
+    func save(_ book: Book) -> Bool {
         let text = BookCodec.shared.encode(book: book)
-        try? text.write(to: url(for: book.id), atomically: true, encoding: .utf8)
+        do { try text.write(to: url(for: book.id), atomically: true, encoding: .utf8); return true }
+        catch { return false }
     }
 
     func delete(_ id: BookId) {

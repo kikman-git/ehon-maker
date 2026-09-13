@@ -27,6 +27,17 @@ struct TemplatesView: View {
             filters
             ScrollView {
                 VStack(spacing: 14) {
+                    if tag == nil {
+                        ForEach(DocumentTemplates.shared.all, id: \.id) { entry in
+                            if let book = BookCodec.shared.decodeOrNull(text: entry.json) {
+                                DocumentTemplateCard(
+                                    book: book,
+                                    description: Localized.isJapaneseUI ? entry.descriptionJa : entry.descriptionEn,
+                                    onUse: { app.startDocumentTemplate(entry.id) }
+                                )
+                            }
+                        }
+                    }
                     ForEach(visible, id: \.id) { template in
                         TemplateCard(
                             template: template,
@@ -71,6 +82,58 @@ struct TemplatesView: View {
             .padding(.horizontal, 18)
         }
         .padding(.bottom, 10)
+    }
+}
+
+/// A real opening spread, so picture and text pages can be assessed together.
+private struct DocumentTemplateCard: View {
+    let book: Book
+    let description: String
+    let onUse: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 3) {
+                ForEach(0..<min(2, Int(book.pageCount)), id: \.self) { index in
+                    DocumentPagePreview(book: book, index: index)
+                }
+            }
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(book.title).font(.ehUI(17, .black)).foregroundStyle(Color.ehText)
+                Text(Localized.s("book.pages", book.pageCount))
+                    .font(.ehUI(11.5, .medium)).foregroundStyle(Color.ehMuted)
+            }
+            Text(description).font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted).lineSpacing(3)
+            PillButton(title: Localized.s("home.newBook"), filled: true, big: true, action: onUse)
+        }
+        .padding(14)
+        .background(RoundedRectangle(cornerRadius: 28).fill(Color.ehSunken))
+        .ehElevation(1)
+    }
+}
+
+private struct DocumentPagePreview: View {
+    let book: Book
+    let index: Int
+    @ObservedObject private var resources = SceneResources.shared
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
+    private static let painter = ScenePainter()
+
+    var body: some View {
+        let _ = resources.revision
+        GeometryReader { geo in
+            let target = RenderTarget.Companion.shared.screen(
+                shape: book.shape,
+                available: Size(w: Float(max(geo.size.width, 1)), h: Float(max(geo.size.height, 1))),
+                selectedItem: nil
+            )
+            let scene = Self.builder.build(page: book.page(index: Int32(index)), target: target, promptText: nil, art: book.art)
+            Canvas { ctx, _ in ctx.withCGContext { Self.painter.draw(scene, into: $0) } }
+                .frame(width: CGFloat(scene.size.w), height: CGFloat(scene.size.h))
+        }
+        .aspectRatio(CGFloat(book.shape.aspect), contentMode: .fit)
+        .clipShape(RoundedRectangle(cornerRadius: 3))
+        .frame(maxWidth: .infinity)
     }
 }
 
@@ -174,10 +237,13 @@ private struct TemplatePagePreview: View {
     let pageIndex: Int
     let shape: PageShape
 
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    @ObservedObject private var resources = SceneResources.shared
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
     private static let painter = ScenePainter()
 
     var body: some View {
+        let _ = resources.revision
         GeometryReader { geo in
             let book = Templates.shared.instantiate(
                 template: template,
@@ -194,7 +260,7 @@ private struct TemplatePagePreview: View {
                 selectedItem: nil
             )
             let scene = Self.builder.build(
-                page: book.page(index: Int32(pageIndex)), target: target, promptText: nil
+                page: book.page(index: Int32(pageIndex)), target: target, promptText: nil, art: book.art
             )
             Canvas { ctx, _ in
                 ctx.withCGContext { Self.painter.draw(scene, into: $0) }

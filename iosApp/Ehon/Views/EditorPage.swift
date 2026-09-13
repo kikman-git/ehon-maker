@@ -10,7 +10,9 @@ import EhonCore
 struct EditorPage: View {
     @ObservedObject var model: EditorModel
 
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    @ObservedObject private var resources = SceneResources.shared
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
     private static let painter = ScenePainter()
 
     /// Tracks whether the in-flight gesture is moving an item, drawing, or neither.
@@ -19,6 +21,7 @@ struct EditorPage: View {
     private enum ActiveGesture { case none, dragging, drawing, missed }
 
     var body: some View {
+        let _ = resources.revision
         GeometryReader { geo in
             let available = Size(w: Float(max(geo.size.width, 1)), h: Float(max(geo.size.height, 1)))
             let target = RenderTarget.Companion.shared.screen(
@@ -29,7 +32,8 @@ struct EditorPage: View {
             let scene = Self.builder.build(
                 page: model.page,
                 target: target,
-                promptText: model.page.promptKey.map { Localized.s($0) }
+                promptText: model.page.promptKey.map { Localized.s($0) },
+                art: model.book.art
             )
             let pageSize = CGSize(width: CGFloat(scene.size.w), height: CGFloat(scene.size.h))
             let origin = CGPoint(
@@ -114,7 +118,8 @@ struct EditorPage: View {
             let centreX = origin.x + CGFloat(item.x) / 100 * pageSize.width
             let itemHalfHeight: CGFloat = {
                 if let part = item as? PartItem {
-                    return CGFloat(part.sizePct) / 100 * pageSize.width / 2
+                    let size = part.dimensions(page: Size(w: Float(pageSize.width), h: Float(pageSize.height)))
+                    return CGFloat(size.h) / 2
                 }
                 return 18
             }()

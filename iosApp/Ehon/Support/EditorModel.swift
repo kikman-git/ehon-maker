@@ -10,23 +10,27 @@ import EhonCore
 @MainActor
 final class EditorModel: ObservableObject {
 
-    let controller: EditorController
+    private(set) var controller: EditorController
     let bookId: BookId
 
     @Published private(set) var revision: Int32 = 0
     @Published var toastText: String?
+    @Published private(set) var isReadOnly = false
 
-    private let store: LocalBookStore
+    private let repository: BookRepository
     private var saveTask: Task<Void, Never>?
     private var fontWatch: AnyCancellable?
+    private var assetWatch: AnyCancellable?
+    private var leaseWatch: AnyCancellable?
 
-    init(book: Book, uiLevel: UiLevel = .kid, store: LocalBookStore = .shared) {
+    init(book: Book, uiLevel: UiLevel = .kid, repository: BookRepository? = nil) {
+        let repository = repository ?? BookRepository.shared
         self.bookId = book.id
-        self.store = store
+        self.repository = repository
         self.controller = EditorController(
             initial: book,
             measurer: UIKitTextMeasurer(),
-            idSource: IdSource(prefix: "i\(Int(Date().timeIntervalSince1970))-"),
+            idSource: IdSource(prefix: "i\(UUID().uuidString)-"),
             clock: { KotlinLong(value: Int64(Date().timeIntervalSince1970 * 1000)) }
         )
         controller.setUiLevel(level: uiLevel)
@@ -35,6 +39,9 @@ final class EditorModel: ObservableObject {
             .dropFirst()
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in self?.revision &+= 1 }
+        assetWatch = NotificationCenter.default.publisher(for: .ehonAssetsChanged)
+            .receive(on: RunLoop.main).sink { [weak self] _ in self?.revision &+= 1 }
+        leaseWatch = repository.$isReadOnly.sink { [weak self] value in self?.isReadOnly = value }
     }
 
     func setUiLevel(_ level: UiLevel) {
@@ -51,8 +58,9 @@ final class EditorModel: ObservableObject {
 
     /// Runs an intent, republishes, shows any toast, and schedules a debounced save.
     func apply(_ intent: (EditorController) -> Void) {
+        guard !isReadOnly || controller.isGestureActive else { return }
         intent(controller)
-        revision = controller.revision
+        revision &+= 1
         if let key = controller.consumeToast() {
             toastText = Localized.s(key)
             Task { @MainActor in
@@ -61,6 +69,24 @@ final class EditorModel: ObservableObject {
             }
         }
         scheduleSave()
+        repository.flushRemote()
+    }
+
+    /// Sync replaces a completed document, preserving the visible page and UI mode.
+    /// Undo is reset when a remote edit lands, so it cannot undo another device's work.
+    func receive(_ book: Book) {
+        guard book.id == bookId, book != controller.book, !controller.isGestureActive else { return }
+        let pageId = page.id, level = controller.uiLevel, mode = controller.mode
+        saveTask?.cancel()
+        controller = EditorController(initial: book, measurer: UIKitTextMeasurer(),
+            idSource: IdSource(prefix: "i\(UUID().uuidString)-"),
+            clock: { KotlinLong(value: Int64(Date().timeIntervalSince1970 * 1000)) })
+        controller.setUiLevel(level: level)
+        controller.setMode(next: mode)
+        if let index = (0..<Int(book.pageCount)).first(where: { book.page(index: Int32($0)).id == pageId }) {
+            controller.goToPage(index: Int32(index))
+        }
+        revision &+= 1
     }
 
     /// Debounced: a child drawing generates hundreds of mutations a minute, and this is the
@@ -70,13 +96,13 @@ final class EditorModel: ObservableObject {
         saveTask = Task { @MainActor in
             try? await Task.sleep(for: .seconds(2))
             guard !Task.isCancelled else { return }
-            store.save(controller.book)
+            repository.save(controller.book)
         }
     }
 
     /// Called on backgrounding and on leaving the editor, where debouncing isn't safe.
     func saveNow() {
         saveTask?.cancel()
-        store.save(controller.book)
+        repository.save(controller.book)
     }
 }

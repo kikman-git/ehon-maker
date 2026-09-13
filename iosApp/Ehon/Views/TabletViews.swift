@@ -45,6 +45,10 @@ struct TabletRootView: View {
                 }
             }
             .animation(.easeOut(duration: 0.2), value: reading)
+            .onChange(of: reading) { _, value in
+                model.saveNow()
+                app.repository.open(model.book, editing: !value)
+            }
         }
         .onAppear {
             if startReading { mode = .read; readIndex = startPage }
@@ -64,12 +68,15 @@ struct TabletEditorView: View {
     var body: some View {
         VStack(spacing: 0) {
             header
+            LeaseNotice(model: model)
             thumbnails
             EditorPage(model: model)
+                .allowsHitTesting(!model.isReadOnly)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.horizontal, 34)
                 .padding(.vertical, 6)
             rail
+                .disabled(model.isReadOnly)
         }
         .background(Color.ehBg)
         .overlay(alignment: .bottom) {
@@ -423,10 +430,13 @@ private struct TabletThumb: View, Equatable {
             && lhs.book.page(index: Int32(lhs.index)).isEqual(rhs.book.page(index: Int32(rhs.index)))
     }
 
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    @ObservedObject private var resources = SceneResources.shared
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
     private static let painter = ScenePainter()
 
     var body: some View {
+        let _ = resources.revision
         Button(action: action) {
             VStack(spacing: 5) {
                 GeometryReader { geo in
@@ -434,7 +444,7 @@ private struct TabletThumb: View, Equatable {
                         shape: book.shape,
                         available: Size(w: Float(max(geo.size.width, 1)), h: Float(max(geo.size.height, 1))),
                         selectedItem: nil)
-                    let scene = Self.builder.build(page: book.page(index: Int32(index)), target: target, promptText: nil)
+                    let scene = Self.builder.build(page: book.page(index: Int32(index)), target: target, promptText: nil, art: book.art)
                     Canvas { ctx, _ in ctx.withCGContext { Self.painter.draw(scene, into: $0) } }
                         .frame(width: CGFloat(scene.size.w), height: CGFloat(scene.size.h))
                         .frame(width: geo.size.width, height: geo.size.height)

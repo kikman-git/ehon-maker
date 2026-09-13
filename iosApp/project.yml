@@ -23,15 +23,38 @@ settings:
     CODE_SIGN_STYLE: Automatic
     DEVELOPMENT_TEAM: ${EHON_DEVELOPMENT_TEAM}
 
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk.git
+    majorVersion: 12.0.0
+  GoogleSignIn:
+    url: https://github.com/google/GoogleSignIn-iOS.git
+    majorVersion: 9.0.0
+
 targets:
   Ehon:
     type: application
     platform: iOS
+    configFiles:
+      Debug: Config/Cloud.xcconfig
+      Release: Config/Cloud.xcconfig
     sources:
       - path: Ehon
+    dependencies:
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseFirestore
+      - package: Firebase
+        product: FirebaseFunctions
+      - package: Firebase
+        product: FirebaseAppCheck
+      - package: GoogleSignIn
+        product: GoogleSignIn
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.ehon.petapeta
+        CODE_SIGN_ENTITLEMENTS: Ehon/Ehon.entitlements
         INFOPLIST_FILE: Ehon/Info.plist
         GENERATE_INFOPLIST_FILE: NO
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
@@ -59,6 +82,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.ehon.petapeta.tests
+        GENERATE_INFOPLIST_FILE: YES
         FRAMEWORK_SEARCH_PATHS:
           - $(inherited)
           - $(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)
@@ -77,3 +101,13 @@ schemes:
       targets:
         - EhonTests
       gatherCoverageData: false
+  EhonSync:
+    build:
+      targets:
+        Ehon: all
+        EhonTests: [test]
+    test:
+      targets:
+        - EhonTests
+      environmentVariables:
+        EHON_SYNC_TESTS: "1"

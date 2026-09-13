@@ -3,12 +3,14 @@ import EhonCore
 
 /// かぞくに おくる — pick who gets the book and what travels with it. Model 2a.
 ///
-/// v1 has no backend, so "send" produces the `.ehon` archive (plus the PDF when asked) and
-/// hands it to the system share sheet — LINE, Mail, AirDrop. The recipient picker and the
-/// voice toggle are the real UI the link-based send will sit behind; only the transport
-/// is a stand-in.
+/// With an account, each chosen person gets their own read-only web link (decision 41), so
+/// any one of them can be stopped later. The `.ehon` archive (and the PDF when asked) still
+/// rides along in the system share sheet for family who have the app.
 struct ShareView: View {
     @EnvironmentObject var app: AppModel
+    @ObservedObject private var account = AccountSession.shared
+    @ObservedObject private var repository = BookRepository.shared
+    @StateObject private var links = ShareLinks()
     let book: Book
 
     @State private var chosen: Set<String> = ["grandma", "grandpa"]
@@ -16,8 +18,10 @@ struct ShareView: View {
     @State private var withPrintFile = false
     @State private var sent = false
     @State private var busy = false
-    @State private var share: [URL]?
+    @State private var share: ShareItems?
     @State private var toast: String?
+
+    private var canLink: Bool { ShareLinks.available && !repository.hasPendingChanges }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -29,12 +33,11 @@ struct ShareView: View {
             if let toast { ToastView(text: toast).padding(.bottom, 40) }
         }
         .animation(.easeOut(duration: 0.2), value: toast)
-        .sheet(item: Binding(
-            get: { share.map { ShareItems(urls: $0) } },
-            set: { share = $0?.urls }
-        )) { items in
-            ShareSheet(items: items.urls)
-        }
+        .sheet(item: $share) { items in ShareSheet(items: items.items) }
+        .onAppear { links.watch(bookId: book.id.value) }
+        .onDisappear { links.stop() }
+        .onChange(of: account.isSignedIn) { _, _ in links.watch(bookId: book.id.value) }
+        .onChange(of: links.error) { _, error in if let error { show(error); links.error = nil } }
     }
 
     private var header: some View {
@@ -63,6 +66,8 @@ struct ShareView: View {
                     }
                 }
 
+                section(Localized.s("share.link"), hint: Localized.s("share.linkHint")) { linkSection }
+
                 section(Localized.s("share.include"), hint: nil) {
                     VStack(spacing: 8) {
                         toggleRow(Localized.s("share.voice"), sub: Localized.s("share.voiceHint"),
@@ -87,11 +92,45 @@ struct ShareView: View {
                         : Localized.s("share.sendCount", chosen.count),
                     filled: true, big: true
                 ) { send() }
-                .disabled(busy)
+                .disabled(busy || links.busy)
                 .overlay { if busy { ProgressView().tint(Color.ehSurface) } }
             }
             .padding(.horizontal, 18)
             .padding(.bottom, 40)
+        }
+    }
+
+    @ViewBuilder private var linkSection: some View {
+        if !CloudConfiguration.available || CloudConfiguration.webURL == nil {
+            Text(Localized.s("account.cloudUnavailable")).font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted)
+        } else if !account.isSignedIn {
+            SignInCard()
+            Text(Localized.s("share.linkSignIn")).font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted)
+        } else if repository.hasPendingChanges {
+            Label(Localized.s("share.linkPending"), systemImage: "icloud.and.arrow.up")
+                .font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted)
+        } else if links.links.isEmpty {
+            Text(Localized.s("share.linkNone")).font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted)
+        } else {
+            VStack(spacing: 6) {
+                ForEach(links.links) { link in
+                    HStack(spacing: 10) {
+                        Image(systemName: "link").foregroundStyle(Color.ehAccent)
+                        Text(Localized.s("share.linkFor", link.label.isEmpty ? "—" : link.label))
+                            .font(.ehUI(13.5)).foregroundStyle(Color.ehText).lineLimit(1)
+                        Spacer(minLength: 4)
+                        if let url = link.url {
+                            ShareLink(item: url) { Image(systemName: "square.and.arrow.up") }
+                                .font(.ehUI(13)).foregroundStyle(Color.ehAccentDeep)
+                        }
+                        Button(Localized.s("share.linkRevoke")) { Task { await links.revoke(link) } }
+                            .font(.ehUI(12.5)).foregroundStyle(Color.ehMuted)
+                            .disabled(links.busy)
+                    }
+                    .padding(.horizontal, 12).padding(.vertical, 10)
+                    .background(RoundedRectangle(cornerRadius: 14).fill(Color.ehSurface))
+                }
+            }
         }
     }
 
@@ -196,18 +235,27 @@ struct ShareView: View {
     private func send() {
         guard !chosen.isEmpty else { show(Localized.s("share.pickSomeone")); return }
         busy = true
+        let recipients = FamilyMember.all.filter { chosen.contains($0.id) }
         Task {
-            var urls: [URL] = []
-            if let archive = LocalBookStore.shared.exportArchive(book) { urls.append(archive) }
+            var items: [Any] = []
+            if canLink {
+                for member in recipients {
+                    do { items.append(try await links.create(bookId: book.id.value, label: member.name)) }
+                    catch { show(Localized.s("share.linkFailed")); break }
+                }
+                if !items.isEmpty { items.insert(Localized.s("share.linkOpens", book.title), at: 0) }
+            }
+            if let archive = LocalBookStore.shared.exportArchive(book) { items.append(archive) }
             if withPrintFile {
+                await AssetLoader.shared.prepare(book, master: true)
                 let pdf = SceneRenderer.printablePdf(for: book)
                 let url = FileManager.default.temporaryDirectory
                     .appendingPathComponent("\(book.title.isEmpty ? "ehon" : book.title).pdf")
-                if (try? pdf.write(to: url)) != nil { urls.append(url) }
+                if (try? pdf.write(to: url)) != nil { items.append(url) }
             }
             busy = false
-            if urls.isEmpty { show(Localized.s("read.cannotSpeak")); return }
-            share = urls
+            if items.isEmpty { show(Localized.s("read.cannotSpeak")); return }
+            share = ShareItems(items: items)
             sent = true
         }
     }
@@ -221,7 +269,7 @@ struct ShareView: View {
     }
 
     private struct ShareItems: Identifiable {
-        let urls: [URL]
-        var id: String { urls.map(\.absoluteString).joined() }
+        let id = UUID()
+        let items: [Any]
     }
 }

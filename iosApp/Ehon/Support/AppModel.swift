@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 import EhonCore
 
 /// Which screen is showing. The prototype's five, unchanged.
@@ -37,9 +38,15 @@ final class AppModel: ObservableObject {
 
     var effectiveBigTargets: Bool { bigTargets || uiLevel == .kid }
 
-    private let store = LocalBookStore.shared
+    let repository = BookRepository.shared
+    private var repositoryWatch: AnyCancellable?
 
     init() {
+        repository.liveBook = { [weak self] id in self?.editor?.bookId.value == id ? self?.editor?.book : nil }
+        repository.isGestureActive = { [weak self] in self?.editor?.controller.isGestureActive ?? false }
+        repository.onRemote = { [weak self] book in self?.editor?.receive(book) }
+        repository.onIdentityChange = { [weak self] in self?.editor = nil; self?.screen = .shelf }
+        repositoryWatch = repository.$books.sink { [weak self] books in self?.books = books }
         reload()
         applyDebugRoute()
     }
@@ -67,7 +74,7 @@ final class AppModel: ObservableObject {
             )
         }()
         guard let book else { return }
-        store.save(book)
+        repository.save(book)
         reload()
 
         switch route {
@@ -89,36 +96,52 @@ final class AppModel: ObservableObject {
     }
 
     func reload() {
-        books = store.loadAll()
+        repository.reload()
+        books = repository.books
     }
 
     // MARK: - navigation
 
     func openShelf() {
         editor?.saveNow()
+        repository.close()
+        editor = nil
         reload()
         screen = .shelf
     }
 
-    func openTemplates() { screen = .templates }
+    func openTemplates() { editor?.saveNow(); repository.close(); editor = nil; screen = .templates }
 
     func startBook(from template: Template, shape: PageShape?) {
         let book = Templates.shared.instantiate(
             template: template,
-            bookId: BookId(value: "b\(UUID().uuidString.prefix(8))"),
+            bookId: BookId(value: "b\(UUID().uuidString)"),
             title: Localized.s(template.nameKey),
             contentLocale: bookLocale,
             nowEpochMs: Int64(Date().timeIntervalSince1970 * 1000),
             shapeOverride: shape,
             idSource: IdSource(prefix: "i")
         )
-        store.save(book)
+        repository.save(book)
+        reload()
+        open(book)
+    }
+
+    func startDocumentTemplate(_ id: String) {
+        let book = Templates.shared.instantiateDocument(
+            templateId: id,
+            bookId: BookId(value: "b\(UUID().uuidString)"),
+            nowEpochMs: Int64(Date().timeIntervalSince1970 * 1000)
+        )
+        repository.save(book)
         reload()
         open(book)
     }
 
     func open(_ book: Book) {
-        editor = EditorModel(book: book, uiLevel: uiLevel)
+        editor?.saveNow()
+        editor = EditorModel(book: book, uiLevel: uiLevel, repository: repository)
+        repository.open(book, editing: true)
         screen = .editor(book.id)
     }
 
@@ -126,17 +149,21 @@ final class AppModel: ObservableObject {
         editor?.saveNow()
         reload()
         screen = .share(book.id)
+        repository.open(book, editing: false)
     }
 
     func openGuest(_ book: Book) {
         editor?.saveNow()
         reload()
         screen = .guest(book.id)
+        repository.open(book, editing: false)
     }
 
     /// A reply arrived (in v1: recorded on this device). Persist it and refresh the shelf.
     func attach(reply: PageReply?, toPage page: Int, of book: Book) {
-        store.save(book.withReply(pageIndex: Int32(page), reply: reply))
+        let updated = (self.book(book.id) ?? book).withReply(pageIndex: Int32(page), reply: reply)
+        repository.save(updated)
+        editor?.receive(updated)
         reload()
     }
 
@@ -145,19 +172,22 @@ final class AppModel: ObservableObject {
         // The tablet read view is a mode of the tablet editor, so it needs the model even
         // when reading starts from the shelf rather than from つくる.
         if UIDevice.current.userInterfaceIdiom == .pad, editor?.bookId != book.id {
-            editor = EditorModel(book: book, uiLevel: uiLevel)
+            editor = EditorModel(book: book, uiLevel: uiLevel, repository: repository)
         }
         screen = .read(book.id, page: page)
+        repository.open(book, editing: false)
     }
 
     func openDone(_ book: Book) {
         editor?.saveNow()
         reload()
         screen = .done(book.id)
+        repository.open(book, editing: false)
     }
 
     func delete(_ book: Book) {
-        store.delete(book.id)
+        repository.delete(book)
+        repository.close()
         if editor?.bookId == book.id { editor = nil }
         reload()
         screen = .shelf

@@ -1,5 +1,6 @@
 import SwiftUI
 import EhonCore
+import GoogleSignIn
 
 /// Routes between the five screens the prototype defined.
 struct RootView: View {
@@ -11,9 +12,11 @@ struct RootView: View {
             content
         }
         .environmentObject(app)
+        .onOpenURL { url in _ = GIDSignIn.sharedInstance.handle(url) }
         .onChange(of: scenePhaseValue) { _, phase in
             // Debounced saves are not safe across a backgrounding.
             if phase != .active { app.editor?.saveNow() }
+            app.repository.setForeground(phase == .active)
         }
     }
 

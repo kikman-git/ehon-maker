@@ -16,13 +16,13 @@ enum SceneRenderer {
     /// 300dpi, for a raster export where a PDF isn't wanted.
     static let printDpi: Int32 = 300
 
-    static func image(_ scene: Scene, scale: CGFloat = 1) -> UIImage {
+    static func image(_ scene: Scene, scale: CGFloat = 1, master: Bool = false) -> UIImage {
         let size = CGSize(width: CGFloat(scene.size.w), height: CGFloat(scene.size.h))
         let format = UIGraphicsImageRendererFormat()
         format.scale = scale
         format.opaque = false
         return UIGraphicsImageRenderer(size: size, format: format).image { context in
-            ScenePainter().draw(scene, into: context.cgContext)
+            ScenePainter(imageProvider: { AssetLoader.shared.image($0, master: master) }).draw(scene, into: context.cgContext)
         }
     }
 
@@ -30,7 +30,7 @@ enum SceneRenderer {
     static func pdf(_ scenes: [Scene]) -> Data {
         guard let first = scenes.first else { return Data() }
         let bounds = CGRect(x: 0, y: 0, width: CGFloat(first.size.w), height: CGFloat(first.size.h))
-        let painter = ScenePainter()
+        let painter = ScenePainter(imageProvider: { AssetLoader.shared.image($0, master: true) })
         return UIGraphicsPDFRenderer(bounds: bounds).pdfData { context in
             for scene in scenes {
                 context.beginPage(withBounds:
@@ -46,22 +46,22 @@ enum SceneRenderer {
     /// `watermark` is wired but always false in v1 — the paywall is deferred (decision #11)
     /// and this is the seam it switches on.
     static func shareImage(for book: Book, page: Int = 0, watermark: Bool = false) -> Data? {
-        let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+        let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
         let target = RenderTarget.Companion.shared.share(
             shape: book.shape, longestEdgePx: 2048, watermark: watermark
         )
-        let scene = builder.build(page: book.page(index: Int32(page)), target: target, promptText: nil)
-        return image(scene).pngData()
+        let scene = builder.build(page: book.page(index: Int32(page)), target: target, promptText: nil, art: book.art)
+        return image(scene, master: true).pngData()
     }
 
     /// Builds every page of a book at print size and writes one PDF.
     static func printablePdf(for book: Book, watermark: Bool = false) -> Data {
-        let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+        let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
         let target = RenderTarget.Companion.shared.print(
             shape: book.shape, dpi: pdfDpi, watermark: watermark
         )
         let scenes = (0..<book.pageCount).map { index in
-            builder.build(page: book.page(index: Int32(index)), target: target, promptText: nil)
+            builder.build(page: book.page(index: Int32(index)), target: target, promptText: nil, art: book.art)
         }
         return pdf(scenes)
     }

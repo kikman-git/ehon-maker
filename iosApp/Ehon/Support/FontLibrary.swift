@@ -33,7 +33,6 @@ final class FontLibrary: ObservableObject, @unchecked Sendable {
         "marker": "yuseimagic/YuseiMagic-Regular.ttf",
         "futo": "rocknrollone/RocknRollOne-Regular.ttf",
     ]
-    private static let base = URL(string: "https://github.com/google/fonts/raw/main/ofl/")!
 
     init(directory: URL? = nil) {
         self.directory = directory ?? FileManager.default
@@ -61,8 +60,9 @@ final class FontLibrary: ObservableObject, @unchecked Sendable {
     @MainActor func download(_ face: FontFace) {
         guard !face.bundled, state(of: face) != .ready, state(of: face) != .downloading,
               let path = Self.sources[face.id] else { return }
+        guard let base = CloudConfiguration.assetsURL else { states[face.id] = .failed; return }
         states[face.id] = .downloading
-        let url = Self.base.appendingPathComponent(path)
+        let url = base.appendingPathComponent("fonts").appendingPathComponent(URL(fileURLWithPath: path).lastPathComponent)
         let target = fileURL(face)
         Task {
             let result: State

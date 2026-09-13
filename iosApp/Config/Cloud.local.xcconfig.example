@@ -1,0 +1,6 @@
+// Copy to Cloud.local.xcconfig. The empty $() prevents // from starting an xcconfig comment.
+EHON_ASSETS_URL = https:/$()/assets.example.com
+// REVERSED_CLIENT_ID from your GoogleService-Info.plist.
+EHON_GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.REPLACE_ME
+// The web app origin; guest links are <origin>/g/<token>.
+EHON_WEB_URL = https:/$()/petapeta.example.com

@@ -24,7 +24,7 @@ final class ScenePainterTests: XCTestCase {
                     y: y,
                     rotationDeg: 0,
                     partId: PartId(value: "かたち:しかく"),
-                    sizePct: 24
+                    sizePct: 24, heightPct: nil
                 )
             ],
             strokes: []
@@ -61,6 +61,28 @@ final class ScenePainterTests: XCTestCase {
 
     // MARK: - fidelity
 
+    func testVersionTwoBookStillOpensAndGetsStablePageIDs() throws {
+        let legacy = #"{"version":2,"book":{"id":{"value":"legacy"},"title":"もり","shape":"LANDSCAPE","contentLocale":"ja-JP","updatedAtEpochMs":1700000000000,"pages":[{"background":-984607,"items":[{"type":"part","id":{"value":"i1"},"x":50,"y":50,"partId":{"value":"いきもの:ねこ"},"sizePct":26}]},{"background":-984607}]}}"#
+        let book = try XCTUnwrap(BookCodec.shared.decodeOrNull(text: legacy))
+        XCTAssertEqual(book.pages.map(\.id), ["p1", "p2"])
+        XCTAssertNil((book.page(index: 0).items.first as? PartItem)?.heightPct)
+        XCTAssertGreaterThan(render(book.page(index: 0), shape: .landscape).size.width, 0)
+        let restored = try XCTUnwrap(BookCodec.shared.decodeOrNull(text: BookCodec.shared.encode(book: book)))
+        XCTAssertEqual(restored.pages.map(\.id), ["p1", "p2"])
+    }
+
+    func testNonSquarePartUsesTheSceneHeight() throws {
+        let wide = Page.companion.of(
+            background: cream, promptKey: nil,
+            items: [PartItem(id: ItemId(value: "wide"), x: 50, y: 50, rotationDeg: 0,
+                             partId: PartId(value: "かたち:しかく"), sizePct: 80, heightPct: KotlinFloat(value: 10))],
+            strokes: []
+        )
+        let image = render(wide, shape: .landscape, side: 600)
+        XCTAssertFalse(try isBackground(colour(of: image, atFractionX: 0.75, y: 0.5)))
+        XCTAssertTrue(try isBackground(colour(of: image, atFractionX: 0.5, y: 0.7)))
+    }
+
     func testBackgroundIsPaintedFromTheScene() throws {
         let image = render(Page.companion.of(background: cream, promptKey: nil, items: [], strokes: []))
         XCTAssertTrue(try isBackground(colour(of: image, atFractionX: 0.5, y: 0.5)))
@@ -88,7 +110,7 @@ final class ScenePainterTests: XCTestCase {
             promptKey: nil,
             items: [
                 PartItem(id: ItemId(value: "i1"), x: 50, y: 50, rotationDeg: 0,
-                         partId: PartId(value: "しぜん:たいよう"), sizePct: 80)
+                         partId: PartId(value: "しぜん:たいよう"), sizePct: 80, heightPct: nil)
             ],
             strokes: []
         )

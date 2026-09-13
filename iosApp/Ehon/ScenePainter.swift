@@ -15,7 +15,7 @@ struct ScenePainter {
 
     let imageProvider: (String) -> UIImage?
 
-    init(imageProvider: @escaping (String) -> UIImage? = { _ in nil }) {
+    init(imageProvider: @escaping (String) -> UIImage? = { AssetLoader.shared.image($0) }) {
         self.imageProvider = imageProvider
     }
 
@@ -127,8 +127,50 @@ struct ScenePainter {
             ctx.fill(body)
             ctx.restoreGState()
 
+        // Embedded vector art (decision #55): every command was resolved to page units by the builder.
+        case let path as SceneNodePath:
+            let outline = CGMutablePath()
+            for command in path.commands {
+                switch command {
+                case let move as PathCommandMoveTo:
+                    outline.move(to: CGPoint(x: CGFloat(move.x), y: CGFloat(move.y)))
+                case let line as PathCommandLineTo:
+                    outline.addLine(to: CGPoint(x: CGFloat(line.x), y: CGFloat(line.y)))
+                case let quad as PathCommandQuadTo:
+                    outline.addQuadCurve(to: CGPoint(x: CGFloat(quad.x), y: CGFloat(quad.y)),
+                                         control: CGPoint(x: CGFloat(quad.x1), y: CGFloat(quad.y1)))
+                case let cubic as PathCommandCubicTo:
+                    outline.addCurve(to: CGPoint(x: CGFloat(cubic.x), y: CGFloat(cubic.y)),
+                                     control1: CGPoint(x: CGFloat(cubic.x1), y: CGFloat(cubic.y1)),
+                                     control2: CGPoint(x: CGFloat(cubic.x2), y: CGFloat(cubic.y2)))
+                case is PathCommandClose:
+                    outline.closeSubpath()
+                default:
+                    assertionFailure("unhandled PathCommand: \(type(of: command))")
+                }
+            }
+            if path.hasFill {
+                ctx.setFillColor(path.fill.cgColor)
+                ctx.addPath(outline)
+                ctx.fillPath(using: path.evenOdd ? .evenOdd : .winding)
+            }
+            if path.strokeWidthPx > 0 {
+                ctx.saveGState()
+                ctx.setStrokeColor(path.stroke.cgColor)
+                ctx.setLineWidth(CGFloat(path.strokeWidthPx))
+                ctx.setLineCap(path.lineCap == LineCap.round ? .round : path.lineCap == LineCap.square ? .square : .butt)
+                ctx.setLineJoin(path.lineJoin == LineJoin.round ? .round : path.lineJoin == LineJoin.bevel ? .bevel : .miter)
+                ctx.addPath(outline)
+                ctx.strokePath()
+                ctx.restoreGState()
+            }
+
         case let image as SceneNodeImage:
-            guard let bitmap = imageProvider(image.assetName), let cgImage = bitmap.cgImage else { break }
+            guard let bitmap = imageProvider(image.assetName), let cgImage = bitmap.cgImage else {
+                ctx.setFillColor(UIColor(white: 0.88, alpha: 0.7).cgColor)
+                ctx.fillEllipse(in: image.rect.cgRect.insetBy(dx: 4, dy: 4))
+                break
+            }
             ctx.saveGState()
             // UIImage draws y-up in a CGContext, so flip within the destination rect.
             let rect = image.rect.cgRect

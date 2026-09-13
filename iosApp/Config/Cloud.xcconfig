@@ -1,0 +1,5 @@
+// Public app configuration; keep personal project values in the ignored local override.
+EHON_ASSETS_URL =
+EHON_GOOGLE_REVERSED_CLIENT_ID =
+EHON_WEB_URL =
+#include? "Cloud.local.xcconfig"

@@ -14,12 +14,15 @@ struct EditorView: View {
     var body: some View {
         VStack(spacing: 0) {
             header
+            LeaseNotice(model: model)
             thumbnails
             EditorPage(model: model)
+                .allowsHitTesting(!model.isReadOnly)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.vertical, 4)
             modeBar
             EditorDrawer(model: model, bigTargets: app.effectiveBigTargets)
+                .disabled(model.isReadOnly)
         }
         .background(Color.ehBg)
         .overlay(alignment: .bottom) {
@@ -172,12 +175,15 @@ private struct PageThumbnail: View, Equatable {
             && lhs.book.page(index: Int32(lhs.index)).isEqual(rhs.book.page(index: Int32(rhs.index)))
     }
 
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    @ObservedObject private var resources = SceneResources.shared
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
     private static let painter = ScenePainter()
 
     private var width: CGFloat { 50 * CGFloat(book.shape.aspect) }
 
     var body: some View {
+        let _ = resources.revision
         Button(action: action) {
             VStack(spacing: 3) {
                 GeometryReader { geo in
@@ -188,7 +194,7 @@ private struct PageThumbnail: View, Equatable {
                         selectedItem: nil
                     )
                     let scene = Self.builder.build(
-                        page: book.page(index: Int32(index)), target: target, promptText: nil
+                        page: book.page(index: Int32(index)), target: target, promptText: nil, art: book.art
                     )
                     Canvas { ctx, _ in
                         ctx.withCGContext { Self.painter.draw(scene, into: $0) }

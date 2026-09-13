@@ -198,14 +198,17 @@ private struct GuestPage: View {
     let index: Int
     let size: CGSize
 
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    @ObservedObject private var resources = SceneResources.shared
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
     private static let painter = ScenePainter()
 
     var body: some View {
+        let _ = resources.revision
         let target = RenderTarget.Companion.shared.screen(
             shape: book.shape, available: Size(w: Float(size.width), h: Float(size.height)), selectedItem: nil
         )
-        let scene = Self.builder.build(page: book.page(index: Int32(index)), target: target, promptText: nil)
+        let scene = Self.builder.build(page: book.page(index: Int32(index)), target: target, promptText: nil, art: book.art)
         Canvas { ctx, _ in
             ctx.withCGContext { Self.painter.draw(scene, into: $0) }
         }

@@ -5,6 +5,8 @@ struct EhonApp: App {
     // Only for the orientation mask; see OrientationLock.
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
 
+    init() { CloudConfiguration.configure() }
+
     var body: some Scene {
         WindowGroup {
             RootView()

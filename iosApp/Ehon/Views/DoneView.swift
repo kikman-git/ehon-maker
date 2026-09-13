@@ -54,7 +54,8 @@ struct DoneView: View {
                 if busy { ProgressView().tint(Color.ehAccent) }
             }
 
-            Spacer()
+            SignInCard().padding(.horizontal, 22).padding(.top, 18)
+            Spacer(minLength: 8)
 
             Button {
                 app.markFinished(book)
@@ -107,6 +108,7 @@ struct DoneView: View {
         busy = true
         let book = self.book, name = exportName
         Task.detached {
+            await AssetLoader.shared.prepare(book, master: true)
             let data = await MainActor.run { SceneRenderer.shareImage(for: book) }
             let url = FileManager.default.temporaryDirectory.appendingPathComponent("\(name).png")
             try? data?.write(to: url)
@@ -121,6 +123,7 @@ struct DoneView: View {
         busy = true
         let book = self.book, name = exportName
         Task.detached {
+            await AssetLoader.shared.prepare(book, master: true)
             let data = await MainActor.run { SceneRenderer.printablePdf(for: book) }
             let url = FileManager.default.temporaryDirectory.appendingPathComponent("\(name).pdf")
             try? data.write(to: url)
@@ -136,16 +139,19 @@ private struct CoverPage: View {
     let book: Book
     let size: CGSize
 
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    @ObservedObject private var resources = SceneResources.shared
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
     private static let painter = ScenePainter()
 
     var body: some View {
+        let _ = resources.revision
         let target = RenderTarget.Companion.shared.screen(
             shape: book.shape,
             available: Size(w: Float(size.width), h: Float(size.height)),
             selectedItem: nil
         )
-        let scene = Self.builder.build(page: book.page(index: 0), target: target, promptText: nil)
+        let scene = Self.builder.build(page: book.page(index: 0), target: target, promptText: nil, art: book.art)
         Canvas { ctx, _ in
             ctx.withCGContext { Self.painter.draw(scene, into: $0) }
         }

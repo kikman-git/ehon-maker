@@ -5,6 +5,7 @@ import EhonCore
 struct ShelfView: View {
     @EnvironmentObject var app: AppModel
     @State private var filter: ShelfFilter = .all
+    @State private var showingAccount = false
 
     enum ShelfFilter { case all, inProgress, finished }
 
@@ -34,6 +35,7 @@ struct ShelfView: View {
         }
         .background(Color.ehBg)
         .overlay(alignment: .bottom) { tabBar }
+        .sheet(isPresented: $showingAccount) { AccountView() }
     }
 
     private var header: some View {
@@ -47,6 +49,11 @@ struct ShelfView: View {
                     .foregroundStyle(Color.ehText)
             }
             Spacer()
+            Button { showingAccount = true } label: {
+                Image(systemName: "gearshape").font(.system(size: 19)).frame(width: 44, height: 44)
+            }
+            .foregroundStyle(Color.ehMuted)
+            .accessibilityLabel(Localized.s("settings.title"))
             Text(String(childName.prefix(1)))
                 .font(.ehUI(17))
                 .foregroundStyle(Color.ehAccentDeep)
@@ -201,17 +208,20 @@ private struct BookTile: View {
 private struct CoverThumbnail: View {
     let book: Book
 
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    @ObservedObject private var resources = SceneResources.shared
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
     private static let painter = ScenePainter()
 
     var body: some View {
+        let _ = resources.revision
         GeometryReader { geo in
             let target = RenderTarget.Companion.shared.screen(
                 shape: book.shape,
                 available: Size(w: Float(max(geo.size.width, 1)), h: Float(max(geo.size.height, 1))),
                 selectedItem: nil
             )
-            let scene = Self.builder.build(page: book.page(index: 0), target: target, promptText: nil)
+            let scene = Self.builder.build(page: book.page(index: 0), target: target, promptText: nil, art: book.art)
             Canvas { ctx, _ in
                 ctx.withCGContext { Self.painter.draw(scene, into: $0) }
             }

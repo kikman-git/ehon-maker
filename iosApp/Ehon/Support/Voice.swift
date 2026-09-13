@@ -30,10 +30,12 @@ final class VoiceRecorder: NSObject, ObservableObject {
     }
 
     static func url(for ref: String) -> URL {
-        FileManager.default
+        let directory = FileManager.default
             .urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("Replies", isDirectory: true)
-            .appendingPathComponent(ref)
+        try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        let safe = ref.range(of: "^[A-Za-z0-9_-]+\\.m4a$", options: .regularExpression) != nil
+        return directory.appendingPathComponent(safe ? ref : "\(AccountSession.hash(Data(ref.utf8))).m4a")
     }
 
     func requestPermission() async -> Bool {
@@ -47,7 +49,7 @@ final class VoiceRecorder: NSObject, ObservableObject {
         do {
             try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
             try session.setActive(true)
-            let r = try AVAudioRecorder(url: directory.appendingPathComponent(ref), settings: [
+            let r = try AVAudioRecorder(url: Self.url(for: ref), settings: [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                 AVSampleRateKey: 22_050,
                 AVNumberOfChannelsKey: 1,
@@ -82,7 +84,7 @@ final class VoiceRecorder: NSObject, ObservableObject {
     }
 
     func discard(ref: String) {
-        try? FileManager.default.removeItem(at: directory.appendingPathComponent(ref))
+        try? FileManager.default.removeItem(at: Self.url(for: ref))
     }
 
     private func stopTicker() {
@@ -97,13 +99,18 @@ final class ReplyPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     static let shared = ReplyPlayer()
 
     @Published private(set) var isPlaying = false
+    @Published private(set) var isLoading = false
+    private var generation = UUID()
     private var player: AVAudioPlayer?
     private var onFinish: (() -> Void)?
 
-    func play(_ reply: PageReply, onFinish: (() -> Void)? = nil) -> Bool {
+    func play(_ reply: PageReply, onFinish: (() -> Void)? = nil) async -> Bool {
         stop()
-        guard let ref = reply.audioRef,
-              let p = try? AVAudioPlayer(contentsOf: VoiceRecorder.url(for: ref)) else { return false }
+        let current = generation
+        isLoading = true
+        defer { if generation == current { isLoading = false } }
+        guard let ref = reply.audioRef, let url = try? await CloudAssets.shared.voiceURL(ref), generation == current,
+              let p = try? AVAudioPlayer(contentsOf: url) else { return false }
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio)
         p.delegate = self
         self.onFinish = onFinish
@@ -113,6 +120,8 @@ final class ReplyPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     }
 
     func stop() {
+        generation = UUID()
+        isLoading = false
         onFinish = nil
         player?.stop()
         player = nil

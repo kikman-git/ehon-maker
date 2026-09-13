@@ -293,10 +293,10 @@ struct ReadView: View {
         .joined(separator: book.isJapanese ? "。" : ". ")
         let reply = spreadReply
         speech.speak(text: text, locale: book.contentLocale) {
-            if let reply, replies.play(reply, onFinish: next) {
-                show(Localized.s("read.replyPlaying", reply.from))
-            } else {
-                next()
+            Task { @MainActor in
+                if let reply, await replies.play(reply, onFinish: next) {
+                    show(Localized.s("read.replyPlaying", reply.from))
+                } else { next() }
             }
         }
     }
@@ -403,8 +403,8 @@ struct ReadView: View {
     /// 「ばあば の こえ · 3.4びょう」 — tap to hear it on its own.
     private func replyChip(_ reply: PageReply) -> some View {
         Button {
-            if replies.isPlaying { replies.stop() }
-            else if !replies.play(reply) { show(Localized.s("read.cannotPlayVoice")) }
+            if replies.isPlaying || replies.isLoading { replies.stop() }
+            else { Task { if await !replies.play(reply) { show(Localized.s("read.cannotPlayVoice")) } } }
         } label: {
             HStack(spacing: 7) {
                 Text(String(reply.from.prefix(1)))
@@ -445,17 +445,20 @@ private struct StaticPage: View {
     let size: CGSize
     let spineOnLeading: Bool
 
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    @ObservedObject private var resources = SceneResources.shared
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
     private static let painter = ScenePainter()
 
     var body: some View {
+        let _ = resources.revision
         let target = RenderTarget.Companion.shared.screen(
             shape: book.shape,
             available: Size(w: Float(size.width), h: Float(size.height)),
             selectedItem: nil
         )
         let scene = Self.builder.build(
-            page: book.page(index: Int32(index)), target: target, promptText: nil
+            page: book.page(index: Int32(index)), target: target, promptText: nil, art: book.art
         )
         Canvas { ctx, _ in
             ctx.withCGContext { Self.painter.draw(scene, into: $0) }

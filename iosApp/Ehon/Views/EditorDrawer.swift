@@ -103,6 +103,7 @@ private struct StickPanel: View {
 /// One part in the drawer, drawn through the same painter as the page itself — so the tile
 /// is a true preview rather than a separate icon that can drift.
 struct PartTile: View {
+    @ObservedObject private var resources = SceneResources.shared
     let part: Part
     let action: () -> Void
 
@@ -138,15 +139,20 @@ struct PartTile: View {
 @MainActor
 private enum PartTileCache {
     private static var images: [String: UIImage] = [:]
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    private static var resourceRevision = 0
+
+    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
 
     static func image(for part: Part, side: CGFloat, scale: CGFloat) -> UIImage {
+        if resourceRevision != SceneResources.shared.revision {
+            images.removeAll(); resourceRevision = SceneResources.shared.revision
+        }
         let key = "\(part.id.value)@\(Int(side.rounded()))@\(scale)"
         if let cached = images[key] { return cached }
         let page = Page.companion.of(
             background: Organic.shared.surface,
             promptKey: nil,
-            items: [PartItem(id: ItemId(value: "tile"), x: 50, y: 50, rotationDeg: 0, partId: part.id, sizePct: 96)],
+            items: [PartItem(id: ItemId(value: "tile"), x: 50, y: 50, rotationDeg: 0, partId: part.id, sizePct: 96, heightPct: nil)],
             strokes: []
         )
         let target = RenderTarget.Companion.shared.screen(

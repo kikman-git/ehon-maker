@@ -21,6 +21,17 @@
 	<!-- Must be unique per upload for a given short version; `make bump` increments it. -->
 	<key>CFBundleVersion</key>
 	<string>2</string>
+	<key>EhonAssetsURL</key>
+	<string>$(EHON_ASSETS_URL)</string>
+	<key>EhonWebURL</key>
+	<string>$(EHON_WEB_URL)</string>
+	<key>CFBundleURLTypes</key>
+	<array><dict>
+		<key>CFBundleURLSchemes</key>
+		<array><string>$(EHON_GOOGLE_REVERSED_CLIENT_ID)</string></array>
+	</dict></array>
+	<key>NSAppTransportSecurity</key>
+	<dict><key>NSAllowsLocalNetworking</key><true/></dict>
 	<!-- The only crypto is HTTPS (font downloads), which is exempt. Without this, App Store
 	     Connect asks the export-compliance question on every single upload. -->
 	<key>ITSAppUsesNonExemptEncryption</key>
