@@ -56,23 +56,19 @@ final class AppModel: ObservableObject {
     private func applyDebugRoute() {
         let defaults = UserDefaults.standard
         guard let route = defaults.string(forKey: "startScreen") else { return }
-        let templateId = defaults.string(forKey: "template") ?? "t1"
         guard route != "shelf" else { return }
         if route == "templates" { screen = .templates; return }
         if let level = defaults.string(forKey: "uiLevel") { uiLevelRaw = level }
 
-        let book = books.first ?? {
-            guard let template = Templates.shared.find(id: templateId) else { return nil }
-            return Templates.shared.instantiate(
-                template: template,
-                bookId: BookId(value: "sample"),
-                title: Localized.s(template.nameKey),
-                contentLocale: bookLocale,
-                nowEpochMs: Int64(Date().timeIntervalSince1970 * 1000),
-                shapeOverride: nil,
-                idSource: IdSource(prefix: "i")
-            )
-        }()
+        let book: Book? = books.first ?? Templates.shared.instantiate(
+            template: Templates.shared.blank,
+            bookId: BookId(value: "sample"),
+            title: Localized.s(Templates.shared.blank.nameKey),
+            contentLocale: bookLocale,
+            nowEpochMs: Int64(Date().timeIntervalSince1970 * 1000),
+            shapeOverride: nil,
+            idSource: IdSource(prefix: "i")
+        )
         guard let book else { return }
         repository.save(book)
         reload()
@@ -127,9 +123,10 @@ final class AppModel: ObservableObject {
         open(book)
     }
 
-    func startDocumentTemplate(_ id: String) {
+    /// A fetched story becomes a book on this shelf (decision #60).
+    func startDocumentTemplate(json: String) {
         let book = Templates.shared.instantiateDocument(
-            templateId: id,
+            json: json,
             bookId: BookId(value: "b\(UUID().uuidString)"),
             nowEpochMs: Int64(Date().timeIntervalSince1970 * 1000)
         )

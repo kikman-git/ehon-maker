@@ -1,18 +1,13 @@
 import SwiftUI
 import EhonCore
 
-/// テンプレート — pick a story shape. Each template declares its own page shape
-/// (decision #17), so the shape appears as a discovery rather than as a question. Only the
-/// blank template offers the picker, where the choice is actually meaningful.
+/// テンプレート — the published stories (decision #60), each shown as its real opening spread, and
+/// the blank book with its shape picker. The stories come from the backend and are cached on the
+/// phone; nothing is bundled.
 struct TemplatesView: View {
     @EnvironmentObject var app: AppModel
-    @State private var tag: String?
+    @StateObject private var catalog = TemplateCatalog()
     @State private var blankShape: PageShape = .square
-
-    private var visible: [Template] {
-        guard let tag else { return Templates.shared.all }
-        return Templates.shared.all.filter { $0.tagKey == tag }
-    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -23,39 +18,21 @@ struct TemplatesView: View {
                 .lineSpacing(3)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 18)
-                .padding(.bottom, 6)
-            filters
+                .padding(.bottom, 12)
             ScrollView {
                 VStack(spacing: 14) {
-                    if tag == nil {
-                        ForEach(DocumentTemplates.shared.all, id: \.id) { entry in
-                            if let book = BookCodec.shared.decodeOrNull(text: entry.json) {
-                                DocumentTemplateCard(
-                                    book: book,
-                                    description: Localized.isJapaneseUI ? entry.descriptionJa : entry.descriptionEn,
-                                    onUse: { app.startDocumentTemplate(entry.id) }
-                                )
-                            }
-                        }
+                    ForEach(catalog.entries) { entry in
+                        StoryCard(entry: entry) { app.startDocumentTemplate(json: entry.json) }
                     }
-                    ForEach(visible, id: \.id) { template in
-                        TemplateCard(
-                            template: template,
-                            blankShape: $blankShape,
-                            onUse: {
-                                app.startBook(
-                                    from: template,
-                                    shape: template.shapeIsUserChosen ? blankShape : nil
-                                )
-                            }
-                        )
-                    }
+                    status
+                    BlankCard(shape: $blankShape) { app.startBook(from: Templates.shared.blank, shape: blankShape) }
                 }
                 .padding(.horizontal, 18)
                 .padding(.bottom, 60)
             }
         }
         .background(Color.ehBg)
+        .task { await catalog.load() }
     }
 
     private var header: some View {
@@ -70,40 +47,53 @@ struct TemplatesView: View {
         .padding(.bottom, 8)
     }
 
-    private var filters: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 7) {
-                Chip(title: Localized.s("tag.all"), selected: tag == nil) { tag = nil }
-                ForEach(["tag.creatures", "tag.adventure", "tag.magic", "tag.everyday", "tag.free"],
-                        id: \.self) { key in
-                    Chip(title: Localized.s(key), selected: tag == key) { tag = key }
-                }
+    @ViewBuilder private var status: some View {
+        switch catalog.state {
+        case .loading:
+            HStack(spacing: 10) {
+                ProgressView()
+                Text(Localized.s("templates.loading")).font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted)
             }
-            .padding(.horizontal, 18)
+            .padding(.vertical, 8)
+        case .failed:
+            VStack(spacing: 10) {
+                Text(Localized.s("templates.offline")).font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted)
+                    .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+                Button(Localized.s("templates.retry")) { Task { await catalog.load() } }
+                    .font(.ehUI(13, .bold)).foregroundStyle(Color.ehAccentDeep)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(14)
+            .background(RoundedRectangle(cornerRadius: 20).fill(Color.ehSunken))
+        default:
+            EmptyView()
         }
-        .padding(.bottom, 10)
     }
 }
 
 /// A real opening spread, so picture and text pages can be assessed together.
-private struct DocumentTemplateCard: View {
-    let book: Book
-    let description: String
+private struct StoryCard: View {
+    let entry: TemplateCatalog.Entry
     let onUse: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 3) {
-                ForEach(0..<min(2, Int(book.pageCount)), id: \.self) { index in
-                    DocumentPagePreview(book: book, index: index)
+                ForEach(0..<min(2, entry.pageCount), id: \.self) { index in
+                    DocumentPagePreview(book: entry.book, index: index)
                 }
             }
             HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text(book.title).font(.ehUI(17, .black)).foregroundStyle(Color.ehText)
-                Text(Localized.s("book.pages", book.pageCount))
+                Text(entry.title).font(.ehUI(17, .black)).foregroundStyle(Color.ehText)
+                Text(Localized.s("book.pages", entry.pageCount))
                     .font(.ehUI(11.5, .medium)).foregroundStyle(Color.ehMuted)
             }
-            Text(description).font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted).lineSpacing(3)
+            Text(entry.description).font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted).lineSpacing(3)
+                .fixedSize(horizontal: false, vertical: true)
+            Text(Localized.s("templates.editable"))
+                .font(.ehUI(11)).foregroundStyle(Color.ehAccentDeep)
+                .padding(.horizontal, 10).padding(.vertical, 4)
+                .background(Capsule().fill(Color.ehAccentTint))
             PillButton(title: Localized.s("home.newBook"), filled: true, big: true, action: onUse)
         }
         .padding(14)
@@ -137,141 +127,42 @@ private struct DocumentPagePreview: View {
     }
 }
 
-private struct TemplateCard: View {
-    let template: Template
-    @SwiftUI.Binding var blankShape: PageShape
+/// The empty book: the parent picks the page shape here, where the choice is meaningful (decision #17).
+private struct BlankCard: View {
+    @SwiftUI.Binding var shape: PageShape
     let onUse: () -> Void
+    private let template = Templates.shared.blank
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            previews
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text(Localized.s(template.nameKey))
-                    .font(.ehUI(17, .black))
-                    .foregroundStyle(Color.ehText)
-                Text(Localized.s("book.pages", template.pageCount))
-                    .font(.ehUI(11.5, .medium))
-                    .foregroundStyle(Color.ehMuted)
-            }
-            Text(Localized.s(template.descKey))
-                .font(.ehUI(12.5, .medium))
-                .foregroundStyle(Color.ehMuted)
-                .lineSpacing(3)
-                .fixedSize(horizontal: false, vertical: true)
-
-            HStack(spacing: 6) {
-                tag(Localized.s(template.tagKey), fg: .ehAccentDeep, bg: .ehAccentTint)
-                tag(Localized.shapeName(template.shape), fg: .ehAccent2Deep, bg: .ehAccent2Tint)
-                if !template.pages.isEmpty {
-                    tag(Localized.s("templates.hintIncluded"), fg: .ehMuted, bg: .ehSurface)
+            HStack(spacing: 8) {
+                ForEach(0..<3, id: \.self) { _ in
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(template.background.uiColor))
+                        .aspectRatio(CGFloat(shape.aspect), contentMode: .fit)
+                        .frame(maxWidth: .infinity)
                 }
             }
-
-            if template.shapeIsUserChosen {
-                shapePicker
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(Localized.s(template.nameKey)).font(.ehUI(17, .black)).foregroundStyle(Color.ehText)
+                Text(Localized.s("book.pages", Int(template.pageCount)))
+                    .font(.ehUI(11.5, .medium)).foregroundStyle(Color.ehMuted)
             }
-
+            Text(Localized.s(template.descKey))
+                .font(.ehUI(12.5, .medium)).foregroundStyle(Color.ehMuted).lineSpacing(3)
+                .fixedSize(horizontal: false, vertical: true)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(Localized.s("shape.pick")).font(.ehUI(11)).foregroundStyle(Color.ehMuted)
+                HStack(spacing: 6) {
+                    ForEach([PageShape.square, .landscape, .portrait], id: \.self) { candidate in
+                        Chip(title: Localized.shapeName(candidate), selected: shape == candidate) { shape = candidate }
+                    }
+                }
+            }
             PillButton(title: Localized.s("home.newBook"), filled: true, big: true, action: onUse)
         }
         .padding(14)
         .background(RoundedRectangle(cornerRadius: 28).fill(Color.ehSunken))
         .ehElevation(1)
-    }
-
-    /// The first three pages, at the template's own aspect ratio.
-    private var previews: some View {
-        HStack(spacing: 8) {
-            ForEach(Array(template.pages.prefix(3).enumerated()), id: \.offset) { index, _ in
-                TemplatePagePreview(
-                    template: template,
-                    pageIndex: index,
-                    shape: template.shapeIsUserChosen ? blankShape : template.shape
-                )
-            }
-            if template.pages.count < 3 {
-                ForEach(0..<(3 - template.pages.count), id: \.self) { _ in
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(template.background.uiColor))
-                        .aspectRatio(
-                            CGFloat(template.shapeIsUserChosen ? blankShape.aspect : template.shape.aspect),
-                            contentMode: .fit
-                        )
-                        .frame(maxWidth: .infinity)
-                }
-            }
-        }
-    }
-
-    private var shapePicker: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(Localized.s("shape.pick"))
-                .font(.ehUI(11))
-                .foregroundStyle(Color.ehMuted)
-            HStack(spacing: 6) {
-                shapeChip(.square)
-                shapeChip(.landscape)
-                shapeChip(.portrait)
-            }
-        }
-    }
-
-    private func shapeChip(_ shape: PageShape) -> some View {
-        Chip(title: Localized.shapeName(shape), selected: blankShape == shape) {
-            blankShape = shape
-        }
-    }
-
-    private func tag(_ title: String, fg: Color, bg: Color) -> some View {
-        Text(title)
-            .font(.ehUI(11))
-            .foregroundStyle(fg)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 4)
-            .background(Capsule().fill(bg))
-    }
-}
-
-/// Instantiates the template to render a true preview, rather than faking one.
-private struct TemplatePagePreview: View {
-    let template: Template
-    let pageIndex: Int
-    let shape: PageShape
-
-    @ObservedObject private var resources = SceneResources.shared
-
-    private static let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PartRegistry.shared)
-    private static let painter = ScenePainter()
-
-    var body: some View {
-        let _ = resources.revision
-        GeometryReader { geo in
-            let book = Templates.shared.instantiate(
-                template: template,
-                bookId: BookId(value: "preview-\(template.id)"),
-                title: "",
-                contentLocale: "ja-JP",
-                nowEpochMs: 0,
-                shapeOverride: shape,
-                idSource: IdSource(prefix: "p")
-            )
-            let target = RenderTarget.Companion.shared.screen(
-                shape: book.shape,
-                available: Size(w: Float(max(geo.size.width, 1)), h: Float(max(geo.size.height, 1))),
-                selectedItem: nil
-            )
-            let scene = Self.builder.build(
-                page: book.page(index: Int32(pageIndex)), target: target, promptText: nil, art: book.art
-            )
-            Canvas { ctx, _ in
-                ctx.withCGContext { Self.painter.draw(scene, into: $0) }
-            }
-            .frame(width: CGFloat(scene.size.w), height: CGFloat(scene.size.h))
-            .frame(width: geo.size.width, height: geo.size.height)
-        }
-        .aspectRatio(CGFloat(shape.aspect), contentMode: .fit)
-        .background(Color(template.background.uiColor))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .ehElevation(0)
-        .frame(maxWidth: .infinity)
     }
 }

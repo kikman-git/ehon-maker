@@ -2,7 +2,14 @@ interface Env { ASSETS: R2Bucket }
 
 export function publicKey(path: string): string | null {
   const key = path.replace(/^\//, '');
-  return /^(?:a\/[0-9a-f]{64}\/(?:m\.png|m\.webp|1024\.webp|256\.webp)|fonts\/[A-Za-z0-9_-]+\.(?:ttf|txt))$/.test(key) ? key : null;
+  // Story templates (decision #60): a briefly cached index and content-addressed, immutable documents.
+  return /^(?:a\/[0-9a-f]{64}\/(?:m\.png|m\.webp|1024\.webp|256\.webp)|fonts\/[A-Za-z0-9_-]+\.(?:ttf|txt)|templates\/index\.json|templates\/[a-z0-9-]{1,64}\/[0-9a-f]{12}\.ehon\.json)$/.test(key) ? key : null;
+}
+
+export function cacheControl(key: string): string {
+  if (key === 'templates/index.json') return 'public, max-age=300';
+  if (key.startsWith('a/') || key.startsWith('templates/')) return 'public, max-age=31536000, immutable';
+  return 'public, max-age=86400';
 }
 
 export default {
@@ -24,7 +31,7 @@ export default {
     headers.set('ETag', object.httpEtag);
     headers.set('Access-Control-Allow-Origin', '*');
     headers.set('X-Content-Type-Options', 'nosniff');
-    headers.set('Cache-Control', key.startsWith('a/') ? 'public, max-age=31536000, immutable' : 'public, max-age=86400');
+    headers.set('Cache-Control', cacheControl(key));
     if (request.headers.get('If-None-Match') === object.httpEtag) return new Response(null, { status: 304, headers });
     const response = new Response(request.method === 'HEAD' ? null : object.body, { headers });
     if (request.method === 'GET') ctx.waitUntil(caches.default.put(cacheKey, response.clone()));

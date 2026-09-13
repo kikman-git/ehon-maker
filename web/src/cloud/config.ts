@@ -7,6 +7,8 @@ export interface CloudConfig {
   emulatorHost: string | null;
   functionsUrl: string;
   assetsUrl: string | null;
+  /** The published story templates (decision #60); null reads the dev server's local copy. */
+  templatesUrl: string | null;
   appCheckSiteKey: string | null;
 }
 
@@ -22,6 +24,7 @@ export const cloud: CloudConfig | null = emulatorHost
       emulatorHost,
       functionsUrl: `http://${emulatorHost}:5001/demo-ehon/asia-northeast1`,
       assetsUrl: (env.VITE_ASSETS_URL as string | undefined) || `http://${emulatorHost}:5001/demo-ehon/asia-northeast1/localBlob`,
+      templatesUrl: (env.VITE_TEMPLATES_URL as string | undefined) || null,
       appCheckSiteKey: null,
     }
   : env.VITE_FIREBASE_PROJECT_ID && env.VITE_FIREBASE_API_KEY && env.VITE_FIREBASE_APP_ID
@@ -33,6 +36,7 @@ export const cloud: CloudConfig | null = emulatorHost
         emulatorHost: null,
         functionsUrl: env.VITE_FUNCTIONS_URL || `https://asia-northeast1-${env.VITE_FIREBASE_PROJECT_ID}.cloudfunctions.net`,
         assetsUrl: env.VITE_ASSETS_URL || null,
+        templatesUrl: env.VITE_TEMPLATES_URL || (env.VITE_ASSETS_URL ? `${(env.VITE_ASSETS_URL as string).replace(/\/$/, '')}/templates` : null),
         appCheckSiteKey: env.VITE_APPCHECK_SITE_KEY || null,
       }
     : null;

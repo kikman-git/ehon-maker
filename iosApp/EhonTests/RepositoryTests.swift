@@ -48,6 +48,6 @@ final class RepositoryTests: XCTestCase {
 }
 
 func sampleBook(_ id: String) -> Book {
-    Templates.shared.instantiate(template: Templates.shared.find(id: "t1")!, bookId: BookId(value: id), title: "Sync test",
+    Templates.shared.instantiate(template: Templates.shared.blank, bookId: BookId(value: id), title: "Sync test",
         contentLocale: "en-US", nowEpochMs: 1, shapeOverride: nil, idSource: IdSource(prefix: "test-"))
 }

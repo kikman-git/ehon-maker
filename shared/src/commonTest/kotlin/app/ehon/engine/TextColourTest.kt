@@ -6,6 +6,7 @@ import app.ehon.model.BookId
 import app.ehon.model.TextItem
 import app.ehon.template.IdSource
 import app.ehon.template.Templates
+import app.ehon.template.TestTemplates
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -15,7 +16,7 @@ class TextColourTest {
 
     private fun controller() = EditorController(
         Templates.instantiate(
-            template = Templates.find("t1")!!,
+            template = TestTemplates.t1,
             bookId = BookId("b1"),
             title = "t",
             contentLocale = "ja-JP",

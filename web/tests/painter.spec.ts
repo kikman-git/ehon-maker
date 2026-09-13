@@ -7,7 +7,7 @@ test('even-odd masks and rotated layers paint correctly', async ({ page }) => {
     const moduleUrl = '/vendor/ehon-core/ehon-shared.mjs';
     const { WebEditor, EhonCodec } = await import(moduleUrl) as typeof import('@ehon/core');
     const codec = EhonCodec.getInstance();
-    const editor = new WebEditor(codec.instantiateTemplate('t5', 'masks', '', 'ja', 0, null), () => 0);
+    const editor = new WebEditor(codec.blankBook('masks', '', 'ja', 0, 'SQUARE'), () => 0);
     editor.addPartAt('しぜん:たいよう', 25, 25, 35, null);
     editor.addPartAt('しぜん:おつきさま', 75, 25, 35, null);
     editor.addPartAt('かたち:にじ', 25, 75, 35, null);
@@ -30,7 +30,7 @@ test('raster bounds, missing assets and context state are respected', async ({ p
     const moduleUrl = '/vendor/ehon-core/ehon-shared.mjs';
     const { WebEditor, EhonCodec } = await import(moduleUrl) as typeof import('@ehon/core');
     const codec = EhonCodec.getInstance();
-    const editor = new WebEditor(codec.instantiateTemplate('t5', 'raster', '', 'ja', 0, 'LANDSCAPE'), () => 0);
+    const editor = new WebEditor(codec.blankBook('raster', '', 'ja', 0, 'LANDSCAPE'), () => 0);
     const beforeRegistration = editor.revision;
     editor.registerPart('lib:wide', 'a/fixture', 4, 'よこなが', 'Wide');
     const registrationRepaints = editor.revision > beforeRegistration && !editor.canUndo;
@@ -58,7 +58,8 @@ test('raster bounds, missing assets and context state are respected', async ({ p
     return { ...rendered, placeholder, registrationRepaints };
   });
   expect(result.inside).toEqual([0, 0, 0, 255]);
-  expect(result.outside).toEqual([249, 244, 237, 255]);
+  // Outside the raster's box the page shows through: the facade's blank page is white.
+  expect(result.outside).toEqual([255, 255, 255, 255]);
   expect(result.savedFill).toBe('#00ff00');
   expect(result.placeholder).not.toEqual(result.inside);
   expect(result.registrationRepaints).toBe(true);
@@ -70,7 +71,7 @@ test('the facade rejects stale results and groups valid intents into one undo', 
     const moduleUrl = '/vendor/ehon-core/ehon-shared.mjs';
     const { WebEditor, EhonCodec } = await import(moduleUrl) as typeof import('@ehon/core');
     const codec = EhonCodec.getInstance();
-    const editor = new WebEditor(codec.instantiateTemplate('t1', 'intents', '', 'ja', 0, null), () => 0);
+    const editor = new WebEditor(codec.blankBook('intents', '', 'ja', 0, 'SQUARE'), () => 0);
     const original = editor.bookJson();
     const revision = editor.revision;
     editor.applyIntents(JSON.stringify({ bookId: 'intents', revision, intents: [

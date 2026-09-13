@@ -180,7 +180,7 @@ final class ScenePainterTests: XCTestCase {
 
     func testPrintablePdfHasOnePagePerBookPage() throws {
         let book = Templates.shared.instantiate(
-            template: Templates.shared.find(id: "t1")!,
+            template: Templates.shared.blank,
             bookId: BookId(value: "b1"),
             title: "もりの ともだち",
             contentLocale: "ja-JP",

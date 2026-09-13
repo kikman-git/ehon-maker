@@ -13,14 +13,16 @@ final class ShapeBaselineTests: XCTestCase {
     func testRenderEveryTemplateAtItsDeclaredShape() throws {
         let builder = SceneBuilder(measurer: UIKitTextMeasurer())
 
-        for template in Templates.shared.all {
+        // The blank book is the only procedural template left (decision #60); it takes every shape.
+        for shape in [PageShape.square, .landscape, .portrait] {
+            let template = Templates.shared.blank
             let book = Templates.shared.instantiate(
                 template: template,
-                bookId: BookId(value: template.id),
+                bookId: BookId(value: "blank-\(shapeName(shape))"),
                 title: template.id,
                 contentLocale: "ja-JP",
                 nowEpochMs: 0,
-                shapeOverride: nil,
+                shapeOverride: shape,
                 idSource: IdSource(prefix: "i")
             )
             let target = RenderTarget.Companion.shared.screen(
@@ -31,7 +33,7 @@ final class ShapeBaselineTests: XCTestCase {
             let scene = builder.build(
                 page: book.page(index: 0),
                 target: target,
-                promptText: "だれが でてくる？"
+                promptText: "じゆうに かいてみよう"
             )
             let image = SceneRenderer.image(scene)
 

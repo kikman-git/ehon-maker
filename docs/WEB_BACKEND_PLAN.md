@@ -461,7 +461,10 @@ document; `web/src/desk/` is the single-page drawing workspace (§7.3). Kotlin g
 `pagesJson`, `assembleOrNull`, `merge`, `summaryJson`, `textByFace`, `fontsJson`). Functions gained
 `shareCreate`, `shareRevoke`, `guestBook`, the QR login trio `qrLoginStart` / `qrLoginApprove` /
 `qrLoginClaim` (decision 58; `loginRequests` is closed to clients and purged by `cleanup`) and the
-emulator-only `localBlob` stand-in for R2. The
+emulator-only `localBlob` stand-in for R2. Story templates are no longer compiled into the clients:
+`assembleTemplates` writes `shared/build/templates/{index.json,*.ehon.json}`, `make templates-upload`
+publishes them under the Worker's `templates/` prefix, and `web/src/templates.ts` and the iOS
+`TemplateCatalog` fetch the index and the documents at runtime, caching by content hash (decision 60). The
 iOS share screen creates one guest link per chosen family member (label = their name) and
 lists/revokes them; `EhonWebURL` names the web origin. Fonts ship as unicode-range woff2 slices
 built by `web/tools/slice-fonts.mjs` (decision 49): the body face

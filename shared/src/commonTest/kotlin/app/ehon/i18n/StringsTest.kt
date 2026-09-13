@@ -54,7 +54,7 @@ class StringsTest {
     @Test
     fun `every template's name, description and prompt keys resolve`() {
         Templates.all.forEach { template ->
-            listOf(template.nameKey, template.descKey, template.tagKey).forEach { key ->
+            listOf(template.nameKey, template.descKey).forEach { key ->
                 assertTrue(ja[key] != key, "ja missing $key")
                 assertTrue(en[key] != key, "en missing $key")
             }

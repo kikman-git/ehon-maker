@@ -7,7 +7,8 @@ import { session } from './cloud/session';
 import { useStore } from './cloud/store';
 import { UploadError, uploadIllustration, type UploadFailure } from './cloud/uploads';
 import { Workspace } from './cloud/workspace';
-import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, fontChoices, loadFonts, parts, templateBook, templates } from './core';
+import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, fontChoices, loadFonts, parts } from './core';
+import { loadTemplates, templateBook, templateStore } from './templates';
 import { Desk, type DeskHandle } from './desk/Desk';
 import { dragging, startPartDrag } from './desk/drag';
 import { colorNames, drawingTools, type DrawingTool } from './desk/tools';
@@ -59,6 +60,8 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const [editor, setEditor] = useState(() => createEditor(initialJson));
   const [revision, setRevision] = useState(editor.revision);
   const [template, setTemplate] = useState(cloudBook ? '' : new URLSearchParams(location.search).get('template') || '');
+  const catalog = useStore(templateStore);
+  useEffect(() => { if (!cloudBook) void loadTemplates().catch(() => undefined); }, [cloudBook]);
   const [tool, setTool] = useState<DrawingTool>(() => editor.artJson() !== '[]' ? 'select' : 'brush');
   const [panelOpen, setPanelOpen] = useState(() => remembered('studio.panel', true));
   const [stripOpen, setStripOpen] = useState(() => remembered('studio.strip', true));
@@ -290,13 +293,18 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
             {!cloudBook && <button aria-label="ほんだなに ほぞん" onClick={() => void keepOnShelf()}><Icon name="shelf" size={16} />本棚に保存</button>}
             {!cloudBook && <label className="field">テンプレート
               <select value={template} onChange={(event) => {
-                generation.current++;
-                const next = createEditor(templateBook(event.target.value));
-                setEditor(next); setRevision(next.revision); setTemplate(event.target.value); setDraft(''); setRuby(''); setError(''); setTool(next.artJson() !== '[]' ? 'select' : 'brush');
-                setCategory(JSON.parse(next.artJson()).length ? 'art' : parts[0].category);
+                const id = event.target.value;
+                const request = ++generation.current;
+                setTemplate(id);
+                void templateBook(id).then((json) => {
+                  if (request !== generation.current) return;
+                  const next = createEditor(json);
+                  setEditor(next); setRevision(next.revision); setDraft(''); setRuby(''); setError(''); setTool(next.artJson() !== '[]' ? 'select' : 'brush');
+                  setCategory(JSON.parse(next.artJson()).length ? 'art' : parts[0].category);
+                }).catch(() => { if (request === generation.current) setError('テンプレートを よみこめませんでした。'); });
               }}>
                 <option value="" disabled>ファイルから</option>
-                {templates.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}
+                {catalog.items.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}
               </select>
             </label>}
           </div>
@@ -410,28 +418,36 @@ function CloudBoot({ repo, id }: { repo: BookRepository; id: string }) {
 function Boot() {
   const [route] = useState(currentRoute);
   const [repo, setRepo] = useState<BookRepository | null>(null);
-  const [initial] = useState(() => {
-    const template = new URLSearchParams(location.search).get('template');
-    return { preview: templates.some((item) => item.id === template), json: template && templates.some((item) => item.id === template) ? templateBook(template) : blankBook() };
-  });
+  const [initial, setInitial] = useState<{ preview: boolean; json: string } | null>(null);
   const [bootError, setBootError] = useState(false);
   useEffect(() => {
     let alive = true;
-    void repository().then(async (ready) => {
+    const start = async () => {
+      const wanted = new URLSearchParams(location.search).get('template');
+      let preview = false;
+      let json = blankBook();
+      if (wanted && route.kind === 'composer' && !route.id) {
+        // A published story previews without touching the shelf; an unknown id falls back to a blank book.
+        const items = await loadTemplates().catch(() => []);
+        if (items.some((item) => item.id === wanted)) { json = await templateBook(wanted); preview = true; }
+      }
+      const ready = await repository();
       if (!alive) return;
-      if (route.kind === 'composer' && !route.id && !initial.preview) {
-        if (!ready.save(initial.json)) { setBootError(true); return; }
+      if (route.kind === 'composer' && !route.id && !preview) {
+        if (!ready.save(json)) { setBootError(true); return; }
         await ready.flush();
         if (!alive) return;
-        history.replaceState(null, '', paths.composer(ready.summary(initial.json).id));
+        history.replaceState(null, '', paths.composer(ready.summary(json).id));
       }
+      setInitial({ preview, json });
       setRepo(ready);
-    }).catch(() => { if (alive) setBootError(true); });
+    };
+    start().catch(() => { if (alive) setBootError(true); });
     return () => { alive = false; };
   }, []);
   if (route.kind !== 'composer') return <Missing text="この ページは ありません。" />;
   if (bootError) return <Missing text="えほんを開けませんでした。もう一度お試しください。" />;
-  if (!repo) return <p className="loading" role="status">じゅんび しています…</p>;
+  if (!repo || !initial) return <p className="loading" role="status">じゅんび しています…</p>;
   return route.id ? <CloudBoot repo={repo} id={route.id} /> : <Composer repo={repo} bookId={initial.preview ? null : repo.summary(initial.json).id} initialJson={initial.json} />;
 }
 

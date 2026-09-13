@@ -5,7 +5,7 @@ import { getFirestore, Timestamp } from 'firebase-admin/firestore';
 import sharp from 'sharp';
 import { AssetService, MAX_UPLOAD_BYTES, sha256, uploadKey, type BlobStore } from '../functions/src/assets.ts';
 import { applyBudgetAlert, cleanupJobs } from '../functions/src/maintenance.ts';
-import { publicKey } from '../assets-worker/src/index.ts';
+import { cacheControl, publicKey } from '../assets-worker/src/index.ts';
 
 const app = initializeApp({ projectId: 'demo-ehon-assets' }, 'assets-tests');
 const db = getFirestore(app);
@@ -98,6 +98,15 @@ test('asset domain exposes only canonical images and font files', () => {
   assert.equal(publicKey(`/a/${'a'.repeat(64)}/256.webp`), `a/${'a'.repeat(64)}/256.webp`);
   assert.equal(publicKey('/fonts/Yomogi-Regular.ttf'), 'fonts/Yomogi-Regular.ttf');
   for (const path of ['/v/alice/b/r.m4a', '/s/alice/i/1.zip', '/u/alice/master/x/asset.png', '/fonts/../secret', '/fonts/a%2ftest.ttf', `/a/${'a'.repeat(64)}/source.zip`]) assert.equal(publicKey(path), null);
+});
+
+test('asset domain serves the template index briefly and the content-addressed documents forever', () => {
+  assert.equal(publicKey('/templates/index.json'), 'templates/index.json');
+  assert.equal(publicKey(`/templates/doc-love-letter/${'b'.repeat(12)}.ehon.json`), `templates/doc-love-letter/${'b'.repeat(12)}.ehon.json`);
+  for (const path of ['/templates/', '/templates/doc-love-letter.ehon.json', '/templates/Doc/abc.ehon.json', `/templates/x/${'b'.repeat(11)}.ehon.json`, '/templates/x/../index.json']) assert.equal(publicKey(path), null);
+  assert.equal(cacheControl('templates/index.json'), 'public, max-age=300');
+  assert.equal(cacheControl(`templates/doc-love-letter/${'b'.repeat(12)}.ehon.json`), 'public, max-age=31536000, immutable');
+  assert.equal(cacheControl('fonts/Yomogi-Regular.ttf'), 'public, max-age=86400');
 });
 
 test('cleanup removes expired jobs only; budget guard never reenables AI', async () => {

@@ -10,6 +10,7 @@ import app.ehon.model.PartId
 import app.ehon.model.TextItem
 import app.ehon.template.IdSource
 import app.ehon.template.Templates
+import app.ehon.template.TestTemplates
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -21,7 +22,7 @@ class BookCodecTest {
     /** A book carrying every kind of content: parts, ruby text, strokes, an eraser. */
     private fun richBook() = EditorController(
         Templates.instantiate(
-            template = Templates.find("t1")!!,
+            template = TestTemplates.t1,
             bookId = BookId("b1"),
             title = "もりの ともだち",
             contentLocale = "ja-JP",
@@ -98,7 +99,7 @@ class BookCodecTest {
     @Test
     fun `a landscape book stays landscape`() {
         val landscape = Templates.instantiate(
-            template = Templates.find("t2")!!,
+            template = TestTemplates.t2,
             bookId = BookId("b2"),
             title = "うちゅう",
             contentLocale = "ja-JP",

@@ -29,16 +29,7 @@ object StringKeys {
     val templates = listOf(
         "templates.title",
         "templates.intro",
-        "templates.hintIncluded",
-        "tag.all", "tag.creatures", "tag.adventure", "tag.magic", "tag.everyday", "tag.free",
-        "tpl.forest.name", "tpl.forest.desc",
-        "tpl.forest.p1", "tpl.forest.p2", "tpl.forest.p3", "tpl.forest.p4",
-        "tpl.space.name", "tpl.space.desc",
-        "tpl.space.p1", "tpl.space.p2", "tpl.space.p3",
-        "tpl.sweets.name", "tpl.sweets.desc",
-        "tpl.sweets.p1", "tpl.sweets.p2", "tpl.sweets.p3",
-        "tpl.today.name", "tpl.today.desc",
-        "tpl.today.p1", "tpl.today.p2", "tpl.today.p3",
+        "templates.stories", "templates.loading", "templates.offline", "templates.retry", "templates.editable",
         "tpl.blank.name", "tpl.blank.desc", "tpl.blank.p1",
         "tpl.continue",
     )

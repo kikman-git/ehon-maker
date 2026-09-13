@@ -55,7 +55,7 @@
 - **iPad**: hold it upright to make, turn it sideways to read.
 - Japanese first. The UI falls back to English on other devices.
 - **A book is one document.** Pictures travel inside the `.ehon` file as SVG, so a person or a language model can write or rework a whole illustrated book, and every piece stays movable and every caption editable on the phone and the web alike. The contract is [`docs/EHON_FORMAT.md`](docs/EHON_FORMAT.md).
-- **Story templates are storyboards bound as books.** Each story in `shared/templates/` is a `story.json` with its SVG pieces, assembled at build time into the document the shelf copies. きみへの ことばを さがして is the worked example: a cover, a title page, twenty-two storyboard pages picture-left words-right, and a back cover, drawn from the author's pencil sketches with every character a piece the child can move.
+- **Story templates are storyboards bound as books.** Each story in `shared/templates/` is a `story.json` with its SVG pieces, assembled at build time into the document the shelf copies. きみへの ことばを さがして is the worked example: a cover, a title page, twenty-two storyboard pages picture-left words-right, and a back cover, drawn from the author's pencil sketches with every character a piece the child can move. Four original stories are bound the same way: はっぱの かさ (a frog's leaf umbrella fills with friends on a rainy day), おおきく なあれ (a girl grows a sunflower while a mole guards its roots), はじめての なつまつり (a fox cub's first summer festival) and ゆきうさぎの よる (a snow rabbit that comes alive under the moon).
 - **On the web**, the same core draws in a React studio: a canvas-first desk that shows illustrated books as facing pages, brush, eraser, words with furigana, the book's own pieces as materials, and a reader one click away with read-aloud, full screen and printing that lays every spread on its own sheet. With a Firebase project configured it is for signed-in grown-ups: a landing page in front, Apple or Google sign-in, or a QR code the phone app scans to sign the browser in, then sync with the phone, illustration uploads and read-only guest links that need no account.
 
 ## How it is built
@@ -115,12 +115,16 @@ per landscape sheet or saves it as a PDF. `.ehon` files open and save from the F
 ### Story templates
 
 A template is a folder in `shared/templates/<story>/`: a `story.json` that is the book with each
-`art` entry pointing at a file, and the SVG pieces in `art/`. Gradle assembles every story into the
-shelf and writes the portable documents to `shared/build/templates/`, which the checker reads:
+`art` entry pointing at a file, and the SVG pieces in `art/`. Gradle assembles every story into a
+portable document plus an `index.json` in `shared/build/templates/`, which the checker reads and
+the clients fetch. Nothing is compiled into the apps: the documents are published to the assets
+bucket behind the Worker, the phone and the web read the index at runtime and keep a copy, so a new
+or corrected story reaches every device without a release (decision #60).
 
 ```sh
 make web-core                                   # assembles every story on the way
 cd web && pnpm ehon-check ../shared/build/templates/doc-love-letter.ehon.json
+make templates-upload                           # publish to ehon-assets-dev (BUCKET=ehon-assets-prod for prod)
 ```
 
 Bind a new story the way a storyboard is drawn: a cover, a title page, spreads with the picture on

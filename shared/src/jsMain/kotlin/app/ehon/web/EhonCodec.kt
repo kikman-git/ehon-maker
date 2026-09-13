@@ -16,8 +16,6 @@ import app.ehon.model.PartItem
 import app.ehon.model.TextItem
 import app.ehon.store.BookCodec
 import app.ehon.store.BookSyncCodec
-import app.ehon.template.DocumentTemplates
-import app.ehon.template.Templates
 import app.ehon.vector.SvgParser
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.serialization.json.*
@@ -39,16 +37,6 @@ object EhonCodec {
         ))
     }
 
-    fun instantiateTemplate(id: String, bookId: String, title: String, locale: String, nowEpochMs: Double, shape: String?): String {
-        require(nowEpochMs.isFinite() && nowEpochMs >= 0 && nowEpochMs <= 9_007_199_254_740_991.0)
-        require(bookId.isNotBlank())
-        val template = requireNotNull(Templates.find(id)) { "unknown template $id" }
-        return BookCodec.encode(Templates.instantiate(
-            template, BookId(bookId), title, locale, nowEpochMs.toLong(),
-            shape?.let { PageShape.valueOf(it) },
-        ))
-    }
-
     // ── documents: a whole book, art included, written by a person or a model (decision #55) ──
 
     /** A document becomes a new book on this shelf: its own id, saved now, everything else as written. */
@@ -58,21 +46,6 @@ object EhonCodec {
         val book = BookCodec.decode(json)
         return BookCodec.encode(book.copy(id = BookId(bookId), updatedAtEpochMs = nowEpochMs.toLong()))
     }
-
-    /** `[{id, title, description, shape, pageCount}]` for the shelf, beside [templatesJson]. */
-    fun documentTemplatesJson(locale: String): String = buildJsonArray {
-        DocumentTemplates.all.forEach { entry -> addJsonObject {
-            val book = BookCodec.decode(entry.json)
-            put("id", entry.id)
-            put("title", book.title)
-            put("description", if (locale.startsWith("ja")) entry.descriptionJa else entry.descriptionEn)
-            put("shape", book.shape.name)
-            put("pageCount", book.pageCount)
-        } }
-    }.toString()
-
-    fun instantiateDocumentTemplate(id: String, bookId: String, nowEpochMs: Double): String =
-        instantiateDocument(requireNotNull(DocumentTemplates.find(id)) { "unknown document template $id" }.json, bookId, nowEpochMs)
 
     /** The `art:` pictures a document carries, as `[{id, name, aspect}]`. */
     fun artJson(bookJson: String): String = buildJsonArray {
@@ -161,16 +134,6 @@ object EhonCodec {
     fun merge(localJson: String, baselineJson: String?, remoteJson: String): String = BookCodec.encode(
         BookSyncCodec.merge(BookCodec.decode(localJson), baselineJson?.let(BookCodec::decode), BookCodec.decode(remoteJson)),
     )
-
-    fun templatesJson(locale: String): String = buildJsonArray {
-        val strings = Strings.forLocale(locale)
-        Templates.all.forEach { template -> addJsonObject {
-            put("id", template.id)
-            put("title", strings[template.nameKey])
-            put("description", strings[template.descKey])
-            put("shape", template.shape.name)
-        } }
-    }.toString()
 
     fun catalogJson(locale: String): String = buildJsonArray {
         val strings = Strings.forLocale(locale)

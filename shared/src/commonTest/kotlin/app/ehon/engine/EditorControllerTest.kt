@@ -11,6 +11,7 @@ import app.ehon.model.PartItem
 import app.ehon.model.TextItem
 import app.ehon.template.IdSource
 import app.ehon.template.Templates
+import app.ehon.template.TestTemplates
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -22,7 +23,7 @@ class EditorControllerTest {
 
     private fun book(templateId: String = "t1", locale: String = "ja-JP"): Book =
         Templates.instantiate(
-            template = Templates.find(templateId)!!,
+            template = TestTemplates.find(templateId),
             bookId = BookId("b1"),
             title = "テスト",
             contentLocale = locale,

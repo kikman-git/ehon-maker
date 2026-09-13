@@ -1,5 +1,8 @@
 package app.ehon.web
 
+import app.ehon.model.BookId
+import app.ehon.store.BookCodec
+import app.ehon.template.Templates
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
@@ -14,7 +17,12 @@ import kotlin.test.assertTrue
 
 class WebFacadeTest {
     private val measure = { text: String, size: Double, _: String -> text.length * size * 0.6 }
-    private val base = EhonCodec.instantiateTemplate("t1", "sync-book", "Sync", "ja-JP", 1000.0, null)
+    /** An eight-page square book with prompts on its untouched pages, like the retired seeded starter these tests were written against. */
+    private val base = WebEditor(BookCodec.encode(Templates.instantiate(Templates.blank, BookId("sync-book"), "Sync", "ja-JP", 1000L)), measure).let { editor ->
+        repeat(4) { editor.addPage() }
+        editor.bookJson().also { editor.dispose() }
+    }
+    private fun other() = EhonCodec.blankBook("other", "", "ja-JP", 1.0, "SQUARE")
 
     @Test
     fun blankDrawingHasOnePageAndStrokesCommitOrCancelAsOneUndoStep() {
@@ -80,7 +88,7 @@ class WebFacadeTest {
         assertEquals("Local", merged.speechText(0))
         assertEquals("Remote", merged.speechText(1))
         assertFailsWith<IllegalArgumentException> {
-            EhonCodec.merge(local, base, EhonCodec.instantiateTemplate("t1", "other", "", "ja-JP", 1.0, null))
+            EhonCodec.merge(local, base, other())
         }
     }
 
@@ -97,7 +105,7 @@ class WebFacadeTest {
         assertFalse(editor.canUndo)
         assertTrue(editor.revision > before)
         assertEquals(remote, editor.bookJson())
-        assertFailsWith<IllegalArgumentException> { editor.replaceBook(EhonCodec.instantiateTemplate("t1", "other", "", "ja-JP", 1.0, null)) }
+        assertFailsWith<IllegalArgumentException> { editor.replaceBook(other()) }
         editor.dispose()
     }
 
@@ -134,19 +142,7 @@ class WebFacadeTest {
         assertFalse(broken["ok"]!!.jsonPrimitive.content.toBoolean())
         assertEquals(1, broken["errors"]!!.jsonArray.size)
         assertFalse(Json.parseToJsonElement(EhonCodec.checkDocument("nope")).jsonObject["ok"]!!.jsonPrimitive.content.toBoolean())
-        val templates = Json.parseToJsonElement(EhonCodec.documentTemplatesJson("ja")).jsonArray
-        assertEquals(10, templates.size)
-        val letterEntry = templates.first { it.jsonObject["id"]!!.jsonPrimitive.content == "doc-love-letter" }.jsonObject
-        assertEquals(25, letterEntry["pageCount"]!!.jsonPrimitive.content.toInt())
-        assertEquals("PORTRAIT", letterEntry["shape"]!!.jsonPrimitive.content)
-        val snowEntry = templates.first { it.jsonObject["id"]!!.jsonPrimitive.content == "doc-snow" }.jsonObject
-        assertEquals(3, snowEntry["pageCount"]!!.jsonPrimitive.content.toInt())
-        assertEquals("ゆきのひの ともだち", snowEntry["title"]!!.jsonPrimitive.content)
-        val snow = WebReader(EhonCodec.instantiateDocumentTemplate("doc-snow", "snow", 1.0), measure)
-        assertEquals(3, snow.pageCount)
-        assertTrue(snow.speechText(0).startsWith("しんしん"))
         editor.dispose()
-        snow.dispose()
     }
 
     @Test

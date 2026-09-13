@@ -34,9 +34,14 @@ test: ## Shared tests on JVM, Node and headless Chrome + Compose painter
 	./gradlew :shared:jvmTest :shared:jsTest :painter-compose:compileKotlinJvm
 
 .PHONY: web-core
-web-core: ## Build and stage the typed Kotlin/JS library for Vite
-	./gradlew :shared:jsBrowserProductionLibraryDistribution
+web-core: ## Build and stage the typed Kotlin/JS library for Vite, and assemble the story templates
+	./gradlew :shared:assembleTemplates :shared:jsBrowserProductionLibraryDistribution
 	node tools/stage-web-core.mjs
+
+.PHONY: templates-upload
+templates-upload: ## Publish the assembled story templates to the assets bucket (BUCKET=ehon-assets-dev)
+	./gradlew :shared:assembleTemplates
+	cd backend && pnpm templates --wrangler --bucket $(or $(BUCKET),ehon-assets-dev)
 
 .PHONY: web
 web: web-core ## Run the web app at http://localhost:5173/ (shelf; /app is the composer harness)

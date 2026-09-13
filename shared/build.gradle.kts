@@ -1,3 +1,4 @@
+import java.security.MessageDigest
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
@@ -44,22 +45,23 @@ kotlin {
 }
 
 // Assembles each templates/<story>/story.json with the SVG files in its art folder into one .ehon
-// document (decision #55) and writes them into DocumentTemplates.kt, so the same JSON ships in the
-// phone framework and the web core. build/templates holds the assembled documents for `pnpm ehon-check`.
+// document (decision #55) plus an index.json, in build/templates. The documents are published to the
+// assets bucket (decision #60, `pnpm templates` in backend/), served to the web dev server and read
+// by `pnpm ehon-check` and the JVM template tests; nothing is compiled into the clients.
 // (A line comment on purpose: Kotlin block comments nest, and a glob like art/... .svg inside one
 // would swallow the rest of this script.)
-val generateDocumentTemplates by tasks.registering {
+val assembleTemplates = tasks.register("assembleTemplates") {
     group = "ehon"
-    description = "Assemble templates/*/story.json and art/*.svg into DocumentTemplates.kt"
+    description = "Assemble templates/*/story.json and art/*.svg into build/templates/*.ehon.json and index.json"
     val sources = layout.projectDirectory.dir("templates")
-    val kotlinOut = layout.buildDirectory.dir("generated/templates/kotlin")
     val jsonOut = layout.buildDirectory.dir("templates")
     inputs.dir(sources)
-    outputs.dir(kotlinOut)
     outputs.dir(jsonOut)
     doLast {
         val generator = groovy.json.JsonGenerator.Options().disableUnicodeEscaping().build()
-        val stories = sources.asFile.listFiles { file -> file.isDirectory }!!.map { dir ->
+        val out = jsonOut.get().asFile.apply { mkdirs() }
+        out.listFiles { file -> file.extension == "json" }?.forEach { it.delete() }
+        val entries = sources.asFile.listFiles { file -> file.isDirectory }!!.map { dir ->
             @Suppress("UNCHECKED_CAST")
             val story = groovy.json.JsonSlurper().parse(dir.resolve("story.json")) as MutableMap<String, Any?>
             dir to story
@@ -73,43 +75,36 @@ val generateDocumentTemplates by tasks.registering {
                 // Only whitespace between tags, the <title> and the xmlns go; the SVG itself is what the app draws.
                 entry["svg"] = file.readText().trim().replace(Regex("<title>.*?</title>", RegexOption.DOT_MATCHES_ALL), "").replace(" xmlns=\"http://www.w3.org/2000/svg\"", "").replace(Regex(">\\s+<"), "><").replace(Regex("\\s{2,}"), " ")
             }
+            val id = story["id"] as String
             val json = generator.toJson(mapOf("version" to 4, "book" to book))
-            require("\"\"\"" !in json && '$' !in json) { "${dir.name}: a document may not contain triple quotes or dollar signs" }
-            jsonOut.get().file("${story["id"]}.ehon.json").asFile.apply { parentFile.mkdirs() }.writeText(json)
+            val bytes = json.toByteArray(Charsets.UTF_8)
+            val sha256 = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it) }
+            out.resolve("$id.ehon.json").writeBytes(bytes)
             @Suppress("UNCHECKED_CAST")
-            val description = story["description"] as Map<String, String>
-            Triple(story["id"] as String, description, json)
+            val pages = book["pages"] as List<*>
+            linkedMapOf(
+                "id" to id,
+                "order" to ((story["order"] as? Number)?.toInt() ?: Int.MAX_VALUE),
+                "title" to book["title"],
+                "description" to story["description"],
+                "shape" to book["shape"],
+                "pageCount" to pages.size,
+                "format" to 4,
+                "bytes" to bytes.size,
+                "sha256" to sha256,
+                // Content-addressed, so a published document is immutable and the index can be cached briefly.
+                "url" to "$id/${sha256.take(12)}.ehon.json",
+                "file" to "$id.ehon.json",
+            )
         }
-        val entries = stories.joinToString("\n") { (id, description, json) ->
-            """        Entry(
-            id = "$id",
-            descriptionJa = "${description["ja"]}",
-            descriptionEn = "${description["en"]}",
-            json = ${"\"\"\""}$json${"\"\"\""},
-        ),"""
-        }
-        val source = """package app.ehon.template
-
-/**
- * Templates that are whole books written as documents, art included (decision #55). Generated from
- * `shared/templates/<story>/` by the `generateDocumentTemplates` Gradle task; edit the SVG and JSON
- * there, not this file.
- */
-object DocumentTemplates {
-    data class Entry(val id: String, val descriptionJa: String, val descriptionEn: String, val json: String)
-
-    val all: List<Entry> = listOf(
-$entries
-    )
-
-    fun find(id: String): Entry? = all.firstOrNull { it.id == id }
-}
-"""
-        kotlinOut.get().file("app/ehon/template/DocumentTemplates.kt").asFile.apply { parentFile.mkdirs() }.writeText(source)
+        out.resolve("index.json").writeText(generator.toJson(mapOf("version" to 1, "templates" to entries)))
     }
 }
 
-kotlin.sourceSets.named("commonMain") { kotlin.srcDir(generateDocumentTemplates) }
+tasks.named<Test>("jvmTest") {
+    dependsOn(assembleTemplates)
+    systemProperty("ehon.templates", layout.buildDirectory.dir("templates").get().asFile.absolutePath)
+}
 
 /**
  * Emits every shipped UI string for the font subset step. Consumed by `make fonts`;

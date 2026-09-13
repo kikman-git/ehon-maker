@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { cloud } from './cloud/config';
 import { repository, type BookRepository, type BookSummary } from './cloud/repository';
 import { session } from './cloud/session';
 import { useStore } from './cloud/store';
-import { blankBook, loadFonts, templateBook, templates } from './core';
+import { blankBook, loadFonts } from './core';
+import { loadTemplates, templateBook, templateStore } from './templates';
 import { currentRoute, paths } from './routes';
 import { AccountPanel, syncStatus } from './ui/Account';
 import { ShareDialog } from './ui/ShareDialog';
@@ -25,14 +26,26 @@ function Shelf({ repo }: { repo: BookRepository }) {
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
   const [createError, setCreateError] = useState('');
-  const templatePreviews = useMemo(() => new Map(templates.map((template) => [template.id, templateBook(template.id, 'preview-' + template.id)])), []);
+  const catalog = useStore(templateStore);
+  const [previews, setPreviews] = useState<Record<string, string>>({});
+  useEffect(() => { if (panel === 'templates') void loadTemplates().catch(() => undefined); }, [panel]);
+  // The published documents arrive after the index; each card paints as soon as its own book is in.
+  useEffect(() => {
+    if (panel !== 'templates' || catalog.status !== 'ready') return;
+    let alive = true;
+    for (const template of catalog.items) {
+      if (previews[template.id]) continue;
+      void templateBook(template.id, 'preview-' + template.id).then((json) => { if (alive) setPreviews((current) => ({ ...current, [template.id]: json })); }).catch(() => undefined);
+    }
+    return () => { alive = false; };
+  }, [panel, catalog]);
 
   const create = async (templateId?: string) => {
     if (creating) return;
     setCreating(true);
     setCreateError('');
     try {
-      const json = templateId ? templateBook(templateId) : blankBook();
+      const json = templateId ? await templateBook(templateId) : blankBook();
       if (!repo.save(json)) throw new Error('Could not create book');
       await repo.flush();
       location.assign(paths.composer(repo.summary(json).id));
@@ -92,14 +105,16 @@ function Shelf({ repo }: { repo: BookRepository }) {
         <header className="dialog-header"><h2 id="templates-title">テンプレートを選ぶ</h2><button className="ghost icon-button" onClick={() => setPanel('none')} aria-label="とじる"><Icon name="close" size={18} /></button></header>
         <p className="hint">好きな世界から、描きはじめましょう。絵を動かしたり、ことばを書きかえたりできます。</p>
         <ul className="template-list">
-          {templates.map((template) => <li key={template.id}>
+          {catalog.status === 'loading' && <li className="template-status"><p role="status">おはなしを よみこんでいます…</p></li>}
+          {catalog.status === 'error' && <li className="template-status"><p role="alert">おはなしを よみこめませんでした。</p><button onClick={() => void loadTemplates(true).catch(() => undefined)}><Icon name="rotate" size={15} />もういちど</button></li>}
+          {catalog.items.map((template) => { const spread = template.shape === 'PORTRAIT' && template.pageCount > 1; const preview = previews[template.id]; return <li key={template.id}>
             <button className="template" disabled={creating} onClick={() => void create(template.id)}>
-              <span className="template-preview" data-spread={template.document && template.shape === 'PORTRAIT' || undefined}><Thumbnail json={templatePreviews.get(template.id)!} library={repo.library} className="template-canvas" />{template.document && template.shape === 'PORTRAIT' && (template.pageCount ?? 0) > 1 && <Thumbnail json={templatePreviews.get(template.id)!} library={repo.library} pageIndex={1} className="template-canvas" />}<span className="template-format">{template.document && template.shape === 'PORTRAIT' ? '見開き' : shapeName[template.shape] ?? template.shape}</span></span>
+              <span className="template-preview" data-spread={spread || undefined}>{preview ? <><Thumbnail json={preview} library={repo.library} className="template-canvas" />{spread && <Thumbnail json={preview} library={repo.library} pageIndex={1} className="template-canvas" />}</> : <span className="template-canvas template-pending" aria-hidden="true" />}<span className="template-format">{spread ? '見開き' : shapeName[template.shape] ?? template.shape}</span></span>
               <strong>{template.title}</strong>
-              {template.document && <span className="template-provenance">{template.pageCount}ページ · オリジナルストーリー · えも ことばも うごかせる</span>}
+              <span className="template-provenance">{template.pageCount}ページ · オリジナルストーリー · えも ことばも うごかせる</span>
               <span>{template.description}</span>
             </button>
-          </li>)}
+          </li>; })}
         </ul>
       </section>
     </div>}

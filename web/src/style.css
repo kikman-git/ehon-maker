@@ -414,3 +414,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
   .spread:last-child { break-after: auto; page-break-after: auto; }
   .page-box { height: min(100%, calc((100vw - 4mm) / 2 / var(--aspect))); max-height: 100%; border-radius: 0; box-shadow: none; outline: .3mm solid #d0d0d0; }
 }
+
+.template-pending { display: block; aspect-ratio: 1; background: #f4efe6; border-radius: 6px; }
+.template-status { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; color: #6b665e; }
+.template-status p { margin: 0; }

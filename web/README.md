@@ -86,7 +86,9 @@ The **きみへの ことばを さがして** template (`/app?template=doc-love
 storyboard the way a Japanese picture book is bound: a cover and title page, eleven spreads with
 the picture on the left and the words on the right, and a back cover with the colophon, all as
 separate vector pieces and handwritten Japanese text. Its first spread is also shown together in
-the shelf preview.
+the shelf preview. Four original stories follow the same binding, each a cover, a title page,
+eight spreads and a back cover: `doc-leaf-umbrella` (はっぱの かさ), `doc-sunflower` (おおきく なあれ),
+`doc-summer-festival` (はじめての なつまつり) and `doc-snow-rabbit` (ゆきうさぎの よる).
 
 `src/desk/` renders only the active page; the thumbnail strip changes pages and adds sheets.
 Mouse, pen and finger strokes use `WebEditor.beginStroke/appendStroke/endStroke`, with
@@ -113,12 +115,17 @@ same account, so a brand-new book's scratch is pushed once the book itself has s
 
 ## Story templates
 
-Every illustrated story on the shelf is a **document template** from the shared core: a whole book
-written as one `.ehon` JSON, vector art embedded as SVG, captions as text items, everything a movable
-or editable piece (decision #55, format in [`docs/EHON_FORMAT.md`](../docs/EHON_FORMAT.md)). The
-sources are `shared/templates/<story>/story.json` plus `art/*.svg`; the Gradle task
-`generateDocumentTemplates` assembles them into `DocumentTemplates.kt`, so the same books ship in the
-phone framework and this web core. A book that carries art shows it in the materials panel under
+Every illustrated story on the shelf is a **document template**: a whole book written as one `.ehon`
+JSON, vector art embedded as SVG, captions as text items, everything a movable or editable piece
+(decision #55, format in [`docs/EHON_FORMAT.md`](../docs/EHON_FORMAT.md)). The sources are
+`shared/templates/<story>/story.json` plus `art/*.svg`; the Gradle task `assembleTemplates` writes
+the documents and an `index.json` to `shared/build/templates/`, and `make templates-upload` publishes
+them to the assets Worker under `templates/` (decision #60). `src/templates.ts` fetches that index
+from `VITE_TEMPLATES_URL` (default: the assets Worker's `templates/` prefix), then each document on
+demand; the shelf dialog, the landing gallery and `/app?template=<id>` all go through it. Without a
+cloud configuration the dev and preview servers serve the same layout themselves from the assembled
+build plus `tests/fixtures/*.ehon.json`, the seeded books (`t1`..`t5`) the browser tests open, so the
+harness and the tests need no network. A book that carries art shows it in the materials panel under
 「この えほんの え」, and selecting a caption on the page shows its text field whichever tool is
 active. `pnpm ehon-check <file>` validates any document with the same code the app uses.
 
@@ -131,7 +138,8 @@ are public identifiers; App Check (`VITE_APPCHECK_SITE_KEY`) is what gates the b
 callable, the QR login included, is rejected in the browser until the site key is registered. With
 the key present the page loads reCAPTCHA Enterprise from google.com, the one third-party request the
 product makes by design; the Lighthouse third-party budget (decision 51) runs on the no-cloud build.
-`VITE_ASSETS_URL` is the assets Worker domain; in emulator mode it defaults to the `localBlob`
+`VITE_TEMPLATES_URL` overrides where the story templates are read from (the emulator suite points it
+at the dev server's `/templates`). `VITE_ASSETS_URL` is the assets Worker domain; in emulator mode it defaults to the `localBlob`
 function, which stands in for R2. `VITE_FONTS_URL` moves the font slices off the site (defaults
 to `/fonts`).
 

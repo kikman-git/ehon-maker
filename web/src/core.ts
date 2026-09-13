@@ -61,22 +61,10 @@ export function createReader(json: string): WebReader {
   return new WebReader(json, measureText);
 }
 
-export function templateBook(id: string, bookId = `b-${crypto.randomUUID()}`): string {
-  // A document template is already a whole book; it only needs its own id and timestamp.
-  if (documentTemplates.some((item) => item.id === id)) return codec.instantiateDocumentTemplate(id, bookId, Date.now());
-  const template = templates.find((item) => item.id === id);
-  if (!template) throw new Error('Unknown template.');
-  return codec.instantiateTemplate(id, bookId, template.title, 'ja-JP', Date.now(), null);
-}
-
 export function blankBook(shape = 'SQUARE'): string {
   return codec.blankBook(`b-${crypto.randomUUID()}`, '無題のえほん', 'ja-JP', Date.now(), shape);
 }
 
-export type TemplateSummary = { id: string; title: string; description: string; shape: string; pageCount?: number; document?: boolean };
-/** Whole books written as documents, art included, from the shared core (decision #55). */
-export const documentTemplates: TemplateSummary[] = (JSON.parse(codec.documentTemplatesJson('ja')) as TemplateSummary[]).map((item) => ({ ...item, document: true }));
-export const templates: TemplateSummary[] = [...documentTemplates, ...JSON.parse(codec.templatesJson('ja'))];
 export const parts: { id: string; name: string; category: string }[] = JSON.parse(codec.catalogJson('ja'));
 export const fontChoices: { id: string; name: string }[] = JSON.parse(codec.fontsJson('ja'));
 export const backgrounds: number[] = JSON.parse(codec.backgroundsJson());

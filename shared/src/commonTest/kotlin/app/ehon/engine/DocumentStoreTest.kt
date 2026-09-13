@@ -6,6 +6,7 @@ import app.ehon.model.ItemId
 import app.ehon.model.PartId
 import app.ehon.model.PartItem
 import app.ehon.template.Templates
+import app.ehon.template.TestTemplates
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -14,7 +15,7 @@ import kotlin.test.assertTrue
 class DocumentStoreTest {
 
     private fun book(): Book = Templates.instantiate(
-        template = Templates.find("t1")!!,
+        template = TestTemplates.t1,
         bookId = BookId("b1"),
         title = "もりの ともだち",
         contentLocale = "ja-JP",

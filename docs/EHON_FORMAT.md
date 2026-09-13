@@ -170,11 +170,27 @@ the generator drops each file's `<title>` and `xmlns` at assembly, so the source
 while the embedded art stays inside the budget. A character standing at the page edge is placed at `x: 0` and cropped by the page.
 `shared/templates/love-letter/` is the worked example: cover, title page, eleven spreads, back cover.
 
-## Templates shipped in the app
+## Templates published to the backend
 
 The story templates on the shelf are documents written this way, kept as editable sources in
 `shared/templates/<story>/`: a `story.json` that is the book with each `art` entry pointing at a
-`file`, and the SVG pieces in `art/`. The Gradle task `generateDocumentTemplates` assembles them
-into `DocumentTemplates.kt` and writes the assembled `.ehon.json` files to `shared/build/templates/`,
-which `pnpm ehon-check` can read. To add a story, add a folder; to change a picture or a caption,
-edit the file. The snow story is a full worked example: three pages, eleven pictures, six captions.
+`file`, and the SVG pieces in `art/`. The Gradle task `assembleTemplates` writes the assembled
+`.ehon.json` files and an `index.json` to `shared/build/templates/`, which `pnpm ehon-check` and the
+JVM template tests read; `make templates-upload` publishes them to the assets bucket, where the
+Worker serves `templates/index.json` (cached five minutes) and `templates/<id>/<sha256[0:12]>.ehon.json`
+(immutable). Both clients fetch the index at runtime and keep what they fetched, so a story is
+corrected or added without shipping an app (decision #60). The index is
+
+```json
+{ "version": 1, "templates": [ { "id": "doc-love-letter", "order": 0, "title": "きみへの ことばを さがして",
+  "description": { "ja": "…", "en": "…" }, "shape": "PORTRAIT", "pageCount": 25, "format": 4,
+  "bytes": 94307, "sha256": "e67a…", "url": "doc-love-letter/e67aee4b90d5.ehon.json" } ] }
+```
+
+`format` is the codec version the document is written in; a client skips entries newer than it
+reads. To add a story, add a folder; to change a picture or a caption, edit the file, assemble and
+upload. Five stories ship: `love-letter/` (the author's storyboard) and four originals
+bound the same way, `leaf-umbrella/`, `sunflower/`, `summer-festival/` and `snow-rabbit/`, each a
+cover, a title page, eight spreads and a back cover with a README that lists the spreads and keeps
+the off-page narration. A two-page picture on a dark sky writes its frame words in `colorIndex` 1;
+ink on navy does not read.

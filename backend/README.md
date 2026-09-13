@@ -104,7 +104,8 @@ to the web app's origins so browsers may fetch it; the phone builds links from `
 6. Deploy `assets-worker/`. Dev serves from the `workers.dev` address (`workers_dev` is true outside
    `--env prod`); prod needs a custom domain such as `assets.example.com`, configured as a route in
    `wrangler.jsonc` or the Cloudflare dashboard. The Worker exposes only `a/<sha256>/{m.png,1024.webp,256.webp}` and
-   `fonts/*.{ttf,txt}`, caches successful GETs at the edge, and denies `s/`, `v/`, and `u/`.
+   `fonts/*.{ttf,txt}` and the story templates `templates/index.json` (cached five minutes) and
+   `templates/<id>/<hash>.ehon.json` (immutable), caches successful GETs at the edge, and denies `s/`, `v/`, and `u/`.
    Cloudflare documents why a [public bucket domain exposes the bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/).
 7. Issue separate R2 credentials scoped to each bucket. Set `R2_ENDPOINT` and `R2_BUCKET`
    in `functions/.env.<project-id>`. Store `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY` with
@@ -116,6 +117,13 @@ to the web app's origins so browsers may fetch it; the phone builds links from `
    No upload occurs without `--upload`. The web app slices the same staged files into woff2
    (`make web-fonts`, or `make web-fonts FETCH=1` to stage them from here); without them the web
    renders those five faces with the system font.
+   Publish the story templates the same way: `make templates-upload` (from the repo root) assembles
+   `shared/templates/*` into documents plus an index and uploads them through the signed-in Wrangler
+   session to `ehon-assets-dev` (`BUCKET=ehon-assets-prod` for prod); `pnpm templates --upload` in
+   `backend/` does it with exported R2 credentials instead. Documents are uploaded before the index,
+   under content-addressed keys, so a client never reads an entry it cannot fetch. Both apps read
+   `templates/index.json` at launch and keep a copy, so a corrected or new story needs no release
+   (decision #60).
 9. Set a one-day R2 lifecycle expiry on the temporary `u/` prefix. Finalized masters,
    sources, and voice have no automatic garbage collection in v1. Failed quota reservations
    stay charged until the same upload succeeds; inspect abandoned reservations before any

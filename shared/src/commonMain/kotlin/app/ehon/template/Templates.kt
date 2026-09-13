@@ -19,18 +19,16 @@ data class Seed(val partName: String, val x: Float, val y: Float, val sizePct: F
 data class TemplatePage(val promptKey: String, val seeds: List<Seed>)
 
 /**
- * A starting point.
+ * A procedural starting point: pages with prompts and seeded catalog parts, built at runtime.
  *
- * Each template declares its own [shape]. That is what lets all three page shapes ship
- * without authoring every template three times — seed positions are hand-tuned per
- * template, and tuning them once at the template's own proportions costs nothing extra.
- * Shape is chosen by the parent only for the blank template, where it's meaningful.
+ * Only the blank book ships this way (decision #60); story templates are whole `.ehon` documents
+ * published to the backend and instantiated with [Templates.instantiateDocument]. Tests still build
+ * seeded books from their own [Template] values.
  */
 data class Template(
     val id: String,
     val nameKey: String,
     val descKey: String,
-    val tagKey: String,
     val shape: PageShape,
     val pageCount: Int,
     val background: Argb,
@@ -41,151 +39,27 @@ data class Template(
 
 object Templates {
 
-    val all = listOf(
-        Template(
-            id = "t1",
-            nameKey = "tpl.forest.name",
-            descKey = "tpl.forest.desc",
-            tagKey = "tag.creatures",
-            shape = PageShape.SQUARE,
-            pageCount = 8,
-            background = Argb.hex("f0fae1"),
-            pages = listOf(
-                TemplatePage(
-                    "tpl.forest.p1",
-                    listOf(
-                        Seed("き", 20f, 66f, 32f), Seed("き", 80f, 71f, 24f),
-                        Seed("たいよう", 87f, 12f, 14f), Seed("ねこ", 50f, 68f, 26f),
-                    ),
-                ),
-                TemplatePage(
-                    "tpl.forest.p2",
-                    listOf(
-                        Seed("き", 15f, 70f, 26f), Seed("ことり", 58f, 34f, 18f),
-                        Seed("きつね", 44f, 68f, 26f), Seed("おやま", 78f, 62f, 32f),
-                    ),
-                ),
-                TemplatePage(
-                    "tpl.forest.p3",
-                    listOf(
-                        Seed("くま", 32f, 64f, 30f), Seed("ふくろう", 70f, 40f, 22f),
-                        Seed("はっぱ", 88f, 74f, 14f),
-                    ),
-                ),
-                TemplatePage(
-                    "tpl.forest.p4",
-                    listOf(
-                        Seed("にじ", 50f, 40f, 46f), Seed("くま", 30f, 74f, 22f),
-                        Seed("ねこ", 66f, 76f, 18f),
-                    ),
-                ),
-            ),
-        ),
-        Template(
-            id = "t2",
-            nameKey = "tpl.space.name",
-            descKey = "tpl.space.desc",
-            tagKey = "tag.adventure",
-            // A wide night sky reads better landscape, and this is where a child
-            // discovers that books come in shapes.
-            shape = PageShape.LANDSCAPE,
-            pageCount = 10,
-            background = Argb.hex("2e2b25"),
-            pages = listOf(
-                TemplatePage(
-                    "tpl.space.p1",
-                    listOf(
-                        Seed("ロケット", 50f, 56f, 40f), Seed("ほし", 16f, 20f, 14f),
-                        Seed("きらきら", 84f, 30f, 14f),
-                    ),
-                ),
-                TemplatePage(
-                    "tpl.space.p2",
-                    listOf(
-                        Seed("おつきさま", 70f, 28f, 30f), Seed("ほし", 22f, 60f, 12f),
-                        Seed("ロケット", 34f, 40f, 24f),
-                    ),
-                ),
-                TemplatePage(
-                    "tpl.space.p3",
-                    listOf(
-                        Seed("まほうのたま", 46f, 44f, 30f), Seed("ペンギン", 76f, 66f, 24f),
-                        Seed("きらきら", 20f, 26f, 16f),
-                    ),
-                ),
-            ),
-        ),
-        Template(
-            id = "t3",
-            nameKey = "tpl.sweets.name",
-            descKey = "tpl.sweets.desc",
-            tagKey = "tag.magic",
-            // A tall shopfront wants a tall page.
-            shape = PageShape.PORTRAIT,
-            pageCount = 12,
-            background = Argb.hex("ffe1d0"),
-            pages = listOf(
-                TemplatePage(
-                    "tpl.sweets.p1",
-                    listOf(Seed("おしろ", 50f, 56f, 46f), Seed("きらきら", 18f, 24f, 16f)),
-                ),
-                TemplatePage(
-                    "tpl.sweets.p2",
-                    listOf(Seed("まほうのたま", 34f, 54f, 28f), Seed("まほうのつえ", 68f, 50f, 30f)),
-                ),
-                TemplatePage(
-                    "tpl.sweets.p3",
-                    listOf(
-                        Seed("にじ", 50f, 44f, 48f), Seed("ちょうちょ", 26f, 68f, 20f),
-                        Seed("ちょうちょ", 74f, 72f, 16f),
-                    ),
-                ),
-            ),
-        ),
-        Template(
-            id = "t4",
-            nameKey = "tpl.today.name",
-            descKey = "tpl.today.desc",
-            tagKey = "tag.everyday",
-            shape = PageShape.SQUARE,
-            pageCount = 6,
-            background = Argb.hex("f9f4ed"),
-            pages = listOf(
-                TemplatePage("tpl.today.p1", listOf(Seed("たいよう", 76f, 24f, 24f))),
-                TemplatePage(
-                    "tpl.today.p2",
-                    listOf(
-                        Seed("くも", 30f, 24f, 30f), Seed("てんとうむし", 68f, 62f, 18f),
-                        Seed("はっぱ", 40f, 74f, 20f),
-                    ),
-                ),
-                TemplatePage(
-                    "tpl.today.p3",
-                    listOf(Seed("おつきさま", 72f, 26f, 24f), Seed("ほし", 24f, 34f, 12f)),
-                ),
-            ),
-        ),
-        Template(
-            id = "t5",
-            nameKey = "tpl.blank.name",
-            descKey = "tpl.blank.desc",
-            tagKey = "tag.free",
-            shape = PageShape.SQUARE,
-            pageCount = 4,
-            background = Argb.hex("f9f4ed"),
-            pages = listOf(TemplatePage("tpl.blank.p1", emptyList())),
-            shapeIsUserChosen = true,
-        ),
+    /** The empty book: the parent picks its shape, the child draws. */
+    val blank = Template(
+        id = "blank",
+        nameKey = "tpl.blank.name",
+        descKey = "tpl.blank.desc",
+        shape = PageShape.SQUARE,
+        pageCount = 4,
+        background = Argb.hex("f9f4ed"),
+        pages = listOf(TemplatePage("tpl.blank.p1", emptyList())),
+        shapeIsUserChosen = true,
     )
+
+    val all = listOf(blank)
 
     fun find(id: String) = all.firstOrNull { it.id == id }
 
-    /** A new shelf copy keeps the story's art, page pairs and original text language. */
-    fun instantiateDocument(templateId: String, bookId: BookId, nowEpochMs: Long): Book {
+    /** A fetched story document becomes a new shelf copy: its own id, saved now, everything else as written. */
+    fun instantiateDocument(json: String, bookId: BookId, nowEpochMs: Long): Book {
         require(bookId.value.isNotBlank())
         require(nowEpochMs >= 0)
-        val template = requireNotNull(DocumentTemplates.find(templateId)) { "unknown document template $templateId" }
-        return BookCodec.decode(template.json).copy(id = bookId, updatedAtEpochMs = nowEpochMs)
+        return BookCodec.decode(json).copy(id = bookId, updatedAtEpochMs = nowEpochMs)
     }
 
     /**

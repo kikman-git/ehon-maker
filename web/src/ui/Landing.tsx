@@ -1,5 +1,6 @@
-import { useMemo } from 'react';
-import { templateBook, templates } from '../core';
+import { useEffect, useState } from 'react';
+import { useStore } from '../cloud/store';
+import { loadTemplates, templateBook, templateStore, type TemplateSummary } from '../templates';
 import { paths } from '../routes';
 import { Icon, type IconName } from './Icon';
 import { SignInCard, type Intent } from './SignIn';
@@ -18,15 +19,20 @@ function Brand() {
 
 /** What a visitor without an account sees, on every entry (decision 58). */
 export function Landing({ intent }: { intent?: Intent }) {
-  const shown = useMemo(() => {
-    const stories = templates.filter((item) => item.document);
-    const ordered = [...stories.filter((item) => item.id === 'doc-love-letter'), ...stories.filter((item) => item.id !== 'doc-love-letter')].slice(0, 3);
-    return ordered.map((item) => {
+  const catalog = useStore(templateStore);
+  const [shown, setShown] = useState<(TemplateSummary & { json: string; pages: number[] })[]>([]);
+  useEffect(() => { void loadTemplates().catch(() => undefined); }, []);
+  useEffect(() => {
+    if (catalog.status !== 'ready') return;
+    let alive = true;
+    const ordered = [...catalog.items.filter((item) => item.id === 'doc-love-letter'), ...catalog.items.filter((item) => item.id !== 'doc-love-letter')].slice(0, 3);
+    void Promise.all(ordered.map(async (item) => {
       // Storyboards pair pages from the third on (cover, title page, then picture-left words-right).
-      const spread = item.shape === 'PORTRAIT' && (item.pageCount ?? 0) >= 4;
-      return { ...item, json: templateBook(item.id, 'preview-' + item.id), pages: spread ? [2, 3] : [0] };
-    });
-  }, []);
+      const spread = item.shape === 'PORTRAIT' && item.pageCount >= 4;
+      return { ...item, json: await templateBook(item.id, 'preview-' + item.id), pages: spread ? [2, 3] : [0] };
+    })).then((items) => { if (alive) setShown(items); }).catch(() => undefined);
+    return () => { alive = false; };
+  }, [catalog]);
 
   return <div className="landing">
     <header className="topbar landing-bar">
