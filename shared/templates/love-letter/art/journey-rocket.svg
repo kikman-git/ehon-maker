@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 285" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ほしを めぐる ロケット</title>
+<path d="M54 137C34 133 19 144 12 165L14 110L45 87M103 137L136 162L132 111L107 88" fill="#a3bbc2"/>
+<path d="M47 143C32 118 30 82 43 45Q59 14 76 5Q104 35 114 71Q126 116 102 144Z" fill="#fff1d9"/>
+<path d="M46 42Q76 54 104 42"/>
+<ellipse cx="77" cy="81" rx="23" ry="26" fill="#f9f4ed"/>
+<ellipse cx="77" cy="81" rx="16" ry="19" fill="#b5cbd0" stroke-width="1.3"/>
+<path d="M68 70L79 65M68 78L86 66" stroke="#f9f4ed" stroke-width="2.2"/>
+<path d="M48 136Q76 148 103 136L106 153Q76 168 45 153Z" fill="#a3bbc2"/>
+<path d="M47 158C36 194 52 232 75 279C96 241 119 195 104 158L85 179L77 155L66 181Z" fill="#e9c489"/>
+<path d="M62 176Q56 211 76 249Q93 216 92 182L79 202Z" fill="#fff1d9" stroke-width="1.3"/>
+<path d="M77 118L64 158L77 185L87 155Z" fill="#bccbd0" stroke-width="1.5"/>
+</svg>

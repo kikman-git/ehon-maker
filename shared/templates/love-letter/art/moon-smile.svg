@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 175" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
-<title>みまもる おつきさま</title>
-<path d="M91 12C137 29 145 100 113 137Q96 158 65 165Q102 121 81 82Q63 47 91 12Z" fill="#e9cf87" />
-<path d="M102 57q8 10 17 0M102 80l-13 17 20 1M106 115q-8 5-15-2M97 30l7 4" fill="none" stroke-width="1.3" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 250" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ふたりを みまもる おつきさま</title>
+<path d="M52 18C166-6 209 148 113 228C142 166 133 134 107 120C111 79 83 40 52 18Z" fill="#edcf8d"/>
+<path d="M157 79Q152 99 141 87Q149 99 157 83" fill="#69584d" stroke-width="1.4"/>
+<path d="M123 122L103 141L137 144M134 163Q147 166 154 156" stroke-width="1.5"/>
+<path d="M163 101L171 94M165 108L173 101" stroke="#bd967b" stroke-width="1.1"/>
+<path d="M127 148Q106 169 91 166L82 124L50 132L61 178Q83 186 107 176M176 105L204 92L207 132L190 135M204 92L213 86M207 132L218 143M190 135L188 143" stroke-width="1.5"/>
+</svg>

@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 175" fill="none" stroke-linecap="round" stroke-linejoin="round">
-<title>もくせいの みずくさ</title>
-<path d="M33 162Q8 131 38 108Q58 82 32 70Q11 46 40 20M59 163Q38 140 66 115Q80 98 61 84M88 163Q70 145 91 131Q114 115 98 98" fill="none" stroke="#9aa789" stroke-width="2"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 170" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ゆらゆら みずくさ</title>
+<path d="M42 166C14 147 10 122 31 102C45 88 43 76 31 66C5 48 24 15 47 5C41 26 60 41 58 59C57 88 34 92 43 111C51 132 62 144 52 165Z" fill="#b9c4a3" stroke-width="1.5"/>
+<path d="M42 151Q22 132 36 115M45 72Q56 54 44 38" stroke-width="1.1"/>
+</svg>

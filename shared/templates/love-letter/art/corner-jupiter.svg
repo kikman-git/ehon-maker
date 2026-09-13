@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
-<title>とおくの もくせい</title>
-<path d="M60 0A140 140 0 0 1 200 140V0Z" fill="#e2ebe3"/>
-<path d="M60 0A140 140 0 0 1 200 140" stroke="#9fb7a9" stroke-width="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 240" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>とおくの jupiter</title>
+<path d="M10 0C-9 98 101 184 260 206V0Z" fill="#e3ebe3" stroke="none"/>
+<path d="M10 0C-9 98 101 184 260 206" fill="none" stroke="#9baa9b"/>
 </svg>

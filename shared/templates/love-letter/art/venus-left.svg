@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke-linecap="round">
-<title>きんせいの ちへいせん（ひだり）</title>
-<path d="M0 130C200 150 420 230 600 330V800H0Z" fill="#e3e5c7"/>
-<path d="M0 130C200 150 420 230 600 330" stroke="#a1b58c" stroke-width="2"/>
-<path d="M0 660Q100 642 200 660T400 660T600 654V800H0Z" fill="#e5caa1"/>
-<path d="M0 660Q100 642 200 660T400 660T600 654" stroke="#b8a079" stroke-width="1.5"/>
-<path d="M60 720l18-2M300 740l20-2M520 712l18 2" stroke="#b8a079" stroke-width="1.5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>venusの ちへいせん（left）</title>
+<path d="M0 134C210 126 448 182 600 294V800H0Z" fill="#e7e8cb" stroke="none"/>
+<path d="M0 134C210 126 448 182 600 294" fill="none" stroke="#a6ae8e" stroke-width="1.8"/>
 </svg>

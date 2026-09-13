@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100" fill="#f9f4ed" fill-opacity=".7" stroke="#6c5849" stroke-width="1.1">
-<title>あわ</title>
-<circle cx="30" cy="86" r="7"/><circle cx="21" cy="60" r="5"/><circle cx="35" cy="36" r="6"/><circle cx="26" cy="13" r="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ふぐの あわ</title>
+<ellipse cx="52" cy="25" rx="11" ry="15" transform="rotate(16 52 25)" fill="#f9f4ed" stroke-width="1.3"/>
+<ellipse cx="62" cy="63" rx="16" ry="20" transform="rotate(-16 62 63)" fill="#f9f4ed" stroke-width="1.3"/>
+<ellipse cx="41" cy="99" rx="25" ry="29" transform="rotate(14 41 99)" fill="#f9f4ed" stroke-width="1.3"/>
+<ellipse cx="52" cy="131" rx="12" ry="16" transform="rotate(-23 52 131)" fill="#f9f4ed" stroke-width="1.3"/>
+<path d="M53 53Q46 61 55 69M29 106Q38 95 47 108" stroke-width="1.1"/>
 </svg>

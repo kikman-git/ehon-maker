@@ -1,19 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" fill="none" stroke="#6c5849" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-<title>かせいの ねこ</title>
-<path d="M64 212C30 206 20 166 42 146C58 130 78 142 70 160" stroke-width="17"/>
-<path d="M64 212C30 206 20 166 42 146C58 130 78 142 70 160" stroke="#fff0d9" stroke-width="13"/>
-<path d="M78 122C58 142 56 190 62 232L150 232C158 190 150 142 128 120Z" fill="#fff0d9"/>
-<ellipse cx="94" cy="232" rx="15" ry="8" fill="#fff0d9"/><ellipse cx="132" cy="232" rx="15" ry="8" fill="#fff0d9"/>
-<path d="M88 228l2 6M96 227l1 7M128 228l2 6M136 227l1 7" stroke-width="1"/>
-<path d="M92 150q10 8 20 0" stroke-width="1.1" opacity=".5"/>
-<path d="M72 74L60 30L94 56Z" fill="#fff0d9"/><path d="M128 74L140 30L106 56Z" fill="#fff0d9"/>
-<path d="M74 66L67 42L86 58Z" fill="#e6b3a4" stroke="none"/><path d="M126 66L133 42L114 58Z" fill="#e6b3a4" stroke="none"/>
-<path d="M70 100C64 62 82 48 100 50C120 52 136 64 132 100C130 122 108 132 100 132C92 132 72 122 70 100Z" fill="#fff0d9"/>
-<path d="M84 96q8-6 16 0M112 96q8-6 16 0" stroke-width="1.6"/>
-<path d="M100 106l-4 5h8Z" fill="#e6b3a4" stroke-width="1"/>
-<path d="M100 111q-5 6-10 4M100 111q5 6 10 4" stroke-width="1.2"/>
-<path d="M66 104l-22 2M66 110l-22 6M134 104l22 2M134 110l22 6" stroke-width="1.1"/>
-<path d="M82 130q18 10 36 0" stroke="#dc9688" stroke-width="2.2"/>
-<path d="M164 56l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z" fill="#fff0d9" stroke-width="1.2"/>
-<path d="M150 22l2 6 6 2-6 2-2 6-2-6-6-2 6-2Z" fill="#fff0d9" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 440" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ほのおの なかの ねこ</title>
+<path d="M111 354C82 344 43 374 20 343C1 317 17 283 32 279C4 313 37 337 53 319C67 300 55 277 55 261C76 280 75 306 77 321L118 329" fill="#fff1d9"/>
+<path d="M153 158C145 180 120 188 108 213C84 239 84 280 96 311Q94 347 120 367Q161 395 197 401L218 409Q235 419 240 408L231 399L209 380Q201 366 213 366L200 353C189 333 190 312 199 287Q223 256 210 229Q191 196 190 150Z" fill="#fff1d9"/>
+<path d="M139 73Q114 63 112 34Q141 38 155 61Q177 55 191 68L217 51L212 91Q223 99 220 113L207 118Q207 139 192 147L177 168L165 159L148 168L141 157L126 158Q137 146 131 128Q123 102 139 73Z" fill="#fff1d9"/>
+<path d="M121 47Q136 50 143 64M203 70L210 62L208 80" stroke="#d5aaa1" stroke-width="1.5"/>
+<path d="M173 94Q180 85 187 94L183 105L177 103Z" fill="#69584d" stroke-width="1.2"/>
+<path d="M173 91L169 86M177 88L177 82M184 90L187 84M211 100L220 98L216 104Z" fill="#69584d" stroke-width="1.1"/>
+<path d="M211 110Q204 113 201 109M198 119L181 130M198 125L185 139M181 272Q168 320 181 353L205 382M217 400L224 407M226 400L232 408" stroke-width="1.2"/>
+<path d="M185 7Q185 25 169 29Q185 31 188 47Q190 30 207 28Q190 26 185 7Z" fill="#fff1d9" stroke-width="1.4"/>
 </svg>

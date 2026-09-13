@@ -130,10 +130,6 @@
         "name": "もくせいの みずくさ",
         "file": "seaweed.svg"
       },
-      "carrot": {
-        "name": "おおきな にんじん",
-        "file": "carrot.svg"
-      },
       "beach-friend": {
         "name": "はしっこの なかま",
         "file": "beach-friend.svg"
@@ -169,14 +165,6 @@
       "bear-sharing": {
         "name": "はんぶんこする くま",
         "file": "bear-sharing.svg"
-      },
-      "carrot-half-tip": {
-        "name": "はんぶんの にんじん（さき）",
-        "file": "carrot-half-tip.svg"
-      },
-      "carrot-half-top": {
-        "name": "はんぶんの にんじん（はっぱ）",
-        "file": "carrot-half-top.svg"
       },
       "rabbit-peek": {
         "name": "ぴょこんと のぞく うさぎ",
@@ -250,9 +238,41 @@
         "name": "きんせいの ちへいせん（みぎ）",
         "file": "venus-right.svg"
       },
-      "leaf-tuft": {
-        "name": "にんじんの はっぱ",
-        "file": "leaf-tuft.svg"
+      "encounter-star": {
+        "name": "たびの ほし",
+        "file": "encounter-star.svg"
+      },
+      "journey-arrow": {
+        "name": "ほしから つづく やじるし",
+        "file": "journey-arrow.svg"
+      },
+      "journey-rocket": {
+        "name": "ほしを めぐる ロケット",
+        "file": "journey-rocket.svg"
+      },
+      "planted-carrot": {
+        "name": "つちの なかの にんじん",
+        "file": "planted-carrot.svg"
+      },
+      "garden-leaves": {
+        "name": "はたけの おくの はっぱ",
+        "file": "garden-leaves.svg"
+      },
+      "sea-coral": {
+        "name": "もくせいの うみの はな",
+        "file": "sea-coral.svg"
+      },
+      "shooting-marks": {
+        "name": "ながれる ほしの せん",
+        "file": "shooting-marks.svg"
+      },
+      "watering-can": {
+        "name": "くまの じょうろ",
+        "file": "watering-can.svg"
+      },
+      "watering-spout": {
+        "name": "はたけへ のびる じょうろ",
+        "file": "watering-spout.svg"
       }
     },
     "pages": [
@@ -1540,64 +1560,64 @@
           {
             "type": "part",
             "id": {
-              "value": "p13-star-2"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 88,
-            "y": 14,
-            "sizePct": 8,
-            "heightPct": 6.0
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p13-flames-3"
+              "value": "p13-flames-2"
             },
             "partId": {
               "value": "art:flames"
             },
             "x": 50,
-            "y": 74,
+            "y": 67,
             "sizePct": 100,
-            "heightPct": 52.5
+            "heightPct": 68.75
           },
           {
             "type": "part",
             "id": {
-              "value": "p13-cat-4"
+              "value": "p13-cat-3"
             },
             "partId": {
               "value": "art:cat"
             },
-            "x": 34,
-            "y": 70,
-            "sizePct": 46,
-            "heightPct": 44.85
+            "x": 28,
+            "y": 72.9,
+            "sizePct": 44,
+            "heightPct": 53.778
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-encounter-star-4"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 88,
+            "y": 17,
+            "sizePct": 10,
+            "heightPct": 8.571
           },
           {
             "type": "text",
             "id": {
-              "value": "p13-text-1"
+              "value": "p13-text-5"
             },
-            "x": 44,
+            "x": 43,
             "y": 7,
             "text": "さいしょに ついたのは",
             "font": "yomogi",
-            "sizePct": 5
+            "sizePct": 5.7
           },
           {
             "type": "text",
             "id": {
-              "value": "p13-text-2"
+              "value": "p13-text-6"
             },
-            "x": 58,
-            "y": 22,
+            "x": 54,
+            "y": 23.4,
             "text": "MARS",
             "font": "yomogi",
-            "sizePct": 8.5,
-            "rotationDeg": 14
+            "sizePct": 12.5,
+            "rotationDeg": 20
           }
         ]
       },
@@ -1626,89 +1646,101 @@
             "partId": {
               "value": "art:corner-earth"
             },
-            "x": 80,
-            "y": 15,
-            "sizePct": 40,
-            "heightPct": 30.0
+            "x": 78,
+            "y": 15.231,
+            "sizePct": 44,
+            "heightPct": 30.462
           },
           {
             "type": "part",
             "id": {
-              "value": "p14-star-3"
+              "value": "p14-encounter-star-3"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:encounter-star"
             },
-            "x": 12,
-            "y": 30,
-            "sizePct": 8,
-            "heightPct": 6.0
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p14-star-4"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 48,
+            "x": 51,
             "y": 7,
-            "sizePct": 7,
-            "heightPct": 5.25
+            "sizePct": 10,
+            "heightPct": 8.571
           },
           {
             "type": "part",
             "id": {
-              "value": "p14-star-5"
+              "value": "p14-encounter-star-4"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:encounter-star"
             },
-            "x": 90,
-            "y": 44,
-            "sizePct": 7,
-            "heightPct": 5.25
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p14-star-6"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 76,
-            "y": 70,
-            "sizePct": 7,
-            "heightPct": 5.25
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p14-star-7"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 22,
-            "y": 12,
-            "sizePct": 5,
-            "heightPct": 3.75
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p14-rocket-9"
-            },
-            "partId": {
-              "value": "art:rocket"
-            },
-            "x": 70,
+            "x": 11,
             "y": 34,
-            "sizePct": 32,
-            "heightPct": 32.0,
-            "rotationDeg": -30
+            "sizePct": 8.5,
+            "heightPct": 7.286
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-encounter-star-5"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 82,
+            "y": 40,
+            "sizePct": 9.5,
+            "heightPct": 8.143
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-encounter-star-6"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 80,
+            "y": 74,
+            "sizePct": 11.5,
+            "heightPct": 9.857
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-journey-arrow-7"
+            },
+            "partId": {
+              "value": "art:journey-arrow"
+            },
+            "x": 74,
+            "y": 26,
+            "sizePct": 16,
+            "heightPct": 14.308
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p14-journey-rocket-8"
+            },
+            "partId": {
+              "value": "art:journey-rocket"
+            },
+            "x": 53,
+            "y": 26,
+            "sizePct": 24,
+            "heightPct": 34.2,
+            "rotationDeg": -33
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-9"
+            },
+            "x": 81,
+            "y": 11,
+            "text": "EARTH",
+            "font": "yomogi",
+            "sizePct": 8,
+            "rotationDeg": 32
           },
           {
             "type": "part",
@@ -1718,22 +1750,10 @@
             "partId": {
               "value": "art:bear-kneel-rose"
             },
-            "x": 30,
-            "y": 67,
-            "sizePct": 58,
-            "heightPct": 45.312
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p14-text-1"
-            },
-            "x": 86,
-            "y": 11,
-            "text": "EARTH",
-            "font": "yomogi",
-            "sizePct": 5,
-            "rotationDeg": -40
+            "x": 29,
+            "y": 68.5,
+            "sizePct": 59,
+            "heightPct": 60.993
           }
         ]
       },
@@ -1757,15 +1777,15 @@
           {
             "type": "part",
             "id": {
-              "value": "p15-star-2"
+              "value": "p15-seaweed-2"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:seaweed"
             },
-            "x": 88,
-            "y": 14,
-            "sizePct": 8,
-            "heightPct": 6.0
+            "x": 14,
+            "y": 92,
+            "sizePct": 15,
+            "heightPct": 21.25
           },
           {
             "type": "part",
@@ -1775,10 +1795,11 @@
             "partId": {
               "value": "art:seaweed"
             },
-            "x": 10,
-            "y": 88,
-            "sizePct": 20,
-            "heightPct": 21.0
+            "x": 5,
+            "y": 96,
+            "sizePct": 9,
+            "heightPct": 12.75,
+            "rotationDeg": -24
           },
           {
             "type": "part",
@@ -1788,10 +1809,11 @@
             "partId": {
               "value": "art:seaweed"
             },
-            "x": 20,
-            "y": 92,
-            "sizePct": 16,
-            "heightPct": 16.8
+            "x": 62,
+            "y": 93,
+            "sizePct": 13,
+            "heightPct": 18.417,
+            "rotationDeg": 16
           },
           {
             "type": "part",
@@ -1801,23 +1823,24 @@
             "partId": {
               "value": "art:seaweed"
             },
-            "x": 88,
+            "x": 86,
             "y": 86,
-            "sizePct": 20,
-            "heightPct": 21.0
+            "sizePct": 12,
+            "heightPct": 17.0,
+            "rotationDeg": -12
           },
           {
             "type": "part",
             "id": {
-              "value": "p15-seaweed-6"
+              "value": "p15-sea-coral-6"
             },
             "partId": {
-              "value": "art:seaweed"
+              "value": "art:sea-coral"
             },
-            "x": 76,
+            "x": 75,
             "y": 92,
-            "sizePct": 15,
-            "heightPct": 15.75
+            "sizePct": 16,
+            "heightPct": 19.579
           },
           {
             "type": "part",
@@ -1827,11 +1850,10 @@
             "partId": {
               "value": "art:little-fish"
             },
-            "x": 10,
-            "y": 50,
-            "sizePct": 11,
-            "heightPct": 6.875,
-            "rotationDeg": -10
+            "x": 20,
+            "y": 51,
+            "sizePct": 14,
+            "heightPct": 5.775
           },
           {
             "type": "part",
@@ -1841,11 +1863,10 @@
             "partId": {
               "value": "art:little-fish"
             },
-            "x": 26,
-            "y": 42,
-            "sizePct": 10,
-            "heightPct": 6.25,
-            "rotationDeg": 15
+            "x": 43,
+            "y": 43,
+            "sizePct": 12,
+            "heightPct": 4.95
           },
           {
             "type": "part",
@@ -1855,10 +1876,11 @@
             "partId": {
               "value": "art:little-fish"
             },
-            "x": 44,
-            "y": 38,
-            "sizePct": 9,
-            "heightPct": 5.625
+            "x": 5,
+            "y": 74,
+            "sizePct": 11,
+            "heightPct": 4.537,
+            "rotationDeg": 18
           },
           {
             "type": "part",
@@ -1868,11 +1890,11 @@
             "partId": {
               "value": "art:little-fish"
             },
-            "x": 74,
-            "y": 50,
-            "sizePct": 11,
-            "heightPct": 6.875,
-            "rotationDeg": 10
+            "x": 20,
+            "y": 79,
+            "sizePct": 12,
+            "heightPct": 4.95,
+            "rotationDeg": -10
           },
           {
             "type": "part",
@@ -1882,11 +1904,11 @@
             "partId": {
               "value": "art:little-fish"
             },
-            "x": 86,
-            "y": 68,
-            "sizePct": 10,
-            "heightPct": 6.25,
-            "rotationDeg": -15
+            "x": 76,
+            "y": 75,
+            "sizePct": 11,
+            "heightPct": 4.537,
+            "rotationDeg": -10
           },
           {
             "type": "part",
@@ -1896,11 +1918,11 @@
             "partId": {
               "value": "art:little-fish"
             },
-            "x": 12,
-            "y": 72,
-            "sizePct": 10,
-            "heightPct": 6.25,
-            "rotationDeg": 10
+            "x": 49,
+            "y": 88,
+            "sizePct": 14,
+            "heightPct": 5.775,
+            "rotationDeg": -18
           },
           {
             "type": "part",
@@ -1910,11 +1932,11 @@
             "partId": {
               "value": "art:little-fish"
             },
-            "x": 56,
-            "y": 90,
+            "x": 49,
+            "y": 95,
             "sizePct": 10,
-            "heightPct": 6.25,
-            "rotationDeg": -10
+            "heightPct": 4.125,
+            "rotationDeg": 25
           },
           {
             "type": "part",
@@ -1924,11 +1946,10 @@
             "partId": {
               "value": "art:little-fish"
             },
-            "x": 40,
-            "y": 92,
-            "sizePct": 9,
-            "heightPct": 5.625,
-            "rotationDeg": 15
+            "x": 29,
+            "y": 94,
+            "sizePct": 13,
+            "heightPct": 5.362
           },
           {
             "type": "part",
@@ -1938,59 +1959,59 @@
             "partId": {
               "value": "art:bubbles"
             },
-            "x": 70,
-            "y": 52,
-            "sizePct": 7,
-            "heightPct": 8.75
+            "x": 73,
+            "y": 44,
+            "sizePct": 16,
+            "heightPct": 18.0
           },
           {
             "type": "part",
             "id": {
-              "value": "p15-bubbles-16"
-            },
-            "partId": {
-              "value": "art:bubbles"
-            },
-            "x": 78,
-            "y": 42,
-            "sizePct": 6,
-            "heightPct": 7.5
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p15-pufferfish-17"
+              "value": "p15-pufferfish-16"
             },
             "partId": {
               "value": "art:pufferfish"
             },
             "x": 40,
-            "y": 66,
-            "sizePct": 62,
-            "heightPct": 39.525
+            "y": 70,
+            "sizePct": 76,
+            "heightPct": 38.927
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-encounter-star-17"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 88,
+            "y": 16,
+            "sizePct": 10,
+            "heightPct": 8.571
           },
           {
             "type": "text",
             "id": {
-              "value": "p15-text-1"
+              "value": "p15-text-18"
             },
-            "x": 44,
+            "x": 40,
             "y": 7,
             "text": "つぎに ついたのは",
             "font": "yomogi",
-            "sizePct": 5
+            "sizePct": 5.7
           },
           {
             "type": "text",
             "id": {
-              "value": "p15-text-2"
+              "value": "p15-text-19"
             },
-            "x": 60,
-            "y": 21,
+            "x": 65,
+            "y": 22,
             "text": "Jupiter",
             "font": "yomogi",
-            "sizePct": 8.5,
-            "rotationDeg": 12
+            "sizePct": 11.5,
+            "rotationDeg": 18
           }
         ]
       },
@@ -2019,89 +2040,101 @@
             "partId": {
               "value": "art:corner-mars"
             },
-            "x": 80,
-            "y": 15,
-            "sizePct": 40,
-            "heightPct": 30.0
+            "x": 78,
+            "y": 15.231,
+            "sizePct": 44,
+            "heightPct": 30.462
           },
           {
             "type": "part",
             "id": {
-              "value": "p16-star-3"
+              "value": "p16-encounter-star-3"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:encounter-star"
             },
-            "x": 12,
-            "y": 30,
-            "sizePct": 8,
-            "heightPct": 6.0
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p16-star-4"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 48,
+            "x": 51,
             "y": 7,
-            "sizePct": 7,
-            "heightPct": 5.25
+            "sizePct": 10,
+            "heightPct": 8.571
           },
           {
             "type": "part",
             "id": {
-              "value": "p16-star-5"
+              "value": "p16-encounter-star-4"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:encounter-star"
             },
-            "x": 90,
-            "y": 44,
-            "sizePct": 7,
-            "heightPct": 5.25
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p16-star-6"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 76,
-            "y": 70,
-            "sizePct": 7,
-            "heightPct": 5.25
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p16-star-7"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 22,
-            "y": 12,
-            "sizePct": 5,
-            "heightPct": 3.75
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p16-rocket-9"
-            },
-            "partId": {
-              "value": "art:rocket"
-            },
-            "x": 70,
+            "x": 11,
             "y": 34,
-            "sizePct": 32,
-            "heightPct": 32.0,
-            "rotationDeg": -30
+            "sizePct": 8.5,
+            "heightPct": 7.286
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-encounter-star-5"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 82,
+            "y": 40,
+            "sizePct": 9.5,
+            "heightPct": 8.143
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-encounter-star-6"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 80,
+            "y": 74,
+            "sizePct": 11.5,
+            "heightPct": 9.857
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-journey-arrow-7"
+            },
+            "partId": {
+              "value": "art:journey-arrow"
+            },
+            "x": 74,
+            "y": 26,
+            "sizePct": 16,
+            "heightPct": 14.308
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p16-journey-rocket-8"
+            },
+            "partId": {
+              "value": "art:journey-rocket"
+            },
+            "x": 53,
+            "y": 26,
+            "sizePct": 24,
+            "heightPct": 34.2,
+            "rotationDeg": -33
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-9"
+            },
+            "x": 81,
+            "y": 11,
+            "text": "MARS",
+            "font": "yomogi",
+            "sizePct": 8,
+            "rotationDeg": 32
           },
           {
             "type": "part",
@@ -2111,22 +2144,10 @@
             "partId": {
               "value": "art:bear-kneel-hyacinth"
             },
-            "x": 30,
-            "y": 67,
+            "x": 29,
+            "y": 70.4,
             "sizePct": 58,
-            "heightPct": 45.312
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p16-text-1"
-            },
-            "x": 86,
-            "y": 11,
-            "text": "MARS",
-            "font": "yomogi",
-            "sizePct": 5,
-            "rotationDeg": -40
+            "heightPct": 58.382
           }
         ]
       },
@@ -2150,220 +2171,232 @@
           {
             "type": "part",
             "id": {
-              "value": "p17-star-2"
+              "value": "p17-garden-leaves-2"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:garden-leaves"
             },
-            "x": 88,
-            "y": 14,
-            "sizePct": 8,
-            "heightPct": 6.0
+            "x": 3,
+            "y": 44,
+            "sizePct": 12,
+            "heightPct": 13.125,
+            "rotationDeg": -13
           },
           {
             "type": "part",
             "id": {
-              "value": "p17-leaf-tuft-3"
+              "value": "p17-garden-leaves-3"
             },
             "partId": {
-              "value": "art:leaf-tuft"
+              "value": "art:garden-leaves"
             },
-            "x": 12,
-            "y": 80,
-            "sizePct": 8,
-            "heightPct": 4.5
+            "x": 35,
+            "y": 62,
+            "sizePct": 11,
+            "heightPct": 12.031,
+            "rotationDeg": 12
           },
           {
             "type": "part",
             "id": {
-              "value": "p17-leaf-tuft-4"
+              "value": "p17-garden-leaves-4"
             },
             "partId": {
-              "value": "art:leaf-tuft"
+              "value": "art:garden-leaves"
             },
-            "x": 30,
-            "y": 79,
-            "sizePct": 7,
-            "heightPct": 3.938
+            "x": 64,
+            "y": 61,
+            "sizePct": 10,
+            "heightPct": 10.938,
+            "rotationDeg": -9
           },
           {
             "type": "part",
             "id": {
-              "value": "p17-leaf-tuft-5"
+              "value": "p17-garden-leaves-5"
             },
             "partId": {
-              "value": "art:leaf-tuft"
+              "value": "art:garden-leaves"
             },
-            "x": 68,
-            "y": 80,
-            "sizePct": 8,
-            "heightPct": 4.5
+            "x": 96,
+            "y": 57,
+            "sizePct": 11,
+            "heightPct": 12.031,
+            "rotationDeg": 8
           },
           {
             "type": "part",
             "id": {
-              "value": "p17-leaf-tuft-6"
-            },
-            "partId": {
-              "value": "art:leaf-tuft"
-            },
-            "x": 86,
-            "y": 79,
-            "sizePct": 7,
-            "heightPct": 3.938
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p17-leaf-tuft-7"
-            },
-            "partId": {
-              "value": "art:leaf-tuft"
-            },
-            "x": 50,
-            "y": 81,
-            "sizePct": 6,
-            "heightPct": 3.375
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p17-rabbit-hide-8"
+              "value": "p17-rabbit-hide-6"
             },
             "partId": {
               "value": "art:rabbit-hide"
             },
-            "x": 50,
-            "y": 65.9,
-            "sizePct": 36,
-            "heightPct": 32.684
+            "x": 53,
+            "y": 46,
+            "sizePct": 52,
+            "heightPct": 33.339
           },
           {
             "type": "part",
             "id": {
-              "value": "p17-carrot-9"
+              "value": "p17-planted-carrot-7"
             },
             "partId": {
-              "value": "art:carrot"
+              "value": "art:planted-carrot"
             },
-            "x": 6,
+            "x": 11,
+            "y": 51,
+            "sizePct": 20,
+            "heightPct": 25.714,
+            "rotationDeg": -11
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-planted-carrot-8"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 77,
+            "y": 54,
+            "sizePct": 18,
+            "heightPct": 23.143,
+            "rotationDeg": 9
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-planted-carrot-9"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 28,
+            "y": 68,
+            "sizePct": 20,
+            "heightPct": 25.714,
+            "rotationDeg": -4
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-planted-carrot-10"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 57,
+            "y": 69,
+            "sizePct": 19,
+            "heightPct": 24.429,
+            "rotationDeg": -12
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-planted-carrot-11"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 84,
+            "y": 73,
+            "sizePct": 19,
+            "heightPct": 24.429,
+            "rotationDeg": 5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-planted-carrot-12"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 17,
+            "y": 84,
+            "sizePct": 23,
+            "heightPct": 29.571,
+            "rotationDeg": -8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-planted-carrot-13"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 47,
             "y": 86,
-            "sizePct": 14,
-            "heightPct": 14.152
+            "sizePct": 20,
+            "heightPct": 25.714,
+            "rotationDeg": 4
           },
           {
             "type": "part",
             "id": {
-              "value": "p17-carrot-10"
+              "value": "p17-planted-carrot-14"
             },
             "partId": {
-              "value": "art:carrot"
+              "value": "art:planted-carrot"
             },
-            "x": 18,
+            "x": 70,
             "y": 85,
-            "sizePct": 15,
-            "heightPct": 15.163
+            "sizePct": 21,
+            "heightPct": 27.0,
+            "rotationDeg": -3
           },
           {
             "type": "part",
             "id": {
-              "value": "p17-carrot-11"
+              "value": "p17-watering-spout-15"
             },
             "partId": {
-              "value": "art:carrot"
+              "value": "art:watering-spout"
             },
-            "x": 30,
-            "y": 87,
-            "sizePct": 13,
-            "heightPct": 13.141
+            "x": 100,
+            "y": 84,
+            "sizePct": 22,
+            "heightPct": 33.0
           },
           {
             "type": "part",
             "id": {
-              "value": "p17-carrot-12"
+              "value": "p17-encounter-star-16"
             },
             "partId": {
-              "value": "art:carrot"
+              "value": "art:encounter-star"
             },
-            "x": 40,
-            "y": 85,
-            "sizePct": 15,
-            "heightPct": 15.163
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p17-carrot-13"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 61,
-            "y": 85,
-            "sizePct": 15,
-            "heightPct": 15.163
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p17-carrot-14"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 72,
-            "y": 87,
-            "sizePct": 13,
-            "heightPct": 13.141
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p17-carrot-15"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 83,
-            "y": 85,
-            "sizePct": 15,
-            "heightPct": 15.163
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p17-carrot-16"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 94,
-            "y": 86,
-            "sizePct": 14,
-            "heightPct": 14.152
+            "x": 88,
+            "y": 16,
+            "sizePct": 11,
+            "heightPct": 9.429
           },
           {
             "type": "text",
             "id": {
-              "value": "p17-text-1"
+              "value": "p17-text-17"
             },
-            "x": 44,
+            "x": 43,
             "y": 7,
             "text": "さいごに ついたのは",
             "font": "yomogi",
-            "sizePct": 5
+            "sizePct": 5.7
           },
           {
             "type": "text",
             "id": {
-              "value": "p17-text-2"
+              "value": "p17-text-18"
             },
-            "x": 58,
+            "x": 55,
             "y": 22,
             "text": "Venus",
             "font": "yomogi",
-            "sizePct": 8.5,
-            "rotationDeg": 14
+            "sizePct": 12,
+            "rotationDeg": 12
           }
         ]
       },
@@ -2392,153 +2425,140 @@
             "partId": {
               "value": "art:corner-jupiter"
             },
-            "x": 80,
-            "y": 15,
-            "sizePct": 40,
-            "heightPct": 30.0
+            "x": 78,
+            "y": 15.231,
+            "sizePct": 44,
+            "heightPct": 30.462
           },
           {
             "type": "part",
             "id": {
-              "value": "p18-star-3"
+              "value": "p18-encounter-star-3"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:encounter-star"
             },
-            "x": 12,
-            "y": 30,
-            "sizePct": 8,
-            "heightPct": 6.0
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p18-star-4"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 48,
+            "x": 51,
             "y": 7,
-            "sizePct": 7,
-            "heightPct": 5.25
+            "sizePct": 10,
+            "heightPct": 8.571
           },
           {
             "type": "part",
             "id": {
-              "value": "p18-star-5"
+              "value": "p18-encounter-star-4"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:encounter-star"
             },
-            "x": 90,
-            "y": 44,
-            "sizePct": 7,
-            "heightPct": 5.25
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p18-star-6"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 76,
-            "y": 70,
-            "sizePct": 7,
-            "heightPct": 5.25
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p18-star-7"
-            },
-            "partId": {
-              "value": "art:star"
-            },
-            "x": 22,
-            "y": 12,
-            "sizePct": 5,
-            "heightPct": 3.75
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p18-rocket-9"
-            },
-            "partId": {
-              "value": "art:rocket"
-            },
-            "x": 70,
+            "x": 11,
             "y": 34,
-            "sizePct": 32,
-            "heightPct": 32.0,
-            "rotationDeg": -30
+            "sizePct": 8.5,
+            "heightPct": 7.286
           },
           {
             "type": "part",
             "id": {
-              "value": "p18-carrot-10"
+              "value": "p18-encounter-star-5"
             },
             "partId": {
-              "value": "art:carrot"
+              "value": "art:encounter-star"
             },
-            "x": 88,
-            "y": 87,
-            "sizePct": 13,
-            "heightPct": 13.141
+            "x": 82,
+            "y": 40,
+            "sizePct": 9.5,
+            "heightPct": 8.143
           },
           {
             "type": "part",
             "id": {
-              "value": "p18-carrot-11"
+              "value": "p18-encounter-star-6"
             },
             "partId": {
-              "value": "art:carrot"
-            },
-            "x": 97,
-            "y": 86,
-            "sizePct": 12,
-            "heightPct": 12.13
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p18-leaf-tuft-12"
-            },
-            "partId": {
-              "value": "art:leaf-tuft"
+              "value": "art:encounter-star"
             },
             "x": 80,
-            "y": 80,
-            "sizePct": 7,
-            "heightPct": 3.938
+            "y": 74,
+            "sizePct": 11.5,
+            "heightPct": 9.857
           },
           {
             "type": "part",
             "id": {
-              "value": "p18-bear-watering-13"
+              "value": "p18-journey-arrow-7"
             },
             "partId": {
-              "value": "art:bear-watering"
+              "value": "art:journey-arrow"
             },
-            "x": 30,
-            "y": 66,
-            "sizePct": 54,
-            "heightPct": 45.36
+            "x": 74,
+            "y": 26,
+            "sizePct": 16,
+            "heightPct": 14.308
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-journey-rocket-8"
+            },
+            "partId": {
+              "value": "art:journey-rocket"
+            },
+            "x": 53,
+            "y": 26,
+            "sizePct": 24,
+            "heightPct": 34.2,
+            "rotationDeg": -33
           },
           {
             "type": "text",
             "id": {
-              "value": "p18-text-1"
+              "value": "p18-text-9"
             },
-            "x": 86,
+            "x": 81,
             "y": 11,
             "text": "Jupiter",
             "font": "yomogi",
-            "sizePct": 5,
-            "rotationDeg": -40
+            "sizePct": 8,
+            "rotationDeg": 32
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-encounter-star-10"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 8,
+            "y": 12,
+            "sizePct": 11,
+            "heightPct": 9.429
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-watering-can-11"
+            },
+            "partId": {
+              "value": "art:watering-can"
+            },
+            "x": 13,
+            "y": 82,
+            "sizePct": 37,
+            "heightPct": 23.786
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-bear-watering-12"
+            },
+            "partId": {
+              "value": "art:bear-watering"
+            },
+            "x": 31,
+            "y": 69,
+            "sizePct": 58,
+            "heightPct": 64.042
           }
         ]
       },
@@ -2549,7 +2569,7 @@
           {
             "type": "part",
             "id": {
-              "value": "p19-garden-left-18"
+              "value": "p19-garden-left-1"
             },
             "partId": {
               "value": "art:garden-left"
@@ -2562,147 +2582,95 @@
           {
             "type": "part",
             "id": {
-              "value": "p19-star-19"
+              "value": "p19-encounter-star-2"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:encounter-star"
             },
-            "x": 88,
-            "y": 9,
-            "sizePct": 9,
-            "heightPct": 6.75
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p19-carrot-20"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 14,
-            "y": 80,
-            "sizePct": 15,
-            "heightPct": 15.163
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p19-carrot-21"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 86,
-            "y": 78,
-            "sizePct": 16,
-            "heightPct": 16.174
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p19-carrot-22"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 30,
-            "y": 88,
+            "x": 34,
+            "y": 8.5,
             "sizePct": 12,
-            "heightPct": 12.13
+            "heightPct": 10.286
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p19-text-3"
+            },
+            "x": 70,
+            "y": 10.5,
+            "text": "Venus",
+            "font": "yomogi",
+            "sizePct": 12.5
           },
           {
             "type": "part",
             "id": {
-              "value": "p19-rabbit-sharing-23"
+              "value": "p19-planted-carrot-4"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 12,
+            "y": 46,
+            "sizePct": 23,
+            "heightPct": 29.571,
+            "rotationDeg": -8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-planted-carrot-5"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 27,
+            "y": 62,
+            "sizePct": 21,
+            "heightPct": 27.0,
+            "rotationDeg": -3
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-planted-carrot-6"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 10,
+            "y": 83,
+            "sizePct": 26,
+            "heightPct": 33.429,
+            "rotationDeg": -8
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-planted-carrot-7"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 34,
+            "y": 88,
+            "sizePct": 16,
+            "heightPct": 20.571,
+            "rotationDeg": 3
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-rabbit-sharing-8"
             },
             "partId": {
               "value": "art:rabbit-sharing"
             },
-            "x": 48,
-            "y": 69,
-            "sizePct": 42,
-            "heightPct": 36.511
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p19-carrot-half-tip-24"
-            },
-            "partId": {
-              "value": "art:carrot-half-tip"
-            },
-            "x": 60,
-            "y": 74,
-            "sizePct": 9,
-            "heightPct": 8.526,
-            "rotationDeg": -30
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p19-text-7"
-            },
-            "x": 18,
-            "y": 8,
-            "text": "Venus",
-            "font": "yomogi",
-            "sizePct": 6.5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p19-text-8"
-            },
-            "x": 50,
-            "y": 17,
-            "text": "「おいしいね。",
-            "font": "yomogi",
-            "sizePct": 5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p19-text-9"
-            },
-            "x": 50,
-            "y": 24,
-            "text": "ひとりで たべるより、",
-            "font": "yomogi",
-            "sizePct": 5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p19-text-10"
-            },
-            "x": 50,
-            "y": 31,
-            "text": "ふたりで たべるほうが",
-            "font": "yomogi",
-            "sizePct": 5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p19-text-11"
-            },
-            "x": 50,
-            "y": 38,
-            "text": "おいしいね」",
-            "font": "yomogi",
-            "sizePct": 5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p19-text-12"
-            },
-            "x": 50,
-            "y": 45,
-            "text": "にんじんを はんぶんに。ぽきん。",
-            "font": "yomogi",
-            "sizePct": 5
+            "x": 70,
+            "y": 61.7,
+            "sizePct": 65,
+            "heightPct": 73.842
           }
         ]
       },
@@ -2713,7 +2681,7 @@
           {
             "type": "part",
             "id": {
-              "value": "p20-garden-right-25"
+              "value": "p20-garden-right-1"
             },
             "partId": {
               "value": "art:garden-right"
@@ -2726,188 +2694,149 @@
           {
             "type": "part",
             "id": {
-              "value": "p20-moon-smile-26"
+              "value": "p20-moon-smile-2"
             },
             "partId": {
               "value": "art:moon-smile"
             },
-            "x": 86,
+            "x": 76,
+            "y": 14.5,
+            "sizePct": 28.5,
+            "heightPct": 24.29
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-encounter-star-3"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 96,
+            "y": 5,
+            "sizePct": 8,
+            "heightPct": 6.857
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-encounter-star-4"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 50,
             "y": 12,
+            "sizePct": 10,
+            "heightPct": 8.571
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-encounter-star-5"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 91,
+            "y": 33,
+            "sizePct": 10,
+            "heightPct": 8.571
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-encounter-star-6"
+            },
+            "partId": {
+              "value": "art:encounter-star"
+            },
+            "x": 83,
+            "y": 55,
+            "sizePct": 11.5,
+            "heightPct": 9.857
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-shooting-marks-7"
+            },
+            "partId": {
+              "value": "art:shooting-marks"
+            },
+            "x": 41,
+            "y": 9,
+            "sizePct": 14,
+            "heightPct": 6.417
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p20-planted-carrot-8"
+            },
+            "partId": {
+              "value": "art:planted-carrot"
+            },
+            "x": 68,
+            "y": 43,
             "sizePct": 18,
-            "heightPct": 16.293
+            "heightPct": 23.143,
+            "rotationDeg": 3
           },
           {
             "type": "part",
             "id": {
-              "value": "p20-star-27"
+              "value": "p20-planted-carrot-9"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:planted-carrot"
             },
-            "x": 58,
-            "y": 7,
-            "sizePct": 7,
-            "heightPct": 5.25
+            "x": 66,
+            "y": 60,
+            "sizePct": 19,
+            "heightPct": 24.429,
+            "rotationDeg": -3
           },
           {
             "type": "part",
             "id": {
-              "value": "p20-star-28"
+              "value": "p20-planted-carrot-10"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:planted-carrot"
             },
-            "x": 94,
-            "y": 29,
-            "sizePct": 6,
-            "heightPct": 4.5
+            "x": 69,
+            "y": 86,
+            "sizePct": 21,
+            "heightPct": 27.0,
+            "rotationDeg": -5
           },
           {
             "type": "part",
             "id": {
-              "value": "p20-star-29"
+              "value": "p20-planted-carrot-11"
             },
             "partId": {
-              "value": "art:star"
+              "value": "art:planted-carrot"
             },
-            "x": 8,
-            "y": 22,
-            "sizePct": 7,
-            "heightPct": 5.25
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p20-carrot-30"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 12,
-            "y": 82,
-            "sizePct": 15,
-            "heightPct": 15.163
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p20-carrot-31"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 28,
-            "y": 88,
-            "sizePct": 12,
-            "heightPct": 12.13
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p20-carrot-32"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 88,
+            "x": 91,
             "y": 84,
-            "sizePct": 16,
-            "heightPct": 16.174
+            "sizePct": 25,
+            "heightPct": 32.143,
+            "rotationDeg": 6
           },
           {
             "type": "part",
             "id": {
-              "value": "p20-carrot-33"
-            },
-            "partId": {
-              "value": "art:carrot"
-            },
-            "x": 72,
-            "y": 90,
-            "sizePct": 12,
-            "heightPct": 12.13
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p20-bear-sharing-34"
+              "value": "p20-bear-sharing-12"
             },
             "partId": {
               "value": "art:bear-sharing"
             },
-            "x": 42,
-            "y": 67,
-            "sizePct": 46,
-            "heightPct": 39.429
-          },
-          {
-            "type": "part",
-            "id": {
-              "value": "p20-carrot-half-top-1"
-            },
-            "partId": {
-              "value": "art:carrot-half-top"
-            },
-            "x": 31,
-            "y": 70,
-            "sizePct": 9,
-            "heightPct": 9.205,
-            "rotationDeg": 20
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p20-text-13"
-            },
-            "x": 40,
-            "y": 14,
-            "text": "ふたりで、むしゃむしゃ。",
-            "font": "yomogi",
-            "sizePct": 5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p20-text-14"
-            },
-            "x": 40,
-            "y": 21,
-            "text": "ぽりぽり。",
-            "font": "yomogi",
-            "sizePct": 5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p20-text-15"
-            },
-            "x": 40,
-            "y": 28,
-            "text": "くまの むねが、ぽっと",
-            "font": "yomogi",
-            "sizePct": 5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p20-text-16"
-            },
-            "x": 40,
-            "y": 35,
-            "text": "あたたかく なりました。",
-            "font": "yomogi",
-            "sizePct": 5
-          },
-          {
-            "type": "text",
-            "id": {
-              "value": "p20-text-17"
-            },
-            "x": 40,
-            "y": 42,
-            "text": "そして、くまは いいました。",
-            "font": "yomogi",
-            "sizePct": 5
+            "x": 32,
+            "y": 66,
+            "sizePct": 63,
+            "heightPct": 62.171
           }
         ]
       },

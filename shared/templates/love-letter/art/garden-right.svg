@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke-linecap="round" stroke-linejoin="round">
-<title>ふたりの はたけ（みぎ）</title>
-<path d="M0 445Q210 473 336 526Q489 544 600 611V747Q440 758 270 745T0 746Z" fill="#e3e5c7" />
-<path d="M0 445Q210 473 336 526Q489 544 600 611" fill="none" stroke="#a1b58c" stroke-width="1.5" />
-<path d="M0 674Q149 651 272 670Q414 648 600 676V747Q440 758 270 745T0 746Z" fill="#e5caa1" />
-<path d="M31 712l20-3M152 734l17 1M264 692l21-2M380 729l20-1M534 710l18 3" fill="none" stroke="#b8a079" stroke-width="1.5" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ふたりの はたけ（right）</title>
+<path d="M0 137C187 151 428 325 600 574V800H0Z" fill="#e7e8cb" stroke="none"/>
+<path d="M0 137C187 151 428 325 600 574" fill="none" stroke="#a6ae8e" stroke-width="1.8"/>
+</svg>

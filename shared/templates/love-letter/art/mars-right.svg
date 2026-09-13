@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke-linecap="round">
-<title>かせいの ちへいせん（みぎ）</title>
-<path d="M0 330C200 370 400 400 600 420V800H0Z" fill="#f3d9cb"/>
-<path d="M0 330C200 370 400 400 600 420" stroke="#cf9d88" stroke-width="2"/>
-<path d="M90 720q22-9 44 0M420 600q24-9 48 0" stroke="#dcb3a3" stroke-width="1.6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>marsの ちへいせん（right）</title>
+<path d="M0 350C180 476 354 646 444 800H0Z" fill="#f0d8c9" stroke="none"/>
+<path d="M0 350C180 476 354 646 444 800" fill="none" stroke="#bd9984" stroke-width="1.8"/>
 </svg>

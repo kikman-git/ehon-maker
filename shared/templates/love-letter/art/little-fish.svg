@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 75" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
-<title>ちいさな さかな</title>
-<path d="M23 36L8 22L8 54L23 42Q55 68 80 37Q54 12 23 36Z" fill="#8db6c3" stroke-width="1.2"/>
-<ellipse cx="64" cy="35" rx="1.8" ry="2" fill="#6c5849" stroke-width="0.5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 55" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ふぐの ともだち</title>
+<path d="M74 29Q35-2 6 28Q35 55 74 29L94 17Q90 29 96 39Z" fill="#b7c9c5" stroke-width="1.5"/>
+<path d="M25 23L29 27L24 28Z" fill="#69584d" stroke-width="1"/>
+</svg>
