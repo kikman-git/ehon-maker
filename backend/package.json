@@ -1,0 +1,27 @@
+{
+  "name": "ehon-backend",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "build": "pnpm --filter ehon-functions build && tsc -p assets-worker",
+    "test": "tsx --test test/*.test.ts",
+    "rules-test": "firebase emulators:exec --project demo-ehon --only firestore 'pnpm test'",
+    "emulators": "firebase emulators:start --project demo-ehon --only auth,firestore,functions",
+    "assets-dev": "wrangler dev --config assets-worker/wrangler.jsonc",
+    "fonts": "tsx tools/fonts.ts"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "@cloudflare/workers-types": "5.20260910.1",
+    "firebase": "^12.0.0",
+    "firebase-admin": "^13.0.0",
+    "firebase-tools": "15.30.0",
+    "tsx": "^4.20.0",
+    "sharp": "^0.34.0",
+    "typescript": "7.0.2",
+    "wrangler": "^4.0.0"
+  }
+}

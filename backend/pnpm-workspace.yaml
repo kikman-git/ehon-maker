@@ -1,0 +1,12 @@
+packages:
+  - functions
+allowBuilds:
+  '@firebase/util': true
+  esbuild: true
+  protobufjs: true
+  re2: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - '@cloudflare/workers-types@5.20260910.1'
+  - firebase-tools@15.30.0

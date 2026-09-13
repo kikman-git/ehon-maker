@@ -1,0 +1,110 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    function signedIn() { return request.auth != null; }
+    function realUser() {
+      return signedIn() && request.auth.token.firebase.sign_in_provider in ['apple.com', 'google.com'];
+    }
+    function isOwner(data) { return realUser() && data.ownerId == request.auth.uid; }
+    function keepsOwner() { return request.resource.data.ownerId == resource.data.ownerId; }
+    function currentTime(data) { return data.updatedAt == request.time; }
+    function notOlder() { return request.resource.data.updatedAt >= resource.data.updatedAt; }
+    function bookOwner(id) { return isOwner(get(/databases/$(db)/documents/books/$(id)).data); }
+    function writableBook(id, pageId) {
+      let book = getAfter(/databases/$(db)/documents/books/$(id)).data;
+      return isOwner(book) && book.deleted == false && pageId in book.pageIds
+        && (!exists(/databases/$(db)/documents/books/$(id))
+          || book.revision == get(/databases/$(db)/documents/books/$(id)).data.revision + 1);
+    }
+    function validBook(data) {
+      return data.keys().hasOnly(['ownerId', 'meta', 'pageIds', 'pageHashes', 'updatedAt', 'revision', 'lease', 'deleted'])
+        && data.meta is string && data.meta.size() < 100000
+        && data.pageIds is list && data.pageIds.size() > 0 && data.pageIds.size() <= 200
+        && data.pageIds.toSet().size() == data.pageIds.size()
+        && data.pageHashes is map && data.pageHashes.keys().toSet() == data.pageIds.toSet()
+        && data.revision is int && data.revision > 0 && data.deleted is bool
+        && (data.lease == null || (data.lease.keys().hasOnly(['deviceId', 'expiresAt'])
+          && data.lease.deviceId is string && data.lease.deviceId.size() <= 128
+          && data.lease.expiresAt is timestamp && data.lease.expiresAt <= request.time + duration.value(180, 's')));
+    }
+    function validPage(data) {
+      return data.keys().hasOnly(['ownerId', 'json', 'updatedAt'])
+        && data.json is string && data.json.size() < 900000 && currentTime(data);
+    }
+    match /users/{uid} {
+      allow read: if realUser() && request.auth.uid == uid;
+      allow create, update: if realUser() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['locale', 'createdAt'])
+        && request.resource.data.locale is string;
+      match /blobs/{id} { allow read: if realUser() && request.auth.uid == uid; }
+    }
+    match /books/{id} {
+      allow read: if isOwner(resource.data);
+      allow create: if isOwner(request.resource.data) && validBook(request.resource.data)
+        && request.resource.data.revision == 1 && currentTime(request.resource.data);
+      allow update: if isOwner(resource.data) && keepsOwner() && validBook(request.resource.data)
+        && (resource.data.deleted == false || request.resource.data.deleted == true)
+        && ((request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lease']))
+          || (currentTime(request.resource.data) && notOlder()
+            && request.resource.data.revision == resource.data.revision + 1));
+      match /pages/{pageId} {
+        allow read: if bookOwner(id);
+        allow create: if writableBook(id, pageId) && isOwner(request.resource.data) && validPage(request.resource.data);
+        allow update: if writableBook(id, pageId) && isOwner(resource.data) && keepsOwner()
+          && validPage(request.resource.data) && notOlder();
+      }
+    }
+    match /workspaces/{id} {
+      allow read: if isOwner(resource.data) && bookOwner(id);
+      allow create, update: if bookOwner(id) && isOwner(request.resource.data)
+        && request.resource.data.keys().hasOnly(['ownerId', 'scratch', 'updatedAt'])
+        && request.resource.data.scratch is list && request.resource.data.scratch.size() <= 200
+        && currentTime(request.resource.data);
+    }
+    function validIllustration(data) {
+      return data.keys().hasOnly(['ownerId', 'title', 'masterRef', 'w', 'h', 'sourceRef', 'sourceVersion', 'origin', 'aiAssisted', 'createdAt', 'updatedAt', 'deleted'])
+        && data.title is string && data.title.size() <= 200
+        && data.masterRef.matches('a/[0-9a-f]{64}')
+        && exists(/databases/$(db)/documents/assets/$(data.masterRef.split('/')[1]))
+        && data.w > 0 && data.w <= 2048 && data.h > 0 && data.h <= 2048
+        && data.origin in ['blank', 'upload', 'photo', 'ai'] && data.aiAssisted is bool && data.deleted is bool
+        && (data.get('sourceRef', null) == null || (data.sourceRef.split('/')[0] == 's' && data.sourceRef.split('/')[1] == request.auth.uid))
+        && currentTime(data);
+    }
+    match /illustrations/{id} {
+      allow read: if isOwner(resource.data);
+      allow create: if isOwner(request.resource.data) && validIllustration(request.resource.data);
+      allow update: if isOwner(resource.data) && keepsOwner() && validIllustration(request.resource.data) && notOlder();
+    }
+    match /assets/{hash} { allow read: if true; }
+    match /packs/{id} {
+      allow read: if resource.data.status == 'approved' || isOwner(resource.data);
+      allow create: if isOwner(request.resource.data) && request.resource.data.status == 'draft'
+        && request.resource.data.price == 0 && request.resource.data.installs == 0;
+      allow update: if isOwner(resource.data) && keepsOwner() && resource.data.status == 'draft'
+        && request.resource.data.status == 'draft' && request.resource.data.price == 0
+        && request.resource.data.installs == resource.data.installs
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'tags', 'label', 'parts']);
+    }
+    match /shares/{token} { allow read: if isOwner(resource.data); }
+    match /jobs/{id} { allow read: if isOwner(resource.data); }
+    match /usage/{id} { allow read: if isOwner(resource.data); }
+    match /storageUsage/{uid} { allow read: if realUser() && request.auth.uid == uid; }
+    match /entitlements/{uid} { allow read: if realUser() && request.auth.uid == uid; }
+    match /reports/{id} {
+      allow create: if realUser() && request.resource.data.reporterUid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['reporterUid', 'target', 'reason', 'createdAt'])
+        && request.resource.data.reason is string && request.resource.data.reason.size() <= 2000
+        && request.resource.data.createdAt == request.time;
+    }
+    match /sessions/{uid} {
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['count', 'parts', 'updatedAt'])
+        && request.resource.data.count is int && request.resource.data.count >= 0
+        && request.resource.data.parts is map && request.resource.data.parts.size() <= 100
+        && currentTime(request.resource.data);
+    }
+    match /config/flags { allow read: if true; }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
