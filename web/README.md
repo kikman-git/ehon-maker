@@ -1,8 +1,11 @@
 # Web app
 
 Phase 0–2 of [the web/backend plan](../docs/WEB_BACKEND_PLAN.md): the shelf, the drawing workspace and
-the reader, with accounts, sync and read-only guest links when a cloud configuration is present.
-Without one it is a complete local book maker that stores books in the browser.
+the reader, for signed-in grown-ups (decision 58): with a cloud configuration a visitor sees the
+landing page until Apple, Google or the phone app signs them in, and guest links stay open to
+everyone. Without a cloud configuration there are no accounts, so the shelf and studio open directly
+as a complete local book maker that stores books in the browser; that is the harness the no-cloud
+tests use.
 
 From the repository root:
 
@@ -35,12 +38,32 @@ marks hashed assets and font slices immutable.
 
 | Path | Page | Purpose |
 |---|---|---|
-| `/` | shelf | books in this browser and account, templates, account panel, guest links |
+| `/` | shelf | signed out: the landing page with sign-in; signed in: the account's books, templates, account panel, guest links |
 | `/app` | studio | new local book: one white page, brush selected, autosave |
 | `/app?template=t1` | studio | optional template preview, file open/save, save to shelf |
 | `/app/<bookId>` | studio | a saved book: drawing, autosave, lease, remote replacement, illustration library |
 | `/read/<bookId>` | reader | the owner's copy with one page listener while open |
 | `/g/<token>` | reader | a guest link: one fetch of `guestBook`, no login, no listener |
+| `/login/<id>` | shelf | what the sign-in QR code encodes; a phone camera lands on a notice to use the app |
+
+Every other page sits behind `src/ui/Gate.tsx`: it renders the landing page (`src/ui/Landing.tsx`)
+until the session store reports a real account, then the page the visitor asked for, so a
+bookmarked `/app/<id>` opens itself after sign-in. The reader loads the gate lazily so a guest page
+still ships without the Firebase SDK (decision 47).
+
+## Accounts and the landing page
+
+`src/cloud/session.ts` has no anonymous stage on the web: `signInWith('apple' | 'google')` opens the
+provider popup (redirect when popups are blocked), `signOut` returns to the landing page, and a
+session left over from the anonymous days is closed on sight. The sign-in card
+(`src/ui/SignIn.tsx`) carries the provider marks inline (`src/ui/Brand.tsx`) and a third way in,
+**スマホの ぺたぺたで ログイン**: `src/cloud/handoff.ts` calls `qrLoginStart`, shows the request id as a QR
+code (`src/ui/QrCode.tsx`, the `qrcode` encoder loaded on demand) and as a six-letter code, and
+polls `qrLoginClaim` every 2.5 s for up to three minutes; when the signed-in app approves, the
+browser receives a custom token carrying the `handoff` claim and `signInWithCustomToken` finishes
+the job. The QR code encodes `<origin>/login/<id>`, so a plain camera scan opens the notice page
+rather than a second sign-in. Every CTA in the app carries an icon from `src/ui/Icon.tsx`, one
+24-unit stroke set with a few filled glyphs for layering.
 
 ## Drawing workspace
 
@@ -104,7 +127,10 @@ active. `pnpm ehon-check <file>` validates any document with the same code the a
 Copy `.env.example` to `.env.local`. `VITE_EMULATOR_HOST=127.0.0.1` targets the emulators
 with the same demo project and fake key the iOS debug build uses; otherwise the
 `VITE_FIREBASE_*` values describe a provisioned project (see `backend/README.md`). Web API keys
-are public identifiers; App Check (`VITE_APPCHECK_SITE_KEY`) is what gates the backend.
+are public identifiers; App Check (`VITE_APPCHECK_SITE_KEY`) is what gates the backend, and every
+callable, the QR login included, is rejected in the browser until the site key is registered. With
+the key present the page loads reCAPTCHA Enterprise from google.com, the one third-party request the
+product makes by design; the Lighthouse third-party budget (decision 51) runs on the no-cloud build.
 `VITE_ASSETS_URL` is the assets Worker domain; in emulator mode it defaults to the `localBlob`
 function, which stands in for R2. `VITE_FONTS_URL` moves the font slices off the site (defaults
 to `/fonts`).
@@ -208,8 +234,11 @@ convergence within seconds and catch-up after `setOffline`, the edit lease makin
 composer read-only until the first closes, a guest link that opens without an account and dies
 when revoked, a PNG upload that becomes a library part painted in both the composer and
 another device's reader (through the `localBlob` stand-in for R2), and a scratch item that
-survives a reload, reaches the other browser and lands on a page. In dev builds the page
-exposes `window.__ehonRepository` for these tests only.
+survives a reload, reaches the other browser and lands on a page, and the QR hand-off: a second
+browser sees the landing page on `/app/<id>`, the test plays the phone by minting an emulator id
+token and calling `qrLoginApprove` with the six-letter code, and the browser lands on that very
+book, creates a guest link with its hand-off session and signs out back to the landing page. In
+dev builds the page exposes `window.__ehonRepository` for these tests only.
 
 `make web-budget` builds, serves `dist/` through `tools/serve-dist.mjs` (gzip and the Pages
 routes) and runs Lighthouse CI with the assertions in `lighthouserc.cjs`: script ≤ 300 KB and

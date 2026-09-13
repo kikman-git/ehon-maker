@@ -140,8 +140,8 @@ export function Reader({ json, library, guestParts = noGuestParts, resolveVoice,
   return <div className="stage" style={{ '--aspect': reader.pageAspect, '--per-spread': perSpread } as React.CSSProperties}>
     <header className="stage-bar">
       <div className="stage-actions">
-        {backHref ? <a className="button ghost" href={backHref}>← ほんだな</a> : <span />}
-        {editHref && <a className="button ghost" href={editHref}>続きを描く</a>}
+        {backHref ? <a className="button ghost" href={backHref}><Icon name="arrowLeft" size={17} /><span>ほんだな</span></a> : <span />}
+        {editHref && <a className="button ghost" href={editHref}><Icon name="brush" size={17} /><span>続きを描く</span></a>}
       </div>
       <div className="stage-title">
         {caption && <span className="stage-caption">{caption}</span>}
@@ -150,7 +150,7 @@ export function Reader({ json, library, guestParts = noGuestParts, resolveVoice,
       <div className="stage-actions">
         <button className="ghost" onClick={print} title="見開きごとに1枚、横向きの用紙で印刷"><Icon name="print" size={17} /><span>印刷</span></button>
         {document.fullscreenEnabled && <button className="ghost" onClick={toggleFullscreen} aria-pressed={fullscreen} title={fullscreen ? '全画面をやめる' : '全画面で読む'}><Icon name={fullscreen ? 'compress' : 'expand'} size={17} /><span>全画面</span></button>}
-        <button className="ghost" onClick={speak} aria-pressed={speaking}>{speaking ? 'とめる' : 'よみあげ'}</button>
+        <button className="ghost" onClick={speak} aria-pressed={speaking}><Icon name={speaking ? 'stop' : 'speaker'} size={17} /><span>{speaking ? 'とめる' : 'よみあげ'}</span></button>
       </div>
     </header>
     <div className="spread-viewport">
@@ -178,7 +178,7 @@ function VoiceChip({ reader, index, playing, canPlay, onPlay }: { reader: WebRea
   const remote = !!reply.audioRef?.startsWith('v/');
   if (!canPlay && !remote) return null;
   return <button className="voice-chip" disabled={!canPlay || !remote} onClick={() => reply.audioRef && onPlay(index, reply.audioRef)} title={remote ? undefined : 'この こえは スマホで きけます'}>
-    {playing ? '■' : '▶'} {reply.from} の こえ · {reply.seconds.toFixed(1)}びょう
+    <Icon name={playing ? 'stop' : 'play'} size={13} />{reply.from} の こえ · {reply.seconds.toFixed(1)}びょう
   </button>;
 }
 

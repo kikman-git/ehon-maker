@@ -208,7 +208,10 @@ Tested with `@firebase/rules-unit-testing` against the emulator (Phase 1 accepta
 **Identity.** Anonymous at launch (unchanged). Sign-in at できあがり or settings. New credential →
 `link` onto the anonymous UID. Credential already exists (signed up on web first) → sign in,
 switch UID, re-upload local books (they were never in the cloud, so no server-side move).
-Firebase Auth "auto-delete anonymous users" must stay **off**.
+Firebase Auth "auto-delete anonymous users" must stay **off**. The **web** has no anonymous stage
+(decision 58): a visitor sees the landing page until Apple, Google or the phone app signs them in.
+The phone vouches for a browser through `qrLoginStart` → `qrLoginApprove` → `qrLoginClaim`, whose
+custom token carries `handoff: 'app'`; rules and callables accept that claim beside the providers.
 
 **Phone (`BookRepository` in Swift, behind the interface `LocalBookStore` already has).**
 
@@ -436,13 +439,14 @@ The generated facade exposes typed DOM contexts/images and no `any`; see `web/RE
 
 **Accept:** two simulators on one account converge within 5 s; airplane-mode edits catch up; rules tests pass; a v3 book with a remote raster part renders on the phone from the CDN and from cache offline.
 
-Implementation notes: `make rules-test` covers rules, asset finalize/quotas, cleanup, budget guard and
-guest links (18 tests); `make sync-test` runs two native clients against the emulators. Firebase
-projects, providers, App Check, R2 buckets, the assets Worker domain and budget alerts are the
-provisioning steps in `backend/README.md`; nothing has been deployed.
+Implementation notes: `make rules-test` covers rules, asset finalize/quotas, cleanup, budget guard,
+guest links and the QR login (22 tests); `make sync-test` runs two native clients against the
+emulators. The dev project `petapeta-dev` exists since 2026-09-13 with its Tokyo database, rules,
+indexes and functions deployed, the R2 bucket behind the assets Worker and the web on Cloudflare
+Pages; App Check registration and budget alerts follow the provisioning steps in `backend/README.md`.
 
-### Phase 2 — Web reader, shelf, composer (implemented locally; provisioning pending)
-1. Auth on web (Apple, Google), shelf from listener, `/read/:id` with transform-only spread. ✔
+### Phase 2 — Web reader, shelf, composer (implemented; dev deployed)
+1. Auth on web (Apple, Google, and the QR hand-off from the phone) behind a landing page, shelf from listener, `/read/:id` with transform-only spread. ✔
 2. `guest.book` + `share.*`; `/g/:token` reader without login; share screen on iOS uses real links (system share sheet still carries `.ehon`/PDF). ✔
 3. Drawing workspace: one active page, brush/eraser, pan/zoom, contextual library panel with **PNG upload → illustration** (presign, flatten check, finalize), text with furigana, page ops, scratch workspace doc, lease. ✔
 4. Playwright pixel goldens for the painter; Lighthouse budgets in CI. ✔
@@ -455,7 +459,9 @@ twin, the repository, the bitmap LRU, the upload flow, the part library and the 
 document; `web/src/desk/` is the single-page drawing workspace (§7.3). Kotlin gained `WebReader`,
 `WebEditor.replaceBook`, `WebEditor.fontId` and the helpers on `EhonCodec` (`syncMetadata`,
 `pagesJson`, `assembleOrNull`, `merge`, `summaryJson`, `textByFace`, `fontsJson`). Functions gained
-`shareCreate`, `shareRevoke`, `guestBook` and the emulator-only `localBlob` stand-in for R2. The
+`shareCreate`, `shareRevoke`, `guestBook`, the QR login trio `qrLoginStart` / `qrLoginApprove` /
+`qrLoginClaim` (decision 58; `loginRequests` is closed to clients and purged by `cleanup`) and the
+emulator-only `localBlob` stand-in for R2. The
 iOS share screen creates one guest link per chosen family member (label = their name) and
 lists/revokes them; `EhonWebURL` names the web origin. Fonts ship as unicode-range woff2 slices
 built by `web/tools/slice-fonts.mjs` (decision 49): the body face
@@ -464,9 +470,11 @@ and repaints when a batch lands. Byte budgets (§11) are asserted by Lighthouse 
 production build (`make web-budget`, `web/lighthouserc.cjs`) and run in `.github/workflows/ci.yml`
 with the shared, web and backend suites. `make web-sync-test` drives two browser contexts through
 convergence and offline catch-up, the lease, a guest link's life and death, a PNG upload painted
-on both devices, and a scratch item that survives a reload, reaches the other browser and lands on
-a page. Not built: marquee selection and multi-select on the desk, dragging a placed part off a
-page back onto the desk, and a per-book memory of the last view.
+on both devices, a scratch item that survives a reload, reaches the other browser and lands on
+a page, and the QR hand-off from the landing page to a signed-in browser. Not built: marquee
+selection and multi-select on the desk, dragging a placed part off a page back onto the desk, a
+per-book memory of the last view, and Universal Links so a plain camera scan of the login QR opens
+the app (needs an Apple team id for the associated domain).
 
 ### Phase 3 — Studio, AI, Stripe
 1. **Klecks spike** (embed API, layer export, undo memory, Safari pressure, bundle) — go/no-go.

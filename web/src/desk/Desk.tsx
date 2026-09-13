@@ -466,9 +466,9 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
           return <div key={item.id} className="scratch-item" data-scratch={item.id} data-selected={selected || undefined} style={{ left: item.x, top: item.y, width: item.w, height: item.w / aspect }}>
             {part && assetsUrl ? <img src={`${assetsUrl}/${part.masterRef}/1024.webp`} alt={part.title} draggable={false} /> : <span className="scratch-missing">{part?.title || 'イラスト'}</span>}
             {selected && workspace && !readOnly && <div className="scratch-tools">
-              <button aria-label="ちいさく" onClick={() => workspace.update(item.id, { w: Math.max(40, item.w * 0.84) })}>−</button>
-              <button aria-label="おおきく" onClick={() => workspace.update(item.id, { w: Math.min(2000, item.w * 1.18) })}>＋</button>
-              <button aria-label="デスクから けす" onClick={() => { workspace.remove(item.id); setSelectedScratch(null); }}>✕</button>
+              <button aria-label="ちいさく" onClick={() => workspace.update(item.id, { w: Math.max(40, item.w * 0.84) })}><Icon name="minus" size={14} /></button>
+              <button aria-label="おおきく" onClick={() => workspace.update(item.id, { w: Math.min(2000, item.w * 1.18) })}><Icon name="plus" size={14} /></button>
+              <button aria-label="デスクから けす" onClick={() => { workspace.remove(item.id); setSelectedScratch(null); }}><Icon name="trash" size={14} /></button>
             </div>}
           </div>;
         })}
@@ -476,19 +476,19 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       <div ref={cursorRef} className="brush-cursor" hidden />
       <div className="desk-bar">
         <div className="desk-bar-group page-nav">
-          <button aria-label="まえの ページ" title="前のページ (←)" disabled={pageIndex === 0} onClick={() => goTo(pageIndex - 1)}>‹</button>
+          <button aria-label="まえの ページ" title="前のページ (←)" disabled={pageIndex === 0} onClick={() => goTo(pageIndex - 1)}><Icon name="chevronLeft" size={16} /></button>
           <span className="page-label">{pageIndex + 1} / {editor.pageCount} ページ</span>
-          <button aria-label="つぎの ページ" title="次のページ (→)" disabled={pageIndex >= editor.pageCount - 1} onClick={() => goTo(pageIndex + 1)}>›</button>
+          <button aria-label="つぎの ページ" title="次のページ (→)" disabled={pageIndex >= editor.pageCount - 1} onClick={() => goTo(pageIndex + 1)}><Icon name="chevron" size={16} /></button>
         </div>
         <div className="desk-bar-group view-tools">
-          <button aria-label="1ページ表示" aria-pressed={!spreadView} onClick={() => { if (!editor.isGestureActive) setViewChoice({ bookId: editor.bookId, spread: false }); }}>1ページ</button>
-          <button aria-label="見開き表示" aria-pressed={spreadView} onClick={() => { if (!editor.isGestureActive) setViewChoice({ bookId: editor.bookId, spread: true }); }}>見開き</button>
+          <button aria-label="1ページ表示" aria-pressed={!spreadView} onClick={() => { if (!editor.isGestureActive) setViewChoice({ bookId: editor.bookId, spread: false }); }}><Icon name="page" size={15} /><span>1ページ</span></button>
+          <button aria-label="見開き表示" aria-pressed={spreadView} onClick={() => { if (!editor.isGestureActive) setViewChoice({ bookId: editor.bookId, spread: true }); }}><Icon name="spread" size={15} /><span>見開き</span></button>
           <button title="ページに合わせる (0)" onClick={() => engine.current?.focusPage()}><Icon name="fit" size={15} /><span>{spreadView ? '見開きに合わせる' : 'ページに合わせる'}</span></button>
         </div>
         <div className="desk-bar-group zoom">
-          <button aria-label="ちいさく みる" onClick={() => engine.current?.zoomBy(0.8)}>−</button>
+          <button aria-label="ちいさく みる" onClick={() => engine.current?.zoomBy(0.8)}><Icon name="minus" size={14} /></button>
           <button ref={zoomRef} className="zoom-level" title="100%で表示" onClick={() => engine.current?.zoomBy(640 / (canvases.current.get(editor.pageId(pageIndex))?.getBoundingClientRect().width || 640))}>100%</button>
-          <button aria-label="おおきく みる" onClick={() => engine.current?.zoomBy(1.25)}>＋</button>
+          <button aria-label="おおきく みる" onClick={() => engine.current?.zoomBy(1.25)}><Icon name="plus" size={14} /></button>
         </div>
       </div>
       <p className="desk-hint">{readOnly ? '閲覧モード' : tool === 'brush' ? 'ここに自由に描いてみましょう' : tool === 'eraser' ? '線をなぞって消す' : tool === 'hand' ? 'ドラッグして移動' : 'イラストや文字をクリックして選択'}<span>Space：移動 · ⌘ / Ctrl + スクロール：ズーム</span></p>
@@ -501,9 +501,9 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       }}><Thumbnail json={bookJson} library={library} pageIndex={index} /><span>{String(index + 1).padStart(2, '0')}</span></button>)}</div>
       <button className="add-page" disabled={readOnly} aria-label="ページを ふやす" onClick={() => act(() => { editor.addPage(); engine.current?.focusPage(); })}><Icon name="plus" size={20} /><span>ページ追加</span></button>
       {frames.length > 1 && <div className="page-order" role="group" aria-label="ページの並べ替え">
-        <button disabled={readOnly || pageIndex === 0} aria-label="まえの ページへ" title="このページを前へ移動" onClick={() => act(() => editor.movePage(pageIndex, pageIndex - 1))}>←</button>
+        <button disabled={readOnly || pageIndex === 0} aria-label="まえの ページへ" title="このページを前へ移動" onClick={() => act(() => editor.movePage(pageIndex, pageIndex - 1))}><Icon name="arrowLeft" size={15} /></button>
         <span>並べ替え</span>
-        <button disabled={readOnly || pageIndex === frames.length - 1} aria-label="つぎの ページへ" title="このページを後ろへ移動" onClick={() => act(() => editor.movePage(pageIndex, pageIndex + 1))}>→</button>
+        <button disabled={readOnly || pageIndex === frames.length - 1} aria-label="つぎの ページへ" title="このページを後ろへ移動" onClick={() => act(() => editor.movePage(pageIndex, pageIndex + 1))}><Icon name="arrowRight" size={15} /></button>
       </div>}
     </nav>}
   </>;

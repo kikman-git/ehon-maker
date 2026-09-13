@@ -141,11 +141,15 @@ object StringKeys {
         "account.cloudUnavailable", "account.close", "sync.diskError", "sync.pending", "sync.saved", "sync.retrying",
         "sync.lease", "sync.read", "sync.localCopy", "sync.invalidId")
 
+    /** Signing a browser in from the phone: the QR hand-off, decision 58. */
+    val webLogin = listOf("web.login", "web.loginHint", "web.loginScan", "web.loginNoCamera", "web.loginCode",
+        "web.loginCodeHint", "web.loginApprove", "web.loginConfirm", "web.loginDone", "web.loginFailed", "web.loginOffline")
+
     /** Part display names, keyed `part.<catalog name>`. */
     val parts: List<String> =
         app.ehon.catalog.PartCatalog.all.map { "part.${it.nameKey}" }
 
     val all: List<String> =
         home + templates + editor + read + fonts + share + guest + tablet +
-            done + settings + shapes + categories + parts + account
+            done + settings + shapes + categories + parts + account + webLogin
 }

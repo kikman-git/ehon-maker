@@ -2,8 +2,10 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{db}/documents {
     function signedIn() { return request.auth != null; }
+    // A browser signed in through the phone's QR approval carries the handoff claim (qrLoginClaim).
     function realUser() {
-      return signedIn() && request.auth.token.firebase.sign_in_provider in ['apple.com', 'google.com'];
+      return signedIn() && (request.auth.token.firebase.sign_in_provider in ['apple.com', 'google.com']
+        || request.auth.token.get('handoff', '') == 'app');
     }
     function isOwner(data) { return realUser() && data.ownerId == request.auth.uid; }
     function keepsOwner() { return request.resource.data.ownerId == resource.data.ownerId; }

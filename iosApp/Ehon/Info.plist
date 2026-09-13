@@ -38,6 +38,8 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>パソコンの がめんの QRコードを よみとる ために カメラを つかいます。</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>ページに むけて こえを おくる ために マイクを つかいます。</string>
 	<key>UIAppFonts</key>

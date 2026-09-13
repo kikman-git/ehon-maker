@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { cloud } from './cloud/config';
 import { libraryPart, type LibraryPart } from './cloud/parts';
@@ -6,11 +6,15 @@ import type { BookRepository } from './cloud/repository';
 import { useStore } from './cloud/store';
 import { codec, loadFonts } from './core';
 import { currentRoute, paths } from './routes';
+import { Icon } from './ui/Icon';
 import { Reader } from './ui/Reader';
 import './style.css';
 
+// The owner's gate brings the Firebase SDK; a guest's page never loads it (decision 47).
+const Gate = lazy(() => import('./ui/Gate'));
+
 function Missing({ text }: { text: string }) {
-  return <main className="stage stage-message" role="alert"><p>{text}</p><a className="button ghost" href={paths.shelf}>ほんだなへ</a></main>;
+  return <main className="stage stage-message" role="alert"><p>{text}</p><a className="button ghost" href={paths.shelf}><Icon name="home" size={16} />ほんだなへ</a></main>;
 }
 
 /** Family voices are private blobs: a signed URL per play, fetched through the lazily loaded cloud modules. */
@@ -57,18 +61,21 @@ function GuestReader({ token }: { token: string }) {
   return <Reader json={state.json} library={null} guestParts={state.parts} caption="ぺたぺた から とどきました" />;
 }
 
-function Boot() {
-  const [route] = useState(currentRoute);
+function OwnerBoot({ id }: { id: string }) {
   const [repo, setRepo] = useState<BookRepository | null>(null);
   useEffect(() => {
-    if (route.kind !== 'reader') return;
     let alive = true;
     void import('./cloud/repository').then(({ repository }) => repository()).then((ready) => { if (alive) setRepo(ready); });
     return () => { alive = false; };
-  }, [route.kind]);
+  }, []);
+  return repo ? <OwnerReader repo={repo} id={id} /> : <p className="loading" role="status">じゅんび しています…</p>;
+}
+
+function Boot() {
+  const [route] = useState(currentRoute);
   if (route.kind === 'guest') return <GuestReader token={route.token} />;
   if (route.kind !== 'reader') return <Missing text="この ページは ありません。" />;
-  return repo ? <OwnerReader repo={repo} id={route.id} /> : <p className="loading" role="status">じゅんび しています…</p>;
+  return <Suspense fallback={<p className="loading" role="status">じゅんび しています…</p>}><Gate intent="reader"><OwnerBoot id={route.id} /></Gate></Suspense>;
 }
 
 const root = createRoot(document.getElementById('root')!);

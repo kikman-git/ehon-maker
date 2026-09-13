@@ -110,3 +110,18 @@ test('a workspace belongs to an existing book of the same owner and stays bounde
   await assertFails(setDoc(doc(db, 'workspaces/b1'), { ...scratch, scratch: Array.from({ length: 201 }, (_, i) => ({ id: String(i) })) }));
   await assertFails(setDoc(doc(db, 'workspaces/b1'), { ...scratch, updatedAt: Timestamp.fromMillis(1) }));
 });
+
+test('a browser opened from the phone acts as its account; a bare custom token and login requests stay closed', async () => {
+  const claims = (extra: Record<string, unknown>) => env.authenticatedContext('alice', { ...extra, firebase: { sign_in_provider: 'custom' } }).firestore();
+  const handoff = claims({ handoff: 'app' });
+  await assertSucceeds(setDoc(doc(handoff, 'books/b1'), book()));
+  await assertSucceeds(getDoc(doc(handoff, 'books/b1')));
+  for (const other of [claims({}), claims({ handoff: 'web' }), claims({ handoff: true })]) {
+    await assertFails(getDoc(doc(other, 'books/b1')));
+    await assertFails(setDoc(doc(other, 'books/b2'), book()));
+  }
+  for (const db of [handoff, user(), env.unauthenticatedContext().firestore()]) {
+    await assertFails(getDoc(doc(db, 'loginRequests/r1')));
+    await assertFails(setDoc(doc(db, 'loginRequests/r1'), { code: 'ABCDEF', status: 'approved', uid: 'alice' }));
+  }
+});

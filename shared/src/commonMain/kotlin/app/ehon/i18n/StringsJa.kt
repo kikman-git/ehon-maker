@@ -226,5 +226,18 @@ internal object StringsJa {
         "sync.read" to "この えほんを よむ",
         "sync.localCopy" to "サインアウトしても えほんは このスマホに のこります。",
         "sync.invalidId" to "この えほんは クラウドに ほぞんできません。スマホには ほぞんされています。",
+
+        // QR hand-off to the web (decision 58)
+        "web.login" to "パソコンで ぺたぺたを ひらく",
+        "web.loginHint" to "パソコンで ぺたぺたの サイトを ひらき、「スマホの ぺたぺたで ログイン」の QRコードを よみとってください。",
+        "web.loginScan" to "QRコードを カメラに むけてください",
+        "web.loginNoCamera" to "この たんまつでは カメラで よみとれません。QRコードの したの コードを 入力してください。",
+        "web.loginCode" to "コードを 入力",
+        "web.loginCodeHint" to "QRコードの したにある 6もじ",
+        "web.loginApprove" to "この パソコンで ログイン",
+        "web.loginConfirm" to "%s で、あなたの アカウントに ログインします。",
+        "web.loginDone" to "ログインしました。パソコンの がめんを みてください。",
+        "web.loginFailed" to "コードが みつかりません。パソコンで あたらしい QRコードを だしてください。",
+        "web.loginOffline" to "ネットに つながると ログインできます。",
     )
 }

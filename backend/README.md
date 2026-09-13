@@ -40,6 +40,16 @@ offline. It is never deployed. To exercise real R2 from the emulator instead, co
 is side-effect free; finalize reserves derivative-inclusive quota before writing canonical
 objects, and retries reuse that reservation.
 
+QR login (decision 58): `qrLoginStart` opens a login request for a browser and returns its id,
+a six-letter code and a secret only that browser keeps; `qrLoginApprove` is called by the
+signed-in phone app with the id from the QR code or the typed code; `qrLoginClaim` is polled by
+the browser with id and secret and, once approved, spends the request and mints one custom token
+for the approving account with the claim `handoff: 'app'`. `firestore.rules` and the callables'
+`user()` check accept that claim beside the Apple and Google providers. Requests live three minutes
+in `loginRequests` (closed to clients) and `cleanup` purges them with the expired jobs. Minting
+needs `roles/iam.serviceAccountTokenCreator` on the functions' runtime service account for itself
+(step 11).
+
 Guest links (decision 41): `shareCreate` and `shareRevoke` are callables for signed-in owners,
 bounded to 50 live links per book; `guestBook` is the one unauthenticated endpoint,
 `GET /guestBook/<token>`, returning the codec metadata, the pages in manifest order and the
@@ -49,26 +59,51 @@ to the web app's origins so browsers may fetch it; the phone builds links from `
 
 ## Provision dev and prod
 
-1. Create separate Firebase projects (preferred IDs `ehon-dev` / `ehon-prod`, subject to
-   global availability), enable Blaze, and create Firestore in `asia-northeast1`. Functions
-   are fixed to that region. Enable Anonymous, Apple, and Google authentication; leave
-   automatic deletion of anonymous accounts **off**.
+1. Create separate Firebase projects and create Firestore in `asia-northeast1` **before** the
+   first deploy: `firebase deploy --only firestore` creates a missing database in `nam5`, and a
+   deleted database ID cannot be reused for five minutes. Functions are fixed to that region.
+   GCP display names must be ASCII. The dev project is `petapeta-dev` (`ehon-dev` was taken),
+   aliased `dev` in `.firebaserc`; make targets accept the alias as `FIREBASE_PROJECT=dev`.
+
+   ```sh
+   pnpm exec firebase projects:create petapeta-dev -n "petapeta dev"
+   pnpm exec firebase firestore:databases:create "(default)" --location asia-northeast1 --project petapeta-dev
+   pnpm exec firebase apps:create WEB "petapeta web" --project petapeta-dev
+   pnpm exec firebase apps:create IOS "petapeta iOS" --bundle-id app.ehon.petapeta --project petapeta-dev
+   pnpm exec firebase apps:sdkconfig WEB <appId> --project petapeta-dev        # values for web/.env.local
+   pnpm exec firebase apps:sdkconfig IOS <appId> --project petapeta-dev -o ../iosApp/Ehon/GoogleService-Info.plist
+   ```
+
+   Enable Blaze in the console, then Anonymous, Apple, and Google authentication; leave automatic
+   deletion of anonymous accounts **off**. Fetch the iOS plist again after enabling Google: only
+   then does it carry `CLIENT_ID` and `REVERSED_CLIENT_ID`.
 2. Register iOS bundle `app.ehon.petapeta`, enable Sign in with Apple for its App ID and
    provisioning profile, and configure the provider in Firebase. Add the downloaded
    `GoogleService-Info.plist` to `iosApp/Ehon/` and run `make xcodeproj`.
 3. Copy `iosApp/Config/Cloud.local.xcconfig.example` to `Cloud.local.xcconfig`. Set the assets
    URL and the plist's `REVERSED_CLIENT_ID`. The config is included by both build modes and
    is ignored by Git. The `$()` in the example HTTPS URL prevents an xcconfig comment.
-4. Register DeviceCheck for iOS App Check. Debug cloud builds use Firebase's debug provider;
-   register their debug token in the console. Enable Firestore/App Check enforcement after
+4. Register App Check. Web: a reCAPTCHA Enterprise key (score-based, allowed domains the Pages
+   host plus `localhost` and `127.0.0.1`) registered on the web app; both the reCAPTCHA Enterprise
+   and the Firebase App Check APIs must be enabled, or the token exchange answers 403, then 500 for a
+   minute. The dev key is registered and its site key sits in `web/.env.local`. iOS: DeviceCheck for
+   Release; Debug builds use Firebase's debug provider and show their token on the account screen
+   (copy it into App Check → iOS → debug tokens). Enable Firestore/App Check enforcement after
    validating the dev build. Deployed callable functions always enforce App Check.
 5. Create **private** R2 buckets `ehon-assets-dev` and `ehon-assets-prod`. Leave public
-   `r2.dev` access disabled, and do not attach an unrestricted public bucket domain. Apply
-   `r2-cors.example.json`, replacing localhost with the actual web origins. The PUT URL
-   uses the R2 S3 endpoint; public reads use the Worker domain.
-6. Deploy `assets-worker/` with a custom domain such as `assets-dev.example.com` (dev) and
-   `assets.example.com` (prod). Configure the domain route in `wrangler.jsonc` or the
-   Cloudflare dashboard. The Worker exposes only `a/<sha256>/{m.png,1024.webp,256.webp}` and
+   `r2.dev` access disabled, and do not attach an unrestricted public bucket domain. The CORS
+   rules are Cloudflare-format JSON (`rules`, not S3's `CORSRules`): `r2-cors.dev.json` carries the
+   dev origins, `r2-cors.example.json` the template for prod. The PUT URL uses the R2 S3 endpoint;
+   public reads use the Worker domain.
+
+   ```sh
+   pnpm exec wrangler r2 bucket create ehon-assets-dev --location apac
+   pnpm exec wrangler r2 bucket cors set ehon-assets-dev --file r2-cors.dev.json
+   pnpm exec wrangler r2 bucket lifecycle add ehon-assets-dev expire-uploads u/ --expire-days 1   # step 9
+   ```
+6. Deploy `assets-worker/`. Dev serves from the `workers.dev` address (`workers_dev` is true outside
+   `--env prod`); prod needs a custom domain such as `assets.example.com`, configured as a route in
+   `wrangler.jsonc` or the Cloudflare dashboard. The Worker exposes only `a/<sha256>/{m.png,1024.webp,256.webp}` and
    `fonts/*.{ttf,txt}`, caches successful GETs at the edge, and denies `s/`, `v/`, and `u/`.
    Cloudflare documents why a [public bucket domain exposes the bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/).
 7. Issue separate R2 credentials scoped to each bucket. Set `R2_ENDPOINT` and `R2_BUCKET`
@@ -89,17 +124,39 @@ to the web app's origins so browsers may fetch it; the phone builds links from `
     notifications to that topic, and grant the documented publisher/subscriber permissions.
     `budgetGuard` sets `config/flags.aiEnabled=false` at ¥10,000 actual spend; lower or
     delayed alerts never reenable it. It is an AI feature switch, not a billing spending cap.
+11. Let the functions mint custom tokens for the QR login: grant `roles/iam.serviceAccountTokenCreator`
+    to the runtime service account (`<project-number>-compute@developer.gserviceaccount.com`) on
+    itself, in IAM → Service Accounts → Permissions, or with `gcloud iam service-accounts
+    add-iam-policy-binding`. Without it `qrLoginClaim` fails with `signBlob` permission denied.
 
 Deploy only after those values point to the intended environment:
 
 ```sh
-make functions-deploy FIREBASE_PROJECT=YOUR_DEV_PROJECT_ID
+make functions-deploy FIREBASE_PROJECT=dev
 cd backend
-pnpm exec wrangler deploy --config assets-worker/wrangler.jsonc
-# Production worker uses: --env prod
+pnpm exec wrangler deploy --config assets-worker/wrangler.jsonc   # prod: --env prod
+make -C .. web-build && pnpm exec wrangler pages deploy ../web/dist --project-name petapeta-dev --branch master
 ```
 
-`functions-deploy` requires an explicit project and deploys rules, indexes, and Functions.
+The dev Worker is `https://ehon-assets.ehon-backend.workers.dev` (`VITE_ASSETS_URL`, `EHON_ASSETS_URL`).
+The dev site is the Pages project `petapeta-dev` at `https://petapeta-dev.pages.dev`; its origin is
+in `WEB_ORIGINS` so browsers may read guest books, and in the project's Auth authorized domains so
+sign-in popups work there; so are the branch alias `master.petapeta-dev.pages.dev` and `127.0.0.1`,
+which `pnpm dev` binds. A per-deployment preview host such as `561ceb20.petapeta-dev.pages.dev` is
+never authorized, so Apple and Google sign-in answer `auth/unauthorized-domain` there: use the
+production URL. Wrangler is a devDependency: run it as `pnpm exec wrangler` from
+`backend/`, and approve `wrangler login` in a browser that is signed in to Cloudflare. The
+Anonymous provider serves the phone only (the web has no anonymous stage since decision 58); it and
+the authorized-domain list are Identity Toolkit project config, set by the console or by a
+`PATCH admin/v2/projects/<id>/config` with the CLI's own OAuth token when a click is not at hand.
+
+`functions-deploy` requires an explicit project and deploys rules, indexes, and Functions. On a
+fresh project the first deploy can stop at "We failed to modify the IAM policy": the Pub/Sub
+service agent it binds does not exist until the identity is generated, so run the deploy again a
+minute later (or generate `pubsub.googleapis.com`'s service identity first). A single function whose
+Cloud Build fails with "an unexpected error" redeploys alone with `--only functions:ehon:<name>`.
+Pass `--force` once, or run `functions:artifacts:setpolicy --location asia-northeast1`, so old
+container images are deleted after a day.
 Worker routes/account IDs must be filled in before deployment. Test actual R2 checksums,
 CORS, alpha derivatives, private signed reads, and device App Check in dev before prod.
 

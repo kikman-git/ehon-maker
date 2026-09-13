@@ -1,9 +1,9 @@
 import { FieldValue, Timestamp, type Firestore } from 'firebase-admin/firestore';
 
-export async function cleanupJobs(db: Firestore, now = Date.now()): Promise<number> {
+async function purgeExpired(db: Firestore, name: string, now: number): Promise<number> {
   let removed = 0;
   for (let page = 0; page < 50; page++) {
-    const expired = await db.collection('jobs').where('expiresAt', '<=', Timestamp.fromMillis(now)).limit(200).get();
+    const expired = await db.collection(name).where('expiresAt', '<=', Timestamp.fromMillis(now)).limit(200).get();
     if (expired.empty) break;
     const batch = db.batch();
     expired.docs.forEach(doc => batch.delete(doc.ref));
@@ -11,6 +11,11 @@ export async function cleanupJobs(db: Firestore, now = Date.now()): Promise<numb
     removed += expired.size;
   }
   return removed;
+}
+
+/** Expired jobs and spent or abandoned QR login requests; both carry an `expiresAt`. */
+export async function cleanupJobs(db: Firestore, now = Date.now()): Promise<number> {
+  return await purgeExpired(db, 'jobs', now) + await purgeExpired(db, 'loginRequests', now);
 }
 
 export async function applyBudgetAlert(db: Firestore, alert: unknown, thresholdYen: number): Promise<boolean> {

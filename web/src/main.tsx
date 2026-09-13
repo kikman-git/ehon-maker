@@ -13,6 +13,7 @@ import { dragging, startPartDrag } from './desk/drag';
 import { colorNames, drawingTools, type DrawingTool } from './desk/tools';
 import { currentRoute, paths } from './routes';
 import { syncStatus } from './ui/Account';
+import { Gate } from './ui/Gate';
 import { Icon } from './ui/Icon';
 import { PartPreview } from './ui/PartPreview';
 import './style.css';
@@ -282,11 +283,11 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         {cloudBook && account.signedIn && <span className="status" data-pending={repoState.pendingChanges} title={syncStatus(repoState)}>{repoState.pendingChanges ? '同期中…' : '同期済み'}</span>}
         <button className="ghost read-button" title="読むモードで開く" onClick={() => void readBook()}><Icon name="book" size={17} /><span>よむ</span></button>
         <details className="file-menu">
-          <summary className="button">ファイル <span aria-hidden="true">⌄</span></summary>
+          <summary className="button"><Icon name="folder" size={16} />ファイル <Icon name="chevronDown" size={14} /></summary>
           <div className="file-popover">
-            <button onClick={() => importRef.current?.click()}>ファイルを開く</button>
-            <button aria-label="ファイルに ほぞん" onClick={() => download(new Blob([editor.bookJson()], { type: 'application/json' }), editor.bookId + '.ehon')}>えほんを保存 (.ehon)</button>
-            {!cloudBook && <button aria-label="ほんだなに ほぞん" onClick={() => void keepOnShelf()}>本棚に保存</button>}
+            <button onClick={() => importRef.current?.click()}><Icon name="folderOpen" size={16} />ファイルを開く</button>
+            <button aria-label="ファイルに ほぞん" onClick={() => download(new Blob([editor.bookJson()], { type: 'application/json' }), editor.bookId + '.ehon')}><Icon name="save" size={16} />えほんを保存 (.ehon)</button>
+            {!cloudBook && <button aria-label="ほんだなに ほぞん" onClick={() => void keepOnShelf()}><Icon name="shelf" size={16} />本棚に保存</button>}
             {!cloudBook && <label className="field">テンプレート
               <select value={template} onChange={(event) => {
                 generation.current++;
@@ -303,7 +304,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         <input ref={importRef} type="file" accept=".ehon,application/json" hidden onChange={(event) => {
           const file = event.target.files?.[0]; event.target.value = ''; if (file) void openBook(file);
         }} />
-        <button className="primary export-button" aria-label="PNGを書き出す" onClick={exportPage}><Icon name="download" size={17} /><span>PNGを書き出す</span></button>
+        <button className="primary export-button" aria-label="PNGを書き出す" onClick={exportPage}><Icon name="image" size={17} /><span>PNGを書き出す</span></button>
       </div>
     </header>
     {readOnly && <div className="lease-banner" role="status">ほかの たんまつで へんしゅうちゅう。<a href={paths.reader(editor.bookId)}>この えほんを よむ</a></div>}
@@ -347,14 +348,14 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         {tool === 'parts' && <>
           <label className="field" htmlFor="material-category">しゅるい</label><select id="material-category" value={category} onChange={(event) => setCategory(event.target.value)}>{bookArt.length > 0 && <option value="art">この えほんの え</option>}{[...new Set(parts.map((part) => part.category))].map((item) => <option key={item}>{item}</option>)}</select>
           <div className="parts material-grid">{category === 'art'
-            ? bookArt.map((art) => partButton(art.id, art.name, 30, <><PartPreview editor={editor} partId={art.id} /><span className="part-name">{art.name}<span aria-hidden="true">＋</span></span></>))
-            : parts.filter((part) => part.category === category).map((part) => partButton(part.id, part.name, 26, <><PartPreview editor={editor} partId={part.id} /><span className="part-name">{part.name}<span aria-hidden="true">＋</span></span></>))}</div>
+            ? bookArt.map((art) => partButton(art.id, art.name, 30, <><PartPreview editor={editor} partId={art.id} /><span className="part-name">{art.name}<Icon name="plus" size={12} /></span></>))
+            : parts.filter((part) => part.category === category).map((part) => partButton(part.id, part.name, 26, <><PartPreview editor={editor} partId={part.id} /><span className="part-name">{part.name}<Icon name="plus" size={12} /></span></>))}</div>
           {cloud && <>
             <h3>マイイラスト</h3>
             {account.signedIn ? <div className="upload">
               <input ref={uploadRef} type="file" accept="image/png,image/webp" hidden onChange={(event) => { const file = event.target.files?.[0]; event.target.value = ''; if (file) void upload(file); }} />
               <label className="field">なまえ<input value={uploadName} maxLength={40} placeholder="イラストの名前" onChange={(event) => setUploadName(event.target.value)} /></label>
-              <button disabled={uploading || readOnly} onClick={() => uploadRef.current?.click()}>{uploading ? 'アップロード中…' : '画像をアップロード'}</button>
+              <button disabled={uploading || readOnly} onClick={() => uploadRef.current?.click()}><Icon name="upload" size={16} />{uploading ? 'アップロード中…' : '画像をアップロード'}</button>
               <p className="hint">背景が透明な PNG / WebP、2048px まで。</p>
             </div> : <p className="hint">{uploadMessages.signedOut}</p>}
             <div className="parts library-parts">{library.parts.map((part) => partButton(part.partId, part.title || 'イラスト', 30, <>{assetsUrl && <img src={assetsUrl + '/' + part.masterRef + '/256.webp'} alt="" loading="lazy" decoding="async" draggable={false} />}<span>{part.title || 'イラスト'}</span></>))}</div>
@@ -366,15 +367,15 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
             const value = event.target.value; setRuby(value); void ensureGlyphs({ [editor.fontId]: value }); edit(() => editor.setDraftRuby(value));
           }} /></label>
           <label className="field">じの かたち<select value={editor.fontId} onChange={(event) => edit(() => editor.setFont(event.target.value))}>{fontChoices.map((face) => <option key={face.id} value={face.id}>{face.name}</option>)}</select></label>
-          <button className="text-commit primary" aria-label="ことばを はる" onClick={() => edit(() => { if (editor.commitText()) { setDraft(''); setRuby(''); } })}>{editor.selectedText != null ? '編集を おわる' : 'ページに追加'}</button>
+          <button className="text-commit primary" aria-label="ことばを はる" onClick={() => edit(() => { if (editor.commitText()) { setDraft(''); setRuby(''); } })}><Icon name={editor.selectedText != null ? 'check' : 'plus'} size={16} />{editor.selectedText != null ? '編集を おわる' : 'ページに追加'}</button>
         </fieldset>}
         {(tool === 'select' || ((tool === 'parts' || tool === 'text') && editor.selectedId)) && <>
           <h3>選択したもの</h3>
           {!editor.selectedId && <p className="hint">ページ上のイラストや文字を選択してください。</p>}
           <fieldset disabled={!editor.selectedId || readOnly} className="selection-tools">
-            <button onClick={() => edit(() => editor.resizeSelected(false))}>小さく</button><button onClick={() => edit(() => editor.resizeSelected(true))}>大きく</button>
-            <button onClick={() => edit(() => editor.rotateSelected())}>回転</button><button onClick={() => edit(() => editor.deleteSelected())}>削除</button>
-            <button onClick={() => edit(() => editor.sendBackward())}>背面へ</button><button onClick={() => edit(() => editor.bringForward())}>前面へ</button>
+            <button onClick={() => edit(() => editor.resizeSelected(false))}><Icon name="compress" size={15} />小さく</button><button onClick={() => edit(() => editor.resizeSelected(true))}><Icon name="expand" size={15} />大きく</button>
+            <button onClick={() => edit(() => editor.rotateSelected())}><Icon name="rotate" size={15} />回転</button><button onClick={() => edit(() => editor.deleteSelected())}><Icon name="trash" size={15} />削除</button>
+            <button onClick={() => edit(() => editor.sendBackward())}><Icon name="toBack" size={15} />背面へ</button><button onClick={() => edit(() => editor.bringForward())}><Icon name="toFront" size={15} />前面へ</button>
           </fieldset>
         </>}
         {tool === 'hand' && <div className="navigation-guide"><Icon name="hand" size={40} /><p>細かいところまで、自由に。</p><span>⌘ / Ctrl + スクロールで拡大・縮小。<br />「ページに合わせる」で全体に戻れます。</span></div>}
@@ -390,7 +391,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
 }
 
 function Missing({ text }: { text: string }) {
-  return <main className="stage-message" role="alert"><p>{text}</p><a className="button" href={paths.shelf}>ほんだなへ</a></main>;
+  return <main className="stage-message" role="alert"><p>{text}</p><a className="button" href={paths.shelf}><Icon name="home" size={16} />ほんだなへ</a></main>;
 }
 
 /** Waits for the local row, or for the shelf listener to deliver a book made on another device. */
@@ -436,6 +437,6 @@ function Boot() {
 
 const root = createRoot(document.getElementById('root')!);
 root.render(<p className="loading" role="status">じゅんび しています…</p>);
-loadFonts().then(() => root.render(<Boot />)).catch(() => {
+loadFonts().then(() => root.render(<Gate intent="studio"><Boot /></Gate>)).catch(() => {
   root.render(<p className="loading" role="alert">フォントを よみこめませんでした。ページを さいよみこみしてください。</p>);
 });

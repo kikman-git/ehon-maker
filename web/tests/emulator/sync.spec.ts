@@ -5,21 +5,40 @@ type Hooked = { __ehonRepository: () => Promise<{ bookJson(id: string): string |
 
 const subject = () => `web-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
 
+/** The landing page is the sign-in screen; the shelf appears once the account is known. */
 async function signIn(page: Page, account: string) {
   await page.goto('/');
-  await page.getByRole('button', { name: 'サインイン' }).click();
   await page.getByLabel('エミュレーター アカウント').fill(account);
   await page.getByRole('button', { name: 'エミュレーターで サインイン' }).click();
   await expect(page.getByRole('button', { name: `${account}@example.invalid` })).toBeVisible();
-  await page.getByRole('button', { name: 'とじる' }).click();
 }
 
+const emulator = { auth: 'http://127.0.0.1:9099', functions: 'http://127.0.0.1:5001/demo-ehon/asia-northeast1' };
+
+/** Plays the phone: the Auth emulator mints an id token for the account, which then calls the approve function. */
+async function approveFromPhone(account: string, code: string) {
+  const idp = await fetch(`${emulator.auth}/identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=fake-api-key`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      postBody: `id_token=${JSON.stringify({ sub: account, email: `${account}@example.invalid`, email_verified: true })}&providerId=google.com`,
+      requestUri: 'http://localhost', returnIdpCredential: true, returnSecureToken: true,
+    }),
+  });
+  const { idToken } = await idp.json() as { idToken: string };
+  const approved = await fetch(`${emulator.functions}/qrLoginApprove`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}` }, body: JSON.stringify({ data: { code } }),
+  });
+  return await approved.json() as { result?: { client: string }; error?: { message: string } };
+}
+
+/** A procedural template (the last on the list): few pages, one square frame, built-in shapes in the panel. */
 async function createBook(page: Page): Promise<string> {
   await page.getByRole('button', { name: 'あたらしい えほん' }).first().click();
-  await page.locator('.template').first().click();
+  await page.locator('.template').last().click();
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await expect(page.getByLabel('えほんの ページ')).toBeVisible();
   await page.getByRole('button', { name: '素材', exact: true }).click();
+  await page.getByLabel('しゅるい').selectOption('かたち');
   return page.url().split('/').pop()!;
 }
 
@@ -181,4 +200,46 @@ test('illustrations parked on the desk follow the account and can be placed late
   await expect(b.page.locator('.scratch-item')).toHaveCount(0, { timeout: 30_000 });
   await a.context.close();
   await b.context.close();
+});
+
+test('a visitor sees the landing page, and the phone app signs the browser in through the QR code', async ({ browser }) => {
+  const account = subject();
+  const a = await peer(browser, account);
+  const id = await createBook(a.page);
+  await expect.poll(() => pending(a.page)).toBe(false);
+
+  const laptop = await browser.newContext();
+  const page = await laptop.newPage();
+  await page.goto(`/app/${id}`);
+  await expect(page.getByRole('heading', { name: 'はじめる' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Appleで つづける' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Googleで つづける' })).toBeVisible();
+  await expect(page.getByLabel('えほんの ページ')).toHaveCount(0);
+  await page.getByRole('button', { name: /スマホの ぺたぺたで ログイン/ }).click();
+  await expect(page.getByRole('img', { name: 'スマホの ぺたぺたで よみとる QRコード' })).toBeVisible({ timeout: 20_000 });
+  const code = (await page.locator('.login-code code').textContent())!.replace(/\s/g, '');
+  expect(code).toMatch(/^[A-HJ-NP-Z2-9]{6}$/);
+
+  expect((await approveFromPhone(`stranger-${account}`, 'ZZZZZZ')).error).toBeTruthy();
+  const approval = await approveFromPhone(account, code.toLowerCase());
+  expect(approval.result?.client).toMatch(/Chrome|ブラウザ/);
+  expect((await approveFromPhone(account, code)).error).toBeTruthy();
+
+  // The browser polls, claims the token and lands on the very book it asked for.
+  await expect(page.getByLabel('えほんの ページ')).toBeVisible({ timeout: 20_000 });
+  await expect(page).toHaveURL(`/app/${id}`);
+  await page.goto('/');
+  await expect(page.locator('.book-card')).toHaveCount(1);
+  await expect(page.getByRole('button', { name: `${account}@example.invalid` })).toBeVisible();
+
+  // The account works like any other: the handoff claim satisfies the rules, and sign-out returns to the landing page.
+  await page.getByRole('button', { name: 'おくる' }).click();
+  await page.getByRole('button', { name: 'リンクを つくる' }).click();
+  await expect(page.locator('.share-url')).toHaveCount(1);
+  await page.getByRole('button', { name: 'とじる' }).click();
+  await page.getByRole('button', { name: `${account}@example.invalid` }).click();
+  await page.getByRole('button', { name: 'サインアウト' }).click();
+  await expect(page.getByRole('heading', { name: 'はじめる' })).toBeVisible();
+  await laptop.close();
+  await a.context.close();
 });

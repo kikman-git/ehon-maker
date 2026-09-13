@@ -1,3 +1,4 @@
 /app/* /app 200
 /read/* /read 200
 /g/* /read 200
+/login/* / 200

@@ -5,11 +5,13 @@ import { repository, type BookRepository, type BookSummary } from './cloud/repos
 import { session } from './cloud/session';
 import { useStore } from './cloud/store';
 import { blankBook, loadFonts, templateBook, templates } from './core';
-import { paths } from './routes';
+import { currentRoute, paths } from './routes';
 import { AccountPanel, syncStatus } from './ui/Account';
 import { ShareDialog } from './ui/ShareDialog';
 import { Thumbnail } from './ui/Thumbnail';
+import { Gate } from './ui/Gate';
 import { Icon } from './ui/Icon';
+import { HandoffNotice } from './ui/Landing';
 import './style.css';
 
 const shapeName: Record<string, string> = { SQUARE: 'ましかく', LANDSCAPE: 'よこなが', PORTRAIT: 'たてなが' };
@@ -42,17 +44,17 @@ function Shelf({ repo }: { repo: BookRepository }) {
       <div className="brand"><span className="brand-mark"><Icon name="brush" /></span><h1>ぺたぺた</h1><span className="studio-wordmark">STUDIO</span></div>
       <div className="actions">
         {cloud && account.signedIn && <span className="status" data-pending={state.pendingChanges} title={syncStatus(state)}>{state.pendingChanges ? 'ほぞんちゅう…' : 'ほぞんずみ'}</span>}
-        {cloud && <button onClick={() => setPanel('account')}>{account.signedIn ? account.displayName || 'アカウント' : 'サインイン'}</button>}
+        {cloud && <button className="account-button" onClick={() => setPanel('account')}><Icon name="user" size={16} /><span>{account.displayName || 'アカウント'}</span></button>}
         <button className="primary" disabled={creating} onClick={() => void create()}><Icon name="plus" size={16} /> 新しく描く</button>
       </div>
     </header>
-    {!account.signedIn && <div className="notice">{cloud ? 'サインインすると、描いたえほんをスマホでも開けます。' : '作品はこのブラウザに保存されます。'}</div>}
+    {!cloud && <div className="notice">作品はこのブラウザに保存されます。</div>}
     {createError && <p role="alert" className="error">{createError}</p>}
     <main className="shelf" aria-label="ほんだな">
       <section className="shelf-intro">
         <div><span className="eyebrow">YOUR ILLUSTRATION STUDIO</span><h2>一筆から、物語を。</h2><p>白いページに自由に描く。言葉を添えて、えほんにする。<br />あなただけの一冊を、ここから。</p><div className="actions">
           <button className="primary" disabled={creating} onClick={() => void create()}><Icon name="brush" />{creating ? '準備しています…' : '白紙から描きはじめる'}</button>
-          <button aria-label="あたらしい えほん" onClick={() => setPanel('templates')}>テンプレートから <Icon name="chevron" size={14} /></button>
+          <button aria-label="あたらしい えほん" onClick={() => setPanel('templates')}><Icon name="sparkles" size={17} />テンプレートから</button>
         </div></div>
         <div className="start-sheet" aria-hidden="true"><svg viewBox="0 0 180 180" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M28 138c23-14 52-5 73-9s38-13 54-6M50 123c-9-18-9-31 5-43-4-16 1-29 5-33l17 20c9-3 17-3 24 0l18-20c5 11 9 23 4 34 11 13 13 28 4 42M77 91v3m25-3v3m-21 12c5 5 9 5 15 0M65 123c-13-7-26-7-25-20" /><path d="m30 43 2-8 3 8 8 3-8 3-3 8-2-8-8-3 8-3Zm114 38 2-7 2 7 7 2-7 2-2 7-2-7-7-2 7-2Z" stroke="#c8b569" /></svg></div>
       </section>
@@ -73,12 +75,12 @@ function Shelf({ repo }: { repo: BookRepository }) {
               <p className="hint">{book.pageCount} ページ · {shapeName[book.shape] ?? book.shape} · {when(book.updatedAtEpochMs)}</p>
             </div>
             <div className="book-actions">
-              <a className="button" href={paths.composer(book.id)}>続きを描く</a>
-              <a className="button" href={paths.reader(book.id)}>よむ</a>
-              <button disabled={!cloud} onClick={() => setShareFor(book)}>おくる</button>
+              <a className="button" href={paths.composer(book.id)}><Icon name="brush" size={15} />続きを描く</a>
+              <a className="button" href={paths.reader(book.id)}><Icon name="book" size={15} />よむ</a>
+              <button disabled={!cloud} onClick={() => setShareFor(book)}><Icon name="send" size={15} />おくる</button>
               {confirmDelete === book.id
-                ? <button className="danger" onClick={() => { repo.delete(book.id); setConfirmDelete(null); }}>ほんとうに けす</button>
-                : <button onClick={() => setConfirmDelete(book.id)}>けす</button>}
+                ? <button className="danger" onClick={() => { repo.delete(book.id); setConfirmDelete(null); }}><Icon name="trash" size={15} />ほんとうに けす</button>
+                : <button onClick={() => setConfirmDelete(book.id)}><Icon name="trash" size={15} />けす</button>}
             </div>
           </li>;
         })}
@@ -87,7 +89,7 @@ function Shelf({ repo }: { repo: BookRepository }) {
     {panel === 'account' && <AccountPanel repo={repo} onClose={() => setPanel('none')} />}
     {panel === 'templates' && <div className="dialog-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setPanel('none'); }}>
       <section className="dialog template-dialog" role="dialog" aria-modal="true" aria-labelledby="templates-title">
-        <header className="dialog-header"><h2 id="templates-title">テンプレートを選ぶ</h2><button onClick={() => setPanel('none')} aria-label="とじる">✕</button></header>
+        <header className="dialog-header"><h2 id="templates-title">テンプレートを選ぶ</h2><button className="ghost icon-button" onClick={() => setPanel('none')} aria-label="とじる"><Icon name="close" size={18} /></button></header>
         <p className="hint">好きな世界から、描きはじめましょう。絵を動かしたり、ことばを書きかえたりできます。</p>
         <ul className="template-list">
           {templates.map((template) => <li key={template.id}>
@@ -118,6 +120,7 @@ function Boot() {
 
 const root = createRoot(document.getElementById('root')!);
 root.render(<p className="loading" role="status">じゅんび しています…</p>);
-loadFonts().then(() => root.render(<Boot />)).catch(() => {
+const route = currentRoute();
+loadFonts().then(() => root.render(route.kind === 'login' ? <HandoffNotice /> : <Gate intent="shelf"><Boot /></Gate>)).catch(() => {
   root.render(<p className="loading" role="alert">フォントを よみこめませんでした。ページを さいよみこみしてください。</p>);
 });

@@ -12,7 +12,7 @@ const types = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.txt': 'text/plain; charset=utf-8',
   '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.png': 'image/png', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.ico': 'image/x-icon',
 };
-const route = (pathname) => (/^\/app(\/|$)/.test(pathname) ? '/app.html' : /^\/(read|g)(\/|$)/.test(pathname) ? '/read.html' : pathname === '/' ? '/index.html' : pathname);
+const route = (pathname) => (/^\/app(\/|$)/.test(pathname) ? '/app.html' : /^\/(read|g)(\/|$)/.test(pathname) ? '/read.html' : pathname === '/' || /^\/login(\/|$)/.test(pathname) ? '/index.html' : pathname);
 
 createServer((request, response) => {
   const pathname = new URL(request.url ?? '/', 'http://localhost').pathname;

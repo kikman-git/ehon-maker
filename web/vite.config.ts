@@ -7,6 +7,7 @@ function cleanRoutes(): Plugin {
   const rewrite = (url: string) => {
     if (/^\/app(\/|\?|$)/.test(url)) return '/app.html';
     if (/^\/(read|g)(\/|\?|$)/.test(url)) return '/read.html';
+    if (/^\/login(\/|\?|$)/.test(url)) return '/index.html';
     return null;
   };
   const middleware = (req: { url?: string }, _res: unknown, next: () => void) => {

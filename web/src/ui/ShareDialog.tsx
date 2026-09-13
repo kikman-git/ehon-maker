@@ -6,6 +6,7 @@ import { type BookRepository } from '../cloud/repository';
 import { session } from '../cloud/session';
 import { useStore } from '../cloud/store';
 import { paths } from '../routes';
+import { Icon } from './Icon';
 
 interface Share { token: string; label: string; createdAt: number }
 
@@ -60,22 +61,22 @@ export function ShareDialog({ repo, bookId, title, onClose }: { repo: BookReposi
     <section className="dialog" role="dialog" aria-modal="true" aria-labelledby="share-title">
       <header className="dialog-header">
         <h2 id="share-title">かぞくに おくる · {title}</h2>
-        <button onClick={onClose} aria-label="とじる">✕</button>
+        <button className="ghost icon-button" onClick={onClose} aria-label="とじる"><Icon name="close" size={18} /></button>
       </header>
       {!uid && <p>リンクを つくるには サインインしてください。</p>}
       {uid && <>
         <p className="hint">リンクを ひらいた ひとは、アプリも サインインも なしで えほんを よめます。ひとりに ひとつの リンクを つくると、あとで ひとりずつ とめられます。</p>
         <form className="share-form" onSubmit={(event) => { event.preventDefault(); void create(); }}>
           <label className="field">だれに<input value={label} maxLength={40} placeholder="ばあば" onChange={(event) => setLabel(event.target.value)} /></label>
-          <button type="submit" className="primary" disabled={busy || unsynced}>リンクを つくる</button>
+          <button type="submit" className="primary" disabled={busy || unsynced}><Icon name="link" size={16} />リンクを つくる</button>
         </form>
         {unsynced && <p className="hint">えほんの ほぞんが おわると リンクを つくれます。</p>}
         <ul className="share-list">
           {shares?.map((share) => <li key={share.token}>
             <span className="share-label">{share.label || 'リンク'}</span>
             <code className="share-url">{`${location.host}${paths.guest(share.token)}`}</code>
-            <button onClick={() => void copy(share.token)}>{copied === share.token ? 'コピーしました' : 'コピー'}</button>
-            <button disabled={busy} onClick={() => void revoke(share.token)}>とめる</button>
+            <button onClick={() => void copy(share.token)}><Icon name={copied === share.token ? 'check' : 'copy'} size={15} />{copied === share.token ? 'コピーしました' : 'コピー'}</button>
+            <button disabled={busy} onClick={() => void revoke(share.token)}><Icon name="stop" size={15} />とめる</button>
           </li>)}
           {shares && shares.length === 0 && <li className="hint">まだ リンクは ありません。</li>}
         </ul>

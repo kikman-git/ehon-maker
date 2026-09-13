@@ -2,9 +2,10 @@
   "name": "ehon-assets",
   "main": "src/index.ts",
   "compatibility_date": "2026-09-10",
-  "workers_dev": false,
+  // Dev serves from the workers.dev subdomain until a custom domain exists; prod never does.
+  "workers_dev": true,
   "r2_buckets": [{ "binding": "ASSETS", "bucket_name": "ehon-assets-dev" }],
   "env": {
-    "prod": { "name": "ehon-assets-prod", "r2_buckets": [{ "binding": "ASSETS", "bucket_name": "ehon-assets-prod" }] }
+    "prod": { "name": "ehon-assets-prod", "workers_dev": false, "r2_buckets": [{ "binding": "ASSETS", "bucket_name": "ehon-assets-prod" }] }
   }
 }

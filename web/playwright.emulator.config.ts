@@ -12,6 +12,7 @@ export default defineConfig({
     command: 'pnpm dev --port 4174 --strictPort',
     url: 'http://127.0.0.1:4174/app.html',
     reuseExistingServer: false,
-    env: { VITE_EMULATOR_HOST: '127.0.0.1' },
+    // A developer's .env.local may name the real assets Worker; derivatives must come from the emulator's localBlob here.
+    env: { VITE_EMULATOR_HOST: '127.0.0.1', VITE_ASSETS_URL: '', VITE_APPCHECK_SITE_KEY: '' },
   },
 });

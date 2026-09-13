@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import { defineInt, defineSecret, defineString } from 'firebase-functions/params';
 import { setGlobalOptions } from 'firebase-functions/v2';
@@ -8,6 +9,7 @@ import { onMessagePublished } from 'firebase-functions/v2/pubsub';
 import { resolve } from 'node:path';
 import { AssetService, type BlobStore, type Upload } from './assets';
 import { LocalBlobStore } from './localBlobs';
+import { LoginService } from './login';
 import { R2Store } from './r2';
 import { applyBudgetAlert, cleanupJobs } from './maintenance';
 import { ShareService, TOKEN } from './share';
@@ -25,8 +27,10 @@ const webOrigins = defineString('WEB_ORIGINS', { default: 'http://127.0.0.1:5173
 const options = { enforceAppCheck: process.env.FUNCTIONS_EMULATOR !== 'true', secrets: [accessKey, secretKey] };
 
 function user(request: CallableRequest): string {
-  const provider = request.auth?.token.firebase?.sign_in_provider;
-  if (!request.auth || !['apple.com', 'google.com'].includes(provider ?? '')) throw new HttpsError('unauthenticated', 'Sign in with Apple or Google first.');
+  const token = request.auth?.token;
+  // A browser opened from the phone (qrLoginClaim) carries the handoff claim instead of a provider.
+  const real = ['apple.com', 'google.com'].includes(token?.firebase?.sign_in_provider ?? '') || token?.handoff === 'app';
+  if (!request.auth || !real) throw new HttpsError('unauthenticated', 'Sign in with Apple or Google first.');
   return request.auth.uid;
 }
 const emulated = process.env.FUNCTIONS_EMULATOR === 'true';
@@ -51,6 +55,13 @@ export const shareCreate = onCall({ enforceAppCheck: options.enforceAppCheck }, 
 export const shareRevoke = onCall({ enforceAppCheck: options.enforceAppCheck }, request => {
   const uid = user(request); return new ShareService(getFirestore()).revoke(uid, request.data?.token);
 });
+/** QR hand-off (decision 58): the browser starts and claims, the signed-in app approves. */
+const handoff = () => new LoginService(getFirestore(), uid => getAuth().createCustomToken(uid, { handoff: 'app' }));
+export const qrLoginStart = onCall({ enforceAppCheck: options.enforceAppCheck }, request => handoff().start(request.data?.client));
+export const qrLoginApprove = onCall({ enforceAppCheck: options.enforceAppCheck }, request => {
+  const uid = user(request); return handoff().approve(uid, { id: request.data?.id, code: request.data?.code });
+});
+export const qrLoginClaim = onCall({ enforceAppCheck: options.enforceAppCheck }, request => handoff().claim(request.data?.id, request.data?.secret));
 /** `GET /guestBook/<token>`: the only unauthenticated read; the token is the whole capability. */
 export const guestBook = onRequest(async (request, response) => {
   const origin = request.headers.origin;

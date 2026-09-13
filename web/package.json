@@ -19,6 +19,7 @@
   "dependencies": {
     "@ehon/core": "link:vendor/ehon-core",
     "firebase": "^12.19.0",
+    "qrcode": "1.5.4",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
@@ -26,6 +27,7 @@
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "1.63.0",
     "@types/node": "^22.0.0",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "6.1.1",
