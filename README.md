@@ -7,7 +7,7 @@
 <p align="center">
   <b>おやこで つくる えほん</b><br>
   A picture-book maker for small children and the grown-ups reading with them.<br>
-  iPhone · iPad · Japanese UI · Kotlin Multiplatform core + SwiftUI
+  iPhone · iPad · Web · Japanese UI · one Kotlin Multiplatform core under SwiftUI and React
 </p>
 
 <p align="center">
@@ -31,6 +31,20 @@
   Shelf · はる (stick) · もじ (words) · send to family · grandma's reply screen · reading spread · iPad make and read
 </sub></p>
 
+<p align="center">
+  <img src="docs/readme/web-studio.png" width="49%" alt="The web studio: a facing-page spread on the desk, every piece and caption its own item">
+  <img src="docs/readme/web-reader.png" width="49%" alt="The web reader: facing pages, read-aloud, full screen and print">
+</p>
+
+<p align="center">
+  <img src="docs/readme/love-letter-mars.png" width="49%" alt="きみへの ことばを さがして: the Mars spread, drawn from the storyboard">
+  <img src="docs/readme/love-letter-garden.png" width="49%" alt="きみへの ことばを さがして: the carrot garden under the moon">
+</p>
+
+<p align="center"><sub>
+  The web studio and reader · two spreads of きみへの ことばを さがして, a hand-drawn storyboard bound as a book document
+</sub></p>
+
 ## What it does
 
 - **Start from a template**, then stick parts on the page, draw with a finger, or write words. Three modes, never overlapping, so a small hand cannot wreck a page by accident.
@@ -40,17 +54,21 @@
 - **こども / おとな** switch: bigger targets and fewer knobs for the child; layering, furigana and page reordering for the adult.
 - **iPad**: hold it upright to make, turn it sideways to read.
 - Japanese first. The UI falls back to English on other devices.
-- **A book is one document.** Pictures travel inside the `.ehon` file as SVG, so a language model can write or rework a whole illustrated book and every piece stays movable and every caption editable. The contract is [`docs/EHON_FORMAT.md`](docs/EHON_FORMAT.md).
+- **A book is one document.** Pictures travel inside the `.ehon` file as SVG, so a person or a language model can write or rework a whole illustrated book, and every piece stays movable and every caption editable on the phone and the web alike. The contract is [`docs/EHON_FORMAT.md`](docs/EHON_FORMAT.md).
+- **Story templates are storyboards bound as books.** Each story in `shared/templates/` is a `story.json` with its SVG pieces, assembled at build time into the document the shelf copies. きみへの ことばを さがして is the worked example: a cover, a title page, twenty-two storyboard pages picture-left words-right, and a back cover, drawn from the author's pencil sketches with every character a piece the child can move.
+- **On the web**, the same core draws in a React studio: a canvas-first desk that shows illustrated books as facing pages, brush, eraser, words with furigana, the book's own pieces as materials, and a reader one click away with read-aloud, full screen and printing that lays every spread on its own sheet. With a Firebase project configured it adds accounts, sync with the phone, illustration uploads and read-only guest links.
 
 ## How it is built
 
 A shared Kotlin core owns the document, the editor semantics and the layout, and emits a **pure-data scene graph**. Each platform has one thin painter that walks it. The screen, the 2048 px share image and the 300 dpi PDF are the same tree at different scales, so what a child sees is structurally what prints.
 
 ```
-shared/            Kotlin Multiplatform: model, parts catalog, scene graph, EditorController, codec, strings
+shared/            Kotlin Multiplatform: model, parts catalog, SVG parser, scene graph, EditorController, codec, strings
+shared/templates/  Story templates as documents: a story.json and its SVG pieces per story
 iosApp/            SwiftUI app + CoreGraphics painter (iPhone and iPad)
 painter-compose/   Compose painter, kept compiling on the JVM so the core always has two consumers
-web/               React harness + generated Kotlin/JS core and Canvas2D painter
+web/               React studio, shelf and reader over the generated Kotlin/JS core and its Canvas2D painter
+backend/           Firestore rules, Tokyo functions, the assets worker and their emulator tests
 docs/DECISIONS.md  Why things are the way they are
 docs/EHON_FORMAT.md  The book document a model or a person writes: pages, words, SVG art
 docs/WEB_BACKEND_PLAN.md  The web studio and backend, phase by phase (Phases 0–2 implemented locally)
@@ -87,14 +105,32 @@ cd web && pnpm exec playwright install chromium  # once, for browser checks
 cd .. && make web-test           # browser interactions and six painter snapshots
 ```
 
-Open `http://localhost:5173/app` to draw on a blank page, or choose a book from the shelf.
-The studio has brush and eraser tools, one working page with thumbnail navigation, readable
-system fonts, text with furigana, undo/redo, and opening/saving `.ehon` files. Save before
-switching templates or closing the tab. See [`web/README.md`](web/README.md) for the facade contract.
+Open `http://localhost:5173/` for the shelf, `/app` to draw on a blank page, or
+`/app?template=doc-love-letter` to try a story without keeping it. Illustrated books open as
+facing pages; the view bar floats over the desk, and the tool panel and page strip fold away so
+the pages get the screen. **よむ** opens the reader, whose **印刷** prints the whole book one spread
+per landscape sheet or saves it as a PDF. `.ehon` files open and save from the File menu. See
+[`web/README.md`](web/README.md) for the facade contract.
+
+### Story templates
+
+A template is a folder in `shared/templates/<story>/`: a `story.json` that is the book with each
+`art` entry pointing at a file, and the SVG pieces in `art/`. Gradle assembles every story into the
+shelf and writes the portable documents to `shared/build/templates/`, which the checker reads:
+
+```sh
+make web-core                                   # assembles every story on the way
+cd web && pnpm ehon-check ../shared/build/templates/doc-love-letter.ehon.json
+```
+
+Bind a new story the way a storyboard is drawn: a cover, a title page, spreads with the picture on
+the left page and the words on the right, a back cover with the colophon; narration written in the
+margins stays off the page. The rules are in [`docs/EHON_FORMAT.md`](docs/EHON_FORMAT.md) and the
+worked example in [`shared/templates/love-letter/README.md`](shared/templates/love-letter/README.md).
 
 ## Status
 
-Working prototype heading into closed testing. Not on the App Store. Books live on the device and the reply recorder lives inside the app. Phases 0–2 of [`docs/WEB_BACKEND_PLAN.md`](docs/WEB_BACKEND_PLAN.md) are implemented locally: codec v3 (still reads v1/v2), the Kotlin/JS core, a web shelf, a drawing workspace (one page at a time, visible brush and eraser tools, thumbnail navigation, pan/zoom and optional illustration placement), a reader, accounts with book sync on iOS and web, read-only guest links, PNG uploads that become parts on every device, sliced web fonts and Lighthouse byte budgets in CI. Everything runs against the Firebase emulators; the Firebase project, R2 buckets, the assets domain and Cloudflare Pages are not provisioned, so nothing is deployed yet. Advanced layered raster painting, AI, billing and packs remain in Phases 3–4.
+Working prototype heading into closed testing. Not on the App Store. Books live on the device and the reply recorder lives inside the app. Phases 0–2 of [`docs/WEB_BACKEND_PLAN.md`](docs/WEB_BACKEND_PLAN.md) are implemented locally: codec v4 (still reads v1 to v3) with SVG art inside the document, ten story templates written as documents, the Kotlin/JS core, a web shelf, a canvas-first studio with facing pages, a reader that prints, accounts with book sync on iOS and web, read-only guest links, PNG uploads that become parts on every device, sliced web fonts and Lighthouse byte budgets in CI. Everything runs against the Firebase emulators; the Firebase project, R2 buckets, the assets domain and Cloudflare Pages are not provisioned, so nothing is deployed yet. Advanced layered raster painting, AI, billing and packs remain in Phases 3–4.
 
 ## License
 
