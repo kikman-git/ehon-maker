@@ -1,0 +1,60 @@
+# Every job is a Makefile target that runs identically on a laptop. The iOS build needs a macOS
+# runner and Xcode; run `make ios` / `make ios-test` locally before a TestFlight upload.
+name: ci
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+env:
+  JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+
+jobs:
+  shared:
+    name: shared core (JVM, Node, Compose painter)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '21' }
+      - uses: gradle/actions/setup-gradle@v4
+      - run: make test
+
+  web:
+    name: web (harness, painter goldens, byte budgets)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '21' }
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 11.22.0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: pnpm, cache-dependency-path: web/pnpm-lock.yaml }
+      - run: make web-core
+      - run: cd web && pnpm install --frozen-lockfile && pnpm exec playwright install --with-deps chromium
+      - run: make web-test
+      - run: make web-budget
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: { name: web-test-results, path: web/test-results, if-no-files-found: ignore }
+
+  backend:
+    name: backend rules, functions and browser sync (emulators)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '21' }
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 11.22.0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: pnpm, cache-dependency-path: '**/pnpm-lock.yaml' }
+      - run: make rules-test
+      - run: cd web && pnpm install --frozen-lockfile && pnpm exec playwright install --with-deps chromium
+      - run: make web-sync-test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: { name: web-sync-test-results, path: web/test-results, if-no-files-found: ignore }

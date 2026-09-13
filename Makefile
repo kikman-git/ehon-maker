@@ -9,7 +9,8 @@ export JAVA_HOME
 
 SIM ?= iPhone 16
 BUNDLE := app.ehon.petapeta
-XC := xcodebuild -project iosApp/Ehon.xcodeproj -scheme Ehon -sdk iphonesimulator CODE_SIGNING_ALLOWED=NO
+# Ad-hoc simulator signing gives Firebase Auth a working keychain without a developer team.
+XC := xcodebuild -project iosApp/Ehon.xcodeproj -scheme Ehon -sdk iphonesimulator CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM=
 
 PLIST := iosApp/Ehon/Info.plist
 ARCHIVE := build/Ehon.xcarchive
@@ -29,10 +30,59 @@ help:
 check: test ios-test ## Everything: shared tests, both painters, iOS tests
 
 .PHONY: test
-test: ## Shared-module golden tests + Compose painter (JVM, no simulator)
-	./gradlew :shared:jvmTest :painter-compose:compileKotlinJvm
+test: ## Shared tests on JVM, Node and headless Chrome + Compose painter
+	./gradlew :shared:jvmTest :shared:jsTest :painter-compose:compileKotlinJvm
+
+.PHONY: web-core
+web-core: ## Build and stage the typed Kotlin/JS library for Vite
+	./gradlew :shared:jsBrowserProductionLibraryDistribution
+	node tools/stage-web-core.mjs
+
+.PHONY: web
+web: web-core ## Run the web app at http://localhost:5173/ (shelf; /app is the composer harness)
+	cd web && pnpm install --frozen-lockfile && pnpm dev
+
+.PHONY: web-build
+web-build: web-core ## Type-check and build the web harness
+	cd web && pnpm install --frozen-lockfile && pnpm build
+
+.PHONY: web-test
+web-test: web-build ## Test the browser facade and painter with Playwright
+	cd web && pnpm test
+
+.PHONY: web-fonts
+web-fonts: ## Slice the body fonts into woff2; FETCH=1 downloads the five downloadable faces first
+	cd web && pnpm install --frozen-lockfile && node tools/slice-fonts.mjs $(if $(FETCH),--fetch)
+
+.PHONY: web-budget
+web-budget: web-build ## Lighthouse byte budgets (plan §11) on a gzip-served production build
+	cd web && pnpm exec lhci autorun
+
+.PHONY: web-sync-test
+web-sync-test: web-core backend-build ## Test web accounts, sync, leases, guest links and uploads against the emulators
+	cd web && pnpm install --frozen-lockfile
+	cd backend && pnpm exec firebase emulators:exec --project demo-ehon --only auth,firestore,functions \
+	  'cd ../web && pnpm exec playwright test -c playwright.emulator.config.ts'
 
 .PHONY: framework
+.PHONY: backend-build emulators rules-test sync-test functions-deploy
+backend-build: ## Install and compile the Firebase functions and asset worker
+	cd backend && pnpm install --frozen-lockfile && pnpm build
+
+emulators: backend-build ## Start local Auth, Firestore and Functions (demo-ehon)
+	cd backend && pnpm emulators
+
+rules-test: backend-build ## Run ownership, upload and maintenance tests against Firestore
+	cd backend && pnpm rules-test
+
+sync-test: xcodeproj backend-build ## Test two iOS clients against Auth and Firestore emulators
+	cd backend && pnpm exec firebase emulators:exec --project demo-ehon --only auth,firestore \
+	  'cd .. && xcodebuild -project iosApp/Ehon.xcodeproj -scheme EhonSync -sdk iphonesimulator CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM= -destination "platform=iOS Simulator,name=$(SIM)" -only-testing:EhonTests/SyncIntegrationTests test'
+
+functions-deploy: backend-build ## Deploy rules/indexes/functions; requires FIREBASE_PROJECT explicitly
+	@test -n "$(FIREBASE_PROJECT)" || { echo 'Set FIREBASE_PROJECT to your provisioned Firebase project ID.' >&2; exit 1; }
+	cd backend && pnpm exec firebase deploy --project "$(FIREBASE_PROJECT)" --only firestore,functions
+
 framework: ## Link the KMP framework for the iOS simulator
 	./gradlew :shared:linkDebugFrameworkIosX64 :shared:linkDebugFrameworkIosSimulatorArm64
 
