@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#605768" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>洗濯物の ある 壁</title>
+<rect x="0" y="0" width="600" height="800" fill="#e2cdb1" stroke="none"/>
+<rect x="0" y="599" width="600" height="201" fill="#cbb398" stroke="none"/>
+<path d="M0 599h600M0 644h600M0 737h600" stroke="#bda58d"/>
+<path d="M45 90q161 44 510-13M40 119q161 44 513-13" stroke="#a08b79" stroke-width="1.3"/>
+<path d="M125 40v559M369 25v574" stroke="#d7bfa4" stroke-width="2"/>
+<path d="M14 486l112 33M376 211l99-30M461 386l97 13" stroke="#c9b295" stroke-width="1"/>
+</svg>

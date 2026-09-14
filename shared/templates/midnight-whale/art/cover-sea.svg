@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>くじらの 夜の 海</title>
+<rect x="0" y="0" width="600" height="450" fill="#2b4659" rx="180" stroke="none"/>
+<polygon points="62.0,35.0 63.5,38.9 67.7,39.1 64.5,41.8 65.5,45.9 62.0,43.6 58.5,45.9 59.5,41.8 56.3,39.1 60.5,38.9" fill="#e4cc92"/>
+<circle cx="199" cy="124" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="336" cy="207" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="473" cy="75" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="52.0,150.0 54.0,155.2 59.6,155.5 55.3,159.1 56.7,164.5 52.0,161.4 47.3,164.5 48.7,159.1 44.4,155.5 50.0,155.2" fill="#e4cc92"/>
+<circle cx="189" cy="26" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="326" cy="109" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="463" cy="192" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="42.0,50.0 44.5,56.5 51.5,56.9 46.1,61.3 47.9,68.1 42.0,64.3 36.1,68.1 37.9,61.3 32.5,56.9 39.5,56.5" fill="#e4cc92"/>
+<circle cx="179" cy="143" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="316" cy="226" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="453" cy="94" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="32.0,171.0 33.5,174.9 37.7,175.1 34.5,177.8 35.5,181.9 32.0,179.6 28.5,181.9 29.5,177.8 26.3,175.1 30.5,174.9" fill="#e4cc92"/>
+<circle cx="169" cy="45" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="306" cy="128" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="443" cy="211" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="22.0,71.0 24.0,76.2 29.6,76.5 25.3,80.1 26.7,85.5 22.0,82.4 17.3,85.5 18.7,80.1 14.4,76.5 20.0,76.2" fill="#e4cc92"/>
+<circle cx="159" cy="162" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="296" cy="30" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="433" cy="113" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="474" cy="88" r="32" fill="#eedbb0" stroke="none"/>
+<path d="M454 101q16 8 30 0" stroke="#c4af88" stroke-width="1.3"/>
+<circle cx="488" cy="65" r="7" fill="#e2ca9b" stroke="none"/>
+<path d="M0 291Q120 259 287 300T600 286V450H0Z" fill="#688d96" stroke="none"/>
+<path d="M30 339q121-28 240 0t290 0M55 400q89-18 190 0t274 0" stroke="#aac1be"/>
+</svg>

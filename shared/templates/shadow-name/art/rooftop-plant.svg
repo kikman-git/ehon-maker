@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 250" fill="none" stroke="#605768" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>屋上の オリーブ</title>
+<path d="M28 178h92l-10 55H41Z" fill="#bb8970"/>
+<ellipse cx="74" cy="179" rx="47" ry="10" fill="#87735b"/>
+<g transform="translate(74 179) scale(1.55)">
+<path d="M0 0Q9-38 0-94" stroke="#90a28a" stroke-width="2"/>
+<path d="M2 -19q24-3 21-24q-25 1 -21 24Z" fill="#90a28a" stroke-width="1"/>
+<path d="M5 -40q-24-3 -21-24q25 1 21 24Z" fill="#90a28a" stroke-width="1"/>
+<path d="M3 -63q24-3 21-24q-25 1 -21 24Z" fill="#90a28a" stroke-width="1"/>
+<path d="M0 -82q-24-3 -21-24q25 1 21 24Z" fill="#90a28a" stroke-width="1"/>
+</g>
+</svg>

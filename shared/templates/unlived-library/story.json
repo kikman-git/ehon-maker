@@ -1,0 +1,1705 @@
+{
+  "id": "doc-unlived-library",
+  "order": 7,
+  "description": {
+    "ja": "もしも、別の人生を選んでいたら。四十歳のマーラと、まだ書かれていないページの英語絵本。",
+    "en": "At forty, Mara discovers a library of the lives she never chose. An English picture book about regret, possibility, and an unfinished present."
+  },
+  "book": {
+    "id": {
+      "value": "template-unlived-library"
+    },
+    "title": "The Library of Unlived Lives",
+    "shape": "PORTRAIT",
+    "contentLocale": "en",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "library-door": {
+        "name": "The unmarked library door",
+        "file": "library-door.svg"
+      },
+      "reading-room": {
+        "name": "The library reading room",
+        "file": "reading-room.svg"
+      },
+      "catalog-desk": {
+        "name": "The owl librarian’s desk",
+        "file": "catalog-desk.svg"
+      },
+      "captains-sea": {
+        "name": "The sea in the captain’s life",
+        "file": "captains-sea.svg"
+      },
+      "concert-room": {
+        "name": "The stage in the musician’s life",
+        "file": "concert-room.svg"
+      },
+      "home-kitchen": {
+        "name": "Mara’s ordinary kitchen",
+        "file": "home-kitchen.svg"
+      },
+      "cover-arch": {
+        "name": "The library arch",
+        "file": "cover-arch.svg"
+      },
+      "mara-read": {
+        "name": "Mara reading",
+        "file": "mara-read.svg"
+      },
+      "mara-reach": {
+        "name": "Mara reaching for a book",
+        "file": "mara-reach.svg"
+      },
+      "owl": {
+        "name": "The keeper of possible lives",
+        "file": "owl.svg"
+      },
+      "open-book": {
+        "name": "A book of another life",
+        "file": "open-book.svg"
+      },
+      "plain-book": {
+        "name": "The book of Mara’s life",
+        "file": "plain-book.svg"
+      },
+      "unwritten-page": {
+        "name": "A page with room to begin",
+        "file": "unwritten-page.svg"
+      },
+      "ship": {
+        "name": "The ship Mara might have sailed",
+        "file": "ship.svg"
+      },
+      "violin": {
+        "name": "The violin in another life",
+        "file": "violin.svg"
+      },
+      "mug": {
+        "name": "Mara’s chipped mug",
+        "file": "mug.svg"
+      },
+      "basil": {
+        "name": "Basil on the windowsill",
+        "file": "basil.svg"
+      },
+      "pencil": {
+        "name": "The pencil Mara takes home",
+        "file": "pencil.svg"
+      },
+      "lamp": {
+        "name": "The green reading lamp",
+        "file": "lamp.svg"
+      },
+      "book-stack": {
+        "name": "Books waiting to be opened",
+        "file": "book-stack.svg"
+      },
+      "possible-doors-left": {
+        "name": "The hall of unlived lives（ひだり）",
+        "file": "possible-doors-left.svg"
+      },
+      "possible-doors-right": {
+        "name": "The hall of unlived lives（みぎ）",
+        "file": "possible-doors-right.svg"
+      },
+      "unwritten-garden-left": {
+        "name": "The unwritten page opening into a garden（ひだり）",
+        "file": "unwritten-garden-left.svg"
+      },
+      "unwritten-garden-right": {
+        "name": "The unwritten page opening into a garden（みぎ）",
+        "file": "unwritten-garden-right.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "cover",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-cover-arch-1"
+            },
+            "partId": {
+              "value": "art:cover-arch"
+            },
+            "x": 50,
+            "y": 67,
+            "sizePct": 90,
+            "heightPct": 61.875
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-mara-read-2"
+            },
+            "partId": {
+              "value": "art:mara-read"
+            },
+            "x": 47,
+            "y": 74,
+            "sizePct": 31,
+            "heightPct": 34.875
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-open-book-3"
+            },
+            "partId": {
+              "value": "art:open-book"
+            },
+            "x": 47,
+            "y": 76,
+            "sizePct": 19,
+            "heightPct": 11.97
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-owl-4"
+            },
+            "partId": {
+              "value": "art:owl"
+            },
+            "x": 74,
+            "y": 57,
+            "sizePct": 21,
+            "heightPct": 20.724
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-5"
+            },
+            "x": 50,
+            "y": 13,
+            "text": "The Library",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-6"
+            },
+            "x": 50,
+            "y": 23,
+            "text": "of Unlived Lives",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "title",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-1"
+            },
+            "x": 50,
+            "y": 39,
+            "text": "The Library",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-2"
+            },
+            "x": 50,
+            "y": 47,
+            "text": "of Unlived Lives",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "title-plain-book-3"
+            },
+            "partId": {
+              "value": "art:plain-book"
+            },
+            "x": 50,
+            "y": 70,
+            "sizePct": 15,
+            "heightPct": 15.221
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-library-door-1"
+            },
+            "partId": {
+              "value": "art:library-door"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-mara-reach-2"
+            },
+            "partId": {
+              "value": "art:mara-reach"
+            },
+            "x": 44,
+            "y": 73,
+            "sizePct": 35,
+            "heightPct": 39.375
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-book-stack-3"
+            },
+            "partId": {
+              "value": "art:book-stack"
+            },
+            "x": 74,
+            "y": 84,
+            "sizePct": 20,
+            "heightPct": 15.833
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-1"
+            },
+            "x": 50,
+            "y": 27.5,
+            "text": "On the night Mara turned",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-2"
+            },
+            "x": 50,
+            "y": 35.0,
+            "text": "forty, she found a library",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-3"
+            },
+            "x": 50,
+            "y": 42.5,
+            "text": "at the end of a street",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-4"
+            },
+            "x": 50,
+            "y": 50.0,
+            "text": "she had never taken.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-5"
+            },
+            "x": 50,
+            "y": 65.0,
+            "text": "The sign said:",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-6"
+            },
+            "x": 50,
+            "y": 72.5,
+            "text": "Every life you didn’t live.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-catalog-desk-1"
+            },
+            "partId": {
+              "value": "art:catalog-desk"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-owl-2"
+            },
+            "partId": {
+              "value": "art:owl"
+            },
+            "x": 72,
+            "y": 54,
+            "sizePct": 30,
+            "heightPct": 29.605
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-mara-read-3"
+            },
+            "partId": {
+              "value": "art:mara-read"
+            },
+            "x": 30,
+            "y": 75,
+            "sizePct": 39,
+            "heightPct": 43.875
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-open-book-4"
+            },
+            "partId": {
+              "value": "art:open-book"
+            },
+            "x": 62,
+            "y": 76,
+            "sizePct": 28,
+            "heightPct": 17.64
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-lamp-5"
+            },
+            "partId": {
+              "value": "art:lamp"
+            },
+            "x": 86,
+            "y": 71,
+            "sizePct": 18,
+            "heightPct": 14.766
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-1"
+            },
+            "x": 50,
+            "y": 27.5,
+            "text": "“Each book is a life",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-2"
+            },
+            "x": 50,
+            "y": 35.0,
+            "text": "you could have chosen,”",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-3"
+            },
+            "x": 50,
+            "y": 42.5,
+            "text": "said the owl at the desk.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-4"
+            },
+            "x": 50,
+            "y": 57.5,
+            "text": "Mara reached for the one",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-5"
+            },
+            "x": 50,
+            "y": 65.0,
+            "text": "with a ship on its cover.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-6"
+            },
+            "x": 50,
+            "y": 72.5,
+            "text": "She had almost gone to sea.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p5",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-captains-sea-1"
+            },
+            "partId": {
+              "value": "art:captains-sea"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-ship-2"
+            },
+            "partId": {
+              "value": "art:ship"
+            },
+            "x": 53,
+            "y": 58,
+            "sizePct": 76,
+            "heightPct": 54.889
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-open-book-3"
+            },
+            "partId": {
+              "value": "art:open-book"
+            },
+            "x": 50,
+            "y": 87,
+            "sizePct": 40,
+            "heightPct": 25.2
+          }
+        ]
+      },
+      {
+        "id": "p6",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-1"
+            },
+            "x": 50,
+            "y": 27.5,
+            "text": "There she was: a captain.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-2"
+            },
+            "x": 50,
+            "y": 35.0,
+            "text": "Salt on her lips.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-3"
+            },
+            "x": 50,
+            "y": 42.5,
+            "text": "Whole oceans ahead.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-4"
+            },
+            "x": 50,
+            "y": 57.5,
+            "text": "On her father’s birthday,",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-5"
+            },
+            "x": 50,
+            "y": 65.0,
+            "text": "she called from a harbor.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-6"
+            },
+            "x": 50,
+            "y": 72.5,
+            "text": "He was already asleep.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p7",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-concert-room-1"
+            },
+            "partId": {
+              "value": "art:concert-room"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-violin-2"
+            },
+            "partId": {
+              "value": "art:violin"
+            },
+            "x": 50,
+            "y": 49,
+            "sizePct": 50,
+            "heightPct": 49.342
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-open-book-3"
+            },
+            "partId": {
+              "value": "art:open-book"
+            },
+            "x": 50,
+            "y": 84,
+            "sizePct": 40,
+            "heightPct": 25.2
+          }
+        ]
+      },
+      {
+        "id": "p8",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-1"
+            },
+            "x": 50,
+            "y": 23.75,
+            "text": "In another, she played",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-2"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "to a room full of people.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "Her hands still shook",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-4"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "before the first note.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "Mara had imagined a life",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-6"
+            },
+            "x": 50,
+            "y": 76.25,
+            "text": "where she was never afraid.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p9",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-possible-doors-left-1"
+            },
+            "partId": {
+              "value": "art:possible-doors-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-ship-2"
+            },
+            "partId": {
+              "value": "art:ship"
+            },
+            "x": 27,
+            "y": 50,
+            "sizePct": 33,
+            "heightPct": 23.833
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-violin-3"
+            },
+            "partId": {
+              "value": "art:violin"
+            },
+            "x": 78,
+            "y": 45,
+            "sizePct": 23,
+            "heightPct": 22.697
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-mara-reach-4"
+            },
+            "partId": {
+              "value": "art:mara-reach"
+            },
+            "x": 57,
+            "y": 82,
+            "sizePct": 23,
+            "heightPct": 25.875
+          }
+        ]
+      },
+      {
+        "id": "p10",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-possible-doors-right-1"
+            },
+            "partId": {
+              "value": "art:possible-doors-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-basil-2"
+            },
+            "partId": {
+              "value": "art:basil"
+            },
+            "x": 29,
+            "y": 50,
+            "sizePct": 25,
+            "heightPct": 27.273
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-unwritten-page-3"
+            },
+            "partId": {
+              "value": "art:unwritten-page"
+            },
+            "x": 75,
+            "y": 53,
+            "sizePct": 22,
+            "heightPct": 21.083
+          }
+        ]
+      },
+      {
+        "id": "p11",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-reading-room-1"
+            },
+            "partId": {
+              "value": "art:reading-room"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-mara-read-2"
+            },
+            "partId": {
+              "value": "art:mara-read"
+            },
+            "x": 44,
+            "y": 72,
+            "sizePct": 44,
+            "heightPct": 49.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-plain-book-3"
+            },
+            "partId": {
+              "value": "art:plain-book"
+            },
+            "x": 45,
+            "y": 74,
+            "sizePct": 17,
+            "heightPct": 17.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-book-stack-4"
+            },
+            "partId": {
+              "value": "art:book-stack"
+            },
+            "x": 78,
+            "y": 85,
+            "sizePct": 20,
+            "heightPct": 15.833
+          }
+        ]
+      },
+      {
+        "id": "p12",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-1"
+            },
+            "x": 50,
+            "y": 27.5,
+            "text": "Then she found a plain book.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-2"
+            },
+            "x": 50,
+            "y": 35.0,
+            "text": "A stain crossed its cover.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-3"
+            },
+            "x": 50,
+            "y": 50.0,
+            "text": "“That one is mine.”",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-4"
+            },
+            "x": 50,
+            "y": 65.0,
+            "text": "She nearly put it back.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-5"
+            },
+            "x": 50,
+            "y": 72.5,
+            "text": "She knew how it began.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p13",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-home-kitchen-1"
+            },
+            "partId": {
+              "value": "art:home-kitchen"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-mara-read-2"
+            },
+            "partId": {
+              "value": "art:mara-read"
+            },
+            "x": 30,
+            "y": 74,
+            "sizePct": 41,
+            "heightPct": 46.125
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-mug-3"
+            },
+            "partId": {
+              "value": "art:mug"
+            },
+            "x": 66,
+            "y": 85,
+            "sizePct": 19,
+            "heightPct": 12.469
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-basil-4"
+            },
+            "partId": {
+              "value": "art:basil"
+            },
+            "x": 75,
+            "y": 44,
+            "sizePct": 20,
+            "heightPct": 21.818
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-plain-book-5"
+            },
+            "partId": {
+              "value": "art:plain-book"
+            },
+            "x": 78,
+            "y": 86,
+            "sizePct": 20,
+            "heightPct": 20.294
+          }
+        ]
+      },
+      {
+        "id": "p14",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-1"
+            },
+            "x": 50,
+            "y": 23.75,
+            "text": "It contained Tuesday rain,",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-2"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "a terrible first kiss,",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-3"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "and soup she had brought",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-4"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "to a friend who couldn’t",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-5"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "get out of bed.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-6"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "Mara had not thought",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-7"
+            },
+            "x": 50,
+            "y": 76.25,
+            "text": "these things were a plot.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p15",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-catalog-desk-1"
+            },
+            "partId": {
+              "value": "art:catalog-desk"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-owl-2"
+            },
+            "partId": {
+              "value": "art:owl"
+            },
+            "x": 72,
+            "y": 54,
+            "sizePct": 30,
+            "heightPct": 29.605
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-mara-reach-3"
+            },
+            "partId": {
+              "value": "art:mara-reach"
+            },
+            "x": 30,
+            "y": 75,
+            "sizePct": 39,
+            "heightPct": 43.875
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-plain-book-4"
+            },
+            "partId": {
+              "value": "art:plain-book"
+            },
+            "x": 62,
+            "y": 77,
+            "sizePct": 20,
+            "heightPct": 20.294
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-pencil-5"
+            },
+            "partId": {
+              "value": "art:pencil"
+            },
+            "x": 83,
+            "y": 77,
+            "sizePct": 12,
+            "heightPct": 13.68
+          }
+        ]
+      },
+      {
+        "id": "p16",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-1"
+            },
+            "x": 50,
+            "y": 23.75,
+            "text": "“Can I exchange it?”",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-2"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "she asked.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "“No,” said the owl.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-4"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "“But look at the pages",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-5"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "after tonight.”",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-6"
+            },
+            "x": 50,
+            "y": 76.25,
+            "text": "Mara turned one over.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p17",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-unwritten-garden-left-1"
+            },
+            "partId": {
+              "value": "art:unwritten-garden-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-mara-read-2"
+            },
+            "partId": {
+              "value": "art:mara-read"
+            },
+            "x": 36,
+            "y": 72,
+            "sizePct": 25,
+            "heightPct": 28.125
+          }
+        ]
+      },
+      {
+        "id": "p18",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-unwritten-garden-right-1"
+            },
+            "partId": {
+              "value": "art:unwritten-garden-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-pencil-2"
+            },
+            "partId": {
+              "value": "art:pencil"
+            },
+            "x": 74,
+            "y": 84,
+            "sizePct": 17,
+            "heightPct": 19.38,
+            "rotationDeg": 35
+          }
+        ]
+      },
+      {
+        "id": "p19",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-library-door-1"
+            },
+            "partId": {
+              "value": "art:library-door"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-mara-read-2"
+            },
+            "partId": {
+              "value": "art:mara-read"
+            },
+            "x": 50,
+            "y": 75,
+            "sizePct": 39,
+            "heightPct": 43.875
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-plain-book-3"
+            },
+            "partId": {
+              "value": "art:plain-book"
+            },
+            "x": 50,
+            "y": 77,
+            "sizePct": 16,
+            "heightPct": 16.235
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-pencil-4"
+            },
+            "partId": {
+              "value": "art:pencil"
+            },
+            "x": 63,
+            "y": 77,
+            "sizePct": 10,
+            "heightPct": 11.4
+          }
+        ]
+      },
+      {
+        "id": "p20",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-1"
+            },
+            "x": 50,
+            "y": 23.75,
+            "text": "She left the other books",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-2"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "where they belonged.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "Outside, the street was",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-4"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "still the same street.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "Mara took the long way home.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-6"
+            },
+            "x": 50,
+            "y": 76.25,
+            "text": "She had always wondered.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p21",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-home-kitchen-1"
+            },
+            "partId": {
+              "value": "art:home-kitchen"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-mara-read-2"
+            },
+            "partId": {
+              "value": "art:mara-read"
+            },
+            "x": 30,
+            "y": 74,
+            "sizePct": 41,
+            "heightPct": 46.125
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-mug-3"
+            },
+            "partId": {
+              "value": "art:mug"
+            },
+            "x": 61,
+            "y": 85,
+            "sizePct": 19,
+            "heightPct": 12.469
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-basil-4"
+            },
+            "partId": {
+              "value": "art:basil"
+            },
+            "x": 75,
+            "y": 44,
+            "sizePct": 20,
+            "heightPct": 21.818
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-unwritten-page-5"
+            },
+            "partId": {
+              "value": "art:unwritten-page"
+            },
+            "x": 77,
+            "y": 85,
+            "sizePct": 22,
+            "heightPct": 21.083,
+            "rotationDeg": 80
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-pencil-6"
+            },
+            "partId": {
+              "value": "art:pencil"
+            },
+            "x": 90,
+            "y": 85,
+            "sizePct": 10,
+            "heightPct": 11.4,
+            "rotationDeg": 30
+          }
+        ]
+      },
+      {
+        "id": "p22",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-1"
+            },
+            "x": 50,
+            "y": 27.5,
+            "text": "In the morning, she watered",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-2"
+            },
+            "x": 50,
+            "y": 35.0,
+            "text": "the basil on her windowsill.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-3"
+            },
+            "x": 50,
+            "y": 42.5,
+            "text": "Then she called her friend.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-4"
+            },
+            "x": 50,
+            "y": 57.5,
+            "text": "She did not begin again.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-5"
+            },
+            "x": 50,
+            "y": 72.5,
+            "text": "She began the next page.",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "back",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "back-plain-book-1"
+            },
+            "partId": {
+              "value": "art:plain-book"
+            },
+            "x": 50,
+            "y": 29,
+            "sizePct": 18,
+            "heightPct": 18.265
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-2"
+            },
+            "x": 50,
+            "y": 58,
+            "text": "Published: ____ / ____",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-3"
+            },
+            "x": 50,
+            "y": 66,
+            "text": "Story: ____________",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-4"
+            },
+            "x": 50,
+            "y": 74,
+            "text": "Art: ____________",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      }
+    ]
+  }
+}

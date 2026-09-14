@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 320" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>時計職人の エナ</title>
+<path d="M58 226L44 285Q61 303 91 295L107 236M118 235L125 296Q147 308 169 291L151 225Z" fill="#3c5c62"/>
+<path d="M49 287l-9 15q4 13 46 4l4-14M128 293l-1 14q41 11 49-2l-11-12" fill="#685e54"/>
+<path d="M64 123Q98 105 145 125L170 253Q118 270 44 251Z" fill="#899d91"/>
+<path d="M79 126L65 246Q111 259 151 244L135 129Z" fill="#d0ad6e"/>
+<path d="M87 197h46v31H85ZM92 127l-3 41M129 126l4 40" stroke-width="1.2"/>
+<circle cx="145" cy="39" r="24" fill="#bdbbb0"/>
+<path d="M58 75Q41 27 85 18Q146 4 154 75L145 99H66Z" fill="#c6c3b7"/>
+<ellipse cx="106" cy="78" rx="41" ry="47" fill="#dcb898"/>
+<path d="M65 62Q74 63 109 31Q127 57 148 61L146 41 105 20 69 40Z" fill="#c6c3b7"/>
+<path d="M81 36l-6 17M95 29l-9 20M131 30l9 22" stroke="#9f9f97" stroke-width="1.2"/>
+<circle cx="86" cy="79" r="16" stroke="#867963" stroke-width="1.3"/>
+<circle cx="126" cy="79" r="16" stroke="#867963" stroke-width="1.3"/>
+<path d="M102 77q4-5 8 0M66 75l5 1M142 74l7-2" stroke-width="1.1"/>
+<path d="M104 83l-4 11h7M91 105q13 7 26-2M76 99l6 2M134 99l-7 2" stroke-width="1.2"/>
+<circle cx="87" cy="80" r="2" fill="#63584f"/>
+<circle cx="126" cy="80" r="2" fill="#63584f"/>
+<path d="M77 117q30 19 61-1l4 17q-32 18-69 0Z" fill="#a86f59"/>
+<path d="M66 138q-27 25-5 49l37 13 8-15-29-19 9-21M146 138q24 25 3 48l-31 14-10-16 27-23Z" fill="#899d91"/>
+<ellipse cx="102" cy="191" rx="13" ry="8" fill="#dcb898"/>
+<ellipse cx="117" cy="192" rx="12" ry="7" fill="#dcb898"/>
+</svg>

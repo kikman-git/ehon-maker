@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 560" fill="none" stroke="#626254" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>夜の 庭の アーチ</title>
+<path d="M 20 521V219Q20 37 300 31Q579 33 579 219V521Z" fill="#324e58" stroke="none"/>
+<g transform="translate(40 53)">
+<polygon points="62.0,35.0 63.5,38.9 67.7,39.1 64.5,41.8 65.5,45.9 62.0,43.6 58.5,45.9 59.5,41.8 56.3,39.1 60.5,38.9" fill="#e4cc92"/>
+<circle cx="199" cy="124" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="336" cy="207" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="473" cy="35" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="132.0,110.0 134.0,115.2 139.6,115.5 135.3,119.1 136.7,124.5 132.0,121.4 127.3,124.5 128.7,119.1 124.4,115.5 130.0,115.2" fill="#e4cc92"/>
+<circle cx="269" cy="201" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="406" cy="29" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="65" cy="112" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="202.0,185.0 204.5,191.5 211.5,191.9 206.1,196.3 207.9,203.1 202.0,199.3 196.1,203.1 197.9,196.3 192.5,191.9 199.5,191.5" fill="#e4cc92"/>
+<circle cx="339" cy="278" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="476" cy="106" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="135" cy="189" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="272.0,266.0 273.5,269.9 277.7,270.1 274.5,272.8 275.5,276.9 272.0,274.6 268.5,276.9 269.5,272.8 266.3,270.1 270.5,269.9" fill="#e4cc92"/>
+<circle cx="409" cy="100" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="68" cy="183" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="205" cy="266" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="342.0,86.0 344.0,91.2 349.6,91.5 345.3,95.1 346.7,100.5 342.0,97.4 337.3,100.5 338.7,95.1 334.4,91.5 340.0,91.2" fill="#e4cc92"/>
+<circle cx="479" cy="177" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="138" cy="260" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="275" cy="88" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="412.0,161.0 414.5,167.5 421.5,167.9 416.1,172.3 417.9,179.1 412.0,175.3 406.1,179.1 407.9,172.3 402.5,167.9 409.5,167.5" fill="#e4cc92"/>
+<circle cx="71" cy="254" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="208" cy="82" r="1.4" fill="#e4cc92" stroke="none"/>
+</g>
+<path d="M20 440Q310 367 579 442V521H20Z" fill="#869981" stroke="none"/>
+<circle cx="451" cy="130" r="34" fill="#eedbb0" stroke="none"/>
+<path d="M431 143q16 8 30 0" stroke="#c4af88" stroke-width="1.3"/>
+<circle cx="465" cy="107" r="7" fill="#e2ca9b" stroke="none"/>
+</svg>

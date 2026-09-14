@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 385" fill="none" stroke="#626254" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>星を 抱える 鹿の 庭師</title>
+<path d="M96 281l-12 61-19 13q-7 12 31 8l19-16 12-60 M160 286l17  60 22 11q7 11-28 7l-21-17-17-50 Z" fill="#b9a080"/>
+<path d="M64 355l31-1 1 9-31 2M176 357l23 1 2 7-26-2" stroke="#786b58" stroke-width="4"/>
+<path d="M85 181Q136 155 179 188L199 302Q137 322  70 299Z" fill="#9ba794"/>
+<path d="M101 181L89 293Q136 311 179 293L162 185Z" fill="#778976"/>
+<path d="M113 250h46v33h-49ZM116 188l-7 42M151 187l7 43" stroke-width="1.4"/>
+<path d="M104 92Q77 62 73 28M84 58L43 37  30 14M75 38l17-25M53 42L47 18M165 95Q189 62 193 22M181  60 l 30-22 12-26M190 37l-17-24M210 38l1-22" stroke="#a68e68" stroke-width="5"/>
+<path d="M107 117Q56 113 49  70 Q86 62 116 106ZM159 111Q183 65 224 74Q216 118 166 123Z" fill="#b9a080"/>
+<path d="M101 108Q68 99 61 82Q87 83 101 108ZM174 110Q191 82 211 84Q200 104 174 110Z" fill="#d4b8a0" stroke="none"/>
+<path d="M106 91Q138 72 169 99L181 142Q194 177 154 190Q117 201 94 173Q82 151 98 122Z" fill="#bba080"/>
+<path d="M111 144Q140 134 173 149Q190 173 154 187Q120 194 107 175Z" fill="#ded0ae"/>
+<ellipse cx="153" cy="153" rx="11" ry="7" fill="#6c6655"/>
+<path d="M153 161v7q-10 9-20 3" stroke-width="1.2"/>
+<ellipse cx="117" cy="130" rx="3" ry="5" fill="#63584f"/>
+<ellipse cx="161" cy="125" rx="3" ry="5" fill="#63584f"/>
+<circle cx="118" cy="128" r="1" fill="#f9f4ed" stroke="none"/>
+<circle cx="162" cy="123" r="1" fill="#f9f4ed" stroke="none"/>
+<path d="M109 117q7-5 13-1M153 113q7-5 13 0M100 149l9 2" stroke-width="1.1"/>
+<path d="M109 99l7 5M124 94l6 6M138 93l5 5" stroke="#e5d4b3" stroke-width="1.6"/>
+<path d="M86 196q-24 27-3 46l34 14 7-17-20-18 9-15M176 197q25 25 3 49l-27 12-10-16 25-22Z" fill="#9ba794"/>
+<ellipse cx="123" cy="248" rx="13" ry="8" fill="#bba080"/>
+<ellipse cx="145" cy="249" rx="13" ry="8" fill="#bba080"/>
+</svg>

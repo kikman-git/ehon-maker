@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 240" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>Basil on the windowsill</title>
+<path d="M33 161h92l-10  50 H45Z" fill="#b48b6b"/>
+<ellipse cx="79" cy="161" rx="47" ry="10" fill="#776a53"/>
+<g transform="translate(72 163) scale(1.25)">
+<path d="M0 0Q9-38 0-94" stroke="#8ba27d" stroke-width="2"/>
+<path d="M2 -19q24-3 21-24q-25 1 -21 24Z" fill="#8ba27d" stroke-width="1"/>
+<path d="M5 -40q-24-3 -21-24q25 1 21 24Z" fill="#8ba27d" stroke-width="1"/>
+<path d="M3 -63q24-3 21-24q-25 1 -21 24Z" fill="#8ba27d" stroke-width="1"/>
+<path d="M0 -82q-24-3 -21-24q25 1 21 24Z" fill="#8ba27d" stroke-width="1"/>
+</g>
+<g transform="translate(91 164) scale(0.9)">
+<path d="M0 0Q9-38 0-94" stroke="#a4b691" stroke-width="2"/>
+<path d="M2 -19q24-3 21-24q-25 1 -21 24Z" fill="#a4b691" stroke-width="1"/>
+<path d="M5 -40q-24-3 -21-24q25 1 21 24Z" fill="#a4b691" stroke-width="1"/>
+<path d="M3 -63q24-3 21-24q-25 1 -21 24Z" fill="#a4b691" stroke-width="1"/>
+<path d="M0 -82q-24-3 -21-24q25 1 21 24Z" fill="#a4b691" stroke-width="1"/>
+</g>
+</svg>

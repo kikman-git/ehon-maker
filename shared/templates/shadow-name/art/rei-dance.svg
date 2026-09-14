@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 330" fill="none" stroke="#605768" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>踊ってみる レイ</title>
+<path d="M88 218Q59 240  40 272L18 271 14 287 51 292 111 252M126 220Q162 248 167 292H189Q195 249 148 212Z" fill="#c6a064"/>
+<path d="M17 270l-11 12q-3 14  40 12l8-6-16-13M164 290l-5 13q35 13  50 0l-24-16Z" fill="#986758"/>
+<path d="M65 122Q99 109 141 124L164 228Q112 246 48 228Z" fill="#799e9b"/>
+<path d="M76 126l17 24 16-15 17 15 14-24M107 137v93M62 203l28 4M127 203l24-4" stroke-width="1.3"/>
+<path d="M60 67Q46 22 93 16Q151 7 157 65L145 116H60Z" fill="#4c4f60"/>
+<ellipse cx="107" cy="75" rx="39" ry="45" fill="#dfb99b"/>
+<path d="M65 61Q92 65 132 36L150 65 147 36 102 18 73 31Z" fill="#4c4f60"/>
+<path d="M73  40 l-3  18 M84 28l-8 24" stroke="#787988" stroke-width="1"/>
+<ellipse cx="91" cy="78" rx="2" ry="3" fill="#63584f"/>
+<ellipse cx="125" cy="77" rx="2" ry="3" fill="#63584f"/>
+<path d="M108 81l-4 10h5M99 103q9 6 17-2" stroke-width="1.2"/>
+<path d="M76 95l11 2M126 96l10-3" stroke="#ca9587"/>
+<path d="M65 138Q39 128  20  80 l-15 8q8  60 58 72ZM142 137q28-8 39-57l16 6q-3  60-47 78Z" fill="#799e9b"/>
+<ellipse cx="15" cy="78" rx="8" ry="12" fill="#dfb99b"/>
+<ellipse cx="190" cy="78" rx="8" ry="12" fill="#dfb99b"/>
+</svg>

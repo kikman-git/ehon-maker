@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#605768" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>夕日の 中の 広い 円（みぎ）</title>
+<g transform="translate(-600 0)">
+<rect x="0" y="0" width="1200" height="800" fill="#e8bca5" stroke="none"/>
+<circle cx="864" cy="215" r="94" fill="#f1d2a4" stroke="none"/>
+<path d="M0 492Q277 464 600 496T1200 472V800H0Z" fill="#d1a187" stroke="none"/>
+<path d="M0 0h169v474H0ZM1027 0h173v468h-173Z" fill="#bc887b" stroke="none"/>
+<path d="M169 0l56 39v408l-56 27ZM1027 0l-61 45v397l61 26Z" fill="#9b7c7d" stroke="none"/>
+<path d="M0 627l1200-19M0 766l1200-36M413 487L288 800M799 488l144 312" stroke="#ba8f81" stroke-width="1.4"/>
+<path d="M276 616Q594 511 911 610Q1089 686 871 758Q553 848 244 730Q91 668 276 616Z" stroke="#efd9bb" stroke-width="4"/>
+</g>
+</svg>

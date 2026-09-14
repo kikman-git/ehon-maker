@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 170" fill="none" stroke="#626254" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>庭を 照らす 灯り</title>
+<path d="M36 42V28Q35 8 59 9T83 42" stroke-width="3"/>
+<path d="M23 44l37-16 39 17-11 12H32Z" fill="#9d8966"/>
+<rect x="30" y="50" width="60" height="90" fill="#e8d393" rx="5"/>
+<path d="M42 52v85M78 52v85M23 146h77" stroke-width="2"/>
+<polygon points="60.0,80.0 65.1,93.0 79.0,93.8 68.2,102.7 71.8,116.2 60.0,108.6 48.2,116.2 51.8,102.7 41.0,93.8 54.9,93.0" fill="#f4e5b4"/>
+</svg>

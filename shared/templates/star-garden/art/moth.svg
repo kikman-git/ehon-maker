@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 140" fill="none" stroke="#626254" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>灯りの そばの 蛾</title>
+<path d="M 70 60Q27-5 12 34Q4 65  50 73Q14 83 32 114Q55 137  70  80 Q91 137 114 109Q130  80 88 72Q145 54 126  20 Q103-3  70 60Z" fill="#d8d6b7"/>
+<path d="M 60 35l10 28 13-28M70 62v43" stroke="#8c947d" stroke-width="3"/>
+<ellipse cx="34" cy="49" rx="8" ry="13" fill="#b5bd9f"/>
+<ellipse cx="109" cy="47" rx="8" ry="13" fill="#b5bd9f"/>
+<circle cx="48" cy="95" r="6" fill="#eddeb0"/>
+<circle cx="94" cy="95" r="6" fill="#eddeb0"/>
+</svg>

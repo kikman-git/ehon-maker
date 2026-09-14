@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>The sea in the captain’s life</title>
+<rect x="0" y="0" width="600" height="800" fill="#c5d4cb" stroke="none"/>
+<circle cx="426" cy="165" r="59" fill="#efd7a4" stroke="none"/>
+<path d="M0 350Q170 317 315 357T600 349V800H0Z" fill="#789e9e" stroke="none"/>
+<path d="M0 425q80-19 158 0t160 0t155 0t160 0" stroke="#bfd0bd" stroke-width="1.5"/>
+<path d="M0 528q80-19 158 0t160 0t155 0t160 0" stroke="#bfd0bd" stroke-width="1.5"/>
+<path d="M0 648q80-19 158 0t160 0t155 0t160 0" stroke="#bfd0bd" stroke-width="1.5"/>
+<path d="M0 744q80-19 158 0t160 0t155 0t160 0" stroke="#bfd0bd" stroke-width="1.5"/>
+</svg>

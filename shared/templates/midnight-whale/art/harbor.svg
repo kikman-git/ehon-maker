@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>夜の 郵便桟橋</title>
+<rect x="0" y="0" width="600" height="800" fill="#243e52" stroke="none"/>
+<polygon points="62.0,35.0 63.5,38.9 67.7,39.1 64.5,41.8 65.5,45.9 62.0,43.6 58.5,45.9 59.5,41.8 56.3,39.1 60.5,38.9" fill="#e4cc92"/>
+<circle cx="199" cy="124" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="336" cy="207" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="473" cy="290" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="52.0,365.0 54.0,370.2 59.6,370.5 55.3,374.1 56.7,379.5 52.0,376.4 47.3,379.5 48.7,374.1 44.4,370.5 50.0,370.2" fill="#e4cc92"/>
+<circle cx="189" cy="101" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="326" cy="184" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="463" cy="267" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="42.0,340.0 44.5,346.5 51.5,346.9 46.1,351.3 47.9,358.1 42.0,354.3 36.1,358.1 37.9,351.3 32.5,346.9 39.5,346.5" fill="#e4cc92"/>
+<circle cx="179" cy="78" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="316" cy="161" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="453" cy="244" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="32.0,321.0 33.5,324.9 37.7,325.1 34.5,327.8 35.5,331.9 32.0,329.6 28.5,331.9 29.5,327.8 26.3,325.1 30.5,324.9" fill="#e4cc92"/>
+<circle cx="169" cy="55" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="306" cy="138" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="443" cy="221" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="22.0,296.0 24.0,301.2 29.6,301.5 25.3,305.1 26.7,310.5 22.0,307.4 17.3,310.5 18.7,305.1 14.4,301.5 20.0,301.2" fill="#e4cc92"/>
+<circle cx="159" cy="32" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="296" cy="115" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="433" cy="198" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="570.0,271.0 572.5,277.5 579.5,277.9 574.1,282.3 575.9,289.1 570.0,285.3 564.1,289.1 565.9,282.3 560.5,277.9 567.5,277.5" fill="#e4cc92"/>
+<circle cx="149" cy="364" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="465" cy="142" r="44" fill="#eedbb0" stroke="none"/>
+<path d="M445 155q16 8 30 0" stroke="#c4af88" stroke-width="1.3"/>
+<circle cx="479" cy="119" r="7" fill="#e2ca9b" stroke="none"/>
+<path d="M0 434Q146 406 302 440T600 426V800H0Z" fill="#517985" stroke="none"/>
+<path d="M0 464q83-18 161 0t172 0t185 0t120 0" stroke="#9dbac0" stroke-width="1.4"/>
+<path d="M0 536q83-18 161 0t172 0t185 0t120 0" stroke="#9dbac0" stroke-width="1.4"/>
+<path d="M0 622q83-18 161 0t172 0t185 0t120 0" stroke="#9dbac0" stroke-width="1.4"/>
+<path d="M0 725q83-18 161 0t172 0t185 0t120 0" stroke="#9dbac0" stroke-width="1.4"/>
+<path d="M0 643L391 590 458 641 0 731Z" fill="#b7a289"/>
+<path d="M0 731L458 641V714L0 800Z" fill="#847967"/>
+<path d="M18 638.8l74 45" stroke="#897762" stroke-width="1.4"/>
+<path d="M85 630.8l74 45" stroke="#897762" stroke-width="1.4"/>
+<path d="M152 622.8l74 45" stroke="#897762" stroke-width="1.4"/>
+<path d="M219 614.7l74 45" stroke="#897762" stroke-width="1.4"/>
+<path d="M286 606.7l74 45" stroke="#897762" stroke-width="1.4"/>
+<path d="M353 598.6l74 45" stroke="#897762" stroke-width="1.4"/>
+<rect x="55" y="168" width="158" height="388" fill="#cdbb9f"/>
+<path d="M37 172L134 107 230 174Z" fill="#836a61"/>
+<path d="M80 365V270.5a46.5 46.5 0 0 1 93 0V365Z" fill="#edcf98"/>
+<path d="M126.5 230V365M80 308.6H173" stroke="#9c8770" stroke-width="1.4"/>
+<rect x="87" y="419" width="72" height="99" fill="#425967" rx="2"/>
+<path d="M123.0 425V518M87 478.4H159" stroke="#9c8770" stroke-width="1.4"/>
+<path d="M366 588V453Q368 433 388 433H413" stroke-width="4"/>
+<path d="M407 433v16" stroke-width="2"/>
+<rect x="392" y="449" width="32" height="51" fill="#ecd199" rx="4"/>
+<path d="M391 448l17-14 17 14M397 504h22" stroke-width="2"/>
+</svg>

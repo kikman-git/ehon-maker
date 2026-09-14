@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>The hall of unlived lives（ひだり）</title>
+<g transform="translate(0 0)">
+<rect x="0" y="0" width="1200" height="800" fill="#d4d8c2" stroke="none"/>
+<path d="M0 620Q299 578 600 620T1200 620V800H0Z" fill="#b3bca2" stroke="none"/>
+<path d="M42 582V241.5a122.5 122.5 0 0 1 245 0V582Z" fill="#8d9e8d"/>
+<path d="M57 582V241.5a107.5 107.5 0 0 1 215 0V582Z" fill="#e8dfc1"/>
+<path d="M34 582h261v16h-261Z" fill="#b5a687"/>
+<path d="M351 581V182.0a120.0 120.0 0 0 1 240 0V581Z" fill="#8d9e8d"/>
+<path d="M366 581V182.0a105.0 105.0 0 0 1 210 0V581Z" fill="#e8dfc1"/>
+<path d="M343 581h256v16h-256Z" fill="#b5a687"/>
+<path d="M658 589V233.5a119.5 119.5 0 0 1 239 0V589Z" fill="#8d9e8d"/>
+<path d="M673 589V233.5a104.5 104.5 0 0 1 209 0V589Z" fill="#e8dfc1"/>
+<path d="M650 589h255v16h-255Z" fill="#b5a687"/>
+<path d="M966 586V266.5a98.5 98.5 0 0 1 197 0V586Z" fill="#8d9e8d"/>
+<path d="M981 586V266.5a83.5 83.5 0 0 1 167 0V586Z" fill="#e8dfc1"/>
+<path d="M958 586h213v16h-213Z" fill="#b5a687"/>
+<path d="M0 741Q269 658 591 701T1200 723" stroke="#dcd6b9" stroke-width="24"/>
+</g>
+</svg>

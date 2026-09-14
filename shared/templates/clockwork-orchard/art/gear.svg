@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>真鍮の 歯車</title>
+<polygon points="65.0,9.0 79.2,45.5 118.3,47.7 87.9,72.4 97.9,110.3 65.0,89.1 32.1,110.3 42.1,72.4 11.7,47.7 50.8,45.5" fill="#c5a15f"/>
+<circle cx="65" cy="65" r="37" fill="#dec58f"/>
+<circle cx="65" cy="65" r="18" fill="#f3e7ce"/>
+<path d="M65 28v18M65 84v18M28 65h18M84 65h18" stroke="#a68651" stroke-width="7"/>
+</svg>

@@ -1,0 +1,1770 @@
+{
+  "id": "doc-midnight-whale",
+  "order": 5,
+  "description": {
+    "ja": "言えなかった言葉を運ぶ、夜のくじら。姉への手紙と、返事を急がない勇気の物語。",
+    "en": "A whale carries the words nobody could send. A nocturnal voyage about estrangement, apology, and leaving room for an answer."
+  },
+  "book": {
+    "id": {
+      "value": "template-midnight-whale"
+    },
+    "title": "夜をわたる 郵便くじら",
+    "shape": "PORTRAIT",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "open-sea": {
+        "name": "月あかりの 海",
+        "file": "open-sea.svg"
+      },
+      "harbor": {
+        "name": "夜の 郵便桟橋",
+        "file": "harbor.svg"
+      },
+      "writing-room": {
+        "name": "港の 小さな 部屋",
+        "file": "writing-room.svg"
+      },
+      "dawn-pier": {
+        "name": "あさの 桟橋",
+        "file": "dawn-pier.svg"
+      },
+      "cover-sea": {
+        "name": "くじらの 夜の 海",
+        "file": "cover-sea.svg"
+      },
+      "whale": {
+        "name": "手紙を はこぶ くじら",
+        "file": "whale.svg"
+      },
+      "whale-listening": {
+        "name": "耳を すます くじら",
+        "file": "whale-listening.svg"
+      },
+      "nagi-sad": {
+        "name": "手紙を 書けない ナギ",
+        "file": "nagi-sad.svg"
+      },
+      "nagi-stand": {
+        "name": "手紙を 持つ ナギ",
+        "file": "nagi-stand.svg"
+      },
+      "nagi-reach": {
+        "name": "手を のばす ナギ",
+        "file": "nagi-reach.svg"
+      },
+      "letter": {
+        "name": "封をした 手紙",
+        "file": "letter.svg"
+      },
+      "open-letter": {
+        "name": "書きなおした 便箋",
+        "file": "open-letter.svg"
+      },
+      "pen": {
+        "name": "真鍮の ペン",
+        "file": "pen.svg"
+      },
+      "bottle": {
+        "name": "言えなかった 言葉の 瓶",
+        "file": "bottle.svg"
+      },
+      "mailbox": {
+        "name": "くじらの 小さな 郵便箱",
+        "file": "mailbox.svg"
+      },
+      "ladder": {
+        "name": "くじらの 縄ばしご",
+        "file": "ladder.svg"
+      },
+      "lantern": {
+        "name": "郵便くじらの 灯り",
+        "file": "lantern.svg"
+      },
+      "paper-boat": {
+        "name": "手紙の 舟",
+        "file": "paper-boat.svg"
+      },
+      "cup": {
+        "name": "空いている 湯のみ",
+        "file": "cup.svg"
+      },
+      "chair": {
+        "name": "窓辺の もうひとつの 椅子",
+        "file": "chair.svg"
+      },
+      "gull": {
+        "name": "夜明けの カモメ",
+        "file": "gull.svg"
+      },
+      "tide-reeds": {
+        "name": "桟橋の 葦",
+        "file": "tide-reeds.svg"
+      },
+      "door-sea-left": {
+        "name": "返事を 待つ 扉の 海（ひだり）",
+        "file": "door-sea-left.svg"
+      },
+      "door-sea-right": {
+        "name": "返事を 待つ 扉の 海（みぎ）",
+        "file": "door-sea-right.svg"
+      },
+      "return-sea-left": {
+        "name": "夜明けへ 帰る 海（ひだり）",
+        "file": "return-sea-left.svg"
+      },
+      "return-sea-right": {
+        "name": "夜明けへ 帰る 海（みぎ）",
+        "file": "return-sea-right.svg"
+      },
+      "morning-room": {
+        "name": "朝の 光が 入る 部屋",
+        "file": "morning-room.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "cover",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-cover-sea-1"
+            },
+            "partId": {
+              "value": "art:cover-sea"
+            },
+            "x": 50,
+            "y": 66,
+            "sizePct": 91,
+            "heightPct": 51.188
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-whale-2"
+            },
+            "partId": {
+              "value": "art:whale"
+            },
+            "x": 50,
+            "y": 70,
+            "sizePct": 83,
+            "heightPct": 28.013
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-mailbox-3"
+            },
+            "partId": {
+              "value": "art:mailbox"
+            },
+            "x": 48,
+            "y": 61,
+            "sizePct": 10,
+            "heightPct": 10.179
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-lantern-4"
+            },
+            "partId": {
+              "value": "art:lantern"
+            },
+            "x": 65,
+            "y": 61,
+            "sizePct": 8,
+            "heightPct": 7.75
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-5"
+            },
+            "x": 50,
+            "y": 13,
+            "text": "夜をわたる",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-6"
+            },
+            "x": 50,
+            "y": 23,
+            "text": "郵便くじら",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "title",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-1"
+            },
+            "x": 50,
+            "y": 39,
+            "text": "夜をわたる",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-2"
+            },
+            "x": 50,
+            "y": 47,
+            "text": "郵便くじら",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "title-letter-3"
+            },
+            "partId": {
+              "value": "art:letter"
+            },
+            "x": 50,
+            "y": 70,
+            "sizePct": 15,
+            "heightPct": 9.375
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-writing-room-1"
+            },
+            "partId": {
+              "value": "art:writing-room"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-nagi-sad-2"
+            },
+            "partId": {
+              "value": "art:nagi-sad"
+            },
+            "x": 36,
+            "y": 73,
+            "sizePct": 41,
+            "heightPct": 44.727
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-open-letter-3"
+            },
+            "partId": {
+              "value": "art:open-letter"
+            },
+            "x": 57,
+            "y": 78,
+            "sizePct": 24,
+            "heightPct": 13,
+            "rotationDeg": -12
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-pen-4"
+            },
+            "partId": {
+              "value": "art:pen"
+            },
+            "x": 73,
+            "y": 77,
+            "sizePct": 9,
+            "heightPct": 9.788,
+            "rotationDeg": 65
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "姉と けんかした 夜から、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "ナギの 机には、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "出せない 手紙が ふえた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "「ごめんね」の あとが、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "どうしても 書けなかった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-harbor-1"
+            },
+            "partId": {
+              "value": "art:harbor"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-whale-2"
+            },
+            "partId": {
+              "value": "art:whale"
+            },
+            "x": 66,
+            "y": 61,
+            "sizePct": 67,
+            "heightPct": 22.612
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-mailbox-3"
+            },
+            "partId": {
+              "value": "art:mailbox"
+            },
+            "x": 60,
+            "y": 52,
+            "sizePct": 11,
+            "heightPct": 11.196
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-lantern-4"
+            },
+            "partId": {
+              "value": "art:lantern"
+            },
+            "x": 77,
+            "y": 53,
+            "sizePct": 8,
+            "heightPct": 7.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-nagi-reach-5"
+            },
+            "partId": {
+              "value": "art:nagi-reach"
+            },
+            "x": 28,
+            "y": 64,
+            "sizePct": 30,
+            "heightPct": 32.727
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "ある晩、港に",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "くじらが やってきた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "背中には、小さな 郵便箱。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "「行き先の ある 言葉なら、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "乗せて いくよ。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p5",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-open-sea-1"
+            },
+            "partId": {
+              "value": "art:open-sea"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-whale-2"
+            },
+            "partId": {
+              "value": "art:whale"
+            },
+            "x": 52,
+            "y": 69,
+            "sizePct": 90,
+            "heightPct": 30.375
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-ladder-3"
+            },
+            "partId": {
+              "value": "art:ladder"
+            },
+            "x": 42,
+            "y": 63,
+            "sizePct": 11,
+            "heightPct": 22.688
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-mailbox-4"
+            },
+            "partId": {
+              "value": "art:mailbox"
+            },
+            "x": 56,
+            "y": 59,
+            "sizePct": 10,
+            "heightPct": 10.179
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-nagi-stand-5"
+            },
+            "partId": {
+              "value": "art:nagi-stand"
+            },
+            "x": 40,
+            "y": 51,
+            "sizePct": 22,
+            "heightPct": 24.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-letter-6"
+            },
+            "partId": {
+              "value": "art:letter"
+            },
+            "x": 39,
+            "y": 53,
+            "sizePct": 8,
+            "heightPct": 5.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-lantern-7"
+            },
+            "partId": {
+              "value": "art:lantern"
+            },
+            "x": 72,
+            "y": 60,
+            "sizePct": 8,
+            "heightPct": 7.75
+          }
+        ]
+      },
+      {
+        "id": "p6",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "ナギは 手紙を 抱えて、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "縄ばしごを のぼった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "「姉は、読んで くれる？」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "くじらは 潮を 吹いた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "「それは、姉さんが 決める。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p7",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-open-sea-1"
+            },
+            "partId": {
+              "value": "art:open-sea"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-bottle-2"
+            },
+            "partId": {
+              "value": "art:bottle"
+            },
+            "x": 23,
+            "y": 64,
+            "sizePct": 20,
+            "heightPct": 28.2,
+            "rotationDeg": -17
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-bottle-3"
+            },
+            "partId": {
+              "value": "art:bottle"
+            },
+            "x": 74,
+            "y": 75,
+            "sizePct": 14,
+            "heightPct": 19.74,
+            "rotationDeg": 12
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-bottle-4"
+            },
+            "partId": {
+              "value": "art:bottle"
+            },
+            "x": 54,
+            "y": 49,
+            "sizePct": 13,
+            "heightPct": 18.33,
+            "rotationDeg": 22
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-whale-listening-5"
+            },
+            "partId": {
+              "value": "art:whale-listening"
+            },
+            "x": 37,
+            "y": 32,
+            "sizePct": 53,
+            "heightPct": 17.888
+          }
+        ]
+      },
+      {
+        "id": "p8",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "海には、言葉の 瓶が",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "静かに 浮かんでいた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "「ありがとう」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "「あの日は、こわかった」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "どれにも、違う 重さが あった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p9",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-door-sea-left-1"
+            },
+            "partId": {
+              "value": "art:door-sea-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-whale-2"
+            },
+            "partId": {
+              "value": "art:whale"
+            },
+            "x": 46,
+            "y": 75,
+            "sizePct": 83,
+            "heightPct": 28.013
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-mailbox-3"
+            },
+            "partId": {
+              "value": "art:mailbox"
+            },
+            "x": 49,
+            "y": 64,
+            "sizePct": 10,
+            "heightPct": 10.179
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-nagi-stand-4"
+            },
+            "partId": {
+              "value": "art:nagi-stand"
+            },
+            "x": 37,
+            "y": 59,
+            "sizePct": 18,
+            "heightPct": 19.636
+          }
+        ]
+      },
+      {
+        "id": "p10",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-door-sea-right-1"
+            },
+            "partId": {
+              "value": "art:door-sea-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-bottle-2"
+            },
+            "partId": {
+              "value": "art:bottle"
+            },
+            "x": 67,
+            "y": 74,
+            "sizePct": 12,
+            "heightPct": 16.92,
+            "rotationDeg": 17
+          }
+        ]
+      },
+      {
+        "id": "p11",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-cover-sea-1"
+            },
+            "partId": {
+              "value": "art:cover-sea"
+            },
+            "x": 50,
+            "y": 37,
+            "sizePct": 90,
+            "heightPct": 50.625
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-whale-listening-2"
+            },
+            "partId": {
+              "value": "art:whale-listening"
+            },
+            "x": 50,
+            "y": 56,
+            "sizePct": 87,
+            "heightPct": 29.362
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-nagi-sad-3"
+            },
+            "partId": {
+              "value": "art:nagi-sad"
+            },
+            "x": 44,
+            "y": 37,
+            "sizePct": 26,
+            "heightPct": 28.364
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-open-letter-4"
+            },
+            "partId": {
+              "value": "art:open-letter"
+            },
+            "x": 44,
+            "y": 41,
+            "sizePct": 11,
+            "heightPct": 10.312
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-bottle-5"
+            },
+            "partId": {
+              "value": "art:bottle"
+            },
+            "x": 80,
+            "y": 81,
+            "sizePct": 12,
+            "heightPct": 16.92,
+            "rotationDeg": 10
+          }
+        ]
+      },
+      {
+        "id": "p12",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "「あの夜まで 戻れたら。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "ナギは 小さく つぶやいた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "くじらは 何も いわず、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "波が 静まるまで",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "そこに いてくれた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p13",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-cover-sea-1"
+            },
+            "partId": {
+              "value": "art:cover-sea"
+            },
+            "x": 50,
+            "y": 40,
+            "sizePct": 96,
+            "heightPct": 54.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-whale-listening-2"
+            },
+            "partId": {
+              "value": "art:whale-listening"
+            },
+            "x": 50,
+            "y": 68,
+            "sizePct": 98,
+            "heightPct": 33.075
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-nagi-stand-3"
+            },
+            "partId": {
+              "value": "art:nagi-stand"
+            },
+            "x": 43,
+            "y": 43,
+            "sizePct": 30,
+            "heightPct": 32.727
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-open-letter-4"
+            },
+            "partId": {
+              "value": "art:open-letter"
+            },
+            "x": 43,
+            "y": 46,
+            "sizePct": 16,
+            "heightPct": 15.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-pen-5"
+            },
+            "partId": {
+              "value": "art:pen"
+            },
+            "x": 57,
+            "y": 46,
+            "sizePct": 9,
+            "heightPct": 9.788,
+            "rotationDeg": 25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-bottle-6"
+            },
+            "partId": {
+              "value": "art:bottle"
+            },
+            "x": 82,
+            "y": 87,
+            "sizePct": 12,
+            "heightPct": 16.92,
+            "rotationDeg": -13
+          }
+        ]
+      },
+      {
+        "id": "p14",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "ナギは、言いわけの 行を",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "一本ずつ 消した。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "「あのとき、傷つけて ごめん。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "いつか お茶を 飲みたい。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "返事は、急がなくて いい。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p15",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-open-sea-1"
+            },
+            "partId": {
+              "value": "art:open-sea"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-whale-2"
+            },
+            "partId": {
+              "value": "art:whale"
+            },
+            "x": 28,
+            "y": 65,
+            "sizePct": 66,
+            "heightPct": 22.275
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-nagi-reach-3"
+            },
+            "partId": {
+              "value": "art:nagi-reach"
+            },
+            "x": 24,
+            "y": 48,
+            "sizePct": 25,
+            "heightPct": 27.273
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-paper-boat-4"
+            },
+            "partId": {
+              "value": "art:paper-boat"
+            },
+            "x": 69,
+            "y": 67,
+            "sizePct": 27,
+            "heightPct": 14.267
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-lantern-5"
+            },
+            "partId": {
+              "value": "art:lantern"
+            },
+            "x": 39,
+            "y": 56,
+            "sizePct": 9,
+            "heightPct": 8.719
+          }
+        ]
+      },
+      {
+        "id": "p16",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "手紙を 舟に 折ると、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "ナギの 指が ほどけた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "波が 行き先を 引き受けた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "追いかけたくなる 手を、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "ナギは 膝に おいた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p17",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-return-sea-left-1"
+            },
+            "partId": {
+              "value": "art:return-sea-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-whale-2"
+            },
+            "partId": {
+              "value": "art:whale"
+            },
+            "x": 46,
+            "y": 68,
+            "sizePct": 86,
+            "heightPct": 29.025
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-mailbox-3"
+            },
+            "partId": {
+              "value": "art:mailbox"
+            },
+            "x": 51,
+            "y": 58,
+            "sizePct": 10,
+            "heightPct": 10.179
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-nagi-stand-4"
+            },
+            "partId": {
+              "value": "art:nagi-stand"
+            },
+            "x": 37,
+            "y": 52,
+            "sizePct": 18,
+            "heightPct": 19.636
+          }
+        ]
+      },
+      {
+        "id": "p18",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-return-sea-right-1"
+            },
+            "partId": {
+              "value": "art:return-sea-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-paper-boat-2"
+            },
+            "partId": {
+              "value": "art:paper-boat"
+            },
+            "x": 69,
+            "y": 55,
+            "sizePct": 16,
+            "heightPct": 8.455
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-gull-3"
+            },
+            "partId": {
+              "value": "art:gull"
+            },
+            "x": 46,
+            "y": 28,
+            "sizePct": 18,
+            "heightPct": 11.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-gull-4"
+            },
+            "partId": {
+              "value": "art:gull"
+            },
+            "x": 78,
+            "y": 20,
+            "sizePct": 11,
+            "heightPct": 6.875
+          }
+        ]
+      },
+      {
+        "id": "p19",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-dawn-pier-1"
+            },
+            "partId": {
+              "value": "art:dawn-pier"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-nagi-stand-2"
+            },
+            "partId": {
+              "value": "art:nagi-stand"
+            },
+            "x": 37,
+            "y": 62,
+            "sizePct": 39,
+            "heightPct": 42.545
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-gull-3"
+            },
+            "partId": {
+              "value": "art:gull"
+            },
+            "x": 74,
+            "y": 28,
+            "sizePct": 20,
+            "heightPct": 12.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-tide-reeds-4"
+            },
+            "partId": {
+              "value": "art:tide-reeds"
+            },
+            "x": 12,
+            "y": 87,
+            "sizePct": 24,
+            "heightPct": 26.4
+          }
+        ]
+      },
+      {
+        "id": "p20",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "朝になっても、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "次の朝に なっても、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "返事は 来なかった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "それでも ナギは、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "窓を 開けるように なった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p21",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-writing-room-1"
+            },
+            "partId": {
+              "value": "art:morning-room"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-chair-2"
+            },
+            "partId": {
+              "value": "art:chair"
+            },
+            "x": 76,
+            "y": 79,
+            "sizePct": 31,
+            "heightPct": 30.516
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-nagi-stand-3"
+            },
+            "partId": {
+              "value": "art:nagi-stand"
+            },
+            "x": 27,
+            "y": 76,
+            "sizePct": 37,
+            "heightPct": 40.364
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-cup-4"
+            },
+            "partId": {
+              "value": "art:cup"
+            },
+            "x": 43,
+            "y": 77,
+            "sizePct": 16,
+            "heightPct": 12.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-cup-5"
+            },
+            "partId": {
+              "value": "art:cup"
+            },
+            "x": 69,
+            "y": 70,
+            "sizePct": 15,
+            "heightPct": 11.25
+          }
+        ]
+      },
+      {
+        "id": "p22",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "海の 向こうに、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "姉の 今日が ある。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "ナギは 椅子を ひとつ、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "窓の そばへ 動かした。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "自分の お茶も、いれた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "back",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "back-letter-1"
+            },
+            "partId": {
+              "value": "art:letter"
+            },
+            "x": 50,
+            "y": 29,
+            "sizePct": 18,
+            "heightPct": 11.25
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-2"
+            },
+            "x": 50,
+            "y": 58,
+            "text": "発行 ＿＿年 ＿＿月 ＿＿日",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-3"
+            },
+            "x": 50,
+            "y": 66,
+            "text": "さく ＿＿＿＿＿＿",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-4"
+            },
+            "x": 50,
+            "y": 74,
+            "text": "え ＿＿＿＿＿＿",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      }
+    ]
+  }
+}

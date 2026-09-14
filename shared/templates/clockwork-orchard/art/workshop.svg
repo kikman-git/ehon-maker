@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>エナの 時計工房</title>
+<rect x="0" y="0" width="600" height="800" fill="#e6ddc9" stroke="none"/>
+<rect x="0" y="454" width="600" height="346" fill="#80988c" stroke="none"/>
+<path d="M0 452h600M0 474h600" stroke="#596f68" stroke-width="3"/>
+<path d="M19 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M68 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M117 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M166 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M215 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M264 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M313 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M362 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M411 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M460 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M509 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M558 478v322" stroke="#688276" stroke-width="1"/>
+<path d="M35 388V183.5a98.5 98.5 0 0 1 197 0V388Z" fill="#bdd0c0"/>
+<path d="M133.5 91V388M35 266.79999999999995H232" stroke="#9c8770" stroke-width="1.4"/>
+<path d="M39 312q75-29 186-7" stroke="#799988" stroke-width="2"/>
+<path d="M247 611L584 576 600 601 249 642Z" fill="#be946b"/>
+<path d="M249 642l351-40v30l-350 38Z" fill="#8a745b"/>
+<path d="M278 671v129M563 638v162" stroke-width="8"/>
+<path d="M308 660v139" stroke="#bc9a74" stroke-width="4"/>
+</svg>

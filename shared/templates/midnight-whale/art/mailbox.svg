@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 190" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>くじらの 小さな 郵便箱</title>
+<path d="M24 53Q24 9 76 12Q113 12 113 54V128H24Z" fill="#ba7162"/>
+<path d="M25 56h87M47 70h50" stroke-width="3"/>
+<rect x="25" y="126" width="88" height="9" fill="#786b59"/>
+<path d="M41 136v42M96 136v42" stroke-width="6"/>
+<rect x="65" y="91" width="33" height="20" fill="#ead6ae" rx="2"/>
+<path d="M69 94l12 8 14-8" stroke-width="1"/>
+</svg>

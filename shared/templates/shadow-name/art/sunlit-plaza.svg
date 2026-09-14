@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#605768" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>朝の 光と 広場</title>
+<rect x="0" y="0" width="600" height="800" fill="#ece0c6" stroke="none"/>
+<path d="M0 489l600-14v325H0Z" fill="#d6ba98" stroke="none"/>
+<path d="M0 615l600-21M0 746l600-47M203 483l-98 317M430 479l63 321" stroke="#c5a686" stroke-width="1.3"/>
+<path d="M0 0h226v492H0Z" fill="#bf8976" stroke="none"/>
+<path d="M226 0l55 43v422l-55 27Z" fill="#986e67" stroke="none"/>
+<path d="M43 313V159.0a64.0 64.0 0 0 1 128 0V313Z" fill="#ebe0c1"/>
+<path d="M107.0 101V313M43 225.79999999999998H171" stroke="#9c8770" stroke-width="1.4"/>
+<path d="M339 471V206Q340 90 480 91T620 208V469Z" fill="#c9ac8e" stroke="none"/>
+<path d="M379 473V211Q379 135 480 134T580 211V473Z" fill="#e7d7b7" stroke="none"/>
+<path d="M384 474L600 604V748L286 488Z" fill="#b19ca0" stroke="none"/>
+</svg>

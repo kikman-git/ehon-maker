@@ -1,0 +1,1605 @@
+{
+  "id": "doc-shadow-name",
+  "order": 8,
+  "description": {
+    "ja": "ある朝、影がついてこなかった。自分の形と、誰かのとなりにいる自由をめぐる物語。",
+    "en": "One morning Rei’s shadow refuses to follow. A sunlit fable about identity, boundaries, and the freedom to walk beside someone."
+  },
+  "book": {
+    "id": {
+      "value": "template-shadow-name"
+    },
+    "title": "影の なまえ",
+    "shape": "PORTRAIT",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "sunlit-plaza": {
+        "name": "朝の 光と 広場",
+        "file": "sunlit-plaza.svg"
+      },
+      "city-stairs": {
+        "name": "いつもの 長い 階段",
+        "file": "city-stairs.svg"
+      },
+      "laundry-wall": {
+        "name": "洗濯物の ある 壁",
+        "file": "laundry-wall.svg"
+      },
+      "quiet-roof": {
+        "name": "ふたりで 座る 屋上",
+        "file": "quiet-roof.svg"
+      },
+      "evening-plaza": {
+        "name": "夕方の 広場",
+        "file": "evening-plaza.svg"
+      },
+      "cover-stage": {
+        "name": "ふたりの 小さな 舞台",
+        "file": "cover-stage.svg"
+      },
+      "rei-tired": {
+        "name": "いつも 急いでいる レイ",
+        "file": "rei-tired.svg"
+      },
+      "rei-listen": {
+        "name": "影と 話す レイ",
+        "file": "rei-listen.svg"
+      },
+      "rei-dance": {
+        "name": "踊ってみる レイ",
+        "file": "rei-dance.svg"
+      },
+      "sumi-standing": {
+        "name": "立ちどまる 影",
+        "file": "sumi-standing.svg"
+      },
+      "sumi-sitting": {
+        "name": "小さく 座る 影",
+        "file": "sumi-sitting.svg"
+      },
+      "sumi-dancing": {
+        "name": "自分の 形で 踊る スミ",
+        "file": "sumi-dancing.svg"
+      },
+      "long-shadow": {
+        "name": "長く のびる 影",
+        "file": "long-shadow.svg"
+      },
+      "satchel": {
+        "name": "仕事の かばん",
+        "file": "satchel.svg"
+      },
+      "laundry": {
+        "name": "風の 中の 洗濯物",
+        "file": "laundry.svg"
+      },
+      "shadow-bird": {
+        "name": "鳥に なってみる 影",
+        "file": "shadow-bird.svg"
+      },
+      "shadow-deer": {
+        "name": "鹿に なってみる 影",
+        "file": "shadow-deer.svg"
+      },
+      "chalk": {
+        "name": "ひとつの 白い チョーク",
+        "file": "chalk.svg"
+      },
+      "chalk-circle": {
+        "name": "ふたりの ための 円",
+        "file": "chalk-circle.svg"
+      },
+      "rooftop-plant": {
+        "name": "屋上の オリーブ",
+        "file": "rooftop-plant.svg"
+      },
+      "bench": {
+        "name": "屋上の 小さな ベンチ",
+        "file": "bench.svg"
+      },
+      "ribbon": {
+        "name": "ほどけた リボン",
+        "file": "ribbon.svg"
+      },
+      "shadow-theatre-left": {
+        "name": "形を 試す 影の 劇場（ひだり）",
+        "file": "shadow-theatre-left.svg"
+      },
+      "shadow-theatre-right": {
+        "name": "形を 試す 影の 劇場（みぎ）",
+        "file": "shadow-theatre-right.svg"
+      },
+      "shared-square-left": {
+        "name": "夕日の 中の 広い 円（ひだり）",
+        "file": "shared-square-left.svg"
+      },
+      "shared-square-right": {
+        "name": "夕日の 中の 広い 円（みぎ）",
+        "file": "shared-square-right.svg"
+      },
+      "sumi-turning": {
+        "name": "ゆっくり 回る スミ",
+        "file": "sumi-turning.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "cover",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-cover-stage-1"
+            },
+            "partId": {
+              "value": "art:cover-stage"
+            },
+            "x": 50,
+            "y": 65,
+            "sizePct": 92,
+            "heightPct": 63.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-rei-dance-2"
+            },
+            "partId": {
+              "value": "art:rei-dance"
+            },
+            "x": 34,
+            "y": 70,
+            "sizePct": 36,
+            "heightPct": 40.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-sumi-dancing-3"
+            },
+            "partId": {
+              "value": "art:sumi-dancing"
+            },
+            "x": 73,
+            "y": 71,
+            "sizePct": 39,
+            "heightPct": 36.833
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-4"
+            },
+            "x": 50,
+            "y": 13,
+            "text": "影の",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-5"
+            },
+            "x": 50,
+            "y": 23,
+            "text": "なまえ",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "title",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-1"
+            },
+            "x": 50,
+            "y": 39,
+            "text": "影の",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-2"
+            },
+            "x": 50,
+            "y": 47,
+            "text": "なまえ",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "title-chalk-3"
+            },
+            "partId": {
+              "value": "art:chalk"
+            },
+            "x": 50,
+            "y": 70,
+            "sizePct": 15,
+            "heightPct": 11.719
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-sunlit-plaza-1"
+            },
+            "partId": {
+              "value": "art:sunlit-plaza"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-long-shadow-2"
+            },
+            "partId": {
+              "value": "art:long-shadow"
+            },
+            "x": 62,
+            "y": 83,
+            "sizePct": 62,
+            "heightPct": 25.464
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-rei-tired-3"
+            },
+            "partId": {
+              "value": "art:rei-tired"
+            },
+            "x": 36,
+            "y": 64,
+            "sizePct": 43,
+            "heightPct": 48.375
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-satchel-4"
+            },
+            "partId": {
+              "value": "art:satchel"
+            },
+            "x": 54,
+            "y": 77,
+            "sizePct": 19,
+            "heightPct": 14.25
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "レイは、頼まれると",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "「いいよ」と こたえた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "仕事も、帰り道も、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "いつも 決まっていた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "影も、黙って ついてきた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-city-stairs-1"
+            },
+            "partId": {
+              "value": "art:city-stairs"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-rei-tired-2"
+            },
+            "partId": {
+              "value": "art:rei-tired"
+            },
+            "x": 65,
+            "y": 50,
+            "sizePct": 34,
+            "heightPct": 38.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-sumi-sitting-3"
+            },
+            "partId": {
+              "value": "art:sumi-sitting"
+            },
+            "x": 30,
+            "y": 81,
+            "sizePct": 40,
+            "heightPct": 36.818
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-satchel-4"
+            },
+            "partId": {
+              "value": "art:satchel"
+            },
+            "x": 80,
+            "y": 61,
+            "sizePct": 17,
+            "heightPct": 12.75
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "ところが、ある朝。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "レイが 階段を のぼっても、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "影は 下に 座ったまま。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "「早く おいで。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "影は、首を 振った。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p5",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-laundry-wall-1"
+            },
+            "partId": {
+              "value": "art:laundry-wall"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-laundry-2"
+            },
+            "partId": {
+              "value": "art:laundry"
+            },
+            "x": 50,
+            "y": 26,
+            "sizePct": 81,
+            "heightPct": 25.798
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-sumi-standing-3"
+            },
+            "partId": {
+              "value": "art:sumi-standing"
+            },
+            "x": 60,
+            "y": 69,
+            "sizePct": 41,
+            "heightPct": 47.523
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-rei-listen-4"
+            },
+            "partId": {
+              "value": "art:rei-listen"
+            },
+            "x": 20,
+            "y": 72,
+            "sizePct": 35,
+            "heightPct": 39.375
+          }
+        ]
+      },
+      {
+        "id": "p6",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "「わたし、今日は",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "ついていきたく ない。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "レイは 驚いた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "影が 何を したいかなんて、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "一度も 聞かなかった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p7",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-laundry-wall-1"
+            },
+            "partId": {
+              "value": "art:laundry-wall"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-laundry-2"
+            },
+            "partId": {
+              "value": "art:laundry"
+            },
+            "x": 50,
+            "y": 24,
+            "sizePct": 80,
+            "heightPct": 25.479
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-sumi-dancing-3"
+            },
+            "partId": {
+              "value": "art:sumi-dancing"
+            },
+            "x": 63,
+            "y": 67,
+            "sizePct": 48,
+            "heightPct": 45.333
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-shadow-bird-4"
+            },
+            "partId": {
+              "value": "art:shadow-bird"
+            },
+            "x": 25,
+            "y": 48,
+            "sizePct": 31,
+            "heightPct": 19.375
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-shadow-deer-5"
+            },
+            "partId": {
+              "value": "art:shadow-deer"
+            },
+            "x": 27,
+            "y": 84,
+            "sizePct": 31,
+            "heightPct": 20.608
+          }
+        ]
+      },
+      {
+        "id": "p8",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "洗濯物が 揺れるたび、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "壁には 違う 形が 生まれた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "影は 鳥に、鹿に、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "見たこともない 形に なった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "レイの 形では なかった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p9",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-shadow-theatre-left-1"
+            },
+            "partId": {
+              "value": "art:shadow-theatre-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-rei-listen-2"
+            },
+            "partId": {
+              "value": "art:rei-listen"
+            },
+            "x": 18,
+            "y": 75,
+            "sizePct": 26,
+            "heightPct": 29.25
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-shadow-bird-3"
+            },
+            "partId": {
+              "value": "art:shadow-bird"
+            },
+            "x": 70,
+            "y": 38,
+            "sizePct": 43,
+            "heightPct": 26.875
+          }
+        ]
+      },
+      {
+        "id": "p10",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-shadow-theatre-right-1"
+            },
+            "partId": {
+              "value": "art:shadow-theatre-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-sumi-dancing-2"
+            },
+            "partId": {
+              "value": "art:sumi-dancing"
+            },
+            "x": 38,
+            "y": 61,
+            "sizePct": 59,
+            "heightPct": 55.722
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-shadow-deer-3"
+            },
+            "partId": {
+              "value": "art:shadow-deer"
+            },
+            "x": 81,
+            "y": 83,
+            "sizePct": 28,
+            "heightPct": 18.614
+          }
+        ]
+      },
+      {
+        "id": "p11",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-quiet-roof-1"
+            },
+            "partId": {
+              "value": "art:quiet-roof"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-bench-2"
+            },
+            "partId": {
+              "value": "art:bench"
+            },
+            "x": 54,
+            "y": 78,
+            "sizePct": 40,
+            "heightPct": 27.857
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-sumi-sitting-3"
+            },
+            "partId": {
+              "value": "art:sumi-sitting"
+            },
+            "x": 69,
+            "y": 70,
+            "sizePct": 30,
+            "heightPct": 27.614
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-rei-listen-4"
+            },
+            "partId": {
+              "value": "art:rei-listen"
+            },
+            "x": 31,
+            "y": 66,
+            "sizePct": 38,
+            "heightPct": 42.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-rooftop-plant-5"
+            },
+            "partId": {
+              "value": "art:rooftop-plant"
+            },
+            "x": 88,
+            "y": 81,
+            "sizePct": 22,
+            "heightPct": 25.781
+          }
+        ]
+      },
+      {
+        "id": "p12",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "「遠くへ 行ってしまうの？」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "レイは、ようやく 聞いた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "影は 少し 考えた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "「となりに いたい 日も、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "きっと あるよ。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p13",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-quiet-roof-1"
+            },
+            "partId": {
+              "value": "art:quiet-roof"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-sumi-standing-2"
+            },
+            "partId": {
+              "value": "art:sumi-standing"
+            },
+            "x": 65,
+            "y": 67,
+            "sizePct": 43,
+            "heightPct": 49.841
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-rei-listen-3"
+            },
+            "partId": {
+              "value": "art:rei-listen"
+            },
+            "x": 30,
+            "y": 70,
+            "sizePct": 40,
+            "heightPct": 45.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-rooftop-plant-4"
+            },
+            "partId": {
+              "value": "art:rooftop-plant"
+            },
+            "x": 88,
+            "y": 82,
+            "sizePct": 22,
+            "heightPct": 25.781
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-ribbon-5"
+            },
+            "partId": {
+              "value": "art:ribbon"
+            },
+            "x": 50,
+            "y": 88,
+            "sizePct": 30,
+            "heightPct": 11.25
+          }
+        ]
+      },
+      {
+        "id": "p14",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "「影、じゃなくて、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "スミって 呼んでほしい。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "「スミ。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "はじめて 名前を 呼ぶと、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "レイの 声も 少し 変わった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p15",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-evening-plaza-1"
+            },
+            "partId": {
+              "value": "art:evening-plaza"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-chalk-circle-2"
+            },
+            "partId": {
+              "value": "art:chalk-circle"
+            },
+            "x": 53,
+            "y": 78,
+            "sizePct": 83,
+            "heightPct": 41.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-rei-dance-3"
+            },
+            "partId": {
+              "value": "art:rei-dance"
+            },
+            "x": 37,
+            "y": 60,
+            "sizePct": 40,
+            "heightPct": 45.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-sumi-standing-4"
+            },
+            "partId": {
+              "value": "art:sumi-standing"
+            },
+            "x": 73,
+            "y": 70,
+            "sizePct": 30,
+            "heightPct": 34.773
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-chalk-5"
+            },
+            "partId": {
+              "value": "art:chalk"
+            },
+            "x": 20,
+            "y": 90,
+            "sizePct": 11,
+            "heightPct": 8.594
+          }
+        ]
+      },
+      {
+        "id": "p16",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "レイも、腕を 広げてみた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "誰かの 役に 立たない 形。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "少し へんで、少し 楽しい。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "スミは まねを せず、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "べつの 踊りを はじめた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p17",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-shared-square-left-1"
+            },
+            "partId": {
+              "value": "art:shared-square-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-rei-dance-2"
+            },
+            "partId": {
+              "value": "art:rei-dance"
+            },
+            "x": 60,
+            "y": 64,
+            "sizePct": 43,
+            "heightPct": 48.375
+          }
+        ]
+      },
+      {
+        "id": "p18",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-shared-square-right-1"
+            },
+            "partId": {
+              "value": "art:shared-square-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-sumi-dancing-2"
+            },
+            "partId": {
+              "value": "art:sumi-turning"
+            },
+            "x": 40,
+            "y": 66,
+            "sizePct": 50,
+            "heightPct": 47.222
+          }
+        ]
+      },
+      {
+        "id": "p19",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-city-stairs-1"
+            },
+            "partId": {
+              "value": "art:city-stairs"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-rei-listen-2"
+            },
+            "partId": {
+              "value": "art:rei-listen"
+            },
+            "x": 30,
+            "y": 72,
+            "sizePct": 38,
+            "heightPct": 42.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-sumi-standing-3"
+            },
+            "partId": {
+              "value": "art:sumi-standing"
+            },
+            "x": 68,
+            "y": 61,
+            "sizePct": 32,
+            "heightPct": 37.091
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-satchel-4"
+            },
+            "partId": {
+              "value": "art:satchel"
+            },
+            "x": 16,
+            "y": 86,
+            "sizePct": 17,
+            "heightPct": 12.75
+          }
+        ]
+      },
+      {
+        "id": "p20",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "翌朝、仕事を 頼まれて、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "レイは 一度、息を した。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "「今日は、ここまでなら。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "影は、何も いわなかった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "レイは、自分で 決めた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p21",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-sunlit-plaza-1"
+            },
+            "partId": {
+              "value": "art:sunlit-plaza"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-rei-listen-2"
+            },
+            "partId": {
+              "value": "art:rei-listen"
+            },
+            "x": 30,
+            "y": 65,
+            "sizePct": 40,
+            "heightPct": 45.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-sumi-standing-3"
+            },
+            "partId": {
+              "value": "art:sumi-standing"
+            },
+            "x": 72,
+            "y": 71,
+            "sizePct": 40,
+            "heightPct": 46.364
+          }
+        ]
+      },
+      {
+        "id": "p22",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "同じ 方へ 歩く 日も、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "別々に 踊る 日も ある。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "レイは、となりを 見た。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "「スミ。今日は、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "どこへ 行こう？」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "back",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "back-chalk-1"
+            },
+            "partId": {
+              "value": "art:chalk"
+            },
+            "x": 50,
+            "y": 29,
+            "sizePct": 18,
+            "heightPct": 14.062
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-2"
+            },
+            "x": 50,
+            "y": 58,
+            "text": "発行 ＿＿年 ＿＿月 ＿＿日",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-3"
+            },
+            "x": 50,
+            "y": 66,
+            "text": "さく ＿＿＿＿＿＿",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-4"
+            },
+            "x": 50,
+            "y": 74,
+            "text": "え ＿＿＿＿＿＿",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 320" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>手紙を 持つ ナギ</title>
+<path d="M79 226L73 288 56 300Q49 311 87 309L103 240M125 228L135 287 123 298Q115 313 157 310L147 226Z" fill="#344c57"/>
+<path d="M66 120Q106 100 147 122L168 239Q122 259 52 241Z" fill="#718f91"/>
+<path d="M103 135v110M67 205h26v21H65M122 205h25v21h-23" stroke-width="1.3"/>
+<circle cx="108" cy="169" r="2" fill="#dac69a"/>
+<circle cx="109" cy="191" r="2" fill="#dac69a"/>
+<path d="M62 52Q66 13 104 15C148 9 168 49 158 89L144 112 58 104Z" fill="#394952"/>
+<ellipse cx="106" cy="72" rx="40" ry="46" fill="#dfb99a"/>
+<path d="M65 57Q96 49 113 29Q127 57 146 59L153 70 148 41 110 21 77 33Z" fill="#394952"/>
+<path d="M74 91q7 5 14 1M124 94q8 2 15-3" stroke="#c99385"/>
+<ellipse cx="90" cy="77" rx="2.1" ry="3.3" fill="#63584f"/>
+<ellipse cx="125" cy="77" rx="2.1" ry="3.3" fill="#63584f"/>
+<path d="M106 80l-3 12h5M101 103q6 4 13-1" stroke-width="1.3"/>
+<path d="M71 112Q107 133 145 112L148 130Q110 148 68 130Z" fill="#d5aa69"/>
+<path d="M132 136l16 62 16-9-17-57Z" fill="#d5aa69"/>
+<path d="M150 179l10-3M149 187l11-4" stroke="#a4845f" stroke-width="1"/>
+<path d="M70 134Q46 153 64 178L109 199 118 183 83 164 86 143M147 138Q174 162 146 183L120 198 110 183 139 161Z" fill="#718f91"/>
+<ellipse cx="111" cy="190" rx="12" ry="7" fill="#dfb99a"/>
+<ellipse cx="124" cy="190" rx="10" ry="7" fill="#dfb99a"/>
+</svg>

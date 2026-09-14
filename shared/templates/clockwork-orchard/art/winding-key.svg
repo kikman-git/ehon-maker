@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 145" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>時間を 巻く ねじ</title>
+<circle cx="40" cy="32" r="22" fill="#cab077"/>
+<circle cx="85" cy="32" r="22" fill="#cab077"/>
+<circle cx="40" cy="32" r="10" fill="#f0e5ce"/>
+<circle cx="85" cy="32" r="10" fill="#f0e5ce"/>
+<path d="M51 48h22v77H52V99h9V88H51Z" fill="#cab077"/>
+</svg>

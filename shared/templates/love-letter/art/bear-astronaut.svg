@@ -1,26 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 285" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
-<title>おめかしした くま</title>
-<path d="M56 141L39 207L58 214L79 170M142 144L174 180L171 200L153 204L140 183" fill="#8db6c3"/>
-<path d="M80 143L68 212L141 214L136 145Z" fill="#fff0d9"/>
-<path d="M79 145L106 168L92 188L111 211M129 145L110 168L124 185L109 213" fill="none" stroke-width="1.3"/>
-<path d="M74 210L57 250L39 249Q29 259 43 267L67 265L97 224M112 222L135 257Q159 276 170 258L148 243L140 212" fill="#cea473"/>
-<path d="M69 178L138 174L150 212L78 218Z" fill="#8db6c3"/>
-<path d="M77 127L134 125L141 144L72 145Z" fill="#8db6c3"/>
-<path d="M99 144L86 137L85 155L101 149L114 155L116 136L102 143Z" fill="#dc9688" stroke-width="1.2"/>
-<g transform="translate(13 -5) scale(.94)"><ellipse cx="56" cy="43" rx="17" ry="18" fill="#cea473"/>
-<ellipse cx="150" cy="40" rx="16" ry="18" fill="#cea473"/>
-<ellipse cx="57" cy="43" rx="9" ry="11" fill="#fff0d9" stroke-width="0.9"/>
-<ellipse cx="150" cy="40" rx="8" ry="10" fill="#fff0d9" stroke-width="0.9"/>
-<path d="M49 56C35 75 40 113 63 131C86 151 126 151 151 127C177 103 173 64 151 48C122 27 75 28 49 56Z" fill="#cea473"/>
-<ellipse cx="102" cy="114" rx="27" ry="22" fill="#fff0d9" stroke-width="1.4"/>
-<path d="M65 77q9-7 17-1M122 74q9-7 16 0" fill="none" stroke-width="1.2"/>
-<ellipse cx="75" cy="92" rx="2" ry="4" fill="#6c5849" stroke-width="0.4"/>
-<ellipse cx="129" cy="90" rx="2" ry="4" fill="#6c5849" stroke-width="0.4"/>
-<path d="M101 117v8m-10-1q9 10 20-1" fill="none" stroke-width="1.2"/>
-<path d="M97 111q6-4 13 0l-6 6Z" fill="#6c5849" stroke-width="1"/></g><path d="M44 116C5 51 45 4 106 5C177 3 206 62 166 123" fill="none" stroke="#9baeb0" stroke-width="1.9"/>
-<path d="M40 54Q48 30 66 23M72 19l12-3" fill="none" stroke="#a6b8b6" stroke-width="1.2"/>
-<ellipse cx="34" cy="91" rx="13" ry="24" fill="#8db6c3"/>
-<ellipse cx="179" cy="91" rx="13" ry="24" fill="#8db6c3"/>
-<path d="M35 72Q30 33 71 12M176 71Q182 30 148 14" fill="none" stroke-width="2"/>
-<ellipse cx="45" cy="213" rx="13" ry="13" fill="#cea473"/>
-<ellipse cx="165" cy="206" rx="12" ry="13" fill="#cea473"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 285" fill="none" stroke="#69584d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+<title>うちゅうふくの くま</title>
+<rect x="133" y="145" width="35" height="62" rx="11" fill="#a3bbc2"/>
+<path d="M160 162V187M158 193H164" stroke="#819fa8" stroke-width="1.2"/>
+<path d="M75 207L65 246L50 250C42 253 43 266 51 269L77 269C85 265 88 246 94 223L101 211ZM113 211L122 248C126 262 143 273 159 270L174 267C181 263 175 252 167 250L149 244L146 212Z" fill="#fff1d9"/>
+<path d="M64 243L58 251L49 253C40 257 43 267 51 270C60 274 72 274 80 270L88 249ZM121 245L125 260C135 272 157 277 172 266C181 260 173 253 163 252L151 248L145 239Z" fill="#a3bbc2"/>
+<path d="M48 264Q61 269 78 266M132 259Q148 268 170 261M67 246L82 251M127 249L144 246" stroke="#819fa8" stroke-width="1.2"/>
+<path d="M74 153C58 153 51 171 46 191L36 207L49 219L64 196L84 171ZM142 152C158 152 167 174 173 193L184 207L173 220L158 198L134 172Z" fill="#fff1d9"/>
+<path d="M40 198L55 207L51 216L35 207ZM168 199L160 207L170 220L184 210Z" fill="#a3bbc2"/>
+<path d="M36 207C27 207 23 217 28 225C33 233 44 232 49 224C52 220 51 215 46 213C45 208 41 205 36 207ZM181 207C190 207 196 216 191 225C187 233 175 233 171 225C167 222 168 215 173 213C173 208 177 205 181 207Z" fill="#fff1d9"/>
+<path d="M31 218L36 222M186 218L182 222" stroke-width="1.1"/>
+<path d="M76 147C64 161 62 186 65 207C84 223 132 225 155 208L154 182C153 162 145 152 134 147Z" fill="#fff1d9"/>
+<path d="M74 203Q110 214 146 203M77 181L73 193M145 181L149 193" stroke="#cbbda5" stroke-width="1.2"/>
+<rect x="94" y="176" width="34" height="26" rx="6" fill="#a3bbc2" stroke-width="1.3"/>
+<path d="M101 183H121" stroke="#fff1d9" stroke-width="2"/>
+<circle cx="103" cy="193" r="2.5" fill="#c97978" stroke="none"/>
+<circle cx="112" cy="193" r="2.5" fill="#fff1d9" stroke="none"/>
+<path d="M80 176C73 171 70 180 80 185C90 179 86 171 80 176Z" fill="#c97978" stroke-width="1.1"/>
+<ellipse cx="110" cy="84" rx="88" ry="79" fill="#e4eeee" stroke="#819da3" stroke-width="2"/>
+<ellipse cx="110" cy="84" rx="81" ry="72" fill="#f5f8f1" stroke="#b1c8cb" stroke-width="1.1"/>
+<g fill="#cfa879">
+<circle cx="67" cy="44" r="15"/>
+<circle cx="152" cy="44" r="15"/>
+</g>
+<g fill="#f0d4ad" stroke="none">
+<circle cx="67" cy="44" r="8"/>
+<circle cx="152" cy="44" r="8"/>
+</g>
+<path d="M76 53C93 41 124 40 143 51C164 65 174 85 166 106C160 128 137 142 111 143C83 144 58 129 53 107C46 87 53 66 76 53Z" fill="#cfa879"/>
+<ellipse cx="110" cy="112" rx="25" ry="20" fill="#f0d4ad" stroke="none"/>
+<path d="M81 76Q88 72 95 76M124 75Q131 70 138 75" stroke-width="1.2"/>
+<g fill="#69584d" stroke="none">
+<ellipse cx="88" cy="88" rx="2.6" ry="3.8"/>
+<ellipse cx="132" cy="87" rx="2.6" ry="3.8"/>
+<path d="M103 107C105 103 114 103 117 107Q117 112 110 115Q104 112 103 107Z"/>
+</g>
+<g fill="#dcaaa0" opacity=".55" stroke="none">
+<ellipse cx="77" cy="105" rx="9" ry="4.5"/>
+<ellipse cx="145" cy="104" rx="9" ry="4.5"/>
+</g>
+<path d="M110 115V121M100 121Q110 131 121 120" stroke-width="1.2"/>
+<path d="M39 75Q44 46 61 34M70 29L80 25" stroke="#fffdf9" stroke-width="3"/>
+<path d="M181 94Q180 113 168 127" stroke="#fffdf9" stroke-width="2.5"/>
+<path d="M61 143Q110 158 159 143L160 156Q110 173 60 156Z" fill="#a3bbc2"/>
+<path d="M68 151Q110 163 152 151" stroke="#fff1d9" stroke-width="1.5"/>
+<path d="M108 166L98 161L97 174L109 170L121 175L121 161L111 166Z" fill="#c97978" stroke-width="1.1"/>
+<circle cx="110" cy="168" r="2.8" fill="#e3b296" stroke-width="1"/>
+</svg>

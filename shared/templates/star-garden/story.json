@@ -1,0 +1,1697 @@
+{
+  "id": "doc-star-garden",
+  "order": 9,
+  "description": {
+    "ja": "星の種を拾った、年老いた鹿の庭師。名を残す願いと、思いどおりにならない花の物語。",
+    "en": "An old deer plants a fallen star, hoping something will bear his name. A luminous garden fable about patience and what grows beyond our plans."
+  },
+  "book": {
+    "id": {
+      "value": "template-star-garden"
+    },
+    "title": "星を植える 庭",
+    "shape": "PORTRAIT",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "day-garden": {
+        "name": "庭師の 小さな 庭",
+        "file": "day-garden.svg"
+      },
+      "night-garden": {
+        "name": "灯りを 落とした 庭",
+        "file": "night-garden.svg"
+      },
+      "autumn-garden": {
+        "name": "季節を 越える 庭",
+        "file": "autumn-garden.svg"
+      },
+      "garden-house": {
+        "name": "星の 地図が ある 家",
+        "file": "garden-house.svg"
+      },
+      "star-study": {
+        "name": "庭師の 星の 書斎",
+        "file": "star-study.svg"
+      },
+      "cover-garden": {
+        "name": "夜の 庭の アーチ",
+        "file": "cover-garden.svg"
+      },
+      "gardener-hold": {
+        "name": "星を 抱える 鹿の 庭師",
+        "file": "gardener-hold.svg"
+      },
+      "gardener-offer": {
+        "name": "種を 手わたす 庭師",
+        "file": "gardener-offer.svg"
+      },
+      "gardener-kneeling": {
+        "name": "土に 近づく 庭師",
+        "file": "gardener-kneeling.svg"
+      },
+      "star-seed": {
+        "name": "拾った 星の 種",
+        "file": "star-seed.svg"
+      },
+      "seed-tray": {
+        "name": "星の 種の 皿",
+        "file": "seed-tray.svg"
+      },
+      "seed-pot": {
+        "name": "星を 植えた 鉢",
+        "file": "seed-pot.svg"
+      },
+      "label": {
+        "name": "名前を 待つ 札",
+        "file": "label.svg"
+      },
+      "old-label": {
+        "name": "雨に さらされた 札",
+        "file": "old-label.svg"
+      },
+      "trowel": {
+        "name": "庭師の 移植ごて",
+        "file": "trowel.svg"
+      },
+      "watering-can": {
+        "name": "古い じょうろ",
+        "file": "watering-can.svg"
+      },
+      "lantern": {
+        "name": "庭を 照らす 灯り",
+        "file": "lantern.svg"
+      },
+      "dim-lantern": {
+        "name": "小さくした 灯り",
+        "file": "dim-lantern.svg"
+      },
+      "moth": {
+        "name": "灯りの そばの 蛾",
+        "file": "moth.svg"
+      },
+      "sprout": {
+        "name": "思いがけない 小さな 芽",
+        "file": "sprout.svg"
+      },
+      "white-flower": {
+        "name": "名前の ない 白い 花",
+        "file": "white-flower.svg"
+      },
+      "dew-flower": {
+        "name": "露に 星を 映す 花",
+        "file": "dew-flower.svg"
+      },
+      "fallen-petals": {
+        "name": "土へ 帰る 花びら",
+        "file": "fallen-petals.svg"
+      },
+      "garden-gate": {
+        "name": "開いた 庭の 木戸",
+        "file": "garden-gate.svg"
+      },
+      "hedgehog": {
+        "name": "種を たずねる 隣人",
+        "file": "hedgehog.svg"
+      },
+      "rain": {
+        "name": "待つ 庭の 雨",
+        "file": "rain.svg"
+      },
+      "under-soil-left": {
+        "name": "見えない 土の 下の 時間（ひだり）",
+        "file": "under-soil-left.svg"
+      },
+      "under-soil-right": {
+        "name": "見えない 土の 下の 時間（みぎ）",
+        "file": "under-soil-right.svg"
+      },
+      "constellation-garden-left": {
+        "name": "星を 映す 夜の 庭（ひだり）",
+        "file": "constellation-garden-left.svg"
+      },
+      "constellation-garden-right": {
+        "name": "星を 映す 夜の 庭（みぎ）",
+        "file": "constellation-garden-right.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "cover",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-cover-garden-1"
+            },
+            "partId": {
+              "value": "art:cover-garden"
+            },
+            "x": 50,
+            "y": 65,
+            "sizePct": 91,
+            "heightPct": 63.7
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-gardener-hold-2"
+            },
+            "partId": {
+              "value": "art:gardener-hold"
+            },
+            "x": 41,
+            "y": 69,
+            "sizePct": 40,
+            "heightPct": 42.778
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-star-seed-3"
+            },
+            "partId": {
+              "value": "art:star-seed"
+            },
+            "x": 40,
+            "y": 77,
+            "sizePct": 13,
+            "heightPct": 10.098
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-dew-flower-4"
+            },
+            "partId": {
+              "value": "art:dew-flower"
+            },
+            "x": 75,
+            "y": 78,
+            "sizePct": 22,
+            "heightPct": 23.294
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-moth-5"
+            },
+            "partId": {
+              "value": "art:moth"
+            },
+            "x": 76,
+            "y": 45,
+            "sizePct": 13,
+            "heightPct": 9.414
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-6"
+            },
+            "x": 50,
+            "y": 13,
+            "text": "星を植える",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-7"
+            },
+            "x": 50,
+            "y": 23,
+            "text": "庭",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "title",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-1"
+            },
+            "x": 50,
+            "y": 39,
+            "text": "星を植える",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-2"
+            },
+            "x": 50,
+            "y": 47,
+            "text": "庭",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "title-star-seed-3"
+            },
+            "partId": {
+              "value": "art:star-seed"
+            },
+            "x": 50,
+            "y": 70,
+            "sizePct": 15,
+            "heightPct": 11.652
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-star-study-1"
+            },
+            "partId": {
+              "value": "art:star-study"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-gardener-hold-2"
+            },
+            "partId": {
+              "value": "art:gardener-hold"
+            },
+            "x": 35,
+            "y": 70,
+            "sizePct": 44,
+            "heightPct": 47.056
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-label-3"
+            },
+            "partId": {
+              "value": "art:label"
+            },
+            "x": 66,
+            "y": 80,
+            "sizePct": 19,
+            "heightPct": 17.927,
+            "rotationDeg": -7
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-lantern-4"
+            },
+            "partId": {
+              "value": "art:lantern"
+            },
+            "x": 85,
+            "y": 74,
+            "sizePct": 19,
+            "heightPct": 19.38
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "年老いた 鹿の 庭師は、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "夜ごと 星の 名前を 読んだ。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "いつか、自分の 名前も",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "空の どこかに 残せたら。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "そんなことを 考えていた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-night-garden-1"
+            },
+            "partId": {
+              "value": "art:night-garden"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-gardener-kneeling-2"
+            },
+            "partId": {
+              "value": "art:gardener-kneeling"
+            },
+            "x": 39,
+            "y": 65,
+            "sizePct": 43,
+            "heightPct": 43.597
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-star-seed-3"
+            },
+            "partId": {
+              "value": "art:star-seed"
+            },
+            "x": 60,
+            "y": 80,
+            "sizePct": 18,
+            "heightPct": 13.982
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-lantern-4"
+            },
+            "partId": {
+              "value": "art:lantern"
+            },
+            "x": 80,
+            "y": 74,
+            "sizePct": 19,
+            "heightPct": 19.38
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "ある晩、庭の 隅に",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "小さな 星が 落ちていた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "拾いあげると、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "指の あいだで",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "種のように 眠っていた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p5",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-day-garden-1"
+            },
+            "partId": {
+              "value": "art:day-garden"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-gardener-kneeling-2"
+            },
+            "partId": {
+              "value": "art:gardener-kneeling"
+            },
+            "x": 40,
+            "y": 66,
+            "sizePct": 44,
+            "heightPct": 44.611
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-seed-pot-3"
+            },
+            "partId": {
+              "value": "art:seed-pot"
+            },
+            "x": 18,
+            "y": 86,
+            "sizePct": 21,
+            "heightPct": 18.529
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-label-4"
+            },
+            "partId": {
+              "value": "art:label"
+            },
+            "x": 78,
+            "y": 78,
+            "sizePct": 20,
+            "heightPct": 18.871
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-trowel-5"
+            },
+            "partId": {
+              "value": "art:trowel"
+            },
+            "x": 42,
+            "y": 90,
+            "sizePct": 16,
+            "heightPct": 15.556
+          }
+        ]
+      },
+      {
+        "id": "p6",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "庭師は 土を ほぐし、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "星を ひとつ 植えた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "花が 咲いたら、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "自分の 名前を つけよう。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "札だけ 先に 立てておいた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p7",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-autumn-garden-1"
+            },
+            "partId": {
+              "value": "art:autumn-garden"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-rain-2"
+            },
+            "partId": {
+              "value": "art:rain"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-seed-pot-3"
+            },
+            "partId": {
+              "value": "art:seed-pot"
+            },
+            "x": 19,
+            "y": 86,
+            "sizePct": 21,
+            "heightPct": 18.529
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-old-label-4"
+            },
+            "partId": {
+              "value": "art:old-label"
+            },
+            "x": 75,
+            "y": 77,
+            "sizePct": 24,
+            "heightPct": 22.645
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-watering-can-5"
+            },
+            "partId": {
+              "value": "art:watering-can"
+            },
+            "x": 41,
+            "y": 83,
+            "sizePct": 22,
+            "heightPct": 13.5
+          }
+        ]
+      },
+      {
+        "id": "p8",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "春が 過ぎ、秋が 過ぎた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "庭師は 水を やり、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "何度も 土を 見た。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "何も 出ないまま、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "名前の 札だけ 古くなった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p9",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-under-soil-left-1"
+            },
+            "partId": {
+              "value": "art:under-soil-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-old-label-2"
+            },
+            "partId": {
+              "value": "art:old-label"
+            },
+            "x": 27,
+            "y": 29,
+            "sizePct": 17,
+            "heightPct": 16.04
+          }
+        ]
+      },
+      {
+        "id": "p10",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-under-soil-right-1"
+            },
+            "partId": {
+              "value": "art:under-soil-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-trowel-2"
+            },
+            "partId": {
+              "value": "art:trowel"
+            },
+            "x": 80,
+            "y": 33,
+            "sizePct": 16,
+            "heightPct": 15.556,
+            "rotationDeg": 65
+          }
+        ]
+      },
+      {
+        "id": "p11",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-autumn-garden-1"
+            },
+            "partId": {
+              "value": "art:autumn-garden"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-gardener-hold-2"
+            },
+            "partId": {
+              "value": "art:gardener-hold"
+            },
+            "x": 40,
+            "y": 65,
+            "sizePct": 45,
+            "heightPct": 48.125
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-old-label-3"
+            },
+            "partId": {
+              "value": "art:old-label"
+            },
+            "x": 40,
+            "y": 73,
+            "sizePct": 19,
+            "heightPct": 17.927
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-seed-pot-4"
+            },
+            "partId": {
+              "value": "art:seed-pot"
+            },
+            "x": 16,
+            "y": 87,
+            "sizePct": 21,
+            "heightPct": 18.529
+          }
+        ]
+      },
+      {
+        "id": "p12",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "「わしの 星に なるのは、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "いつのことだろう。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "庭師は 札を 抜いた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "木は ずいぶん 軽かった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "胸の 中は、重かった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p13",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-night-garden-1"
+            },
+            "partId": {
+              "value": "art:night-garden"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-gardener-kneeling-2"
+            },
+            "partId": {
+              "value": "art:gardener-kneeling"
+            },
+            "x": 39,
+            "y": 65,
+            "sizePct": 43,
+            "heightPct": 43.597
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-dim-lantern-3"
+            },
+            "partId": {
+              "value": "art:dim-lantern"
+            },
+            "x": 72,
+            "y": 80,
+            "sizePct": 19,
+            "heightPct": 19.38
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-moth-4"
+            },
+            "partId": {
+              "value": "art:moth"
+            },
+            "x": 72,
+            "y": 55,
+            "sizePct": 23,
+            "heightPct": 16.655
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-sprout-5"
+            },
+            "partId": {
+              "value": "art:sprout"
+            },
+            "x": 55,
+            "y": 85,
+            "sizePct": 17,
+            "heightPct": 16.267
+          }
+        ]
+      },
+      {
+        "id": "p14",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "灯りに 迷う 蛾を 見て、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "庭師は 火を 小さくした。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "暗さに 目が 慣れるころ、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "土の ふちに、小さな 緑。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "こんなに 近くに あったのか。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p15",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-day-garden-1"
+            },
+            "partId": {
+              "value": "art:day-garden"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-white-flower-2"
+            },
+            "partId": {
+              "value": "art:white-flower"
+            },
+            "x": 64,
+            "y": 63,
+            "sizePct": 43,
+            "heightPct": 45.529
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-gardener-kneeling-3"
+            },
+            "partId": {
+              "value": "art:gardener-kneeling"
+            },
+            "x": 27,
+            "y": 73,
+            "sizePct": 33,
+            "heightPct": 33.458
+          }
+        ]
+      },
+      {
+        "id": "p16",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "咲いたのは、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "小さな 白い 花だった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "星の 形でも、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "庭師の 好きな 金色でもない。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "でも、花びらは やわらかい。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p17",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-constellation-garden-left-1"
+            },
+            "partId": {
+              "value": "art:constellation-garden-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-dew-flower-2"
+            },
+            "partId": {
+              "value": "art:dew-flower"
+            },
+            "x": 15,
+            "y": 80,
+            "sizePct": 25,
+            "heightPct": 26.471
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-dew-flower-3"
+            },
+            "partId": {
+              "value": "art:dew-flower"
+            },
+            "x": 40,
+            "y": 66,
+            "sizePct": 20,
+            "heightPct": 21.176
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-dew-flower-4"
+            },
+            "partId": {
+              "value": "art:dew-flower"
+            },
+            "x": 74,
+            "y": 80,
+            "sizePct": 30,
+            "heightPct": 31.765
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-gardener-hold-5"
+            },
+            "partId": {
+              "value": "art:gardener-hold"
+            },
+            "x": 84,
+            "y": 51,
+            "sizePct": 22,
+            "heightPct": 23.528
+          }
+        ]
+      },
+      {
+        "id": "p18",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-constellation-garden-right-1"
+            },
+            "partId": {
+              "value": "art:constellation-garden-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-dew-flower-2"
+            },
+            "partId": {
+              "value": "art:dew-flower"
+            },
+            "x": 22,
+            "y": 73,
+            "sizePct": 26,
+            "heightPct": 27.529
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-dew-flower-3"
+            },
+            "partId": {
+              "value": "art:dew-flower"
+            },
+            "x": 52,
+            "y": 83,
+            "sizePct": 30,
+            "heightPct": 31.765
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-dew-flower-4"
+            },
+            "partId": {
+              "value": "art:dew-flower"
+            },
+            "x": 83,
+            "y": 65,
+            "sizePct": 20,
+            "heightPct": 21.176
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-moth-5"
+            },
+            "partId": {
+              "value": "art:moth"
+            },
+            "x": 50,
+            "y": 42,
+            "sizePct": 19,
+            "heightPct": 13.759
+          }
+        ]
+      },
+      {
+        "id": "p19",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-garden-house-1"
+            },
+            "partId": {
+              "value": "art:garden-house"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-gardener-offer-2"
+            },
+            "partId": {
+              "value": "art:gardener-offer"
+            },
+            "x": 35,
+            "y": 65,
+            "sizePct": 44,
+            "heightPct": 47.056
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-hedgehog-3"
+            },
+            "partId": {
+              "value": "art:hedgehog"
+            },
+            "x": 75,
+            "y": 80,
+            "sizePct": 31,
+            "heightPct": 25.575
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-seed-tray-4"
+            },
+            "partId": {
+              "value": "art:seed-tray"
+            },
+            "x": 60,
+            "y": 71,
+            "sizePct": 22,
+            "heightPct": 10.5
+          }
+        ]
+      },
+      {
+        "id": "p20",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "「この花、なんて 名前？」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "隣人が 種を たずねた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "「まだ、知らないんだ。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "庭師は 皿を 差しだした。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "その返事を、少し 気に入った。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p21",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-night-garden-1"
+            },
+            "partId": {
+              "value": "art:night-garden"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-garden-gate-2"
+            },
+            "partId": {
+              "value": "art:garden-gate"
+            },
+            "x": 22,
+            "y": 75,
+            "sizePct": 34,
+            "heightPct": 29.325
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-white-flower-3"
+            },
+            "partId": {
+              "value": "art:white-flower"
+            },
+            "x": 74,
+            "y": 71,
+            "sizePct": 25,
+            "heightPct": 26.471
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-dim-lantern-4"
+            },
+            "partId": {
+              "value": "art:dim-lantern"
+            },
+            "x": 42,
+            "y": 84,
+            "sizePct": 19,
+            "heightPct": 19.38
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-fallen-petals-5"
+            },
+            "partId": {
+              "value": "art:fallen-petals"
+            },
+            "x": 72,
+            "y": 88,
+            "sizePct": 24,
+            "heightPct": 20.483
+          }
+        ]
+      },
+      {
+        "id": "p22",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "その夜、庭師は",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "木戸を 少し 開けておいた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "明日、誰が 来るだろう。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "花がらの 下には、もう、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "次の 小さな 種が あった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "back",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "back-star-seed-1"
+            },
+            "partId": {
+              "value": "art:star-seed"
+            },
+            "x": 50,
+            "y": 29,
+            "sizePct": 18,
+            "heightPct": 13.982
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-2"
+            },
+            "x": 50,
+            "y": 58,
+            "text": "発行 ＿＿年 ＿＿月 ＿＿日",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-3"
+            },
+            "x": 50,
+            "y": 66,
+            "text": "さく ＿＿＿＿＿＿",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-4"
+            },
+            "x": 50,
+            "y": 74,
+            "text": "え ＿＿＿＿＿＿",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      }
+    ]
+  }
+}

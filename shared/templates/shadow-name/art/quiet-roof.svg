@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#605768" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>ふたりで 座る 屋上</title>
+<rect x="0" y="0" width="600" height="800" fill="#c9cfce" stroke="none"/>
+<circle cx="458" cy="172" r="60" fill="#e9d6ad" stroke="none"/>
+<rect x="0" y="383" width="99" height="240" fill="#b69d95" stroke="none"/>
+<rect x="22" y="412" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="22" y="471" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="22" y="530" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="87" y="321" width="114" height="295" fill="#cebaab" stroke="none"/>
+<rect x="109" y="350" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="109" y="409" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="109" y="468" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="188" y="374" width="110" height="235" fill="#ab9da0" stroke="none"/>
+<rect x="210" y="403" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="210" y="462" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="210" y="521" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="280" y="274" width="113" height="349" fill="#baa997" stroke="none"/>
+<rect x="302" y="303" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="302" y="362" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="302" y="421" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="384" y="345" width="139" height="282" fill="#d0b7a1" stroke="none"/>
+<rect x="406" y="374" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="406" y="433" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="406" y="492" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="508" y="300" width="110" height="323" fill="#af9a92" stroke="none"/>
+<rect x="530" y="329" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="530" y="388" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<rect x="530" y="447" width="22" height="30" fill="#e3d2b7" stroke="none"/>
+<path d="M0 570l600-18v248H0Z" fill="#d6c5ac" stroke="none"/>
+<path d="M0 585h600M0 666h600M0 768h600" stroke="#c0ac99"/>
+<path d="M0 500h600M16 501v76M124 501v73M235 501v72M346 501v69M457 501v65M567 501v58" stroke="#908780" stroke-width="4"/>
+</svg>

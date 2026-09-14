@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>夜明けへ 帰る 海（みぎ）</title>
+<g transform="translate(-600 0)">
+<rect x="0" y="0" width="1200" height="800" fill="#e8cdb9" stroke="none"/>
+<circle cx="874" cy="294" r="77" fill="#f5e3b4" stroke="none"/>
+<path d="M0 358Q286 399 591 358T1200 365V800H0Z" fill="#9ab3b6" stroke="none"/>
+<path d="M0 443q150-22 300 0t300 0t300 0t300 0" stroke="#dde0c8" stroke-width="2"/>
+<path d="M0 548q150-22 300 0t300 0t300 0t300 0" stroke="#dde0c8" stroke-width="2"/>
+<path d="M0 669q150-22 300 0t300 0t300 0t300 0" stroke="#dde0c8" stroke-width="2"/>
+<path d="M0 757q150-22 300 0t300 0t300 0t300 0" stroke="#dde0c8" stroke-width="2"/>
+<path d="M951 360L960 147 991 108 1021 148 1028 366Z" fill="#e5d8bb"/>
+<path d="M958 147l34-40 32 40Z" fill="#ab7769"/>
+<rect x="974" y="164" width="32" height="56" fill="#efcf96" rx="2"/>
+<path d="M990.0 170V220M974 197.6H1006" stroke="#9c8770" stroke-width="1.4"/>
+<path d="M951 239h70M988 295v67" stroke="#b1a38b"/>
+</g>
+</svg>

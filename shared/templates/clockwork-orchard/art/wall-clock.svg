@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 230" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>止まった 振り子時計</title>
+<path d="M21 53Q22 15 80 12T140 53V198Q80 226 21 198Z" fill="#ae835e"/>
+<circle cx="80" cy="83" r="55" fill="#f0e4c6"/>
+<circle cx="80" cy="83" r="48" stroke="#b8a077" stroke-width="1"/>
+<g transform="rotate(0 80 83)">
+<path d="M80 39v8" stroke-width="1.5"/>
+</g>
+<g transform="rotate(30 80 83)">
+<path d="M80 39v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(60 80 83)">
+<path d="M80 39v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(90 80 83)">
+<path d="M80 39v8" stroke-width="1.5"/>
+</g>
+<g transform="rotate(120 80 83)">
+<path d="M80 39v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(150 80 83)">
+<path d="M80 39v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(180 80 83)">
+<path d="M80 39v8" stroke-width="1.5"/>
+</g>
+<g transform="rotate(210 80 83)">
+<path d="M80 39v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(240 80 83)">
+<path d="M80 39v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(270 80 83)">
+<path d="M80 39v8" stroke-width="1.5"/>
+</g>
+<g transform="rotate(300 80 83)">
+<path d="M80 39v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(330 80 83)">
+<path d="M80 39v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(0 80 83)">
+<path d="M80 83l27.5 4.1M80 83l39.0 8.3" stroke-width="2.7"/>
+</g>
+<circle cx="80" cy="83" r="3" fill="#a07e5a"/>
+<rect x="51" y="145" width="59" height="54" fill="#3e625c" rx="20"/>
+<path d="M81 141v37" stroke="#ceae6a" stroke-width="2"/>
+<circle cx="81" cy="180" r="14" fill="#d6b675"/>
+<path d="M31 201h100" stroke="#7f654e"/>
+</svg>

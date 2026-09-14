@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 155" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>郵便くじらの 灯り</title>
+<path d="M44 36V24Q44 7 61 8T78 36" stroke-width="2"/>
+<path d="M25 42l35-15 35 15-10 9H35Z" fill="#94795f"/>
+<rect x="33" y="50" width="54" height="79" fill="#efce83" rx="6"/>
+<path d="M43 50v79M77 50v79M30 133h60M40 142h40" stroke-width="2"/>
+<path d="M56 104q-8-12 6-25q-1 16 7 24q-3 13-13 1Z" fill="#f8e6ab" stroke="none"/>
+</svg>

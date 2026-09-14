@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>あさの 桟橋</title>
+<rect x="0" y="0" width="600" height="800" fill="#e8cfb7" stroke="none"/>
+<circle cx="430" cy="339" r="64" fill="#f5e3b8" stroke="none"/>
+<path d="M0 434Q146 406 302 440T600 426V800H0Z" fill="#9eb6b7" stroke="none"/>
+<path d="M0 464q83-18 161 0t172 0t185 0t120 0" stroke="#e0e4d0" stroke-width="1.4"/>
+<path d="M0 536q83-18 161 0t172 0t185 0t120 0" stroke="#e0e4d0" stroke-width="1.4"/>
+<path d="M0 622q83-18 161 0t172 0t185 0t120 0" stroke="#e0e4d0" stroke-width="1.4"/>
+<path d="M0 725q83-18 161 0t172 0t185 0t120 0" stroke="#e0e4d0" stroke-width="1.4"/>
+<path d="M0 638L330 584 390 634 0 723Z" fill="#c5af93"/>
+<path d="M0 723L390 634V689L0 788Z" fill="#a48b72"/>
+<rect x="40" y="627.0" width="12" height="102" fill="#806e60" rx="3"/>
+<rect x="145" y="611.25" width="12" height="102" fill="#806e60" rx="3"/>
+<rect x="250" y="595.5" width="12" height="102" fill="#806e60" rx="3"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>封をした 手紙</title>
+<rect x="10" y="15" width="100" height="66" fill="#f3e4c8" rx="3"/>
+<path d="M11 17L60 55 109 17M11 80L43 49M109 80L77 49" stroke-width="1.4"/>
+<circle cx="60" cy="53" r="8" fill="#b96654"/>
+<path d="M56 52l4-3 4 3-4 4Z" fill="#efcf94" stroke="none"/>
+</svg>

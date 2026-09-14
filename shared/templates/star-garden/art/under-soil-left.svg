@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#626254" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>見えない 土の 下の 時間（ひだり）</title>
+<g transform="translate(0 0)">
+<rect x="0" y="0" width="1200" height="800" fill="#c3cfbf" stroke="none"/>
+<path d="M0 308Q331 270 600 311T1200 297V800H0Z" fill="#857b60" stroke="none"/>
+<path d="M0 375q299-21 600 6t600-10M0 694q360-39 600-2t600-11" stroke="#9a8d6c" stroke-width="1.5"/>
+<g transform="translate(149 365)">
+<path d="M0 0Q-26 90-5 150Q16 210-31 276M-5 137Q-67 154-90 221M-12  60 Q47 93 64 159M1 192Q53 232 91 231M-65 191l-19 62M49 128l35 18" stroke="#b9b994" stroke-width="2"/>
+</g>
+<polygon points="149.0,355.0 151.5,361.5 158.5,361.9 153.1,366.3 154.9,373.1 149.0,369.3 143.1,373.1 144.9,366.3 139.5,361.9 146.5,361.5" fill="#d9c990"/>
+<g transform="translate(412 338)">
+<path d="M0 0Q-26 90-5 150Q16 210-31 276M-5 137Q-67 154-90 221M-12  60 Q47 93 64 159M1 192Q53 232 91 231M-65 191l-19 62M49 128l35 18" stroke="#b9b994" stroke-width="2"/>
+</g>
+<polygon points="412.0,328.0 414.5,334.5 421.5,334.9 416.1,339.3 417.9,346.1 412.0,342.3 406.1,346.1 407.9,339.3 402.5,334.9 409.5,334.5" fill="#d9c990"/>
+<g transform="translate(745 370)">
+<path d="M0 0Q-26 90-5 150Q16 210-31 276M-5 137Q-67 154-90 221M-12  60 Q47 93 64 159M1 192Q53 232 91 231M-65 191l-19 62M49 128l35 18" stroke="#b9b994" stroke-width="2"/>
+</g>
+<polygon points="745.0,360.0 747.5,366.5 754.5,366.9 749.1,371.3 750.9,378.1 745.0,374.3 739.1,378.1 740.9,371.3 735.5,366.9 742.5,366.5" fill="#d9c990"/>
+<g transform="translate(1038 349)">
+<path d="M0 0Q-26 90-5 150Q16 210-31 276M-5 137Q-67 154-90 221M-12  60 Q47 93 64 159M1 192Q53 232 91 231M-65 191l-19 62M49 128l35 18" stroke="#b9b994" stroke-width="2"/>
+</g>
+<polygon points="1038.0,339.0 1040.5,345.5 1047.5,345.9 1042.1,350.3 1043.9,357.1 1038.0,353.3 1032.1,357.1 1033.9,350.3 1028.5,345.9 1035.5,345.5" fill="#d9c990"/>
+<circle cx="111" cy="526" r="3" fill="#c9c399" stroke="none"/>
+<circle cx="228" cy="667" r="3" fill="#c9c399" stroke="none"/>
+<circle cx="394" cy="608" r="3" fill="#c9c399" stroke="none"/>
+<circle cx="644" cy="533" r="3" fill="#c9c399" stroke="none"/>
+<circle cx="832" cy="616" r="3" fill="#c9c399" stroke="none"/>
+<circle cx="1023" cy="571" r="3" fill="#c9c399" stroke="none"/>
+<circle cx="1127" cy="701" r="3" fill="#c9c399" stroke="none"/>
+<path d="M228 667L394 608 644 533 832 616 1023 571" stroke="#acae88" stroke-width="1"/>
+<path d="M0 308Q331 270 600 311T1200 297" stroke="#748b71" stroke-width="7"/>
+</g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>動きだした 公園</title>
+<rect x="0" y="0" width="600" height="800" fill="#e6e4d1" stroke="none"/>
+<circle cx="431" cy="138" r="57" fill="#e7c98e" stroke="none"/>
+<path d="M0 579C132 545 354 578 600 536V800H0Z" fill="#c0cbb0" stroke="none"/>
+<path d="M0 579C132 545 354 578 600 536" stroke="#aab79d" stroke-width="1.5"/>
+<path d="M306 800Q357 689 496 575L540 569Q432 692 420 800Z" fill="#e4d7b9" stroke="none"/>
+<path d="M43 589Q79 422 66 212M72 341L146 275M72 414L21 350" stroke="#9b9677" stroke-width="16"/>
+<ellipse cx="64" cy="190" rx="81" ry="83" fill="#a6b89c" stroke="none"/>
+<ellipse cx="122" cy="266" rx="77" ry="64" fill="#a6b89c" stroke="none"/>
+<ellipse cx="23" cy="301" rx="69" ry="76" fill="#a6b89c" stroke="none"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>時の 止まった 窓辺</title>
+<rect x="0" y="0" width="600" height="800" fill="#e6ddc9" stroke="none"/>
+<path d="M119 518V275.5a183.5 183.5 0 0 1 367 0V518Z" fill="#c4d3be"/>
+<path d="M302.5 98V518M119 347.6H486" stroke="#9c8770" stroke-width="1.4"/>
+<rect x="100" y="517" width="407" height="29" fill="#ab8e6e" rx="3"/>
+<rect x="0" y="627" width="600" height="173" fill="#d1bea0" stroke="none"/>
+<path d="M0 626h600M0 686h600M0 759h600" stroke="#b39a7b"/>
+</svg>

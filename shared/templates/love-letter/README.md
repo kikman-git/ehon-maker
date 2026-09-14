@@ -38,10 +38,18 @@ template illustrations as drawing references:
 | 19–20 | 17–18 | `IMG_7344.jpeg` |
 | 21–22 | 19–20 | `IMG_7345.jpeg` |
 
-The photos guide the scenes, poses, lettering and composition. The sharing rabbit takes a softer
-storybook style, with a rounded face, bright eyes, pink inner ears, small paws and a fluffy tail.
+The photos guide the scenes, poses, lettering and composition. The hiding and sharing rabbits
+share cream fur, pink inner ears and rosy cheeks. As the bear's love interest, the sharing rabbit
+has a gentle head tilt, one softly folded ear, bright eyes and a small smile. Its compact seated
+body has tucked feet and small paws holding the carrot close, with a flower by its ear.
+The astronaut bear wears a closed glass dome with a neck seal, a padded suit, gloves and boots;
+the same illustration appears on the cover and the departure page.
 The flat colours are an interpretation of the pencil drawings. Each encounter has its own steep planet
 horizon, and the rocket, curved travel arrow and previous planet occupy the open sky at right.
+The cat and the four encounter/garden bear poses use rounded faces, small muzzles and soft paws.
+The bears share the same ears and facial proportions, with expressions changing from hesitant to
+tearful to happy. Their original viewBoxes and prop positions keep the flowers and watering can
+aligned when the template is assembled for either client.
 
 Open `/app?template=doc-love-letter`, or choose the book on the template shelf. The web studio
 opens illustrated portrait books in **見開き** (facing-page) view with the selection tool active.

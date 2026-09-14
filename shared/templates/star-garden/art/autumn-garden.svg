@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#626254" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>季節を 越える 庭</title>
+<rect x="0" y="0" width="600" height="800" fill="#d6ded0" stroke="none"/>
+<circle cx="445" cy="131" r="50" fill="#eee0b3" stroke="none"/>
+<path d="M0 424Q145 388 294 427T600 406V800H0Z" fill="#c4b494" stroke="none"/>
+<path d="M0 527Q211 468 600 544V800H0Z" fill="#d5c4a4" stroke="none"/>
+<path d="M61 800Q101 652 245 588Q390 528 479 426L514 424Q450 560 318 622Q174 698 162 800Z" fill="#e1d8b9" stroke="none"/>
+<path d="M13 583q59-68 146-41q61 30-12 89Q67 660 13 583ZM281 729q104-109 267-66q81 46-16 93Q374 795 281 729Z" fill="#9e8c6b"/>
+<path d="M31 577q57-35 106-15M312 718q87-60 180-29M330 740q76-41 147-26" stroke="#ad9e7c" stroke-width="1.3"/>
+</svg>

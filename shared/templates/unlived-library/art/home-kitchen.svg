@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>Mara’s ordinary kitchen</title>
+<rect x="0" y="0" width="600" height="800" fill="#e6e4d0" stroke="none"/>
+<path d="M341 385V192.0a99.0 99.0 0 0 1 198 0V385Z" fill="#b7cec0"/>
+<path d="M440.0 99V385M341 268.2H539" stroke="#9c8770" stroke-width="1.4"/>
+<path d="M0 434H600V800H0Z" fill="#c0c8ae" stroke="none"/>
+<path d="M0 465h600M0 532h600M0 599h600M0 666h600" stroke="#e1dfc9"/>
+<path d="M0 671l509-37 91 49-600 50Z" fill="#bca17d"/>
+<path d="M0 733l600-50v31L0 768Z" fill="#94836b"/>
+<path d="M447 725l6 75" stroke-width="7"/>
+<path d="M28 120h233v13H28" stroke="#927e63" stroke-width="6"/>
+</svg>

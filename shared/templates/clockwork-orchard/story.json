@@ -1,0 +1,1714 @@
+{
+  "id": "doc-clockwork-orchard",
+  "order": 6,
+  "description": {
+    "ja": "大切な人を見送った時計職人。止まった町と、動きだす一分を描く、静かな幻想譚。",
+    "en": "A grieving clockmaker stops the town to preserve one last afternoon. A quiet fantasy about memory and the next minute."
+  },
+  "book": {
+    "id": {
+      "value": "template-clockwork-orchard"
+    },
+    "title": "きのうを直す 時計店",
+    "shape": "PORTRAIT",
+    "contentLocale": "ja-JP",
+    "updatedAtEpochMs": 0,
+    "art": {
+      "workshop": {
+        "name": "エナの 時計工房",
+        "file": "workshop.svg"
+      },
+      "window-room": {
+        "name": "時の 止まった 窓辺",
+        "file": "window-room.svg"
+      },
+      "worktable": {
+        "name": "古い 木の 作業台",
+        "file": "worktable.svg"
+      },
+      "morning-park": {
+        "name": "動きだした 公園",
+        "file": "morning-park.svg"
+      },
+      "cover-dial": {
+        "name": "時計店の 大きな 文字盤",
+        "file": "cover-dial.svg"
+      },
+      "wall-clock": {
+        "name": "止まった 振り子時計",
+        "file": "wall-clock.svg"
+      },
+      "running-clock": {
+        "name": "動く 振り子時計",
+        "file": "running-clock.svg"
+      },
+      "pocket-watch": {
+        "name": "レンの 懐中時計",
+        "file": "pocket-watch.svg"
+      },
+      "gear": {
+        "name": "真鍮の 歯車",
+        "file": "gear.svg"
+      },
+      "winding-key": {
+        "name": "時間を 巻く ねじ",
+        "file": "winding-key.svg"
+      },
+      "tools": {
+        "name": "修理の 道具",
+        "file": "tools.svg"
+      },
+      "ena-sad": {
+        "name": "時計を 抱える エナ",
+        "file": "ena-sad.svg"
+      },
+      "ena-work": {
+        "name": "時計職人の エナ",
+        "file": "ena-work.svg"
+      },
+      "ena-reach": {
+        "name": "ねじを 巻く エナ",
+        "file": "ena-reach.svg"
+      },
+      "swallow": {
+        "name": "窓辺の つばめ",
+        "file": "swallow.svg"
+      },
+      "bird-clock": {
+        "name": "つばめの 小さな 時計",
+        "file": "bird-clock.svg"
+      },
+      "bread": {
+        "name": "ふくらまない パン生地",
+        "file": "bread.svg"
+      },
+      "teacup": {
+        "name": "最後の 午後の カップ",
+        "file": "teacup.svg"
+      },
+      "seed-pot": {
+        "name": "芽の 出ない 鉢",
+        "file": "seed-pot.svg"
+      },
+      "sprout": {
+        "name": "窓へ のびる 新芽",
+        "file": "sprout.svg"
+      },
+      "bench": {
+        "name": "公園の ベンチ",
+        "file": "bench.svg"
+      },
+      "empty-chair": {
+        "name": "レンの 椅子",
+        "file": "empty-chair.svg"
+      },
+      "brass-leaves": {
+        "name": "舞う 真鍮の 葉",
+        "file": "brass-leaves.svg"
+      },
+      "dandelion": {
+        "name": "公園の たんぽぽ",
+        "file": "dandelion.svg"
+      },
+      "still-orchard-left": {
+        "name": "時が 止まった 時計の 果樹園（ひだり）",
+        "file": "still-orchard-left.svg"
+      },
+      "still-orchard-right": {
+        "name": "時が 止まった 時計の 果樹園（みぎ）",
+        "file": "still-orchard-right.svg"
+      },
+      "wind-orchard-left": {
+        "name": "風が 帰った 時計の 果樹園（ひだり）",
+        "file": "wind-orchard-left.svg"
+      },
+      "wind-orchard-right": {
+        "name": "風が 帰った 時計の 果樹園（みぎ）",
+        "file": "wind-orchard-right.svg"
+      }
+    },
+    "pages": [
+      {
+        "id": "cover",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-cover-dial-1"
+            },
+            "partId": {
+              "value": "art:cover-dial"
+            },
+            "x": 50,
+            "y": 64,
+            "sizePct": 84,
+            "heightPct": 55.65
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-ena-work-2"
+            },
+            "partId": {
+              "value": "art:ena-work"
+            },
+            "x": 43,
+            "y": 67,
+            "sizePct": 40,
+            "heightPct": 43.636
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-swallow-3"
+            },
+            "partId": {
+              "value": "art:swallow"
+            },
+            "x": 78,
+            "y": 48,
+            "sizePct": 19,
+            "heightPct": 11.875
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "cover-pocket-watch-4"
+            },
+            "partId": {
+              "value": "art:pocket-watch"
+            },
+            "x": 66,
+            "y": 79,
+            "sizePct": 18,
+            "heightPct": 14.766
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-5"
+            },
+            "x": 50,
+            "y": 13,
+            "text": "きのうを直す",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "cover-text-6"
+            },
+            "x": 50,
+            "y": 23,
+            "text": "時計店",
+            "font": "yomogi",
+            "sizePct": 8.5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "title",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-1"
+            },
+            "x": 50,
+            "y": 39,
+            "text": "きのうを直す",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "title-text-2"
+            },
+            "x": 50,
+            "y": 47,
+            "text": "時計店",
+            "font": "yomogi",
+            "sizePct": 6.5,
+            "colorIndex": 0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "title-winding-key-3"
+            },
+            "partId": {
+              "value": "art:winding-key"
+            },
+            "x": 50,
+            "y": 70,
+            "sizePct": 15,
+            "heightPct": 12.548
+          }
+        ]
+      },
+      {
+        "id": "p1",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-workshop-1"
+            },
+            "partId": {
+              "value": "art:workshop"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-wall-clock-2"
+            },
+            "partId": {
+              "value": "art:wall-clock"
+            },
+            "x": 61,
+            "y": 27,
+            "sizePct": 20,
+            "heightPct": 21.562
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-wall-clock-3"
+            },
+            "partId": {
+              "value": "art:wall-clock"
+            },
+            "x": 88,
+            "y": 32,
+            "sizePct": 15,
+            "heightPct": 16.172
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-ena-sad-4"
+            },
+            "partId": {
+              "value": "art:ena-sad"
+            },
+            "x": 36,
+            "y": 71,
+            "sizePct": 45,
+            "heightPct": 49.091
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p1-pocket-watch-5"
+            },
+            "partId": {
+              "value": "art:pocket-watch"
+            },
+            "x": 38,
+            "y": 73,
+            "sizePct": 14,
+            "heightPct": 11.484
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "レンを 見送った 日、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "時計職人の エナは、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "町じゅうの 時計を 止めた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "針は、午後三時 十七分。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p2-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "それから 一度も 動かない。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-window-room-1"
+            },
+            "partId": {
+              "value": "art:window-room"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-empty-chair-2"
+            },
+            "partId": {
+              "value": "art:empty-chair"
+            },
+            "x": 67,
+            "y": 71,
+            "sizePct": 39,
+            "heightPct": 39.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-teacup-3"
+            },
+            "partId": {
+              "value": "art:teacup"
+            },
+            "x": 43,
+            "y": 60,
+            "sizePct": 23,
+            "heightPct": 15.728
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p3-ena-sad-4"
+            },
+            "partId": {
+              "value": "art:ena-sad"
+            },
+            "x": 24,
+            "y": 72,
+            "sizePct": 37,
+            "heightPct": 40.364
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "机には、レンの カップ。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "椅子には、午後の 光。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "あと 一分 進めたら、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "このぬくもりまで",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p4-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "消える 気がした。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p5",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-window-room-1"
+            },
+            "partId": {
+              "value": "art:window-room"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-swallow-2"
+            },
+            "partId": {
+              "value": "art:swallow"
+            },
+            "x": 49,
+            "y": 31,
+            "sizePct": 38,
+            "heightPct": 23.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-bird-clock-3"
+            },
+            "partId": {
+              "value": "art:bird-clock"
+            },
+            "x": 40,
+            "y": 64,
+            "sizePct": 30,
+            "heightPct": 22.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p5-ena-reach-4"
+            },
+            "partId": {
+              "value": "art:ena-reach"
+            },
+            "x": 72,
+            "y": 73,
+            "sizePct": 35,
+            "heightPct": 38.182
+          }
+        ]
+      },
+      {
+        "id": "p6",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "窓の 外には、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "つばめが 一羽。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-4"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "飛びたつ 形の ままで、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-5"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "羽ばたきの つづきが",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p6-text-6"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "どこにも なかった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p7",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-worktable-1"
+            },
+            "partId": {
+              "value": "art:worktable"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-seed-pot-2"
+            },
+            "partId": {
+              "value": "art:seed-pot"
+            },
+            "x": 25,
+            "y": 60,
+            "sizePct": 32,
+            "heightPct": 31.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-bread-3"
+            },
+            "partId": {
+              "value": "art:bread"
+            },
+            "x": 66,
+            "y": 74,
+            "sizePct": 41,
+            "heightPct": 25.625
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p7-teacup-4"
+            },
+            "partId": {
+              "value": "art:teacup"
+            },
+            "x": 78,
+            "y": 40,
+            "sizePct": 25,
+            "heightPct": 17.096
+          }
+        ]
+      },
+      {
+        "id": "p8",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "鉢の 種は、種の まま。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "パン生地は、重たい まま。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "エナは はじめて、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "止まった 部屋の 静けさを",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p8-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "少し 寒いと 思った。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p9",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-still-orchard-left-1"
+            },
+            "partId": {
+              "value": "art:still-orchard-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p9-ena-sad-2"
+            },
+            "partId": {
+              "value": "art:ena-sad"
+            },
+            "x": 68,
+            "y": 77,
+            "sizePct": 24,
+            "heightPct": 26.182
+          }
+        ]
+      },
+      {
+        "id": "p10",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-still-orchard-right-1"
+            },
+            "partId": {
+              "value": "art:still-orchard-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p10-gear-2"
+            },
+            "partId": {
+              "value": "art:gear"
+            },
+            "x": 74,
+            "y": 84,
+            "sizePct": 17,
+            "heightPct": 12.75
+          }
+        ]
+      },
+      {
+        "id": "p11",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-morning-park-1"
+            },
+            "partId": {
+              "value": "art:morning-park"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-ena-work-2"
+            },
+            "partId": {
+              "value": "art:ena-work"
+            },
+            "x": 47,
+            "y": 62,
+            "sizePct": 43,
+            "heightPct": 46.909
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-winding-key-3"
+            },
+            "partId": {
+              "value": "art:winding-key"
+            },
+            "x": 50,
+            "y": 64,
+            "sizePct": 17,
+            "heightPct": 14.221
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-gear-4"
+            },
+            "partId": {
+              "value": "art:gear"
+            },
+            "x": 25,
+            "y": 83,
+            "sizePct": 25,
+            "heightPct": 18.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p11-brass-leaves-5"
+            },
+            "partId": {
+              "value": "art:brass-leaves"
+            },
+            "x": 76,
+            "y": 31,
+            "sizePct": 27,
+            "heightPct": 16.52
+          }
+        ]
+      },
+      {
+        "id": "p12",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "枝に 絡まった ねじを、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "エナは そっと 外した。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "胸の 奥で、息がした。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "止めている あいだも、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p12-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "わたしは 生きていた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p13",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-window-room-1"
+            },
+            "partId": {
+              "value": "art:window-room"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-empty-chair-2"
+            },
+            "partId": {
+              "value": "art:empty-chair"
+            },
+            "x": 68,
+            "y": 73,
+            "sizePct": 38,
+            "heightPct": 38.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-ena-sad-3"
+            },
+            "partId": {
+              "value": "art:ena-sad"
+            },
+            "x": 31,
+            "y": 70,
+            "sizePct": 41,
+            "heightPct": 44.727
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p13-teacup-4"
+            },
+            "partId": {
+              "value": "art:teacup"
+            },
+            "x": 45,
+            "y": 60,
+            "sizePct": 22,
+            "heightPct": 15.044
+          }
+        ]
+      },
+      {
+        "id": "p14",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "「パンが 焼けたよ。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "ふいに、声を 思い出した。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "時計の 音では なかった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "毎朝、ここから 聞こえた、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p14-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "少し かすれた レンの 声。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p15",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-workshop-1"
+            },
+            "partId": {
+              "value": "art:workshop"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-wall-clock-2"
+            },
+            "partId": {
+              "value": "art:wall-clock"
+            },
+            "x": 62,
+            "y": 27,
+            "sizePct": 29,
+            "heightPct": 31.266
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-ena-reach-3"
+            },
+            "partId": {
+              "value": "art:ena-reach"
+            },
+            "x": 48,
+            "y": 65,
+            "sizePct": 47,
+            "heightPct": 51.273
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-winding-key-4"
+            },
+            "partId": {
+              "value": "art:winding-key"
+            },
+            "x": 65,
+            "y": 43,
+            "sizePct": 15,
+            "heightPct": 12.548
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p15-pocket-watch-5"
+            },
+            "partId": {
+              "value": "art:pocket-watch"
+            },
+            "x": 85,
+            "y": 70,
+            "sizePct": 17,
+            "heightPct": 13.945
+          }
+        ]
+      },
+      {
+        "id": "p16",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "「忘れるのが、こわい。」",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "エナは 泣きながら、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "ねじを 一度だけ 回した。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "かちり。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p16-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "一分が、部屋へ 入ってきた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p17",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-wind-orchard-left-1"
+            },
+            "partId": {
+              "value": "art:wind-orchard-left"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-ena-reach-2"
+            },
+            "partId": {
+              "value": "art:ena-reach"
+            },
+            "x": 66,
+            "y": 77,
+            "sizePct": 24,
+            "heightPct": 26.182
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-brass-leaves-3"
+            },
+            "partId": {
+              "value": "art:brass-leaves"
+            },
+            "x": 27,
+            "y": 38,
+            "sizePct": 24,
+            "heightPct": 14.684
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p17-swallow-4"
+            },
+            "partId": {
+              "value": "art:swallow"
+            },
+            "x": 78,
+            "y": 27,
+            "sizePct": 18,
+            "heightPct": 11.25
+          }
+        ]
+      },
+      {
+        "id": "p18",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-wind-orchard-right-1"
+            },
+            "partId": {
+              "value": "art:wind-orchard-right"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-swallow-2"
+            },
+            "partId": {
+              "value": "art:swallow"
+            },
+            "x": 29,
+            "y": 25,
+            "sizePct": 21,
+            "heightPct": 13.125
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-swallow-3"
+            },
+            "partId": {
+              "value": "art:swallow"
+            },
+            "x": 69,
+            "y": 16,
+            "sizePct": 14,
+            "heightPct": 8.75
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p18-brass-leaves-4"
+            },
+            "partId": {
+              "value": "art:brass-leaves"
+            },
+            "x": 81,
+            "y": 41,
+            "sizePct": 26,
+            "heightPct": 15.908
+          }
+        ]
+      },
+      {
+        "id": "p19",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-workshop-1"
+            },
+            "partId": {
+              "value": "art:workshop"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-running-clock-2"
+            },
+            "partId": {
+              "value": "art:running-clock"
+            },
+            "x": 64,
+            "y": 27,
+            "sizePct": 24,
+            "heightPct": 25.875
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-ena-work-3"
+            },
+            "partId": {
+              "value": "art:ena-work"
+            },
+            "x": 35,
+            "y": 65,
+            "sizePct": 45,
+            "heightPct": 49.091
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-bird-clock-4"
+            },
+            "partId": {
+              "value": "art:bird-clock"
+            },
+            "x": 75,
+            "y": 67,
+            "sizePct": 26,
+            "heightPct": 19.5
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-tools-5"
+            },
+            "partId": {
+              "value": "art:tools"
+            },
+            "x": 74,
+            "y": 77,
+            "sizePct": 22,
+            "heightPct": 11,
+            "rotationDeg": 65
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-seed-pot-6"
+            },
+            "partId": {
+              "value": "art:seed-pot"
+            },
+            "x": 21,
+            "y": 44,
+            "sizePct": 17,
+            "heightPct": 16.734
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p19-sprout-7"
+            },
+            "partId": {
+              "value": "art:sprout"
+            },
+            "x": 21,
+            "y": 33,
+            "sizePct": 17,
+            "heightPct": 15.3
+          }
+        ]
+      },
+      {
+        "id": "p20",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "朝、工房を 開けた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "小さな 時計を 直すのに、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-3"
+            },
+            "x": 50,
+            "y": 46.25,
+            "text": "いつもより 時間が かかった。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "それでも、窓辺の 土から",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p20-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "緑の 先が のぞいていた。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "p21",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-morning-park-1"
+            },
+            "partId": {
+              "value": "art:morning-park"
+            },
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100.0
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-bench-2"
+            },
+            "partId": {
+              "value": "art:bench"
+            },
+            "x": 64,
+            "y": 72,
+            "sizePct": 43,
+            "heightPct": 30.677
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-ena-work-3"
+            },
+            "partId": {
+              "value": "art:ena-work"
+            },
+            "x": 30,
+            "y": 69,
+            "sizePct": 38,
+            "heightPct": 41.455
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-pocket-watch-4"
+            },
+            "partId": {
+              "value": "art:pocket-watch"
+            },
+            "x": 32,
+            "y": 71,
+            "sizePct": 13,
+            "heightPct": 10.664
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-dandelion-5"
+            },
+            "partId": {
+              "value": "art:dandelion"
+            },
+            "x": 76,
+            "y": 87,
+            "sizePct": 20,
+            "heightPct": 19.688
+          },
+          {
+            "type": "part",
+            "id": {
+              "value": "p21-swallow-6"
+            },
+            "partId": {
+              "value": "art:swallow"
+            },
+            "x": 73,
+            "y": 31,
+            "sizePct": 20,
+            "heightPct": 12.5
+          }
+        ]
+      },
+      {
+        "id": "p22",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-1"
+            },
+            "x": 50,
+            "y": 31.25,
+            "text": "レンの 懐中時計は、",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-2"
+            },
+            "x": 50,
+            "y": 38.75,
+            "text": "三時 十七分の まま。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-3"
+            },
+            "x": 50,
+            "y": 53.75,
+            "text": "今日は、それを ポケットに",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-4"
+            },
+            "x": 50,
+            "y": 61.25,
+            "text": "公園まで 歩いてみよう。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "p22-text-5"
+            },
+            "x": 50,
+            "y": 68.75,
+            "text": "風が、少し あたたかい。",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      },
+      {
+        "id": "back",
+        "background": "#f9f4ed",
+        "items": [
+          {
+            "type": "part",
+            "id": {
+              "value": "back-pocket-watch-1"
+            },
+            "partId": {
+              "value": "art:pocket-watch"
+            },
+            "x": 50,
+            "y": 29,
+            "sizePct": 18,
+            "heightPct": 14.766
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-2"
+            },
+            "x": 50,
+            "y": 58,
+            "text": "発行 ＿＿年 ＿＿月 ＿＿日",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-3"
+            },
+            "x": 50,
+            "y": 66,
+            "text": "さく ＿＿＿＿＿＿",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          },
+          {
+            "type": "text",
+            "id": {
+              "value": "back-text-4"
+            },
+            "x": 50,
+            "y": 74,
+            "text": "え ＿＿＿＿＿＿",
+            "font": "yomogi",
+            "sizePct": 5,
+            "colorIndex": 0
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,9 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 265" fill="none" stroke="#69584d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
 <title>はたけから のぞく うさぎ</title>
-<path d="M118 213C110 166 83 103 57 54C42 24 53 7 71 10C99 12 126 84 136 126L151 212M177 213C171 158 206 61 243 18Q266 0 281 23C290 44 268 74 246 112Q213 168 211 223" fill="#fff1d9"/>
-<path d="M132 187C121 139 106 96 77 48Q63 28 67 48Q99 121 119 191M195 193Q198 135 252 47Q264 31 268 40Q262 63 240 99Q208 154 206 202" stroke="#d2aba0" stroke-width="2"/>
-<path d="M56 264Q41 239 71 223Q105 204 132 214Q159 201 191 214Q240 215 260 249L261 265" fill="#fff1d9"/>
-<path d="M84 246Q95 252 105 246M213 246Q226 252 237 245" stroke-width="1.5"/>
-<path d="M25 44L28 33M39 49L41 40M282 62L287 52M295 69L300 58" stroke-width="1.6"/>
+<g transform="translate(-40 -44) scale(1 1.18)">
+<path d="M145 236C141 178 125 135 117 94C109 65 114 44 130 47C151 51 164 98 174 140L188 237Z" fill="#fff1d9"/>
+<path d="M156 194C152 157 137 111 131 82C126 63 121 66 125 85C132 121 145 161 147 196Z" fill="#edc5bb" stroke="none"/>
+<path d="M211 235C207 170 223 113 248 72C260 51 276 48 281 62C286 79 272 106 259 133C246 162 238 190 238 220Z" fill="#fff1d9"/>
+<path d="M222 197C222 157 237 110 259 75C268 59 274 64 268 80C250 116 236 163 231 199Z" fill="#edc5bb" stroke="none"/>
+</g>
+<path d="M67 264C68 233 106 208 147 210C184 201 228 221 245 245L250 264Z" fill="#fff1d9"/>
+<ellipse cx="139" cy="243" rx="3.5" ry="4.5" fill="#69584d" stroke="none"/>
+<ellipse cx="199" cy="242" rx="3.5" ry="4.5" fill="#69584d" stroke="none"/>
+<g fill="#e6b4ad" opacity=".58" stroke="none">
+<ellipse cx="129" cy="256" rx="11" ry="5"/>
+<ellipse cx="210" cy="254" rx="11" ry="5"/>
+</g>
+<path d="M166 255Q172 252 177 255Q176 260 172 261Q168 260 166 255Z" fill="#d99794" stroke-width="1.1"/>
+<path d="M52 56L50 47M61 51L60 41M250 75L254 66M259 82L264 73" stroke-width="1.4"/>
 <path d="M22 263Q29 253 35 262L46 260L51 265L59 258Q67 270 76 262L85 265Q96 256 103 264L115 260L120 265H203L210 257L219 264L228 259L238 264L246 256L253 264Q265 253 274 265" fill="#e7e8cb" stroke="#9a9271" stroke-width="1.3"/>
 </svg>

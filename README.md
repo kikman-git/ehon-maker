@@ -132,6 +132,25 @@ the left page and the words on the right, a back cover with the colophon; narrat
 margins stays off the page. The rules are in [`docs/EHON_FORMAT.md`](docs/EHON_FORMAT.md) and the
 worked example in [`shared/templates/love-letter/README.md`](shared/templates/love-letter/README.md).
 
+Five further originals follow Love Letter's full **25-page** format, each with eleven spreads,
+two panoramic illustrations, movable SVG characters and props, and editable words. These stories
+also invite older readers to explore grief, identity, regret and the things we hope to leave behind.
+
+![The five new picture books: a postal whale, a grieving clockmaker, an English library story, a shadow finding its name, and a gardener planting stars](docs/readme/new-story-templates.png)
+
+| Template | Language | Story |
+| --- | --- | --- |
+| [夜をわたる 郵便くじら — The Midnight Post Whale](shared/templates/midnight-whale/README.md) | Japanese | A voyage through unsent words; an apology that leaves room for an answer. |
+| [きのうを直す 時計店 — The Clockmaker's Unfinished Hour](shared/templates/clockwork-orchard/README.md) | Japanese | An elderly clockmaker stops the town after losing her partner, then makes room for the next minute. |
+| [The Library of Unlived Lives](shared/templates/unlived-library/README.md) | **English** | At forty, Mara opens the lives she never chose and discovers the unwritten pages of her own. |
+| [影の なまえ — A Shadow of One's Own](shared/templates/shadow-name/README.md) | Japanese | A shadow chooses a name and its own movement; companionship learns to include independence. |
+| [星を植える 庭 — The Garden of Falling Stars](shared/templates/star-garden/README.md) | Japanese | A gardener hoping to leave his name in the sky learns to tend the flower that actually grows. |
+
+The English book sets `contentLocale: "en"`, including English story text, artwork names and
+colophon fields. Its read-aloud language follows that locale. Preview any book at
+`/app?template=doc-<folder-name>` after assembling the templates. New folders enter the shared
+web and iOS catalog automatically when its documents and index are published.
+
 ## Status
 
 Working prototype heading into closed testing. Not on the App Store. Books live on the device and the reply recorder lives inside the app. Phases 0–2 of [`docs/WEB_BACKEND_PLAN.md`](docs/WEB_BACKEND_PLAN.md) are implemented locally: codec v4 (still reads v1 to v3) with SVG art inside the document, ten story templates written as documents, the Kotlin/JS core, a web shelf, a canvas-first studio with facing pages, a reader that prints, accounts with book sync on iOS and web, read-only guest links, PNG uploads that become parts on every device, sliced web fonts and Lighthouse byte budgets in CI. Everything runs against the Firebase emulators. The dev environment is deployed: Firebase project, Tokyo functions, R2 bucket behind the assets Worker, and the web app on Cloudflare Pages behind a sign-in landing page with a QR hand-off from the phone app; App Check registration is the last provisioning step before browser uploads and links work on the live site. Advanced layered raster painting, AI, billing and packs remain in Phases 3–4.

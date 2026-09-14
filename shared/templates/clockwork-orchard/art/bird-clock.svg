@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175 175" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>つばめの 小さな 時計</title>
+<path d="M14 95Q31 46 82 57L139 29 127 71Q146 71 151 93L136 103Q105 146 55 128L11 153 28 118Z" fill="#759a98"/>
+<circle cx="79" cy="96" r="28" fill="#f0e4c6"/>
+<circle cx="79" cy="96" r="21" stroke="#b8a077" stroke-width="1"/>
+<g transform="rotate(0 79 96)">
+<path d="M79 79v8" stroke-width="1.5"/>
+</g>
+<g transform="rotate(30 79 96)">
+<path d="M79 79v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(60 79 96)">
+<path d="M79 79v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(90 79 96)">
+<path d="M79 79v8" stroke-width="1.5"/>
+</g>
+<g transform="rotate(120 79 96)">
+<path d="M79 79v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(150 79 96)">
+<path d="M79 79v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(180 79 96)">
+<path d="M79 79v8" stroke-width="1.5"/>
+</g>
+<g transform="rotate(210 79 96)">
+<path d="M79 79v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(240 79 96)">
+<path d="M79 79v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(270 79 96)">
+<path d="M79 79v8" stroke-width="1.5"/>
+</g>
+<g transform="rotate(300 79 96)">
+<path d="M79 79v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(330 79 96)">
+<path d="M79 79v4" stroke-width="1.5"/>
+</g>
+<g transform="rotate(0 79 96)">
+<path d="M79 96l14.0 2.1M79 96l19.9 4.2" stroke-width="2.7"/>
+</g>
+<circle cx="79" cy="96" r="3" fill="#a07e5a"/>
+<circle cx="135" cy="86" r="3" fill="#63584f"/>
+<path d="M148 89l14 6-17 6" fill="#c9a568"/>
+</svg>

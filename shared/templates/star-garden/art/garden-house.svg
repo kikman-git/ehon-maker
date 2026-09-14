@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#626254" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>星の 地図が ある 家</title>
+<rect x="0" y="0" width="600" height="800" fill="#dedcc6" stroke="none"/>
+<path d="M0 552Q289 523 600 559V800H0Z" fill="#b5bda0" stroke="none"/>
+<path d="M33 211L221 85 386 217Z" fill="#929c88"/>
+<rect x="60" y="214" width="290" height="390" fill="#d2c5a4"/>
+<path d="M90 430V322.5a47.5 47.5 0 0 1 95 0V430Z" fill="#a3b7a3"/>
+<path d="M137.5 281V430M90 368.0H185" stroke="#9c8770" stroke-width="1.4"/>
+<path d="M229 607V336Q229 290 282 291T331 336V607Z" fill="#9b9170"/>
+<circle cx="315" cy="451" r="4" fill="#d7c095"/>
+<path d="M213 610h140v24H213Z" fill="#aa9b7a"/>
+<g transform="translate(40 592) scale(1.5)">
+<path d="M0 0Q9-38 0-94" stroke="#92a085" stroke-width="2"/>
+<path d="M2 -19q24-3 21-24q-25 1 -21 24Z" fill="#92a085" stroke-width="1"/>
+<path d="M5 -40q-24-3 -21-24q25 1 21 24Z" fill="#92a085" stroke-width="1"/>
+<path d="M3 -63q24-3 21-24q-25 1 -21 24Z" fill="#92a085" stroke-width="1"/>
+<path d="M0 -82q-24-3 -21-24q25 1 21 24Z" fill="#92a085" stroke-width="1"/>
+</g>
+<g transform="translate(375 635) scale(1.8)">
+<path d="M0 0Q9-38 0-94" stroke="#90a486" stroke-width="2"/>
+<path d="M2 -19q24-3 21-24q-25 1 -21 24Z" fill="#90a486" stroke-width="1"/>
+<path d="M5 -40q-24-3 -21-24q25 1 21 24Z" fill="#90a486" stroke-width="1"/>
+<path d="M3 -63q24-3 21-24q-25 1 -21 24Z" fill="#90a486" stroke-width="1"/>
+<path d="M0 -82q-24-3 -21-24q25 1 21 24Z" fill="#90a486" stroke-width="1"/>
+</g>
+<path d="M0 746Q235 652 600 712" stroke="#dbd4b7" stroke-width="54"/>
+</svg>

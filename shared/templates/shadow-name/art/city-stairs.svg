@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#605768" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>いつもの 長い 階段</title>
+<rect x="0" y="0" width="600" height="800" fill="#eadcc2" stroke="none"/>
+<rect x="0" y="0" width="163" height="800" fill="#c78e77" stroke="none"/>
+<rect x="431" y="0" width="169" height="800" fill="#d2b696" stroke="none"/>
+<path d="M164 0h267v342H164Z" fill="#c3cfbf" stroke="none"/>
+<path d="M213 322V170.0a82.0 82.0 0 0 1 164 0V322Z" fill="#839d94"/>
+<path d="M295.0 94V322M213 228.4H377" stroke="#9c8770" stroke-width="1.4"/>
+<rect x="159" y="339" width="278" height="55" fill="#d9c5a3" stroke="#a8917c" stroke-width="1"/>
+<path d="M159 349h278" stroke="#eee1bd"/>
+<rect x="152" y="394" width="292" height="55" fill="#c9b393" stroke="#a8917c" stroke-width="1"/>
+<path d="M152 404h292" stroke="#eee1bd"/>
+<rect x="145" y="449" width="306" height="55" fill="#d9c5a3" stroke="#a8917c" stroke-width="1"/>
+<path d="M145 459h306" stroke="#eee1bd"/>
+<rect x="138" y="504" width="320" height="55" fill="#c9b393" stroke="#a8917c" stroke-width="1"/>
+<path d="M138 514h320" stroke="#eee1bd"/>
+<rect x="131" y="559" width="334" height="55" fill="#d9c5a3" stroke="#a8917c" stroke-width="1"/>
+<path d="M131 569h334" stroke="#eee1bd"/>
+<rect x="124" y="614" width="348" height="55" fill="#c9b393" stroke="#a8917c" stroke-width="1"/>
+<path d="M124 624h348" stroke="#eee1bd"/>
+<rect x="117" y="669" width="362" height="55" fill="#d9c5a3" stroke="#a8917c" stroke-width="1"/>
+<path d="M117 679h362" stroke="#eee1bd"/>
+<rect x="110" y="724" width="376" height="55" fill="#c9b393" stroke="#a8917c" stroke-width="1"/>
+<path d="M110 734h376" stroke="#eee1bd"/>
+<path d="M107 458L56 800M487 377L562 800" stroke="#8b7a70" stroke-width="5"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>港の 小さな 部屋</title>
+<rect x="0" y="0" width="600" height="800" fill="#e6dfd1" stroke="none"/>
+<path d="M336 431V214.0a108.0 108.0 0 0 1 216 0V431Z" fill="#294859"/>
+<path d="M444.0 112V431M336 301.0H552" stroke="#9c8770" stroke-width="1.4"/>
+<g transform="translate(344 130)">
+<polygon points="62.0,35.0 63.5,38.9 67.7,39.1 64.5,41.8 65.5,45.9 62.0,43.6 58.5,45.9 59.5,41.8 56.3,39.1 60.5,38.9" fill="#e4cc92"/>
+<circle cx="41" cy="124" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="178" cy="207" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="157" cy="65" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="136.0,140.0 138.0,145.2 143.6,145.5 139.3,149.1 140.7,154.5 136.0,151.4 131.3,154.5 132.7,149.1 128.4,145.5 134.0,145.2" fill="#e4cc92"/>
+<circle cx="115" cy="231" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="94" cy="89" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="73" cy="172" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="52.0,20.0 54.5,26.5 61.5,26.9 56.1,31.3 57.9,38.1 52.0,34.3 46.1,38.1 47.9,31.3 42.5,26.9 49.5,26.5" fill="#e4cc92"/>
+<circle cx="31" cy="113" r="2.4" fill="#e4cc92" stroke="none"/>
+<circle cx="168" cy="196" r="1.4" fill="#e4cc92" stroke="none"/>
+<circle cx="147" cy="54" r="2.4" fill="#e4cc92" stroke="none"/>
+<polygon points="126.0,131.0 127.5,134.9 131.7,135.1 128.5,137.8 129.5,141.9 126.0,139.6 122.5,141.9 123.5,137.8 120.3,135.1 124.5,134.9" fill="#e4cc92"/>
+</g>
+<path d="M0 598L490 537 600 586 0 695Z" fill="#b48c71"/>
+<path d="M0 695L600 586V616L0 725Z" fill="#907460"/>
+<path d="M65 719v81M490 640v160" stroke-width="7"/>
+<rect x="65" y="101" width="133" height="172" fill="#f6edda" rx="3"/>
+<path d="M79 242L122 167 153 213 181 139M79 253h105" stroke="#a7afa2"/>
+</svg>

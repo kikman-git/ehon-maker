@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 240" fill="none" stroke="#626254" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>露に 星を 映す 花</title>
+<g transform="translate(85 80) scale(1)">
+<path d="M0 142Q-9 74 0 0" stroke="#8ca17d" stroke-width="2.5"/>
+<path d="M-4 82Q-39 76-30  50 Q-5 49-4 82ZM-3 105Q9 76 36 79Q30 108-3 105Z" fill="#a0b28c" stroke-width="1"/>
+<g transform="rotate(0.0)">
+<ellipse cx="0" cy="-19" rx="10" ry="24" fill="#f0ead0" stroke="#c5c6a9" stroke-width="1"/>
+</g>
+<g transform="rotate(51.4)">
+<ellipse cx="0" cy="-19" rx="10" ry="24" fill="#f0ead0" stroke="#c5c6a9" stroke-width="1"/>
+</g>
+<g transform="rotate(102.9)">
+<ellipse cx="0" cy="-19" rx="10" ry="24" fill="#f0ead0" stroke="#c5c6a9" stroke-width="1"/>
+</g>
+<g transform="rotate(154.3)">
+<ellipse cx="0" cy="-19" rx="10" ry="24" fill="#f0ead0" stroke="#c5c6a9" stroke-width="1"/>
+</g>
+<g transform="rotate(205.7)">
+<ellipse cx="0" cy="-19" rx="10" ry="24" fill="#f0ead0" stroke="#c5c6a9" stroke-width="1"/>
+</g>
+<g transform="rotate(257.1)">
+<ellipse cx="0" cy="-19" rx="10" ry="24" fill="#f0ead0" stroke="#c5c6a9" stroke-width="1"/>
+</g>
+<g transform="rotate(308.6)">
+<ellipse cx="0" cy="-19" rx="10" ry="24" fill="#f0ead0" stroke="#c5c6a9" stroke-width="1"/>
+</g>
+<circle cx="0" cy="0" r="11" fill="#d9c383" stroke="#b5a675" stroke-width="1"/>
+<circle cx="-2" cy="-2" r="2" fill="#ede1b1" stroke="none"/>
+</g>
+<polygon points="52.0,71.0 53.8,75.6 58.7,75.8 54.9,78.9 56.1,83.7 52.0,81.0 47.9,83.7 49.1,78.9 45.3,75.8 50.2,75.6" fill="#f7ebbb"/>
+<polygon points="103.0,50.0 104.3,53.3 107.8,53.5 105.0,55.7 105.9,59.0 103.0,57.1 100.1,59.0 101.0,55.7 98.2,53.5 101.7,53.3" fill="#f7ebbb"/>
+<circle cx="102" cy="181" r="4" fill="#dce3c6" stroke="none"/>
+</svg>

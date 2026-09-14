@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>The unwritten page opening into a garden（ひだり）</title>
+<g transform="translate(0 0)">
+<rect x="0" y="0" width="1200" height="800" fill="#cbd8cb" stroke="none"/>
+<circle cx="900" cy="153" r="79" fill="#efdfb5" stroke="none"/>
+<path d="M0 408Q230 315 463 412T900 398T1200 419V800H0Z" fill="#a5bca9" stroke="none"/>
+<path d="M0 489Q360 418 601 478T1200 454V800H0Z" fill="#89a899" stroke="none"/>
+<path d="M0 592Q308 533 598 597Q926 536 1200 602V800H0Z" fill="#d2c6a4" stroke="none"/>
+<path d="M40 654Q300 596 591 669Q894 588 1158 649L1123 773Q866 724 592 792Q293 721 63 775Z" fill="#eee4c9"/>
+<path d="M591 669l1 123" stroke="#b6a989"/>
+<path d="M280 800Q401 638 594 632Q742 627 828 534Q852 507 866 471" stroke="#efe7d1" stroke-width="30"/>
+</g>
+</svg>

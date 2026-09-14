@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="#63584f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<title>The unmarked library door</title>
+<rect x="0" y="0" width="600" height="800" fill="#c5c9b3" stroke="none"/>
+<path d="M0 568l600-34v266H0Z" fill="#adae98" stroke="none"/>
+<path d="M125 609V200Q124 66 294 61Q470 63 471 200V609Z" fill="#85978a"/>
+<path d="M160 603V217Q160 104 296 103T435 218V603Z" fill="#b4ab8e"/>
+<path d="M181 604V229Q181 126 297 126T414 229V604Z" fill="#3b5b58"/>
+<path d="M184 518h228M299 127v476" stroke="#998d6d" stroke-width="2"/>
+<path d="M112 617h374v22H112ZM91 643h417v25H91ZM65 674h471v24H65Z" fill="#d6c8a5"/>
+<path d="M12 475V279.0a37.0 37.0 0 0 1 74 0V475Z" fill="#dbcda6"/>
+<path d="M49.0 248V475M12 381.79999999999995H86" stroke="#9c8770" stroke-width="1.4"/>
+<path d="M514 475V279.0a37.0 37.0 0 0 1 74 0V475Z" fill="#dbcda6"/>
+<path d="M551.0 248V475M514 381.79999999999995H588" stroke="#9c8770" stroke-width="1.4"/>
+<g transform="translate(51 590) scale(1.5)">
+<path d="M0 0Q9-38 0-94" stroke="#82977b" stroke-width="2"/>
+<path d="M2 -19q24-3 21-24q-25 1 -21 24Z" fill="#82977b" stroke-width="1"/>
+<path d="M5 -40q-24-3 -21-24q25 1 21 24Z" fill="#82977b" stroke-width="1"/>
+<path d="M3 -63q24-3 21-24q-25 1 -21 24Z" fill="#82977b" stroke-width="1"/>
+<path d="M0 -82q-24-3 -21-24q25 1 21 24Z" fill="#82977b" stroke-width="1"/>
+</g>
+<g transform="translate(539 595) scale(1.8)">
+<path d="M0 0Q9-38 0-94" stroke="#82977b" stroke-width="2"/>
+<path d="M2 -19q24-3 21-24q-25 1 -21 24Z" fill="#82977b" stroke-width="1"/>
+<path d="M5 -40q-24-3 -21-24q25 1 21 24Z" fill="#82977b" stroke-width="1"/>
+<path d="M3 -63q24-3 21-24q-25 1 -21 24Z" fill="#82977b" stroke-width="1"/>
+<path d="M0 -82q-24-3 -21-24q25 1 21 24Z" fill="#82977b" stroke-width="1"/>
+</g>
+</svg>
