@@ -42,6 +42,9 @@ The photos guide the scenes, poses, lettering and composition. The hiding and sh
 share cream fur, pink inner ears and rosy cheeks. As the bear's love interest, the sharing rabbit
 has a gentle head tilt, one softly folded ear, bright eyes and a small smile. Its compact seated
 body has tucked feet and small paws holding the carrot close, with a flower by its ear.
+
+<p align="center"><img src="../../../docs/readme/love-letter-rabbit.png" width="210" alt="The sharing rabbit, redrawn: cream fur, pink inner ears, one folded ear, the carrot held close"></p>
+
 The astronaut bear wears a closed glass dome with a neck seal, a padded suit, gloves and boots;
 the same illustration appears on the cover and the departure page.
 The flat colours are an interpretation of the pencil drawings. Each encounter has its own steep planet
