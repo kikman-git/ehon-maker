@@ -224,8 +224,10 @@ batch is one undo step. Batches cannot interrupt a pointer gesture. Available in
 declared in `shared/src/commonMain/kotlin/app/ehon/engine/EditorIntent.kt`.
 
 React receives the revision after discrete edits and finished/cancelled drags; pointer moves
-never reach it. The reader turns pages with a transform on the spread strip and keeps at most
-three spreads painted.
+never reach it. The reader turns pages the way the phone does (decision #6): the leaf is twelve
+hinged strips of the page in CSS 3D that bow off the edge under the pointer and flatten as they
+land, painted once per turn; only transforms and opacities change per frame, and printing still
+lays every spread flat.
 
 ## Tests and budgets
 

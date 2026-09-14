@@ -43,13 +43,14 @@ test('the pages get the desk: chrome floats over it, and the panel and strip fol
 test('a book opens in the reader from the studio and prints as spreads', async ({ page }) => {
   await page.getByRole('button', { name: 'よむ', exact: true }).click();
   await expect(page).toHaveURL(/\/read\/b-/);
-  await expect(page.locator('.read-page')).toHaveCount(4);
+  // Idle, only the open spread is painted; a turn paints the leaf's faces and what it reveals as it starts.
+  await expect(page.locator('.read-page')).toHaveCount(2);
   await expect(page.getByRole('link', { name: '続きを描く' })).toBeVisible();
 
   await page.evaluate(() => { (window as unknown as { printed: number }).printed = 0; window.print = () => { (window as unknown as { printed: number }).printed++; window.dispatchEvent(new Event('afterprint')); }; });
   await page.getByRole('button', { name: '印刷' }).click();
   await expect.poll(() => page.evaluate(() => (window as unknown as { printed: number }).printed)).toBe(1);
-  await expect(page.locator('.read-page')).toHaveCount(4);
+  await expect(page.locator('.read-page')).toHaveCount(2);
 
   await page.emulateMedia({ media: 'print' });
   await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));

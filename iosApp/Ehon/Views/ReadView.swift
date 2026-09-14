@@ -5,8 +5,9 @@ import EhonCore
 ///
 /// A picture book is a double-page object: a picture on one leaf, the words on the other.
 /// So reading is always the spread and always landscape (`OrientationLock`), and the right
-/// leaf folds about the centre spine under the finger — interruptible, rubber-banding back
-/// if the turn isn't committed. The margins also turn a spread on tap (decision 3a).
+/// leaf folds about the centre spine under the finger — as a soft sheet that bows off the
+/// outer edge (`LeafFold`), interruptible, rubber-banding back if the turn isn't committed.
+/// The margins also turn a spread on tap (decision 3a). The web reader does the same.
 struct ReadView: View {
     @EnvironmentObject var app: AppModel
     @StateObject private var speech = Speech.shared
@@ -19,6 +20,7 @@ struct ReadView: View {
     /// Left page of the current spread; always even.
     @State private var index: Int
     @State private var turn: Turn = .idle
+    @State private var faces = PageFaceCache()
 
     /// おやすみ — bedtime reading: dim, read aloud, turn by itself. Model 2a.
     @State private var night = false
@@ -133,43 +135,36 @@ struct ReadView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .allowsHitTesting(false)
 
-            // The moving leaf.
+            // The moving leaf: paper, not card.
             switch turn {
             case .idle:
                 EmptyView()
             case .forward(let p):
-                let angle = -180 * Double(p)
-                Group {
-                    if abs(angle) > 90 {
-                        leaf(index + 2 < pageCount ? index + 2 : nil, size: size, spine: .trailing)
-                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    } else {
-                        leaf(index + 1 < pageCount ? index + 1 : nil, size: size, spine: .leading)
-                    }
-                }
-                .frame(width: size.width, height: size.height)
-                .ehElevation(2)
-                .rotation3DEffect(.degrees(angle), axis: (x: 0, y: 1, z: 0),
-                                  anchor: .leading, perspective: 0.35)
-                .position(x: rightX, y: size.height / 2)
+                softLeaf(progress: p, forward: true, size: size, gap: gap, total: total)
             case .backward(let p):
-                let angle = 180 * Double(1 - p)
-                Group {
-                    if abs(angle) > 90 {
-                        leaf(index - 1, size: size, spine: .leading)
-                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    } else {
-                        leaf(index, size: size, spine: .trailing)
-                    }
-                }
-                .frame(width: size.width, height: size.height)
-                .ehElevation(2)
-                .rotation3DEffect(.degrees(angle), axis: (x: 0, y: 1, z: 0),
-                                  anchor: .trailing, perspective: 0.35)
-                .position(x: leftX, y: size.height / 2)
+                softLeaf(progress: p, forward: false, size: size, gap: gap, total: total)
             }
         }
         .frame(width: total.width, height: total.height)
+    }
+
+    /// The sheet in flight. It shows the right slot's page on the side that faces right and the
+    /// left slot's page on the side that faces left, so one view serves both directions.
+    private func softLeaf(progress: CGFloat, forward: Bool, size: CGSize, gap: CGFloat, total: CGSize) -> some View {
+        let rightPage = forward ? (index + 1 < pageCount ? index + 1 : nil) : (index >= 1 ? index - 1 : nil)
+        let leftPage = forward ? (index + 2 < pageCount ? index + 2 : nil) : index
+        let revision = SceneResources.shared.revision
+        return Color.clear
+            .frame(width: total.width, height: total.height)
+            .modifier(LeafFold(
+                progress: progress,
+                forward: forward,
+                right: faces.image(of: rightPage, in: book, size: size, spine: .leading, revision: revision),
+                left: faces.image(of: leftPage, in: book, size: size, spine: .trailing, revision: revision),
+                page: size,
+                hingeX: forward ? size.width + gap : size.width
+            ))
+            .allowsHitTesting(false)
     }
 
     /// Page numbers under each slot while nothing moves.
@@ -467,6 +462,110 @@ private struct StaticPage: View {
         .background(Color(book.page(index: Int32(index)).background.uiColor))
         .paperGrain()
         .spineGutter(on: spineOnLeading ? .leading : .trailing)
+    }
+}
+
+/// The turning leaf as paper: twelve hinged slices, each rotated a little further, so the sheet bows
+/// off the edge the finger holds and flattens as it lands; one camera above the spine projects them.
+/// `progress` is the outer edge's fraction of the way from the right slot to the left, both directions.
+private struct LeafFold: ViewModifier, Animatable {
+    var progress: CGFloat
+    let forward: Bool
+    let right: UIImage
+    let left: UIImage
+    let page: CGSize
+    let hingeX: CGFloat
+
+    static let strips = 12
+    static let bend = 42 * CGFloat.pi / 180
+
+    var animatableData: CGFloat {
+        get { progress }
+        set { progress = newValue }
+    }
+
+    func body(content: Content) -> some View {
+        let n = Self.strips
+        let width = page.width / CGFloat(n)
+        let outer = CGFloat.pi * min(max(progress, 0), 1)
+        let bow = Self.bend * sin(outer)
+        // The finger holds the outer edge; the rest of the sheet lags behind it toward where it came from.
+        let hinge = forward ? outer - bow : outer + bow
+        var angles: [CGFloat] = []
+        var origins: [CGPoint] = []
+        var point = CGPoint.zero
+        for k in 0..<n {
+            let angle = hinge + (outer - hinge) * CGFloat(k) / CGFloat(n - 1)
+            angles.append(angle)
+            origins.append(point)
+            point.x += width * cos(angle)
+            point.y += width * sin(angle)
+        }
+        return content.overlay(alignment: .topLeading) {
+            ZStack(alignment: .topLeading) {
+                ForEach(0..<n, id: \.self) { k in
+                    strip(k, angle: angles[k], origin: origins[k], width: width)
+                }
+            }
+            .frame(width: page.width, height: page.height, alignment: .topLeading)
+            .offset(x: hingeX)
+        }
+    }
+
+    /// One slice, drawn flat then projected: `origin` is where it starts along the sheet (x) and
+    /// how far it has lifted toward the viewer (y, as depth).
+    private func strip(_ k: Int, angle: CGFloat, origin: CGPoint, width: CGFloat) -> some View {
+        let n = Self.strips
+        let depth = page.width * 3
+        let facingRight = cos(angle) >= 0
+        let shade = 0.4 * (1 - abs(cos(angle))) / 2
+        let s = sin(angle), c = cos(angle), cy = page.height / 2
+        var m = ProjectionTransform()
+        m.m11 = c; m.m12 = -cy * s / depth; m.m13 = -s / depth
+        m.m21 = 0; m.m22 = 1; m.m23 = 0
+        m.m31 = origin.x; m.m32 = -cy * origin.y / depth; m.m33 = 1 - origin.y / depth
+        let shape = UnevenRoundedRectangle(
+            topLeadingRadius: k == 0 ? 6 : 0, bottomLeadingRadius: k == 0 ? 6 : 0,
+            bottomTrailingRadius: k == n - 1 ? 16 : 0, topTrailingRadius: k == n - 1 ? 16 : 0
+        )
+        return ZStack {
+            // The side facing left shows the left slot's page mirrored: the projection mirrors it back.
+            Image(uiImage: facingRight ? right : left)
+                .resizable()
+                .frame(width: page.width, height: page.height)
+                .scaleEffect(x: facingRight ? 1 : -1, y: 1)
+                .offset(x: -CGFloat(k) * width)
+                .frame(width: width, height: page.height, alignment: .leading)
+                .clipped()
+            Color.black.opacity(shade)
+        }
+        .frame(width: width, height: page.height)
+        .clipShape(shape)
+        .projectionEffect(m)
+    }
+}
+
+/// The two faces of a turning leaf, rendered once per page, size and resource revision.
+@MainActor
+private final class PageFaceCache {
+    private var images: [String: UIImage] = [:]
+    private var order: [String] = []
+
+    func image(of page: Int?, in book: Book, size: CGSize, spine: HorizontalEdge, revision: Int) -> UIImage {
+        let key = "\(page.map(String.init) ?? "paper")|\(Int(size.width))x\(Int(size.height))|\(spine == .leading)|\(revision)"
+        if let hit = images[key] { return hit }
+        let renderer: ImageRenderer<AnyView>
+        if let page, page >= 0, page < Int(book.pageCount) {
+            renderer = ImageRenderer(content: AnyView(StaticPage(book: book, index: page, size: size, spineOnLeading: spine == .leading)))
+        } else {
+            renderer = ImageRenderer(content: AnyView(PaperBack(size: size)))
+        }
+        renderer.scale = min(UITraitCollection.current.displayScale, 2)
+        let image = renderer.uiImage ?? UIImage()
+        images[key] = image
+        order.append(key)
+        if order.count > 8 { images[order.removeFirst()] = nil }
+        return image
     }
 }
 

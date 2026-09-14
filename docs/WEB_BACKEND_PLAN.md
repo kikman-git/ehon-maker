@@ -400,7 +400,7 @@ shows 「ウェブで つかえます」 at most. `config/flags`: `freeImages` (
 
 **Performance-first UI**
 - Flat chrome: Organic colours and radii, no paper grain, no shadows on repeated elements, no
-  blur, transform-only page slide in the reader.
+  blur, transform-only page turn in the reader (the phone's leaf fold, as hinged strips).
 - React never handles pointer moves; page repaints only when `revision` changes.
 - Three entries, lazy Klecks/Stripe/auth; 256px thumbnails in virtualised lists.
 - Budgets: reader ≤ 300 KB gz, composer ≤ 600 KB gz, TTI ≤ 2 s on a 2019 iPad Safari, 60 fps drag

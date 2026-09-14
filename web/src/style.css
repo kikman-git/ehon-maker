@@ -224,7 +224,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .stage-actions button { display: flex; align-items: center; gap: 6px; }
 .stage-title { display: flex; flex-direction: column; align-items: center; min-width: 0; font-size: 15px; }
 .stage-caption { font-size: 11px; opacity: .65; }
-.spread-viewport { flex: 1; position: relative; overflow: hidden; }
+.spread-viewport { flex: 1; position: relative; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; }
 .turn-zone { position: absolute; top: 0; bottom: 0; width: 14%; min-width: 48px; z-index: 2; border: 0; border-radius: 0; background: transparent; opacity: 0; }
 .turn-zone:hover:enabled { background: rgba(249, 244, 237, .06); opacity: 1; }
 .turn-zone:first-of-type { left: 0; }
@@ -232,7 +232,34 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .spread-strip { position: absolute; inset: 0; transition: transform .28s ease-out; will-change: transform; }
 .spread { position: absolute; top: 0; bottom: 0; width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 14%; }
 .page-box { position: relative; aspect-ratio: var(--aspect); height: min(calc(100vh - 150px), calc((72vw - 12px * (var(--per-spread) - 1)) / var(--per-spread) / var(--aspect))); max-width: 100%; background: #fffdf9; border-radius: 16px; overflow: hidden; }
+/* Inner corners tighten at the spine, as on the phone. */
+.page-box[data-spine="right"] { border-radius: 16px 6px 6px 16px; }
+.page-box[data-spine="left"] { border-radius: 6px 16px 16px 6px; }
 .read-page { display: block; width: 100%; height: 100%; }
+/* The leaf fold of decision #6: two slots about the spine, one leaf rotating about it under the pointer. */
+.book-pages { position: relative; display: flex; align-items: center; gap: 12px; perspective: 2000px; }
+.paper-back { position: absolute; inset: 0; background: #f9f4ed; }
+.paper-back[data-spine="left"] { background-image: linear-gradient(to right, rgba(0, 0, 0, .12), rgba(0, 0, 0, .02) 40%); }
+.paper-back[data-spine="right"] { background-image: linear-gradient(to left, rgba(0, 0, 0, .12), rgba(0, 0, 0, .02) 40%); }
+.leaf-shadow { position: absolute; inset: 0; border-radius: 16px; background: #000; pointer-events: none; }
+.leaf { position: absolute; top: 0; bottom: 0; width: calc(50% - 6px); z-index: 3; transform-style: preserve-3d; pointer-events: none; }
+.leaf[data-slot="right"] { right: 0; }
+.leaf[data-slot="left"] { left: 0; }
+.leaf[data-slot="single"] { left: 0; width: 100%; }
+/* Each strip hangs off the previous one's outer edge; the first hinges on the spine's centre line. */
+.strip { position: absolute; top: 0; height: 100%; transform-style: preserve-3d; will-change: transform; }
+.strip[data-hinge="left"] { left: 100%; transform-origin: 0 50%; }
+.strip[data-hinge="right"] { right: 100%; transform-origin: 100% 50%; }
+.leaf > .strip[data-hinge="left"] { left: 0; transform-origin: -6px 50%; }
+.leaf > .strip[data-hinge="right"] { right: 0; transform-origin: calc(100% + 6px) 50%; }
+.leaf[data-slot="single"] > .strip { transform-origin: 0 50%; }
+/* A pixel wider than the strip, so the seams between hinged slices never open. */
+.strip-canvas, .strip-shade { position: absolute; top: 0; height: 100%; width: calc(100% + 1px); display: block; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.strip[data-hinge="left"] > .strip-canvas, .strip[data-hinge="left"] > .strip-shade { left: 0; }
+.strip[data-hinge="right"] > .strip-canvas, .strip[data-hinge="right"] > .strip-shade { right: 0; }
+.strip-canvas { background: #f9f4ed; }
+.strip-shade { background: #2e2b25; pointer-events: none; }
+[data-face="back"] { transform: rotateY(180deg); }
 .voice-chip { position: absolute; left: 12px; bottom: 12px; font-size: 12px; min-height: 32px; padding: 4px 10px; border-radius: 999px; background: rgba(46, 43, 37, .8); }
 .dots { display: flex; justify-content: center; gap: 8px; padding: 12px; }
 .dot { width: 8px; height: 8px; min-height: 8px; padding: 0; border-radius: 50%; background: rgba(249, 244, 237, .35); border: 0; }
