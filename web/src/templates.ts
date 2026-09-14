@@ -12,7 +12,7 @@ type IndexEntry = Omit<TemplateSummary, 'description'> & { description: { ja: st
 export type TemplateCatalog = { status: 'idle' | 'loading' | 'ready' | 'error'; items: TemplateSummary[] };
 export const templateStore = createStore<TemplateCatalog>({ status: 'idle', items: [] });
 
-/** Published templates live on the assets Worker; a checkout without cloud reads the dev server's local copy. */
+/** Published templates live on the assets Worker; the dev server, and a checkout without cloud, read its local copy. */
 const base = (cloud?.templatesUrl ?? `${import.meta.env.BASE_URL}templates`).replace(/\/$/, '');
 
 let indexRequest: Promise<TemplateSummary[]> | null = null;

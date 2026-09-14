@@ -132,8 +132,7 @@ struct GuestView: View {
                     .frame(width: 84, height: 84)
                     .scaleEffect(recorder.isRecording ? 1.08 : 1)
                     .shadow(color: Color.ehAccent.opacity(recorder.isRecording ? 0.5 : 0), radius: 22)
-                Image(systemName: recorder.isRecording ? "waveform" : "mic.fill")
-                    .font(.system(size: 28, weight: .bold))
+                EhIcon(recorder.isRecording ? "waveform" : "mic", size: 28)
                     .foregroundStyle(recorder.isRecording ? Color.ehSurface : Color.ehInk)
             }
             .animation(.spring(duration: 0.25), value: recorder.isRecording)

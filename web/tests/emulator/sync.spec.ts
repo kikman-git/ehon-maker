@@ -31,10 +31,9 @@ async function approveFromPhone(account: string, code: string) {
   return await approved.json() as { result?: { client: string }; error?: { message: string } };
 }
 
-/** A procedural template (the last on the list): few pages, one square frame, built-in shapes in the panel. */
+/** The blank page from the shelf: one square frame, no art, the built-in shapes in the panel. */
 async function createBook(page: Page): Promise<string> {
-  await page.getByRole('button', { name: 'あたらしい えほん' }).first().click();
-  await page.locator('.template').last().click();
+  await page.getByRole('button', { name: '白紙から描きはじめる' }).click();
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await expect(page.getByLabel('えほんの ページ')).toBeVisible();
   await page.getByRole('button', { name: '素材', exact: true }).click();

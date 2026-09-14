@@ -96,6 +96,8 @@ internal object StringsJa {
         "home.filter.inProgress" to "つくりかけ %s",
         "home.filter.finished" to "できあがり %s",
         "home.newBook" to "あたらしく つくる",
+        "home.blank" to "まっしろな ページから",
+        "home.fromTemplate" to "テンプレートから",
         "home.empty" to "まだ えほんが ありません。\nさいしょの 1さつを つくってみよう。",
         "nav.shelf" to "ほんだな",
         "nav.make" to "つくる",
@@ -108,7 +110,7 @@ internal object StringsJa {
 
         // templates
         "templates.title" to "テンプレート",
-        "templates.intro" to "おはなしを えらぶと、えと ことばが はいった えほんから はじめられます。まっさらな ページからも。",
+        "templates.intro" to "おはなしを えらぶと、えと ことばが はいった えほんから はじめられます。",
         "templates.stories" to "おはなし",
         "templates.loading" to "おはなしを よみこんでいます…",
         "templates.offline" to "ネットに つながると、おはなしの テンプレートが ならびます。",

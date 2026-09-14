@@ -78,7 +78,7 @@ struct WebLoginView: View {
                     error = nil
                     pending = target
                 } label: {
-                    Image(systemName: "arrow.right").font(.system(size: 17, weight: .bold))
+                    EhIcon("arrow.right", size: 17)
                         .frame(width: 52, height: 52)
                         .foregroundStyle(Color.ehSurface)
                         .background(Circle().fill(Color.ehAccent))

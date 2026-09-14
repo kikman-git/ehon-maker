@@ -110,8 +110,7 @@ struct EditorView: View {
                 Button {
                     model.apply { $0.addPage() }
                 } label: {
-                    Image(systemName: "plus")
-                        .font(.system(size: 18, weight: .bold))
+                    EhIcon("plus", size: 18)
                         .foregroundStyle(Color.ehMuted)
                         .frame(width: 36, height: 50)
                         .overlay(

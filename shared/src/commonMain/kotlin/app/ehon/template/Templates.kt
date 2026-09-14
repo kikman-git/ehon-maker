@@ -21,9 +21,9 @@ data class TemplatePage(val promptKey: String, val seeds: List<Seed>)
 /**
  * A procedural starting point: pages with prompts and seeded catalog parts, built at runtime.
  *
- * Only the blank book ships this way (decision #60); story templates are whole `.ehon` documents
- * published to the backend and instantiated with [Templates.instantiateDocument]. Tests still build
- * seeded books from their own [Template] values.
+ * Nothing on a shelf ships this way any more: story templates are whole `.ehon` documents published
+ * to the backend (decision #60) and a new book starts as [Templates.blankBook] (decision #62). The
+ * blank [Template] below and the tests' own values remain the seeded books the painter baselines use.
  */
 data class Template(
     val id: String,
@@ -39,7 +39,7 @@ data class Template(
 
 object Templates {
 
-    /** The empty book: the parent picks its shape, the child draws. */
+    /** The four-page empty book with prompts; baseline and test scaffolding since decision #62. */
     val blank = Template(
         id = "blank",
         nameKey = "tpl.blank.name",
@@ -54,6 +54,23 @@ object Templates {
     val all = listOf(blank)
 
     fun find(id: String) = all.firstOrNull { it.id == id }
+
+    /**
+     * The blank start every shelf offers (decision #62): one white page in the given shape, no prompt,
+     * nothing on it. The web and the phone both build it here, so a new book is the same document everywhere.
+     */
+    fun blankBook(bookId: BookId, title: String, contentLocale: String, nowEpochMs: Long, shape: PageShape = PageShape.SQUARE): Book {
+        require(bookId.value.isNotBlank())
+        require(nowEpochMs >= 0)
+        return Book(
+            id = bookId,
+            title = title,
+            shape = shape,
+            contentLocale = contentLocale,
+            pages = persistentListOf(Page(id = "p1", background = Argb.hex("ffffff"))),
+            updatedAtEpochMs = nowEpochMs,
+        )
+    }
 
     /** A fetched story document becomes a new shelf copy: its own id, saved now, everything else as written. */
     fun instantiateDocument(json: String, bookId: BookId, nowEpochMs: Long): Book {

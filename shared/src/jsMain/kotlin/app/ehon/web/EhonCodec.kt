@@ -3,21 +3,19 @@
 package app.ehon.web
 
 import app.ehon.catalog.PartCatalog
-import app.ehon.design.Argb
 import app.ehon.design.Organic
 import app.ehon.i18n.Strings
 import app.ehon.model.Artwork
 import app.ehon.model.BookId
 import app.ehon.model.Book
-import app.ehon.model.Page
 import app.ehon.model.FontFace
 import app.ehon.model.PageShape
 import app.ehon.model.PartItem
 import app.ehon.model.TextItem
 import app.ehon.store.BookCodec
 import app.ehon.store.BookSyncCodec
+import app.ehon.template.Templates
 import app.ehon.vector.SvgParser
-import kotlinx.collections.immutable.persistentListOf
 import kotlinx.serialization.json.*
 
 @JsExport
@@ -26,15 +24,10 @@ object EhonCodec {
     fun decodeOk(json: String): Boolean = BookCodec.decodeOrNull(json) != null
     fun migrate(json: String): String = BookCodec.encode(BookCodec.decode(json))
 
-    /** A creator starts with one clean sheet; templates remain an optional starting point. */
+    /** A creator starts with one clean sheet, the same one the phone makes (decision #62). */
     fun blankBook(bookId: String, title: String, locale: String, nowEpochMs: Double, shape: String): String {
-        require(bookId.isNotBlank())
-        require(nowEpochMs.isFinite() && nowEpochMs >= 0 && nowEpochMs <= 9_007_199_254_740_991.0)
-        return BookCodec.encode(Book(
-            id = BookId(bookId), title = title, shape = PageShape.valueOf(shape), contentLocale = locale,
-            pages = persistentListOf(Page(id = "p1", background = Argb.hex("ffffff"))),
-            updatedAtEpochMs = nowEpochMs.toLong(),
-        ))
+        require(nowEpochMs.isFinite() && nowEpochMs <= 9_007_199_254_740_991.0)
+        return BookCodec.encode(Templates.blankBook(BookId(bookId), title, locale, nowEpochMs.toLong(), PageShape.valueOf(shape)))
     }
 
     // ── documents: a whole book, art included, written by a person or a model (decision #55) ──

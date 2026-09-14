@@ -23,13 +23,13 @@ struct AccountView: View {
                         if WebLogin.available {
                             Button { showingWebLogin = true } label: {
                                 HStack(spacing: 12) {
-                                    Image(systemName: "qrcode.viewfinder").font(.system(size: 20, weight: .semibold))
+                                    EhIcon("qrcode.viewfinder", size: 20)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text(Localized.s("web.login")).font(.ehUI(14.5))
                                         Text(Localized.s("web.loginCodeHint")).font(.ehUI(11, .medium)).foregroundStyle(Color.ehMuted)
                                     }
                                     Spacer()
-                                    Image(systemName: "chevron.right")
+                                    EhIcon("chevron.right", size: 14)
                                 }
                                 .padding(14).foregroundStyle(Color.ehAccentDeep)
                                 .background(Color.ehAccentTint, in: RoundedRectangle(cornerRadius: 16))
@@ -46,9 +46,17 @@ struct AccountView: View {
                         if CloudConfiguration.available {
                             SignInWithAppleButton(.continue, onRequest: account.prepareApple, onCompletion: account.finishApple)
                                 .signInWithAppleButtonStyle(.black).frame(height: 50)
-                            Button(Localized.s("account.google")) { Task { await account.google() } }
-                                .font(.ehUI(16)).frame(maxWidth: .infinity).frame(height: 50)
-                                .background(Color.ehSunken, in: RoundedRectangle(cornerRadius: 10))
+                            Button { Task { await account.google() } } label: {
+                                HStack(spacing: 10) {
+                                    GoogleMark(size: 18)
+                                    Text(Localized.s("account.google")).font(.ehUI(16))
+                                }
+                                .foregroundStyle(Color.ehText)
+                                .frame(maxWidth: .infinity).frame(height: 50)
+                                .background(Color.ehSurface, in: RoundedRectangle(cornerRadius: 10))
+                                .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.ehEdge, lineWidth: 1))
+                            }
+                            .buttonStyle(.plain)
                         } else { Text(Localized.s("account.cloudUnavailable")).font(.ehUI(14)) }
                         Text(Localized.s("account.localOnly")).font(.ehUI(13)).foregroundStyle(Color.ehMuted)
                     }
@@ -95,10 +103,10 @@ struct SignInCard: View {
         if !account.isSignedIn {
             Button { showingAccount = true } label: {
                 HStack {
-                    Image(systemName: "icloud.and.arrow.up")
+                    EhIcon("icloud.and.arrow.up", size: 16)
                     Text(Localized.s("done.keepForever")).font(.ehUI(13))
                     Spacer()
-                    Image(systemName: "chevron.right")
+                    EhIcon("chevron.right", size: 14)
                 }
                 .padding(14).foregroundStyle(Color.ehAccentDeep)
                 .background(Color.ehAccentTint, in: RoundedRectangle(cornerRadius: 16))
@@ -113,7 +121,7 @@ struct LeaseNotice: View {
     var body: some View {
         if model.isReadOnly {
             HStack {
-                Label(Localized.s("sync.lease"), systemImage: "lock.fill").font(.ehUI(12))
+                Label(Localized.s("sync.lease"), systemImage: "lock").font(.ehUI(12))
                 Spacer()
                 Button(Localized.s("sync.read")) { app.openRead(model.book, page: model.pageIndex) }.font(.ehUI(12))
             }.padding(10).background(Color.ehAccentTint)

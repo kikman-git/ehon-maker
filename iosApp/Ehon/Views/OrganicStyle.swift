@@ -79,6 +79,126 @@ struct PillButton: View {
     }
 }
 
+/// Every symbol in the chrome: outline SF Symbols at one weight, the phone's counterpart of the web's
+/// single line set. Filled variants are for state (a checked box), never for decoration.
+struct EhIcon: View {
+    let name: String
+    var size: CGFloat = 18
+
+    init(_ name: String, size: CGFloat = 18) { self.name = name; self.size = size }
+
+    var body: some View { Image(systemName: name).font(.system(size: size, weight: .semibold)) }
+}
+
+/// A path in SVG `d` syntax, fitted to the rect it is asked for: M L H V C S Z, absolute and relative,
+/// which is all the provider marks need. The phone draws the very paths the web draws (Brand.tsx).
+struct SvgPath: Shape {
+    let d: String
+    let viewBox: CGFloat
+
+    private enum Token { case command(Character), number(CGFloat) }
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let scale = min(rect.width, rect.height) / viewBox
+        let at = { (p: CGPoint) in CGPoint(x: rect.minX + p.x * scale, y: rect.minY + p.y * scale) }
+        var current = CGPoint.zero, start = CGPoint.zero, control: CGPoint?
+        var command: Character = "M", params: [CGFloat] = []
+        for token in Self.tokens(d) {
+            switch token {
+            case .command(let next):
+                command = next; params = []
+                if next == "Z" || next == "z" { path.closeSubpath(); current = start; control = nil }
+            case .number(let value):
+                params.append(value)
+                let needed: Int
+                switch command {
+                case "M", "m", "L", "l": needed = 2
+                case "H", "h", "V", "v": needed = 1
+                case "C", "c": needed = 6
+                case "S", "s": needed = 4
+                default: needed = 0
+                }
+                guard needed > 0, params.count == needed else { continue }
+                let relative = command.isLowercase
+                let origin = relative ? current : .zero
+                switch command {
+                case "M", "m":
+                    current = CGPoint(x: origin.x + params[0], y: origin.y + params[1]); start = current; control = nil
+                    path.move(to: at(current)); command = relative ? "l" : "L"
+                case "L", "l":
+                    current = CGPoint(x: origin.x + params[0], y: origin.y + params[1]); control = nil; path.addLine(to: at(current))
+                case "H", "h":
+                    current.x = origin.x + params[0]; control = nil; path.addLine(to: at(current))
+                case "V", "v":
+                    current.y = origin.y + params[0]; control = nil; path.addLine(to: at(current))
+                case "C", "c", "S", "s":
+                    let first: CGPoint, rest: ArraySlice<CGFloat>
+                    if command == "C" || command == "c" {
+                        first = CGPoint(x: origin.x + params[0], y: origin.y + params[1]); rest = params[2...]
+                    } else {
+                        // A smooth curve mirrors the previous control point through the current point.
+                        first = control.map { CGPoint(x: 2 * current.x - $0.x, y: 2 * current.y - $0.y) } ?? current; rest = params[0...]
+                    }
+                    let second = CGPoint(x: origin.x + rest[rest.startIndex], y: origin.y + rest[rest.startIndex + 1])
+                    let end = CGPoint(x: origin.x + rest[rest.startIndex + 2], y: origin.y + rest[rest.startIndex + 3])
+                    path.addCurve(to: at(end), control1: at(first), control2: at(second))
+                    control = second; current = end
+                default: break
+                }
+                params = []
+            }
+        }
+        return path
+    }
+
+    private static func tokens(_ d: String) -> [Token] {
+        var result: [Token] = []
+        var number = ""
+        func flush() { if let value = Double(number) { result.append(.number(CGFloat(value))) }; number = "" }
+        for character in d {
+            if character.isLetter {
+                flush(); result.append(.command(character))
+            } else if character == " " || character == "," || character.isNewline {
+                flush()
+            } else if character == "-" || character == "+" {
+                if !number.isEmpty { flush() }
+                number.append(character)
+            } else if character == "." {
+                if number.contains(".") { flush() }
+                number.append(character)
+            } else {
+                number.append(character)
+            }
+        }
+        flush()
+        return result
+    }
+}
+
+/// The Google mark on the sign-in button, the same four paths as the web's Brand.tsx; Apple's own
+/// control paints the Apple mark.
+struct GoogleMark: View {
+    var size: CGFloat = 18
+
+    private static let pieces: [(Color, String)] = [
+        (Color(red: 234 / 255, green: 67 / 255, blue: 53 / 255), "M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"),
+        (Color(red: 66 / 255, green: 133 / 255, blue: 244 / 255), "M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"),
+        (Color(red: 251 / 255, green: 188 / 255, blue: 5 / 255), "M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"),
+        (Color(red: 52 / 255, green: 168 / 255, blue: 83 / 255), "M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"),
+    ]
+
+    var body: some View {
+        ZStack {
+            ForEach(Array(Self.pieces.enumerated()), id: \.offset) { _, piece in
+                SvgPath(d: piece.1, viewBox: 48).fill(piece.0)
+            }
+        }
+        .frame(width: size, height: size)
+        .accessibilityHidden(true)
+    }
+}
+
 /// Circular icon button, used for back and for the drawer's compact controls.
 struct CircleIconButton: View {
     let systemName: String
@@ -89,8 +209,7 @@ struct CircleIconButton: View {
 
     var body: some View {
         Button(action: action) {
-            Image(systemName: systemName)
-                .font(.system(size: diameter * 0.44, weight: .bold))
+            EhIcon(systemName, size: diameter * 0.44)
                 .foregroundStyle(foreground)
                 .frame(width: diameter, height: diameter)
                 .background(Circle().fill(background))

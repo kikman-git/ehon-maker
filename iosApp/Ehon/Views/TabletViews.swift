@@ -156,8 +156,7 @@ struct TabletEditorView: View {
                     .pageReorderable(model: model, index: index, cornerRadius: 12)
                 }
                 Button { model.apply { $0.addPage() } } label: {
-                    Image(systemName: "plus")
-                        .font(.system(size: 22, weight: .bold))
+                    EhIcon("plus", size: 22)
                         .foregroundStyle(Color.ehMuted)
                         .frame(width: 52, height: 72)
                         .overlay(RoundedRectangle(cornerRadius: 12)
@@ -471,7 +470,7 @@ private struct RotateHint: View {
             VStack(spacing: 10) {
                 HStack(spacing: 18) {
                     RoundedRectangle(cornerRadius: 12).strokeBorder(Color.ehAccent, lineWidth: 4).frame(width: 64, height: 88)
-                    Image(systemName: "arrow.clockwise").font(.system(size: 30, weight: .bold)).foregroundStyle(Color.ehAccentDeep)
+                    EhIcon("arrow.clockwise", size: 30).foregroundStyle(Color.ehAccentDeep)
                     RoundedRectangle(cornerRadius: 12).strokeBorder(Color.ehEdge, lineWidth: 4).frame(width: 88, height: 64)
                 }
                 .padding(.bottom, 12)

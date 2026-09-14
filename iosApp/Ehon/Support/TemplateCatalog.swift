@@ -2,8 +2,9 @@ import Foundation
 import EhonCore
 
 /// The story templates, fetched from the assets Worker's `templates/index.json` and kept on disk by
-/// content hash (decision #60). The app bundles none: a build without cloud configuration offers the
-/// blank book only, and a phone that has fetched once keeps its copy when offline.
+/// content hash (decision #60). A release build bundles none: without cloud configuration it offers
+/// the blank book only, and a phone that has fetched once keeps its copy when offline. A Debug build
+/// carries the assembled copy instead (decision #61), so developing needs no network.
 @MainActor
 final class TemplateCatalog: ObservableObject {
     struct Entry: Identifiable {
@@ -28,21 +29,30 @@ final class TemplateCatalog: ObservableObject {
         let format: Int
         let sha256: String
         let url: String
+        /// The document beside the index as Gradle assembled it; the published index drops this.
+        let file: String?
     }
 
     private let directory: URL
     private let session: URLSession
+    private let bundled: URL?
 
-    init(directory: URL? = nil, session: URLSession = .shared) {
+    init(directory: URL? = nil, session: URLSession = .shared, bundled: URL? = CloudConfiguration.bundledTemplatesURL) {
         self.directory = directory ?? FileManager.default
             .urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("templates", isDirectory: true)
         self.session = session
+        self.bundled = bundled
         try? FileManager.default.createDirectory(at: self.directory, withIntermediateDirectories: true)
     }
 
-    /// Shows the cached list at once, then refreshes it from the network.
+    /// Shows the cached list at once, then refreshes it from the network; a bundled copy is the whole list.
     func load() async {
+        if let bundled {
+            entries = materialize(bundled: bundled)
+            state = entries.isEmpty ? .failed : .ready
+            return
+        }
         guard let base = CloudConfiguration.assetsURL else { state = .unavailable; return }
         if entries.isEmpty, let cached = try? Data(contentsOf: directory.appendingPathComponent("index.json")) {
             entries = await materialize(index: cached, base: base, allowNetwork: false)
@@ -66,17 +76,37 @@ final class TemplateCatalog: ObservableObject {
     private func materialize(index data: Data, base: URL, allowNetwork: Bool) async -> [Entry] {
         guard let index = try? JSONDecoder().decode(Index.self, from: data) else { return [] }
         var result: [Entry] = []
-        for item in index.templates.sorted(by: { $0.order < $1.order }) where item.format <= Int(BookCodec.shared.FORMAT_VERSION) {
+        for item in readable(index) {
             let file = directory.appendingPathComponent("\(item.id)-\(item.sha256.prefix(12)).ehon.json")
             var json = try? String(contentsOf: file, encoding: .utf8)
             if json == nil, allowNetwork, let (bytes, _) = try? await session.data(from: base.appendingPathComponent("templates/\(item.url)")) {
                 json = String(data: bytes, encoding: .utf8)
                 if let json { try? json.write(to: file, atomically: true, encoding: .utf8) }
             }
-            guard let json, let book = BookCodec.shared.decodeOrNull(text: json) else { continue }
-            let description = item.description[Localized.isJapaneseUI ? "ja" : "en"] ?? item.description["ja"] ?? ""
-            result.append(Entry(id: item.id, title: book.title, description: description, pageCount: Int(book.pageCount), json: json, book: book))
+            if let json, let entry = entry(item, json: json) { result.append(entry) }
         }
         return result
+    }
+
+    /// The assembled documents beside their index, as iosApp/scripts/bundle-templates.sh copied them.
+    private func materialize(bundled directory: URL) -> [Entry] {
+        guard let data = try? Data(contentsOf: directory.appendingPathComponent("index.json")),
+              let index = try? JSONDecoder().decode(Index.self, from: data) else { return [] }
+        return readable(index).compactMap { item in
+            guard let file = item.file,
+                  let json = try? String(contentsOf: directory.appendingPathComponent(file), encoding: .utf8) else { return nil }
+            return entry(item, json: json)
+        }
+    }
+
+    /// Shelf order, leaving out documents written in a newer format than this build reads.
+    private func readable(_ index: Index) -> [IndexEntry] {
+        index.templates.filter { $0.format <= Int(BookCodec.shared.FORMAT_VERSION) }.sorted { $0.order < $1.order }
+    }
+
+    private func entry(_ item: IndexEntry, json: String) -> Entry? {
+        guard let book = BookCodec.shared.decodeOrNull(text: json) else { return nil }
+        let description = item.description[Localized.isJapaneseUI ? "ja" : "en"] ?? item.description["ja"] ?? ""
+        return Entry(id: item.id, title: book.title, description: description, pageCount: Int(book.pageCount), json: json, book: book)
     }
 }

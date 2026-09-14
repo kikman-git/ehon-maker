@@ -484,8 +484,7 @@ struct FontPicker: View {
                             .minimumScaleFactor(0.6)
                             .opacity(0.75)
                         if !face.bundled && state == .missing {
-                            Image(systemName: "arrow.down.circle")
-                                .font(.system(size: 8, weight: .bold))
+                            EhIcon("arrow.down.circle", size: 8)
                                 .opacity(0.55)
                         }
                     }

@@ -1,7 +1,8 @@
 import SwiftUI
 import EhonCore
 
-/// ほんだな — the bookshelf. Two-column grid, "make a new one" first, newest books after.
+/// ほんだな — the bookshelf. Two-column grid: the blank page and the templates first (decision #62),
+/// newest books after.
 struct ShelfView: View {
     @EnvironmentObject var app: AppModel
     @State private var filter: ShelfFilter = .all
@@ -24,7 +25,8 @@ struct ShelfView: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem(spacing: 16), GridItem(spacing: 16)],
                           alignment: .leading, spacing: 16) {
-                    NewBookTile { app.openTemplates() }
+                    StartTile(title: Localized.s("home.blank"), systemName: "paintbrush.pointed", primary: true) { app.startBlankBook() }
+                    StartTile(title: Localized.s("home.fromTemplate"), systemName: "sparkles", primary: false) { app.openTemplates() }
                     ForEach(visible, id: \.id.value) { book in
                         BookTile(book: book) { app.open(book) }
                     }
@@ -49,17 +51,9 @@ struct ShelfView: View {
                     .foregroundStyle(Color.ehText)
             }
             Spacer()
-            Button { showingAccount = true } label: {
-                Image(systemName: "gearshape").font(.system(size: 19)).frame(width: 44, height: 44)
-            }
-            .foregroundStyle(Color.ehMuted)
-            .accessibilityLabel(Localized.s("settings.title"))
-            Text(String(childName.prefix(1)))
-                .font(.ehUI(17))
-                .foregroundStyle(Color.ehAccentDeep)
-                .frame(width: 46, height: 46)
-                .background(Circle().fill(Color.ehAccentTint))
-                .overlay(Circle().strokeBorder(Color.ehAccent.opacity(0.6), lineWidth: 2))
+            // Settings and the account, as the account button does on the web.
+            CircleIconButton(systemName: "gearshape", diameter: 46) { showingAccount = true }
+                .accessibilityLabel(Localized.s("settings.title"))
         }
         .padding(.horizontal, 20)
         .padding(.top, 10)
@@ -84,7 +78,7 @@ struct ShelfView: View {
     private var tabBar: some View {
         HStack(spacing: 4) {
             tab(Localized.s("nav.shelf"), active: true) {}
-            tab(Localized.s("nav.make"), active: false) { app.openTemplates() }
+            tab(Localized.s("nav.make"), active: false) { app.startBlankBook() }
             tab(Localized.s("nav.read"), active: false) {
                 if let latest = app.books.first { app.openRead(latest) }
             }
@@ -119,27 +113,32 @@ struct ShelfView: View {
     }
 }
 
-private struct NewBookTile: View {
+/// The two ways a book starts, as on the web shelf: a blank white page first, the stories second.
+private struct StartTile: View {
+    let title: String
+    let systemName: String
+    let primary: Bool
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             VStack(spacing: 9) {
                 RoundedRectangle(cornerRadius: 28)
-                    .strokeBorder(Color.ehAccent.opacity(0.75),
+                    .strokeBorder(Color.ehAccent.opacity(primary ? 0 : 0.75),
                                   style: StrokeStyle(lineWidth: 2.5, dash: [7, 5]))
-                    .background(RoundedRectangle(cornerRadius: 28).fill(Color.ehAccentTint.opacity(0.5)))
+                    .background(RoundedRectangle(cornerRadius: 28).fill(Color.ehAccentTint.opacity(primary ? 1 : 0.5)))
                     .aspectRatio(3.0 / 4.0, contentMode: .fit)
                     .overlay {
                         VStack(spacing: 9) {
-                            Image(systemName: "plus")
-                                .font(.system(size: 26, weight: .heavy))
+                            EhIcon(systemName, size: 24)
                                 .foregroundStyle(Color.ehSurface)
                                 .frame(width: 52, height: 52)
                                 .background(Circle().fill(Color.ehAccent))
-                            Text(Localized.s("home.newBook"))
+                            Text(title)
                                 .font(.ehUI(13))
                                 .foregroundStyle(Color.ehAccentDeep)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 10)
                         }
                     }
                 Spacer(minLength: 30)

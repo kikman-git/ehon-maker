@@ -60,16 +60,13 @@ final class AppModel: ObservableObject {
         if route == "templates" { screen = .templates; return }
         if let level = defaults.string(forKey: "uiLevel") { uiLevelRaw = level }
 
-        let book: Book? = books.first ?? Templates.shared.instantiate(
-            template: Templates.shared.blank,
+        let book = books.first ?? Templates.shared.blankBook(
             bookId: BookId(value: "sample"),
-            title: Localized.s(Templates.shared.blank.nameKey),
+            title: Localized.s("book.untitled"),
             contentLocale: bookLocale,
             nowEpochMs: Int64(Date().timeIntervalSince1970 * 1000),
-            shapeOverride: nil,
-            idSource: IdSource(prefix: "i")
+            shape: .square
         )
-        guard let book else { return }
         repository.save(book)
         reload()
 
@@ -108,15 +105,14 @@ final class AppModel: ObservableObject {
 
     func openTemplates() { editor?.saveNow(); repository.close(); editor = nil; screen = .templates }
 
-    func startBook(from template: Template, shape: PageShape?) {
-        let book = Templates.shared.instantiate(
-            template: template,
+    /// The blank start the web shelf offers too (decision #62): one white square page, the brush ready.
+    func startBlankBook() {
+        let book = Templates.shared.blankBook(
             bookId: BookId(value: "b\(UUID().uuidString)"),
-            title: Localized.s(template.nameKey),
+            title: Localized.s("book.untitled"),
             contentLocale: bookLocale,
             nowEpochMs: Int64(Date().timeIntervalSince1970 * 1000),
-            shapeOverride: shape,
-            idSource: IdSource(prefix: "i")
+            shape: .square
         )
         repository.save(book)
         reload()

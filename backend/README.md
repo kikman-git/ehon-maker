@@ -123,7 +123,7 @@ to the web app's origins so browsers may fetch it; the phone builds links from `
    `backend/` does it with exported R2 credentials instead. Documents are uploaded before the index,
    under content-addressed keys, so a client never reads an entry it cannot fetch. Both apps read
    `templates/index.json` at launch and keep a copy, so a corrected or new story needs no release
-   (decision #60).
+   (decision #60); development builds read the assembled copy locally instead (decision #61).
 9. Set a one-day R2 lifecycle expiry on the temporary `u/` prefix. Finalized masters,
    sources, and voice have no automatic garbage collection in v1. Failed quota reservations
    stay charged until the same upload succeeds; inspect abandoned reservations before any

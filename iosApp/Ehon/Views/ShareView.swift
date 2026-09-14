@@ -71,9 +71,9 @@ struct ShareView: View {
                 section(Localized.s("share.include"), hint: nil) {
                     VStack(spacing: 8) {
                         toggleRow(Localized.s("share.voice"), sub: Localized.s("share.voiceHint"),
-                                  systemName: "mic.fill", on: $withVoice)
+                                  systemName: "mic", on: $withVoice)
                         toggleRow(Localized.s("share.printFile"), sub: Localized.s("share.printFileHint"),
-                                  systemName: "printer.fill", on: $withPrintFile)
+                                  systemName: "printer", on: $withPrintFile)
                     }
                 }
 
@@ -115,12 +115,12 @@ struct ShareView: View {
             VStack(spacing: 6) {
                 ForEach(links.links) { link in
                     HStack(spacing: 10) {
-                        Image(systemName: "link").foregroundStyle(Color.ehAccent)
+                        EhIcon("link", size: 15).foregroundStyle(Color.ehAccent)
                         Text(Localized.s("share.linkFor", link.label.isEmpty ? "—" : link.label))
                             .font(.ehUI(13.5)).foregroundStyle(Color.ehText).lineLimit(1)
                         Spacer(minLength: 4)
                         if let url = link.url {
-                            ShareLink(item: url) { Image(systemName: "square.and.arrow.up") }
+                            ShareLink(item: url) { EhIcon("square.and.arrow.up", size: 15) }
                                 .font(.ehUI(13)).foregroundStyle(Color.ehAccentDeep)
                         }
                         Button(Localized.s("share.linkRevoke")) { Task { await links.revoke(link) } }
@@ -150,8 +150,7 @@ struct ShareView: View {
                     Text(member.sub).font(.ehUI(11, .medium)).foregroundStyle(Color.ehMuted)
                 }
                 Spacer(minLength: 0)
-                Image(systemName: on ? "checkmark.circle.fill" : "circle")
-                    .font(.system(size: 22, weight: .semibold))
+                EhIcon(on ? "checkmark.circle.fill" : "circle", size: 22)
                     .foregroundStyle(on ? Color.ehAccent : Color.ehEdge)
             }
             .padding(12)
@@ -164,8 +163,7 @@ struct ShareView: View {
     private func toggleRow(_ title: String, sub: String, systemName: String, on: Binding<Bool>) -> some View {
         Button { on.wrappedValue.toggle() } label: {
             HStack(spacing: 12) {
-                Image(systemName: systemName)
-                    .font(.system(size: 15, weight: .bold))
+                EhIcon(systemName, size: 15)
                     .foregroundStyle(on.wrappedValue ? Color.ehSurface : .ehMuted)
                     .frame(width: 40, height: 40)
                     .background(Circle().fill(on.wrappedValue ? Color.ehAccent : Color.ehSunken))
@@ -197,8 +195,7 @@ struct ShareView: View {
     private var sentBody: some View {
         VStack(spacing: 10) {
             Spacer()
-            Image(systemName: "paperplane.fill")
-                .font(.system(size: 34, weight: .bold))
+            EhIcon("paperplane", size: 34)
                 .foregroundStyle(Color.ehSurface)
                 .frame(width: 84, height: 84)
                 .background(Circle().fill(Color.ehAccent))

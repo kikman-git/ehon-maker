@@ -1,7 +1,6 @@
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
-import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 /** Mirrors public/_redirects for the dev and preview servers: clean paths land on their entry page. */
@@ -27,26 +26,15 @@ function cleanRoutes(): Plugin {
 type LocalTemplate = { id: string; url: string; path: string } & Record<string, unknown>;
 
 /**
- * Stands in for the assets Worker's `templates/` prefix on the dev and preview servers: the stories
- * Gradle assembled into shared/build/templates plus the seeded fixture books the tests open.
+ * Stands in for the assets Worker's `templates/` prefix on the dev and preview servers with the
+ * stories Gradle assembled into shared/build/templates (decision #61).
  */
 function localTemplates(): Plugin {
   const built = fileURLToPath(new URL('../shared/build/templates/', import.meta.url));
-  const fixtures = fileURLToPath(new URL('tests/fixtures/', import.meta.url));
   const entries = (): LocalTemplate[] => {
-    const list: LocalTemplate[] = [];
-    if (existsSync(`${built}index.json`)) {
-      for (const entry of JSON.parse(readFileSync(`${built}index.json`, 'utf8')).templates as (LocalTemplate & { file: string })[]) list.push({ ...entry, path: `${built}${entry.file}` });
-    }
-    if (existsSync(fixtures)) {
-      for (const file of readdirSync(fixtures).filter((name) => name.endsWith('.ehon.json')).sort()) {
-        const text = readFileSync(`${fixtures}${file}`, 'utf8');
-        const book = JSON.parse(text).book as { id: { value: string }; title: string; shape: string; pages: unknown[] };
-        const sha256 = createHash('sha256').update(text).digest('hex');
-        list.push({ id: book.id.value, order: 100 + list.length, title: book.title, description: { ja: 'テスト用の ひな形', en: 'Test fixture' }, shape: book.shape, pageCount: book.pages.length, format: 4, bytes: Buffer.byteLength(text), sha256, url: `${book.id.value}/${sha256.slice(0, 12)}.ehon.json`, path: `${fixtures}${file}` });
-      }
-    }
-    return list;
+    if (!existsSync(`${built}index.json`)) return [];
+    const index = JSON.parse(readFileSync(`${built}index.json`, 'utf8')) as { templates: (LocalTemplate & { file: string })[] };
+    return index.templates.map((entry) => ({ ...entry, path: `${built}${entry.file}` }));
   };
   const middleware = (req: { url?: string }, res: { setHeader(name: string, value: string): void; statusCode: number; end(body?: string | Buffer): void }, next: () => void) => {
     const url = (req.url ?? '').split('?')[0];

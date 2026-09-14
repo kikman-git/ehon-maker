@@ -39,6 +39,19 @@ enum CloudConfiguration {
         return url
     }
 
+    /// The assembled stories a Debug build carries (iosApp/scripts/bundle-templates.sh), so the templates
+    /// screen needs no network while developing (decision #61). Nil in Release, when Gradle has not run,
+    /// and when EHON_REMOTE_TEMPLATES / -remoteTemplates asks for the published index instead.
+    static var bundledTemplatesURL: URL? {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["EHON_REMOTE_TEMPLATES"] != nil
+            || UserDefaults.standard.bool(forKey: "remoteTemplates") { return nil }
+        return Bundle.main.url(forResource: "index", withExtension: "json", subdirectory: "templates")?.deletingLastPathComponent()
+        #else
+        return nil
+        #endif
+    }
+
     @MainActor static func configure() {
         guard FirebaseApp.app() == nil else { return }
         let options: FirebaseOptions

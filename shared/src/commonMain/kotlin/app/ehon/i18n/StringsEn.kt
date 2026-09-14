@@ -99,6 +99,8 @@ internal object StringsEn {
         "home.filter.inProgress" to "Making %s",
         "home.filter.finished" to "Finished %s",
         "home.newBook" to "Make a new one",
+        "home.blank" to "Start on a blank page",
+        "home.fromTemplate" to "From a template",
         "home.empty" to "No books yet.\nLet's make your first one.",
         "nav.shelf" to "Shelf",
         "nav.make" to "Make",
@@ -111,7 +113,7 @@ internal object StringsEn {
 
         // templates
         "templates.title" to "Templates",
-        "templates.intro" to "Pick a story to start from a book with its pictures and words in place, or begin on an empty page.",
+        "templates.intro" to "Pick a story to start from a book with its pictures and words in place.",
         "templates.stories" to "Stories",
         "templates.loading" to "Loading the stories…",
         "templates.offline" to "The story templates appear once you are online.",

@@ -17,6 +17,8 @@ object StringKeys {
         "home.filter.inProgress",
         "home.filter.finished",
         "home.newBook",
+        "home.blank",
+        "home.fromTemplate",
         "nav.shelf",
         "nav.make",
         "nav.read",

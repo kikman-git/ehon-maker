@@ -71,6 +71,11 @@ targets:
       - script: exec "$SRCROOT/scripts/build-shared-framework.sh"
         name: Build shared KMP framework
         basedOnDependencyAnalysis: false
+    postBuildScripts:
+      # Debug only: the assembled stories land in the bundle after Copy Bundle Resources, before signing.
+      - script: exec "$SRCROOT/scripts/bundle-templates.sh"
+        name: Bundle story templates (Debug)
+        basedOnDependencyAnalysis: false
 
   EhonTests:
     type: bundle.unit-test

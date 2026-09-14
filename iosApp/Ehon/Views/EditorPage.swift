@@ -135,8 +135,7 @@ struct EditorPage: View {
                 Button {
                     model.apply { $0.rotateSelected() }
                 } label: {
-                    Image(systemName: "arrow.clockwise")
-                        .font(.system(size: 13, weight: .bold))
+                    EhIcon("arrow.clockwise", size: 13)
                         .foregroundStyle(Color.ehSurface)
                         .padding(.horizontal, 9)
                         .padding(.vertical, 6)

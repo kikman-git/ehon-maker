@@ -280,7 +280,7 @@ by Playwright and compared to the iOS painter PNGs (record tier 2).
 ### 7.3 Drawing workspace (implemented)
 
 - `/app` creates a locally saved book with one white page and the brush selected. The shelf's
-  primary action does the same. Templates remain optional; `/app?template=t1` is a test preview.
+  primary action does the same. Templates remain optional; `/app?template=doc-love-letter` is a test preview.
 - The canvas renders **only the active page**. A thumbnail strip switches pages and adds pages.
   Fit-to-page, zoom and pan apply to that page; there is no all-pages canvas view.
 - A persistent labelled toolbar exposes brush (B), eraser (E), selection (V), text (T), materials
@@ -464,7 +464,9 @@ document; `web/src/desk/` is the single-page drawing workspace (§7.3). Kotlin g
 emulator-only `localBlob` stand-in for R2. Story templates are no longer compiled into the clients:
 `assembleTemplates` writes `shared/build/templates/{index.json,*.ehon.json}`, `make templates-upload`
 publishes them under the Worker's `templates/` prefix, and `web/src/templates.ts` and the iOS
-`TemplateCatalog` fetch the index and the documents at runtime, caching by content hash (decision 60). The
+`TemplateCatalog` fetch the index and the documents at runtime, caching by content hash (decision 60);
+development builds read the assembled copy locally, served by the dev server and bundled into a Debug
+iOS build (decision 61). The
 iOS share screen creates one guest link per chosen family member (label = their name) and
 lists/revokes them; `EhonWebURL` names the web origin. Fonts ship as unicode-range woff2 slices
 built by `web/tools/slice-fonts.mjs` (decision 49): the body face

@@ -40,7 +40,7 @@ marks hashed assets and font slices immutable.
 |---|---|---|
 | `/` | shelf | signed out: the landing page with sign-in; signed in: the account's books, templates, account panel, guest links |
 | `/app` | studio | new local book: one white page, brush selected, autosave |
-| `/app?template=t1` | studio | optional template preview, file open/save, save to shelf |
+| `/app?template=doc-love-letter` | studio | a story preview, file open/save, save to shelf |
 | `/app/<bookId>` | studio | a saved book: drawing, autosave, lease, remote replacement, illustration library |
 | `/read/<bookId>` | reader | the owner's copy with one page listener while open |
 | `/g/<token>` | reader | a guest link: one fetch of `guestBook`, no login, no listener |
@@ -122,10 +122,10 @@ JSON, vector art embedded as SVG, captions as text items, everything a movable o
 the documents and an `index.json` to `shared/build/templates/`, and `make templates-upload` publishes
 them to the assets Worker under `templates/` (decision #60). `src/templates.ts` fetches that index
 from `VITE_TEMPLATES_URL` (default: the assets Worker's `templates/` prefix), then each document on
-demand; the shelf dialog, the landing gallery and `/app?template=<id>` all go through it. Without a
-cloud configuration the dev and preview servers serve the same layout themselves from the assembled
-build plus `tests/fixtures/*.ehon.json`, the seeded books (`t1`..`t5`) the browser tests open, so the
-harness and the tests need no network. A book that carries art shows it in the materials panel under
+demand; the shelf dialog, the landing gallery and `/app?template=<id>` all go through it. The dev and
+preview servers serve the same layout themselves from the assembled build, and `pnpm dev` reads that
+copy whatever `.env.local` says, so developing and the browser tests need no network (decision #61);
+a production build reads the Worker, and `VITE_TEMPLATES_URL` overrides either. A book that carries art shows it in the materials panel under
 「この えほんの え」, and selecting a caption on the page shows its text field whichever tool is
 active. `pnpm ehon-check <file>` validates any document with the same code the app uses.
 
@@ -138,8 +138,8 @@ are public identifiers; App Check (`VITE_APPCHECK_SITE_KEY`) is what gates the b
 callable, the QR login included, is rejected in the browser until the site key is registered. With
 the key present the page loads reCAPTCHA Enterprise from google.com, the one third-party request the
 product makes by design; the Lighthouse third-party budget (decision 51) runs on the no-cloud build.
-`VITE_TEMPLATES_URL` overrides where the story templates are read from (the emulator suite points it
-at the dev server's `/templates`). `VITE_ASSETS_URL` is the assets Worker domain; in emulator mode it defaults to the `localBlob`
+`VITE_TEMPLATES_URL` overrides where the story templates are read from: the dev server's own
+`/templates` by default, the assets Worker's `templates/` prefix in a production build. `VITE_ASSETS_URL` is the assets Worker domain; in emulator mode it defaults to the `localBlob`
 function, which stands in for R2. `VITE_FONTS_URL` moves the font slices off the site (defaults
 to `/fonts`).
 
@@ -229,9 +229,9 @@ three spreads painted.
 
 ## Tests and budgets
 
-`pnpm test` (Playwright, no cloud) checks all five template shapes/pages plus a mask/rotation
-fixture, paints a document with embedded SVG art and opens a story template with its materials and
-editable captions, and exercises drag undo, ruby, file validation, raster placement, stale intent
+`pnpm test` (Playwright, no cloud) checks a mask/rotation fixture, paints a document with embedded
+SVG art and opens a story template with its materials and editable captions, and, on the blank
+page, exercises drag undo, ruby, file validation, raster placement, stale intent
 rejection, single-page pan/zoom, drawing/erasing, cancellation, pen/touch input, reload persistence, and library placement on the active page and adding a page. Run
 `pnpm test --update-snapshots` in `web/` only when intentionally changing rendering; inspect the
 resulting images.

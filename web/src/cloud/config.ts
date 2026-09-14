@@ -7,7 +7,7 @@ export interface CloudConfig {
   emulatorHost: string | null;
   functionsUrl: string;
   assetsUrl: string | null;
-  /** The published story templates (decision #60); null reads the dev server's local copy. */
+  /** The published story templates (decision #60); null reads the dev server's local copy, the dev default (decision #61). */
   templatesUrl: string | null;
   appCheckSiteKey: string | null;
 }
@@ -36,7 +36,8 @@ export const cloud: CloudConfig | null = emulatorHost
         emulatorHost: null,
         functionsUrl: env.VITE_FUNCTIONS_URL || `https://asia-northeast1-${env.VITE_FIREBASE_PROJECT_ID}.cloudfunctions.net`,
         assetsUrl: env.VITE_ASSETS_URL || null,
-        templatesUrl: env.VITE_TEMPLATES_URL || (env.VITE_ASSETS_URL ? `${(env.VITE_ASSETS_URL as string).replace(/\/$/, '')}/templates` : null),
+        // The dev server serves the assembled stories itself, so developing calls no Worker; VITE_TEMPLATES_URL still overrides.
+        templatesUrl: env.VITE_TEMPLATES_URL || (env.VITE_ASSETS_URL && !env.DEV ? `${(env.VITE_ASSETS_URL as string).replace(/\/$/, '')}/templates` : null),
         appCheckSiteKey: env.VITE_APPCHECK_SITE_KEY || null,
       }
     : null;

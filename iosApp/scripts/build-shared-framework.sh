@@ -70,6 +70,11 @@ for arch in $ARCH_LIST; do
   SLICE_DIRS+=("$REPO_ROOT/shared/build/bin/$target/$KN_DIR")
 done
 
+# A Debug build carries the assembled story templates; bundle-templates.sh copies them in after linking.
+if [[ "${CONFIGURATION:-Debug}" != "Release" ]]; then
+  GRADLE_TASKS+=(":shared:assembleTemplates")
+fi
+
 ./gradlew "${GRADLE_TASKS[@]}"
 
 DEST="$REPO_ROOT/shared/build/xcode-frameworks/${CONFIGURATION:-Debug}/$SDK"

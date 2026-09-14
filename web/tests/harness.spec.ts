@@ -14,23 +14,12 @@ export async function savedBook(page: Page) {
   };
 }
 
+// /app saves a blank book to the shelf and edits it: one square frame, no items, so each test sees exactly
+// what it adds. The two story tests open a published story as a preview instead, where the template picker lives.
 test.beforeEach(async ({ page }) => {
-  await page.goto('/app?template=t1');
+  await page.goto('/app');
   await expect(page.getByRole('heading', { name: 'ぺたぺた', exact: true })).toBeVisible();
-});
-
-test('the t1 harness renders through the Kotlin painter', async ({ page }) => {
-  await expect(page.getByText('1 / 8 ページ')).toBeVisible();
-  const canvas = page.getByLabel('えほんの ページ');
-  const colors = await canvas.evaluate((element) => {
-    const canvas = element as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d')!;
-    const pixel = (x: number, y: number) => Array.from(ctx.getImageData(x * canvas.width, y * canvas.height, 1, 1).data);
-    return { background: pixel(.5, .2), cat: pixel(.5, .68) };
-  });
-  expect(colors.background).toEqual([240, 250, 225, 255]);
-  expect(colors.cat).not.toEqual(colors.background);
-  await expect(canvas).toHaveScreenshot('t1-page.png');
+  await expect(page.getByText('1 / 1 ページ')).toBeVisible();
 });
 
 test('placing and dragging can be undone independently', async ({ page }) => {
@@ -60,10 +49,14 @@ test('ruby text and page identities survive file reopening', async ({ page }) =>
   await page.getByRole('button', { name: 'ことばを はる', exact: true }).click();
   await page.getByRole('button', { name: 'ページを ふやす', exact: true }).click();
   const book = await savedBook(page);
-  expect(new Set(book.book.pages.map((item) => item.id)).size).toBe(9);
+  expect(new Set(book.book.pages.map((item) => item.id)).size).toBe(2);
   expect(book.book.pages[0].items.at(-1)).toMatchObject({ type: 'text', text: '森で あそぼう', ruby: 'もりで あそぼう' });
+  // Undo both edits; reopening the saved file on this shelf book brings them back.
+  await page.getByRole('button', { name: 'もどす', exact: true }).click();
+  await page.getByRole('button', { name: 'もどす', exact: true }).click();
+  await expect(page.getByText('1 / 1 ページ')).toBeVisible();
   await page.locator('input[type=file]').setInputFiles({ name: 'book.ehon', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(book)) });
-  await expect(page.getByText('1 / 9 ページ')).toBeVisible();
+  await expect(page.getByText('1 / 2 ページ')).toBeVisible();
   expect((await savedBook(page)).book).toEqual(book.book);
 });
 
@@ -76,19 +69,23 @@ test('malformed and future books do not replace the current book', async ({ page
   }
 });
 
-test('changing templates changes the page aspect without browser errors', async ({ page }) => {
+test('switching stories in the file menu reloads the book without browser errors', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  for (const [id, aspect] of [['t2', 1.5], ['t3', .75], ['t1', 1]] as const) {
-    await page.locator('.file-menu > summary').click();
-    await page.getByRole('combobox', { name: 'テンプレート', exact: true }).selectOption(id);
-    await page.locator('.file-menu > summary').click();
-    const canvas = page.getByLabel('えほんの ページ');
-    await expect.poll(async () => {
-      const box = (await canvas.boundingBox())!;
-      return Math.round(box.width / box.height * 100);
-    }).toBe(aspect * 100);
-  }
+  await page.goto('/app?template=doc-leaf-umbrella');
+  await expect(page.getByText('1 / 19 ページ')).toBeVisible();
+  const aspect = async () => {
+    const box = (await page.getByLabel('えほんの ページ').boundingBox())!;
+    return Math.round(box.width / box.height * 100);
+  };
+  await expect.poll(aspect).toBe(75);
+  await page.locator('.file-menu > summary').click();
+  await page.getByRole('combobox', { name: 'テンプレート', exact: true }).selectOption('doc-love-letter');
+  await page.locator('.file-menu > summary').click();
+  await expect(page.getByText('1 / 25 ページ')).toBeVisible();
+  await expect.poll(aspect).toBe(75);
+  // A portrait story with art opens as facing pages.
+  await expect(page.locator('[data-frame]')).toHaveCount(2);
   expect(errors).toEqual([]);
 });
 
@@ -116,7 +113,8 @@ test('the desk pans and zooms without touching the book', async ({ page }) => {
 });
 
 test('a library part lands on the active page', async ({ page }) => {
-  await page.getByRole('button', { name: '2 ページを編集', exact: true }).click();
+  await page.getByRole('button', { name: 'ページを ふやす', exact: true }).click();
+  await expect(page.getByText('2 / 2 ページ')).toBeVisible();
   await page.getByRole('button', { name: '素材', exact: true }).click();
   await expect(page.locator('.desk-surface')).not.toHaveClass(/animate/);
   const target = page.locator('[data-frame="1"] canvas');
@@ -128,7 +126,7 @@ test('a library part lands on the active page', async ({ page }) => {
   await page.mouse.move(box.x + box.width * 0.25, box.y + box.height * 0.4, { steps: 12 });
   await expect(page.locator('.drag-ghost')).toHaveText('まる');
   await page.mouse.up();
-  await expect(page.getByText('2 / 8 ページ')).toBeVisible();
+  await expect(page.getByText('2 / 2 ページ')).toBeVisible();
   const book = await savedBook(page);
   expect(book.book.pages[1].items.at(-1)).toMatchObject({ type: 'part' });
   expect(book.book.pages[1].items.at(-1)!.x).toBeCloseTo(25, 0);
@@ -138,29 +136,18 @@ test('a library part lands on the active page', async ({ page }) => {
 
 test('adding a page appends a frame and makes it current', async ({ page }) => {
   await page.getByRole('button', { name: 'ページを ふやす', exact: true }).click();
-  await expect(page.getByText('9 / 9 ページ')).toBeVisible();
+  await expect(page.getByText('2 / 2 ページ')).toBeVisible();
   await expect(page.locator('[data-frame]')).toHaveCount(1);
-  await expect(page.locator('.page-thumbnail')).toHaveCount(9);
+  await expect(page.locator('.page-thumbnail')).toHaveCount(2);
   await expect(page.getByLabel('えほんの ページ')).toBeInViewport();
   await page.getByRole('button', { name: '1 ページを編集', exact: true }).click();
-  await expect(page.getByText('1 / 9 ページ')).toBeVisible();
+  await expect(page.getByText('1 / 2 ページ')).toBeVisible();
 });
-
-for (const id of ['t2', 't3', 't4', 't5']) {
-  test(`${id} painter baseline`, async ({ page }) => {
-    await page.locator('.file-menu > summary').click();
-    await page.getByRole('combobox', { name: 'テンプレート', exact: true }).selectOption(id);
-    await page.locator('.file-menu > summary').click();
-    await expect(page.getByLabel('えほんの ページ')).toHaveScreenshot(`${id}-page.png`);
-  });
-}
 
 test('a story template opens as a bound book: vector pieces on the picture pages, editable words facing them', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  await page.locator('.file-menu > summary').click();
-  await page.getByRole('combobox', { name: 'テンプレート', exact: true }).selectOption('doc-leaf-umbrella');
-  await page.locator('.file-menu > summary').click();
+  await page.goto('/app?template=doc-leaf-umbrella');
   await expect(page.getByText('1 / 19 ページ')).toBeVisible();
   const { book } = await savedBook(page);
   // Cover and title page, then the storyboard's picture-left, words-right spreads, then the back cover.
