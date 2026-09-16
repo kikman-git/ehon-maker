@@ -9,10 +9,10 @@ import { createGzip } from 'node:zlib';
 const root = fileURLToPath(new URL('../dist/', import.meta.url));
 const port = Number(process.argv[2] ?? 4175);
 const types = {
-  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.txt': 'text/plain; charset=utf-8',
-  '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.png': 'image/png', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.ico': 'image/x-icon',
+  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8',
+  '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.ico': 'image/x-icon',
 };
-const route = (pathname) => (/^\/app(\/|$)/.test(pathname) ? '/app.html' : /^\/(read|g)(\/|$)/.test(pathname) ? '/read.html' : pathname === '/' || /^\/login(\/|$)/.test(pathname) ? '/index.html' : pathname);
+const route = (pathname) => (/^\/app(\/|$)/.test(pathname) ? '/app.html' : /^\/(read|g)(\/|$)/.test(pathname) ? '/read.html' : /^\/login(\/|$)/.test(pathname) ? '/login.html' : pathname === '/' ? '/index.html' : pathname);
 
 createServer((request, response) => {
   const pathname = new URL(request.url ?? '/', 'http://localhost').pathname;
@@ -20,7 +20,7 @@ createServer((request, response) => {
   if (!file.startsWith(root) || !existsSync(file) || statSync(file).isDirectory()) { response.writeHead(404); response.end(); return; }
   const type = types[extname(file)] ?? 'application/octet-stream';
   const gzip = !/^(font\/woff2|image\/)/.test(type) && /\bgzip\b/.test(request.headers['accept-encoding'] ?? '');
-  response.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-store', ...(gzip ? { 'Content-Encoding': 'gzip', Vary: 'Accept-Encoding' } : {}) });
+  response.writeHead(200, { 'Content-Type': type, 'Cache-Control': 'no-store', ...(/^\/(app|read|g|login)(?:\/|\.html|$)/.test(pathname) ? { 'X-Robots-Tag': 'noindex, nofollow' } : {}), ...(gzip ? { 'Content-Encoding': 'gzip', Vary: 'Accept-Encoding' } : {}) });
   const body = createReadStream(file);
   if (gzip) body.pipe(createGzip({ level: 9 })).pipe(response);
   else body.pipe(response);

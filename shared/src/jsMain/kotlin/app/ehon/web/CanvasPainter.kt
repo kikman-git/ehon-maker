@@ -17,10 +17,13 @@ import kotlin.math.min
 /** The browser painter only walks resolved nodes; all layout remains in SceneBuilder. */
 internal class CanvasPainter(private val imageProvider: (String) -> HTMLImageElement?) {
     private var inkCanvas: HTMLCanvasElement? = null
+    private val groupCanvases = mutableListOf<HTMLCanvasElement>()
 
     fun dispose() {
         inkCanvas?.let { it.width = 0; it.height = 0 }
         inkCanvas = null
+        groupCanvases.forEach { it.width = 0; it.height = 0 }
+        groupCanvases.clear()
     }
 
     fun draw(scene: Scene, ctx: CanvasRenderingContext2D) {
@@ -54,14 +57,15 @@ internal class CanvasPainter(private val imageProvider: (String) -> HTMLImageEle
         }
     }
 
-    private fun draw(node: SceneNode, ctx: CanvasRenderingContext2D) {
+    private fun draw(node: SceneNode, ctx: CanvasRenderingContext2D, depth: Int = 0) {
         with(ctx) {
             when (node) {
                 is SceneNode.Group -> saved {
                     translate(node.pivot.x.toDouble(), node.pivot.y.toDouble())
                     rotate(node.rotationDeg * PI / 180.0)
                     translate(-node.pivot.x.toDouble(), -node.pivot.y.toDouble())
-                    node.children.forEach { draw(it, this) }
+                    if (node.isolated) drawIsolated(node.children, this, depth)
+                    else node.children.forEach { draw(it, this, depth) }
                 }
                 is SceneNode.Ellipse -> {
                     beginPath()
@@ -176,6 +180,28 @@ internal class CanvasPainter(private val imageProvider: (String) -> HTMLImageEle
                     stroke()
                 }
             }
+        }
+    }
+
+    /** Paint one illustration and its edits on transparency, preserving the caller's transform. */
+    private fun drawIsolated(nodes: List<SceneNode>, ctx: CanvasRenderingContext2D, depth: Int) {
+        if (groupCanvases.size <= depth) groupCanvases.add(document.createElement("canvas") as HTMLCanvasElement)
+        val canvas = groupCanvases[depth]
+        canvas.width = ctx.canvas.width.coerceIn(1, 4096)
+        canvas.height = ctx.canvas.height.coerceIn(1, 4096)
+        val layer = canvas.getContext("2d") as CanvasRenderingContext2D
+        val transform = ctx.asDynamic().getTransform()
+        val sx = canvas.width.toDouble() / ctx.canvas.width
+        val sy = canvas.height.toDouble() / ctx.canvas.height
+        layer.setTransform(
+            (transform.a as Double) * sx, (transform.b as Double) * sy,
+            (transform.c as Double) * sx, (transform.d as Double) * sy,
+            (transform.e as Double) * sx, (transform.f as Double) * sy,
+        )
+        nodes.forEach { draw(it, layer, depth + 1) }
+        ctx.saved {
+            setTransform(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)
+            drawImage(canvas, 0.0, 0.0, ctx.canvas.width.toDouble(), ctx.canvas.height.toDouble())
         }
     }
 

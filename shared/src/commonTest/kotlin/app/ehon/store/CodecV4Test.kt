@@ -22,17 +22,17 @@ class CodecV4Test {
         val text = book.page(0).items[1] as TextItem
         assertEquals(FontFace.ROUNDED, text.font)
         val encoded = BookCodec.encode(book)
-        assertTrue(encoded.startsWith("{\"version\":4,"))
+        assertTrue(encoded.startsWith("{\"version\":${BookCodec.FORMAT_VERSION},"))
         assertEquals(book, BookCodec.decode(encoded))
     }
 
     @Test
-    fun `older books decode without art and re-encode as version 4`() {
+    fun `older books decode without art and re-encode as the current version`() {
         val migrated = BookCodec.decode(CodecV3Test.V2)
         assertTrue(migrated.art.isEmpty())
         val encoded = BookCodec.encode(migrated)
-        assertTrue("\"version\":4" in encoded)
-        val asThree = encoded.replace("\"version\":4", "\"version\":3").replace("\"art\":{},", "")
+        assertTrue("\"version\":${BookCodec.FORMAT_VERSION}" in encoded)
+        val asThree = encoded.replace("\"version\":${BookCodec.FORMAT_VERSION}", "\"version\":3").replace("\"art\":{},", "")
         assertEquals(migrated, BookCodec.decode(asThree))
     }
 

@@ -24,7 +24,7 @@ final class ScenePainterTests: XCTestCase {
                     y: y,
                     rotationDeg: 0,
                     partId: PartId(value: "かたち:しかく"),
-                    sizePct: 24, heightPct: nil
+                    sizePct: 24, heightPct: nil, drawing: nil
                 )
             ],
             strokes: []
@@ -75,7 +75,7 @@ final class ScenePainterTests: XCTestCase {
         let wide = Page.companion.of(
             background: cream, promptKey: nil,
             items: [PartItem(id: ItemId(value: "wide"), x: 50, y: 50, rotationDeg: 0,
-                             partId: PartId(value: "かたち:しかく"), sizePct: 80, heightPct: KotlinFloat(value: 10))],
+                             partId: PartId(value: "かたち:しかく"), sizePct: 80, heightPct: KotlinFloat(value: 10), drawing: nil)],
             strokes: []
         )
         let image = render(wide, shape: .landscape, side: 600)
@@ -110,7 +110,7 @@ final class ScenePainterTests: XCTestCase {
             promptKey: nil,
             items: [
                 PartItem(id: ItemId(value: "i1"), x: 50, y: 50, rotationDeg: 0,
-                         partId: PartId(value: "しぜん:たいよう"), sizePct: 80, heightPct: nil)
+                         partId: PartId(value: "しぜん:たいよう"), sizePct: 80, heightPct: nil, drawing: nil)
             ],
             strokes: []
         )
@@ -137,6 +137,36 @@ final class ScenePainterTests: XCTestCase {
         XCTAssertFalse(try isBackground(colour(of: large, atFractionX: 0.5, y: 0.5)))
         // Same normalised geometry, so the line sits at mid-height in both.
         XCTAssertTrue(try isBackground(colour(of: small, atFractionX: 0.5, y: 0.1)))
+    }
+
+    func testRotatedIllustrationCorrectionsRevealSceneryAndKeepMatchingInk() throws {
+        let document = ##"{"version":5,"book":{"id":{"value":"repair"},"title":"repair","shape":"SQUARE","contentLocale":"en","updatedAtEpochMs":0,"art":{"bear":{"svg":"<svg viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"#a56f45\"/></svg>"},"scenery":{"svg":"<svg viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"#7a8a5e\"/></svg>"}},"pages":[{"id":"p1","background":"#ffffff","items":[{"type":"part","id":{"value":"background"},"x":50,"y":50,"partId":{"value":"art:scenery"},"sizePct":100},{"type":"part","id":{"value":"bear"},"x":50,"y":50,"partId":{"value":"art:bear"},"sizePct":40,"heightPct":20,"rotationDeg":90,"drawing":{"strokes":[{"ink":{"type":"eraser"},"width":0.1,"points":[{"x":0.25,"y":0.5},{"x":0.75,"y":0.5}]},{"ink":{"type":"solid","color":"#a56f45"},"width":0.05,"points":[{"x":0.5,"y":0.5},{"x":0.5,"y":0.5}]}]}}]}]}}"##
+        let book = try XCTUnwrap(BookCodec.shared.decodeOrNull(text: document))
+        for side: Float in [200, 600] {
+            let target = RenderTarget.Companion.shared.screen(shape: .square, available: Size(w: side, h: side), selectedItem: nil)
+            let scene = builder.build(page: book.page(index: 0), target: target, promptText: nil, art: book.art)
+            let image = SceneRenderer.image(scene)
+            let hole = try colour(of: image, atFractionX: 0.5, y: 0.55)
+            XCTAssertEqual(hole.r, 122.0 / 255, accuracy: 0.02)
+            XCTAssertEqual(hole.g, 138.0 / 255, accuracy: 0.02)
+            XCTAssertEqual(hole.b, 94.0 / 255, accuracy: 0.02)
+            let restored = try colour(of: image, atFractionX: 0.5, y: 0.5)
+            XCTAssertEqual(restored.r, 165.0 / 255, accuracy: 0.02)
+            XCTAssertEqual(restored.g, 111.0 / 255, accuracy: 0.02)
+            XCTAssertEqual(restored.b, 69.0 / 255, accuracy: 0.02)
+        }
+    }
+
+    func testPageEraserOnlyRemovesPageInk() throws {
+        let document = ##"{"version":4,"book":{"id":{"value":"ink"},"title":"ink","shape":"SQUARE","contentLocale":"en","updatedAtEpochMs":0,"pages":[{"id":"p1","background":"#ffffff","items":[{"type":"part","id":{"value":"square"},"x":50,"y":50,"partId":{"value":"かたち:しかく"},"sizePct":60}],"strokes":[{"ink":{"type":"crayon","index":6},"brushStep":1,"points":[{"x":0.3,"y":0.5},{"x":0.7,"y":0.5}]},{"ink":{"type":"eraser"},"brushStep":3,"points":[{"x":0.5,"y":0.4},{"x":0.5,"y":0.6}]}]}]}}"##
+        let book = try XCTUnwrap(BookCodec.shared.decodeOrNull(text: document))
+        let center = try colour(of: render(book.page(index: 0)), atFractionX: 0.5, y: 0.5)
+        let sage = UIColor(cgColor: Organic.shared.crayon(index: 3).cgColor)
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        sage.getRed(&r, green: &g, blue: &b, alpha: &a)
+        XCTAssertEqual(center.r, r, accuracy: 0.02)
+        XCTAssertEqual(center.g, g, accuracy: 0.02)
+        XCTAssertEqual(center.b, b, accuracy: 0.02)
     }
 
     // MARK: - text

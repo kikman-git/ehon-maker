@@ -98,6 +98,19 @@ pointer cancellation restore the gesture baseline; a second finger switches to p
 leaving a stray stroke. The painter isolates the ink layer when erasing so paper and placed
 illustrations remain intact in the editor, reader, thumbnails and exports.
 
+To repair a template character, choose **選択**, click the character, then **イラストを編集**.
+The eraser now removes only that illustration; **描く** adds replacement lines to it. **好きな色**
+lets you match its original colour. Zoom in for small details, then choose **編集を完了** (or `V`)
+to move the character again. Its corrections move, rotate and scale with it; other copies and
+the scenery remain intact. Each stroke supports undo/redo, and Escape cancels a live stroke.
+The same corrections appear in saved books, thumbnails, the reader, PNGs and printing.
+
+Illustration editing is an explicit target in the shared controller (`beginIllustrationEdit` /
+`endIllustrationEdit`). `PartItem.drawing` stores brush/eraser strokes in the illustration's own
+coordinates. All painters composite the illustration and its corrections in an isolated group.
+Format 5 preserves these strokes and custom ink colours; formats 1–4 still open, while older
+clients reject format 5 instead of silently losing the corrections.
+
 Space or the middle button pans anywhere; the hand tool pans with the primary pointer.
 Wheel pans, Ctrl/Command + wheel and two fingers zoom, and `0` fits the current page.
 Ctrl/Command + Z / Shift + Z undo and redo; shortcuts ignore text fields. **ホーム** and the logo
@@ -112,6 +125,46 @@ onto a frame later. `src/cloud/workspace.ts` keeps the scratch list in localStor
 with a dirty flag that survives a reload) and mirrors it to `workspaces/{bookId}` for the
 account's other browsers, last writer wins; the rules require the book to exist and belong to the
 same account, so a brand-new book's scratch is pushed once the book itself has synced.
+
+## AI desk (local development)
+
+The **AI** tool (A) is the studio's chat with a coding agent, present only on the dev server. Drag
+on a page to draw a loop around the part to change; the loop shows as a red mark, a tap clears it,
+turning the page drops it. Type the request in the panel and press **頼む**: the studio composes a
+turn naming the book, the page, the marked area in page percent, the items whose boxes overlap it,
+the selected item and the request verbatim, renders the page at 1024px with the mark outlined in
+red, and hands it to the CLI. Without a mark the whole visible page is the subject.
+
+`tools/ai-desk.ts` is a Vite plugin that keeps one workspace per open book under `web/.ehon-ai/<bookId>/`:
+`book.ehon.json` (the document, kept in step with the editor), `FORMAT.md` (a copy of
+`docs/EHON_FORMAT.md`), `CLAUDE.md` and `AGENTS.md` (the house rules), `page.png` (the last turn's
+page) and `session.json`. Each turn runs the chosen CLI **non-interactively** in that folder with the
+prompt on stdin and its JSON event stream on stdout; the first turn's session id is kept and every
+later turn resumes it, per provider, so the agent remembers the conversation across turns and
+across dev-server restarts (**新しい会話** forgets it). When the CLI writes `book.ehon.json`, the
+studio validates the file with the codec and applies it through `WebEditor.applyDocument` as one
+undo step; a document it cannot open is reported in the chat and the book is left alone. Local
+edits made meanwhile are synced back to the file, so the next turn sees the book as the studio has it.
+
+| Provider | Command the plugin runs | Instructions file |
+|---|---|---|
+| `claude` | `claude -p --output-format stream-json --verbose --include-partial-messages --permission-mode acceptEdits [--resume <id>]` | `CLAUDE.md`; reads `page.png` itself |
+| `codex` | `codex exec --json --skip-git-repo-check -c sandbox_mode="workspace-write" [-i page.png] [resume <id>] -` | `AGENTS.md`; the image is attached to the turn |
+
+**モデル** and **効果** in the panel choose the model and the effort level for the current provider,
+remembered per book and per provider: Claude takes `--model` (an alias such as `sonnet` or a full
+id) and `--effort` (low to max); Codex takes `-m` and `-c model_reasoning_effort=…` (minimal to
+xhigh). Empty means the CLI's own default, and the model field suggests the aliases Claude knows and
+the model named in `~/.codex/config.toml`.
+
+The panel offers every CLI found on `PATH` and remembers the choice per book. `EHON_AI_PROVIDER`
+picks the default, `EHON_CLAUDE_COMMAND` / `EHON_CODEX_COMMAND` replace the binary (a relative
+script path is resolved against `web/`), and `EHON_CLAUDE_ARGS` / `EHON_CODEX_ARGS` add flags such
+as `--model`. Codex output is normalised onto the Claude stream shape (`tools/ai-providers.ts`), so
+the chat and the **ターミナル** drawer, an xterm under the desk that shows the command line, the
+session, the streamed reply, tool calls and the result of every run, read the same for both. A dev
+server started from inside Claude Code strips `CLAUDECODE` from the CLI's environment so the nested
+run is allowed. Production builds carry no AI layer: the tool is absent and none of this code ships.
 
 ## Story templates
 
@@ -231,7 +284,10 @@ lays every spread flat.
 
 ## Tests and budgets
 
-`pnpm test` (Playwright, no cloud) checks a mask/rotation fixture, paints a document with embedded
+`pnpm test` (Playwright, no cloud) runs the AI desk against `tests/fixtures/fake-claude.mjs` and
+`fake-codex.mjs`, stand-ins that edit the book and print each CLI's event stream, checking the mark,
+the composed prompt and page image, the applied document as one undo step, session resume, provider
+switching and a rejected document. It also checks a mask/rotation fixture, paints a document with embedded
 SVG art and opens a story template with its materials and editable captions, and, on the blank
 page, exercises drag undo, ruby, file validation, raster placement, stale intent
 rejection, single-page pan/zoom, drawing/erasing, cancellation, pen/touch input, reload persistence, and library placement on the active page and adding a page. Run

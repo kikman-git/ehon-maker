@@ -83,7 +83,15 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
             is PartDef.Raster -> listOf(SceneNode.Image(def.assetRef, box))
             is PartDef.Vector -> vectorNodes(def.art, box)
         }
-        return listOf(SceneNode.Group(inner, item.rotationDeg, box.center))
+        val strokes = item.drawing?.strokes.orEmpty().map { stroke ->
+            SceneNode.StrokePath(
+                points = stroke.points.map { Point(box.x + it.x * box.w, box.y + it.y * box.h) },
+                widthPx = stroke.width * box.w,
+                fill = inkColour(stroke.ink),
+                erase = stroke.ink == Ink.Eraser,
+            )
+        }
+        return listOf(SceneNode.Group(inner + strokes, item.rotationDeg, box.center, isolated = strokes.any { it.erase }))
     }
 
     /** The book's own art first; library, pack and catalog parts through the resolver. */
@@ -211,12 +219,15 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
     private fun strokeNode(stroke: Stroke, target: RenderTarget) = SceneNode.StrokePath(
         points = stroke.points.map { Point(it.x * target.page.w, it.y * target.page.h) },
         widthPx = Stroke.widthFraction(stroke.brushStep) * target.page.w,
-        fill = when (val ink = stroke.ink) {
-            is Ink.Crayon -> Organic.drawingCrayons[ink.index.coerceIn(Organic.drawingCrayons.indices)]
-            Ink.Eraser -> Organic.ink
-        },
+        fill = inkColour(stroke.ink),
         erase = stroke.ink == Ink.Eraser,
     )
+
+    private fun inkColour(ink: Ink): Argb = when (ink) {
+        is Ink.Crayon -> Organic.drawingCrayons[ink.index.coerceIn(Organic.drawingCrayons.indices)]
+        is Ink.Solid -> ink.color
+        Ink.Eraser -> Organic.ink
+    }
 
     // ── chrome ───────────────────────────────────────────────────────────────
 

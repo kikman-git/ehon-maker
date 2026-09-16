@@ -32,8 +32,9 @@ object BookCodec {
      * 3: stable page ids and optional non-square part heights.
      * 4: embedded vector art (`book.art`, decision #55); page colours may be read from hex strings
      *    and text faces from picker ids, so a document can be written by hand or by a model.
+     * 5: per-instance illustration drawing and solid-colour ink; older clients must not discard corrections.
      */
-    const val FORMAT_VERSION = 4
+    const val FORMAT_VERSION = 5
 
     private val json = Json {
         // A file written by a newer build must not hard-fail an older one on a field it

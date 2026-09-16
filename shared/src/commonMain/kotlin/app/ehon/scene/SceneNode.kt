@@ -29,6 +29,8 @@ sealed interface SceneNode {
         val children: List<SceneNode>,
         val rotationDeg: Float = 0f,
         val pivot: Point,
+        /** Composite children together before placing them, so an eraser only affects this group. */
+        val isolated: Boolean = false,
     ) : SceneNode
 
     data class Ellipse(

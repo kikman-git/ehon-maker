@@ -2,3 +2,33 @@
   Cache-Control: public, max-age=31536000, immutable
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Public artwork has stable filenames: revalidate after a short cache window.
+/illustrations/*
+  Cache-Control: public, max-age=86400
+/social/*
+  Cache-Control: public, max-age=86400
+
+# Allow crawlers to read these directives; robots.txt does not block the pages.
+/app
+  X-Robots-Tag: noindex, nofollow
+/app.html
+  X-Robots-Tag: noindex, nofollow
+/app/*
+  X-Robots-Tag: noindex, nofollow
+/read
+  X-Robots-Tag: noindex, nofollow
+/read.html
+  X-Robots-Tag: noindex, nofollow
+/read/*
+  X-Robots-Tag: noindex, nofollow
+/g/*
+  X-Robots-Tag: noindex, nofollow
+/login
+  X-Robots-Tag: noindex, nofollow
+/login.html
+  X-Robots-Tag: noindex, nofollow
+/login/*
+  X-Robots-Tag: noindex, nofollow
+/404.html
+  X-Robots-Tag: noindex, nofollow

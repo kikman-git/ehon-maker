@@ -152,7 +152,7 @@ private enum PartTileCache {
         let page = Page.companion.of(
             background: Organic.shared.surface,
             promptKey: nil,
-            items: [PartItem(id: ItemId(value: "tile"), x: 50, y: 50, rotationDeg: 0, partId: part.id, sizePct: 96, heightPct: nil)],
+            items: [PartItem(id: ItemId(value: "tile"), x: 50, y: 50, rotationDeg: 0, partId: part.id, sizePct: 96, heightPct: nil, drawing: nil)],
             strokes: []
         )
         let target = RenderTarget.Companion.shared.screen(

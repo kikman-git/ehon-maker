@@ -54,3 +54,6 @@ backend/.wrangler/
 backend/assets-worker/.wrangler/
 iosApp/Ehon/GoogleService-Info.plist
 iosApp/Config/Cloud.local.xcconfig
+
+# Per-book workspaces of the dev server's AI desk: the open book, the format contract and the Claude session.
+web/.ehon-ai/

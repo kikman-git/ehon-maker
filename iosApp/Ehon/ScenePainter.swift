@@ -31,8 +31,20 @@ struct ScenePainter {
         ctx.setFillColor(scene.background.cgColor)
         ctx.fill(bounds)
 
+        let strokes = scene.nodes.compactMap { $0 as? SceneNodeStrokePath }
+        let isolateInk = strokes.contains { $0.erase }
+        var inkDrawn = false
         for node in scene.nodes {
-            draw(node, into: ctx, pageBounds: bounds)
+            if isolateInk && node is SceneNodeStrokePath {
+                if !inkDrawn {
+                    ctx.beginTransparencyLayer(auxiliaryInfo: nil)
+                    for stroke in strokes { draw(stroke, into: ctx, pageBounds: bounds) }
+                    ctx.endTransparencyLayer()
+                    inkDrawn = true
+                }
+            } else {
+                draw(node, into: ctx, pageBounds: bounds)
+            }
         }
         ctx.restoreGState()
     }
@@ -45,9 +57,11 @@ struct ScenePainter {
             ctx.translateBy(x: CGFloat(group.pivot.x), y: CGFloat(group.pivot.y))
             ctx.rotate(by: CGFloat(group.rotationDeg) * .pi / 180)
             ctx.translateBy(x: -CGFloat(group.pivot.x), y: -CGFloat(group.pivot.y))
+            if group.isolated { ctx.beginTransparencyLayer(auxiliaryInfo: nil) }
             for child in group.children {
                 draw(child, into: ctx, pageBounds: pageBounds)
             }
+            if group.isolated { ctx.endTransparencyLayer() }
             ctx.restoreGState()
 
         case let ellipse as SceneNodeEllipse:
@@ -191,7 +205,7 @@ struct ScenePainter {
             guard let first = stroke.points.first else { break }
             let path = CGMutablePath()
             path.move(to: first.cgPoint)
-            if stroke.points.count == 1 {
+            if stroke.points.allSatisfy({ $0.x == first.x && $0.y == first.y }) {
                 // A tap is a dot; a hair of length makes the round cap render.
                 path.addLine(to: CGPoint(x: first.cgPoint.x + 0.01, y: first.cgPoint.y))
             } else {
@@ -201,8 +215,7 @@ struct ScenePainter {
             ctx.setLineCap(.round)
             ctx.setLineJoin(.round)
             ctx.setLineWidth(CGFloat(stroke.widthPx))
-            // The eraser lifts pixels rather than painting over them, so erasing above a
-            // part reveals the page instead of smearing the page colour on top.
+            // The enclosing transparency layer limits erasing to this drawing or illustration.
             ctx.setBlendMode(stroke.erase ? .clear : .normal)
             ctx.setStrokeColor(stroke.fill.cgColor)
             ctx.addPath(path)

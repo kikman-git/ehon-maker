@@ -37,6 +37,12 @@ class HitTest(private val measurer: TextMeasurer) {
         return null
     }
 
+    /** Every item's unrotated box in percent of the page, back to front, for region queries. */
+    fun bounds(page: Page, pageSize: Size): List<ItemBounds> = page.items.map { item ->
+        val (halfX, halfY) = halfExtentsPct(item, pageSize)
+        ItemBounds(item, halfX * 2f, halfY * 2f)
+    }
+
     private fun halfExtentsPct(item: Item, pageSize: Size): Pair<Float, Float> {
         val (wPx, hPx) = when (item) {
             is PartItem -> {
@@ -61,3 +67,6 @@ class HitTest(private val measurer: TextMeasurer) {
         const val TEXT_HEIGHT_FACTOR = 1.6f
     }
 }
+
+/** An item's centre is its own `x`/`y`; [w] and [h] are its unrotated extent in percent of the page. */
+data class ItemBounds(val item: Item, val w: Float, val h: Float)

@@ -7,11 +7,15 @@ import { session } from './cloud/session';
 import { useStore } from './cloud/store';
 import { UploadError, uploadIllustration, type UploadFailure } from './cloud/uploads';
 import { Workspace } from './cloud/workspace';
+import { AiPanel } from './ai/AiPanel';
+import { aiBridge } from './ai/bridge';
+import type { Mark } from './ai/prompt';
+import { AiTerminal } from './ai/Terminal';
 import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, fontChoices, loadFonts, parts } from './core';
 import { loadTemplates, templateBook, templateStore } from './templates';
 import { Desk, type DeskHandle } from './desk/Desk';
 import { dragging, startPartDrag } from './desk/drag';
-import { colorNames, drawingTools, type DrawingTool } from './desk/tools';
+import { aiTool, colorNames, drawingTools, type DrawingTool } from './desk/tools';
 import { currentRoute, paths } from './routes';
 import { syncStatus } from './ui/Account';
 import { Gate } from './ui/Gate';
@@ -35,6 +39,9 @@ function remembered(key: string, fallback: boolean) {
 function remember(key: string, value: boolean) {
   try { localStorage.setItem(key, value ? '1' : '0'); } catch { /* the choice still holds for this page */ }
 }
+
+// The AI tool appears only where an AI layer exists: the dev server's Claude CLI bridge for now.
+const tools = aiBridge ? [...drawingTools, aiTool] : drawingTools;
 
 const uploadMessages: Record<UploadFailure, string> = {
   type: 'PNG か WebP の ファイルを えらんでください。',
@@ -73,6 +80,10 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const [uploading, setUploading] = useState(false);
   const [uploadName, setUploadName] = useState('');
   const [workspace] = useState(() => (bookId ? new Workspace(bookId) : null));
+  const [mark, setMark] = useState<Mark | null>(null);
+  const [aiOpenFor, setAiOpenFor] = useState<typeof editor | null>(null);
+  const [terminalOpen, setTerminalOpen] = useState(() => remembered('studio.terminal', true));
+  const aiOpen = aiBridge !== null && aiOpenFor === editor;
   const importRef = useRef<HTMLInputElement>(null);
   const uploadRef = useRef<HTMLInputElement>(null);
   const deskRef = useRef<DeskHandle>(null);
@@ -109,9 +120,11 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     if (editor.isGestureActive) return;
     setTool(next);
     // Words and materials live in the panel, so these tools bring it back.
-    if (next === 'text' || next === 'parts') showPanel(true);
+    if (next === 'text' || next === 'parts' || next === 'ai') showPanel(true);
+    if (next === 'ai') setAiOpenFor(editor);
+    if (next === 'select' || next === 'parts' || next === 'text') editor.endIllustrationEdit();
     editor.setEraser(next === 'eraser');
-    if (next === 'brush' || next === 'eraser' || next === 'hand') editor.clearSelection();
+    if (!editor.isEditingIllustration && (next === 'brush' || next === 'eraser' || next === 'hand')) editor.clearSelection();
     setRevision(editor.revision);
   };
 
@@ -124,7 +137,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         return;
       }
       if (event.metaKey || event.ctrlKey) return;
-      const next = drawingTools.find((item) => item.key.toLowerCase() === event.key.toLowerCase());
+      const next = tools.find((item) => item.key.toLowerCase() === event.key.toLowerCase());
       if (next) { event.preventDefault(); chooseTool(next.id); }
     };
     window.addEventListener('keydown', keydown);
@@ -172,6 +185,42 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   }, [editor, library.parts]);
 
   useEffect(() => { workspace?.start(repoState.owner); }, [workspace, repoState.owner]);
+
+  // A mark belongs to the page it was drawn on; turning the page or losing that page drops it.
+  useEffect(() => {
+    if (mark && (mark.pageIndex !== editor.pageIndex || mark.pageIndex >= editor.pageCount || editor.pageId(mark.pageIndex) !== mark.pageId)) setMark(null);
+  }, [editor, revision]);
+
+  /** The CLI's document is validated like an opened file, then applied as one undo step. */
+  const applyAiDocument = (json: string, attempt = 0) => {
+    if (!aiBridge) return;
+    if (editor.isGestureActive) { if (attempt < 20) setTimeout(() => applyAiDocument(json, attempt + 1), 250); return; }
+    if (readOnlyRef.current) { aiBridge.note({ kind: 'rejected', text: '閲覧モードなので 反映しませんでした。' }); return; }
+    try {
+      const migrated = codec.migrate(json);
+      editor.applyDocument(migrated);
+      void bookGlyphs(migrated);
+      changed();
+      aiBridge.note({ kind: 'applied', text: 'えほんに 反映しました。「元に戻す」で 取り消せます。' });
+    } catch (raw) {
+      aiBridge.note({ kind: 'rejected', text: `反映できませんでした: ${raw instanceof Error ? raw.message : String(raw)}` });
+    }
+  };
+  const readOnlyRef = useRef(readOnly);
+  readOnlyRef.current = readOnly;
+  useEffect(() => {
+    const bridge = aiBridge;
+    if (!aiOpen || !bridge) return;
+    bridge.open(editor.bookId, editor.bookJson());
+    return bridge.onBook((id, json) => { if (id === editor.bookId) applyAiDocument(json); });
+  }, [aiOpen, editor]);
+  useEffect(() => {
+    const bridge = aiBridge;
+    if (!aiOpen || !bridge || editor.isGestureActive) return;
+    const timer = setTimeout(() => bridge.sync(editor.bookId, editor.bookJson()), 400);
+    return () => clearTimeout(timer);
+  }, [aiOpen, editor, revision]);
+  const showTerminal = (open: boolean) => { setTerminalOpen(open); remember('studio.terminal', open); };
   useEffect(() => () => workspace?.stop(), [workspace]);
 
   const openBook = async (file: File) => {
@@ -274,7 +323,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     });
   };
 
-  const activeTool = drawingTools.find((item) => item.id === tool)!;
+  const activeTool = tools.find((item) => item.id === tool)!;
   const isDrawing = tool === 'brush' || tool === 'eraser';
 
   return <div className="studio-app">
@@ -320,8 +369,8 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     {repoState.syncError === 'diskError' && <p role="alert" className="error">保存できませんでした。ファイルメニューからえほんを保存してください。</p>}
     <div className="studio-toolbar">
       <nav className="drawing-tools" aria-label="描画ツール">
-        {drawingTools.map((item) => <button key={item.id} className="tool-button" aria-pressed={tool === item.id} aria-label={item.label} title={item.label + ' (' + item.key + ')'} aria-keyshortcuts={item.key} onClick={() => chooseTool(item.id)}>
-          <Icon name={item.id} /><span>{item.label}</span><kbd>{item.key}</kbd>
+        {tools.map((item) => <button key={item.id} className="tool-button" data-tool={item.id} aria-pressed={tool === item.id} aria-label={item.label} title={item.label + ' (' + item.key + ')'} aria-keyshortcuts={item.key} onClick={() => chooseTool(item.id)}>
+          <Icon name={item.id === 'ai' ? 'sparkles' : item.id} /><span>{item.label}</span><kbd>{item.key}</kbd>
         </button>)}
       </nav>
       <div className="toolbar-right">
@@ -335,13 +384,18 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         </div>
       </div>
     </div>
-    <main className="workspace studio-workspace" data-readonly={readOnly || undefined} data-panel={panelOpen ? undefined : 'hidden'}>
-      <aside className="tool-panel" aria-label={activeTool.label + 'の設定'}>
-        <div className="panel-heading"><span className="eyebrow">{isDrawing ? 'DRAWING' : 'TOOLS'}</span><h2>{activeTool.label}</h2><p>{activeTool.hint}</p></div>
+    <main className="workspace studio-workspace" data-readonly={readOnly || undefined} data-panel={panelOpen ? undefined : 'hidden'} data-ai={tool === 'ai' || undefined}>
+      <aside className="tool-panel" data-tool={tool} aria-label={activeTool.label + 'の設定'}>
+        <div className="panel-heading"><span className="eyebrow">{isDrawing ? 'DRAWING' : 'TOOLS'}</span><h2>{activeTool.label}</h2><p>{editor.isEditingIllustration ? '選んだイラストの一部を消して、描き直せます。' : activeTool.hint}</p></div>
+        {editor.isEditingIllustration && <div className="illustration-editing" role="status">
+          <strong>{editor.partName(editor.selectedPartId!, 'ja')}を編集中</strong>
+          <p>このイラストだけを消したり、描き直したりできます。</p>
+          <button disabled={readOnly} onClick={() => chooseTool('select')}><Icon name="check" size={16} />編集を完了</button>
+        </div>}
         {isDrawing && <fieldset disabled={readOnly}>
           <div className="brush-preview" aria-hidden="true">
-            <svg viewBox="0 0 200 64"><path d="M18 43 C40 43 45 16 70 20 S100 53 124 35 S161 13 182 26" fill="none" stroke={tool === 'eraser' ? '#b1b6b4' : cssColor(drawingColors[editor.crayonIndex])} strokeWidth={editor.brushStep * 4} strokeLinecap="round" /></svg>
-            <span>{tool === 'eraser' ? '消しゴム' : colorNames[editor.crayonIndex]}</span>
+            <svg viewBox="0 0 200 64"><path d="M18 43 C40 43 45 16 70 20 S100 53 124 35 S161 13 182 26" fill="none" stroke={tool === 'eraser' ? '#b1b6b4' : cssColor(editor.brushColor)} strokeWidth={editor.brushStep * 4} strokeLinecap="round" /></svg>
+            <span>{tool === 'eraser' ? '消しゴム' : editor.hasCustomInk ? cssColor(editor.brushColor).toUpperCase() : colorNames[editor.crayonIndex]}</span>
           </div>
           <h3>太さ</h3>
           <div className="brush-sizes" role="group" aria-label="ブラシの太さ">
@@ -349,8 +403,9 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
               <span className="brush-dot" style={{ width: 5 + index * 6, height: 5 + index * 6 }} /><span>{name}</span>
             </button>)}
           </div>
-          {tool === 'brush' && <><h3>カラー <span className="color-value">{cssColor(drawingColors[editor.crayonIndex]).toUpperCase()}</span></h3>
-            <div className="drawing-colors" role="group" aria-label="描画カラー">{drawingColors.map((color, index) => <button key={color} aria-label={colorNames[index]} title={colorNames[index]} aria-pressed={editor.crayonIndex === index} style={{ backgroundColor: cssColor(color) }} onClick={() => edit(() => editor.setCrayon(index))}>{editor.crayonIndex === index && <Icon name="check" size={16} style={{ color: index < 7 ? '#fff' : '#243a31' }} />}</button>)}</div>
+          {tool === 'brush' && <><h3>カラー <span className="color-value">{cssColor(editor.brushColor).toUpperCase()}</span></h3>
+            <div className="drawing-colors" role="group" aria-label="描画カラー">{drawingColors.map((color, index) => <button key={color} aria-label={colorNames[index]} title={colorNames[index]} aria-pressed={!editor.hasCustomInk && editor.crayonIndex === index} style={{ backgroundColor: cssColor(color) }} onClick={() => edit(() => editor.setCrayon(index))}>{!editor.hasCustomInk && editor.crayonIndex === index && <Icon name="check" size={16} style={{ color: index < 7 ? '#fff' : '#243a31' }} />}</button>)}</div>
+            <label className="custom-ink">好きな色<input type="color" aria-label="好きな色" value={cssColor(editor.brushColor)} onChange={(event) => edit(() => editor.setBrushColor(0xff000000 | parseInt(event.target.value.slice(1), 16)))} /></label>
           </>}
         </fieldset>}
         {tool === 'parts' && <>
@@ -380,18 +435,24 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         {(tool === 'select' || ((tool === 'parts' || tool === 'text') && editor.selectedId)) && <>
           <h3>選択したもの</h3>
           {!editor.selectedId && <p className="hint">ページ上のイラストや文字を選択してください。</p>}
+          {editor.selectedPartId && <div className="illustration-action">
+            <button className="primary" disabled={readOnly} onClick={() => edit(() => { editor.beginIllustrationEdit(); showPanel(true); chooseTool('eraser'); })}><Icon name="brush" size={16} />イラストを編集</button>
+            <p className="hint">消しゴムで一部を消し、ブラシで描き直せます。</p>
+          </div>}
           <fieldset disabled={!editor.selectedId || readOnly} className="selection-tools">
             <button onClick={() => edit(() => editor.resizeSelected(false))}><Icon name="compress" size={15} />小さく</button><button onClick={() => edit(() => editor.resizeSelected(true))}><Icon name="expand" size={15} />大きく</button>
             <button onClick={() => edit(() => editor.rotateSelected())}><Icon name="rotate" size={15} />回転</button><button onClick={() => edit(() => editor.deleteSelected())}><Icon name="trash" size={15} />削除</button>
             <button onClick={() => edit(() => editor.sendBackward())}><Icon name="toBack" size={15} />背面へ</button><button onClick={() => edit(() => editor.bringForward())}><Icon name="toFront" size={15} />前面へ</button>
           </fieldset>
         </>}
+        {tool === 'ai' && aiBridge && <AiPanel bridge={aiBridge} editor={editor} revision={revision} mark={mark} onClearMark={() => setMark(null)} readOnly={readOnly} terminalOpen={terminalOpen} onToggleTerminal={() => showTerminal(!terminalOpen)} />}
         {tool === 'hand' && <div className="navigation-guide"><Icon name="hand" size={40} /><p>細かいところまで、自由に。</p><span>⌘ / Ctrl + スクロールで拡大・縮小。<br />「ページに合わせる」で全体に戻れます。</span></div>}
         <div className="paper-settings"><h3>用紙の色</h3><div className="swatches">{[-1, ...backgrounds].map((color, index) => <button key={color} disabled={readOnly} aria-label={'ページの いろ ' + (index + 1)} title={index === 0 ? '白' : '用紙の色 ' + (index + 1)} style={{ backgroundColor: cssColor(color) }} onClick={() => edit(() => editor.setPageBackground(color))} />)}</div></div>
         <div className="panel-shortcuts"><span><kbd>Space</kbd> 押しながらドラッグで移動</span><span><kbd>⌘ / Ctrl Z</kbd> 元に戻す</span></div>
       </aside>
       <section className="desk" aria-label="えほんを つくる">
-        <Desk ref={deskRef} editor={editor} revision={revision} readOnly={readOnly} onChange={changed} workspace={workspace} library={repo.library} assetsUrl={assetsUrl} tool={tool} showStrip={stripOpen} />
+        <Desk ref={deskRef} editor={editor} revision={revision} readOnly={readOnly} onChange={changed} workspace={workspace} library={repo.library} assetsUrl={assetsUrl} tool={tool} showStrip={stripOpen} mark={mark} onMark={setMark} />
+        {aiBridge && aiOpen && terminalOpen && <AiTerminal bridge={aiBridge} onClose={() => showTerminal(false)} />}
       </section>
     </main>
     {ghost && <div className="drag-ghost" style={{ left: ghost.x, top: ghost.y }} aria-hidden="true">{ghost.label}</div>}

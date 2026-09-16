@@ -19,6 +19,10 @@ import app.ehon.scene.SceneBuilder
 import app.ehon.store.BookCodec
 import app.ehon.template.IdSource
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.add
+import kotlinx.serialization.json.buildJsonArray
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 import kotlinx.collections.immutable.persistentListOf
 import org.w3c.dom.CanvasRenderingContext2D
 import org.w3c.dom.HTMLImageElement
@@ -48,11 +52,15 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     val selectedY: Double? get() = controller.selected?.y?.toDouble()
     val selectedText: String? get() = (controller.selected as? TextItem)?.text
     val selectedRuby: String? get() = (controller.selected as? TextItem)?.ruby
+    val selectedPartId: String? get() = (controller.selected as? PartItem)?.partId?.value
+    val isEditingIllustration: Boolean get() = controller.isEditingIllustration
     /** The face new text will use; selecting a text item adopts its face. */
     val fontId: String get() = controller.fontFace.id
     val canUndo: Boolean get() = controller.canUndo
     val canRedo: Boolean get() = controller.canRedo
     val crayonIndex: Int get() = controller.crayonIndex
+    val brushColor: Int get() = controller.brushColor.packed
+    val hasCustomInk: Boolean get() = controller.hasCustomInk
     val brushStep: Int get() = controller.brushStep
     val eraser: Boolean get() = controller.eraser
 
@@ -95,6 +103,9 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     fun commitText(): Boolean = controller.commitText()
 
     fun setCrayon(index: Int) = controller.setCrayon(index)
+    fun setBrushColor(argb: Int) = controller.setBrushColor(Argb(argb))
+    fun beginIllustrationEdit() = controller.beginIllustrationEdit()
+    fun endIllustrationEdit() = controller.endIllustrationEdit()
     fun setBrush(step: Int) = controller.setBrush(step)
     fun setEraser(enabled: Boolean) {
         if (controller.eraser != enabled) controller.toggleEraser()
@@ -104,7 +115,7 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     fun beginStroke(x: Double, y: Double) {
         check(!controller.isGestureActive) { "finish the current gesture first" }
         require(x.isFinite() && y.isFinite())
-        controller.clearSelection()
+        if (!controller.isEditingIllustration) controller.clearSelection()
         controller.beginStroke(x.toFloat().coerceIn(0f, 1f), y.toFloat().coerceIn(0f, 1f))
     }
     fun appendStroke(x: Double, y: Double) {
@@ -128,6 +139,30 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
         controller.applyBatch(batch.intents)
     }
 
+    /** A revision of the open book from an AI or a file, applied as one undo step. */
+    fun applyDocument(json: String) {
+        val book = BookCodec.decode(json)
+        controller.replaceDocument(book)
+        parts.art = book.art
+    }
+
+    /** The current page's items as `[{id, kind, ref, x, y, w, h, rotationDeg}]` in percent, measured at w×h. */
+    fun itemBoundsJson(w: Double, h: Double): String = buildJsonArray {
+        controller.itemBounds(size(w, h)).forEach { bounds ->
+            val item = bounds.item
+            add(buildJsonObject {
+                put("id", item.id.value)
+                put("kind", if (item is TextItem) "text" else "part")
+                put("ref", (item as? TextItem)?.text ?: (item as PartItem).partId.value)
+                put("x", item.x.toDouble())
+                put("y", item.y.toDouble())
+                put("w", bounds.w.toDouble())
+                put("h", bounds.h.toDouble())
+                put("rotationDeg", item.rotationDeg.toDouble())
+            })
+        }
+    }.toString()
+
     fun undo() = controller.undo()
     fun redo() = controller.redo()
 
@@ -144,13 +179,21 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
         val crayon = controller.crayonIndex
         val brush = controller.brushStep
         val erasing = controller.eraser
+        val customColor = controller.brushColor.takeIf { controller.hasCustomInk }
+        val selected = controller.selectedId
+        val editing = controller.isEditingIllustration
         controller = newController(book).apply {
             setCrayon(crayon)
+            customColor?.let { setBrushColor(it) }
             setBrush(brush)
             if (erasing) toggleEraser()
         }
         parts.art = book.art
         book.pages.indexOfFirst { it.id == pageId }.takeIf { it >= 0 }?.let { controller.goToPage(it) }
+        if (selected != null && controller.page.id == pageId && controller.page.items.any { it.id == selected }) {
+            controller.selectItem(selected)
+            if (editing && controller.selected is PartItem) controller.beginIllustrationEdit()
+        }
         resourceRevision += previous + 1
     }
 

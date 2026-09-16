@@ -200,6 +200,8 @@ data class PartItem(
     val sizePct: Float = 26f,
     /** Percent of page height; null preserves the legacy physical square. */
     val heightPct: Float? = null,
+    /** Local brush and eraser marks on this instance, applied over its original artwork. */
+    val drawing: PartDrawing? = null,
 ) : Item {
     init {
         require(sizePct.isFinite() && sizePct > 0f)
@@ -227,6 +229,27 @@ data class PartItem(
         const val STEP_UP = 1.18f
         const val STEP_DOWN = 0.84f
         const val ROTATE_STEP = 15f
+    }
+}
+
+@Serializable
+data class PartDrawing(
+    @Serializable(with = PersistentListSerializer::class)
+    val strokes: PersistentList<PartStroke> = persistentListOf(),
+)
+
+/** Points use the unrotated part's box; they may extend outside it to redraw a silhouette. */
+@Serializable
+data class PartStroke(
+    val ink: Ink,
+    /** Fraction of the part's width, so a correction scales along with the illustration. */
+    val width: Float,
+    @Serializable(with = PersistentListSerializer::class)
+    val points: PersistentList<StrokePoint>,
+) {
+    init {
+        require(width.isFinite() && width > 0f)
+        require(points.all { it.x.isFinite() && it.y.isFinite() })
     }
 }
 
@@ -294,6 +317,10 @@ data class StrokePoint(val x: Float, val y: Float)
 
 @Serializable
 sealed interface Ink {
+    @Serializable
+    @SerialName("solid")
+    data class Solid(@Serializable(with = ArgbSerializer::class) val color: Argb) : Ink
+
     @Serializable
     @SerialName("crayon")
     data class Crayon(val index: Int) : Ink

@@ -1,17 +1,36 @@
 import { useEffect, useState } from 'react';
-import { useStore } from '../cloud/store';
-import { loadTemplates, templateBook, templateStore, type TemplateSummary } from '../templates';
 import { paths } from '../routes';
 import { Icon, type IconName } from './Icon';
 import { SignInCard, type Intent } from './SignIn';
-import { Thumbnail } from './Thumbnail';
+import { landingCopy, type LandingLanguage } from './landingCopy';
+import './Landing.css';
 
-const features: { icon: IconName; title: string; body: string }[] = [
-  { icon: 'brush', title: '描く・はる・ことば', body: 'ブラシと 消しゴム、イラストの 素材、ふりがな つきの ことば。ページは 何枚でも。' },
-  { icon: 'spread', title: '見開きで よむ・印刷する', body: 'できた えほんは 見開きで 読んで、一枚ずつ 紙や PDF に。' },
-  { icon: 'phone', title: 'スマホの ぺたぺたと つながる', body: 'おなじ アカウントなら、パソコンで 描いた えほんが こどもの スマホにも とどきます。' },
-  { icon: 'send', title: 'かぞくに おくる', body: 'アプリも ログインも いらない、よむだけの リンク。ひとりずつ とめられます。' },
-];
+const stepIcons: IconName[] = ['brush', 'text', 'book'];
+const storyImages = ['little-adventure', 'moon-sailing', 'together'];
+const languageKey = 'ehon-landing-language';
+
+function initialLanguage(): LandingLanguage {
+  if (typeof window === 'undefined') return 'ja';
+  try {
+    const saved = localStorage.getItem(languageKey);
+    if (saved === 'en' || saved === 'ja') return saved;
+  } catch { /* The page works even when browser storage is unavailable. */ }
+  return 'ja';
+}
+
+function StoryBrand({ label }: { label: string }) {
+  return <a className="story-brand" href={paths.shelf} aria-label={label}>
+    <span className="story-brand-mark"><Icon name="book" size={28} /><span aria-hidden="true">✦</span></span>
+    <span className="story-brand-name" lang="ja">ぺたぺた<span lang="en">STUDIO</span></span>
+  </a>;
+}
+
+function Flourish({ className = '' }: { className?: string }) {
+  return <svg className={className} width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
+    <path d="M38 7c-2 20-9 28-29 31 20 2 28 10 29 31 3-21 10-29 29-31C48 35 41 27 38 7Z" stroke="currentColor" strokeWidth="1.4" />
+    <path d="m12 12 8 8m36 36 8 8M63 12l-8 8M20 56l-8 8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+  </svg>;
+}
 
 function Brand() {
   return <a className="brand" href={paths.shelf} aria-label="ぺたぺた ホーム"><span className="brand-mark"><Icon name="brush" /></span><h1>ぺたぺた</h1><span className="studio-wordmark">STUDIO</span></a>;
@@ -19,57 +38,123 @@ function Brand() {
 
 /** What a visitor without an account sees, on every entry (decision 58). */
 export function Landing({ intent }: { intent?: Intent }) {
-  const catalog = useStore(templateStore);
-  const [shown, setShown] = useState<(TemplateSummary & { json: string; pages: number[] })[]>([]);
-  useEffect(() => { void loadTemplates().catch(() => undefined); }, []);
-  useEffect(() => {
-    if (catalog.status !== 'ready') return;
-    let alive = true;
-    const ordered = [...catalog.items.filter((item) => item.id === 'doc-love-letter'), ...catalog.items.filter((item) => item.id !== 'doc-love-letter')].slice(0, 3);
-    void Promise.all(ordered.map(async (item) => {
-      // Storyboards pair pages from the third on (cover, title page, then picture-left words-right).
-      const spread = item.shape === 'PORTRAIT' && item.pageCount >= 4;
-      return { ...item, json: await templateBook(item.id, 'preview-' + item.id), pages: spread ? [2, 3] : [0] };
-    })).then((items) => { if (alive) setShown(items); }).catch(() => undefined);
-    return () => { alive = false; };
-  }, [catalog]);
+  const [language, setLanguage] = useState<LandingLanguage>(initialLanguage);
+  const [seed, setSeed] = useState(0);
+  const copy = landingCopy[language];
 
-  return <div className="landing">
-    <header className="topbar landing-bar">
-      <Brand />
-      <a className="button primary" href="#sign-in"><Icon name="login" size={16} />サインイン</a>
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousLanguage = document.documentElement.lang;
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    const previousDescription = description?.content;
+    document.title = copy.title;
+    document.documentElement.lang = language;
+    if (description) description.content = copy.metaDescription;
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLanguage;
+      if (description && previousDescription !== undefined) description.content = previousDescription;
+    };
+  }, [language, copy.title, copy.metaDescription]);
+
+  const changeLanguage = () => {
+    const next = language === 'en' ? 'ja' : 'en';
+    setLanguage(next);
+    try { localStorage.setItem(languageKey, next); } catch { /* Optional preference. */ }
+  };
+
+  return <div className="storybook" lang={language} id="beginning">
+    <a className="story-skip" href="#story-main">{copy.skip}</a>
+    <header className="story-header">
+      <StoryBrand label={copy.home} />
+      <nav className="story-navigation" aria-label={copy.navigation}>
+        <a href="#little-things">{copy.about}</a>
+        <a href="#possibilities">{copy.inspiration}</a>
+      </nav>
+      <div className="story-header-actions">
+        <button className="story-language" onClick={changeLanguage} aria-label={language === 'en' ? '日本語に切り替える' : 'Switch to English'} lang={language === 'en' ? 'ja' : 'en'}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" /></svg>
+          {language === 'en' ? '日本語' : 'English'}
+        </button>
+        <a className="story-sign-in" href="#sign-in">{copy.signIn}<Icon name="arrowRight" size={16} /></a>
+      </div>
     </header>
-    <main className="landing-main">
-      <section className="hero">
-        <div className="hero-copy">
-          <span className="eyebrow">おやこで つくる えほん · FOR GROWN-UPS</span>
-          <h2>描いて、ことばを そえて、<br />一冊の えほんに。</h2>
-          <p>ぺたぺた STUDIO は、こどもと いっしょに えほんを つくる ための、パソコン向けの アトリエです。白い ページに 描き、イラストを はり、ことばを そえる。できた えほんは スマホの ぺたぺたでも ひらけて、かぞくに リンクで おくれます。</p>
-          <ul className="features">
-            {features.map((feature) => <li key={feature.title}>
-              <span className="feature-icon"><Icon name={feature.icon} /></span>
-              <div><strong>{feature.title}</strong><span>{feature.body}</span></div>
-            </li>)}
-          </ul>
+
+    <main id="story-main">
+      <section className="story-hero" aria-labelledby="story-title">
+        <div className="story-hero-copy">
+          <p className="story-eyebrow"><span aria-hidden="true">✦</span>{copy.eyebrow}<span aria-hidden="true">✦</span></p>
+          <h1 id="story-title">{copy.headline}<br /><em>{copy.headlineEmphasis}</em></h1>
+          <p className="story-introduction">{copy.introduction}</p>
+          <div className="story-hero-actions">
+            <a className="story-cta" href="#sign-in">{copy.begin}<Icon name="arrowRight" size={18} /></a>
+            <a className="story-wander" href="#little-things">{copy.explore}<Icon name="chevronDown" size={15} /></a>
+          </div>
+          <p className="story-hero-note">{copy.heroNote}</p>
         </div>
-        <SignInCard intent={intent} />
+        <figure className="story-hero-art">
+          <img src="/illustrations/storybook-world.webp" srcSet="/illustrations/storybook-world-small.webp 800w, /illustrations/storybook-world.webp 1600w" sizes="(max-width: 600px) 132vw, (max-width: 1600px) 100vw, 1600px" width="1600" height="800" alt={copy.heroAlt} fetchPriority="high" />
+          <figcaption>{copy.artCaption}<span aria-hidden="true"> ↗</span></figcaption>
+        </figure>
       </section>
-      {shown.length > 0 && <section className="gallery" aria-label="つくれる えほんの れい">
-        <div className="shelf-section-title"><h2>こんな えほんが つくれます</h2><span>テンプレートから はじめても、白紙からでも</span></div>
-        <ul className="gallery-list">
-          {shown.map((item) => <li key={item.id}>
-            <div className="gallery-spread" data-portrait={item.pages.length > 1 || undefined}>
-              {item.pages.map((page) => <Thumbnail key={page} json={item.json} library={null} pageIndex={page} className="gallery-page" />)}
-            </div>
-            <strong>{item.title}</strong>
-            <span>{item.pageCount} ページ · {item.description}</span>
+
+      <div className="story-definition"><span lang="ja">絵本</span><span className="story-definition-word">ehon</span><span className="story-definition-line" /><p>{copy.definition}</p></div>
+
+      <section className="story-process story-container" id="little-things" aria-labelledby="process-title">
+        <div className="story-section-intro">
+          <div><p className="story-eyebrow">{copy.processEyebrow}</p><h2 id="process-title">{copy.processTitle}</h2></div>
+          <p>{copy.processIntro}</p>
+        </div>
+        <ol className="story-steps">
+          {copy.steps.map((step, index) => <li key={index}>
+            <div className="story-step-top"><span className={`story-step-icon story-step-icon-${index}`}><Icon name={stepIcons[index]} size={29} /></span><span className="story-step-number">0{index + 1}</span></div>
+            <h3>{step.title}</h3><p>{step.body}</p><span className="story-step-detail">{step.detail}</span>
           </li>)}
-        </ul>
-      </section>}
+        </ol>
+      </section>
+
+      <section className="story-gallery-section" id="possibilities" aria-labelledby="possibilities-title">
+        <div className="story-container">
+          <div className="story-centered-intro"><p className="story-eyebrow">{copy.galleryEyebrow}</p><h2 id="possibilities-title">{copy.galleryTitle}</h2><p>{copy.galleryIntro}</p></div>
+          <div className="story-gallery">
+            {copy.stories.map((story, index) => <figure className={`story-picture story-picture-${index}`} key={index}>
+              <div className="story-picture-art"><img src={`/illustrations/${storyImages[index]}.webp`} width="720" height="720" loading="lazy" decoding="async" alt={story.alt} /></div>
+              <figcaption><span>{story.category}</span><h3>{story.title}</h3><p>{story.body}</p></figcaption>
+            </figure>)}
+          </div>
+          <div className="story-seed">
+            <p className="story-eyebrow"><Icon name="sparkles" size={18} />{copy.seedLabel}</p>
+            <p className="story-seed-line" aria-live="polite" aria-atomic="true">“{copy.seeds[seed]}”</p>
+            <button className="story-seed-button" onClick={() => setSeed((current) => (current + 1) % copy.seeds.length)}><Icon name="rotate" size={15} />{copy.nextSeed}</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="story-welcome story-container" aria-labelledby="welcome-title">
+        <Flourish className="story-welcome-star" />
+        <p className="story-eyebrow">{copy.welcomeEyebrow}</p>
+        <h2 id="welcome-title">{copy.welcomeTitle}</h2>
+        <p className="story-welcome-body">{copy.welcomeBody}</p>
+        <p className="story-handwritten">{copy.welcomeNote}</p>
+      </section>
+
+      <section className="story-questions story-container" aria-labelledby="questions-title">
+        <div><p className="story-eyebrow">{copy.faqEyebrow}</p><h2 id="questions-title">{copy.faqTitle}</h2></div>
+        <div className="story-faq-list">{copy.faqs.map((faq, index) => <details key={index} name="story-questions"><summary>{faq.question}<Icon name="plus" size={18} /></summary><p>{faq.answer}</p></details>)}</div>
+      </section>
+
+      <section className="story-begin-section" aria-labelledby="begin-title">
+        <div className="story-begin story-container">
+          <div className="story-begin-copy"><p className="story-eyebrow">{copy.beginEyebrow}</p><h2 id="begin-title">{copy.beginTitle}</h2><p>{copy.beginBody}</p><span className="story-handwritten">{copy.beginNote}</span><Flourish className="story-begin-star" /></div>
+          <SignInCard intent={intent} language={language} />
+        </div>
+      </section>
     </main>
-    <footer className="landing-foot">
-      <span>ぺたぺた · おやこで つくる えほん</span>
-      <span>えほんは あなたの アカウントに ほぞんされ、リンクを うけとった ひとだけが よめます。</span>
+
+    <footer className="story-footer story-container">
+      <div><StoryBrand label={copy.home} /><p>{copy.footerTagline}</p></div>
+      <span className="story-footer-note">{copy.footerNote}<Icon name="heart" size={15} /></span>
+      <a href="#beginning">{copy.backToTop}<span aria-hidden="true">↑</span></a>
     </footer>
   </div>;
 }

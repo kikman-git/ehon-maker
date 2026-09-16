@@ -10,6 +10,8 @@ import app.ehon.model.ItemId
 import app.ehon.model.Page
 import app.ehon.model.PartId
 import app.ehon.model.PartItem
+import app.ehon.model.PartDrawing
+import app.ehon.model.PartStroke
 import app.ehon.model.Stroke
 import app.ehon.model.StrokePoint
 import app.ehon.model.TextItem
@@ -17,6 +19,9 @@ import app.ehon.scene.TextMeasurer
 import app.ehon.template.IdSource
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.sin
 
 /** The editor's three tools. Model 1a: exactly three, always visible, never overlapping. */
 enum class EditorMode { STICK, DRAW, TEXT }
@@ -67,6 +72,11 @@ class EditorController(
     var selectedId: ItemId? = null
         private set
 
+    private var editingPartId: ItemId? = null
+    val isEditingIllustration: Boolean get() = editingPartId != null
+    private var strokePage: Int? = null
+    private var strokePart: PartItem? = null
+
     var mode: EditorMode = EditorMode.STICK
         private set
 
@@ -75,6 +85,9 @@ class EditorController(
 
     var crayonIndex: Int = 1
         private set
+    private var customInk: Argb? = null
+    val hasCustomInk: Boolean get() = customInk != null
+    val brushColor: Argb get() = customInk ?: app.ehon.design.Organic.drawingCrayons[crayonIndex]
 
     var brushStep: Int = 2
         private set
@@ -288,7 +301,11 @@ class EditorController(
         store.endGesture()
     }
 
-    fun cancelDrag() = change { store.cancelGesture() }
+    fun cancelDrag() = change {
+        store.cancelGesture()
+        strokePage = null
+        strokePart = null
+    }
 
     // ── selected-item actions ────────────────────────────────────────────────
 
@@ -360,8 +377,25 @@ class EditorController(
 
     // ── drawing ──────────────────────────────────────────────────────────────
 
+    fun beginIllustrationEdit() = change {
+        check(!isGestureActive) { "finish the current gesture first" }
+        require(selected is PartItem) { "select an illustration first" }
+        editingPartId = selectedId
+    }
+
+    fun endIllustrationEdit() = change {
+        check(!isGestureActive) { "finish the current gesture first" }
+        editingPartId = null
+    }
+
     fun setCrayon(index: Int) = change {
         crayonIndex = index.coerceIn(app.ehon.design.Organic.drawingCrayons.indices)
+        customInk = null
+        eraser = false
+    }
+
+    fun setBrushColor(color: Argb) = change {
+        customInk = color.withAlpha(1f)
         eraser = false
     }
 
@@ -374,61 +408,91 @@ class EditorController(
 
     /** Points are normalised 0..1 relative to the page. */
     fun beginStroke(x: Float, y: Float) {
+        require(x.isFinite() && y.isFinite())
+        check(!isGestureActive) { "finish the current gesture first" }
+        strokePage = pageIndex
+        strokePart = (selected as? PartItem)?.takeIf { it.id == editingPartId }
         store.beginGesture()
         change {
-            store.update { current ->
-                current.mapPage(pageIndex) { p ->
-                    p.copy(
-                        strokes = p.strokes.add(
-                            Stroke(
-                                ink = if (eraser) Ink.Eraser else Ink.Crayon(crayonIndex),
-                                brushStep = brushStep,
-                                points = persistentListOf(StrokePoint(x, y)),
-                            ),
-                        ),
-                    )
-                }
-            }
+            val ink = if (eraser) Ink.Eraser else customInk?.let { Ink.Solid(it) } ?: Ink.Crayon(crayonIndex)
+            updateStroke(
+                pageEdit = { it.copy(strokes = it.strokes.add(Stroke(ink, brushStep, persistentListOf(StrokePoint(x, y))))) },
+                partEdit = { part ->
+                    val drawing = part.drawing ?: PartDrawing()
+                    part.copy(drawing = drawing.copy(strokes = drawing.strokes.add(PartStroke(
+                        ink, Stroke.widthFraction(brushStep) / (part.sizePct / 100f),
+                        persistentListOf(partPoint(x, y)),
+                    ))))
+                },
+            )
         }
     }
 
     fun appendStroke(x: Float, y: Float) = change {
+        require(x.isFinite() && y.isFinite())
+        updateStroke(
+            pageEdit = { p ->
+                val last = p.strokes.last()
+                p.copy(strokes = p.strokes.set(p.strokes.lastIndex, last.copy(points = last.points.add(StrokePoint(x, y)))))
+            },
+            partEdit = { part ->
+                val drawing = part.drawing!!
+                val last = drawing.strokes.last()
+                part.copy(drawing = drawing.copy(strokes = drawing.strokes.set(drawing.strokes.lastIndex,
+                    last.copy(points = last.points.add(partPoint(x, y))))))
+            },
+        )
+    }
+
+    /** Simplifies the finished stroke — see [StrokeSimplify] on why this matters. */
+    fun endStroke() = change {
+        if (strokePage == null) return@change
+        updateStroke(
+            pageEdit = { p ->
+                val last = p.strokes.last()
+                p.copy(strokes = p.strokes.set(p.strokes.lastIndex,
+                    last.copy(points = StrokeSimplify.simplify(last.points).toPersistentList())))
+            },
+            partEdit = { part ->
+                val drawing = part.drawing!!
+                val last = drawing.strokes.last()
+                part.copy(drawing = drawing.copy(strokes = drawing.strokes.set(drawing.strokes.lastIndex,
+                    last.copy(points = StrokeSimplify.simplify(last.points).toPersistentList()))))
+            },
+        )
+        store.update { it.copy(updatedAtEpochMs = clock()) }
+        store.endGesture()
+        strokePage = null
+        strokePart = null
+    }
+
+    private fun updateStroke(pageEdit: (Page) -> Page, partEdit: (PartItem) -> PartItem) {
+        val index = strokePage ?: return
+        val partId = strokePart?.id
         store.update { current ->
-            current.mapPage(pageIndex) { p ->
-                if (p.strokes.isEmpty()) p
+            current.mapPage(index) { p ->
+                if (partId == null) pageEdit(p)
                 else {
-                    val last = p.strokes.last()
-                    p.copy(
-                        strokes = p.strokes.set(
-                            p.strokes.lastIndex,
-                            last.copy(points = last.points.add(StrokePoint(x, y))),
-                        ),
-                    )
+                    val itemIndex = p.indexOf(partId)
+                    if (itemIndex < 0) p
+                    else p.copy(items = p.items.set(itemIndex, partEdit(p.items[itemIndex] as PartItem)))
                 }
             }
         }
     }
 
-    /** Simplifies the finished stroke — see [StrokeSimplify] on why this matters. */
-    fun endStroke() = change {
-        store.update { current ->
-            current.mapPage(pageIndex) { p ->
-                if (p.strokes.isEmpty()) p
-                else {
-                    val last = p.strokes.last()
-                    p.copy(
-                        strokes = p.strokes.set(
-                            p.strokes.lastIndex,
-                            last.copy(
-                                points = StrokeSimplify.simplify(last.points).toPersistentList(),
-                            ),
-                        ),
-                    )
-                }
-            }
-        }
-        store.update { it.copy(updatedAtEpochMs = clock()) }
-        store.endGesture()
+    /** Undo the instance rotation in physical page units before normalising to its box. */
+    private fun partPoint(x: Float, y: Float): StrokePoint {
+        val part = strokePart!!
+        val page = Size(1f, 1f / book.shape.aspect)
+        val box = part.dimensions(page)
+        val dx = x - part.x / 100f
+        val dy = (y - part.y / 100f) * page.h
+        val angle = -part.rotationDeg * PI.toFloat() / 180f
+        return StrokePoint(
+            0.5f + (dx * cos(angle) - dy * sin(angle)) / box.w,
+            0.5f + (dx * sin(angle) + dy * cos(angle)) / box.h,
+        )
     }
 
     fun clearStrokes() = change {
@@ -524,6 +588,22 @@ class EditorController(
         clampAfterHistory()
     }
 
+    /** A revised whole document as one undo step; the page is kept by id, the selection only if its item survived. */
+    fun replaceDocument(next: Book) {
+        check(!store.isGestureActive) { "finish the current gesture before replacing the document" }
+        require(next.id == book.id) { "a different book cannot replace the open one" }
+        require(next.pages.isNotEmpty()) { "an editor needs at least one page" }
+        change {
+            val pageId = page.id
+            store.edit { next.copy(updatedAtEpochMs = clock()) }
+            pageIndex = next.pages.indexOfFirst { it.id == pageId }.takeIf { it >= 0 } ?: pageIndex.coerceIn(0, next.pageCount - 1)
+            if (selected == null) selectedId = null
+        }
+    }
+
+    /** The current page's item boxes in percent, for region queries such as a marked area. */
+    fun itemBounds(pageSize: Size): List<ItemBounds> = hitTest.bounds(page, pageSize)
+
     fun consumeToast(): String? {
         val value = toast
         if (value != null) change { toast = null }
@@ -578,6 +658,7 @@ class EditorController(
     private fun copyCompositionState(other: EditorController) {
         pageIndex = other.pageIndex
         selectedId = other.selectedId
+        editingPartId = other.editingPartId
         mode = other.mode
         uiLevel = other.uiLevel
         textSizeStep = other.textSizeStep
@@ -620,6 +701,7 @@ class EditorController(
 
     private inline fun change(body: () -> Unit) {
         body()
+        if (selectedId != editingPartId || selected !is PartItem) editingPartId = null
         revision++
     }
 

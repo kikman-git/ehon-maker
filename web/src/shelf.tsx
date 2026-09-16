@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { cloud } from './cloud/config';
 import { repository, type BookRepository, type BookSummary } from './cloud/repository';
-import { session } from './cloud/session';
+import { session, startSession } from './cloud/session';
 import { useStore } from './cloud/store';
 import { blankBook, loadFonts } from './core';
 import { loadTemplates, templateBook, templateStore } from './templates';
@@ -133,9 +133,19 @@ function Boot() {
   return repo ? <Shelf repo={repo} /> : <p className="loading" role="status">じゅんび しています…</p>;
 }
 
-const root = createRoot(document.getElementById('root')!);
-root.render(<p className="loading" role="status">じゅんび しています…</p>);
+const rootElement = document.getElementById('root')!;
+const root = createRoot(rootElement);
+// Keep the prerendered public page visible until the authenticated app is ready to take over.
+if (!rootElement.hasChildNodes()) root.render(<p className="loading" role="status">じゅんび しています…</p>);
 const route = currentRoute();
-loadFonts().then(() => root.render(route.kind === 'login' ? <HandoffNotice /> : <Gate intent="shelf"><Boot /></Gate>)).catch(() => {
-  root.render(<p className="loading" role="alert">フォントを よみこめませんでした。ページを さいよみこみしてください。</p>);
+async function readySession(): Promise<void> {
+  if (route.kind === 'login') return;
+  startSession();
+  if (session.get().ready) return;
+  await new Promise<void>((resolve) => {
+    const unsubscribe = session.subscribe((state) => { if (state.ready) { unsubscribe(); resolve(); } });
+  });
+}
+Promise.all([loadFonts(), readySession()]).then(() => root.render(route.kind === 'login' ? <HandoffNotice /> : <Gate intent="shelf"><Boot /></Gate>)).catch(() => {
+  root.render(<p className="loading" role="alert">アトリエを ひらけませんでした。ページを さいよみこみしてください。</p>);
 });

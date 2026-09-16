@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { markBox, markPath, type Mark, type Point } from '../ai/prompt';
 import type { PartLibrary } from '../cloud/library';
 import { createStore, useStore } from '../cloud/store';
 import type { ScratchItem, Workspace, WorkspaceState } from '../cloud/workspace';
@@ -26,6 +27,9 @@ interface Props {
   tool: DrawingTool;
   /** The thumbnail strip is optional chrome; without it pages change by arrows, keys and the frame labels. */
   showStrip: boolean;
+  /** The loop the AI tool draws over a page; a tap on the page clears it. */
+  mark: Mark | null;
+  onMark: (mark: Mark | null) => void;
 }
 
 interface Engine {
@@ -42,6 +46,7 @@ type Gesture =
   | { kind: 'pan'; pointerId: number; last: { x: number; y: number } }
   | { kind: 'item'; pointerId: number; index: number; canvas: HTMLCanvasElement; offset: { x: number; y: number }; moved: boolean; pending: { x: number; y: number } | null }
   | { kind: 'scratch'; pointerId: number; item: ScratchItem; element: HTMLElement; grab: { x: number; y: number }; moved: boolean }
+  | { kind: 'mark'; pointerId: number; index: number; canvas: HTMLCanvasElement; points: Point[]; path: SVGPathElement | null }
   | { kind: 'pinch'; distance: number; centre: { x: number; y: number } };
 
 const noWorkspace = createStore<WorkspaceState>({ items: [] });
@@ -56,7 +61,7 @@ const HINT_INSET = 30;
  * with one CSS transform. Pointer samples stay outside React; a stroke repaints once per
  * animation frame and commits to the shared document as one undo step.
  */
-export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revision, readOnly, onChange, workspace, library, assetsUrl, tool, showStrip }, ref) {
+export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revision, readOnly, onChange, workspace, library, assetsUrl, tool, showStrip, mark, onMark }, ref) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const surfaceRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef<HTMLButtonElement>(null);
@@ -68,8 +73,8 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
   const spreadView = viewChoice?.bookId === editor.bookId
     ? viewChoice.spread
     : editor.pageAspect < 1 && editor.artJson() !== '[]';
-  const live = useRef({ readOnly, onChange, workspace, selectedScratch, tool });
-  live.current = { readOnly, onChange, workspace, selectedScratch, tool };
+  const live = useRef({ readOnly, onChange, workspace, selectedScratch, tool, onMark });
+  live.current = { readOnly, onChange, workspace, selectedScratch, tool, onMark };
   const tick = useStore(repaint).n;
   const epoch = useStore(fonts).epoch;
   const scratch = useStore(workspace?.state ?? noWorkspace).items;
@@ -225,6 +230,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       if (ended.kind === 'stroke') { editor.cancelStroke(); repaintPage(ended.index); notify(); }
       else if (ended.kind === 'item') { editor.cancelDrag(); repaintPage(ended.index); notify(); }
       else if (ended.kind === 'scratch') { ended.element.classList.remove('dragging'); ended.element.style.left = `${ended.item.x}px`; ended.element.style.top = `${ended.item.y}px`; }
+      else if (ended.kind === 'mark') ended.path?.setAttribute('d', '');
       else paintVisible(true);
     };
 
@@ -263,6 +269,15 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       const index = Number(frame.dataset.frame);
       if (index !== editor.pageIndex) editor.goToPage(index);
       const p = pagePoint(canvas, event.clientX, event.clientY);
+      if (live.current.tool === 'ai') {
+        if (live.current.readOnly) { startPan(event); return; }
+        event.preventDefault();
+        gesture = { kind: 'mark', pointerId: event.pointerId, index, canvas, points: [{ x: p.x, y: p.y }], path: frame.querySelector('[data-live-mark]') };
+        viewport.setPointerCapture(event.pointerId);
+        markAll();
+        notify();
+        return;
+      }
       if ((live.current.tool === 'brush' || live.current.tool === 'eraser') && !live.current.readOnly) {
         event.preventDefault();
         editor.setEraser(live.current.tool === 'eraser');
@@ -318,6 +333,11 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         const samples = event.getCoalescedEvents?.();
         for (const sample of samples?.length ? samples : [event]) appendSample(gesture, sample);
         if (!frameRequest) frameRequest = requestAnimationFrame(() => { frameRequest = 0; if (gesture?.kind === 'stroke') repaintPage(gesture.index); });
+      } else if (gesture.kind === 'mark') {
+        const last = event.getCoalescedEvents?.().at(-1) ?? event;
+        const p = pagePoint(gesture.canvas, last.clientX, last.clientY);
+        gesture.points.push({ x: Math.min(100, Math.max(0, p.x)), y: Math.min(100, Math.max(0, p.y)) });
+        gesture.path?.setAttribute('d', markPath(gesture.points));
       } else if (gesture.kind === 'item') {
         gesture.moved = true;
         const last = event.getCoalescedEvents?.().at(-1) ?? event;
@@ -349,6 +369,14 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         editor.endStroke();
         repaintPage(ended.index);
         notify();
+        return;
+      }
+      if (ended.kind === 'mark') {
+        ended.path?.setAttribute('d', '');
+        const box = markBox(ended.points);
+        // A tap or a tiny scribble clears the mark; anything larger becomes the new one.
+        if (box.x1 - box.x0 < 2 && box.y1 - box.y0 < 2) { live.current.onMark(null); return; }
+        live.current.onMark({ pageIndex: ended.index, pageId: editor.pageId(ended.index), points: ended.points, box });
         return;
       }
       if (ended.kind === 'item') {
@@ -408,7 +436,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         if (scratchId && workspace) { workspace.remove(scratchId); setSelectedScratch(null); }
         else if (editor.selectedId) { editor.deleteSelected(); markAll(); notify(); }
         else return;
-      } else if (event.key === 'Escape') { editor.clearSelection(); setSelectedScratch(null); markAll(); notify(); }
+      } else if (event.key === 'Escape') { editor.clearSelection(); setSelectedScratch(null); live.current.onMark(null); markAll(); notify(); }
       else return;
       event.preventDefault();
     }, { signal });
@@ -457,6 +485,10 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
               editor.goToPage(index); onChange();
             }}>{index + 1} ページ{current ? ' · 編集中' : ''}</button></div>}
             <canvas ref={(element) => { if (element) canvases.current.set(id, element); else canvases.current.delete(id); }} className="page-canvas" aria-label={current ? 'えほんの ページ' : `${index + 1} ページ`} />
+            <svg className="mark-overlay" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              {mark && mark.pageIndex === index && <path className="mark-path" data-testid="mark" d={markPath(mark.points)} />}
+              <path className="mark-path" data-live-mark="" d="" />
+            </svg>
           </div>;
         })}
         {scratch.map((item) => {
@@ -491,7 +523,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
           <button aria-label="おおきく みる" onClick={() => engine.current?.zoomBy(1.25)}><Icon name="plus" size={14} /></button>
         </div>
       </div>
-      <p className="desk-hint">{readOnly ? '閲覧モード' : tool === 'brush' ? 'ここに自由に描いてみましょう' : tool === 'eraser' ? '線をなぞって消す' : tool === 'hand' ? 'ドラッグして移動' : 'イラストや文字をクリックして選択'}<span>Space：移動 · ⌘ / Ctrl + スクロール：ズーム</span></p>
+      <p className="desk-hint">{readOnly ? '閲覧モード' : editor.isEditingIllustration ? 'イラストを編集中 · Vキーで完了' : tool === 'brush' ? 'ここに自由に描いてみましょう' : tool === 'eraser' ? '線をなぞって消す' : tool === 'hand' ? 'ドラッグして移動' : tool === 'ai' ? (mark ? '囲んだところを AI に頼めます · タップで解除' : '直したいところをドラッグで囲む') : 'イラストや文字をクリックして選択'}<span>Space：移動 · ⌘ / Ctrl + スクロール：ズーム</span></p>
     </div>
     {showStrip && <nav className="page-strip" aria-label="ページ">
       <div className="page-strip-title"><Icon name="book" size={17} /><span>ページ</span><small>{editor.pageCount}</small></div>

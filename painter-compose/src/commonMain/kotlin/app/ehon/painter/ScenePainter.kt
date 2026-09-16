@@ -8,6 +8,7 @@ import androidx.compose.ui.geometry.Size as ComposeSize
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.PathOperation
 import androidx.compose.ui.graphics.StrokeCap
@@ -53,7 +54,17 @@ class ScenePainter(
     fun DrawScope.paint(scene: Scene) {
         clipPage(scene) {
             drawRect(color = scene.background.toColor())
-            scene.nodes.forEach { node -> draw(node) }
+            val strokes = scene.nodes.filterIsInstance<SceneNode.StrokePath>()
+            val isolateInk = strokes.any { it.erase }
+            var inkDrawn = false
+            scene.nodes.forEach { node ->
+                if (isolateInk && node is SceneNode.StrokePath) {
+                    if (!inkDrawn) {
+                        isolated { strokes.forEach { draw(it) } }
+                        inkDrawn = true
+                    }
+                } else draw(node)
+            }
         }
     }
 
@@ -75,10 +86,14 @@ class ScenePainter(
 
     private fun DrawScope.draw(node: SceneNode) {
         when (node) {
-            is SceneNode.Group ->
-                rotate(node.rotationDeg, Offset(node.pivot.x, node.pivot.y)) {
-                    node.children.forEach { draw(it) }
+            is SceneNode.Group -> {
+                val children: DrawScope.() -> Unit = {
+                    rotate(node.rotationDeg, Offset(node.pivot.x, node.pivot.y)) {
+                        node.children.forEach { draw(it) }
+                    }
                 }
+                if (node.isolated) isolated(children) else children()
+            }
 
             is SceneNode.Ellipse -> {
                 drawOval(node.fill.toColor(), node.rect.offset(), node.rect.size())
@@ -194,7 +209,7 @@ class ScenePainter(
                 val path = Path().apply {
                     val first = node.points.first()
                     moveTo(first.x, first.y)
-                    if (node.points.size == 1) {
+                    if (node.points.all { it == first }) {
                         // A tap is a dot; give it a hair of length so it renders round.
                         lineTo(first.x + 0.01f, first.y)
                     } else {
@@ -205,8 +220,7 @@ class ScenePainter(
                     path = path,
                     color = node.fill.toColor(),
                     style = DrawStroke(node.widthPx, cap = StrokeCap.Round, join = StrokeJoin.Round),
-                    // Eraser lifts pixels rather than painting over them, so a stroke
-                    // erased above a part reveals the page, not a coloured smear.
+                    // The enclosing layer limits erasing to this drawing or illustration.
                     blendMode = if (node.erase) BlendMode.Clear else BlendMode.SrcOver,
                 )
             }
@@ -220,6 +234,12 @@ class ScenePainter(
                     style = DrawStroke(SELECTION_WIDTH),
                 )
         }
+    }
+
+    private fun DrawScope.isolated(body: DrawScope.() -> Unit) {
+        val canvas = drawContext.canvas
+        canvas.saveLayer(ComposeRect(0f, 0f, size.width, size.height), Paint())
+        try { body() } finally { canvas.restore() }
     }
 
     private fun DrawScope.drawString(

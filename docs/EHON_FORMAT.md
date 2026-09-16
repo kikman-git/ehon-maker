@@ -12,10 +12,12 @@ prints errors that stop the book opening and warnings about things that will loo
 ## Envelope
 
 ```json
-{ "version": 4, "book": { … } }
+{ "version": 5, "book": { … } }
 ```
 
-The app refuses a higher version and reads 1 to 4. Always write 4.
+The app refuses a higher version and reads 1 to 5. Saved books use 5, which adds per-instance
+illustration corrections and custom ink colours. Version 4 remains valid for templates without
+these additions. Older clients refuse version 5 so they cannot silently discard corrections.
 
 ## Book
 
@@ -58,6 +60,26 @@ Positions are percent of the page and name the item's **centre**.
   as percent of the page **height** when the picture's viewBox is not square. A full-bleed
   backdrop is `x: 50, y: 50, sizePct: 100, heightPct: 100`.
 - `rotationDeg` is optional.
+- `drawing` is optional (format 5). It holds corrections to this placed instance, applied after
+  its original picture, without changing the shared `art` entry or other instances.
+
+```json
+"drawing": { "strokes": [
+  { "ink": { "type": "eraser" }, "width": 0.04,
+    "points": [{ "x": 0.4, "y": 0.75 }, { "x": 0.4, "y": 0.95 }] },
+  { "ink": { "type": "solid", "color": "#a56f45" }, "width": 0.025,
+    "points": [{ "x": 0.4, "y": 0.75 }, { "x": 0.5, "y": 1.05 }] }
+] }
+```
+
+Points are fractions of the unrotated illustration's box, and may extend outside `0..1` when
+redrawing a silhouette. `width` is a positive fraction of that box's width. The instance's
+position, dimensions and rotation transform the original art and corrections together. Strokes
+paint in order on an isolated layer: erasing reveals the scenery behind this instance and later
+brush marks can redraw the erased area. `ink` also accepts `{"type":"crayon","index":6}` using
+the drawing palette. Page strokes remain a separate overlay; their eraser removes only page ink.
+The `solid` ink type works for page strokes too, whose points and `brushStep` keep their existing
+page-relative meaning. Preserve both kinds of strokes when editing a document.
 
 **Words** (`type: "text"`):
 
@@ -142,10 +164,14 @@ dot eyes read well at thumbnail size and at 300 dpi alike.
 ## Changing a book
 
 To edit an existing book, read its JSON, change only what was asked, and return the whole
-document at version 4 with every id kept. Retype a caption by changing `text`; move a piece by
+document at version 5 with every id kept. Retype a caption by changing `text`; move a piece by
 changing `x` and `y`; recolour or redraw a picture by changing its `svg`; add a page by
 appending to `pages` with a fresh `id`. Do not renumber existing ids, reorder pages unless asked,
 or drop `strokes` and `reply` fields you find, which are the family's own additions.
+
+This is also how the studio's AI desk works on the dev server: the open book is written to
+`book.ehon.json` in a workspace folder next to this document and a PNG of the page, a coding CLI
+edits the file, and the studio applies the result as one undo step (decision #64).
 
 The shared core also accepts editing **intents** for live sessions
 (`shared/src/commonMain/kotlin/app/ehon/engine/EditorIntent.kt`); a document is the right form
