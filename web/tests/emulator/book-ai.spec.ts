@@ -113,6 +113,22 @@ test('a reload comes back to the conversation and the record of what the turn di
   await expect(page.getByText('1 / 2 ページ')).toBeVisible();
 });
 
+test('a new conversation puts the old one away instead of losing it', async ({ page }) => {
+  await openAi(page);
+  const panel = page.getByTestId('ai-panel');
+  await panel.getByLabel('AIへの たのみごと').fill('ここに ねこを かいて');
+  await panel.getByRole('button', { name: '頼む' }).click();
+  await expect(panel.locator('.ai-message.assistant').last()).toHaveText('ページに ことばを たしました。');
+
+  await panel.getByRole('button', { name: '新しい会話' }).click();
+  await expect(panel.locator('.ai-message.user')).toHaveCount(0);
+  const past = panel.locator('.ai-past-item > button');
+  await expect(past).toHaveCount(1);
+  await expect(past).toContainText('ここに ねこを かいて');
+  await past.click();
+  await expect(panel.locator('.ai-past-messages .ai-message.assistant')).toHaveText('ページに ことばを たしました。');
+});
+
 test('a turn that changes nothing says so, and the book is left alone', async ({ page }) => {
   await openAi(page);
   const panel = page.getByTestId('ai-panel');

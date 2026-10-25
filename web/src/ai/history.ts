@@ -1,15 +1,16 @@
-import type { AiEntry } from './state';
+import type { AiEntry, ChatSession } from './state';
 
 /**
- * The AI conversation of one book, kept in this browser so a reload comes back to what was said and done.
+ * The AI conversations of one book, kept in this browser so a reload comes back to what was said and done.
  * The edits themselves live in the book; this is only the record beside them.
  */
 const MAX_ENTRIES = 60;
+const MAX_SESSIONS = 8;
 const key = (bookId: string) => `ehon-ai-chat:${bookId}`;
 
 /** A turn that was running when the page went away: its request and how far it had got. */
 export interface Unfinished { text: string; steps: string[] }
-export interface SavedChat { entries: AiEntry[]; unfinished: Unfinished | null }
+export interface SavedChat { past: ChatSession[]; entries: AiEntry[]; unfinished: Unfinished | null }
 
 const str = (value: unknown, max: number): string | null => (typeof value === 'string' && value.length <= max ? value : null);
 
@@ -29,19 +30,32 @@ function parseEntry(raw: unknown): AiEntry | null {
   }
 }
 
+const parseEntries = (raw: unknown): AiEntry[] =>
+  (Array.isArray(raw) ? raw.map(parseEntry).filter((entry): entry is AiEntry => entry !== null) : []).slice(-MAX_ENTRIES);
+
+function parseSessions(raw: unknown): ChatSession[] {
+  if (!Array.isArray(raw)) return [];
+  const sessions: ChatSession[] = [];
+  for (const item of raw.slice(-MAX_SESSIONS)) {
+    const session = item as Partial<ChatSession>;
+    const entries = parseEntries(session?.entries);
+    if (entries.length) sessions.push({ at: typeof session.at === 'number' ? session.at : 0, entries });
+  }
+  return sessions;
+}
+
 export function loadChat(bookId: string): SavedChat {
   try {
-    const saved = JSON.parse(localStorage.getItem(key(bookId)) ?? '{}') as { entries?: unknown; unfinished?: unknown };
-    const entries = Array.isArray(saved.entries) ? saved.entries.map(parseEntry).filter((entry): entry is AiEntry => entry !== null) : [];
+    const saved = JSON.parse(localStorage.getItem(key(bookId)) ?? '{}') as { past?: unknown; entries?: unknown; unfinished?: unknown };
     const raw = saved.unfinished as Partial<Unfinished> | undefined;
     const text = str(raw?.text, 10_000);
     const steps = Array.isArray(raw?.steps) ? raw.steps.map((item) => str(item, 400)).filter((item): item is string => item !== null) : [];
-    return { entries: entries.slice(-MAX_ENTRIES), unfinished: text === null ? null : { text, steps } };
-  } catch { return { entries: [], unfinished: null }; }
+    return { past: parseSessions(saved.past), entries: parseEntries(saved.entries), unfinished: text === null ? null : { text, steps } };
+  } catch { return { past: [], entries: [], unfinished: null }; }
 }
 
-export function saveChat(bookId: string, entries: AiEntry[], unfinished: Unfinished | null): void {
-  try { localStorage.setItem(key(bookId), JSON.stringify({ entries: entries.slice(-MAX_ENTRIES), unfinished })); }
+export function saveChat(bookId: string, past: ChatSession[], entries: AiEntry[], unfinished: Unfinished | null): void {
+  try { localStorage.setItem(key(bookId), JSON.stringify({ past: past.slice(-MAX_SESSIONS), entries: entries.slice(-MAX_ENTRIES), unfinished })); }
   catch { /* a full or blocked store only costs the record, not the work */ }
 }
 

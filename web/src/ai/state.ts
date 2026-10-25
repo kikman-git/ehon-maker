@@ -25,8 +25,13 @@ export type AiEntry =
   /** What a finished or interrupted turn did, kept in the transcript after its working card is gone. */
   | { kind: 'steps'; texts: string[] };
 
+/** A conversation that has been put away: 「新しい会話」 keeps the old one rather than throwing it out. */
+export interface ChatSession { at: number; entries: AiEntry[] }
+
 export interface AiState {
   bookId: string | null;
+  /** Earlier conversations about this book, oldest first. */
+  past: ChatSession[];
   running: boolean;
   /** Characters of the answer streamed so far, or null before the first chunk. */
   progress: number | null;
@@ -37,4 +42,4 @@ export interface AiState {
   entries: AiEntry[];
 }
 
-export const aiStore = () => createStore<AiState>({ bookId: null, running: false, progress: null, step: null, steps: [], entries: [] });
+export const aiStore = () => createStore<AiState>({ bookId: null, past: [], running: false, progress: null, step: null, steps: [], entries: [] });

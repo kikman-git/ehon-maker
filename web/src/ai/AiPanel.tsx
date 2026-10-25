@@ -6,7 +6,7 @@ import { CreditNudge, OutOfCredits } from '../ui/Credits';
 import { Icon, type IconName } from '../ui/Icon';
 import { MAX_IMAGE_CHARS, MAX_REQUEST_CHARS } from './art';
 import type { AiBridge } from './bridge';
-import { ChatMessage, chatMessages, formatElapsed, LONG_TURN_MS, stepText, WorkingCard } from './feedback';
+import { ChatMessage, chatMessages, formatElapsed, LONG_TURN_MS, PastSessions, stepText, WorkingCard } from './feedback';
 import { describeMark, itemsInMark, type ItemBox, type Mark } from './prompt';
 
 /** The page as the user sees it, with the mark outlined in red for the model to look at; a photo-heavy page is sent smaller so it stays under the harness's limit. */
@@ -43,12 +43,6 @@ function renderPageAt(editor: WebEditor, pageIndex: number, mark: Mark | null, w
   } catch { return null; }
 }
 
-/** What the harness does for a book, shown before the first request because the AI is the paid part of ぺたぺた. */
-const benefits: { icon: IconName; title: string; text: string }[] = [
-  { icon: 'brush', title: 'えを かく', text: 'ページに あう イラストを、本の タッチで' },
-  { icon: 'text', title: 'ことばを ととのえる', text: 'やさしく、みじかく、ふりがなつきで' },
-  { icon: 'book', title: 'おはなしを えほんに', text: 'ひとこと 書けば、ページを まるごと' },
-];
 const ideas: { icon: IconName; text: string }[] = [
   { icon: 'plus', text: 'つぎの ページを つくって' },
   { icon: 'text', text: 'この ページの ことばを やさしく' },
@@ -113,11 +107,9 @@ export function AiPanel({ bridge, editor, revision, mark, onClearMark, readOnly 
       {messages.length > 0 && <button className="ghost ai-reset" aria-label="新しい会話を始める" title="新しい会話" disabled={busy} onClick={() => bridge.reset(editor.bookId)}><Icon name="redo" size={14} />新しい会話</button>}
     </div>
     <div ref={listRef} className="ai-messages" aria-live="polite">
+      <PastSessions sessions={state.past} />
       {messages.length === 0 && <div className="ai-intro">
         <p className="ai-intro-lead">この えほんを 見ながら、AI が いっしょに つくります。</p>
-        <ul className="ai-benefits">
-          {benefits.map((benefit) => <li key={benefit.title}><Icon name={benefit.icon} size={16} /><div><strong>{benefit.title}</strong><span>{benefit.text}</span></div></li>)}
-        </ul>
         <p className="ai-intro-cue">まずは ひとつ、たのんでみる</p>
         <div className="ai-starters">
           {ideas.map((idea) => <button key={idea.text} className="ai-starter" disabled={busy || readOnly} onClick={() => send(idea.text)}><Icon name={idea.icon} size={15} /><span>{idea.text}</span><Icon name="chevron" size={14} /></button>)}
@@ -141,7 +133,7 @@ export function AiPanel({ bridge, editor, revision, mark, onClearMark, readOnly 
           value={draft}
           placeholder={readOnly ? '閲覧モードでは使えません' : state.running ? 'AI が はたらいています…' : 'なにを してほしい？'}
           disabled={readOnly || state.running}
-          rows={2}
+          rows={4}
           maxLength={MAX_REQUEST_CHARS}
           onChange={(event) => setDraft(event.target.value)}
           onKeyDown={(event) => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); send(); } }}

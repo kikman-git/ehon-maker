@@ -1,7 +1,7 @@
 import { AtelierError, bookTurn, credits, failureText, type BookInput } from '../cloud/credits';
 import type { AiBridge } from './bridge';
 import { referenceArt } from './art';
-import { clearChat, loadChat, saveChat, type Unfinished } from './history';
+import { loadChat, saveChat, type Unfinished } from './history';
 import { aiStore, appendStep, APPLIED_NOTE, type AiEntry } from './state';
 
 interface Document { version?: number; book?: { art?: Record<string, { svg?: string; name?: string }> } }
@@ -37,7 +37,7 @@ export function cloudBookBridge(): AiBridge {
   let turn = 0;
   // The request a turn was on when the page last went away, so returning can say it stopped partway.
   let unfinished: Unfinished | null = null;
-  const remember = () => { if (context) saveChat(context.bookId, state.get().entries, unfinished); };
+  const remember = () => { if (context) saveChat(context.bookId, state.get().past, state.get().entries, unfinished); };
   const push = (entry: AiEntry) => { state.update({ entries: [...state.get().entries, entry] }); remember(); };
   return {
     state,
@@ -52,7 +52,7 @@ export function cloudBookBridge(): AiBridge {
         }
         unfinished = null;
         context = { bookId, json };
-        state.update({ bookId, entries, running: false, progress: null, step: null, steps: [] });
+        state.update({ bookId, past: saved.past, entries, running: false, progress: null, step: null, steps: [] });
         if (saved.unfinished) remember();
       }
       context = { bookId, json };
@@ -101,7 +101,14 @@ export function cloudBookBridge(): AiBridge {
       }).finally(() => { if (id === turn) { unfinished = null; state.update({ running: false, progress: null, step: null, steps: [] }); remember(); } });
     },
     stop() { turn++; unfinished = null; state.update({ running: false, progress: null, step: null, steps: [] }); remember(); },
-    reset(bookId) { if (context?.bookId === bookId) { unfinished = null; state.update({ entries: [] }); clearChat(bookId); } },
+    // 「新しい会話」 puts the old one away rather than throwing it out, so what the AI did stays readable.
+    reset(bookId) {
+      if (context?.bookId !== bookId) return;
+      unfinished = null;
+      const { past, entries } = state.get();
+      state.update({ past: entries.length ? [...past, { at: Date.now(), entries }] : past, entries: [] });
+      remember();
+    },
     note: push,
     onBook(listener) { bookListeners.add(listener); return () => { bookListeners.delete(listener); }; },
   };

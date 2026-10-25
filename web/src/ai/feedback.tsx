@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Icon } from '../ui/Icon';
-import type { AiEntry, AiState, TurnStep } from './state';
+import type { AiEntry, AiState, ChatSession, TurnStep } from './state';
 
 /** Which desk is asking: the words differ, the mechanics do not. */
 export type Flavour = 'book' | 'new' | 'revise';
@@ -55,6 +56,36 @@ export function ChatMessage({ message }: { message: Message }) {
     {message.texts.map((text, index) => <li key={index}><Icon name="check" size={12} />{text}</li>)}
   </ol>;
   return <div className="ai-message status" data-error={message.error || undefined} data-done={message.done || undefined} role={message.error ? 'alert' : undefined}>{message.done && <Icon name="check" size={12} />}{message.text}</div>;
+}
+
+const when = (at: number) => {
+  const date = new Date(at);
+  return Number.isFinite(at) && at > 0 ? `${date.getMonth() + 1}月${date.getDate()}日 ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}` : '';
+};
+
+/** What this conversation was about: the first thing that was asked. */
+const sessionTitle = (session: ChatSession) => session.entries.find((entry) => entry.kind === 'user')?.text ?? 'AI と つくりました';
+
+/** Earlier conversations about this book, folded away until someone wants to read one. */
+export function PastSessions({ sessions }: { sessions: ChatSession[] }) {
+  const [open, setOpen] = useState<number | null>(null);
+  if (!sessions.length) return null;
+  return <div className="ai-past">
+    <p className="ai-past-title">まえの 会話</p>
+    {[...sessions].reverse().map((session, index) => {
+      const showing = open === index;
+      return <div key={index} className="ai-past-item">
+        <button aria-expanded={showing} onClick={() => setOpen(showing ? null : index)}>
+          <Icon name="chevron" size={13} style={{ transform: showing ? 'rotate(90deg)' : undefined }} />
+          <span>{sessionTitle(session)}</span>
+          <small>{when(session.at)}</small>
+        </button>
+        {showing && <div className="ai-past-messages">
+          {chatMessages(session.entries).map((message, position) => <ChatMessage key={position} message={message} />)}
+        </div>}
+      </div>;
+    })}
+  </div>;
 }
 
 interface WorkingProps { step: string; elapsed: string; count?: string; long: boolean; fraction: number | null; steps?: TurnStep[] }
