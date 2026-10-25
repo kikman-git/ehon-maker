@@ -116,6 +116,8 @@ sealed interface SceneNode {
         val rubySizePx: Float = 0f,
         val fill: Argb,
         val font: FontFace = FontFace.default,
+        /** Painters also stroke each glyph `size * TextItem.BOLD_STROKE` wide in [fill]. */
+        val bold: Boolean = false,
     ) : SceneNode
 
     /** A finger stroke, already scaled into page units. */

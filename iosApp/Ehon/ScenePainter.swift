@@ -196,10 +196,10 @@ struct ScenePainter {
         case let text as SceneNodeText:
             if let ruby = text.ruby, let origin = text.rubyOrigin {
                 Self.drawString(ruby, at: origin.cgPoint, size: CGFloat(text.rubySizePx),
-                                fill: text.fill, role: text.font, into: ctx)
+                                fill: text.fill, role: text.font, bold: text.bold, into: ctx)
             }
             Self.drawString(text.base, at: text.baseOrigin.cgPoint, size: CGFloat(text.baseSizePx),
-                            fill: text.fill, role: text.font, into: ctx)
+                            fill: text.fill, role: text.font, bold: text.bold, into: ctx)
 
         case let stroke as SceneNodeStrokePath:
             guard let first = stroke.points.first else { break }
@@ -240,17 +240,23 @@ struct ScenePainter {
     // MARK: - helpers
 
     private static func drawString(
-        _ text: String, at origin: CGPoint, size: CGFloat, fill: Int32, role: FontFace,
+        _ text: String, at origin: CGPoint, size: CGFloat, fill: Int32, role: FontFace, bold: Bool,
         into ctx: CGContext
     ) {
         // NSString.draw targets UIKit's *current* context, which Canvas.withCGContext never sets.
         UIGraphicsPushContext(ctx)
         defer { UIGraphicsPopContext() }
         // Top-left origin in a y-down context, the convention SceneBuilder emits; same call the measurer uses.
-        (text as NSString).draw(at: origin, withAttributes: [
+        var attributes: [NSAttributedString.Key: Any] = [
             .font: EhonFonts.font(for: role, size: size),
             .foregroundColor: UIColor(cgColor: fill.cgColor),
-        ])
+        ]
+        // A negative width fills and strokes; it is a percentage of the point size, like BOLD_STROKE.
+        if bold {
+            attributes[.strokeWidth] = -CGFloat(TextItem.companion.BOLD_STROKE) * 100
+            attributes[.strokeColor] = UIColor(cgColor: fill.cgColor)
+        }
+        (text as NSString).draw(at: origin, withAttributes: attributes)
     }
 
     private static func ringPath(_ rect: CGRect, innerRatio: CGFloat) -> CGPath {

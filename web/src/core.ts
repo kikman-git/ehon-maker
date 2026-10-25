@@ -69,4 +69,5 @@ export const parts: { id: string; name: string; category: string }[] = JSON.pars
 export const fontChoices: { id: string; name: string }[] = JSON.parse(codec.fontsJson('ja'));
 export const backgrounds: number[] = JSON.parse(codec.backgroundsJson());
 export const drawingColors: number[] = JSON.parse(codec.drawingColorsJson());
+export const textColors: number[] = JSON.parse(codec.textColorsJson());
 export const cssColor = (argb: number) => `#${(argb >>> 0).toString(16).padStart(8, '0').slice(2)}`;

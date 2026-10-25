@@ -153,7 +153,7 @@ painter (books are ~150 KB; page 1 at 256px is a few milliseconds). One less pip
 | Function | Type | Contract |
 |---|---|---|
 | `presignUpload` | callable | `{kind: master\|source\|voice, sha256, bytes, mime}` → `{key, url, headers}`. Rejects > 25 MB, unknown mime, over-quota storage |
-| `finalizeAsset` | callable | `{key}` → validates with sharp (format, ≤ 2048px, alpha), writes `1024.webp` + `256.webp`, upserts `assets/{sha256}`. **Idempotent by hash** |
+| `finalizeAsset` | callable | `{key}` → validates with sharp (format, ≤ 2048px; opaque images gain an alpha channel), writes `1024.webp` + `256.webp`, upserts `assets/{sha256}`. **Idempotent by hash** |
 | `signedRead` | callable | `{key}` → presigned GET (10 min) for `s/` and `v/` after owner check |
 | `ai.intents` | callable | `{bookId, pageIndex, pageJson, prompt, catalog[], locale}` → `{intents[], say}` (structured output). Entitlement + rate limit + `aiEnabled` |
 | `ai.text` | callable | `{kind: story\|furigana\|translate, ...}` → structured JSON |

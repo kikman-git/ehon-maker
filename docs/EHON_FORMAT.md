@@ -16,7 +16,8 @@ prints errors that stop the book opening and warnings about things that will loo
 ```
 
 The app refuses a higher version and reads 1 to 6. Saved books use 6, which lets a page stroke's
-`brushStep` be any number from 0.1 to 20 rather than only 1, 2 or 3. Version 5 added per-instance
+`brushStep` be any number from 0.1 to 20 rather than only 1, 2 or 3, gives text a free `sizePct`
+and an optional `bold`. Version 5 added per-instance
 illustration corrections and custom ink colours; version 4 remains valid for templates without
 these additions. Older clients refuse newer versions so they cannot silently discard corrections
 or misread a stroke's size.
@@ -92,8 +93,12 @@ page-relative meaning: a `brushStep` of 1 paints about 1% of the page width. Pre
 
 - One text item is **one line**; a line break renders as a space. Stack two items at
   `y: 84.5` and `y: 91.5` for a two-line caption in the paper band.
-- `sizePct` is one of `5`, `6.5`, `8.5`. At `5`, about sixteen full-width characters fit across the
-  page; the checker warns when a line is wider than the page.
+- `sizePct` is percent of the page width, from `2` to `30` (format 6; earlier formats use only `5`,
+  `6.5` or `8.5`, which the phone still offers). At `5`, about sixteen full-width characters fit
+  across the page; the checker warns when a line is wider than the page.
+- `bold` is optional (format 6) and defaults to `false`; bold outlines each glyph in the text colour.
+- `color` is optional (format 6): any `"#rrggbb"`, which wins over `colorIndex`. Keep `colorIndex` set to
+  the nearest preset, since the phone's picker shows only the five.
 - `font` is `yomogi` (handwriting), `maru` (rounded), `kiwi`, `pop`, `marker` or `futo`.
 - `colorIndex` 0 to 4 picks ink, terracotta, sage, red or violet. `ruby` is the optional furigana
   for the whole string.

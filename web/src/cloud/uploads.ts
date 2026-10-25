@@ -6,7 +6,8 @@ import { sha256Hex } from './hash';
 
 const REF = /^a\/[0-9a-f]{64}$/;
 
-export type UploadFailure = 'type' | 'size' | 'dimensions' | 'alpha' | 'network' | 'quota' | 'signedOut';
+export type UploadFailure = 'type' | 'size' | 'dimensions' | 'network' | 'quota' | 'signedOut';
+export type UploadStage = 'checking' | 'sending' | 'finishing';
 export class UploadError extends Error {
   constructor(readonly reason: UploadFailure) { super(reason); }
 }
@@ -18,21 +19,15 @@ async function inspect(file: File): Promise<{ w: number; h: number }> {
   try { bitmap = await createImageBitmap(file); } catch { throw new UploadError('type'); }
   try {
     if (bitmap.width > MAX_MASTER_PIXELS || bitmap.height > MAX_MASTER_PIXELS) throw new UploadError('dimensions');
-    // The server rejects opaque masters; checking here saves the upload and gives a clearer message.
-    const canvas = new OffscreenCanvas(bitmap.width, bitmap.height);
-    const context = canvas.getContext('2d')!;
-    context.drawImage(bitmap, 0, 0);
-    const pixels = context.getImageData(0, 0, bitmap.width, bitmap.height).data;
-    let transparent = false;
-    for (let index = 3; index < pixels.length; index += 4) if (pixels[index] < 255) { transparent = true; break; }
-    if (!transparent) throw new UploadError('alpha');
     return { w: bitmap.width, h: bitmap.height };
   } finally { bitmap.close(); }
 }
 
-/** PNG/WebP with alpha → presign → PUT → finalize → an `illustrations` document the listener turns into a part. */
-export async function uploadIllustration(file: File, title: string, uid: string): Promise<string> {
+/** PNG/WebP → presign → PUT → finalize → an `illustrations` document the listener turns into a part. */
+export async function uploadIllustration(file: File, title: string, uid: string, onStage: (stage: UploadStage) => void = () => {}): Promise<string> {
+  onStage('checking');
   const { w, h } = await inspect(file);
+  onStage('sending');
   const bytes = await file.arrayBuffer();
   const hash = await sha256Hex(bytes);
   const { db, functions } = firebase();
@@ -46,6 +41,7 @@ export async function uploadIllustration(file: File, title: string, uid: string)
   }
   const put = await fetch(ticket.url, { method: 'PUT', headers: ticket.headers, body: bytes }).catch(() => null);
   if (!put?.ok) throw new UploadError('network');
+  onStage('finishing');
   let finalized: { ref: string; w?: number; h?: number };
   try { finalized = (await finalize({ key: ticket.key })).data; } catch (error) {
     throw new UploadError((error as { code?: string }).code === 'functions/resource-exhausted' ? 'quota' : 'network');

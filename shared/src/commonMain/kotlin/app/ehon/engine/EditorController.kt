@@ -1,6 +1,7 @@
 package app.ehon.engine
 
 import app.ehon.design.Argb
+import app.ehon.model.Artwork
 import app.ehon.geom.Size
 import app.ehon.model.Book
 import app.ehon.model.FontFace
@@ -20,6 +21,7 @@ import app.ehon.template.IdSource
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -95,9 +97,20 @@ class EditorController(
     var eraser: Boolean = false
         private set
 
-    /** 1..3, indexing [TextItem.SIZES]. */
+    /** 1..3, indexing [TextItem.SIZES]; the nearest step when [textSizePct] is a free size. */
     var textSizeStep: Int = 2
         private set
+
+    var textSizePct: Float = TextItem.SIZES[1]
+        private set
+
+    var textBold: Boolean = false
+        private set
+
+    /** Overrides [textColorIndex] when set; picking a preset clears it, like the brush's custom ink. */
+    var customTextColor: Argb? = null
+        private set
+    val textColor: Argb get() = customTextColor ?: app.ehon.design.Organic.textColors[textColorIndex]
 
     /**
      * Indexes [app.ehon.design.Organic.textColors] — deliberately *not* [crayonIndex].
@@ -243,10 +256,7 @@ class EditorController(
             selectedId = hit?.id
             if (hit is TextItem) {
                 mode = EditorMode.TEXT
-                textColorIndex = hit.colorIndex.coerceIn(app.ehon.design.Organic.textColors.indices)
-                textSizeStep = (TextItem.SIZES.indexOfFirst { it == hit.sizePct } + 1)
-                    .coerceIn(1, TextItem.SIZES.size)
-                fontFace = hit.font
+                followText(hit)
             }
         }
         return hit
@@ -261,9 +271,7 @@ class EditorController(
             selectedId = id
             if (item is TextItem) {
                 mode = EditorMode.TEXT
-                fontFace = item.font
-                textColorIndex = item.colorIndex
-                textSizeStep = (TextItem.SIZES.indexOf(item.sizePct) + 1).coerceIn(1, TextItem.SIZES.size)
+                followText(item)
             }
         }
     }
@@ -294,6 +302,23 @@ class EditorController(
         }
     }
 
+    /** An absolute angle inside a [beginDrag] gesture, so a whole twist of the handle is one undo step. */
+    fun rotateSelectedTo(deg: Float) = change {
+        require(deg.isFinite())
+        val id = selectedId ?: return@change
+        val angle = deg.mod(360f)
+        store.update { current ->
+            current.mapPage(pageIndex) { p ->
+                val index = p.items.indexOfFirst { it.id == id }
+                if (index < 0) p
+                else p.copy(items = p.items.set(index, when (val item = p.items[index]) {
+                    is PartItem -> item.copy(rotationDeg = angle)
+                    is TextItem -> item.copy(rotationDeg = angle)
+                }))
+            }
+        }
+    }
+
     fun endDrag() = change {
         // Inside the gesture, not after it: a separate edit would become its own history
         // entry, and the child's first undo tap would change nothing they can see.
@@ -316,9 +341,10 @@ class EditorController(
                     if (bigger) PartItem.STEP_UP else PartItem.STEP_DOWN,
                 )
                 is TextItem -> {
-                    val next = (textSizeStep + if (bigger) 1 else -1).coerceIn(1, TextItem.SIZES.size)
-                    textSizeStep = next
-                    item.copy(sizePct = TextItem.SIZES[next - 1])
+                    val next = if (bigger) TextItem.SIZES.firstOrNull { it > item.sizePct } ?: (item.sizePct * 1.2f)
+                    else TextItem.SIZES.lastOrNull { it < item.sizePct } ?: (item.sizePct / 1.2f)
+                    applyTextSize(next)
+                    item.copy(sizePct = textSizePct)
                 }
             }
         }
@@ -343,6 +369,99 @@ class EditorController(
             }.copy(updatedAtEpochMs = clock())
         }
         selectedId = null
+    }
+
+    /** Moves the selection to another page as one undo step, keeping its id and, unless given, its position. */
+    fun moveSelectedToPage(target: Int, xPct: Float? = null, yPct: Float? = null) = change {
+        val item = selected ?: return@change
+        check(!isGestureActive) { "finish the current gesture first" }
+        require(target in book.pages.indices)
+        if (target == pageIndex && xPct == null && yPct == null) return@change
+        val placed = item.movedTo((xPct ?: item.x).coerceIn(0f, 100f), (yPct ?: item.y).coerceIn(0f, 100f))
+        store.edit { current ->
+            current.mapPage(pageIndex) { p -> p.copy(items = p.items.removeAll { it.id == item.id }) }
+                .mapPage(target) { p -> p.copy(items = p.items.add(placed)) }
+                .copy(updatedAtEpochMs = clock())
+        }
+        pageIndex = target
+        selectedId = item.id
+    }
+
+    // ── clipboard ────────────────────────────────────────────────────────────
+
+    /** The selection as clipboard text, carrying its embedded picture so another book can paste it. */
+    fun copySelected(): String? {
+        val item = selected ?: return null
+        val art = (item as? PartItem)?.partId?.takeIf { it.category == Artwork.CATEGORY }?.let { book.art[it.name] }
+        return ItemClip.encode(ItemClip(item = item, art = art))
+    }
+
+    /**
+     * Places a copied item on this page as one undo step, nudged off any item already at that spot.
+     * False when the text is not a clip, or its picture is missing or would overflow the book's art budget.
+     */
+    fun paste(clip: String): Boolean {
+        if (isGestureActive || editingPartId != null) return false
+        val decoded = ItemClip.decodeOrNull(clip) ?: return false
+        var item = decoded.item
+        var art = book.art
+        if (item is PartItem && item.partId.category == Artwork.CATEGORY) {
+            val picture = decoded.art ?: book.art[item.partId.name] ?: return false
+            val key = artKeyFor(item.partId.name, picture) ?: return false
+            if (art[key] == null) {
+                if (art.values.sumOf { it.svg.length } + picture.svg.length > Artwork.MAX_TOTAL_SVG_CHARS) return false
+                art = art + (key to picture)
+            }
+            item = item.copy(partId = Artwork.partId(key))
+        }
+        var x = item.x.coerceIn(0f, 100f)
+        var y = item.y.coerceIn(0f, 100f)
+        repeat(PASTE_NUDGES) {
+            if (page.items.none { abs(it.x - x) < 0.5f && abs(it.y - y) < 0.5f }) return@repeat
+            x = (x + PASTE_OFFSET).coerceAtMost(100f - EDGE_MARGIN)
+            y = (y + PASTE_OFFSET).coerceAtMost(100f - EDGE_MARGIN)
+        }
+        val id = nextItemId()
+        val pasted = when (item) {
+            is PartItem -> item.copy(id = id, x = x, y = y)
+            is TextItem -> item.copy(id = id, x = x, y = y)
+        }
+        change {
+            store.edit { current ->
+                current.mapPage(pageIndex) { p -> p.copy(items = p.items.add(pasted)) }
+                    .copy(art = art, updatedAtEpochMs = clock())
+            }
+            selectedId = id
+            if (pasted is TextItem) followText(pasted)
+        }
+        return true
+    }
+
+    /** Plain text from another app becomes one line of words in the current text style. */
+    fun pasteText(text: String): Boolean {
+        if (isGestureActive || editingPartId != null) return false
+        val line = text.replace(Regex("\\s+"), " ").trim().take(MAX_PASTED_TEXT)
+        if (line.isEmpty()) return false
+        val id = nextItemId()
+        change {
+            store.edit { current ->
+                current.mapPage(pageIndex) { p ->
+                    p.copy(items = p.items.add(TextItem(
+                        id = id, x = 50f, y = 78f, text = line, colorIndex = textColorIndex,
+                        sizePct = textSizePct, font = fontFace, bold = textBold, color = customTextColor,
+                    )))
+                }.copy(updatedAtEpochMs = clock())
+            }
+            selectedId = id
+        }
+        return true
+    }
+
+    /** The same name when it is free or already holds this picture, otherwise the first free `name-2`, `name-3`… */
+    private fun artKeyFor(name: String, picture: Artwork): String? {
+        val base = name.take(56)
+        return (sequenceOf(name) + (2..99).asSequence().map { "$base-$it" })
+            .firstOrNull { key -> Artwork.isKey(key) && book.art[key].let { it == null || it == picture } }
     }
 
     /** Moves the selection one step toward the front. Items draw in list order. */
@@ -515,11 +634,18 @@ class EditorController(
         else draftRuby = value
     }
 
-    fun setTextSize(step: Int) = change {
-        textSizeStep = step.coerceIn(1, TextItem.SIZES.size)
-        if (isTextSelected) {
-            mapSelected { (it as TextItem).copy(sizePct = TextItem.SIZES[textSizeStep - 1]) }
-        }
+    fun setTextSize(step: Int) = setTextSizePct(TextItem.SIZES[step.coerceIn(1, TextItem.SIZES.size) - 1])
+
+    /** Any size in percent of page width, applied to the selected text like [setTextColour]. */
+    fun setTextSizePct(pct: Float) = change {
+        require(pct.isFinite())
+        applyTextSize(pct)
+        if (isTextSelected) mapSelected { (it as TextItem).copy(sizePct = textSizePct) }
+    }
+
+    fun setBold(on: Boolean) = change {
+        textBold = on
+        if (isTextSelected) mapSelected { (it as TextItem).copy(bold = on) }
     }
 
     fun toggleFurigana() = change { furiganaEnabled = !furiganaEnabled }
@@ -533,7 +659,16 @@ class EditorController(
     /** Applies immediately to a selected text item, so a colour tap is never a no-op. */
     fun setTextColour(index: Int) = change {
         textColorIndex = index.coerceIn(app.ehon.design.Organic.textColors.indices)
-        if (isTextSelected) mapSelected { (it as TextItem).copy(colorIndex = textColorIndex) }
+        customTextColor = null
+        if (isTextSelected) mapSelected { (it as TextItem).copy(colorIndex = textColorIndex, color = null) }
+    }
+
+    /** Any colour for the text; the nearest preset is kept in `colorIndex` so the phone shows something close. */
+    fun setCustomTextColour(color: Argb) = change {
+        val opaque = color.withAlpha(1f)
+        customTextColor = opaque
+        textColorIndex = app.ehon.design.Organic.textColors.indices.minBy { distance(app.ehon.design.Organic.textColors[it], opaque) }
+        if (isTextSelected) mapSelected { (it as TextItem).copy(colorIndex = textColorIndex, color = opaque) }
     }
 
     /** Commits the draft, or finishes editing an already-selected text item. */
@@ -563,8 +698,10 @@ class EditorController(
                                 text = draftText,
                                 ruby = draftRuby.ifBlank { null }.takeIf { showFuriganaField },
                                 colorIndex = textColorIndex,
-                                sizePct = TextItem.SIZES[textSizeStep - 1],
+                                sizePct = textSizePct,
                                 font = fontFace,
+                                bold = textBold,
+                                color = customTextColor,
                             ),
                         ),
                     )
@@ -663,6 +800,9 @@ class EditorController(
         mode = other.mode
         uiLevel = other.uiLevel
         textSizeStep = other.textSizeStep
+        textSizePct = other.textSizePct
+        textBold = other.textBold
+        customTextColor = other.customTextColor
         textColorIndex = other.textColorIndex
         fontFace = other.fontFace
         draftText = other.draftText
@@ -677,6 +817,23 @@ class EditorController(
         pageIndex = pageIndex.coerceIn(0, book.pageCount - 1)
         if (selected == null) selectedId = null
     }
+
+    private fun followText(item: TextItem) {
+        fontFace = item.font
+        textColorIndex = item.colorIndex.coerceIn(app.ehon.design.Organic.textColors.indices)
+        customTextColor = item.color
+        textBold = item.bold
+        applyTextSize(item.sizePct)
+    }
+
+    /** Keeps the phone's three-step picker pointing at the nearest step to a free size. */
+    private fun applyTextSize(pct: Float) {
+        textSizePct = pct.coerceIn(TextItem.MIN_SIZE_PCT, TextItem.MAX_SIZE_PCT)
+        textSizeStep = TextItem.SIZES.indices.minBy { kotlin.math.abs(TextItem.SIZES[it] - textSizePct) } + 1
+    }
+
+    private fun distance(a: Argb, b: Argb): Int =
+        (a.r - b.r) * (a.r - b.r) + (a.g - b.g) * (a.g - b.g) + (a.b - b.b) * (a.b - b.b)
 
     private fun clearDraft() {
         draftText = ""
@@ -714,5 +871,9 @@ class EditorController(
         const val TOAST_PAGE_ADDED = "toast.pageAdded"
         const val TOAST_PAGE_MOVED = "toast.pageMoved"
         const val TOAST_ENTER_TEXT = "toast.enterText"
+
+        const val PASTE_OFFSET = 3f
+        const val PASTE_NUDGES = 20
+        const val MAX_PASTED_TEXT = 200
     }
 }

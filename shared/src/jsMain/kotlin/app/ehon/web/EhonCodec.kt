@@ -145,6 +145,10 @@ object EhonCodec {
         Organic.drawingCrayons.forEach { add(it.packed) }
     }.toString()
 
+    fun textColorsJson(): String = buildJsonArray {
+        Organic.textColors.forEach { add(it.packed) }
+    }.toString()
+
     /** `[{id, name}]` for the six selectable faces, in picker order. */
     fun fontsJson(locale: String): String = buildJsonArray {
         val strings = Strings.forLocale(locale)

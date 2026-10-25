@@ -4,6 +4,7 @@ import app.ehon.design.Argb
 import app.ehon.design.Organic
 import app.ehon.geom.Rect
 import app.ehon.model.FontFace
+import app.ehon.model.TextItem
 import app.ehon.scene.Scene
 import app.ehon.scene.SceneNode
 import app.ehon.vector.LineCap
@@ -155,9 +156,9 @@ internal class CanvasPainter(private val imageProvider: (String) -> HTMLImageEle
                 is SceneNode.Text -> {
                     node.ruby?.let { ruby ->
                         val origin = node.rubyOrigin!!
-                        drawText(ruby, origin.x, origin.y, node.rubySizePx, node.fill, node.font)
+                        drawText(ruby, origin.x, origin.y, node.rubySizePx, node.fill, node.font, node.bold)
                     }
-                    drawText(node.base, node.baseOrigin.x, node.baseOrigin.y, node.baseSizePx, node.fill, node.font)
+                    drawText(node.base, node.baseOrigin.x, node.baseOrigin.y, node.baseSizePx, node.fill, node.font, node.bold)
                 }
                 is SceneNode.StrokePath -> saved {
                     val first = node.points.firstOrNull() ?: return@saved
@@ -205,12 +206,18 @@ internal class CanvasPainter(private val imageProvider: (String) -> HTMLImageEle
         }
     }
 
-    private fun CanvasRenderingContext2D.drawText(text: String, x: Float, y: Float, size: Float, color: Argb, face: FontFace) {
+    private fun CanvasRenderingContext2D.drawText(text: String, x: Float, y: Float, size: Float, color: Argb, face: FontFace, bold: Boolean) {
         font = cssFont(size.toDouble(), face.id)
         textAlign = CanvasTextAlign.LEFT
         textBaseline = CanvasTextBaseline.TOP
         fillStyle = color.css()
         fillText(text, x.toDouble(), y.toDouble())
+        if (bold) {
+            strokeStyle = color.css()
+            lineWidth = (size * TextItem.BOLD_STROKE).toDouble()
+            lineJoin = CanvasLineJoin.ROUND
+            strokeText(text, x.toDouble(), y.toDouble())
+        }
     }
 
     private fun CanvasRenderingContext2D.fillShape(color: Argb, hairline: Boolean) {

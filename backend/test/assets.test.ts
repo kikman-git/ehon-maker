@@ -63,11 +63,15 @@ test('failed writes resume reservations without publishing an asset or double-ch
   assert.equal((await db.doc('storageUsage/alice').get()).data()!.bytes, charged);
 });
 
-test('invalid, opaque, oversized or tampered images never publish', async () => {
-  for (const args of [[32, 3], [2049, 4]] as const) {
-    const { key } = await master(...args);
-    await assert.rejects(service.finalize('alice', key), { code: 'invalid-argument' });
-  }
+test('an opaque image publishes as a master with an alpha channel', async () => {
+  const { key } = await master(32, 3);
+  const result = await service.finalize('alice', key);
+  assert.equal((await sharp(blobs.files.get(result.key)!).metadata()).hasAlpha, true);
+});
+
+test('invalid, oversized or tampered images never publish', async () => {
+  const { key: oversized } = await master(2049, 4);
+  await assert.rejects(service.finalize('alice', oversized), { code: 'invalid-argument' });
   const { key } = await master(); blobs.files.set(key, Buffer.from('tampered'));
   await assert.rejects(service.finalize('alice', key), { code: 'invalid-argument' });
   assert.equal((await db.collection('assets').get()).size, 0);

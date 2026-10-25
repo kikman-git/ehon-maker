@@ -69,4 +69,5 @@ class HitTest(private val measurer: TextMeasurer) {
 }
 
 /** An item's centre is its own `x`/`y`; [w] and [h] are its unrotated extent in percent of the page. */
+/** [w] and [h] are percent of the page's width and height. */
 data class ItemBounds(val item: Item, val w: Float, val h: Float)

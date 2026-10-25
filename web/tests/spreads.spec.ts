@@ -41,7 +41,7 @@ test('a facing caption and an illustration edit independently and survive reopen
   expect(after.x).toBeCloseTo(before.x, 1);
   expect(after.width).toBeCloseTo(before.width, 1);
   await page.getByLabel('ことば', { exact: true }).fill('いつもの わたし');
-  await page.getByRole('button', { name: 'ことばを はる', exact: true }).click();
+  await page.getByLabel('デスク').press('Escape');
   const reworded = await documentOf(page);
   expect(reworded.book.pages[2]).toEqual(original.book.pages[2]);
   expect(reworded.book.pages[3].items[0].text).toBe('いつもの わたし');

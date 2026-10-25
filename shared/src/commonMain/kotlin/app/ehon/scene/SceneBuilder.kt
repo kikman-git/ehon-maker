@@ -209,8 +209,9 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
             ruby = item.ruby?.takeIf { item.hasRuby },
             rubyOrigin = if (item.hasRuby) Point(cx - rubyW / 2f, blockTop) else null,
             rubySizePx = if (item.hasRuby) rubySize else 0f,
-            fill = Organic.textColors[item.colorIndex.coerceIn(Organic.textColors.indices)],
+            fill = item.color ?: Organic.textColors[item.colorIndex.coerceIn(Organic.textColors.indices)],
             font = item.font,
+            bold = item.bold,
         )
         return if (item.rotationDeg == 0f) listOf(node)
         else listOf(SceneNode.Group(listOf(node), item.rotationDeg, Point(cx, cy)))

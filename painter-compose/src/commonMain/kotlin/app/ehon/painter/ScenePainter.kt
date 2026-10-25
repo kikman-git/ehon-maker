@@ -29,6 +29,7 @@ import app.ehon.design.Argb
 import app.ehon.design.Organic
 import app.ehon.geom.Rect
 import app.ehon.model.FontFace
+import app.ehon.model.TextItem
 import app.ehon.scene.Scene
 import app.ehon.scene.SceneNode
 import app.ehon.vector.LineCap
@@ -199,9 +200,9 @@ class ScenePainter(
 
             is SceneNode.Text -> {
                 node.ruby?.let { ruby ->
-                    drawString(ruby, node.rubyOrigin!!, node.rubySizePx, node.fill, node.font)
+                    drawString(ruby, node.rubyOrigin!!, node.rubySizePx, node.fill, node.font, node.bold)
                 }
-                drawString(node.base, node.baseOrigin, node.baseSizePx, node.fill, node.font)
+                drawString(node.base, node.baseOrigin, node.baseSizePx, node.fill, node.font, node.bold)
             }
 
             is SceneNode.StrokePath -> {
@@ -248,17 +249,22 @@ class ScenePainter(
         sizePx: Float,
         fill: Argb,
         face: FontFace,
+        bold: Boolean,
     ) {
-        drawText(
-            textMeasurer = textMeasurer,
-            text = text,
-            topLeft = Offset(origin.x, origin.y),
-            style = TextStyle(
-                color = fill.toColor(),
-                fontSize = TextUnit(sizePx, TextUnitType.Sp),
-                fontFamily = if (face == FontFace.UI) uiFont else bodyFont,
-            ),
+        val style = TextStyle(
+            color = fill.toColor(),
+            fontSize = TextUnit(sizePx, TextUnitType.Sp),
+            fontFamily = if (face == FontFace.UI) uiFont else bodyFont,
         )
+        drawText(textMeasurer = textMeasurer, text = text, topLeft = Offset(origin.x, origin.y), style = style)
+        if (bold) {
+            drawText(
+                textMeasurer = textMeasurer, text = text, topLeft = Offset(origin.x, origin.y),
+                style = style.copy(drawStyle = DrawStroke(
+                    width = sizePx * TextItem.BOLD_STROKE, join = StrokeJoin.Round,
+                )),
+            )
+        }
     }
 
     private fun ringPath(rect: Rect, innerRatio: Float) = Path().apply {

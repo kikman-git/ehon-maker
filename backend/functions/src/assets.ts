@@ -108,9 +108,9 @@ export class AssetService {
     if (parsed.kind === 'master') {
       const options = { limitInputPixels: 2048 * 2048, failOn: 'warning' as const };
       const metadata = await sharp(input, options).metadata().catch(() => { throw new HttpsError('invalid-argument', 'Invalid image.'); });
-      if (metadata.format !== parsed.mime.split('/')[1] || !metadata.hasAlpha || !metadata.width || !metadata.height
+      if (metadata.format !== parsed.mime.split('/')[1] || !metadata.width || !metadata.height
         || metadata.width > 2048 || metadata.height > 2048 || (metadata.pages ?? 1) > 1) {
-        throw new HttpsError('invalid-argument', 'Use a single transparent PNG/WebP no larger than 2048 pixels.');
+        throw new HttpsError('invalid-argument', 'Use a single PNG/WebP no larger than 2048 pixels.');
       }
       // Normalizing removes metadata; the public key hashes the exact stored master bytes.
       const master = await sharp(input, options).rotate().ensureAlpha().png().toBuffer({ resolveWithObject: true });

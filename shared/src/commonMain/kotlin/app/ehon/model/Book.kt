@@ -264,11 +264,19 @@ data class TextItem(
     /** Group-ruby reading for the whole string. Null outside Japanese books. */
     val ruby: String? = null,
     val colorIndex: Int = 0,
-    /** Percent of page width; one of [SIZES]. */
+    /** Percent of page width; the phone's three steps are [SIZES]. */
     val sizePct: Float = SIZES[1],
     @Serializable(with = FontFaceSerializer::class)
     val font: FontFace = FontFace.default,
+    val bold: Boolean = false,
+    /** Any opaque colour; when set it wins over [colorIndex], which older clients still read. */
+    @Serializable(with = ArgbSerializer::class)
+    val color: Argb? = null,
 ) : Item {
+    init {
+        require(sizePct.isFinite() && sizePct > 0f)
+    }
+
     override fun movedTo(x: Float, y: Float) = copy(x = x, y = y)
 
     val hasRuby get() = !ruby.isNullOrBlank()
@@ -276,6 +284,13 @@ data class TextItem(
     companion object {
         /** ちいさい / ふつう / おおきい, from the 2a prototype's `[5, 6.5, 8.5]`. */
         val SIZES = listOf(5f, 6.5f, 8.5f)
+
+        /** The web's free size range; the phone still offers only [SIZES]. */
+        const val MIN_SIZE_PCT = 2f
+        const val MAX_SIZE_PCT = 30f
+
+        /** Bold is drawn by outlining each glyph in its own colour; most book faces ship one weight. */
+        const val BOLD_STROKE = 0.06f
 
         /** Text renders slightly larger than its nominal percentage, per the prototype. */
         const val OPTICAL_SCALE = 1.05f

@@ -7,6 +7,7 @@ import { fonts, type WebEditor } from '../core';
 import { repaint } from '../ui/repaint';
 import { Icon } from '../ui/Icon';
 import { Thumbnail } from '../ui/Thumbnail';
+import { SelectionOverlay } from './SelectionOverlay';
 import type { DrawingTool } from './tools';
 import { firstVisiblePage, focusOn, frameRects, toDesk, zoomAt, type Frame, type View } from './view';
 
@@ -44,9 +45,10 @@ interface Engine {
 type Gesture =
   | { kind: 'stroke'; pointerId: number; index: number; canvas: HTMLCanvasElement }
   | { kind: 'pan'; pointerId: number; last: { x: number; y: number } }
-  | { kind: 'item'; pointerId: number; index: number; canvas: HTMLCanvasElement; offset: { x: number; y: number }; moved: boolean; pending: { x: number; y: number } | null }
+  | { kind: 'item'; pointerId: number; index: number; canvas: HTMLCanvasElement; offset: { x: number; y: number }; moved: boolean; pending: { x: number; y: number } | null; target: HTMLElement | null }
   | { kind: 'scratch'; pointerId: number; item: ScratchItem; element: HTMLElement; grab: { x: number; y: number }; moved: boolean }
   | { kind: 'mark'; pointerId: number; index: number; canvas: HTMLCanvasElement; points: Point[]; path: SVGPathElement | null }
+  | { kind: 'rotate'; pointerId: number; index: number; centre: { x: number; y: number }; start: number; base: number }
   | { kind: 'pinch'; distance: number; centre: { x: number; y: number } };
 
 const noWorkspace = createStore<WorkspaceState>({ items: [] });
@@ -69,12 +71,13 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
   const canvases = useRef(new Map<string, HTMLCanvasElement>());
   const engine = useRef<Engine | null>(null);
   const [selectedScratch, setSelectedScratch] = useState<string | null>(null);
+  const [editingText, setEditingText] = useState(false);
   const [viewChoice, setViewChoice] = useState<{ bookId: string; spread: boolean } | null>(null);
   const spreadView = viewChoice?.bookId === editor.bookId
     ? viewChoice.spread
     : editor.pageAspect < 1 && editor.artJson() !== '[]';
-  const live = useRef({ readOnly, onChange, workspace, selectedScratch, tool, onMark });
-  live.current = { readOnly, onChange, workspace, selectedScratch, tool, onMark };
+  const live = useRef({ readOnly, onChange, workspace, selectedScratch, tool, onMark, setEditingText });
+  live.current = { readOnly, onChange, workspace, selectedScratch, tool, onMark, setEditingText };
   const tick = useStore(repaint).n;
   const epoch = useStore(fonts).epoch;
   const scratch = useStore(workspace?.state ?? noWorkspace).items;
@@ -111,6 +114,20 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
     };
     const frameOf = (target: EventTarget | Element | null) => (target as Element | null)?.closest?.('[data-frame]') as HTMLElement | null | undefined;
     const frameCanvas = (index: number) => canvases.current.get(editor.pageId(index));
+    // An item released over a thumbnail or the facing page moves there instead of staying on its own page.
+    const pageTarget = (clientX: number, clientY: number, from: number) => {
+      const under = document.elementFromPoint(clientX, clientY);
+      const thumbnail = under?.closest('[data-page-target]') as HTMLElement | null;
+      if (thumbnail) return Number(thumbnail.dataset.pageTarget) === from ? null : thumbnail;
+      const frame = frameOf(under);
+      return frame && Number(frame.dataset.frame) !== from ? frame : null;
+    };
+    const showTarget = (gesture: Extract<Gesture, { kind: 'item' }>, next: HTMLElement | null) => {
+      if (gesture.target === next) return;
+      gesture.target?.removeAttribute('data-drop');
+      next?.setAttribute('data-drop', '');
+      gesture.target = next;
+    };
     const notify = () => live.current.onChange();
 
     const screenRect = (frame: Frame) => ({ left: view.x + frame.x * view.scale, top: view.y + frame.y * view.scale, width: frame.w * view.scale, height: frame.h * view.scale });
@@ -202,6 +219,10 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       return true;
     };
 
+    const angleAt = (centre: { x: number; y: number }, clientX: number, clientY: number) => Math.atan2(clientY - centre.y, clientX - centre.x) * 180 / Math.PI;
+    // Selection chrome hides while the item moves outside React, then returns at its new place.
+    const setGestureFlag = (kind: string | null) => { if (kind) viewport.dataset.gesture = kind; else delete viewport.dataset.gesture; };
+
     const startPan = (event: PointerEvent) => {
       gesture = { kind: 'pan', pointerId: event.pointerId, last: { x: event.clientX, y: event.clientY } };
       viewport.setPointerCapture(event.pointerId);
@@ -224,11 +245,12 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       cancelAnimationFrame(frameRequest);
       frameRequest = 0;
       viewport.classList.remove('panning');
+      setGestureFlag(null);
       cursorRef.current?.setAttribute('hidden', '');
       if (!ended) return;
       if (ended.kind !== 'pinch' && viewport.hasPointerCapture(ended.pointerId)) viewport.releasePointerCapture(ended.pointerId);
       if (ended.kind === 'stroke') { editor.cancelStroke(); repaintPage(ended.index); notify(); }
-      else if (ended.kind === 'item') { editor.cancelDrag(); repaintPage(ended.index); notify(); }
+      else if (ended.kind === 'item' || ended.kind === 'rotate') { if (ended.kind === 'item') ended.target?.removeAttribute('data-drop'); editor.cancelDrag(); repaintPage(ended.index); notify(); }
       else if (ended.kind === 'scratch') { ended.element.classList.remove('dragging'); ended.element.style.left = `${ended.item.x}px`; ended.element.style.top = `${ended.item.y}px`; }
       else if (ended.kind === 'mark') ended.path?.setAttribute('d', '');
       else paintVisible(true);
@@ -247,7 +269,21 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         }
       }
       if (gesture || (event.button !== 0 && event.button !== 1)) return;
-      if ((event.target as Element).closest('button')) return;
+      const handle = (event.target as Element).closest('[data-rotate-handle]');
+      if (handle && !live.current.readOnly && editor.selectedId) {
+        const canvas = frameCanvas(editor.pageIndex);
+        const bounds = canvas && editor.selectedBounds(1, 1);
+        if (!canvas || !bounds) return;
+        event.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const centre = { x: rect.left + bounds[0] / 100 * rect.width, y: rect.top + bounds[1] / 100 * rect.height };
+        gesture = { kind: 'rotate', pointerId: event.pointerId, index: editor.pageIndex, centre, start: angleAt(centre, event.clientX, event.clientY), base: bounds[4] };
+        viewport.setPointerCapture(event.pointerId);
+        setGestureFlag('rotate');
+        editor.beginDrag();
+        return;
+      }
+      if ((event.target as Element).closest('button, input, select, [role=listbox], .text-toolbar')) return;
       viewport.focus({ preventScroll: true });
       if (event.button === 1 || spaceHeld || live.current.tool === 'hand') { event.preventDefault(); startPan(event); return; }
       const scratchElement = (event.target as Element).closest('[data-scratch]') as HTMLElement | null;
@@ -289,8 +325,9 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       }
       const hit = editor.selectAt(p.x, p.y, p.w, p.h);
       if (hit && !live.current.readOnly) {
-        gesture = { kind: 'item', pointerId: event.pointerId, index, canvas, offset: { x: p.x - (editor.selectedX ?? p.x), y: p.y - (editor.selectedY ?? p.y) }, moved: false, pending: null };
+        gesture = { kind: 'item', pointerId: event.pointerId, index, canvas, offset: { x: p.x - (editor.selectedX ?? p.x), y: p.y - (editor.selectedY ?? p.y) }, moved: false, pending: null, target: null };
         viewport.setPointerCapture(event.pointerId);
+        setGestureFlag('item');
         editor.beginDrag();
       } else startPan(event);
       markAll();
@@ -338,11 +375,16 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         const p = pagePoint(gesture.canvas, last.clientX, last.clientY);
         gesture.points.push({ x: Math.min(100, Math.max(0, p.x)), y: Math.min(100, Math.max(0, p.y)) });
         gesture.path?.setAttribute('d', markPath(gesture.points));
+      } else if (gesture.kind === 'rotate') {
+        const raw = gesture.base + angleAt(gesture.centre, event.clientX, event.clientY) - gesture.start;
+        editor.rotateTo(event.shiftKey ? Math.round(raw / 15) * 15 : raw);
+        if (!frameRequest) frameRequest = requestAnimationFrame(() => { frameRequest = 0; if (gesture?.kind === 'rotate') repaintPage(gesture.index); });
       } else if (gesture.kind === 'item') {
         gesture.moved = true;
         const last = event.getCoalescedEvents?.().at(-1) ?? event;
         const p = pagePoint(gesture.canvas, last.clientX, last.clientY);
         gesture.pending = { x: p.x - gesture.offset.x, y: p.y - gesture.offset.y };
+        showTarget(gesture, pageTarget(last.clientX, last.clientY, gesture.index));
         if (!frameRequest) frameRequest = requestAnimationFrame(flushItem);
       } else {
         gesture.moved = true;
@@ -361,7 +403,16 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       const ended = gesture;
       gesture = null;
       if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+      setGestureFlag(null);
       if (ended.kind === 'pan') { viewport.classList.remove('panning'); paintVisible(true); return; }
+      if (ended.kind === 'rotate') {
+        cancelAnimationFrame(frameRequest);
+        frameRequest = 0;
+        editor.endDrag();
+        repaintPage(ended.index);
+        notify();
+        return;
+      }
       if (ended.kind === 'stroke') {
         cancelAnimationFrame(frameRequest);
         frameRequest = 0;
@@ -382,6 +433,18 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
       if (ended.kind === 'item') {
         cancelAnimationFrame(frameRequest);
         frameRequest = 0;
+        const target = ended.moved ? pageTarget(event.clientX, event.clientY, ended.index) : null;
+        ended.target?.removeAttribute('data-drop');
+        if (target) {
+          editor.cancelDrag();
+          const frameIndex = target.dataset.frame;
+          const canvas = frameIndex != null ? frameCanvas(Number(frameIndex)) : null;
+          const p = canvas ? pagePoint(canvas, event.clientX, event.clientY) : null;
+          editor.moveSelectedToPage(Number(frameIndex ?? target.dataset.pageTarget), p ? p.x - ended.offset.x : null, p ? p.y - ended.offset.y : null);
+          markAll();
+          notify();
+          return;
+        }
         if (ended.moved) { const p = pagePoint(ended.canvas, event.clientX, event.clientY); editor.dragTo(p.x - ended.offset.x, p.y - ended.offset.y); }
         editor.endDrag();
         repaintPage(ended.index);
@@ -406,6 +469,13 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
     viewport.addEventListener('pointercancel', (event) => { if (gesture && (gesture.kind === 'pinch' || event.pointerId === gesture.pointerId)) cancel(); }, { signal });
     viewport.addEventListener('lostpointercapture', (event) => { if (gesture && gesture.kind !== 'pinch' && event.pointerId === gesture.pointerId) cancel(); }, { signal });
     viewport.addEventListener('pointerleave', () => { cursorRef.current?.setAttribute('hidden', ''); }, { signal });
+    viewport.addEventListener('dblclick', (event) => {
+      // Pointer capture retargets the click to the viewport, so test the page by position.
+      const rect = frameCanvas(editor.pageIndex)?.getBoundingClientRect();
+      if (live.current.readOnly || editor.selectedText == null || !rect) return;
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) return;
+      live.current.setEditingText(true);
+    }, { signal });
     window.addEventListener('blur', () => { spaceHeld = false; cancel(); }, { signal });
 
     viewport.addEventListener('wheel', (event) => {
@@ -466,6 +536,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
   useEffect(() => { if (readOnly) engine.current?.cancel(); }, [readOnly]);
   useEffect(() => { editor.clearMeasurements(); engine.current?.markAll(); }, [editor, epoch]);
   useEffect(() => { engine.current?.revealPage(firstPage); }, [firstPage, editor.pageCount, spreadView]);
+  useEffect(() => { setEditingText(false); }, [editor, editor.selectedId]);
 
   const partsById = new Map(libraryParts.map((part) => [part.partId, part]));
   const act = (action: () => void) => { if (readOnly || editor.isGestureActive) return; action(); onChange(); };
@@ -491,6 +562,8 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
             </svg>
           </div>;
         })}
+        {frames[pageIndex] && pageIndex >= firstPage && pageIndex < firstPage + (spreadView ? 2 : 1) && tool !== 'brush' && tool !== 'eraser' && tool !== 'ai' && tool !== 'hand'
+          && <SelectionOverlay editor={editor} frame={frames[pageIndex]} readOnly={readOnly} act={act} editingText={editingText} onEditText={setEditingText} />}
         {scratch.map((item) => {
           const part = partsById.get(item.partId);
           const aspect = part ? part.w / part.h : 1;
@@ -527,7 +600,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
     </div>
     {showStrip && <nav className="page-strip" aria-label="ページ">
       <div className="page-strip-title"><Icon name="book" size={17} /><span>ページ</span><small>{editor.pageCount}</small></div>
-      <div className="page-thumbnails" data-spread={spreadView || undefined}>{frames.map((_, index) => <button key={editor.pageId(index)} className="page-thumbnail" data-facing={spreadView && index >= firstPage && index < firstPage + 2 || undefined} aria-label={`${index + 1} ページを編集`} aria-current={index === pageIndex ? 'page' : undefined} onClick={() => {
+      <div className="page-thumbnails" data-spread={spreadView || undefined}>{frames.map((_, index) => <button key={editor.pageId(index)} className="page-thumbnail" data-page-target={index} data-facing={spreadView && index >= firstPage && index < firstPage + 2 || undefined} aria-label={`${index + 1} ページを編集`} aria-current={index === pageIndex ? 'page' : undefined} onClick={() => {
         if (editor.isGestureActive) return;
         editor.goToPage(index); onChange(); engine.current?.focusPage();
       }}><Thumbnail json={bookJson} library={library} pageIndex={index} /><span>{String(index + 1).padStart(2, '0')}</span></button>)}</div>

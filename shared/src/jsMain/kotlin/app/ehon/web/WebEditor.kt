@@ -57,6 +57,14 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     val isEditingIllustration: Boolean get() = controller.isEditingIllustration
     /** The face new text will use; selecting a text item adopts its face. */
     val fontId: String get() = controller.fontFace.id
+    val textSizePct: Float get() = controller.textSizePct
+    val minTextSizePct: Float get() = TextItem.MIN_SIZE_PCT
+    val maxTextSizePct: Float get() = TextItem.MAX_SIZE_PCT
+    val textBold: Boolean get() = controller.textBold
+    val textColorIndex: Int get() = controller.textColorIndex
+    val textColor: Int get() = controller.textColor.packed
+    val hasCustomTextColor: Boolean get() = controller.customTextColor != null
+    val clipboardType: String get() = app.ehon.engine.ItemClip.MIME
     val canUndo: Boolean get() = controller.canUndo
     val canRedo: Boolean get() = controller.canRedo
     val crayonIndex: Int get() = controller.crayonIndex
@@ -90,6 +98,7 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     fun clearSelection() = controller.clearSelection()
     fun beginDrag() = controller.beginDrag()
     fun dragTo(x: Double, y: Double) = controller.dragTo(x.toFloat(), y.toFloat())
+    fun rotateTo(deg: Double) = controller.rotateSelectedTo(deg.toFloat())
     fun endDrag() = controller.endDrag()
     fun cancelDrag() = controller.cancelDrag()
     fun resizeSelected(bigger: Boolean) = controller.resizeSelected(bigger)
@@ -103,6 +112,22 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     fun setTextSize(step: Int) = controller.setTextSize(step)
     fun setFont(id: String) = controller.setFont(FontFace.fromId(id))
     fun setTextColour(i: Int) = controller.setTextColour(i)
+    fun setTextSizePct(pct: Float) = controller.setTextSizePct(pct)
+    fun setBold(on: Boolean) = controller.setBold(on)
+    fun setCustomTextColour(argb: Int) = controller.setCustomTextColour(Argb(argb))
+
+    /** `[centreX, centreY, width, height]` of the unrotated selection in page percent, then its angle; null without one. */
+    fun selectedBounds(w: Double, h: Double): Array<Double>? {
+        val id = controller.selectedId ?: return null
+        val bounds = controller.itemBounds(size(w, h)).firstOrNull { it.item.id == id } ?: return null
+        return arrayOf(bounds.item.x.toDouble(), bounds.item.y.toDouble(), bounds.w.toDouble(), bounds.h.toDouble(), bounds.item.rotationDeg.toDouble())
+    }
+
+    fun copySelected(): String? = controller.copySelected()
+    fun paste(clip: String): Boolean = controller.paste(clip)
+    fun pasteText(text: String): Boolean = controller.pasteText(text)
+    fun moveSelectedToPage(target: Int, xPct: Double?, yPct: Double?) =
+        controller.moveSelectedToPage(checkedPage(target), xPct?.toFloat(), yPct?.toFloat())
     fun commitText(): Boolean = controller.commitText()
 
     fun setCrayon(index: Int) = controller.setCrayon(index)

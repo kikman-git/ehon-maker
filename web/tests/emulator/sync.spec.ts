@@ -159,6 +159,23 @@ test('an uploaded PNG becomes a library part that renders on every device', asyn
   await b.context.close();
 });
 
+test('a picture without a transparent background uploads too', async ({ browser }) => {
+  const a = await peer(browser, subject());
+  const id = await createBook(a.page);
+  await a.page.getByLabel('なまえ').fill('かみ');
+  await a.page.locator('input[type=file][accept="image/png,image/webp"]').setInputFiles({
+    name: 'opaque.png', mimeType: 'image/png', buffer: await readFile(new URL('./opaque.png', import.meta.url)),
+  });
+  const status = a.page.getByRole('status').filter({ hasText: 'かみ' });
+  await expect(status.locator('img')).toBeVisible();
+  await expect(status).toContainText('マイイラストに 追加しました', { timeout: 30_000 });
+  await expect(a.page.locator('.library-parts button[data-new]', { hasText: 'かみ' })).toBeVisible();
+  await status.getByRole('button', { name: 'ページに置く' }).click();
+  await expect(status).toHaveCount(0);
+  await expect.poll(() => bookJson(a.page, id).then((json) => (json ?? '').includes('lib:')), { timeout: 10_000 }).toBe(true);
+  await a.context.close();
+});
+
 test('illustrations parked on the desk follow the account and can be placed later', async ({ browser }) => {
   const account = subject();
   const a = await peer(browser, account);
@@ -169,6 +186,8 @@ test('illustrations parked on the desk follow the account and can be placed late
   });
   const part = a.page.locator('.library-parts button', { hasText: 'ねこ' });
   await expect(part).toBeVisible({ timeout: 30_000 });
+  await expect(a.page.getByRole('status').filter({ hasText: 'マイイラストに 追加しました' })).toBeVisible();
+  await expect(part).toBeInViewport();
   await expect.poll(() => pending(a.page)).toBe(false);
 
   const frame = (await a.page.getByLabel('えほんの ページ').boundingBox())!;
