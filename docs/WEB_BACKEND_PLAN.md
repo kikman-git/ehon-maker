@@ -42,7 +42,7 @@ whole-book generation, family spaces, Android (phase 2 of the mobile plan, uncha
 | 8 | Sign-in | **Apple + Google only** |
 | 9 | Creator publishing | **Free packs, manual approval by you**, fixed licence, required hand-drawn / AI-assisted label, `price: 0` and empty `entitlements` so paid packs touch billing only |
 | 10 | Blob access | Content-addressed. **Rendered derivatives public by hash; layered sources and voice private via signed URLs.** Server-side finalize validates and derives. Fonts move to R2. No GC in v1 |
-| 11 | Paying for AI | **AI is the subscription** (Stripe on the web, entitlement read by the phone, no purchase UI in the app). Free allowance = 0 by default, config knob for a trial. Drawing/composing/reading free |
+| 11 | Paying for AI | **AI is paid in credits** (decision #66): 1 credit = US$0.01 of model tokens, 100 welcome credits once, ぺたぺた プラス subscription with a monthly allowance plus one-off packs, Stripe on the web, entitlement read by the phone, no purchase UI in the app. Drawing/composing/reading free |
 | 12 | Guest link | **Read-only**, one revocable token per recipient, no expiry, no login. Voice replies stay recorded in person on the child's device; audio backed up to R2 |
 | 13 | Web core | **Kotlin/JS** of `shared` with the Canvas2D painter written in Kotlin (`jsMain`); TS/React shell never touches a scene node |
 | 14 | Web composer | **Composition only** (parts, text, pages, background) + a scratch area stored in a web-only side document. No crayon tool on web |
@@ -121,6 +121,8 @@ shares/{token}                     { bookId, ownerId, createdAt, revokedAt? }
 jobs/{jobId}                       { ownerId, kind, status: queued|running|done|failed, input, outputRef?, error?, createdAt, expiresAt }
 usage/{uid}_{yyyymm}               { images, textCalls }                                                 (Functions only)
 entitlements/{uid}                 { plan, status, currentPeriodEnd, stripeCustomerId }                   (Functions only)
+credits/{uid}                      { balance, reserved, granted, spent, plan, updatedAt }                   (Functions only, owner read)
+credits/{uid}/ledger/{id}          { kind: welcome|turn|subscription|pack|adjust, delta, hold?, status?, credits?, model?, usage?, ref?, createdAt }
 reports/{id}                       { reporterUid, target, reason, createdAt }
 sessions/{uid}                     usage counters from decision 22 (any signed-in or anonymous uid, own doc only)
 config/flags                       { aiEnabled, freeImages, watermarkFree, planImageLimit }
@@ -155,6 +157,10 @@ painter (books are ~150 KB; page 1 at 256px is a few milliseconds). One less pip
 | `presignUpload` | callable | `{kind: master\|source\|voice, sha256, bytes, mime}` → `{key, url, headers}`. Rejects > 25 MB, unknown mime, over-quota storage |
 | `finalizeAsset` | callable | `{key}` → validates with sharp (format, ≤ 2048px; opaque images gain an alpha channel), writes `1024.webp` + `256.webp`, upserts `assets/{sha256}`. **Idempotent by hash** |
 | `signedRead` | callable | `{key}` → presigned GET (10 min) for `s/` and `v/` after owner check |
+| `creditsBalance` | callable | `{}` → the account's credits, opened with the welcome grant on first call |
+| `atelierTurn` | callable, streaming | `{title, request, mode, piece?, selected?, sketched, image?, bookArt[]}` → `{candidates[], piece, say, credits, balance}`; progress chunks while the model writes. Holds credits, calls Claude with structured output, keeps only plain SVG, settles from `usage` |
+| `stripeCheckout`, `stripePortal` | callable | `{product: plus\|pack}` → Checkout URL; Portal URL for the remembered customer |
+| `stripeWebhook` | https | `checkout.session.completed` (pack grant), `invoice.paid` (monthly grant + plan), `customer.subscription.*` (plan); every grant keyed by the Stripe id |
 | `ai.intents` | callable | `{bookId, pageIndex, pageJson, prompt, catalog[], locale}` → `{intents[], say}` (structured output). Entitlement + rate limit + `aiEnabled` |
 | `ai.text` | callable | `{kind: story\|furigana\|translate, ...}` → structured JSON |
 | `ai.image` | callable | `{kind: generate\|edit\|finish, prompt, sourceRef?, maskRef?, style}` → `{jobId}`; job runs in the same invocation (timeout 300 s, 1 GiB), result finalized as an asset, `jobs/{id}` updated; client listens |

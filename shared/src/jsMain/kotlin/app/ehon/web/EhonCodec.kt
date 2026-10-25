@@ -49,6 +49,19 @@ object EhonCodec {
         } }
     }.toString()
 
+    /** `{ok, error, unsupported, aspect, chars}` for one picture, so the atelier shows only art the painter draws. */
+    fun checkArt(svg: String): String {
+        val art = try { SvgParser.parse(svg) } catch (e: Exception) {
+            return buildJsonObject { put("ok", false); put("error", e.message ?: "the picture does not parse") }.toString()
+        }
+        return buildJsonObject {
+            put("ok", true)
+            putJsonArray("unsupported") { art.unsupported.forEach { add(it) } }
+            put("aspect", art.aspect.toDouble())
+            put("chars", svg.length)
+        }.toString()
+    }
+
     /**
      * `{ok, errors, warnings}` for an author's loop: whether the document opens, which parts
      * point nowhere, which SVG features the painter skipped, which captions run off the page.

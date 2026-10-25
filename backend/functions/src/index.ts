@@ -7,7 +7,11 @@ import { HttpsError, onCall, onRequest, type CallableRequest } from 'firebase-fu
 import { onSchedule } from 'firebase-functions/v2/scheduler';
 import { onMessagePublished } from 'firebase-functions/v2/pubsub';
 import { resolve } from 'node:path';
+import Stripe from 'stripe';
+import { AtelierService, ClaudeModel, FakeModel, MODEL, type AtelierChunk, type Model } from './ai';
 import { AssetService, type BlobStore, type Upload } from './assets';
+import { BillingService } from './billing';
+import { CreditService } from './credits';
 import { LocalBlobStore } from './localBlobs';
 import { LoginService } from './login';
 import { R2Store } from './r2';
@@ -24,6 +28,14 @@ const quota = defineInt('STORAGE_QUOTA_BYTES', { default: 536870912 });
 const budgetTopic = defineString('BUDGET_ALERT_TOPIC', { default: 'ehon-budget-alerts' });
 const budgetLimit = defineInt('BUDGET_LIMIT_JPY', { default: 10000 });
 const webOrigins = defineString('WEB_ORIGINS', { default: 'http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:4173' });
+const anthropicKey = defineSecret('ANTHROPIC_API_KEY');
+const aiModel = defineString('AI_MODEL', { default: MODEL });
+const stripeKey = defineSecret('STRIPE_SECRET_KEY');
+const stripeWebhookSecret = defineSecret('STRIPE_WEBHOOK_SECRET');
+const pricePlus = defineString('STRIPE_PRICE_PLUS', { default: '' });
+const pricePack = defineString('STRIPE_PRICE_PACK', { default: '' });
+const plusCredits = defineInt('PLUS_CREDITS', { default: 1500 });
+const packCredits = defineInt('PACK_CREDITS', { default: 600 });
 const options = { enforceAppCheck: process.env.FUNCTIONS_EMULATOR !== 'true', secrets: [accessKey, secretKey] };
 
 function user(request: CallableRequest): string {
@@ -41,6 +53,20 @@ function blobs(): BlobStore {
   throw new HttpsError('failed-precondition', 'R2 is not configured.');
 }
 const assets = () => new AssetService(getFirestore(), blobs(), quota.value());
+const credits = () => new CreditService(getFirestore());
+/** Without a key the emulator draws with the stand-in, so the whole credit flow runs offline. */
+function model(): Model {
+  const apiKey = anthropicKey.value();
+  if (apiKey) return new ClaudeModel(apiKey, aiModel.value());
+  if (emulated) return new FakeModel();
+  throw new HttpsError('failed-precondition', 'AI is not configured.');
+}
+const billing = () => {
+  const key = stripeKey.value();
+  if (!key) throw new HttpsError('failed-precondition', 'Billing is not configured.');
+  const origin = webOrigins.value().split(',').map(item => item.trim()).find(item => !/^(http:\/\/)?(127\.0\.0\.1|localhost)/.test(item)) ?? webOrigins.value().split(',')[0].trim();
+  return new BillingService(getFirestore(), new Stripe(key), credits(), { plus: { priceId: pricePlus.value(), credits: plusCredits.value() }, pack: { priceId: pricePack.value(), credits: packCredits.value() } }, origin);
+};
 function key(request: CallableRequest): string {
   if (typeof request.data?.key !== 'string') throw new HttpsError('invalid-argument', 'A blob key is required.');
   return request.data.key;
@@ -54,6 +80,27 @@ export const shareCreate = onCall({ enforceAppCheck: options.enforceAppCheck }, 
 });
 export const shareRevoke = onCall({ enforceAppCheck: options.enforceAppCheck }, request => {
   const uid = user(request); return new ShareService(getFirestore()).revoke(uid, request.data?.token);
+});
+/** Credits and the metered atelier (decision #66). The balance call also opens the account with its welcome grant. */
+export const creditsBalance = onCall({ enforceAppCheck: options.enforceAppCheck }, request => { const uid = user(request); return credits().ensure(uid); });
+export const atelierTurn = onCall<unknown, Promise<unknown>, AtelierChunk>({ enforceAppCheck: options.enforceAppCheck, secrets: [anthropicKey], memory: '512MiB', timeoutSeconds: 300 }, (request, response) => {
+  const uid = user(request);
+  return new AtelierService(getFirestore(), credits(), model()).turn(uid, request.data, chunk => response?.sendChunk(chunk) ?? Promise.resolve(false), response?.signal);
+});
+export const stripeCheckout = onCall({ enforceAppCheck: options.enforceAppCheck, secrets: [stripeKey] }, request => {
+  const uid = user(request); return billing().checkout(uid, request.auth?.token.email, request.data?.product);
+});
+export const stripePortal = onCall({ enforceAppCheck: options.enforceAppCheck, secrets: [stripeKey] }, request => { const uid = user(request); return billing().portal(uid); });
+/** Stripe calls this; the signature is the whole authentication. */
+export const stripeWebhook = onRequest({ secrets: [stripeKey, stripeWebhookSecret] }, async (request, response) => {
+  if (request.method !== 'POST') { response.status(405).end(); return; }
+  try {
+    const result = await billing().webhook(request.rawBody, request.get('stripe-signature'), stripeWebhookSecret.value());
+    response.json(result);
+  } catch (error) {
+    const code = error instanceof HttpsError ? error.code : 'internal';
+    response.status(code === 'unauthenticated' ? 400 : 500).json({ error: code });
+  }
 });
 /** QR hand-off (decision 58): the browser starts and claims, the signed-in app approves. */
 const handoff = () => new LoginService(getFirestore(), uid => getAuth().createCustomToken(uid, { handoff: 'app' }));

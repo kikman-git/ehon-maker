@@ -8,6 +8,7 @@ import { blankBook, loadFonts } from './core';
 import { loadTemplates, templateBook, templateStore } from './templates';
 import { currentRoute, paths } from './routes';
 import { AccountPanel, syncStatus } from './ui/Account';
+import { CreditChip } from './ui/Credits';
 import { ShareDialog } from './ui/ShareDialog';
 import { Thumbnail } from './ui/Thumbnail';
 import { Gate } from './ui/Gate';
@@ -23,6 +24,7 @@ function Shelf({ repo }: { repo: BookRepository }) {
   const account = useStore(session);
   const [panel, setPanel] = useState<'none' | 'account' | 'templates'>('none');
   const [shareFor, setShareFor] = useState<BookSummary | null>(null);
+  const [billing] = useState(() => new URLSearchParams(location.search).get('billing'));
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
   const [createError, setCreateError] = useState('');
@@ -57,11 +59,13 @@ function Shelf({ repo }: { repo: BookRepository }) {
       <div className="brand"><span className="brand-mark"><Icon name="brush" /></span><h1>ぺたぺた</h1><span className="studio-wordmark">STUDIO</span></div>
       <div className="actions">
         {cloud && account.signedIn && <span className="status" data-pending={state.pendingChanges} title={syncStatus(state)}>{state.pendingChanges ? 'ほぞんちゅう…' : 'ほぞんずみ'}</span>}
+        <CreditChip onClick={() => setPanel('account')} />
         {cloud && <button className="account-button" onClick={() => setPanel('account')}><Icon name="user" size={16} /><span>{account.displayName || 'アカウント'}</span></button>}
         <button className="primary" disabled={creating} onClick={() => void create()}><Icon name="plus" size={16} /> 新しく描く</button>
       </div>
     </header>
     {!cloud && <div className="notice">作品はこのブラウザに保存されます。</div>}
+    {billing === 'done' && <div className="notice" role="status">ありがとうございます。クレジットは すぐに はんえいされます。</div>}
     {createError && <p role="alert" className="error">{createError}</p>}
     <main className="shelf" aria-label="ほんだな">
       <section className="shelf-intro">

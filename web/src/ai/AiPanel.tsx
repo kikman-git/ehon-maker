@@ -9,7 +9,7 @@ type Message =
   | { role: 'user'; text: string; mark: string | null }
   | { role: 'assistant'; text: string; live?: boolean }
   | { role: 'tool'; text: string }
-  | { role: 'status'; text: string; error?: boolean };
+  | { role: 'status'; text: string; error?: boolean; done?: boolean };
 
 const providerNames: Record<AiProvider, string> = { claude: 'Claude', codex: 'Codex' };
 
@@ -27,7 +27,7 @@ export function messagesOf(entries: AiEntry[]): Message[] {
   const flush = () => { if (live.trim()) out.push({ role: 'assistant', text: live }); live = ''; };
   for (const entry of entries) {
     if (entry.kind === 'user') { flush(); out.push({ role: 'user', text: entry.text, mark: entry.mark }); continue; }
-    if (entry.kind === 'applied') { flush(); out.push({ role: 'status', text: entry.text }); continue; }
+    if (entry.kind === 'applied') { flush(); out.push({ role: 'status', text: entry.text, done: true }); continue; }
     if (entry.kind === 'rejected') { flush(); out.push({ role: 'status', text: entry.text, error: true }); continue; }
     if (entry.kind === 'log') { if (entry.level === 'error') { flush(); out.push({ role: 'status', text: entry.text, error: true }); } continue; }
     const { event } = entry;

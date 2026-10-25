@@ -16,9 +16,10 @@ import kotlinx.serialization.json.put
 import org.w3c.dom.HTMLImageElement
 
 /** The open book's pictures, then library and pack parts registered by the platform, over the built-ins. */
-internal class WebParts {
+internal class WebParts(private val bookArt: () -> Map<String, Artwork>) {
     private val parts = mutableMapOf<PartId, RegisteredPart>()
-    var art: Map<String, Artwork> = emptyMap()
+    // Read live so art that arrives by paste, undo or an AI turn is listed and resolved at once.
+    private val art: Map<String, Artwork> get() = bookArt()
     val resolver = PartResolver { artPart(it) ?: parts[it]?.part ?: PartCatalog.find(it) }
     var imageProvider: (String) -> HTMLImageElement? = { null }
 
@@ -58,7 +59,6 @@ internal class WebParts {
 
     fun clear() {
         parts.clear()
-        art = emptyMap()
         imageProvider = { null }
     }
 

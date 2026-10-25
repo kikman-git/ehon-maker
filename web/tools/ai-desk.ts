@@ -1,13 +1,28 @@
 import { spawn, type ChildProcess } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, watch, writeFileSync, type FSWatcher } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, watch, writeFileSync, type FSWatcher } from 'node:fs';
 import { basename, join, resolve } from 'node:path';
 import type { Plugin, ViteDevServer } from 'vite';
 import { defaultPick, defaultProvider, providerIds, providers, type Pick, type Provider, type ProviderId, type StudioEvent } from './ai-providers.ts';
 
 // Dev-only AI layer (decision #64): a workspace per open book where Claude Code or Codex runs one non-interactive turn per chat message.
 
+/** What a workspace holds: the whole book for the AI desk, one picture for the 素材アトリエ. */
+interface Kind {
+  ns: 'ai' | 'atelier';
+  suffix: string;
+  imageFile: string;
+  instructions: string;
+  /** The browser's payload, written as files the CLI reads. */
+  write(dir: string, json: string): void;
+  /** What the CLI produced, as the payload the browser validates. */
+  read(dir: string): string | null;
+  watches(file: string): boolean;
+  beforeRun?(dir: string): void;
+}
+
 interface Session {
   bookId: string;
+  kind: Kind;
   dir: string;
   provider: ProviderId;
   sessionIds: Record<ProviderId, string | null>;
@@ -28,8 +43,10 @@ interface Client { send(event: string, payload: unknown): void }
 
 const MAX_TRANSCRIPT = 4000;
 const BOOK_FILE = 'book.ehon.json';
-const IMAGE_FILE = 'page.png';
 const SESSION_FILE = 'session.json';
+const PIECE_FILE = 'piece.svg';
+const BOOK_ART_DIR = 'book-art';
+const CANDIDATE = /^candidate-(\d{1,2})\.svg$/;
 
 const INSTRUCTIONS = `# ぺたぺた studio workspace
 
@@ -44,12 +61,76 @@ embedded SVG art, palette and binding. The rules that matter most:
 - Keep every existing id. New items and pages get fresh ids that are unique across the book.
 - Preserve \`strokes\`, \`drawing\` and \`reply\` fields wherever you find them: they are the family's own work.
 - Positions are percent of the page and name an item's centre; \`sizePct\` is its width in percent.
-- Write the whole document back at \`"version": 5\`.
-- \`${IMAGE_FILE}\`, when present, is the page the user is looking at with the marked area outlined in red.
+- Write the whole document back at \`"version": 6\`.
+- \`page.png\`, when present, is the page the user is looking at with the marked area outlined in red.
 
 Do not run build tools or commands here; the studio validates the file itself. Answer in the user's
 language with one or two sentences about what you changed.
 `;
+
+const ATELIER_INSTRUCTIONS = `# ぺたぺた 素材アトリエ workspace
+
+You draw one illustration (素材) for a picture book as SVG. Each prompt from the studio says what to
+draw or change.
+
+- \`FORMAT.md\`: read its "## Art" section first. It is the SVG subset the app paints, the house
+  palette and the sprite rules.
+- \`${BOOK_ART_DIR}/*.svg\`, when present: pictures already in this book. Match their palette, line weight
+  and shapes so the new piece belongs in the same book.
+- \`${PIECE_FILE}\`, when present: the current illustration.
+- \`view.png\`, when present: what the user sees, the current illustration or blank paper, the part they
+  selected outlined in red, and anything they sketched on top in blue.
+
+Rules:
+
+- A sprite is one character or prop on a transparent background, centred in \`viewBox="0 0 100 100"\`
+  with a margin of about 6 so a rotated piece is not clipped.
+- Group the drawing into \`<g id="…" data-name="…">\` parts the user can tap, one per meaningful part
+  (head, ear-left, hat, wheel), ids in English kebab-case and \`data-name\` a short hiragana name
+  (みみ, ぼうし). Keep ids stable across edits.
+- Flat colours and only the supported elements; no text, images, filters, masks or clip paths.
+- Keep one illustration under 6,000 characters: collapse whitespace, no comments or editor metadata.
+- When the prompt asks for candidates, write each to its own \`candidate-N.svg\` and make them clearly
+  different takes on the request.
+- When the prompt asks to change the current illustration, edit \`${PIECE_FILE}\` in place and change only
+  what was asked, keeping every other group as it is.
+
+Do not run build tools or commands here; the studio checks each file itself. Write no text before or
+between tool calls: the studio shows the user what you are doing. Your only words are one short
+sentence after the last file is written, in the language of the request.
+`;
+
+const readText = (path: string) => { try { return readFileSync(path, 'utf8'); } catch { return null; } };
+const candidatesIn = (dir: string) => readdirSync(dir).map((file) => CANDIDATE.exec(file)).filter((match) => match !== null)
+  .sort((a, b) => Number(a[1]) - Number(b[1])).map((match) => match[0]);
+
+const bookKind: Kind = {
+  ns: 'ai', suffix: '', imageFile: 'page.png', instructions: INSTRUCTIONS,
+  write: (dir, json) => writeFileSync(join(dir, BOOK_FILE), json),
+  read: (dir) => readText(join(dir, BOOK_FILE)),
+  watches: (file) => file === BOOK_FILE,
+};
+
+/** In `{piece, art: {key: svg}}`, out `{piece, candidates}`; the browser keeps the versions. */
+const atelierKind: Kind = {
+  ns: 'atelier', suffix: '.atelier', imageFile: 'view.png', instructions: ATELIER_INSTRUCTIONS,
+  write(dir, json) {
+    const payload = JSON.parse(json) as { piece?: unknown; art?: Record<string, unknown> };
+    const piece = join(dir, PIECE_FILE);
+    if (typeof payload.piece === 'string') writeFileSync(piece, payload.piece);
+    else rmSync(piece, { force: true });
+    const artDir = join(dir, BOOK_ART_DIR);
+    rmSync(artDir, { recursive: true, force: true });
+    const art = Object.entries(payload.art ?? {}).filter((entry): entry is [string, string] => typeof entry[1] === 'string');
+    if (art.length) {
+      mkdirSync(artDir);
+      for (const [key, svg] of art) writeFileSync(join(artDir, safeName(key) + '.svg'), svg);
+    }
+  },
+  read: (dir) => JSON.stringify({ piece: readText(join(dir, PIECE_FILE)), candidates: candidatesIn(dir).map((file) => readText(join(dir, file)) ?? '') }),
+  watches: (file) => file === PIECE_FILE || CANDIDATE.test(file),
+  beforeRun: (dir) => { for (const file of candidatesIn(dir)) rmSync(join(dir, file), { force: true }); },
+};
 
 const safeName = (bookId: string) => bookId.replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 80) || 'book';
 const noSessions = (): Record<ProviderId, string | null> => ({ claude: null, codex: null });
@@ -67,6 +148,7 @@ export function aiDesk(): Plugin {
   const all = providers(root);
   const initialProvider = defaultProvider(all);
   const sessions = new Map<string, Session>();
+  const keyOf = (kind: Kind, bookId: string) => `${kind.ns}:${bookId}`;
 
   const providerOf = (session: Session): Provider => all[session.provider];
   // Vite's socket has no per-client close hook, so a reloaded tab is dropped when a send throws.
@@ -78,7 +160,7 @@ export function aiDesk(): Plugin {
   const push = (session: Session, entry: Entry) => {
     session.transcript.push(entry);
     if (session.transcript.length > MAX_TRANSCRIPT) session.transcript.splice(0, session.transcript.length - MAX_TRANSCRIPT);
-    broadcast(session, 'ehon:ai:entry', { bookId: session.bookId, entry });
+    broadcast(session, `ehon:${session.kind.ns}:entry`, { bookId: session.bookId, entry });
   };
   const log = (session: Session, text: string, level: 'info' | 'error' = 'info') => push(session, { kind: 'log', text, level });
   const state = (session: Session) => {
@@ -97,35 +179,34 @@ export function aiDesk(): Plugin {
       command: [...provider.command, ...provider.args(session.sessionIds[session.provider], null, session.picks[session.provider])].join(' '),
     };
   };
-  const broadcastState = (session: Session) => broadcast(session, 'ehon:ai:state', state(session));
+  const broadcastState = (session: Session) => broadcast(session, `ehon:${session.kind.ns}:state`, state(session));
 
   const writeBook = (session: Session, json: string) => {
-    session.lastSynced = json;
-    writeFileSync(join(session.dir, BOOK_FILE), json);
+    try { session.kind.write(session.dir, json); } catch (error) { log(session, `could not write the workspace: ${(error as Error).message}`, 'error'); return; }
+    session.lastSynced = session.kind.read(session.dir) ?? '';
   };
   const rememberSession = (session: Session) => writeFileSync(join(session.dir, SESSION_FILE), JSON.stringify({ provider: session.provider, sessions: session.sessionIds, picks: session.picks }));
 
   /** The CLI writes the file; the browser is the validator, so every distinct save is forwarded. */
   const forwardBook = (session: Session) => {
-    let json: string;
-    try { json = readFileSync(join(session.dir, BOOK_FILE), 'utf8'); } catch { return; }
-    if (!json.trim() || json === session.lastSynced) return;
+    const json = session.kind.read(session.dir);
+    if (!json?.trim() || json === session.lastSynced) return;
     session.lastSynced = json;
-    broadcast(session, 'ehon:ai:book', { bookId: session.bookId, json });
+    broadcast(session, `ehon:${session.kind.ns}:book`, { bookId: session.bookId, json });
   };
   const watchBook = (session: Session) => {
     let timer: ReturnType<typeof setTimeout> | null = null;
     session.watcher = watch(session.dir, (_type, file) => {
-      if (file && file !== BOOK_FILE) return;
+      if (file && !session.kind.watches(file)) return;
       if (timer) clearTimeout(timer);
       timer = setTimeout(() => { timer = null; forwardBook(session); }, 250);
     });
   };
 
-  const open = (bookId: string, json: string, client: Client): Session => {
-    let session = sessions.get(bookId);
+  const open = (kind: Kind, bookId: string, json: string, client: Client): Session => {
+    let session = sessions.get(keyOf(kind, bookId));
     if (!session) {
-      const dir = join(workspaces, safeName(bookId));
+      const dir = join(workspaces, safeName(bookId) + kind.suffix);
       mkdirSync(dir, { recursive: true });
       let provider = initialProvider;
       const sessionIds = noSessions();
@@ -135,15 +216,15 @@ export function aiDesk(): Plugin {
         if (saved.provider && providerIds.includes(saved.provider) && all[saved.provider].available) provider = saved.provider;
         for (const id of providerIds) { sessionIds[id] = saved.sessions?.[id] ?? null; picks[id] = cleanPick(saved.picks?.[id]); }
       } catch { /* first conversation */ }
-      session = { bookId, dir, provider, sessionIds, picks, running: null, lastSynced: '', watcher: null, transcript: [], clients: new Set() };
-      sessions.set(bookId, session);
-      for (const id of providerIds) for (const file of all[id].instructionFiles) writeFileSync(join(dir, file), INSTRUCTIONS);
+      session = { bookId, kind, dir, provider, sessionIds, picks, running: null, lastSynced: '', watcher: null, transcript: [], clients: new Set() };
+      sessions.set(keyOf(kind, bookId), session);
+      for (const id of providerIds) for (const file of all[id].instructionFiles) writeFileSync(join(dir, file), kind.instructions);
       if (existsSync(formatDoc)) writeFileSync(join(dir, 'FORMAT.md'), readFileSync(formatDoc));
       writeBook(session, json);
       watchBook(session);
     } else if (!session.running) writeBook(session, json);
     session.clients.add(client);
-    client.send('ehon:ai:state', { ...state(session), transcript: session.transcript });
+    client.send(`ehon:${kind.ns}:state`, { ...state(session), transcript: session.transcript });
     return session;
   };
 
@@ -155,6 +236,7 @@ export function aiDesk(): Plugin {
     const env = { ...process.env };
     // A dev server started from inside Claude Code must not make the CLI think it is nested.
     for (const key of Object.keys(env)) if (key === 'CLAUDECODE' || key.startsWith('CLAUDE_CODE_')) delete env[key];
+    if (!retried) session.kind.beforeRun?.(session.dir);
     log(session, `$ ${[bin, ...args].join(' ')}`);
     let child: ChildProcess;
     try { child = spawn(bin, args, { cwd: session.dir, env, stdio: ['pipe', 'pipe', 'pipe'] }); }
@@ -208,28 +290,32 @@ export function aiDesk(): Plugin {
     child.stdin!.end(prompt);
   };
 
-  const attach = (server: ViteDevServer) => {
-    server.ws.on('ehon:ai:open', (data: { bookId: string; json: string }, client) => {
+  const attach = (server: ViteDevServer, kind: Kind) => {
+    const on = <T>(event: string, handler: (data: T, client: Client) => void) => server.ws.on(`ehon:${kind.ns}:${event}`, handler);
+    const sessionOf = (data: { bookId?: unknown } | undefined) => typeof data?.bookId === 'string' ? sessions.get(keyOf(kind, data.bookId)) : undefined;
+    on<{ bookId: string; json: string }>('open', (data, client) => {
       if (typeof data?.bookId !== 'string' || typeof data.json !== 'string') return;
-      open(data.bookId, data.json, client);
+      open(kind, data.bookId, data.json, client);
     });
-    server.ws.on('ehon:ai:sync', (data: { bookId: string; json: string }) => {
-      const session = sessions.get(data?.bookId);
+    on<{ bookId: string; json: string }>('sync', (data) => {
+      const session = sessionOf(data);
       // While the CLI is writing the file the browser's copy waits; it is refreshed from the result anyway.
       if (!session || session.running || typeof data.json !== 'string' || data.json === session.lastSynced) return;
       writeBook(session, data.json);
     });
-    server.ws.on('ehon:ai:ask', (data: { bookId: string; prompt: string; text: string; mark: string | null; image: string | null }, client) => {
-      const session = sessions.get(data?.bookId);
+    on<{ bookId: string; prompt: string; text: string; mark: string | null; image: string | null }>('ask', (data, client) => {
+      const session = sessionOf(data);
       if (!session || typeof data.prompt !== 'string') return;
-      if (session.running) { client.send('ehon:ai:entry', { bookId: session.bookId, entry: { kind: 'log', text: 'a turn is still running', level: 'error' } }); return; }
+      if (session.running) { client.send(`ehon:${kind.ns}:entry`, { bookId: session.bookId, entry: { kind: 'log', text: 'a turn is still running', level: 'error' } }); return; }
+      const image = join(session.dir, kind.imageFile);
       const hasImage = typeof data.image === 'string' && data.image.startsWith('data:image/png;base64,');
-      if (hasImage) writeFileSync(join(session.dir, IMAGE_FILE), Buffer.from(data.image!.slice('data:image/png;base64,'.length), 'base64'));
+      if (hasImage) writeFileSync(image, Buffer.from(data.image!.slice('data:image/png;base64,'.length), 'base64'));
+      else rmSync(image, { force: true });
       push(session, { kind: 'user', text: data.text, mark: data.mark, at: Date.now() });
-      run(session, data.prompt, hasImage ? IMAGE_FILE : null);
+      run(session, data.prompt, hasImage ? kind.imageFile : null);
     });
-    server.ws.on('ehon:ai:provider', (data: { bookId: string; provider: ProviderId }) => {
-      const session = sessions.get(data?.bookId);
+    on<{ bookId: string; provider: ProviderId }>('provider', (data) => {
+      const session = sessionOf(data);
       if (!session || session.running || !providerIds.includes(data.provider) || !all[data.provider].available || session.provider === data.provider) return;
       session.provider = data.provider;
       rememberSession(session);
@@ -237,8 +323,8 @@ export function aiDesk(): Plugin {
       broadcastState(session);
     });
     // Each control sends only its own field, so two quick changes cannot overwrite each other.
-    server.ws.on('ehon:ai:pick', (data: { bookId: string; model?: unknown; effort?: unknown }) => {
-      const session = sessions.get(data?.bookId);
+    on<{ bookId: string; model?: unknown; effort?: unknown }>('pick', (data) => {
+      const session = sessionOf(data);
       if (!session || session.running) return;
       const pick = { ...session.picks[session.provider] };
       if ('model' in data) pick.model = cleanField(data.model);
@@ -248,22 +334,18 @@ export function aiDesk(): Plugin {
       rememberSession(session);
       broadcastState(session);
     });
-    server.ws.on('ehon:ai:stop', (data: { bookId: string }) => {
-      const session = sessions.get(data?.bookId);
+    on<{ bookId: string }>('stop', (data) => {
+      const session = sessionOf(data);
       if (session?.running) { log(session, 'stopped'); session.running.kill('SIGTERM'); }
     });
-    server.ws.on('ehon:ai:reset', (data: { bookId: string }) => {
-      const session = sessions.get(data?.bookId);
+    on<{ bookId: string }>('reset', (data) => {
+      const session = sessionOf(data);
       if (!session || session.running) return;
       session.sessionIds[session.provider] = null;
       rememberSession(session);
       session.transcript = [];
       log(session, 'new conversation');
-      broadcast(session, 'ehon:ai:state', { ...state(session), transcript: session.transcript });
-    });
-    server.httpServer?.on('close', () => {
-      for (const session of sessions.values()) { session.running?.kill('SIGTERM'); session.watcher?.close(); }
-      sessions.clear();
+      broadcast(session, `ehon:${kind.ns}:state`, { ...state(session), transcript: session.transcript });
     });
   };
 
@@ -271,7 +353,12 @@ export function aiDesk(): Plugin {
     name: 'ehon-ai-desk',
     apply: 'serve',
     configureServer(server) {
-      attach(server);
+      attach(server, bookKind);
+      attach(server, atelierKind);
+      server.httpServer?.on('close', () => {
+        for (const session of sessions.values()) { session.running?.kill('SIGTERM'); session.watcher?.close(); }
+        sessions.clear();
+      });
       const found = providerIds.filter((id) => all[id].available).map((id) => `${id} (${all[id].command.join(' ')})`);
       server.config.logger.info(`  ai desk: ${basename(workspaces)}/<book> → ${found.join(', ') || 'no CLI found: install claude or codex, or set EHON_CLAUDE_COMMAND / EHON_CODEX_COMMAND'}; default ${initialProvider}`);
     },

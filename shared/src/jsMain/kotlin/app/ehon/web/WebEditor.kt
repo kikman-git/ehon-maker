@@ -8,6 +8,7 @@ import app.ehon.engine.EditorIntentBatch
 import app.ehon.engine.UiLevel
 import app.ehon.geom.Size
 import app.ehon.i18n.Strings
+import app.ehon.model.Artwork
 import app.ehon.model.FontFace
 import app.ehon.model.ItemId
 import app.ehon.model.Page
@@ -35,7 +36,7 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     private val idSource = IdSource("web-${Date.now().toLong()}-")
     private val clock = { Date.now().toLong() }
     private var controller = newController(BookCodec.decode(bookJson))
-    private val parts = WebParts().apply { art = controller.book.art }
+    private val parts = WebParts { controller.book.art }
     private val builder = SceneBuilder(measurer, parts.resolver)
     private val painter = CanvasPainter { parts.imageProvider(it) }
     private var resourceRevision = 0
@@ -175,7 +176,6 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     fun applyDocument(json: String) {
         val book = BookCodec.decode(json)
         controller.replaceDocument(book)
-        parts.art = book.art
     }
 
     /** The current page's items as `[{id, kind, ref, x, y, w, h, rotationDeg}]` in percent, measured at w×h. */
@@ -220,7 +220,6 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
             setBrush(brush)
             if (erasing) toggleEraser()
         }
-        parts.art = book.art
         book.pages.indexOfFirst { it.id == pageId }.takeIf { it >= 0 }?.let { controller.goToPage(it) }
         if (selected != null && controller.page.id == pageId && controller.page.items.any { it.id == selected }) {
             controller.selectItem(selected)
@@ -248,6 +247,22 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
         )))
         painter.draw(builder.build(page, RenderTarget(size(w, h), RenderTarget.Kind.SCREEN), null, controller.book.art), ctx)
     }
+
+    /** A picture that is not in the book yet, painted as it would sit on a page. */
+    fun renderSvg(ctx: CanvasRenderingContext2D, w: Double, h: Double, svg: String) {
+        val page = Page(background = Argb(0), items = persistentListOf(PartItem(
+            id = ItemId("preview"), partId = Artwork.partId(PREVIEW_KEY), x = 50f, y = 50f, sizePct = 100f,
+        )))
+        painter.draw(builder.build(page, RenderTarget(size(w, h), RenderTarget.Kind.SCREEN), null, mapOf(PREVIEW_KEY to Artwork(svg))), ctx)
+    }
+
+    fun artSvg(partId: String): String? = PartId(partId).takeIf { it.category == Artwork.CATEGORY }?.let { controller.book.art[it.name]?.svg }
+    val artChars: Int get() = controller.book.art.values.sumOf { it.svg.length }
+    val maxArtChars: Int get() = Artwork.MAX_TOTAL_SVG_CHARS
+
+    /** The new part id, or null when the picture will not parse or the book has no room for it. */
+    fun addArt(name: String, svg: String, placeSizePct: Double?): String? =
+        controller.addArt(name, svg, placeSizePct?.toFloat())?.value
 
     fun registerPart(partId: String, assetRef: String, aspect: Double, nameJa: String, nameEn: String) {
         parts.register(partId, assetRef, aspect, nameJa, nameEn)
@@ -288,3 +303,5 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
         return Size(w.toFloat(), h.toFloat())
     }
 }
+
+private const val PREVIEW_KEY = "preview"

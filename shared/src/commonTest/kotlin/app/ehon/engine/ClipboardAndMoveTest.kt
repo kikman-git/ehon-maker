@@ -204,4 +204,21 @@ class ClipboardAndMoveTest {
         assertEquals(TextItem.MIN_LINE_HEIGHT, c.textLineHeight)
         assertEquals(c.book, BookCodec.decode(BookCodec.encode(c.book)))
     }
+
+    @Test
+    fun `atelier art joins the book and the page in one undo step, reusing an identical picture`() {
+        val c = EditorController(book(), FakeMeasurer)
+        val before = c.book
+        val hat = """<svg viewBox="0 0 100 100"><g id="hat"><circle cx="50" cy="50" r="30" fill="#c67139"/></g></svg>"""
+        val id = c.addArt("  ぼうし  ", hat, placeSizePct = 30f)!!
+        assertEquals("art:atelier-1", id.value)
+        assertEquals(Artwork(hat, "ぼうし"), c.book.art["atelier-1"])
+        assertEquals(id, (c.selected as PartItem).partId)
+        assertEquals(id, c.addArt("ぼうし", hat))
+        assertEquals(3, c.page.items.size)
+        c.undo()
+        assertEquals(before, c.book)
+        assertNull(c.addArt("broken", "<svg"))
+        assertNull(c.addArt("huge", "<svg viewBox=\"0 0 1 1\"><!--${"x".repeat(Artwork.MAX_TOTAL_SVG_CHARS)}--></svg>"))
+    }
 }

@@ -75,7 +75,15 @@ test('assets and entitlements are server-owned; public assets are readable', asy
   await assertSucceeds(getDoc(doc(env.unauthenticatedContext().firestore(), 'assets/hash')));
   await assertSucceeds(getDoc(doc(db, 'entitlements/alice')));
   await assertFails(getDoc(doc(user('bob'), 'entitlements/alice')));
-  for (const path of ['assets/hash', 'entitlements/alice', 'storageUsage/alice', 'users/alice/blobs/hash', 'config/flags', 'uploadReceipts/id']) {
+  await env.withSecurityRulesDisabled(async (ctx) => {
+    await setDoc(doc(ctx.firestore(), 'credits/alice'), { balance: 100, plan: 'free' });
+    await setDoc(doc(ctx.firestore(), 'credits/alice/ledger/welcome'), { kind: 'welcome', delta: 100 });
+  });
+  await assertSucceeds(getDoc(doc(db, 'credits/alice')));
+  await assertSucceeds(getDoc(doc(db, 'credits/alice/ledger/welcome')));
+  await assertFails(getDoc(doc(user('bob'), 'credits/alice')));
+  await assertFails(getDoc(doc(user('alice', 'anonymous'), 'credits/alice')));
+  for (const path of ['assets/hash', 'entitlements/alice', 'storageUsage/alice', 'users/alice/blobs/hash', 'config/flags', 'uploadReceipts/id', 'credits/alice', 'credits/alice/ledger/x']) {
     await assertFails(setDoc(doc(db, path), { ownerId: 'alice', plan: 'paid' }));
   }
 });

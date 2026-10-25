@@ -19,7 +19,7 @@ import org.w3c.dom.HTMLImageElement
 class WebReader(bookJson: String, measure: (String, Double, String) -> Double) {
     private var book: Book = BookCodec.decode(bookJson)
     private val measurer = CachedMeasurer(measure)
-    private val parts = WebParts().apply { art = book.art }
+    private val parts = WebParts { book.art }
     private val builder = SceneBuilder(measurer, parts.resolver)
     private val painter = CanvasPainter { parts.imageProvider(it) }
     private var resourceRevision = 0
@@ -56,7 +56,6 @@ class WebReader(bookJson: String, measure: (String, Double, String) -> Double) {
         val next = BookCodec.decode(json)
         require(next.id == book.id) { "a different book cannot replace the open one" }
         book = next
-        parts.art = next.art
         resourceRevision++
     }
 

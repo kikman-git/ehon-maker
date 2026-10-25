@@ -8,7 +8,8 @@ import { useStore } from './cloud/store';
 import { UploadError, uploadIllustration, type UploadFailure, type UploadStage } from './cloud/uploads';
 import { Workspace } from './cloud/workspace';
 import { AiPanel } from './ai/AiPanel';
-import { aiBridge } from './ai/bridge';
+import { aiBridge, atelierBridge } from './ai/bridge';
+import { Atelier } from './atelier/Atelier';
 import type { Mark } from './ai/prompt';
 import { AiTerminal } from './ai/Terminal';
 import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, loadFonts, parts, type WebEditor } from './core';
@@ -17,7 +18,8 @@ import { Desk, type DeskHandle } from './desk/Desk';
 import { dragging, startPartDrag } from './desk/drag';
 import { aiTool, colorNames, drawingTools, type DrawingTool } from './desk/tools';
 import { currentRoute, paths } from './routes';
-import { syncStatus } from './ui/Account';
+import { AccountPanel, syncStatus } from './ui/Account';
+import { CreditChip, CreditNudge } from './ui/Credits';
 import { Gate } from './ui/Gate';
 import { Icon } from './ui/Icon';
 import { PartPreview } from './ui/PartPreview';
@@ -104,6 +106,8 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const [uploadName, setUploadName] = useState('');
   const [workspace] = useState(() => (bookId ? new Workspace(bookId) : null));
   const [mark, setMark] = useState<Mark | null>(null);
+  const [atelierOpen, setAtelierOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
   const [aiOpenFor, setAiOpenFor] = useState<typeof editor | null>(null);
   const [terminalOpen, setTerminalOpen] = useState(() => remembered('studio.terminal', true));
   const aiOpen = aiBridge !== null && aiOpenFor === editor;
@@ -417,6 +421,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
       <div className="actions">
         <a className="button ghost shelf-link" href={paths.shelf} onClick={(event) => void goHome(event)}><Icon name="home" size={17} />ホーム</a>
         {cloudBook && account.signedIn && <span className="status" data-pending={repoState.pendingChanges} title={syncStatus(repoState)}>{repoState.pendingChanges ? '同期中…' : '同期済み'}</span>}
+        <CreditChip onClick={() => setAccountOpen(true)} />
         <button className="ghost read-button" title="読むモードで開く" onClick={() => void readBook()}><Icon name="book" size={17} /><span>よむ</span></button>
         <details className="file-menu">
           <summary className="button"><Icon name="folder" size={16} />ファイル <Icon name="chevronDown" size={14} /></summary>
@@ -495,6 +500,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
           </>}
         </fieldset>}
         {tool === 'parts' && <>
+          {atelierBridge && <button className="atelier-open" disabled={readOnly} onClick={() => setAtelierOpen(true)}><span><Icon name="sparkles" size={16} />AIで 素材を つくる</span><CreditNudge /></button>}
           <label className="field" htmlFor="material-category">しゅるい</label><select id="material-category" value={category} onChange={(event) => setCategory(event.target.value)}>{bookArt.length > 0 && <option value="art">この えほんの え</option>}{[...new Set(parts.map((part) => part.category))].map((item) => <option key={item}>{item}</option>)}</select>
           <div className="parts material-grid">{category === 'art'
             ? bookArt.map((art) => partButton(art.id, art.name, 30, <><PartPreview editor={editor} partId={art.id} /><span className="part-name">{art.name}<Icon name="plus" size={12} /></span></>))
@@ -536,6 +542,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
           {editor.selectedPartId && <div className="illustration-action">
             <button className="primary" disabled={readOnly} onClick={() => edit(() => { editor.beginIllustrationEdit(); showPanel(true); chooseTool('eraser'); })}><Icon name="brush" size={16} />イラストを編集</button>
             <p className="hint">消しゴムで一部を消し、ブラシで描き直せます。</p>
+            {atelierBridge && editor.selectedPartId.startsWith('art:') && <button disabled={readOnly} onClick={() => setAtelierOpen(true)}><Icon name="sparkles" size={16} />アトリエで AIと なおす</button>}
           </div>}
           <fieldset disabled={!editor.selectedId || readOnly} className="selection-tools">
             <button onClick={() => edit(() => editor.resizeSelected(false))}><Icon name="compress" size={15} />小さく</button><button onClick={() => edit(() => editor.resizeSelected(true))}><Icon name="expand" size={15} />大きく</button>
@@ -560,6 +567,8 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
       <section className="desk" aria-label="えほんを つくる">
         <Desk ref={deskRef} editor={editor} revision={revision} readOnly={readOnly} onChange={changed} workspace={workspace} library={repo.library} assetsUrl={assetsUrl} tool={tool} showStrip={stripOpen} mark={mark} onMark={setMark} />
         {aiBridge && aiOpen && terminalOpen && <AiTerminal bridge={aiBridge} onClose={() => showTerminal(false)} />}
+        {accountOpen && <AccountPanel repo={repo} onClose={() => setAccountOpen(false)} />}
+        {atelierBridge && atelierOpen && <Atelier key={editor.bookId} bridge={atelierBridge} editor={editor} readOnly={readOnly} act={edit} onClose={() => setAtelierOpen(false)} />}
       </section>
     </main>
     {ghost && <div className="drag-ghost" style={{ left: ghost.x, top: ghost.y }} aria-hidden="true">{ghost.label}</div>}

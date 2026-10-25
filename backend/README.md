@@ -137,6 +137,16 @@ to the web app's origins so browsers may fetch it; the phone builds links from `
     itself, in IAM → Service Accounts → Permissions, or with `gcloud iam service-accounts
     add-iam-policy-binding`. Without it `qrLoginClaim` fails with `signBlob` permission denied.
 
+12. AI (decision #66): store `ANTHROPIC_API_KEY` with `functions:secrets:set`; `AI_MODEL` in
+    `functions/.env.<project-id>` picks the model (default `claude-opus-5-5`). Without the key the
+    emulator draws with a stand-in model, so `make web-sync-test` needs no account.
+13. Stripe: create the products in the Dashboard — a monthly price for ぺたぺた プラス and a one-off
+    price for the credit pack — and put their ids in `STRIPE_PRICE_PLUS` / `STRIPE_PRICE_PACK`, with
+    `PLUS_CREDITS` / `PACK_CREDITS` matching what you sell. Store `STRIPE_SECRET_KEY`, then add a
+    webhook endpoint for `stripeWebhook` (events `checkout.session.completed`, `invoice.paid`,
+    `customer.subscription.updated`, `customer.subscription.deleted`) and store its signing secret as
+    `STRIPE_WEBHOOK_SECRET`. Checkout returns to the first non-local origin in `WEB_ORIGINS`.
+
 Deploy only after those values point to the intended environment:
 
 ```sh

@@ -93,6 +93,10 @@ service cloud.firestore {
     match /usage/{id} { allow read: if isOwner(resource.data); }
     match /storageUsage/{uid} { allow read: if realUser() && request.auth.uid == uid; }
     match /entitlements/{uid} { allow read: if realUser() && request.auth.uid == uid; }
+    match /credits/{uid} {
+      allow read: if realUser() && request.auth.uid == uid;
+      match /ledger/{id} { allow read: if realUser() && request.auth.uid == uid; }
+    }
     match /reports/{id} {
       allow create: if realUser() && request.resource.data.reporterUid == request.auth.uid
         && request.resource.data.keys().hasOnly(['reporterUid', 'target', 'reason', 'createdAt'])

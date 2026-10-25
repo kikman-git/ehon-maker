@@ -18,6 +18,7 @@ import app.ehon.model.StrokePoint
 import app.ehon.model.TextItem
 import app.ehon.scene.TextMeasurer
 import app.ehon.template.IdSource
+import app.ehon.vector.SvgParser
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
 import kotlin.math.PI
@@ -462,6 +463,33 @@ class EditorController(
     }
 
     /** The same name when it is free or already holds this picture, otherwise the first free `name-2`, `name-3`… */
+    /**
+     * Adds a picture to the book's own art, and with [placeSizePct] also onto this page, as one undo step.
+     * Null when it will not parse or would overflow the art budget; an identical picture is reused.
+     */
+    fun addArt(name: String, svg: String, placeSizePct: Float? = null): PartId? {
+        if (isGestureActive || editingPartId != null) return null
+        require(placeSizePct == null || (placeSizePct.isFinite() && placeSizePct > 0f))
+        if (runCatching { SvgParser.parse(svg) }.isFailure) return null
+        val picture = Artwork(svg, name.trim().take(MAX_ART_NAME))
+        val existing = book.art.entries.firstOrNull { it.value.svg == svg }?.key
+        if (existing == null && book.art.values.sumOf { it.svg.length } + svg.length > Artwork.MAX_TOTAL_SVG_CHARS) return null
+        val key = existing ?: (1..999).map { "$AI_ART_KEY-$it" }.first { it !in book.art }
+        val partId = Artwork.partId(key)
+        val id = placeSizePct?.let { nextItemId() }
+        change {
+            store.edit { current ->
+                val withArt = if (existing == null) current.copy(art = current.art + (key to picture)) else current
+                val placed = if (id == null) withArt else withArt.mapPage(pageIndex) { p ->
+                    p.copy(items = p.items.add(PartItem(id = id, x = 50f, y = 52f, partId = partId, sizePct = placeSizePct!!)))
+                }
+                placed.copy(updatedAtEpochMs = clock())
+            }
+            if (id != null) selectedId = id
+        }
+        return partId
+    }
+
     private fun artKeyFor(name: String, picture: Artwork): String? {
         val base = name.take(56)
         return (sequenceOf(name) + (2..99).asSequence().map { "$base-$it" })
@@ -888,5 +916,7 @@ class EditorController(
         const val PASTE_OFFSET = 3f
         const val PASTE_NUDGES = 20
         const val MAX_PASTED_TEXT = 200
+        const val MAX_ART_NAME = 40
+        const val AI_ART_KEY = "atelier"
     }
 }

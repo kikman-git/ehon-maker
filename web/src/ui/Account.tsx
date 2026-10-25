@@ -1,7 +1,9 @@
 import { cloud } from '../cloud/config';
+import { credits } from '../cloud/credits';
 import { type BookRepository } from '../cloud/repository';
 import { session, signOut } from '../cloud/session';
 import { useStore } from '../cloud/store';
+import { CreditNudge, Offers, planName } from './Credits';
 import { Icon } from './Icon';
 
 export function syncStatus(state: { syncError: string | null; pendingChanges: boolean }): string {
@@ -9,10 +11,11 @@ export function syncStatus(state: { syncError: string | null; pendingChanges: bo
   return state.pendingChanges ? 'えほんを アカウントに ほぞんちゅう…' : 'えほんを アカウントに ほぞんしました。';
 }
 
-/** Account status and sign-out; signing in happens on the landing page. The web sells nothing here either. */
+/** Account status, the AI plan and sign-out; signing in happens on the landing page. This is the one place the web sells (decision #40). */
 export function AccountPanel({ repo, onClose }: { repo: BookRepository; onClose: () => void }) {
   const account = useStore(session);
   const state = useStore(repo.state);
+  const wallet = useStore(credits);
 
   return <div className="dialog-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) onClose(); }}>
     <section className="dialog" role="dialog" aria-modal="true" aria-labelledby="account-title">
@@ -29,6 +32,14 @@ export function AccountPanel({ repo, onClose }: { repo: BookRepository; onClose:
             <p className="status" data-pending={state.pendingChanges}>{syncStatus(state)}</p>
           </div>
         </div>
+        <section className="account-plan" aria-labelledby="plan-title">
+          <h3 id="plan-title">AI クレジット</h3>
+          {wallet.ready
+            ? <><p className="plan-line"><strong>{wallet.balance.toLocaleString()}</strong> クレジット · {planName(wallet.plan)}<CreditNudge /></p>
+              <p className="hint">えや えほんを AI と つくるときに つかいます。1回 およそ 5〜10 クレジット（AI の つかった ぶんだけ）。おえかき、ほぞん、よみきかせは ずっと 無料です。</p>
+              <Offers /></>
+            : <p className="hint">クレジットを しらべています…</p>}
+        </section>
         <p className="hint">サインアウトすると ほんだなは とじ、もういちど サインインすると もどります。えほんは この ブラウザにも のこります。</p>
         <button onClick={() => { repo.saveOpenBook(); void signOut(); }}><Icon name="logout" size={16} />サインアウト</button>
       </>}

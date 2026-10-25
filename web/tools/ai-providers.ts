@@ -69,7 +69,8 @@ function claude(root: string): Provider {
       if (event.type === 'system' && event.subtype === 'init') return { sessionId: text(event.session_id) || undefined, events: [event as StudioEvent] };
       if (event.type === 'stream_event') {
         const inner = event.event as { type?: string; delta?: { type?: string }; content_block?: { type?: string } } | undefined;
-        const keep = inner?.type === 'content_block_delta' ? inner.delta?.type === 'text_delta' : inner?.type === 'content_block_start' && inner.content_block?.type === 'tool_use';
+        // Block starts for tools and thinking tell the studio what the model is doing during a long silence.
+        const keep = inner?.type === 'content_block_delta' ? inner.delta?.type === 'text_delta' : inner?.type === 'content_block_start' && (inner.content_block?.type === 'tool_use' || inner.content_block?.type === 'thinking');
         return { events: keep ? [event as StudioEvent] : [] };
       }
       return { events: [event as StudioEvent] };
