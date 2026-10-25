@@ -178,9 +178,11 @@ changing `x` and `y`; recolour or redraw a picture by changing its `svg`; add a 
 appending to `pages` with a fresh `id`. Do not renumber existing ids, reorder pages unless asked,
 or drop `strokes` and `reply` fields you find, which are the family's own additions.
 
-This is also how the studio's AI desk works on the dev server: the open book is written to
-`book.ehon.json` in a workspace folder next to this document and a PNG of the page, a coding CLI
-edits the file, and the studio applies the result as one undo step (decision #64).
+In the app the AI does not write this JSON by hand: the picture-book harness (decision #67,
+`backend/functions/src/book.ts`) gives the model tools that follow these rules, `add_page`, `add_text`,
+`add_part`, `set_text`, `set_part`, `set_layer`, `remove_item`, `move_item` and `draw_picture`, checks every
+call against the format, and returns the whole document; the studio validates it with the codec and
+applies it as one undo step. A model asked to write a book outside the app follows this document directly.
 
 The shared core also accepts editing **intents** for live sessions
 (`shared/src/commonMain/kotlin/app/ehon/engine/EditorIntent.kt`); a document is the right form

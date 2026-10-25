@@ -1,14 +1,14 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { credits as creditStore, MIN_TURN_CREDITS } from '../cloud/credits';
-import { cloud } from '../cloud/config';
 import { useStore } from '../cloud/store';
 import { codec, type WebEditor } from '../core';
 import type { AiBridge } from '../ai/bridge';
+import { arrivalLabel, ChatMessage, chatMessages, formatElapsed, LONG_TURN_MS, stepText, WorkingCard } from '../ai/feedback';
 import { CreditNudge, OutOfCredits } from '../ui/Credits';
 import { Icon } from '../ui/Icon';
-import { arrivalLabel, atelierMessages, expectedChars, formatElapsed, LONG_TURN_MS, stepText, turnProgress } from './feedback';
-import { CANDIDATES, composeAtelierPrompt } from './prompt';
 import { inertSvg, partAt, partsOf } from './svg';
+
+const CANDIDATES = 3;
 
 interface Version { svg: string; label: string }
 interface Sketch { points: { x: number; y: number }[] }
@@ -93,17 +93,16 @@ export function Atelier({ bridge, editor, readOnly, act, onClose }: Props) {
   const inert = useMemo(() => (piece ? inertSvg(piece) : null), [piece]);
   const parts = useMemo(() => partsOf(inert), [inert]);
   const selectedPart = parts.find((part) => part.id === selected) ?? null;
-  const messages = useMemo(() => atelierMessages(state.entries), [state.entries]);
-  const progress = useMemo(() => turnProgress(state.entries), [state.entries]);
+  const messages = useMemo(() => chatMessages(state.entries), [state.entries]);
   // The server refuses a turn under the minimum, so the offers take the compose box's place before a request fails.
-  const outOfCredits = cloud !== null && wallet.ready && wallet.balance < MIN_TURN_CREDITS;
-  const busy = state.running || !state.connected || outOfCredits;
+  const outOfCredits = wallet.ready && wallet.balance < MIN_TURN_CREDITS;
+  const busy = state.running || outOfCredits;
   const effectiveMode = piece ? mode : 'new';
   const working = state.running && turn ? {
-    step: stepText(progress, turn.mode, state.progress),
+    step: stepText(state, turn.mode),
     elapsed: formatElapsed(now - turn.started),
     long: now - turn.started > LONG_TURN_MS && turn.arrived === 0,
-    fraction: state.progress === null ? null : Math.min(0.95, state.progress / expectedChars(turn.mode, piece)),
+    fraction: state.progress ? Math.min(0.95, state.progress / (turn.mode === 'new' ? CANDIDATES * 2_400 : (piece?.length ?? 2_400) + 200)) : null,
     pending: Math.max(0, turn.expected - turn.arrived),
   } : null;
   const updateTurn = (change: (current: Turn) => Turn) => { if (turnRef.current) { turnRef.current = change(turnRef.current); setTurn(turnRef.current); } };
@@ -115,7 +114,7 @@ export function Atelier({ bridge, editor, readOnly, act, onClose }: Props) {
   };
 
   useEffect(() => { bridge.open(bookId, payload(piece)); }, [bridge, bookId]);
-  useEffect(() => { listRef.current?.scrollTo({ top: listRef.current.scrollHeight }); }, [messages.length, messages.at(-1)?.text, working?.step, working?.long]);
+  useEffect(() => { listRef.current?.scrollTo({ top: listRef.current.scrollHeight }); }, [messages.length, working?.step, working?.long]);
 
   // A run's files arrive as they are saved; each candidate slot or the piece keeps one version per run.
   useEffect(() => bridge.onBook((id, json) => {
@@ -242,11 +241,6 @@ export function Atelier({ bridge, editor, readOnly, act, onClose }: Props) {
     const words = text.trim();
     if (!words || busy || readOnly) return;
     const image = viewImage();
-    const bookArt = Math.min(BOOK_ART_LIMIT, (JSON.parse(editor.artJson()) as unknown[]).length);
-    const prompt = composeAtelierPrompt({
-      title: editor.title, request: words, mode: effectiveMode, hasPiece: piece !== null,
-      selected: effectiveMode === 'revise' ? selectedPart : null, sketched: draft.sketch.length > 0, image: image !== null, bookArt,
-    });
     runKeys.current = new Map();
     lastRequest.current = words;
     stopped.current = false;
@@ -255,7 +249,7 @@ export function Atelier({ bridge, editor, readOnly, act, onClose }: Props) {
     if (!draft.name) setDraft((current) => ({ ...current, name: words.slice(0, 16) }));
     bridge.sync(bookId, payload(piece));
     const chip = [effectiveMode === 'new' ? `あたらしい案 ×${CANDIDATES}` : 'なおす', selectedPart && `「${selectedPart.name}」`, draft.sketch.length > 0 && 'したがき'].filter(Boolean).join(' · ');
-    bridge.ask(bookId, { prompt, text: words, mark: chip, image, spec: { title: editor.title, mode: effectiveMode, selected: effectiveMode === 'revise' ? selectedPart : null, sketched: draft.sketch.length > 0 } });
+    bridge.ask(bookId, { text: words, mark: chip, image, spec: { title: editor.title, mode: effectiveMode, selected: effectiveMode === 'revise' ? selectedPart : null, sketched: draft.sketch.length > 0 } });
     setRequest('');
     setSaved(null);
   };
@@ -295,7 +289,7 @@ export function Atelier({ bridge, editor, readOnly, act, onClose }: Props) {
             <div ref={hitRef} className="atelier-hit" aria-hidden="true" />
             {box && <span className="atelier-selection" style={{ left: `${box.x * 100}%`, top: `${box.y * 100}%`, width: `${box.width * 100}%`, height: `${box.height * 100}%` }} />}
             {!piece && !draft.sketch.length && !working && <p className="atelier-empty">{sketching ? 'ここに したがきを かいてください' : 'つくりたい えを みぎに 書くか、「したがき」で かいてみましょう'}</p>}
-            {working && <div className="atelier-stage-working" data-empty={!piece || undefined} aria-hidden="true"><span className="atelier-pen"><Icon name="brush" size={piece ? 14 : 22} /></span><span>{working.step}</span><time>{working.elapsed}</time></div>}
+            {working && <div className="atelier-stage-working" data-empty={!piece || undefined} aria-hidden="true"><span className="ai-pen"><Icon name="brush" size={piece ? 14 : 22} /></span><span>{working.step}</span><time>{working.elapsed}</time></div>}
           </div>
           <div className="atelier-tools">
             <button aria-pressed={sketching} onClick={() => { setSketching(!sketching); setSelected(null); }}><Icon name="brush" size={15} />したがき</button>
@@ -312,27 +306,16 @@ export function Atelier({ bridge, editor, readOnly, act, onClose }: Props) {
         </section>
         <section className="atelier-chat">
           <div className="ai-session">
-            <span className="ai-session-state" data-running={state.running || undefined}>{!state.connected ? '接続中…' : state.running ? 'AI が かいています…' : state.sessionId ? 'つづきの 会話' : '新しい会話'}</span>
-            <button className="ghost" title="新しい会話を始める" disabled={busy} onClick={() => bridge.reset(bookId)}><Icon name="redo" size={14} />新しい会話</button>
+            <span className="ai-session-state" data-running={state.running || undefined}>{state.running ? 'AI が かいています…' : messages.length ? 'つづきの 会話' : '新しい会話'}</span>
+            <button className="ghost" title="新しい会話を始める" disabled={busy || !messages.length} onClick={() => bridge.reset(bookId)}><Icon name="redo" size={14} />新しい会話</button>
           </div>
           <div ref={listRef} className="ai-messages" aria-live="polite">
             {messages.length === 0 && <div className="atelier-ideas">
               <p className="hint">どんな えを つくりますか？ AI が {CANDIDATES}つの 案を かきます。えらんだら、パーツを タップして「もっと 大きく」「ピンクに」と なおせます。</p>
               {ideas.map((idea) => <button key={idea} className="ghost" disabled={busy || readOnly} onClick={() => send(idea)}>{idea}</button>)}
             </div>}
-            {messages.map((message, index) => {
-              if (message.role === 'user') return <div key={index} className="ai-message user"><p>{message.text}</p>{message.mark && <span className="ai-mark-chip">{message.mark}</span>}</div>;
-              if (message.role === 'assistant') return <div key={index} className="ai-message assistant" data-live={message.live || undefined}><p>{message.text}</p></div>;
-              return <div key={index} className="ai-message status" data-error={message.error || undefined} data-done={message.done || undefined} role={message.error ? 'alert' : undefined}>{message.done && <Icon name="check" size={12} />}{message.text}</div>;
-            })}
-            {working && <div className="atelier-working" role="status" aria-label="AI の ようす">
-              <span className="atelier-pen"><Icon name="brush" size={16} /></span>
-              <div className="atelier-working-text">
-                <strong>{working.step}</strong>
-                <small><time>{working.elapsed}</time>{turn && turn.expected > 1 && ` · ${turn.arrived} / ${turn.expected} まい`}{working.long && ' · ていねいに かくので 1〜3分 かかります'}</small>
-              </div>
-              <span className="atelier-bar" data-indeterminate={working.fraction === null || undefined}><i style={working.fraction === null ? undefined : { width: `${Math.round(working.fraction * 100)}%` }} /></span>
-            </div>}
+            {messages.map((message, index) => <ChatMessage key={index} message={message} />)}
+            {working && <WorkingCard step={working.step} elapsed={working.elapsed} long={working.long} fraction={working.fraction} count={turn && turn.expected > 1 ? `${turn.arrived} / ${turn.expected} まい` : undefined} />}
           </div>
           {outOfCredits ? <OutOfCredits /> : <div className="ai-compose">
             <div className="atelier-mode" role="radiogroup" aria-label="たのみかた">

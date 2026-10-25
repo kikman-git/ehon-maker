@@ -1,4 +1,4 @@
-import type { Part } from './prompt';
+export interface Part { id: string; name: string }
 
 const SHAPES = new Set(['svg', 'g', 'defs', 'path', 'rect', 'circle', 'ellipse', 'line', 'polyline', 'polygon', 'linearGradient', 'radialGradient', 'stop']);
 

@@ -43,7 +43,8 @@ export function startCredits(): void {
     watching = onSnapshot(doc(db, 'credits', uid), (snapshot) => {
       const data = snapshot.data();
       if (!data) return;
-      credits.set({ ready: true, balance: Number(data.balance ?? 0), plan: data.plan === 'plus' ? 'plus' : 'free', granted: Number(data.granted ?? 0), spent: Number(data.spent ?? 0) });
+      // A turn in flight holds credits; the chip keeps showing them until the real cost settles, so a hold never reads as a charge.
+      credits.set({ ready: true, balance: Number(data.balance ?? 0) + Number(data.reserved ?? 0), plan: data.plan === 'plus' ? 'plus' : 'free', granted: Number(data.granted ?? 0), spent: Number(data.spent ?? 0) });
     }, () => {});
     void httpsCallable(functions, 'creditsBalance')().catch(() => {});
   });
@@ -59,21 +60,40 @@ export interface AtelierInput {
   image: string | null;
   bookArt: string[];
 }
-export interface AtelierResult { candidates: string[]; piece: string | null; say: string; credits: number; balance: number }
-type AtelierChunk = { type: 'progress'; chars: number } | { type: 'result'; result: AtelierResult };
+export type Metered<T> = T & { credits: number; balance: number };
+export type AtelierResult = Metered<{ candidates: string[]; piece: string | null; say: string }>;
+/** What the harness streams while it works: characters of the answer so far, or a step in the user's language. */
+export interface Progress { chars?: number; step?: string }
+type Chunk<R> = ({ type: 'progress' } & Progress) | { type: 'result'; result: R };
+
+/** What the book desk sends: the page in view, the mark and its items, and the document without its art. */
+export interface BookInput {
+  title: string;
+  request: string;
+  pageIndex: number;
+  pageId: string;
+  pageCount: number;
+  book: string;
+  bookArt: string[];
+  mark: { pageIndex: number; pageId: string; x0: number; y0: number; x1: number; y1: number } | null;
+  items: unknown[];
+  selected: unknown;
+  image: string | null;
+}
+export type BookResult = Metered<{ book: string | null; say: string }>;
 
 export type AtelierFailure = 'credits' | 'paused' | 'signedOut' | 'network';
 export class AtelierError extends Error {
   constructor(readonly reason: AtelierFailure, readonly balance: number | null = null) { super(reason); }
 }
 
-/** One metered turn on the server; progress is characters of the model's answer so far. */
-export async function atelierTurn(input: AtelierInput, onProgress: (chars: number) => void): Promise<AtelierResult> {
+/** One metered turn on the server, with its progress as it streams. */
+async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progress) => void): Promise<R> {
   const { functions } = firebase();
-  const callable = httpsCallable<AtelierInput, AtelierResult, AtelierChunk>(functions, 'atelierTurn', { timeout: 300_000 });
+  const callable = httpsCallable<I, R, Chunk<R>>(functions, name, { timeout: 600_000 });
   try {
     const { stream, data } = await callable.stream(input);
-    for await (const chunk of stream) if (chunk.type === 'progress') onProgress(chunk.chars);
+    for await (const chunk of stream) if (chunk.type === 'progress') onProgress(chunk);
     return await data;
   } catch (error) {
     const code = (error as { code?: string }).code ?? '';
@@ -84,6 +104,8 @@ export async function atelierTurn(input: AtelierInput, onProgress: (chars: numbe
     throw new AtelierError('network');
   }
 }
+export const atelierTurn = (input: AtelierInput, onProgress: (progress: Progress) => void) => aiTurn<AtelierInput, AtelierResult>('atelierTurn', input, onProgress);
+export const bookTurn = (input: BookInput, onProgress: (progress: Progress) => void) => aiTurn<BookInput, BookResult>('bookTurn', input, onProgress);
 
 export type Product = 'plus' | 'pack';
 

@@ -26,6 +26,9 @@ importers:
       firebase-tools:
         specifier: 15.30.0
         version: 15.30.0(@types/node@22.20.2)(supports-color@10.2.2)
+      openai:
+        specifier: ^7.43.0
+        version: 7.43.0(@aws-sdk/credential-provider-node@3.972.83)(@smithy/signature-v4@5.7.3)(google-auth-library@10.9.1(supports-color@10.2.2))(undici@8.10.2)(ws@8.21.3)(zod@4.6.0)
       sharp:
         specifier: ^0.34.0
         version: 0.34.5
@@ -59,6 +62,9 @@ importers:
       firebase-functions:
         specifier: ^7.0.0
         version: 7.3.2(firebase-admin@13.10.0(@firebase/app-compat@0.5.18)(@firebase/app@0.16.2)(supports-color@10.2.2))(supports-color@10.2.2)
+      openai:
+        specifier: ^7.43.0
+        version: 7.43.0(@aws-sdk/credential-provider-node@3.972.83)(@smithy/signature-v4@5.7.3)(google-auth-library@10.9.1(supports-color@10.2.2))(undici@8.10.2)(ws@8.21.3)(zod@4.6.0)
       sharp:
         specifier: ^0.34.0
         version: 0.34.5
@@ -3162,6 +3168,33 @@ packages:
   open@6.4.0:
     resolution: {integrity: sha512-IFenVPgF70fSm1keSd2iDBIDIBZkroLeuffXq+wKTzTJlBpesFWojV9lb8mzOfaAzM1sr7HQHuO0vtV0zYekGg==}
     engines: {node: '>=8'}
+
+  openai@7.43.0:
+    resolution: {integrity: sha512-fBjKaDFG8AVfkGYoIo/E+xNRlNk7nx2nQ9GoQtXfePzPjg4QcT6nejkhXayJnEwSpFGfthOrAPI2KXj5yAqg9A==}
+    engines: {node: '>=22.0.0'}
+    peerDependencies:
+      '@aws-sdk/credential-provider-node': '>=3.972.0 <4'
+      '@smithy/hash-node': '>=4.3.0 <5'
+      '@smithy/signature-v4': '>=5.4.0 <6'
+      google-auth-library: '>=9.15.1 <11'
+      undici: '>=5 <9'
+      ws: ^8.21.0
+      zod: ^3.25 || ^4.0
+    peerDependenciesMeta:
+      '@aws-sdk/credential-provider-node':
+        optional: true
+      '@smithy/hash-node':
+        optional: true
+      '@smithy/signature-v4':
+        optional: true
+      google-auth-library:
+        optional: true
+      undici:
+        optional: true
+      ws:
+        optional: true
+      zod:
+        optional: true
 
   openapi3-ts@3.2.0:
     resolution: {integrity: sha512-/ykNWRV5Qs0Nwq7Pc0nJ78fgILvOT/60OxEmB3v7yQ8a8Bwcm43D4diaYazG/KBn6czA+52XYy931WFLMCUeSg==}
@@ -7298,6 +7331,15 @@ snapshots:
   open@6.4.0:
     dependencies:
       is-wsl: 1.1.0
+
+  openai@7.43.0(@aws-sdk/credential-provider-node@3.972.83)(@smithy/signature-v4@5.7.3)(google-auth-library@10.9.1(supports-color@10.2.2))(undici@8.10.2)(ws@8.21.3)(zod@4.6.0):
+    optionalDependencies:
+      '@aws-sdk/credential-provider-node': 3.972.83
+      '@smithy/signature-v4': 5.7.3
+      google-auth-library: 10.9.1(supports-color@10.2.2)
+      undici: 8.10.2
+      ws: 8.21.3
+      zod: 4.6.0
 
   openapi3-ts@3.2.0:
     dependencies:

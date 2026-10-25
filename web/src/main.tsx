@@ -11,7 +11,6 @@ import { AiPanel } from './ai/AiPanel';
 import { aiBridge, atelierBridge } from './ai/bridge';
 import { Atelier } from './atelier/Atelier';
 import type { Mark } from './ai/prompt';
-import { AiTerminal } from './ai/Terminal';
 import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, loadFonts, parts, type WebEditor } from './core';
 import { loadTemplates, templateBook, templateStore } from './templates';
 import { Desk, type DeskHandle } from './desk/Desk';
@@ -109,7 +108,6 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const [atelierOpen, setAtelierOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const [aiOpenFor, setAiOpenFor] = useState<typeof editor | null>(null);
-  const [terminalOpen, setTerminalOpen] = useState(() => remembered('studio.terminal', true));
   const aiOpen = aiBridge !== null && aiOpenFor === editor;
   const importRef = useRef<HTMLInputElement>(null);
   const uploadRef = useRef<HTMLInputElement>(null);
@@ -274,7 +272,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     if (mark && (mark.pageIndex !== editor.pageIndex || mark.pageIndex >= editor.pageCount || editor.pageId(mark.pageIndex) !== mark.pageId)) setMark(null);
   }, [editor, revision]);
 
-  /** The CLI's document is validated like an opened file, then applied as one undo step. */
+  /** The harness's document is validated like an opened file, then applied as one undo step. */
   const applyAiDocument = (json: string, attempt = 0) => {
     if (!aiBridge) return;
     if (editor.isGestureActive) { if (attempt < 20) setTimeout(() => applyAiDocument(json, attempt + 1), 250); return; }
@@ -303,7 +301,6 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     const timer = setTimeout(() => bridge.sync(editor.bookId, editor.bookJson()), 400);
     return () => clearTimeout(timer);
   }, [aiOpen, editor, revision]);
-  const showTerminal = (open: boolean) => { setTerminalOpen(open); remember('studio.terminal', open); };
   useEffect(() => () => workspace?.stop(), [workspace]);
 
   const openBook = async (file: File) => {
@@ -559,14 +556,13 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
           </div>
           <p className="hint">ページのサムネイルや見開きのとなりのページに ドラッグしても移動できます。</p>
         </>}
-        {tool === 'ai' && aiBridge && <AiPanel bridge={aiBridge} editor={editor} revision={revision} mark={mark} onClearMark={() => setMark(null)} readOnly={readOnly} terminalOpen={terminalOpen} onToggleTerminal={() => showTerminal(!terminalOpen)} />}
+        {tool === 'ai' && aiBridge && <AiPanel bridge={aiBridge} editor={editor} revision={revision} mark={mark} onClearMark={() => setMark(null)} readOnly={readOnly} />}
         {tool === 'hand' && <div className="navigation-guide"><Icon name="hand" size={40} /><p>細かいところまで、自由に。</p><span>⌘ / Ctrl + スクロールで拡大・縮小。<br />「ページに合わせる」で全体に戻れます。</span></div>}
         <div className="paper-settings"><h3>用紙の色</h3><div className="swatches">{[-1, ...backgrounds].map((color, index) => <button key={color} disabled={readOnly} aria-label={'ページの いろ ' + (index + 1)} title={index === 0 ? '白' : '用紙の色 ' + (index + 1)} style={{ backgroundColor: cssColor(color) }} onClick={() => edit(() => editor.setPageBackground(color))} />)}</div></div>
         <div className="panel-shortcuts"><span><kbd>Space</kbd> 押しながらドラッグで移動</span><span><kbd>⌘ / Ctrl Z</kbd> 元に戻す</span></div>
       </aside>
       <section className="desk" aria-label="えほんを つくる">
         <Desk ref={deskRef} editor={editor} revision={revision} readOnly={readOnly} onChange={changed} workspace={workspace} library={repo.library} assetsUrl={assetsUrl} tool={tool} showStrip={stripOpen} mark={mark} onMark={setMark} />
-        {aiBridge && aiOpen && terminalOpen && <AiTerminal bridge={aiBridge} onClose={() => showTerminal(false)} />}
         {accountOpen && <AccountPanel repo={repo} onClose={() => setAccountOpen(false)} />}
         {atelierBridge && atelierOpen && <Atelier key={editor.bookId} bridge={atelierBridge} editor={editor} readOnly={readOnly} act={edit} onClose={() => setAtelierOpen(false)} />}
       </section>

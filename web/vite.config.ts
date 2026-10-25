@@ -2,7 +2,6 @@ import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { aiDesk } from './tools/ai-desk.ts';
 import { publicSeo } from './tools/seo.ts';
 
 /** Mirrors public/_redirects for the dev and preview servers: clean paths land on their entry page. */
@@ -66,7 +65,7 @@ function localTemplates(): Plugin {
 
 export default defineConfig({
   appType: 'mpa',
-  plugins: [react(), publicSeo(), cleanRoutes(), localTemplates(), aiDesk()],
+  plugins: [react(), publicSeo(), cleanRoutes(), localTemplates()],
   // The AI desk's per-book workspaces live under the root but are not part of the app.
   server: { watch: { ignored: ['**/.ehon-ai/**'] } },
   build: {

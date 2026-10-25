@@ -126,45 +126,29 @@ with a dirty flag that survives a reload) and mirrors it to `workspaces/{bookId}
 account's other browsers, last writer wins; the rules require the book to exist and belong to the
 same account, so a brand-new book's scratch is pushed once the book itself has synced.
 
-## AI desk (local development)
+## AI: the picture-book harness
 
-The **AI** tool (A) is the studio's chat with a coding agent, present only on the dev server. Drag
-on a page to draw a loop around the part to change; the loop shows as a red mark, a tap clears it,
-turning the page drops it. Type the request in the panel and press **頼む**: the studio composes a
-turn naming the book, the page, the marked area in page percent, the items whose boxes overlap it,
-the selected item and the request verbatim, renders the page at 1024px with the mark outlined in
-red, and hands it to the CLI. Without a mark the whole visible page is the subject.
+The **AI** tool (A) is a chat over the open book, and the 素材アトリエ in the 素材 panel a chat over
+one picture. Both run on the backend's harness (`backend/functions/src/agent.ts`, decision #67),
+which is model-agnostic: the browser never talks to a model, only to the `bookTurn` and
+`atelierTurn` callables, which stream progress and settle credits (decision #66). Drag on a page
+to draw a loop around the part to change; the loop shows as a red mark, a tap clears it, turning
+the page drops it. Type the request and press **頼む**: the panel sends the page in view, the
+mark in page percent with the items whose boxes overlap it, the selected item, a 1024px PNG of
+the page with the mark outlined in red, and the document with its drawings reduced to names
+(`src/ai/cloudBookBridge.ts`); a few of the book's drawings travel alongside so new pictures match.
+The harness edits the book through tools that know the format (pages, words, pieces, layers,
+`draw_picture`), validates every call and feeds errors back to the model, and streams each step
+(「くま」の えを かいています…) to the working card. The answer comes back as the whole document
+without the old drawings; the bridge puts them back, keeps any new `art` the harness drew, and the
+studio validates it with the codec and applies it through `WebEditor.applyDocument` as one undo
+step. A document it cannot open is reported in the chat and the book is left alone.
 
-`tools/ai-desk.ts` is a Vite plugin that keeps one workspace per open book under `web/.ehon-ai/<bookId>/`:
-`book.ehon.json` (the document, kept in step with the editor), `FORMAT.md` (a copy of
-`docs/EHON_FORMAT.md`), `CLAUDE.md` and `AGENTS.md` (the house rules), `page.png` (the last turn's
-page) and `session.json`. Each turn runs the chosen CLI **non-interactively** in that folder with the
-prompt on stdin and its JSON event stream on stdout; the first turn's session id is kept and every
-later turn resumes it, per provider, so the agent remembers the conversation across turns and
-across dev-server restarts (**新しい会話** forgets it). When the CLI writes `book.ehon.json`, the
-studio validates the file with the codec and applies it through `WebEditor.applyDocument` as one
-undo step; a document it cannot open is reported in the chat and the book is left alone. Local
-edits made meanwhile are synced back to the file, so the next turn sees the book as the studio has it.
-
-| Provider | Command the plugin runs | Instructions file |
-|---|---|---|
-| `claude` | `claude -p --output-format stream-json --verbose --include-partial-messages --permission-mode acceptEdits [--resume <id>]` | `CLAUDE.md`; reads `page.png` itself |
-| `codex` | `codex exec --json --skip-git-repo-check -c sandbox_mode="workspace-write" [-i page.png] [resume <id>] -` | `AGENTS.md`; the image is attached to the turn |
-
-**モデル** and **効果** in the panel choose the model and the effort level for the current provider,
-remembered per book and per provider: Claude takes `--model` (an alias such as `sonnet` or a full
-id) and `--effort` (low to max); Codex takes `-m` and `-c model_reasoning_effort=…` (minimal to
-xhigh). Empty means the CLI's own default, and the model field suggests the aliases Claude knows and
-the model named in `~/.codex/config.toml`.
-
-The panel offers every CLI found on `PATH` and remembers the choice per book. `EHON_AI_PROVIDER`
-picks the default, `EHON_CLAUDE_COMMAND` / `EHON_CODEX_COMMAND` replace the binary (a relative
-script path is resolved against `web/`), and `EHON_CLAUDE_ARGS` / `EHON_CODEX_ARGS` add flags such
-as `--model`. Codex output is normalised onto the Claude stream shape (`tools/ai-providers.ts`), so
-the chat and the **ターミナル** drawer, an xterm under the desk that shows the command line, the
-session, the streamed reply, tool calls and the result of every run, read the same for both. A dev
-server started from inside Claude Code strips `CLAUDECODE` from the CLI's environment so the nested
-run is allowed. Production builds carry no AI layer: the tool is absent and none of this code ships.
+Without a backend (`pnpm test`, a checkout with an empty `.env.local`) the AI tool and the atelier
+are absent. Against the emulators (`make emulators`, `VITE_EMULATOR_HOST=127.0.0.1`) the functions
+answer with a scripted stand-in model unless `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` is set in
+`backend/functions/.secret.local`, in which case the real model draws and edits, metered against
+the emulator's own credit ledger.
 
 ## Story templates
 
@@ -284,10 +268,7 @@ lays every spread flat.
 
 ## Tests and budgets
 
-`pnpm test` (Playwright, no cloud) runs the AI desk against `tests/fixtures/fake-claude.mjs` and
-`fake-codex.mjs`, stand-ins that edit the book and print each CLI's event stream, checking the mark,
-the composed prompt and page image, the applied document as one undo step, session resume, provider
-switching and a rejected document. It also checks a mask/rotation fixture, paints a document with embedded
+`pnpm test` (Playwright, no cloud) needs no backend and skips the AI, which `make web-sync-test` covers against the emulators: the atelier and the book chat through the harness's stand-in model, the working card, credits per turn and the offers when they run out. It also checks a mask/rotation fixture, paints a document with embedded
 SVG art and opens a story template with its materials and editable captions, and, on the blank
 page, exercises drag undo, ruby, file validation, raster placement, stale intent
 rejection, single-page pan/zoom, drawing/erasing, cancellation, pen/touch input, reload persistence, and library placement on the active page and adding a page. Run

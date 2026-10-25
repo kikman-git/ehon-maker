@@ -8,10 +8,13 @@ import { onSchedule } from 'firebase-functions/v2/scheduler';
 import { onMessagePublished } from 'firebase-functions/v2/pubsub';
 import { resolve } from 'node:path';
 import Stripe from 'stripe';
-import { AtelierService, ClaudeModel, FakeModel, MODEL, type AtelierChunk, type Model } from './ai';
 import { AssetService, type BlobStore, type Upload } from './assets';
+import { AtelierService, type AtelierChunk } from './atelier';
 import { BillingService } from './billing';
+import { BookService, type BookChunk } from './book';
 import { CreditService } from './credits';
+import { FakeModel } from './fake';
+import { DEFAULT_MODEL, modelFor, type ChatModel, type Provider } from './model';
 import { LocalBlobStore } from './localBlobs';
 import { LoginService } from './login';
 import { R2Store } from './r2';
@@ -29,7 +32,10 @@ const budgetTopic = defineString('BUDGET_ALERT_TOPIC', { default: 'ehon-budget-a
 const budgetLimit = defineInt('BUDGET_LIMIT_JPY', { default: 10000 });
 const webOrigins = defineString('WEB_ORIGINS', { default: 'http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:4173' });
 const anthropicKey = defineSecret('ANTHROPIC_API_KEY');
-const aiModel = defineString('AI_MODEL', { default: MODEL });
+const openaiKey = defineSecret('OPENAI_API_KEY');
+/** The harness is model-agnostic (decision #67): the provider and model are configuration, not code. */
+const aiProvider = defineString('AI_PROVIDER', { default: 'anthropic' });
+const aiModel = defineString('AI_MODEL', { default: '' });
 const stripeKey = defineSecret('STRIPE_SECRET_KEY');
 const stripeWebhookSecret = defineSecret('STRIPE_WEBHOOK_SECRET');
 const pricePlus = defineString('STRIPE_PRICE_PLUS', { default: '' });
@@ -54,10 +60,11 @@ function blobs(): BlobStore {
 }
 const assets = () => new AssetService(getFirestore(), blobs(), quota.value());
 const credits = () => new CreditService(getFirestore());
-/** Without a key the emulator draws with the stand-in, so the whole credit flow runs offline. */
-function model(): Model {
-  const apiKey = anthropicKey.value();
-  if (apiKey) return new ClaudeModel(apiKey, aiModel.value());
+/** Without a key the emulator answers with the stand-in, so the whole credit flow runs offline. */
+function model(): ChatModel {
+  const provider: Provider = aiProvider.value() === 'openai' ? 'openai' : 'anthropic';
+  const apiKey = provider === 'openai' ? openaiKey.value() : anthropicKey.value();
+  if (apiKey) return modelFor(provider, apiKey, aiModel.value() || DEFAULT_MODEL[provider]);
   if (emulated) return new FakeModel();
   throw new HttpsError('failed-precondition', 'AI is not configured.');
 }
@@ -81,11 +88,16 @@ export const shareCreate = onCall({ enforceAppCheck: options.enforceAppCheck }, 
 export const shareRevoke = onCall({ enforceAppCheck: options.enforceAppCheck }, request => {
   const uid = user(request); return new ShareService(getFirestore()).revoke(uid, request.data?.token);
 });
-/** Credits and the metered atelier (decision #66). The balance call also opens the account with its welcome grant. */
+/** Credits and the metered AI turns (decisions #66, #67). The balance call also opens the account with its welcome grant. */
 export const creditsBalance = onCall({ enforceAppCheck: options.enforceAppCheck }, request => { const uid = user(request); return credits().ensure(uid); });
-export const atelierTurn = onCall<unknown, Promise<unknown>, AtelierChunk>({ enforceAppCheck: options.enforceAppCheck, secrets: [anthropicKey], memory: '512MiB', timeoutSeconds: 300 }, (request, response) => {
+const aiOptions = { enforceAppCheck: options.enforceAppCheck, secrets: [anthropicKey, openaiKey], memory: '512MiB' as const, timeoutSeconds: 540 };
+export const atelierTurn = onCall<unknown, Promise<unknown>, AtelierChunk>(aiOptions, (request, response) => {
   const uid = user(request);
   return new AtelierService(getFirestore(), credits(), model()).turn(uid, request.data, chunk => response?.sendChunk(chunk) ?? Promise.resolve(false), response?.signal);
+});
+export const bookTurn = onCall<unknown, Promise<unknown>, BookChunk>(aiOptions, (request, response) => {
+  const uid = user(request);
+  return new BookService(getFirestore(), credits(), model()).turn(uid, request.data, chunk => response?.sendChunk(chunk) ?? Promise.resolve(false), response?.signal);
 });
 export const stripeCheckout = onCall({ enforceAppCheck: options.enforceAppCheck, secrets: [stripeKey] }, request => {
   const uid = user(request); return billing().checkout(uid, request.auth?.token.email, request.data?.product);

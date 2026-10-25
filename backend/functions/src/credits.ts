@@ -12,16 +12,27 @@ export const MIN_TURN_CREDITS = 3;
 
 export interface TokenUsage { input: number; output: number; cacheRead: number; cacheWrite: number }
 
-/** US$ per million tokens, from the published Claude API rates. */
+/** US$ per million tokens, from the providers' published rates; an unknown model is charged at the dearest known one. */
 export interface Prices { input: number; output: number; cacheRead: number; cacheWrite: number }
 export const PRICES: Record<string, Prices> = {
   'claude-opus-5-5': { input: 4, output: 20, cacheRead: 0.2, cacheWrite: 5 },
   'claude-sonnet-5-5': { input: 2, output: 10, cacheRead: 0.2, cacheWrite: 2.5 },
   'claude-haiku-5-5': { input: 0.1, output: 0.5, cacheRead: 0.01, cacheWrite: 0.125 },
+  // TODO: confirm against the OpenAI price list before a paid launch; set from memory of the GPT-5 family.
+  'gpt-5.5': { input: 1.25, output: 10, cacheRead: 0.125, cacheWrite: 0 },
+  'gpt-5': { input: 1.25, output: 10, cacheRead: 0.125, cacheWrite: 0 },
+  'gpt-5-mini': { input: 0.25, output: 2, cacheRead: 0.025, cacheWrite: 0 },
+  'gpt-5-nano': { input: 0.05, output: 0.4, cacheRead: 0.005, cacheWrite: 0 },
 };
 
+/** A dated model id such as `gpt-5-2026-03-01` or `claude-opus-5-5-20260401` prices as its family. */
+export function pricesFor(model: string): Prices {
+  const key = Object.keys(PRICES).sort((a, b) => b.length - a.length).find(known => model === known || model.startsWith(known + '-'));
+  return key ? PRICES[key] : PRICES['claude-opus-5-5'];
+}
+
 export function usdFor(model: string, usage: TokenUsage): number {
-  const price = PRICES[model] ?? PRICES['claude-opus-5-5'];
+  const price = pricesFor(model);
   return (usage.input * price.input + usage.output * price.output + usage.cacheRead * price.cacheRead + usage.cacheWrite * price.cacheWrite) / 1e6;
 }
 
@@ -56,11 +67,11 @@ export class CreditService {
    * Takes a hold for one turn, or refuses with `resource-exhausted` when the balance cannot cover a small one.
    * A thin balance is held whole, so the last credits are still usable.
    */
-  async reserve(uid: string, feature: string): Promise<{ id: string; hold: number }> {
+  async reserve(uid: string, feature: string, wanted = TURN_HOLD): Promise<{ id: string; hold: number }> {
     return this.db.runTransaction(async tx => {
       const account = await this.loaded(tx, uid);
       if (account.balance < MIN_TURN_CREDITS) throw new HttpsError('resource-exhausted', 'Not enough credits.', { balance: account.balance });
-      const hold = Math.min(TURN_HOLD, account.balance);
+      const hold = Math.min(wanted, account.balance);
       const entry = this.account(uid).collection('ledger').doc();
       tx.update(this.account(uid), { balance: FieldValue.increment(-hold), reserved: FieldValue.increment(hold), updatedAt: FieldValue.serverTimestamp() });
       tx.set(entry, { kind: 'turn', feature, status: 'reserved', hold, delta: 0, createdAt: FieldValue.serverTimestamp() });
