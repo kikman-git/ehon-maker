@@ -33,8 +33,9 @@ object BookCodec {
      * 4: embedded vector art (`book.art`, decision #55); page colours may be read from hex strings
      *    and text faces from picker ids, so a document can be written by hand or by a model.
      * 5: per-instance illustration drawing and solid-colour ink; older clients must not discard corrections.
+     * 6: page-stroke `brushStep` is any positive number rather than the integers 1..3.
      */
-    const val FORMAT_VERSION = 5
+    const val FORMAT_VERSION = 6
 
     private val json = Json {
         // A file written by a newer build must not hard-fail an older one on a field it

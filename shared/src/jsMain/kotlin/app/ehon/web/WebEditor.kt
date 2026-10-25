@@ -13,6 +13,7 @@ import app.ehon.model.ItemId
 import app.ehon.model.Page
 import app.ehon.model.PartId
 import app.ehon.model.PartItem
+import app.ehon.model.Stroke
 import app.ehon.model.TextItem
 import app.ehon.scene.RenderTarget
 import app.ehon.scene.SceneBuilder
@@ -61,7 +62,9 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     val crayonIndex: Int get() = controller.crayonIndex
     val brushColor: Int get() = controller.brushColor.packed
     val hasCustomInk: Boolean get() = controller.hasCustomInk
-    val brushStep: Int get() = controller.brushStep
+    val brushStep: Float get() = controller.brushStep
+    val minBrushStep: Float get() = Stroke.MIN_BRUSH_STEP
+    val maxBrushStep: Float get() = Stroke.MAX_BRUSH_STEP
     val eraser: Boolean get() = controller.eraser
 
     fun bookJson(): String = BookCodec.encode(controller.book)
@@ -106,7 +109,7 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     fun setBrushColor(argb: Int) = controller.setBrushColor(Argb(argb))
     fun beginIllustrationEdit() = controller.beginIllustrationEdit()
     fun endIllustrationEdit() = controller.endIllustrationEdit()
-    fun setBrush(step: Int) = controller.setBrush(step)
+    fun setBrush(step: Float) = controller.setBrush(step)
     fun setEraser(enabled: Boolean) {
         if (controller.eraser != enabled) controller.toggleEraser()
     }
@@ -243,7 +246,7 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
         EditorController(book, measurer, idSource, clock).apply {
             setUiLevel(UiLevel.ADULT)
             setCrayon(6)
-            setBrush(1)
+            setBrush(1f)
         }
 
     private fun checkedPage(index: Int): Int {

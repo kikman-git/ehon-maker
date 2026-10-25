@@ -17,6 +17,9 @@ object StrokeSimplify {
     /** 0.5px at the 322px reference page, expressed in normalised units. */
     const val DEFAULT_EPSILON = 0.5f / 322f
 
+    /** A hairline must not drift further than its own width, so thin strokes keep more points. */
+    fun epsilonFor(width: Float): Float = minOf(DEFAULT_EPSILON, width / 2)
+
     fun simplify(points: List<StrokePoint>, epsilon: Float = DEFAULT_EPSILON): List<StrokePoint> {
         if (points.size <= 2) return points
         val keep = BooleanArray(points.size)

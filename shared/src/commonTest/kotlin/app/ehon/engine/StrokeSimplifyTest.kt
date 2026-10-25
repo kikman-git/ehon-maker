@@ -1,5 +1,6 @@
 package app.ehon.engine
 
+import app.ehon.model.Stroke
 import app.ehon.model.StrokePoint
 import kotlin.math.PI
 import kotlin.math.sin
@@ -62,6 +63,15 @@ class StrokeSimplifyTest {
     fun `a repeated point does not divide by zero`() {
         val stuck = List(50) { StrokePoint(0.4f, 0.4f) }
         assertEquals(2, StrokeSimplify.simplify(stuck).size)
+    }
+
+    @Test
+    fun `the thinnest brush keeps its curve within its own width`() {
+        val width = Stroke.widthFraction(Stroke.MIN_BRUSH_STEP)
+        val points = curve(2000)
+        val kept = StrokeSimplify.simplify(points, StrokeSimplify.epsilonFor(width))
+        assertTrue(points.all { distanceToPolyline(it, kept) <= width / 2 + 1e-6f })
+        assertEquals(StrokeSimplify.DEFAULT_EPSILON, StrokeSimplify.epsilonFor(Stroke.widthFraction(2f)))
     }
 
     private fun curve(n: Int) = (0..n).map {

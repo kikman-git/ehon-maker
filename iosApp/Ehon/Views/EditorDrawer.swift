@@ -200,7 +200,7 @@ private struct DrawPanel: View {
             HStack(spacing: 10) {
                 ForEach(1...3, id: \.self) { step in
                     Button {
-                        model.apply { $0.setBrush(step: Int32(step)) }
+                        model.apply { $0.setBrush(step: Float(step)); if $0.eraser { $0.toggleEraser() } }
                     } label: {
                         Circle()
                             .fill(Color.ehInk)

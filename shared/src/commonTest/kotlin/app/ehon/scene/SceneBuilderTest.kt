@@ -101,7 +101,7 @@ class SceneBuilderTest {
     fun `stroke width scales with the page instead of staying a fixed pixel count`() {
         val stroke = Stroke(
             ink = Ink.Crayon(1),
-            brushStep = 2,
+            brushStep = 2f,
             points = persistentListOf(StrokePoint(0.1f, 0.1f), StrokePoint(0.9f, 0.9f)),
         )
         val onScreen = builder.build(page(strokes = listOf(stroke)), screenTarget())
@@ -138,7 +138,7 @@ class SceneBuilderTest {
 
     @Test
     fun `strokes paint above parts so a child can draw over them`() {
-        val stroke = Stroke(Ink.Crayon(0), 1, persistentListOf(StrokePoint(0.5f, 0.5f)))
+        val stroke = Stroke(Ink.Crayon(0), 1f, persistentListOf(StrokePoint(0.5f, 0.5f)))
         val scene = builder.build(page(listOf(cat), listOf(stroke)), screenTarget())
         val partIndex = scene.nodes.indexOfFirst { it is SceneNode.Group }
         val strokeIndex = scene.nodes.indexOfFirst { it is SceneNode.StrokePath }
@@ -147,7 +147,7 @@ class SceneBuilderTest {
 
     @Test
     fun `eraser strokes carry no fill`() {
-        val stroke = Stroke(Ink.Eraser, 2, persistentListOf(StrokePoint(0.2f, 0.2f)))
+        val stroke = Stroke(Ink.Eraser, 2f, persistentListOf(StrokePoint(0.2f, 0.2f)))
         val node = builder.build(page(strokes = listOf(stroke)), screenTarget())
             .nodes.filterIsInstance<SceneNode.StrokePath>().single()
         assertTrue(node.erase)

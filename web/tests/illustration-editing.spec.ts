@@ -71,7 +71,7 @@ test('erase and redraw one illustration, undo, move, export, save and reopen it'
   expect(await pixel(page, .5, .5)).toEqual(blue);
   expect(await pixel(page, .15, .5)).toEqual(brown);
   const erased = await saved(page);
-  expect(erased.version).toBe(5);
+  expect(erased.version).toBe(6);
   expect(erased.book.pages[0].strokes).toEqual([]);
   expect(erased.book.pages[0].items[2].drawing.strokes).toHaveLength(1);
   expect(erased.book.pages[0].items[1].drawing).toBeNull();
@@ -130,7 +130,7 @@ test('cancelled edits and returning to page drawing keep illustration correction
   await page.keyboard.press('b');
   await draw(page, [.45, .55], [.55, .55]);
   await page.keyboard.press('e');
-  await page.getByRole('button', { name: '太い', exact: true }).click();
+  await page.getByRole('slider', { name: 'ブラシの太さ' }).fill('382');
   await draw(page, [.5, .4], [.5, .6]);
   await expect.poll(() => pixel(page, .5, .55)).toEqual(green);
   await expect.poll(() => pixel(page, .5, .5)).toEqual(blue);

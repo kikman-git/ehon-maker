@@ -80,10 +80,11 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .brush-preview { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; padding: 7px 10px 11px; text-align: center; background: #fafbf9; }
 .brush-preview svg { display: block; width: 100%; height: 68px; }
 .brush-preview span { font-size: 11px; color: #829086; }
-.brush-sizes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
-.brush-sizes button { min-height: 69px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 11px; font-size: 10px; color: #728075; }
-.brush-dot { display: block; border-radius: 50%; background: #344c3d; }
-.brush-sizes [aria-pressed="true"] { border-color: #7b9e87; background: #f1f7f2; color: #2c5f43; }
+.brush-size { display: grid; grid-template-columns: 30px minmax(0, 1fr) 52px; align-items: center; gap: 8px; min-height: 36px; }
+.brush-size input[type="range"] { width: 100%; min-height: 0; margin: 0; padding: 0; border: 0; background: none; accent-color: #4c7760; }
+.brush-size input[type="number"] { min-height: 28px; padding: 3px 6px; font-size: 12px; text-align: right; font-variant-numeric: tabular-nums; appearance: textfield; }
+.brush-size input[type="number"]::-webkit-inner-spin-button, .brush-size input[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.brush-dot { display: block; justify-self: center; border-radius: 50%; background: #344c3d; }
 .color-value { float: right; font-size: 10px; color: #8b968e; font-weight: 400; }
 .drawing-colors { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px 6px; }
 .drawing-colors button { display: grid; place-items: center; padding: 0; border-radius: 50%; width: 24px; min-height: 24px; height: 24px; border: 1px solid #0000000d; }
@@ -349,8 +350,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
   .custom-ink { margin-top: 0; }
   .tool-panel > fieldset:not(.text-tools):not(.selection-tools) { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
   .tool-panel > fieldset > h3 { display: none; }
-  .brush-sizes { width: 150px; gap: 6px; }
-  .brush-sizes button { min-height: 50px; gap: 7px; font-size: 9px; padding: 7px; }
+  .brush-size { width: 210px; }
   .drawing-colors { width: 168px; gap: 9px 5px; }
   .drawing-colors button { width: 19px; min-height: 19px; height: 19px; }
   .desk-bar { left: 6px; right: 6px; top: 6px; }

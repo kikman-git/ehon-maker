@@ -289,12 +289,20 @@ data class TextItem(
 @Serializable
 data class Stroke(
     val ink: Ink,
-    /** Brush step 1..3; painted width is `step * WIDTH_UNIT` in page-relative units. */
-    val brushStep: Int,
+    /** Any positive size; painted width is `step * WIDTH_UNIT` in page-relative units. */
+    val brushStep: Float,
     @Serializable(with = PersistentListSerializer::class)
     val points: PersistentList<StrokePoint>,
 ) {
+    init {
+        require(brushStep.isFinite() && brushStep > 0f)
+    }
+
     companion object {
+        /** The editor's range; 1, 2 and 3 are the original ほそい / ふつう / ふとい. */
+        const val MIN_BRUSH_STEP = 0.1f
+        const val MAX_BRUSH_STEP = 20f
+
         /** The prototype's brush width in its fixed 322px page. */
         private const val WIDTH_UNIT_AT_REFERENCE = 3.2f
         private const val REFERENCE_PAGE_WIDTH = 322f
@@ -307,7 +315,7 @@ data class Stroke(
          * hairline where the child drew a crayon line. Widths have to scale with the
          * page for the same reason stroke points are normalised.
          */
-        fun widthFraction(brushStep: Int): Float =
+        fun widthFraction(brushStep: Float): Float =
             brushStep * WIDTH_UNIT_AT_REFERENCE / REFERENCE_PAGE_WIDTH
     }
 }

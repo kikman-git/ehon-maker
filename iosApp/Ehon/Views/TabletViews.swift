@@ -271,7 +271,7 @@ struct TabletEditorView: View {
             Spacer()
             ForEach(1...3, id: \.self) { step in
                 let on = Int(model.controller.brushStep) == step && !model.controller.eraser
-                Button { model.apply { $0.setBrush(step: Int32(step)) } } label: {
+                Button { model.apply { $0.setBrush(step: Float(step)); if $0.eraser { $0.toggleEraser() } } } label: {
                     Circle().fill(Color.ehInk)
                         .frame(width: CGFloat(8 + step * 6), height: CGFloat(8 + step * 6))
                         .frame(width: 64, height: 52)

@@ -12,12 +12,14 @@ prints errors that stop the book opening and warnings about things that will loo
 ## Envelope
 
 ```json
-{ "version": 5, "book": { … } }
+{ "version": 6, "book": { … } }
 ```
 
-The app refuses a higher version and reads 1 to 5. Saved books use 5, which adds per-instance
-illustration corrections and custom ink colours. Version 4 remains valid for templates without
-these additions. Older clients refuse version 5 so they cannot silently discard corrections.
+The app refuses a higher version and reads 1 to 6. Saved books use 6, which lets a page stroke's
+`brushStep` be any number from 0.1 to 20 rather than only 1, 2 or 3. Version 5 added per-instance
+illustration corrections and custom ink colours; version 4 remains valid for templates without
+these additions. Older clients refuse newer versions so they cannot silently discard corrections
+or misread a stroke's size.
 
 ## Book
 
@@ -79,7 +81,7 @@ paint in order on an isolated layer: erasing reveals the scenery behind this ins
 brush marks can redraw the erased area. `ink` also accepts `{"type":"crayon","index":6}` using
 the drawing palette. Page strokes remain a separate overlay; their eraser removes only page ink.
 The `solid` ink type works for page strokes too, whose points and `brushStep` keep their existing
-page-relative meaning. Preserve both kinds of strokes when editing a document.
+page-relative meaning: a `brushStep` of 1 paints about 1% of the page width. Preserve both kinds of strokes when editing a document.
 
 **Words** (`type: "text"`):
 
@@ -164,7 +166,7 @@ dot eyes read well at thumbnail size and at 300 dpi alike.
 ## Changing a book
 
 To edit an existing book, read its JSON, change only what was asked, and return the whole
-document at version 5 with every id kept. Retype a caption by changing `text`; move a piece by
+document at version 6 with every id kept. Retype a caption by changing `text`; move a piece by
 changing `x` and `y`; recolour or redraw a picture by changing its `svg`; add a page by
 appending to `pages` with a fresh `id`. Do not renumber existing ids, reorder pages unless asked,
 or drop `strokes` and `reply` fields you find, which are the family's own additions.

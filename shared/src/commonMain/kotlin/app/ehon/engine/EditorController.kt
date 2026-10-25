@@ -89,7 +89,7 @@ class EditorController(
     val hasCustomInk: Boolean get() = customInk != null
     val brushColor: Argb get() = customInk ?: app.ehon.design.Organic.drawingCrayons[crayonIndex]
 
-    var brushStep: Int = 2
+    var brushStep: Float = 2f
         private set
 
     var eraser: Boolean = false
@@ -399,9 +399,10 @@ class EditorController(
         eraser = false
     }
 
-    fun setBrush(step: Int) = change {
-        brushStep = step.coerceIn(1, 3)
-        eraser = false
+    /** Sizes whichever of brush or eraser is active. */
+    fun setBrush(step: Float) = change {
+        require(step.isFinite())
+        brushStep = step.coerceIn(Stroke.MIN_BRUSH_STEP, Stroke.MAX_BRUSH_STEP)
     }
 
     fun toggleEraser() = change { eraser = !eraser }
@@ -451,13 +452,13 @@ class EditorController(
             pageEdit = { p ->
                 val last = p.strokes.last()
                 p.copy(strokes = p.strokes.set(p.strokes.lastIndex,
-                    last.copy(points = StrokeSimplify.simplify(last.points).toPersistentList())))
+                    last.copy(points = StrokeSimplify.simplify(last.points, StrokeSimplify.epsilonFor(Stroke.widthFraction(last.brushStep))).toPersistentList())))
             },
             partEdit = { part ->
                 val drawing = part.drawing!!
                 val last = drawing.strokes.last()
                 part.copy(drawing = drawing.copy(strokes = drawing.strokes.set(drawing.strokes.lastIndex,
-                    last.copy(points = StrokeSimplify.simplify(last.points).toPersistentList()))))
+                    last.copy(points = StrokeSimplify.simplify(last.points, StrokeSimplify.epsilonFor(last.width)).toPersistentList()))))
             },
         )
         store.update { it.copy(updatedAtEpochMs = clock()) }

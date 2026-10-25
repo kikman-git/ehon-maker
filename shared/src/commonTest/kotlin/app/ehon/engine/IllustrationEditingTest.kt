@@ -88,14 +88,14 @@ class IllustrationEditingTest {
         val c = EditorController(book(part.copy(rotationDeg = 90f, heightPct = 20f), PageShape.PORTRAIT), FakeMeasurer)
         c.selectItem(part.id)
         c.beginIllustrationEdit()
-        c.setBrush(1)
+        c.setBrush(1f)
         c.toggleEraser()
         c.beginStroke(.5666667f, .575f)
         c.endStroke()
         val mark = (c.selected as PartItem).drawing!!.strokes.single()
         assertEquals(.75f, mark.points.single().x, .0001f)
         assertEquals(.25f, mark.points.single().y, .0001f)
-        assertEquals(Stroke.widthFraction(1) / .4f, mark.width, .0001f)
+        assertEquals(Stroke.widthFraction(1f) / .4f, mark.width, .0001f)
         c.endIllustrationEdit()
         c.beginDrag()
         c.dragTo(40f, 60f)
@@ -113,7 +113,7 @@ class IllustrationEditingTest {
         assertEquals(480f, group.pivot.y, .001f)
         val rendered = group.children.last() as SceneNode.StrokePath
         assertTrue(rendered.erase)
-        assertEquals(600f * Stroke.widthFraction(1) * PartItem.STEP_UP, rendered.widthPx, .001f)
+        assertEquals(600f * Stroke.widthFraction(1f) * PartItem.STEP_UP, rendered.widthPx, .001f)
         assertEquals(240f + moved.sizePct / 100f * 600f * .25f, rendered.points.single().x, .001f)
         assertEquals(480f - moved.heightPct!! / 100f * 800f * .25f, rendered.points.single().y, .001f)
     }
@@ -130,10 +130,10 @@ class IllustrationEditingTest {
         c.endStroke()
         assertTrue((c.selected as PartItem).drawing!!.strokes.single().points.last().y > 1f)
         val encoded = BookCodec.encode(c.book)
-        assertTrue(encoded.startsWith("{\"version\":5,"))
+        assertTrue(encoded.startsWith("{\"version\":${BookCodec.FORMAT_VERSION},"))
         assertEquals(c.book, BookCodec.decode(encoded))
         assertEquals(c.book, BookSyncCodec.assembleOrNull(BookSyncCodec.metadata(c.book), c.book.pages.map(BookCodec::encodePage)))
-        val v4 = BookCodec.encode(book()).replace("\"version\":5", "\"version\":4")
+        val v4 = BookCodec.encode(book()).replace("\"version\":${BookCodec.FORMAT_VERSION}", "\"version\":4")
         assertNull((BookCodec.decode(v4).page(0).items.single() as PartItem).drawing)
     }
 

@@ -11,7 +11,7 @@ import { AiPanel } from './ai/AiPanel';
 import { aiBridge } from './ai/bridge';
 import type { Mark } from './ai/prompt';
 import { AiTerminal } from './ai/Terminal';
-import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, fontChoices, loadFonts, parts } from './core';
+import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, fontChoices, loadFonts, parts, type WebEditor } from './core';
 import { loadTemplates, templateBook, templateStore } from './templates';
 import { Desk, type DeskHandle } from './desk/Desk';
 import { dragging, startPartDrag } from './desk/drag';
@@ -41,6 +41,16 @@ function remember(key: string, value: boolean) {
 }
 
 // The AI tool appears only where an AI layer exists: the dev server's Claude CLI bridge for now.
+// Squared so the thin end, where small differences show, gets most of the track.
+const sliderSteps = 1000;
+function brushStepAt(editor: WebEditor, position: number) {
+  const t = position / sliderSteps;
+  return Math.round((editor.minBrushStep + (editor.maxBrushStep - editor.minBrushStep) * t * t) * 100) / 100;
+}
+function brushSliderPosition(editor: WebEditor) {
+  return Math.round(Math.sqrt((editor.brushStep - editor.minBrushStep) / (editor.maxBrushStep - editor.minBrushStep)) * sliderSteps);
+}
+
 const tools = aiBridge ? [...drawingTools, aiTool] : drawingTools;
 
 const uploadMessages: Record<UploadFailure, string> = {
@@ -111,6 +121,20 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     if (readOnly || editor.isGestureActive) return;
     try { action(); changed(); setError(''); }
     catch { setError('へんこう できませんでした。もういちど おためしください。'); }
+  };
+
+  // Brush size is not book content, so resizing re-renders without saving.
+  const resizeBrush = (step: number) => {
+    if (editor.isGestureActive) return;
+    editor.setBrush(step);
+    setRevision(editor.revision);
+  };
+  // Holds the typed text so clamping never rewrites "0." mid-entry; cleared on blur.
+  const [sizeDraft, setSizeDraft] = useState<string | null>(null);
+  const typeBrushSize = (text: string) => {
+    setSizeDraft(text);
+    const step = Number(text);
+    if (text.trim() && Number.isFinite(step) && step > 0) resizeBrush(Math.round(step * 100) / 100);
   };
 
   const showPanel = (open: boolean) => { setPanelOpen(open); remember('studio.panel', open); };
@@ -394,14 +418,16 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         </div>}
         {isDrawing && <fieldset disabled={readOnly}>
           <div className="brush-preview" aria-hidden="true">
-            <svg viewBox="0 0 200 64"><path d="M18 43 C40 43 45 16 70 20 S100 53 124 35 S161 13 182 26" fill="none" stroke={tool === 'eraser' ? '#b1b6b4' : cssColor(editor.brushColor)} strokeWidth={editor.brushStep * 4} strokeLinecap="round" /></svg>
+            <svg viewBox="0 0 200 64"><path d="M18 43 C40 43 45 16 70 20 S100 53 124 35 S161 13 182 26" fill="none" stroke={tool === 'eraser' ? '#b1b6b4' : cssColor(editor.brushColor)} strokeWidth={Math.min(56, Math.max(1, editor.brushStep * 4))} strokeLinecap="round" /></svg>
             <span>{tool === 'eraser' ? '消しゴム' : editor.hasCustomInk ? cssColor(editor.brushColor).toUpperCase() : colorNames[editor.crayonIndex]}</span>
           </div>
           <h3>太さ</h3>
-          <div className="brush-sizes" role="group" aria-label="ブラシの太さ">
-            {['細い', 'ふつう', '太い'].map((name, index) => <button key={name} aria-pressed={editor.brushStep === index + 1} onClick={() => edit(() => { editor.setBrush(index + 1); editor.setEraser(tool === 'eraser'); })}>
-              <span className="brush-dot" style={{ width: 5 + index * 6, height: 5 + index * 6 }} /><span>{name}</span>
-            </button>)}
+          <div className="brush-size">
+            <span className="brush-dot" style={{ width: Math.min(28, 2 + editor.brushStep * 2), height: Math.min(28, 2 + editor.brushStep * 2) }} />
+            <input type="range" aria-label="ブラシの太さ" min={0} max={sliderSteps} value={brushSliderPosition(editor)} onChange={(event) => resizeBrush(brushStepAt(editor, Number(event.target.value)))} />
+            <input type="number" aria-label="ブラシの太さ（数値）" inputMode="decimal" min={editor.minBrushStep} max={editor.maxBrushStep} step={editor.brushStep < 1 ? 0.01 : 0.1}
+              value={sizeDraft ?? editor.brushStep.toFixed(editor.brushStep < 1 ? 2 : 1)} onChange={(event) => typeBrushSize(event.target.value)} onBlur={() => setSizeDraft(null)}
+              onKeyDown={(event) => { if (event.key === 'Enter' || event.key === 'Escape') event.currentTarget.blur(); }} />
           </div>
           {tool === 'brush' && <><h3>カラー <span className="color-value">{cssColor(editor.brushColor).toUpperCase()}</span></h3>
             <div className="drawing-colors" role="group" aria-label="描画カラー">{drawingColors.map((color, index) => <button key={color} aria-label={colorNames[index]} title={colorNames[index]} aria-pressed={!editor.hasCustomInk && editor.crayonIndex === index} style={{ backgroundColor: cssColor(color) }} onClick={() => edit(() => editor.setCrayon(index))}>{!editor.hasCustomInk && editor.crayonIndex === index && <Icon name="check" size={16} style={{ color: index < 7 ? '#fff' : '#243a31' }} />}</button>)}</div>

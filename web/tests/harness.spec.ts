@@ -27,7 +27,7 @@ test('placing and dragging can be undone independently', async ({ page }) => {
   await page.getByRole('button', { name: '素材', exact: true }).click();
   await page.getByRole('button', { name: 'まる', exact: true }).click();
   const added = await savedBook(page);
-  expect(added.version).toBe(5);
+  expect(added.version).toBe(6);
   expect(added.book.pages[0].items).toHaveLength(original.book.pages[0].items.length + 1);
   const bounds = (await page.getByLabel('えほんの ページ').boundingBox())!;
   await page.mouse.move(bounds.x + bounds.width * .5, bounds.y + bounds.height * .52);

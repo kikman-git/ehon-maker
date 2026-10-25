@@ -43,6 +43,26 @@ test('start drawing from the shelf in one click, with a readable UI and one blan
   await expect.poll(() => pixel(page, .5, .5)).toEqual([46, 43, 37, 255]);
 });
 
+test('a typed brush size is used as written, follows the slider and clamps to the range', async ({ page }) => {
+  await page.goto('/app');
+  const typed = page.getByRole('spinbutton', { name: 'ブラシの太さ（数値）' });
+  const slider = page.getByRole('slider', { name: 'ブラシの太さ' });
+  await typed.fill('0.37');
+  await typed.press('Enter');
+  await expect(typed).toHaveValue('0.37');
+  await stroke(page);
+  expect((await savedBook(page)).book.pages[0].strokes[0].brushStep).toBeCloseTo(.37, 5);
+  await slider.fill('382');
+  await expect(typed).toHaveValue('3.0');
+  await typed.fill('500');
+  await typed.blur();
+  await expect(typed).toHaveValue('20.0');
+  await expect(slider).toHaveValue('1000');
+  await typed.fill('');
+  await typed.blur();
+  await expect(typed).toHaveValue('20.0');
+});
+
 test('drawing, erasing and keyboard undo work without moving the paper', async ({ page }) => {
   await page.goto('/app');
   await expect(page.getByLabel('えほんの ページ')).toBeVisible();
@@ -55,11 +75,11 @@ test('drawing, erasing and keyboard undo work without moving the paper', async (
   expect(await page.getByLabel('えほんの ページ').boundingBox()).toEqual(bounds);
   await page.keyboard.press('e');
   await expect(page.getByRole('button', { name: '消しゴム', exact: true })).toHaveAttribute('aria-pressed', 'true');
-  await page.getByRole('button', { name: '太い', exact: true }).click();
+  await page.getByRole('slider', { name: 'ブラシの太さ' }).fill('382');
   await stroke(page, [.5, .4], [.5, .6]);
   await expect.poll(() => pixel(page, .5, .5)).toEqual([255, 255, 255, 255]);
   await expect.poll(() => pixel(page, .3, .5)).toEqual([46, 43, 37, 255]);
-  expect((await savedBook(page)).book.pages[0].strokes.at(-1)!.ink.type).toBe('eraser');
+  expect((await savedBook(page)).book.pages[0].strokes.at(-1)!).toMatchObject({ ink: { type: 'eraser' }, brushStep: 3 });
   await page.keyboard.press('Control+z');
   await expect.poll(() => pixel(page, .5, .5)).toEqual([46, 43, 37, 255]);
   await page.keyboard.press('Control+z');
@@ -104,7 +124,7 @@ test('erasing reveals the illustration below and PNG export includes the drawing
   await stroke(page);
   await expect.poll(() => pixel(page, .5, .5)).toEqual([46, 43, 37, 255]);
   await page.getByRole('button', { name: '消しゴム', exact: true }).click();
-  await page.getByRole('button', { name: '太い', exact: true }).click();
+  await page.getByRole('slider', { name: 'ブラシの太さ' }).fill('382');
   await stroke(page, [.5, .4], [.5, .6]);
   await expect.poll(() => pixel(page, .5, .5)).toEqual(original);
   const downloaded = page.waitForEvent('download');

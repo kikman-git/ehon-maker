@@ -6,7 +6,9 @@ import app.ehon.engine.EditorController
 import app.ehon.engine.EditorMode
 import app.ehon.engine.UiLevel
 import app.ehon.model.BookId
+import app.ehon.model.PageShape
 import app.ehon.model.PartId
+import app.ehon.model.Stroke
 import app.ehon.model.TextItem
 import app.ehon.template.IdSource
 import app.ehon.template.Templates
@@ -123,6 +125,22 @@ class BookCodecTest {
     }
 
     /** Firestore's per-document ceiling is 1MiB; this is the page-per-doc justification. */
+    @Test
+    fun `any brush size round-trips and integer sizes from older formats still read`() {
+        val c = EditorController(Templates.blankBook(BookId("b"), "b", "ja-JP", 0L, PageShape.SQUARE), FakeMeasurer)
+        c.setBrush(7.3f)
+        c.beginStroke(.2f, .2f)
+        c.endStroke()
+        val encoded = BookCodec.encode(c.book)
+        assertEquals(7.3f, BookCodec.decode(encoded).page(0).strokes.single().brushStep)
+        val v5 = encoded.replace("\"version\":${BookCodec.FORMAT_VERSION}", "\"version\":5").replace("7.3", "2")
+        assertEquals(2f, BookCodec.decode(v5).page(0).strokes.single().brushStep)
+        c.setBrush(999f)
+        assertEquals(Stroke.MAX_BRUSH_STEP, c.brushStep)
+        c.setBrush(0f)
+        assertEquals(Stroke.MIN_BRUSH_STEP, c.brushStep)
+    }
+
     @Test
     fun `a realistic book stays well inside the firestore document limit`() {
         val bytes = BookCodec.encode(richBook()).encodeToByteArray().size

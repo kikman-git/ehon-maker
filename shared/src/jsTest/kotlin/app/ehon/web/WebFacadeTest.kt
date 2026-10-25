@@ -32,7 +32,7 @@ class WebFacadeTest {
         assertEquals(1.5, editor.pageAspect)
         val original = editor.bookJson()
         editor.setCrayon(4)
-        editor.setBrush(3)
+        editor.setBrush(3.5f)
         editor.beginStroke(0.2, 0.3)
         assertTrue(editor.isGestureActive)
         assertFailsWith<IllegalStateException> { editor.replaceBook(original) }
@@ -54,7 +54,7 @@ class WebFacadeTest {
         assertFalse(editor.isGestureActive)
         editor.replaceBook(drawn)
         assertEquals(4, editor.crayonIndex)
-        assertEquals(3, editor.brushStep)
+        assertEquals(3.5f, editor.brushStep)
         assertTrue(editor.eraser)
         editor.dispose()
     }
