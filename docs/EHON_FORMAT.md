@@ -91,17 +91,19 @@ page-relative meaning: a `brushStep` of 1 paints about 1% of the page width. Pre
   "text": "しんしん、ゆきが ふる。", "font": "maru", "sizePct": 5 }
 ```
 
-- One text item is **one line**; a line break renders as a space. Stack two items at
-  `y: 84.5` and `y: 91.5` for a two-line caption in the paper band.
+- A `\n` in `text` starts a new line; the lines stack centred on `x`/`y`. Older apps draw a line
+  break as a space, so a caption that must read the same everywhere can still be two items stacked at
+  `y: 84.5` and `y: 91.5`.
 - `sizePct` is percent of the page width, from `2` to `30` (format 6; earlier formats use only `5`,
   `6.5` or `8.5`, which the phone still offers). At `5`, about sixteen full-width characters fit
   across the page; the checker warns when a line is wider than the page.
+- `lineHeight` is optional (format 6): the pitch of the lines in ems, `0.8` to `3`, default `1.5`.
 - `bold` is optional (format 6) and defaults to `false`; bold outlines each glyph in the text colour.
 - `color` is optional (format 6): any `"#rrggbb"`, which wins over `colorIndex`. Keep `colorIndex` set to
   the nearest preset, since the phone's picker shows only the five.
 - `font` is `yomogi` (handwriting), `maru` (rounded), `kiwi`, `pop`, `marker` or `futo`.
 - `colorIndex` 0 to 4 picks ink, terracotta, sage, red or violet. `ruby` is the optional furigana
-  for the whole string.
+  for the whole string, split by `\n` to match the lines of `text`; a blank ruby line leaves its line bare.
 
 Item ids must be unique across the book. The app never reuses one it has seen.
 

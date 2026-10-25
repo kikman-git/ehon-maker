@@ -88,6 +88,21 @@ class SceneBuilderTest {
     }
 
     @Test
+    fun `a line break stacks centred lines around the anchor, each with its own ruby`() {
+        val text = TextItem(ItemId("t1"), 50f, 50f, text = "やま\nかわを こえて", ruby = "\nかわ")
+        val target = screenTarget()
+        val lines = builder.build(page(listOf(text)), target).nodes.filterIsInstance<SceneNode.Text>()
+        assertEquals(listOf("やま", "かわを こえて"), lines.map { it.base })
+        assertEquals(listOf(null, "かわ"), lines.map { it.ruby })
+        val lineH = lines[1].baseOrigin.y - lines[0].baseOrigin.y
+        val size = lines[0].baseSizePx
+        assertClose(size * (1.5f + TextItem.RUBY_SCALE * 1.2f), lineH)
+        lines.forEach { assertClose(target.page.w / 2f, it.baseOrigin.x + FakeMeasurer.width(it.base, size, it.font) / 2f) }
+        val blockTop = lines[0].baseOrigin.y - size * TextItem.RUBY_SCALE * 1.2f
+        assertClose(target.page.h / 2f, blockTop + lineH)
+    }
+
+    @Test
     fun `blank reading is treated as absent`() {
         val text = TextItem(ItemId("t1"), 50f, 50f, text = "ねこ", ruby = "   ")
         val node = builder.build(page(listOf(text)), screenTarget())

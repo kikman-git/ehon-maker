@@ -4,15 +4,19 @@ import { Icon } from './Icon';
 
 const textColorNames = ['黒', 'テラコッタ', 'セージ', '赤', '紫'];
 const SIZE_STEP = 0.5;
+const LINE_STEP = 0.1;
 
 /** Font, size, bold and colour for the selected text, or for the next text when none is selected. */
 export function TextStyleControls({ editor, disabled, act }: { editor: WebEditor; disabled: boolean; act: (action: () => void) => void }) {
   const [sizeDraft, setSizeDraft] = useState<string | null>(null);
+  const [lineDraft, setLineDraft] = useState<string | null>(null);
   const [fontsOpen, setFontsOpen] = useState(false);
   const picker = useRef<HTMLDivElement>(null);
   const current = fontChoices.find((face) => face.id === editor.fontId) ?? fontChoices[0];
   const size = editor.textSizePct;
   const setSize = (value: number) => act(() => editor.setTextSizePct(Math.round(value * 10) / 10));
+  const line = editor.textLineHeight;
+  const setLine = (value: number) => act(() => editor.setLineHeight(Math.round(value * 10) / 10));
 
   useEffect(() => { void ensureGlyphs(Object.fromEntries(fontChoices.map((face) => [face.id, face.name]))); }, []);
   useEffect(() => {
@@ -40,6 +44,15 @@ export function TextStyleControls({ editor, disabled, act }: { editor: WebEditor
         onChange={(event) => { setSizeDraft(event.target.value); const value = Number(event.target.value); if (event.target.value.trim() && Number.isFinite(value) && value > 0) setSize(value); }}
         onBlur={() => setSizeDraft(null)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === 'Escape') event.currentTarget.blur(); }} />
       <button type="button" disabled={disabled || size >= editor.maxTextSizePct} aria-label="文字を大きく" onClick={() => setSize(size + SIZE_STEP)}><Icon name="plus" size={14} /></button>
+    </div>
+    <div className="text-size line-height" role="group" aria-label="行間" title="行間">
+      <Icon name="lineHeight" size={15} />
+      <button type="button" disabled={disabled || line <= editor.minLineHeight} aria-label="行間をせまく" onClick={() => setLine(line - LINE_STEP)}><Icon name="minus" size={14} /></button>
+      <input type="number" disabled={disabled} aria-label="行間（数値）" inputMode="decimal" min={editor.minLineHeight} max={editor.maxLineHeight} step={LINE_STEP}
+        value={lineDraft ?? (Math.round(line * 10) / 10).toFixed(1)}
+        onChange={(event) => { setLineDraft(event.target.value); const value = Number(event.target.value); if (event.target.value.trim() && Number.isFinite(value) && value > 0) setLine(value); }}
+        onBlur={() => setLineDraft(null)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === 'Escape') event.currentTarget.blur(); }} />
+      <button type="button" disabled={disabled || line >= editor.maxLineHeight} aria-label="行間をひろく" onClick={() => setLine(line + LINE_STEP)}><Icon name="plus" size={14} /></button>
     </div>
     <button type="button" className="bold-toggle" disabled={disabled} aria-pressed={editor.textBold} aria-label="太字" title="太字 (⌘B)" onClick={() => act(() => editor.setBold(!editor.textBold))}>B</button>
     <div className="text-colors" role="group" aria-label="文字の色">{textColors.map((color, index) => <button type="button" key={color} disabled={disabled} aria-label={textColorNames[index]} title={textColorNames[index]} aria-pressed={!editor.hasCustomTextColor && editor.textColorIndex === index} style={{ backgroundColor: cssColor(color) }} onClick={() => act(() => editor.setTextColour(index))} />)}

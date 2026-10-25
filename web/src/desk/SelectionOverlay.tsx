@@ -1,7 +1,10 @@
+import type { KeyboardEvent } from 'react';
 import { ensureGlyphs, type WebEditor } from '../core';
 import { Icon } from '../ui/Icon';
 import { TextStyleControls } from '../ui/TextStyle';
 import type { Frame } from './view';
+
+const lineCount = (text: string) => Math.min(6, text.split('\n').length);
 
 interface Props {
   editor: WebEditor;
@@ -31,6 +34,10 @@ export function SelectionOverlay({ editor, frame, readOnly, act, editingText, on
     void ensureGlyphs({ [editor.fontId]: value });
     act(() => ruby ? editor.setDraftRuby(value) : editor.setDraftText(value));
   };
+  const finishOn = (event: KeyboardEvent) => {
+    if (event.nativeEvent.isComposing) return;
+    if (event.key === 'Escape' || (event.key === 'Enter' && (event.metaKey || event.ctrlKey))) { event.preventDefault(); onEditText(false); }
+  };
 
   return <div className="selection-overlay" style={{ left: frame.x + cx / 100 * frame.w, top: frame.y + cy / 100 * frame.h }}>
     <div className="rotate-arm" style={{ transform: `rotate(${deg}deg)`, ['--reach' as string]: `${halfH}px` }}>
@@ -43,8 +50,8 @@ export function SelectionOverlay({ editor, frame, readOnly, act, editingText, on
         <button type="button" className="edit-words" aria-pressed={editingText} aria-label="文字を編集" title="文字を編集 (ダブルクリック)" onClick={() => onEditText(!editingText)}><Icon name="text" size={15} /></button>
       </div>
       {editingText && <div className="text-toolbar-row text-toolbar-fields">
-        <input autoFocus aria-label="文字" value={text} onChange={(event) => setText(event.target.value, false)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === 'Escape') onEditText(false); }} />
-        <input aria-label="ふりがな（よみ）" placeholder="ふりがな" value={editor.selectedRuby ?? ''} onChange={(event) => setText(event.target.value, true)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === 'Escape') onEditText(false); }} />
+        <textarea autoFocus aria-label="文字" title="Enter で改行 · ⌘Enter か Esc で完了" rows={lineCount(text)} value={text} onChange={(event) => setText(event.target.value, false)} onKeyDown={finishOn} />
+        <textarea aria-label="ふりがな（よみ）" placeholder="ふりがな" title="行ごとに改行で区切る" rows={lineCount(text)} value={editor.selectedRuby ?? ''} onChange={(event) => setText(event.target.value, true)} onKeyDown={finishOn} />
       </div>}
     </div>}
   </div>;

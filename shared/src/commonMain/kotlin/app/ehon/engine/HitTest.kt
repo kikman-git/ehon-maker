@@ -5,6 +5,7 @@ import app.ehon.model.Item
 import app.ehon.model.Page
 import app.ehon.model.PartItem
 import app.ehon.model.TextItem
+import app.ehon.scene.TextBlock
 import app.ehon.scene.TextMeasurer
 import kotlin.math.abs
 import kotlin.math.cos
@@ -53,7 +54,8 @@ class HitTest(private val measurer: TextMeasurer) {
                 val fontPx = item.sizePct / 100f * pageSize.w * TextItem.OPTICAL_SCALE
                 // Measured rather than estimated from character count: the prototype's
                 // `text.length * size * 1.05` is badly wrong for mixed kana and Latin.
-                measurer.width(item.text, fontPx, item.font) to fontPx * TEXT_HEIGHT_FACTOR
+                val block = TextBlock.size(item, fontPx, measurer)
+                block.w to block.h + fontPx * TEXT_PAD_EM
             }
         }
         return (wPx / 2f / pageSize.w * 100f) to (hPx / 2f / pageSize.h * 100f)
@@ -63,11 +65,9 @@ class HitTest(private val measurer: TextMeasurer) {
         /** Generous by design: this is a four-year-old's fingertip. */
         const val TOUCH_SLOP_PCT = 1.5f
 
-        /** Base line-height plus room for a ruby line above. */
-        const val TEXT_HEIGHT_FACTOR = 1.6f
+        const val TEXT_PAD_EM = 0.1f
     }
 }
 
 /** An item's centre is its own `x`/`y`; [w] and [h] are its unrotated extent in percent of the page. */
-/** [w] and [h] are percent of the page's width and height. */
 data class ItemBounds(val item: Item, val w: Float, val h: Float)

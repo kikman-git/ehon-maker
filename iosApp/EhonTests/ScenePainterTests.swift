@@ -178,7 +178,7 @@ final class ScenePainterTests: XCTestCase {
         let words = Page.companion.of(
             background: cream, promptKey: nil,
             items: [TextItem(id: ItemId(value: "t1"), x: 50, y: 50, rotationDeg: 0, text: "あいうえお",
-                             ruby: nil, colorIndex: 0, sizePct: 8.5, font: .handwriting, bold: false, color: nil)],
+                             ruby: nil, colorIndex: 0, sizePct: 8.5, font: .handwriting, bold: false, color: nil, lineHeight: 1.5)],
             strokes: []
         )
         let side = 300

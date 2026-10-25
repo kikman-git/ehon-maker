@@ -61,6 +61,9 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     val minTextSizePct: Float get() = TextItem.MIN_SIZE_PCT
     val maxTextSizePct: Float get() = TextItem.MAX_SIZE_PCT
     val textBold: Boolean get() = controller.textBold
+    val textLineHeight: Float get() = controller.textLineHeight
+    val minLineHeight: Float get() = TextItem.MIN_LINE_HEIGHT
+    val maxLineHeight: Float get() = TextItem.MAX_LINE_HEIGHT
     val textColorIndex: Int get() = controller.textColorIndex
     val textColor: Int get() = controller.textColor.packed
     val hasCustomTextColor: Boolean get() = controller.customTextColor != null
@@ -114,6 +117,7 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     fun setTextColour(i: Int) = controller.setTextColour(i)
     fun setTextSizePct(pct: Float) = controller.setTextSizePct(pct)
     fun setBold(on: Boolean) = controller.setBold(on)
+    fun setLineHeight(ems: Float) = controller.setLineHeight(ems)
     fun setCustomTextColour(argb: Int) = controller.setCustomTextColour(Argb(argb))
 
     /** `[centreX, centreY, width, height]` of the unrotated selection in page percent, then its angle; null without one. */

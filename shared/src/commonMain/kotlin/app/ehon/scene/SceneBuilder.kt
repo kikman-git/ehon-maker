@@ -185,8 +185,8 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
     /**
      * Group ruby, resolved to absolute origins.
      *
-     * The block (ruby line above base line) is centred on the item's anchor, and the
-     * ruby is centred horizontally on the base — `(baseW - rubyW) / 2`, which is the
+     * The block of lines (each a ruby band over its base line) is centred on the item's anchor,
+     * and each ruby is centred horizontally on its base — `(baseW - rubyW) / 2`, which is the
      * whole of decision #9 and is asserted by the golden tests.
      */
     private fun textNodes(item: TextItem, target: RenderTarget): List<SceneNode> {
@@ -194,27 +194,28 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
         val rubySize = baseSize * TextItem.RUBY_SCALE
         val cx = item.x / 100f * target.page.w
         val cy = item.y / 100f * target.page.h
+        val rubyLineH = if (item.hasRuby) rubySize * TextBlock.RUBY_LINE_HEIGHT else 0f
+        val lineH = TextBlock.lineHeight(item, baseSize)
+        val blockTop = cy - lineH * item.lines.size / 2f
+        val fill = item.color ?: Organic.textColors[item.colorIndex.coerceIn(Organic.textColors.indices)]
 
-        val baseW = measurer.width(item.text, baseSize, item.font)
-        val baseLineH = baseSize * BASE_LINE_HEIGHT
-        val rubyLineH = if (item.hasRuby) rubySize * RUBY_LINE_HEIGHT else 0f
-        val blockTop = cy - (baseLineH + rubyLineH) / 2f
-
-        val rubyW = if (item.hasRuby) measurer.width(item.ruby!!, rubySize, item.font) else 0f
-
-        val node = SceneNode.Text(
-            base = item.text,
-            baseOrigin = Point(cx - baseW / 2f, blockTop + rubyLineH),
-            baseSizePx = baseSize,
-            ruby = item.ruby?.takeIf { item.hasRuby },
-            rubyOrigin = if (item.hasRuby) Point(cx - rubyW / 2f, blockTop) else null,
-            rubySizePx = if (item.hasRuby) rubySize else 0f,
-            fill = item.color ?: Organic.textColors[item.colorIndex.coerceIn(Organic.textColors.indices)],
-            font = item.font,
-            bold = item.bold,
-        )
-        return if (item.rotationDeg == 0f) listOf(node)
-        else listOf(SceneNode.Group(listOf(node), item.rotationDeg, Point(cx, cy)))
+        val nodes = item.lines.mapIndexed { index, line ->
+            val top = blockTop + index * lineH
+            val ruby = item.rubyFor(index)
+            SceneNode.Text(
+                base = line,
+                baseOrigin = Point(cx - measurer.width(line, baseSize, item.font) / 2f, top + rubyLineH),
+                baseSizePx = baseSize,
+                ruby = ruby,
+                rubyOrigin = ruby?.let { Point(cx - measurer.width(it, rubySize, item.font) / 2f, top) },
+                rubySizePx = if (ruby != null) rubySize else 0f,
+                fill = fill,
+                font = item.font,
+                bold = item.bold,
+            )
+        }
+        return if (item.rotationDeg == 0f) nodes
+        else listOf(SceneNode.Group(nodes, item.rotationDeg, Point(cx, cy)))
     }
 
     private fun strokeNode(stroke: Stroke, target: RenderTarget) = SceneNode.StrokePath(
@@ -247,13 +248,7 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
     private fun selectionRing(item: app.ehon.model.Item, target: RenderTarget): SceneNode {
         val box = when (item) {
             is PartItem -> item.dimensions(target.page)
-            is TextItem -> {
-                val fontPx = item.sizePct / 100f * target.page.w * TextItem.OPTICAL_SCALE
-                Size(
-                    measurer.width(item.text, fontPx, item.font),
-                    fontPx * (BASE_LINE_HEIGHT + if (item.hasRuby) RUBY_LINE_HEIGHT * TextItem.RUBY_SCALE else 0f),
-                )
-            }
+            is TextItem -> TextBlock.size(item, item.sizePct / 100f * target.page.w * TextItem.OPTICAL_SCALE, measurer)
         }
         val ring = SceneNode.SelectionRing(
             Rect.centred(
@@ -281,7 +276,7 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
             base = WATERMARK_TEXT,
             baseOrigin = Point(
                 target.page.w - inset - w,
-                target.page.h - inset - size * BASE_LINE_HEIGHT,
+                target.page.h - inset - size * TextItem.DEFAULT_LINE_HEIGHT,
             ),
             baseSizePx = size,
             fill = (if (onDark) Organic.surface else Organic.text).withAlpha(0.42f),
@@ -293,10 +288,6 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
         (0.2126f * c.r + 0.7152f * c.g + 0.0722f * c.b) / 255f
 
     private companion object {
-        /** From the prototype's `line-height:1.5` on page text. */
-        const val BASE_LINE_HEIGHT = 1.5f
-        const val RUBY_LINE_HEIGHT = 1.2f
-
         /** Prompt: 13px at a 322px reference page, 14px from the top. */
         const val PROMPT_SIZE_PCT = 13f / 322f
         const val PROMPT_TOP_PCT = 14f / 322f
@@ -305,4 +296,17 @@ class SceneBuilder(private val measurer: TextMeasurer, private val resolver: Par
         const val WATERMARK_INSET_PCT = 0.03f
         const val WATERMARK_TEXT = "ぺたぺた で つくったよ"
     }
+}
+
+/** A text item's lines stacked, each a ruby band (when the item has ruby) over its base line. */
+internal object TextBlock {
+    const val RUBY_LINE_HEIGHT = 1.2f
+
+    fun lineHeight(item: TextItem, fontPx: Float): Float =
+        fontPx * item.lineHeight + if (item.hasRuby) fontPx * TextItem.RUBY_SCALE * RUBY_LINE_HEIGHT else 0f
+
+    fun size(item: TextItem, fontPx: Float, measurer: TextMeasurer) = Size(
+        item.lines.maxOf { measurer.width(it, fontPx, item.font) },
+        lineHeight(item, fontPx) * item.lines.size,
+    )
 }

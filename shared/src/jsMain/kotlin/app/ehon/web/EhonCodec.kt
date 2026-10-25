@@ -74,9 +74,8 @@ object EhonCodec {
                         }
                     }
                     is TextItem -> {
-                        if ('\n' in item.text) warnings += "$label: text '${item.text.take(12)}…' contains a line break; a text item is one line, use one item per line"
                         // Full-width kana and kanji are one em; everything else about half. Same rule as FakeMeasurer.
-                        val em = item.text.count { it.code > 0x2E7F } + item.text.count { it.code <= 0x2E7F } / 2f
+                        val em = item.lines.maxOf { line -> line.count { it.code > 0x2E7F } + line.count { it.code <= 0x2E7F } / 2f }
                         val widthPct = em * item.sizePct * TextItem.OPTICAL_SCALE
                         if (widthPct > 96f) warnings += "$label: text '${item.text.take(12)}…' is about ${widthPct.toInt()}% of the page wide"
                     }

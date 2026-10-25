@@ -272,14 +272,22 @@ data class TextItem(
     /** Any opaque colour; when set it wins over [colorIndex], which older clients still read. */
     @Serializable(with = ArgbSerializer::class)
     val color: Argb? = null,
+    /** Base line pitch in ems; older clients ignore it and use the default. */
+    val lineHeight: Float = DEFAULT_LINE_HEIGHT,
 ) : Item {
     init {
         require(sizePct.isFinite() && sizePct > 0f)
+        require(lineHeight.isFinite() && lineHeight > 0f)
     }
 
     override fun movedTo(x: Float, y: Float) = copy(x = x, y = y)
 
     val hasRuby get() = !ruby.isNullOrBlank()
+
+    val lines get() = text.split('\n')
+
+    /** Ruby pairs with [lines] line by line, so a blank ruby line leaves its base line bare. */
+    fun rubyFor(line: Int): String? = ruby?.split('\n')?.getOrNull(line)?.takeIf { it.isNotBlank() }
 
     companion object {
         /** ちいさい / ふつう / おおきい, from the 2a prototype's `[5, 6.5, 8.5]`. */
@@ -291,6 +299,11 @@ data class TextItem(
 
         /** Bold is drawn by outlining each glyph in its own colour; most book faces ship one weight. */
         const val BOLD_STROKE = 0.06f
+
+        /** From the prototype's `line-height:1.5` on page text. */
+        const val DEFAULT_LINE_HEIGHT = 1.5f
+        const val MIN_LINE_HEIGHT = 0.8f
+        const val MAX_LINE_HEIGHT = 3f
 
         /** Text renders slightly larger than its nominal percentage, per the prototype. */
         const val OPTICAL_SCALE = 1.05f

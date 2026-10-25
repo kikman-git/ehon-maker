@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 
-type Item = { type: string; color?: number | string | null; text?: string; ruby?: string | null; font?: string; sizePct?: number; bold?: boolean; colorIndex?: number; rotationDeg?: number };
+type Item = { type: string; color?: number | string | null; text?: string; ruby?: string | null; font?: string; sizePct?: number; lineHeight?: number; bold?: boolean; colorIndex?: number; rotationDeg?: number };
 type Book = { book: { pages: { items: Item[] }[] } };
 
 async function savedBook(page: Page): Promise<Book> {
@@ -33,11 +33,16 @@ test('the toolbar over selected text sets its font, size, bold and colour', asyn
   await size.fill('12');
   await size.press('Enter');
   await bar.getByRole('button', { name: '文字を大きく' }).click();
+  const line = bar.getByRole('spinbutton', { name: '行間（数値）' });
+  await expect(line).toHaveValue('1.5');
+  await bar.getByRole('button', { name: '行間をせまく' }).click();
+  await line.fill('1.1');
+  await line.press('Enter');
   await bar.getByRole('button', { name: '太字' }).click();
   await expect(bar.getByRole('button', { name: '太字' })).toHaveAttribute('aria-pressed', 'true');
   await bar.getByRole('button', { name: 'セージ' }).click();
   const text = (await savedBook(page)).book.pages[0].items[0];
-  expect(text).toMatchObject({ type: 'text', sizePct: 12.5, bold: true, colorIndex: 2, color: null });
+  expect(text).toMatchObject({ type: 'text', sizePct: 12.5, bold: true, colorIndex: 2, color: null, lineHeight: 1.1 });
   await bar.getByLabel('文字の好きな色').fill('#1f6fd1');
   await expect(bar.getByRole('button', { name: 'セージ' })).toHaveAttribute('aria-pressed', 'false');
   expect((await savedBook(page)).book.pages[0].items[0]).toMatchObject({ color: 0xff1f6fd1 | 0 });
@@ -47,17 +52,20 @@ test('the toolbar over selected text sets its font, size, bold and colour', asyn
   expect((await savedBook(page)).book.pages[0].items[0].bold).toBe(false);
 });
 
-test('double-clicking text edits its words and furigana right above it', async ({ page }) => {
+test('double-clicking text edits its words and furigana right above it, Enter starting a new line', async ({ page }) => {
   const bounds = (await page.getByLabel('えほんの ページ').boundingBox())!;
   await page.getByRole('button', { name: '選択', exact: true }).click();
   await page.mouse.dblclick(bounds.x + bounds.width * .5, bounds.y + bounds.height * .78);
   const words = toolbar(page).getByRole('textbox', { name: '文字', exact: true });
   await expect(words).toBeFocused();
-  await words.fill('うみへ いこう');
-  await toolbar(page).getByRole('textbox', { name: 'ふりがな（よみ）' }).fill('うみへ いこう');
+  await words.fill('うみへ');
   await words.press('Enter');
+  await words.pressSequentially('いこう');
+  await expect(words).toBeFocused();
+  await toolbar(page).getByRole('textbox', { name: 'ふりがな（よみ）' }).fill('うみへ\nいこう');
+  await words.press('ControlOrMeta+Enter');
   await expect(words).toHaveCount(0);
-  expect((await savedBook(page)).book.pages[0].items[0]).toMatchObject({ text: 'うみへ いこう', ruby: 'うみへ いこう' });
+  expect((await savedBook(page)).book.pages[0].items[0]).toMatchObject({ text: 'うみへ\nいこう', ruby: 'うみへ\nいこう' });
 });
 
 test('the rotate handle turns the selection with the mouse in one undo step, snapping with Shift', async ({ page }) => {

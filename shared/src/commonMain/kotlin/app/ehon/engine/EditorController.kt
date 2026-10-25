@@ -107,6 +107,9 @@ class EditorController(
     var textBold: Boolean = false
         private set
 
+    var textLineHeight: Float = TextItem.DEFAULT_LINE_HEIGHT
+        private set
+
     /** Overrides [textColorIndex] when set; picking a preset clears it, like the brush's custom ink. */
     var customTextColor: Argb? = null
         private set
@@ -437,18 +440,19 @@ class EditorController(
         return true
     }
 
-    /** Plain text from another app becomes one line of words in the current text style. */
+    /** Plain text from another app becomes words in the current text style, keeping its line breaks. */
     fun pasteText(text: String): Boolean {
         if (isGestureActive || editingPartId != null) return false
-        val line = text.replace(Regex("\\s+"), " ").trim().take(MAX_PASTED_TEXT)
-        if (line.isEmpty()) return false
+        val words = text.lines().joinToString("\n") { it.replace(Regex("\\s+"), " ").trim() }
+            .trim('\n').take(MAX_PASTED_TEXT)
+        if (words.isEmpty()) return false
         val id = nextItemId()
         change {
             store.edit { current ->
                 current.mapPage(pageIndex) { p ->
                     p.copy(items = p.items.add(TextItem(
-                        id = id, x = 50f, y = 78f, text = line, colorIndex = textColorIndex,
-                        sizePct = textSizePct, font = fontFace, bold = textBold, color = customTextColor,
+                        id = id, x = 50f, y = 78f, text = words, colorIndex = textColorIndex,
+                        sizePct = textSizePct, font = fontFace, bold = textBold, color = customTextColor, lineHeight = textLineHeight,
                     )))
                 }.copy(updatedAtEpochMs = clock())
             }
@@ -643,6 +647,12 @@ class EditorController(
         if (isTextSelected) mapSelected { (it as TextItem).copy(sizePct = textSizePct) }
     }
 
+    fun setLineHeight(ems: Float) = change {
+        require(ems.isFinite())
+        textLineHeight = ems.coerceIn(TextItem.MIN_LINE_HEIGHT, TextItem.MAX_LINE_HEIGHT)
+        if (isTextSelected) mapSelected { (it as TextItem).copy(lineHeight = textLineHeight) }
+    }
+
     fun setBold(on: Boolean) = change {
         textBold = on
         if (isTextSelected) mapSelected { (it as TextItem).copy(bold = on) }
@@ -702,6 +712,7 @@ class EditorController(
                                 font = fontFace,
                                 bold = textBold,
                                 color = customTextColor,
+                                lineHeight = textLineHeight,
                             ),
                         ),
                     )
@@ -802,6 +813,7 @@ class EditorController(
         textSizeStep = other.textSizeStep
         textSizePct = other.textSizePct
         textBold = other.textBold
+        textLineHeight = other.textLineHeight
         customTextColor = other.customTextColor
         textColorIndex = other.textColorIndex
         fontFace = other.fontFace
@@ -823,6 +835,7 @@ class EditorController(
         textColorIndex = item.colorIndex.coerceIn(app.ehon.design.Organic.textColors.indices)
         customTextColor = item.color
         textBold = item.bold
+        textLineHeight = item.lineHeight
         applyTextSize(item.sizePct)
     }
 

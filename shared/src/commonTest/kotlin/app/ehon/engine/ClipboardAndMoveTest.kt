@@ -108,13 +108,13 @@ class ClipboardAndMoveTest {
     }
 
     @Test
-    fun `pasted plain text becomes one line in the current style`() {
+    fun `pasted plain text keeps its lines in the current style`() {
         val c = EditorController(book(), FakeMeasurer)
         c.setBold(true)
         c.setTextSizePct(12f)
         assertTrue(c.pasteText("  いち\nに\tさん  "))
         val pasted = c.page.items.last() as TextItem
-        assertEquals("いち に さん", pasted.text)
+        assertEquals("いち\nに さん", pasted.text)
         assertTrue(pasted.bold)
         assertEquals(12f, pasted.sizePct)
         assertFalse(c.pasteText(" \n "))
@@ -184,6 +184,24 @@ class ClipboardAndMoveTest {
         val text = SceneBuilder(FakeMeasurer).build(c.page, RenderTarget(Size(400f, 400f), RenderTarget.Kind.SHARE))
             .nodes.filterIsInstance<SceneNode.Text>().single()
         assertTrue(text.bold)
+        assertEquals(c.book, BookCodec.decode(BookCodec.encode(c.book)))
+    }
+
+    @Test
+    fun `line height pitches the lines of the selection, clamps, follows selection and round-trips`() {
+        val c = EditorController(book(), FakeMeasurer)
+        c.selectItem(words.id)
+        c.setDraftText("やま\nかわ")
+        c.setLineHeight(1f)
+        val target = RenderTarget(Size(400f, 400f), RenderTarget.Kind.SHARE)
+        val lines = SceneBuilder(FakeMeasurer).build(c.page, target).nodes.filterIsInstance<SceneNode.Text>()
+        assertEquals(lines[0].baseSizePx, lines[1].baseOrigin.y - lines[0].baseOrigin.y, 0.01f)
+        c.setLineHeight(0f)
+        assertEquals(TextItem.MIN_LINE_HEIGHT, (c.selected as TextItem).lineHeight)
+        c.clearSelection()
+        c.setLineHeight(2f)
+        c.selectItem(words.id)
+        assertEquals(TextItem.MIN_LINE_HEIGHT, c.textLineHeight)
         assertEquals(c.book, BookCodec.decode(BookCodec.encode(c.book)))
     }
 }
