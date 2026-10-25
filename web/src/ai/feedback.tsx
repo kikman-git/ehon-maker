@@ -26,6 +26,7 @@ export const LONG_TURN_MS = 45_000;
 export type Message =
   | { role: 'user'; text: string; mark: string | null }
   | { role: 'assistant'; text: string }
+  | { role: 'steps'; texts: string[] }
   | { role: 'status'; text: string; error?: boolean; done?: boolean };
 
 /** The transcript as the chat shows it. */
@@ -36,6 +37,7 @@ export function chatMessages(entries: AiEntry[]): Message[] {
       case 'user': out.push({ role: 'user', text: entry.text, mark: entry.mark }); break;
       case 'assistant': if (entry.text.trim()) out.push({ role: 'assistant', text: entry.text }); break;
       case 'notice': out.push({ role: 'status', text: entry.text }); break;
+      case 'steps': out.push({ role: 'steps', texts: entry.texts }); break;
       case 'applied': out.push({ role: 'status', text: entry.text, done: true }); break;
       case 'rejected': out.push({ role: 'status', text: entry.text, error: true }); break;
       case 'log': if (entry.level === 'error') out.push({ role: 'status', text: entry.text, error: true }); break;
@@ -49,6 +51,9 @@ export const arrivalLabel = (key: string) => (key === 'piece' ? 'なおした �
 export function ChatMessage({ message }: { message: Message }) {
   if (message.role === 'user') return <div className="ai-message user"><p>{message.text}</p>{message.mark && <span className="ai-mark-chip"><Icon name="select" size={12} />{message.mark}</span>}</div>;
   if (message.role === 'assistant') return <div className="ai-message assistant"><p>{message.text}</p></div>;
+  if (message.role === 'steps') return <ol className="ai-message record">
+    {message.texts.map((text, index) => <li key={index}><Icon name="check" size={12} />{text}</li>)}
+  </ol>;
   return <div className="ai-message status" data-error={message.error || undefined} data-done={message.done || undefined} role={message.error ? 'alert' : undefined}>{message.done && <Icon name="check" size={12} />}{message.text}</div>;
 }
 

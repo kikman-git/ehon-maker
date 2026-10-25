@@ -21,7 +21,9 @@ export type AiEntry =
   | { kind: 'notice'; text: string }
   | { kind: 'log'; text: string; level?: 'info' | 'error' }
   | { kind: 'applied'; text: string }
-  | { kind: 'rejected'; text: string };
+  | { kind: 'rejected'; text: string }
+  /** What a finished or interrupted turn did, kept in the transcript after its working card is gone. */
+  | { kind: 'steps'; texts: string[] };
 
 export interface AiState {
   bookId: string | null;

@@ -96,6 +96,23 @@ test('the page appears while the turn is still running, not only when it ends', 
   await expect(panel.locator('.ai-message.status[data-done]')).toHaveText('えほんに 反映しました。「元に戻す」で 取り消せます。');
 });
 
+test('a reload comes back to the conversation and the record of what the turn did', async ({ page }) => {
+  await openAi(page);
+  const panel = page.getByTestId('ai-panel');
+  await panel.getByLabel('AIへの たのみごと').fill('くまの えほんを つくって');
+  await panel.getByRole('button', { name: '頼む' }).click();
+  await expect(panel.locator('.ai-message.assistant').last()).toHaveText('あたらしい ページに くまを かきました。');
+  await expect(panel.locator('.ai-message.record li').first()).toContainText('ページめを つくりました');
+
+  await page.reload();
+  await page.getByRole('button', { name: 'AI', exact: true }).click();
+  const back = page.getByTestId('ai-panel');
+  await expect(back.locator('.ai-message.user')).toContainText('くまの えほんを つくって');
+  await expect(back.locator('.ai-message.assistant').last()).toHaveText('あたらしい ページに くまを かきました。');
+  await expect(back.locator('.ai-message.record li').first()).toContainText('ページめを つくりました');
+  await expect(page.getByText('1 / 2 ページ')).toBeVisible();
+});
+
 test('a turn that changes nothing says so, and the book is left alone', async ({ page }) => {
   await openAi(page);
   const panel = page.getByTestId('ai-panel');
