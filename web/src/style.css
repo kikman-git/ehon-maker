@@ -611,7 +611,18 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .atelier-mode [aria-checked="true"] { background: var(--accent-light); border-color: #4c7760; color: #245b45; font-weight: 650; }
 
 /* While the AI draws: a working card in the chat, a badge on the stage and empty tiles that fill as pictures arrive. */
-.ai-working { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 4px 10px; align-self: stretch; padding: 10px 12px; border-radius: 12px 12px 12px 3px; background: var(--accent-light); color: #245b45; }
+.ai-working { display: flex; flex-direction: column; gap: 8px; align-self: stretch; padding: 10px 12px; border-radius: 12px 12px 12px 3px; background: var(--accent-light); color: #245b45; }
+.ai-working-head { display: flex; align-items: center; gap: 10px; min-width: 0; font-size: 13px; }
+.ai-working-head strong { font-weight: 650; }
+.ai-working-foot { display: flex; align-items: center; gap: 10px; }
+.ai-working-foot small { flex: none; font-size: 11px; color: #4c7760; font-variant-numeric: tabular-nums; }
+.ai-working-foot .ai-bar { flex: 1; }
+/* The checklist of what the AI has touched this turn: each page and picture, the current one still spinning. */
+.ai-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.ai-steps li { display: flex; align-items: flex-start; gap: 7px; font-size: 12.5px; line-height: 1.45; color: #4c7760; }
+.ai-steps li[data-active] { color: #1f3d31; font-weight: 600; }
+.ai-step-mark { flex: none; display: inline-grid; place-items: center; width: 18px; height: 18px; margin-top: 1px; border-radius: 50%; background: #fff; color: var(--accent); }
+.ai-steps li[data-active] .ai-step-mark { animation: ai-pen 1.4s ease-in-out infinite; }
 .ai-working-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: 13px; }
 .ai-working-text strong { font-weight: 650; }
 .ai-working-text small { font-size: 11px; color: #4c7760; font-variant-numeric: tabular-nums; }

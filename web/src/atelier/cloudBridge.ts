@@ -1,5 +1,5 @@
 import type { AiBridge } from '../ai/bridge';
-import { aiStore, type AiEntry } from '../ai/state';
+import { aiStore, appendStep, type AiEntry } from '../ai/state';
 import { referenceArt } from '../ai/art';
 import { atelierTurn, AtelierError, credits, failureText, type AtelierInput } from '../cloud/credits';
 
@@ -25,10 +25,10 @@ export function cloudAtelierBridge(): AiBridge {
       const started = Date.now();
       const id = ++turn;
       push({ kind: 'user', text: words, mark: input.mark, at: started });
-      state.update({ running: true, progress: 0, step: null });
+      state.update({ running: true, progress: 0, step: null, steps: [] });
       const spec = input.spec ?? { title: '', mode: 'new' as const, selected: null, sketched: false };
       const request: AtelierInput = { ...spec, request: words, image: input.image, piece: payload.piece, bookArt: referenceArt(Object.values(payload.art)) };
-      void atelierTurn(request, (progress) => { if (id === turn) state.update({ ...(progress.chars !== undefined ? { progress: progress.chars } : {}), ...(progress.step ? { step: progress.step } : {}) }); }).then((result) => {
+      void atelierTurn(request, (progress) => { if (id === turn) state.update({ ...(progress.chars !== undefined ? { progress: progress.chars } : {}), ...(progress.step ? { step: progress.step, steps: appendStep(state.get().steps, progress.step) } : {}) }); }).then((result) => {
         if (id !== turn) return;
         for (const listener of [...bookListeners]) listener(bookId, JSON.stringify({ piece: result.piece, candidates: result.candidates }));
         if (result.say) push({ kind: 'assistant', text: result.say });
@@ -39,9 +39,9 @@ export function cloudAtelierBridge(): AiBridge {
         const reason = error instanceof AtelierError ? error.reason : 'network';
         if (reason === 'credits') { credits.update({ balance: (error as AtelierError).balance ?? 0 }); push({ kind: 'notice', text: 'クレジットが たりません。' }); }
         else push({ kind: 'log', level: 'error', text: failureText[reason] + (error instanceof AtelierError && error.detail ? ` (${error.detail})` : '') });
-      }).finally(() => { if (id === turn) state.update({ running: false, progress: null, step: null }); });
+      }).finally(() => { if (id === turn) state.update({ running: false, progress: null, step: null, steps: [] }); });
     },
-    stop() { turn++; state.update({ running: false, progress: null, step: null }); },
+    stop() { turn++; state.update({ running: false, progress: null, step: null, steps: [] }); },
     reset(bookId) { if (context?.bookId === bookId) state.update({ entries: [] }); },
     note: push,
     onBook(listener) { bookListeners.add(listener); return () => { bookListeners.delete(listener); }; },

@@ -81,7 +81,7 @@ export function AiPanel({ bridge, editor, revision, mark, onClearMark, readOnly 
   // The server refuses a turn under the minimum, so the offers take the compose box's place before a request fails.
   const outOfCredits = wallet.ready && wallet.balance < MIN_TURN_CREDITS;
   const busy = state.running || outOfCredits;
-  const working = state.running ? { step: stepText(state, 'book'), elapsed: formatElapsed(now - started.current), long: now - started.current > LONG_TURN_MS, fraction: null } : null;
+  const working = state.running ? { step: stepText(state, 'book'), elapsed: formatElapsed(now - started.current), long: now - started.current > LONG_TURN_MS, fraction: null, steps: state.steps } : null;
 
   useEffect(() => { listRef.current?.scrollTo({ top: listRef.current.scrollHeight }); }, [messages.length, working?.step, working?.long]);
   useEffect(() => {

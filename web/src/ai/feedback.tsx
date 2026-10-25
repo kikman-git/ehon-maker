@@ -1,5 +1,5 @@
 import { Icon } from '../ui/Icon';
-import type { AiEntry, AiState } from './state';
+import type { AiEntry, AiState, TurnStep } from './state';
 
 /** Which desk is asking: the words differ, the mechanics do not. */
 export type Flavour = 'book' | 'new' | 'revise';
@@ -52,16 +52,23 @@ export function ChatMessage({ message }: { message: Message }) {
   return <div className="ai-message status" data-error={message.error || undefined} data-done={message.done || undefined} role={message.error ? 'alert' : undefined}>{message.done && <Icon name="check" size={12} />}{message.text}</div>;
 }
 
-interface WorkingProps { step: string; elapsed: string; count?: string; long: boolean; fraction: number | null }
+interface WorkingProps { step: string; elapsed: string; count?: string; long: boolean; fraction: number | null; steps?: TurnStep[] }
 
-/** The card that shows a turn is alive: the step, a clock, and a bar that fills while the answer streams. */
-export function WorkingCard({ step, elapsed, count, long, fraction }: WorkingProps) {
+/** The card that shows a turn is alive: each page and picture as it is worked on, a clock, and a bar that fills while the answer streams. */
+export function WorkingCard({ step, elapsed, count, long, fraction, steps }: WorkingProps) {
+  const list = steps && steps.length ? steps : null;
   return <div className="ai-working" role="status" aria-label="AI の ようす">
-    <span className="ai-pen"><Icon name="brush" size={16} /></span>
-    <div className="ai-working-text">
-      <strong>{step}</strong>
+    {list
+      ? <ol className="ai-steps">
+          {list.map((item, index) => <li key={index} data-active={item.active || undefined}>
+            <span className="ai-step-mark"><Icon name={item.active ? 'brush' : 'check'} size={13} /></span>
+            <span>{item.text}</span>
+          </li>)}
+        </ol>
+      : <div className="ai-working-head"><span className="ai-pen"><Icon name="brush" size={16} /></span><strong>{step}</strong></div>}
+    <div className="ai-working-foot">
       <small><time>{elapsed}</time>{count && ` · ${count}`}{long && ' · ていねいに するので 1〜3分 かかります'}</small>
+      <span className="ai-bar" data-indeterminate={fraction === null || undefined}><i style={fraction === null ? undefined : { width: `${Math.round(fraction * 100)}%` }} /></span>
     </div>
-    <span className="ai-bar" data-indeterminate={fraction === null || undefined}><i style={fraction === null ? undefined : { width: `${Math.round(fraction * 100)}%` }} /></span>
   </div>;
 }

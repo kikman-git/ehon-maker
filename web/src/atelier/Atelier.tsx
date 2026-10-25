@@ -315,7 +315,7 @@ export function Atelier({ bridge, editor, readOnly, act, onClose }: Props) {
               {ideas.map((idea) => <button key={idea} className="ghost" disabled={busy || readOnly} onClick={() => send(idea)}>{idea}</button>)}
             </div>}
             {messages.map((message, index) => <ChatMessage key={index} message={message} />)}
-            {working && <WorkingCard step={working.step} elapsed={working.elapsed} long={working.long} fraction={working.fraction} count={turn && turn.expected > 1 ? `${turn.arrived} / ${turn.expected} まい` : undefined} />}
+            {working && <WorkingCard step={working.step} elapsed={working.elapsed} long={working.long} fraction={working.fraction} steps={state.steps} count={turn && turn.expected > 1 ? `${turn.arrived} / ${turn.expected} まい` : undefined} />}
           </div>
           {outOfCredits ? <OutOfCredits /> : <div className="ai-compose">
             <div className="atelier-mode" role="radiogroup" aria-label="たのみかた">
