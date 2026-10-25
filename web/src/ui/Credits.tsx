@@ -45,7 +45,7 @@ export function CreditNudge() {
   if (!cloud || !state.ready || state.plan === 'plus') return null;
   if (state.balance < MIN_TURN_CREDITS) return <span className="credit-nudge" data-out="">クレジットが なくなりました · プラスで つづけられます</span>;
   if (state.balance < LOW_CREDITS) return <span className="credit-nudge" data-low="">のこり {state.balance} クレジット · プラスなら 毎月 {PLUS_CREDITS.toLocaleString()}</span>;
-  return <span className="credit-nudge">無料クレジット のこり {state.balance} · 1回 およそ 5〜10</span>;
+  return null;
 }
 
 /** Shown in place of the AI controls when a turn cannot start. */

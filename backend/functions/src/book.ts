@@ -117,8 +117,8 @@ export function validateBookInput(raw: unknown): BookInput {
   const markRaw = data.mark && typeof data.mark === 'object' ? data.mark as Record<string, unknown> : null;
   const mark: MarkBox | null = markRaw ? { pageIndex: number(markRaw.pageIndex), pageId: text(markRaw.pageId, 120) ?? '', x0: number(markRaw.x0), y0: number(markRaw.y0), x1: number(markRaw.x1), y1: number(markRaw.y1) } : null;
   const items = Array.isArray(data.items) ? data.items.slice(0, MAX_ITEMS_DESCRIBED).map(itemBoxOf).filter((item): item is ItemBox => item !== null) : [];
-  const art = Array.isArray(data.bookArt) ? data.bookArt.slice(0, MAX_BOOK_ART) : [];
-  if (!art.every(acceptableSvg)) throw new HttpsError('invalid-argument', 'Book art must be plain SVG.');
+  // Reference art only sets the style; a picture that is not plain SVG is left out rather than failing the turn.
+  const art = Array.isArray(data.bookArt) ? data.bookArt.filter(acceptableSvg).slice(0, MAX_BOOK_ART) : [];
   return {
     title: text(data.title, 120) || (typeof document.book.title === 'string' ? document.book.title : 'えほん'),
     request, book: JSON.stringify(document), bookArt: art as string[], mark, items,

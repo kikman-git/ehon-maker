@@ -1,4 +1,5 @@
 import type { Firestore } from 'firebase-admin/firestore';
+import { logger } from 'firebase-functions';
 import { HttpsError } from 'firebase-functions/v2/https';
 import { usdFor, type CreditService, type TokenUsage } from './credits';
 import { ModelError, textOf, toolCalls, type ChatModel, type Message, type StopReason, type ToolChoice, type ToolDef } from './model';
@@ -31,10 +32,11 @@ export type Metered<O> = O & { credits: number; balance: number };
 export type Chunk<O> = { type: 'progress'; chars?: number; step?: string } | { type: 'result'; result: Metered<O> };
 
 export const text = (value: unknown, max: number) => (typeof value === 'string' && value.length <= max ? value : null);
+/** A PNG under the size limit, or nothing: a page too heavy to look at should not cost the user the whole turn. */
 export const imageOf = (value: unknown): string | null => {
-  if (value == null) return null;
   if (typeof value === 'string' && value.startsWith('data:image/png;base64,') && value.length <= MAX_IMAGE_BYTES * 4 / 3 + 64) return value;
-  throw new HttpsError('invalid-argument', 'The image must be a PNG data URL under 1.5 MB.');
+  if (value != null) logger.warn('ai.image.dropped', { length: typeof value === 'string' ? value.length : -1 });
+  return null;
 };
 export const requestOf = (value: unknown): string => {
   const request = text(value, MAX_REQUEST_CHARS)?.trim();
@@ -102,7 +104,9 @@ export class AiService {
   constructor(db: Firestore, private readonly credits: CreditService, private readonly model: ChatModel) { this.usage = new UsageService(db); }
 
   async turn<I, S, O>(task: Task<I, S, O>, uid: string, raw: unknown, send: (chunk: Chunk<O>) => Promise<unknown>, signal?: AbortSignal): Promise<Metered<O>> {
-    const input = task.validate(raw);
+    let input: I;
+    try { input = task.validate(raw); }
+    catch (error) { logger.warn('ai.reject', { uid, task: task.id, error: error instanceof Error ? error.message : String(error) }); throw error; }
     const guards = await this.usage.guards();
     if (!guards.aiEnabled) throw new HttpsError('unavailable', 'AI is paused right now.', { reason: 'paused' });
     await this.usage.checkDailyCap(guards.dailyUsdCap);

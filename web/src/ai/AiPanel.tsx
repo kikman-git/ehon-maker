@@ -1,18 +1,26 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { credits as creditStore, MIN_TURN_CREDITS } from '../cloud/credits';
+import { credits as creditStore, MIN_TURN_CREDITS, PLUS_CREDITS, WELCOME_CREDITS } from '../cloud/credits';
 import { useStore } from '../cloud/store';
 import type { WebEditor } from '../core';
 import { CreditNudge, OutOfCredits } from '../ui/Credits';
-import { Icon } from '../ui/Icon';
+import { Icon, type IconName } from '../ui/Icon';
+import { MAX_IMAGE_CHARS } from './art';
 import type { AiBridge } from './bridge';
 import { ChatMessage, chatMessages, formatElapsed, LONG_TURN_MS, stepText, WorkingCard } from './feedback';
 import { describeMark, itemsInMark, type ItemBox, type Mark } from './prompt';
 
-/** The page as the user sees it, at 1024px, with the mark outlined in red for the model to look at. */
+/** The page as the user sees it, with the mark outlined in red for the model to look at; a photo-heavy page is sent smaller so it stays under the harness's limit. */
 function renderPage(editor: WebEditor, pageIndex: number, mark: Mark | null): string | null {
+  for (const width of [1024, 640, 400]) {
+    const url = renderPageAt(editor, pageIndex, mark, width);
+    if (url && url.length <= MAX_IMAGE_CHARS) return url;
+  }
+  return null;
+}
+
+function renderPageAt(editor: WebEditor, pageIndex: number, mark: Mark | null, w: number): string | null {
   try {
-    const w = 1024;
-    const h = Math.round(1024 / editor.pageAspect);
+    const h = Math.round(w / editor.pageAspect);
     const canvas = document.createElement('canvas');
     canvas.width = w;
     canvas.height = h;
@@ -35,7 +43,18 @@ function renderPage(editor: WebEditor, pageIndex: number, mark: Mark | null): st
   } catch { return null; }
 }
 
-const ideas = ['この ページの ことばを やさしく', 'つぎの ページを つくって', 'うさぎと かめの えほんを つくって', 'タイトルを かんがえて'];
+/** What the harness does for a book, shown before the first request because the AI is the paid part of ぺたぺた. */
+const benefits: { icon: IconName; title: string; text: string }[] = [
+  { icon: 'brush', title: 'えを かく', text: 'ページに あう イラストを、本の タッチで' },
+  { icon: 'text', title: 'ことばを ととのえる', text: 'やさしく、みじかく、ふりがなつきで' },
+  { icon: 'book', title: 'おはなしを えほんに', text: 'ひとこと 書けば、ページを まるごと' },
+];
+const ideas: { icon: IconName; text: string }[] = [
+  { icon: 'plus', text: 'つぎの ページを つくって' },
+  { icon: 'text', text: 'この ページの ことばを やさしく' },
+  { icon: 'book', text: 'うさぎと かめの えほんを つくって' },
+  { icon: 'sparkles', text: 'タイトルを かんがえて' },
+];
 
 interface Props {
   bridge: AiBridge;
@@ -87,37 +106,48 @@ export function AiPanel({ bridge, editor, revision, mark, onClearMark, readOnly 
     setDraft('');
   };
 
+  const activeMark = mark && mark.pageIndex === editor.pageIndex ? mark : null;
   return <div className="ai-panel" data-testid="ai-panel">
-    <div className="ai-session">
-      <span className="ai-session-state" data-running={state.running || undefined}>{state.running ? 'AI が はたらいています…' : messages.length ? 'つづきの 会話' : '新しい会話'}</span>
-      <CreditNudge />
-      <button className="ghost" title="新しい会話を始める" disabled={busy || !messages.length} onClick={() => bridge.reset(editor.bookId)}><Icon name="redo" size={14} />新しい会話</button>
+    <div className="ai-head">
+      <h2><span className="ai-head-mark"><Icon name="sparkles" size={15} /></span>AI と つくる</h2>
+      {messages.length > 0 && <button className="ghost ai-reset" aria-label="新しい会話を始める" title="新しい会話" disabled={busy} onClick={() => bridge.reset(editor.bookId)}><Icon name="redo" size={14} />新しい会話</button>}
     </div>
     <div ref={listRef} className="ai-messages" aria-live="polite">
-      {messages.length === 0 && <div className="ai-ideas">
-        <p className="hint">直したいところを ページの上で 囲んでから、ここに 頼みごとを 書きます。囲まなければ、いま見ている ページ全体が 対象です。おはなしを 書けば、えも ことばも AI が つくります。</p>
-        {ideas.map((idea) => <button key={idea} className="ghost" disabled={busy || readOnly} onClick={() => send(idea)}>{idea}</button>)}
+      {messages.length === 0 && <div className="ai-intro">
+        <p className="ai-intro-lead">この えほんを 見ながら、AI が いっしょに つくります。</p>
+        <ul className="ai-benefits">
+          {benefits.map((benefit) => <li key={benefit.title}><Icon name={benefit.icon} size={16} /><div><strong>{benefit.title}</strong><span>{benefit.text}</span></div></li>)}
+        </ul>
+        <p className="ai-intro-cue">まずは ひとつ、たのんでみる</p>
+        <div className="ai-starters">
+          {ideas.map((idea) => <button key={idea.text} className="ai-starter" disabled={busy || readOnly} onClick={() => send(idea.text)}><Icon name={idea.icon} size={15} /><span>{idea.text}</span><Icon name="chevron" size={14} /></button>)}
+        </div>
+        <p className="ai-intro-tip"><Icon name="select" size={13} />ページの上を ドラッグで 囲むと、その部分だけを たのめます。</p>
+        {wallet.ready && wallet.plan !== 'plus' && <p className="ai-intro-plan">はじめの {WELCOME_CREDITS} クレジットは 無料。ぺたぺた プラスなら 毎月 {PLUS_CREDITS.toLocaleString()} クレジットで、つくりほうだい。</p>}
       </div>}
       {messages.map((message, index) => <ChatMessage key={index} message={message} />)}
       {working && <WorkingCard {...working} />}
     </div>
     {outOfCredits ? <OutOfCredits /> : <div className="ai-compose">
-      {mark && mark.pageIndex === editor.pageIndex
-        ? <div className="ai-mark" role="status"><Icon name="select" size={14} /><span>{describeMark(mark, marked)}</span><button aria-label="囲みを消す" onClick={onClearMark}><Icon name="close" size={13} /></button></div>
-        : <p className="hint ai-mark-hint">{editor.pageIndex + 1}ページ全体 · ドラッグで囲むと その部分だけ</p>}
-      <textarea
-        aria-label="AIへの たのみごと"
-        value={draft}
-        placeholder={readOnly ? '閲覧モードでは使えません' : state.running ? 'AI が はたらいています… おわったら つぎを たのめます' : 'たとえば「くまを もう少し 小さく」「この ことばを やさしく」'}
-        disabled={readOnly || state.running}
-        rows={3}
-        onChange={(event) => setDraft(event.target.value)}
-        onKeyDown={(event) => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); send(); } }}
-      />
-      <div className="ai-compose-actions">
+      <div className="ai-scope">
+        {activeMark
+          ? <span className="ai-mark" role="status"><Icon name="select" size={13} /><span>{describeMark(activeMark, marked)}</span><button aria-label="囲みを消す" onClick={onClearMark}><Icon name="close" size={12} /></button></span>
+          : <span className="ai-scope-page"><Icon name="page" size={13} />{editor.pageIndex + 1}ページ ぜんぶ</span>}
+        <CreditNudge />
+      </div>
+      <div className="ai-input" data-running={state.running || undefined}>
+        <textarea
+          aria-label="AIへの たのみごと"
+          value={draft}
+          placeholder={readOnly ? '閲覧モードでは使えません' : state.running ? 'AI が はたらいています…' : 'なにを してほしい？'}
+          disabled={readOnly || state.running}
+          rows={2}
+          onChange={(event) => setDraft(event.target.value)}
+          onKeyDown={(event) => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); send(); } }}
+        />
         {state.running
-          ? <button className="ghost" onClick={() => bridge.stop(editor.bookId)}><Icon name="stop" size={15} />やめる</button>
-          : <button className="primary" disabled={!draft.trim() || busy || readOnly} onClick={() => send()}><Icon name="send" size={15} />頼む</button>}
+          ? <button className="ai-send" aria-label="やめる" title="やめる" onClick={() => bridge.stop(editor.bookId)}><Icon name="stop" size={16} /></button>
+          : <button className="ai-send ai-cta" aria-label="頼む" title="頼む (Enter)" disabled={!draft.trim() || busy || readOnly} onClick={() => send()}><Icon name="send" size={16} /></button>}
       </div>
     </div>}
   </div>;

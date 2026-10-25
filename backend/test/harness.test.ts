@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { after, beforeEach, test } from 'node:test';
 import { initializeApp, deleteApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-import { Agent, AiService, type Task, type Tool } from '../functions/src/agent.ts';
+import { Agent, AiService, imageOf, type Task, type Tool } from '../functions/src/agent.ts';
 import { acceptableSvg, AtelierService, composePrompt, MAX_SVG_CHARS, validateInput, type AtelierChunk } from '../functions/src/atelier.ts';
 import { BookService, BOOK_TASK, composeBookPrompt, validateBookInput, type BookChunk } from '../functions/src/book.ts';
 import { CreditService, pricesFor, WELCOME_CREDITS } from '../functions/src/credits.ts';
@@ -35,7 +35,7 @@ test('atelier input is bounded and only plain SVG passes', () => {
   assert.throws(() => validateInput({ request: '' }), { code: 'invalid-argument' });
   assert.throws(() => validateInput({ request: 'x'.repeat(501) }), { code: 'invalid-argument' });
   assert.throws(() => validateInput({ request: 'ok', mode: 'revise' }), { code: 'invalid-argument' });
-  assert.throws(() => validateInput({ request: 'ok', image: 'data:image/jpeg;base64,AAAA' }), { code: 'invalid-argument' });
+  assert.equal(validateInput({ request: 'ok', image: 'data:image/jpeg;base64,AAAA' }).image, null);
 });
 
 test('an atelier turn grants the welcome credits, charges the tokens, streams progress and drops drawings the painter rejects', async () => {
@@ -82,7 +82,7 @@ test('the book input strips drawings, keeps names, and describes the page the us
   assert.match(prompt, /page 1 of 1 \(id "p1"\)[\s\S]*x 10% to 50%, y 10% to 60%[\s\S]*- t1 \(text "こんにちは"\)[\s\S]*Request:\nことばを やさしく/);
   assert.throws(() => validateBookInput({ request: 'x', book: '{"version":6}' }), { code: 'invalid-argument' });
   assert.throws(() => validateBookInput({ request: 'x', book: 'nope' }), { code: 'invalid-argument' });
-  assert.throws(() => validateBookInput({ request: 'x', book: book(), bookArt: ['<svg><image/></svg>'] }), { code: 'invalid-argument' });
+  assert.deepEqual(validateBookInput({ request: 'x', book: book(), bookArt: ['<svg><image/></svg>'] }).bookArt, []);
 });
 
 test('the book tools edit the document in place, refuse what the format forbids, and say so to the model', async () => {
@@ -156,4 +156,15 @@ test('the loop stops at the task\'s round limit and prices dated model ids by fa
   assert.equal(pricesFor('gpt-5-2026-03-01').input, 1.25);
   assert.equal(pricesFor('claude-opus-5-5-20260401').output, 20);
   assert.equal(pricesFor('something-new').output, 20);
+});
+
+test('a heavy page image or a picture that is not plain SVG is left out of the turn instead of refusing it', () => {
+  const heavy = `<svg viewBox="0 0 1 1">${'<g/>'.repeat(MAX_SVG_CHARS / 4)}</svg>`;
+  const styled = '<svg viewBox="0 0 1 1"><style>g{fill:red}</style><g/></svg>';
+  const bookInput = validateBookInput({ request: 'くまを かいて', book: book(), pageIndex: 0, pageId: 'p1', pageCount: 1, bookArt: [heavy, sprite, styled], image: `data:image/png;base64,${'A'.repeat(2_100_000)}` });
+  assert.deepEqual(bookInput.bookArt, [sprite]);
+  assert.equal(bookInput.image, null);
+  assert.deepEqual(validateInput({ request: 'くま', bookArt: [styled, sprite], image: 'data:image/jpeg;base64,AAAA' }).bookArt, [sprite]);
+  assert.equal(imageOf('data:image/png;base64,AAAA'), 'data:image/png;base64,AAAA');
+  assert.equal(imageOf(undefined), null);
 });

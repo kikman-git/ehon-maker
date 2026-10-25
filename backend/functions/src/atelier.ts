@@ -87,8 +87,8 @@ export function validateInput(raw: unknown): AtelierInput {
   if (piece !== null && !acceptableSvg(piece)) throw new HttpsError('invalid-argument', 'The current illustration is not a plain SVG.');
   if (mode === 'revise' && !piece) throw new HttpsError('invalid-argument', 'A revision needs the current illustration.');
   const image = imageOf(data.image);
-  const art = Array.isArray(data.bookArt) ? data.bookArt.slice(0, MAX_BOOK_ART) : [];
-  if (!art.every(acceptableSvg)) throw new HttpsError('invalid-argument', 'Book art must be plain SVG.');
+  // Reference art only sets the style; a picture that is not plain SVG is left out rather than failing the turn.
+  const art = Array.isArray(data.bookArt) ? data.bookArt.filter(acceptableSvg).slice(0, MAX_BOOK_ART) : [];
   const selected = data.selected && typeof data.selected === 'object' ? data.selected as Record<string, unknown> : null;
   const selectedId = selected ? text(selected.id, 80) : null;
   return {

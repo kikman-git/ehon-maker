@@ -21,7 +21,7 @@ async function openAi(page: Page) {
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await page.getByRole('button', { name: 'AI', exact: true }).click();
   await expect(page.getByTestId('ai-panel')).toBeVisible();
-  await expect(page.getByText('新しい会話', { exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'AI と つくる' })).toBeVisible();
 }
 
 async function drawMark(page: Page, corners: [number, number][]) {

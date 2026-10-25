@@ -1,15 +1,15 @@
 import { AtelierError, bookTurn, credits, failureText, type BookInput } from '../cloud/credits';
 import type { AiBridge } from './bridge';
+import { referenceArt } from './art';
 import { aiStore, type AiEntry } from './state';
 
 interface Document { version?: number; book?: { art?: Record<string, { svg?: string; name?: string }> } }
-const BOOK_ART_SAMPLE = 6;
 
 /** The document as the model sees it: every picture reduced to its name, which keeps a turn to a few thousand tokens. */
 export function withoutArt(json: string): { book: string; bookArt: string[] } {
   const document = JSON.parse(json) as Document;
   const art = document.book?.art ?? {};
-  const bookArt = Object.values(art).map(entry => entry.svg).filter((svg): svg is string => typeof svg === 'string').slice(0, BOOK_ART_SAMPLE);
+  const bookArt = referenceArt(Object.values(art).map(entry => entry.svg));
   if (document.book) document.book.art = Object.fromEntries(Object.entries(art).map(([key, entry]) => [key, { name: entry.name ?? key }]));
   return { book: JSON.stringify(document), bookArt };
 }
@@ -63,7 +63,7 @@ export function cloudBookBridge(): AiBridge {
         if (id !== turn) return;
         const reason = error instanceof AtelierError ? error.reason : 'network';
         if (reason === 'credits') { credits.update({ balance: (error as AtelierError).balance ?? 0 }); push({ kind: 'notice', text: 'クレジットが たりません。' }); }
-        else push({ kind: 'log', level: 'error', text: failureText[reason] });
+        else push({ kind: 'log', level: 'error', text: failureText[reason] + (error instanceof AtelierError && error.detail ? ` (${error.detail})` : '') });
       }).finally(() => { if (id === turn) state.update({ running: false, progress: null, step: null }); });
     },
     stop() { turn++; state.update({ running: false, progress: null, step: null }); },

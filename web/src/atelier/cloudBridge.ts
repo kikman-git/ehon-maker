@@ -1,5 +1,6 @@
 import type { AiBridge } from '../ai/bridge';
 import { aiStore, type AiEntry } from '../ai/state';
+import { referenceArt } from '../ai/art';
 import { atelierTurn, AtelierError, credits, failureText, type AtelierInput } from '../cloud/credits';
 
 /** The atelier over the metered `atelierTurn` callable. */
@@ -26,7 +27,7 @@ export function cloudAtelierBridge(): AiBridge {
       push({ kind: 'user', text: words, mark: input.mark, at: started });
       state.update({ running: true, progress: 0, step: null });
       const spec = input.spec ?? { title: '', mode: 'new' as const, selected: null, sketched: false };
-      const request: AtelierInput = { ...spec, request: words, image: input.image, piece: payload.piece, bookArt: Object.values(payload.art) };
+      const request: AtelierInput = { ...spec, request: words, image: input.image, piece: payload.piece, bookArt: referenceArt(Object.values(payload.art)) };
       void atelierTurn(request, (progress) => { if (id === turn) state.update({ ...(progress.chars !== undefined ? { progress: progress.chars } : {}), ...(progress.step ? { step: progress.step } : {}) }); }).then((result) => {
         if (id !== turn) return;
         for (const listener of [...bookListeners]) listener(bookId, JSON.stringify({ piece: result.piece, candidates: result.candidates }));
@@ -37,7 +38,7 @@ export function cloudAtelierBridge(): AiBridge {
         if (id !== turn) return;
         const reason = error instanceof AtelierError ? error.reason : 'network';
         if (reason === 'credits') { credits.update({ balance: (error as AtelierError).balance ?? 0 }); push({ kind: 'notice', text: 'クレジットが たりません。' }); }
-        else push({ kind: 'log', level: 'error', text: failureText[reason] });
+        else push({ kind: 'log', level: 'error', text: failureText[reason] + (error instanceof AtelierError && error.detail ? ` (${error.detail})` : '') });
       }).finally(() => { if (id === turn) state.update({ running: false, progress: null, step: null }); });
     },
     stop() { turn++; state.update({ running: false, progress: null, step: null }); },

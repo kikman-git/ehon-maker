@@ -85,9 +85,10 @@ export interface BookInput {
 }
 export type BookResult = Metered<{ book: string | null; say: string }>;
 
-export type AtelierFailure = 'credits' | 'paused' | 'rate' | 'signedOut' | 'network';
+export type AtelierFailure = 'credits' | 'paused' | 'rate' | 'signedOut' | 'rejected' | 'network';
 export class AtelierError extends Error {
-  constructor(readonly reason: AtelierFailure, readonly balance: number | null = null) { super(reason); }
+  /** `detail` is the server's own words for a rejected request, shown so a bad payload is never mistaken for a dead network. */
+  constructor(readonly reason: AtelierFailure, readonly balance: number | null = null, readonly detail = '') { super(reason); }
 }
 
 /** One metered turn on the server, with its progress as it streams. */
@@ -105,6 +106,7 @@ async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progr
     if (code === 'functions/unavailable' && details?.reason === 'rate') throw new AtelierError('rate');
     if (code === 'functions/unavailable' || code === 'functions/failed-precondition') throw new AtelierError('paused');
     if (code === 'functions/unauthenticated') throw new AtelierError('signedOut');
+    if (code === 'functions/invalid-argument' || code === 'functions/internal') throw new AtelierError('rejected', null, (error as Error).message ?? code);
     throw new AtelierError('network');
   }
 }
@@ -116,6 +118,7 @@ export const failureText: Record<Exclude<AtelierFailure, 'credits'>, string> = {
   paused: 'AI は いま おやすみちゅうです。',
   rate: 'たくさん たのんだので、すこし やすんでから もういちど たのんでください。',
   signedOut: 'サインインが きれました。',
+  rejected: 'おくった ないようを AI が うけとれませんでした。',
   network: 'AI に つながりませんでした。',
 };
 
