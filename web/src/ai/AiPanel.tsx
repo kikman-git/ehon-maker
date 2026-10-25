@@ -4,7 +4,7 @@ import { useStore } from '../cloud/store';
 import type { WebEditor } from '../core';
 import { CreditNudge, OutOfCredits } from '../ui/Credits';
 import { Icon, type IconName } from '../ui/Icon';
-import { MAX_IMAGE_CHARS } from './art';
+import { MAX_IMAGE_CHARS, MAX_REQUEST_CHARS } from './art';
 import type { AiBridge } from './bridge';
 import { ChatMessage, chatMessages, formatElapsed, LONG_TURN_MS, stepText, WorkingCard } from './feedback';
 import { describeMark, itemsInMark, type ItemBox, type Mark } from './prompt';
@@ -142,6 +142,7 @@ export function AiPanel({ bridge, editor, revision, mark, onClearMark, readOnly 
           placeholder={readOnly ? '閲覧モードでは使えません' : state.running ? 'AI が はたらいています…' : 'なにを してほしい？'}
           disabled={readOnly || state.running}
           rows={2}
+          maxLength={MAX_REQUEST_CHARS}
           onChange={(event) => setDraft(event.target.value)}
           onKeyDown={(event) => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); send(); } }}
         />

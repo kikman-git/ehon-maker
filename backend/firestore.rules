@@ -22,7 +22,7 @@ service cloud.firestore {
     }
     function validBook(data) {
       return data.keys().hasOnly(['ownerId', 'meta', 'pageIds', 'pageHashes', 'updatedAt', 'revision', 'lease', 'deleted'])
-        && data.meta is string && data.meta.size() < 100000
+        && data.meta is string && data.meta.size() < 800000
         && data.pageIds is list && data.pageIds.size() > 0 && data.pageIds.size() <= 200
         && data.pageIds.toSet().size() == data.pageIds.size()
         && data.pageHashes is map && data.pageHashes.keys().toSet() == data.pageIds.toSet()

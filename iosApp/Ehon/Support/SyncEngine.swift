@@ -146,7 +146,7 @@ final class SyncEngine {
         let ids = (0..<Int(book.pageCount)).map { book.page(index: Int32($0)).id }
         let hashes = encoded.mapValues { Self.hash($0) }
         let meta = BookSyncCodec.shared.metadata(book: book)
-        guard ids.count <= 200, meta.utf8.count < 100_000, encoded.values.allSatisfy({ $0.utf8.count < 900_000 }) else {
+        guard ids.count <= 200, meta.utf8.count < 800_000, encoded.values.allSatisfy({ $0.utf8.count < 900_000 }) else {
             throw SyncError.documentTooLarge
         }
         var fields: [String: Any] = ["ownerId": uid, "meta": meta, "pageIds": ids, "pageHashes": hashes,

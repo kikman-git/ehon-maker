@@ -33,7 +33,7 @@ test('atelier input is bounded and only plain SVG passes', () => {
   assert.equal(input.request, 'ぼうしの くま');
   assert.match(composePrompt(input), /Draw 3 candidate illustrations[\s\S]*<g id="ear"> \(みみ\)[\s\S]*Pictures already in this book \(1\)/);
   assert.throws(() => validateInput({ request: '' }), { code: 'invalid-argument' });
-  assert.throws(() => validateInput({ request: 'x'.repeat(501) }), { code: 'invalid-argument' });
+  assert.throws(() => validateInput({ request: 'x'.repeat(10001) }), { code: 'invalid-argument' });
   assert.throws(() => validateInput({ request: 'ok', mode: 'revise' }), { code: 'invalid-argument' });
   assert.equal(validateInput({ request: 'ok', image: 'data:image/jpeg;base64,AAAA' }).image, null);
 });

@@ -566,6 +566,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .mark-path[d=""] { display: none; }
 @media (max-width: 720px) { .studio-workspace[data-ai] { grid-template-columns: minmax(0, 1fr); } .tool-panel[data-tool="ai"] { max-height: 300px; } }
 
+.status[data-error] { color: #b13a2a; }
 /* Every way into the AI shares one look, set apart from the ordinary tools: the paid feature should be the first thing the eye finds. */
 .ai-cta { background: var(--ai); border-color: var(--ai); color: #fff; font-weight: 650; box-shadow: 0 2px 8px rgba(91, 79, 201, .28); }
 .ai-cta:hover:not(:disabled) { background: #4a3fb3; border-color: #4a3fb3; }

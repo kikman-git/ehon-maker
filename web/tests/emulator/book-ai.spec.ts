@@ -39,7 +39,7 @@ test('the panel is a plain chat: a marked request edits the page through the har
   await expect(panel.getByLabel('モデル')).toHaveCount(0);
   await expect(panel.getByLabel('AIの種類')).toHaveCount(0);
   await expect(page.locator('.ai-terminal')).toHaveCount(0);
-  await expect(panel.getByText('無料クレジット のこり 100')).toBeVisible();
+  await expect(panel.getByText(/はじめの 100 クレジットは 無料/)).toBeVisible();
   await drawMark(page, [[0.3, 0.3], [0.6, 0.3], [0.6, 0.6], [0.3, 0.6], [0.3, 0.3]]);
   await expect(page.getByTestId('mark')).toBeVisible();
   await expect(page.locator('.ai-mark')).toContainText('x 30%–60%');

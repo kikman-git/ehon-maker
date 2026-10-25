@@ -7,7 +7,7 @@ import { UsageService } from './usage';
 
 // One harness for every AI feature (decision #67): a task brings its tools and rules, the agent runs the loop, credits meter the whole turn.
 
-export const MAX_REQUEST_CHARS = 500;
+export const MAX_REQUEST_CHARS = 10_000;
 export const MAX_IMAGE_BYTES = 1_500_000;
 
 export interface ToolOutcome { result: unknown; isError?: boolean; /** A line for the user's working card, in the user's language. */ step?: string }

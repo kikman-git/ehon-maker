@@ -154,7 +154,8 @@ export class SyncEngine {
     const hashes: Record<string, string> = {};
     for (let index = 0; index < ids.length; index++) hashes[ids[index]] = await sha256Hex(jsons[index]);
     const meta = codec.syncMetadata(push.json);
-    if (ids.length > 200 || utf8Length(meta) >= 100_000 || jsons.some((json) => utf8Length(json) >= 900_000)) throw new SyncError('documentTooLarge');
+    // The metadata carries every picture's SVG, so a book the AI keeps drawing for grows it; TODO: move art into its own documents.
+    if (ids.length > 200 || utf8Length(meta) >= 800_000 || jsons.some((json) => utf8Length(json) >= 900_000)) throw new SyncError('documentTooLarge');
     const ref = doc(this.db, 'books', push.id);
     const fields = { ownerId: uid, meta, pageIds: ids, pageHashes: hashes, revision: push.revision + 1, updatedAt: serverTimestamp(), deleted: push.deleted };
     const batch = writeBatch(this.db);

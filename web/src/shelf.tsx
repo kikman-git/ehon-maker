@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { cloud } from './cloud/config';
 import { repository, type BookRepository, type BookSummary } from './cloud/repository';
-import { session, startSession } from './cloud/session';
+import { session, SIGNED_IN_FLAG, startSession } from './cloud/session';
 import { useStore } from './cloud/store';
 import { blankBook, loadFonts } from './core';
 import { loadTemplates, templateBook, templateStore } from './templates';
@@ -58,7 +58,7 @@ function Shelf({ repo }: { repo: BookRepository }) {
     <header className="topbar">
       <div className="brand"><span className="brand-mark"><Icon name="brush" /></span><h1>ぺたぺた</h1><span className="studio-wordmark">STUDIO</span></div>
       <div className="actions">
-        {cloud && account.signedIn && <span className="status" data-pending={state.pendingChanges} title={syncStatus(state)}>{state.pendingChanges ? 'ほぞんちゅう…' : 'ほぞんずみ'}</span>}
+        {cloud && account.signedIn && <span className="status" data-pending={state.pendingChanges} data-error={(state.pendingChanges && state.syncError) || undefined} title={syncStatus(state)}>{state.pendingChanges ? (state.syncError ? 'ほぞん できていません' : 'ほぞんちゅう…') : 'ほぞんずみ'}</span>}
         <CreditChip onClick={() => setPanel('account')} />
         {cloud && <button className="account-button" onClick={() => setPanel('account')}><Icon name="user" size={16} /><span>{account.displayName || 'アカウント'}</span></button>}
         <button className="primary" disabled={creating} onClick={() => void create()}><Icon name="plus" size={16} /> 新しく描く</button>
@@ -139,8 +139,11 @@ function Boot() {
 
 const rootElement = document.getElementById('root')!;
 const root = createRoot(rootElement);
-// Keep the prerendered public page visible until the authenticated app is ready to take over.
-if (!rootElement.hasChildNodes()) root.render(<p className="loading" role="status">じゅんび しています…</p>);
+// Keep the prerendered public page visible until the authenticated app is ready to take over, unless this browser
+// was signed in last time: then the landing page would only flash before the shelf.
+let wasSignedIn = false;
+try { wasSignedIn = !!cloud && localStorage.getItem(SIGNED_IN_FLAG) === '1'; } catch { /* storage may be blocked */ }
+if (!rootElement.hasChildNodes() || wasSignedIn) root.render(<p className="loading" role="status">じゅんび しています…</p>);
 const route = currentRoute();
 async function readySession(): Promise<void> {
   if (route.kind === 'login') return;

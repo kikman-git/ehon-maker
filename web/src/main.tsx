@@ -90,8 +90,9 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const [template, setTemplate] = useState(cloudBook ? '' : new URLSearchParams(location.search).get('template') || '');
   const catalog = useStore(templateStore);
   useEffect(() => { if (!cloudBook) void loadTemplates().catch(() => undefined); }, [cloudBook]);
-  const [tool, setTool] = useState<DrawingTool>(() => editor.artJson() !== '[]' ? 'select' : 'brush');
-  const [panelOpen, setPanelOpen] = useState(() => remembered('studio.panel', true));
+  // A book opens on the AI chat where it exists: it is the way most people will make their book.
+  const [tool, setTool] = useState<DrawingTool>(() => aiBridge ? 'ai' : editor.artJson() !== '[]' ? 'select' : 'brush');
+  const [panelOpen, setPanelOpen] = useState(() => aiBridge !== null || remembered('studio.panel', true));
   const [stripOpen, setStripOpen] = useState(() => remembered('studio.strip', true));
   const bookArt = useMemo(() => JSON.parse(editor.artJson()) as { id: string; name: string; aspect: number }[], [editor, revision]);
   const [category, setCategory] = useState(() => (bookArt.length ? 'art' : parts[0].category));
@@ -107,7 +108,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const [mark, setMark] = useState<Mark | null>(null);
   const [atelierOpen, setAtelierOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
-  const [aiOpenFor, setAiOpenFor] = useState<typeof editor | null>(null);
+  const [aiOpenFor, setAiOpenFor] = useState<typeof editor | null>(() => aiBridge ? editor : null);
   const aiOpen = aiBridge !== null && aiOpenFor === editor;
   const importRef = useRef<HTMLInputElement>(null);
   const uploadRef = useRef<HTMLInputElement>(null);
@@ -417,7 +418,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
       <div className="document-title"><strong>{editor.title}</strong><span>{cloudBook ? 'このブラウザに自動保存' : 'おためし · 本棚に保存して続けられます'}</span></div>
       <div className="actions">
         <a className="button ghost shelf-link" href={paths.shelf} onClick={(event) => void goHome(event)}><Icon name="home" size={17} />ホーム</a>
-        {cloudBook && account.signedIn && <span className="status" data-pending={repoState.pendingChanges} title={syncStatus(repoState)}>{repoState.pendingChanges ? '同期中…' : '同期済み'}</span>}
+        {cloudBook && account.signedIn && <span className="status" data-pending={repoState.pendingChanges} data-error={(repoState.pendingChanges && repoState.syncError) || undefined} title={syncStatus(repoState)}>{repoState.pendingChanges ? (repoState.syncError ? '同期できていません' : '同期中…') : '同期済み'}</span>}
         <CreditChip onClick={() => setAccountOpen(true)} />
         <button className="ghost read-button" title="読むモードで開く" onClick={() => void readBook()}><Icon name="book" size={17} /><span>よむ</span></button>
         <details className="file-menu">

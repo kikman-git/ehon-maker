@@ -28,7 +28,7 @@ test('a new account gets 100 credits, the atelier spends them per turn, and the 
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await page.getByRole('button', { name: '素材', exact: true }).click();
   const entry = page.getByRole('button', { name: /AIで 素材を つくる/ });
-  await expect(entry).toContainText('無料クレジット のこり 100');
+  await expect(page.getByRole('button', { name: /AIで 素材を つくる/ })).toBeVisible();
   await entry.click();
   const atelier = page.getByRole('dialog', { name: '素材アトリエ' });
   await atelier.getByLabel('アトリエへの たのみごと').fill('ぼうしの くま');

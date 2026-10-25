@@ -7,7 +7,8 @@ import { CreditNudge, Offers, planName } from './Credits';
 import { Icon } from './Icon';
 
 export function syncStatus(state: { syncError: string | null; pendingChanges: boolean }): string {
-  if (state.syncError) return 'この ブラウザに ほぞんしました。クラウドほぞんは あとで もういちど おこないます。';
+  // The engine's own words follow, because "later" has sometimes meant "never" and the cause should be readable.
+  if (state.syncError) return `この ブラウザに ほぞんしました。クラウドほぞんは あとで もういちど おこないます。（${state.syncError}）`;
   return state.pendingChanges ? 'えほんを アカウントに ほぞんちゅう…' : 'えほんを アカウントに ほぞんしました。';
 }
 

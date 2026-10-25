@@ -18,8 +18,13 @@ export interface SessionState {
 export const session = createStore<SessionState>({ ready: !cloud, uid: null, signedIn: false, displayName: '', busy: false, error: null });
 let started = false;
 
+/** Remembered across loads so the shelf can skip the public landing page for someone who was signed in. */
+export const SIGNED_IN_FLAG = 'session.signedIn';
+
 function publish(user: User | null): void {
-  session.update({ ready: true, uid: user?.uid ?? null, signedIn: !!user && !user.isAnonymous, displayName: user?.displayName || user?.email || '' });
+  const signedIn = !!user && !user.isAnonymous;
+  try { if (signedIn) localStorage.setItem(SIGNED_IN_FLAG, '1'); else localStorage.removeItem(SIGNED_IN_FLAG); } catch { /* storage may be blocked */ }
+  session.update({ ready: true, uid: user?.uid ?? null, signedIn, displayName: user?.displayName || user?.email || '' });
 }
 
 /**
