@@ -72,6 +72,7 @@ export function cloudBookBridge(): AiBridge {
       // Pictures arrive one at a time and drafts arrive without them, so the turn keeps its own art to merge into both.
       const drawn: Record<string, { name: string; svg: string }> = {};
       let applied: string | null = null;
+      let latest = original;
       const apply = (answer: string, draft: boolean) => {
         let json: string;
         try { json = withArtOf(original, answer, drawn); } catch { if (!draft) push({ kind: 'rejected', text: '反映できませんでした: AI の こたえが えほんの かたちでは ありませんでした。' }); return; }
@@ -82,8 +83,10 @@ export function cloudBookBridge(): AiBridge {
       };
       void bookTurn(request, (progress) => { if (id === turn) state.update({ ...(progress.chars !== undefined ? { progress: progress.chars } : {}), ...(progress.step ? { step: progress.step, steps: appendStep(state.get().steps, progress.step) } : {}) }); if (id === turn && progress.step && unfinished) { unfinished.steps.push(progress.step); remember(); } }, (event) => {
         if (id !== turn) return;
-        if (event.kind === 'art') { drawn[event.art.key] = { name: event.art.name, svg: event.art.svg }; return; }
-        apply(event.book, true);
+        // A round that only draws leaves the document untouched, so no draft follows: the picture lands by re-applying what the turn has.
+        if (event.kind === 'art') { drawn[event.art.key] = { name: event.art.name, svg: event.art.svg }; apply(latest, true); return; }
+        latest = event.book;
+        apply(latest, true);
       }).then((result) => {
         if (id !== turn) return;
         if (result.book) apply(result.book, false);

@@ -65,7 +65,7 @@ The book: pages in order, each with a background colour and items painted in arr
 
 How a Japanese picture book is bound, when making one from scratch or adding a story: a cover (title and the favourite picture), a title page (扉, the title again, small), then spreads where the odd page carries the picture and the even page the words, and a back cover with the colophon (発行 / さく / え). Words are one text item per line at sizePct 5 in yomogi, stacked about 7 percent apart, centred around x 50 in the lower part of the page. A picture page is a backdrop at x 50, y 50, sizePct 100, heightPct 100 with the characters as separate sprites placed over it, each 20 to 40 percent wide, so the child can move them. Write short, warm children's Japanese with spaces between phrases (わかちがき) when the book is Japanese. Plan the whole story before drawing: about six to ten spreads, one idea per spread, a gentle ending.
 
-Pictures: draw_picture makes one sprite or backdrop with the house style and adds it to the book; place it with add_part. Draw at most ${MAX_PICTURES_PER_TURN} pictures in one turn and reuse a character's sprite across pages instead of redrawing it. Match the book's existing pictures.
+Pictures: draw_picture makes one sprite or backdrop with the house style and adds it to the book; place it with add_part. Place each picture on its page with add_part before drawing the next one, so the family watches the book fill in instead of waiting. Draw at most ${MAX_PICTURES_PER_TURN} pictures in one turn and reuse a character's sprite across pages instead of redrawing it. Match the book's existing pictures.
 
 ${DRAWING_RULES.replace('Drawing rules:', 'Rules for draw_picture descriptions:')}
 

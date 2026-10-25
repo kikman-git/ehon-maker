@@ -16,8 +16,9 @@ export class FakeModel implements ChatModel {
     const text = request.messages.map(message => message.content.map(block => block.type === 'text' ? block.text : '').join('\n')).join('\n');
     const wants = /Request:\n([\s\S]*)$/.exec(first)?.[1]?.trim() ?? '';
     const content: Content[] = request.tools.some(tool => tool.name === SUBMIT) ? this.atelier(prompt, wants) : this.book(request, prompt, wants);
-    // `slow` paces the answer so a browser test can watch the working card.
-    if (/slow/i.test(wants)) { request.onProgress?.(0); await new Promise(resolve => setTimeout(resolve, 2_000)); }
+    // `slow` paces the answer so a browser test can watch the working card; `slow8` holds it for eight seconds.
+    const paced = /slow(\d*)/i.exec(wants);
+    if (paced) { request.onProgress?.(0); await new Promise(resolve => setTimeout(resolve, (Number(paced[1]) || 2) * 1_000)); }
     const answer = JSON.stringify(content);
     request.onProgress?.(answer.length);
     const expensive = /expensive/i.test(text);
@@ -45,16 +46,22 @@ export class FakeModel implements ChatModel {
     const pageId = /\(id "([^"]+)"\)/.exec(prompt)?.[1] ?? 'p1';
     if (!results.length) {
       if (/break/i.test(wants)) return [call('set_text', { id: 'nope', text: 'x' }, ++this.calls)];
+      // A round that only draws: the document is unchanged, so the picture has to reach the book on its own chunk.
+      if (/えだけ/.test(wants)) return [call('draw_picture', { name: 'くま', description: 'a small bear waving' }, ++this.calls)];
       if (/つくって/.test(wants)) return [call('add_page', {}, ++this.calls), call('draw_picture', { name: 'くま', description: 'a small bear waving' }, ++this.calls)];
       return [call('add_text', { pageId, text: 'AI が かきました', x: 50, y: 50, font: 'maru' }, ++this.calls)];
     }
     if (results.some(result => result.isError)) return [{ type: 'text', text: 'うまく いきませんでした。' }];
     const made = request.messages.flatMap(message => message.content).filter((block): block is Extract<Content, { type: 'tool_result' }> => block.type === 'tool_result')
       .map(result => JSON.parse(result.output) as { pageId?: string; partId?: string; id?: string });
+    if (/えだけ/.test(wants)) {
+      if (made.filter(result => result.partId).length < 2) return [call('draw_picture', { name: 'ねこ', description: 'a small cat sitting' }, ++this.calls)];
+      return [call('finish', { say: 'くまと ねこを かきました。' }, ++this.calls)];
+    }
     const page = made.find(result => result.pageId)?.pageId;
     const part = made.find(result => result.partId)?.partId;
     const placed = made.some(result => result.id?.startsWith('ai-p'));
     if (page && part && !placed) return [call('add_part', { pageId: page, partId: part, x: 50, y: 45, sizePct: 40 }, ++this.calls), call('add_text', { pageId: page, text: 'くまが てを ふった。', x: 50, y: 84 }, ++this.calls)];
-    return [call('finish', { say: page ? 'あたらしい ページに くまを かきました。' : 'ページに ことばを たしました。' }, ++this.calls)];
+    return [call('finish', { say: page ? 'あたらしい ページに くまを かきました。' : part ? 'くまの えを かきました。' : 'ページに ことばを たしました。' }, ++this.calls)];
   }
 }

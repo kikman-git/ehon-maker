@@ -96,6 +96,20 @@ test('the page appears while the turn is still running, not only when it ends', 
   await expect(panel.locator('.ai-message.status[data-done]')).toHaveText('えほんに 反映しました。「元に戻す」で 取り消せます。');
 });
 
+test('a picture reaches the book as soon as it is drawn, not only when the turn ends', async ({ page }) => {
+  await openAi(page);
+  const panel = page.getByTestId('ai-panel');
+  await panel.getByLabel('AIへの たのみごと').fill('slow8 くまの えだけ かいて');
+  await panel.getByRole('button', { name: '頼む' }).click();
+  const working = panel.getByRole('status', { name: 'AI の ようす' });
+  await expect(working).toContainText('「ねこ」の えが できました', { timeout: 30_000 });
+  // Neither round placed anything, so the document never changes and no draft follows; both pictures still have to be in the book while the turn runs.
+  const during = await savedBook(page);
+  await expect(working).toBeVisible();
+  expect(Object.values(during.book.art ?? {}).map((entry) => entry.name)).toEqual(['くま', 'ねこ']);
+  await expect(panel.locator('.ai-message.assistant').last()).toHaveText('くまと ねこを かきました。');
+});
+
 test('a reload comes back to the conversation and the record of what the turn did', async ({ page }) => {
   await openAi(page);
   const panel = page.getByTestId('ai-panel');
