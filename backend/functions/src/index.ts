@@ -20,6 +20,7 @@ import { LoginService } from './login';
 import { R2Store } from './r2';
 import { applyBudgetAlert, cleanupJobs } from './maintenance';
 import { ShareService, TOKEN } from './share';
+import { isAdmin } from './usage';
 
 initializeApp();
 setGlobalOptions({ region: 'asia-northeast1', maxInstances: 10 });
@@ -98,6 +99,17 @@ export const atelierTurn = onCall<unknown, Promise<unknown>, AtelierChunk>(aiOpt
 export const bookTurn = onCall<unknown, Promise<unknown>, BookChunk>(aiOptions, (request, response) => {
   const uid = user(request);
   return new BookService(getFirestore(), credits(), model()).turn(uid, request.data, chunk => response?.sendChunk(chunk) ?? Promise.resolve(false), response?.signal);
+});
+/** Admin (decision #68): credits and plans for one account; the admins are the uids in `config/admins`. */
+export const adminAdjust = onCall({ enforceAppCheck: options.enforceAppCheck }, async request => {
+  const uid = user(request);
+  if (!(await isAdmin(getFirestore(), uid))) throw new HttpsError('permission-denied', 'Admins only.');
+  const target = typeof request.data?.uid === 'string' && /^[A-Za-z0-9_-]{1,128}$/.test(request.data.uid) ? request.data.uid : null;
+  if (!target) throw new HttpsError('invalid-argument', 'A target uid is required.');
+  const amount = request.data?.credits;
+  if (typeof amount === 'number' && amount > 0) await credits().grant(target, Math.floor(amount), 'adjust', `${uid}-${Date.now()}`);
+  if (request.data?.plan === 'plus' || request.data?.plan === 'free') await credits().setPlan(target, request.data.plan);
+  return credits().ensure(target);
 });
 export const stripeCheckout = onCall({ enforceAppCheck: options.enforceAppCheck, secrets: [stripeKey] }, request => {
   const uid = user(request); return billing().checkout(uid, request.auth?.token.email, request.data?.product);

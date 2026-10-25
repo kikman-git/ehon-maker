@@ -1,4 +1,4 @@
-import { AtelierError, bookTurn, credits, type BookInput } from '../cloud/credits';
+import { AtelierError, bookTurn, credits, failureText, type BookInput } from '../cloud/credits';
 import type { AiBridge } from './bridge';
 import { aiStore, type AiEntry } from './state';
 
@@ -63,7 +63,7 @@ export function cloudBookBridge(): AiBridge {
         if (id !== turn) return;
         const reason = error instanceof AtelierError ? error.reason : 'network';
         if (reason === 'credits') { credits.update({ balance: (error as AtelierError).balance ?? 0 }); push({ kind: 'notice', text: 'クレジットが たりません。' }); }
-        else push({ kind: 'log', level: 'error', text: reason === 'paused' ? 'AI は いま おやすみちゅうです。' : reason === 'signedOut' ? 'サインインが きれました。' : 'AI に つながりませんでした。' });
+        else push({ kind: 'log', level: 'error', text: failureText[reason] });
       }).finally(() => { if (id === turn) state.update({ running: false, progress: null, step: null }); });
     },
     stop() { turn++; state.update({ running: false, progress: null, step: null }); },

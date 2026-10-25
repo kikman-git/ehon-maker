@@ -24,7 +24,7 @@ export function publicSeo(): Plugin {
 
   const middleware = (req: { url?: string }, res: { setHeader(name: string, value: string): void; end(body?: string): void }, next: () => void) => {
     const pathname = (req.url ?? '/').split('?')[0];
-    if (!indexable || /^\/(app|read|g|login)(?:\/|\.html|$)/.test(pathname)) res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    if (!indexable || /^\/(app|read|g|login|admin)(?:\/|\.html|$)/.test(pathname)) res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     if (pathname === '/robots.txt' || pathname === '/sitemap.xml') {
       res.setHeader('Content-Type', pathname === '/robots.txt' ? 'text/plain; charset=utf-8' : 'application/xml; charset=utf-8');
       res.end(pathname === '/robots.txt' ? robots() : sitemap());

@@ -8,6 +8,8 @@ service cloud.firestore {
         || request.auth.token.get('handoff', '') == 'app');
     }
     function isOwner(data) { return realUser() && data.ownerId == request.auth.uid; }
+    // Admins are listed in config/admins (decision #68); a missing document means nobody is.
+    function isAdmin() { return realUser() && request.auth.uid in get(/databases/$(db)/documents/config/admins).data.uids; }
     function keepsOwner() { return request.resource.data.ownerId == resource.data.ownerId; }
     function currentTime(data) { return data.updatedAt == request.time; }
     function notOlder() { return request.resource.data.updatedAt >= resource.data.updatedAt; }
@@ -94,9 +96,12 @@ service cloud.firestore {
     match /storageUsage/{uid} { allow read: if realUser() && request.auth.uid == uid; }
     match /entitlements/{uid} { allow read: if realUser() && request.auth.uid == uid; }
     match /credits/{uid} {
-      allow read: if realUser() && request.auth.uid == uid;
-      match /ledger/{id} { allow read: if realUser() && request.auth.uid == uid; }
+      allow read: if (realUser() && request.auth.uid == uid) || isAdmin();
+      match /ledger/{id} { allow read: if (realUser() && request.auth.uid == uid) || isAdmin(); }
     }
+    match /aiTurns/{id} { allow read: if isAdmin(); }
+    match /aiDaily/{day} { allow read: if isAdmin(); }
+    match /config/admins { allow read: if isAdmin(); }
     match /reports/{id} {
       allow create: if realUser() && request.resource.data.reporterUid == request.auth.uid
         && request.resource.data.keys().hasOnly(['reporterUid', 'target', 'reason', 'createdAt'])
@@ -110,7 +115,11 @@ service cloud.firestore {
         && request.resource.data.parts is map && request.resource.data.parts.size() <= 100
         && currentTime(request.resource.data);
     }
-    match /config/flags { allow read: if true; }
+    match /config/flags {
+      allow read: if true;
+      allow create: if isAdmin() && request.resource.data.keys().hasOnly(['aiEnabled', 'aiDailyUsdCap', 'aiTurnsPerHour']);
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['aiEnabled', 'aiDailyUsdCap', 'aiTurnsPerHour']);
+    }
     match /{document=**} { allow read, write: if false; }
   }
 }

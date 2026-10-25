@@ -88,6 +88,33 @@ test('assets and entitlements are server-owned; public assets are readable', asy
   }
 });
 
+test('admins listed in config/admins read the AI records and every ledger, and may only touch the guard flags', async () => {
+  await env.withSecurityRulesDisabled(async ctx => {
+    await setDoc(doc(ctx.firestore(), 'config/admins'), { uids: ['root'] });
+    await setDoc(doc(ctx.firestore(), 'aiDaily/2026-10-25'), { turns: 1 });
+    await setDoc(doc(ctx.firestore(), 'aiTurns/t1'), { uid: 'alice', task: 'book' });
+    await setDoc(doc(ctx.firestore(), 'credits/alice'), { balance: 100, plan: 'free' });
+  });
+  const admin = user('root', 'google.com');
+  await assertSucceeds(getDoc(doc(admin, 'aiDaily/2026-10-25')));
+  await assertSucceeds(getDoc(doc(admin, 'aiTurns/t1')));
+  await assertSucceeds(getDoc(doc(admin, 'credits/alice')));
+  await assertSucceeds(getDoc(doc(admin, 'config/admins')));
+  await assertSucceeds(setDoc(doc(admin, 'config/flags'), { aiEnabled: false, aiDailyUsdCap: 20 }, { merge: true }));
+  await assertSucceeds(updateDoc(doc(admin, 'config/flags'), { aiTurnsPerHour: 10 }));
+  await assertFails(updateDoc(doc(admin, 'config/flags'), { budgetDisabledAt: 1 }));
+  await assertFails(setDoc(doc(admin, 'config/admins'), { uids: ['root', 'alice'] }));
+  await assertFails(setDoc(doc(admin, 'credits/alice'), { balance: 1000 }));
+  await assertFails(setDoc(doc(admin, 'aiTurns/t2'), { uid: 'x' }));
+  for (const other of [user('alice'), user('root', 'anonymous'), env.unauthenticatedContext().firestore()]) {
+    await assertFails(getDoc(doc(other, 'aiDaily/2026-10-25')));
+    await assertFails(getDoc(doc(other, 'aiTurns/t1')));
+    await assertFails(getDoc(doc(other, 'config/admins')));
+    await assertFails(updateDoc(doc(other, 'config/flags'), { aiEnabled: false }));
+  }
+  await assertFails(getDoc(doc(user('alice'), 'aiTurns/t1')));
+});
+
 test('illustrations require finalized masters and owned source prefixes', async () => {
   const hash = 'a'.repeat(64); const db = user();
   const illustration = { ownerId: 'alice', title: 'cat', masterRef: `a/${hash}`, w: 20, h: 30, origin: 'upload', aiAssisted: false, deleted: false, updatedAt: serverTimestamp() };

@@ -151,6 +151,13 @@ to the web app's origins so browsers may fetch it; the phone builds links from `
     `customer.subscription.updated`, `customer.subscription.deleted`) and store its signing secret as
     `STRIPE_WEBHOOK_SECRET`. Checkout returns to the first non-local origin in `WEB_ORIGINS`.
 
+14. Admin and observability (decision #68): create `config/admins` in Firestore with `uids: [<your uid>]`
+    (your uid is on the account screen's error text at `/admin` until you are listed). `/admin` on the web
+    then shows the AI's turns, spend, credits and errors by day, the kill switch and the guards
+    (`aiDailyUsdCap`, `aiTurnsPerHour` in `config/flags`), and lets you grant credits or set a plan.
+    Everything else is in the consoles: Cloud Logging (`jsonPayload.message="ai.turn"`), Cloud Monitoring
+    for alerts on those logs, and the providers' own usage pages for the bills the GCP budget cannot see.
+
 Deploy only after those values point to the intended environment:
 
 ```sh

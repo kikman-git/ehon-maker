@@ -2,3 +2,4 @@
 /read/* /read 200
 /g/* /read 200
 /login/* /login 200
+/admin/* /admin 200

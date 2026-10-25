@@ -150,6 +150,16 @@ answer with a scripted stand-in model unless `ANTHROPIC_API_KEY` or `OPENAI_API_
 `backend/functions/.secret.local`, in which case the real model draws and edits, metered against
 the emulator's own credit ledger.
 
+## Admin page
+
+`/admin` (`src/admin.tsx`) is the owner's dashboard: today's and the last fourteen days' AI turns,
+model spend, credits charged and the margin between them, errors and refusals, drawings, tokens and
+average duration, with per-task and per-model breakdowns from the `aiDaily` rollups; the fifty most
+recent turns from `aiTurns`; the kill switch and the daily US$ cap and hourly rate limit in
+`config/flags`; and one account at a time, looked up by uid, to grant credits or set a plan through
+`adminAdjust`. Only uids listed in `config/admins` can read it, enforced by the rules. It links to the
+consoles for the rest: Cloud Logging, Cloud Monitoring, Firestore, Anthropic, OpenAI and Stripe.
+
 ## Story templates
 
 Every illustrated story on the shelf is a **document template**: a whole book written as one `.ehon`

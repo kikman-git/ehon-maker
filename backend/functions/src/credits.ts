@@ -18,8 +18,9 @@ export const PRICES: Record<string, Prices> = {
   'claude-opus-5-5': { input: 4, output: 20, cacheRead: 0.2, cacheWrite: 5 },
   'claude-sonnet-5-5': { input: 2, output: 10, cacheRead: 0.2, cacheWrite: 2.5 },
   'claude-haiku-5-5': { input: 0.1, output: 0.5, cacheRead: 0.01, cacheWrite: 0.125 },
-  // TODO: confirm against the OpenAI price list before a paid launch; set from memory of the GPT-5 family.
-  'gpt-5.5': { input: 1.25, output: 10, cacheRead: 0.125, cacheWrite: 0 },
+  'gpt-6.1-sol': { input: 2, output: 10, cacheRead: 0.1, cacheWrite: 2.5 },
+  // TODO: confirm the GPT-5 rows against the OpenAI price list before a paid launch; set from memory.
+  'gpt-5.5':{ input: 1.25, output: 10, cacheRead: 0.125, cacheWrite: 0 },
   'gpt-5': { input: 1.25, output: 10, cacheRead: 0.125, cacheWrite: 0 },
   'gpt-5-mini': { input: 0.25, output: 2, cacheRead: 0.025, cacheWrite: 0 },
   'gpt-5-nano': { input: 0.05, output: 0.4, cacheRead: 0.005, cacheWrite: 0 },

@@ -2,7 +2,7 @@ import { doc, onSnapshot, type Unsubscribe } from 'firebase/firestore';
 import { httpsCallable } from 'firebase/functions';
 import { cloud } from './config';
 import { firebase } from './firebase';
-import { session } from './session';
+import { session, type SessionState } from './session';
 import { createStore } from './store';
 
 // Credits (decision #66): AI is paid in credits priced from the model's tokens; everything else stays free.
@@ -32,7 +32,7 @@ let watchedUid: string | null = null;
 /** Follows the signed-in account's balance; the first call per account also opens it with the welcome grant. */
 export function startCredits(): void {
   if (!cloud) return;
-  session.subscribe((state) => {
+  const follow = (state: SessionState) => {
     const uid = state.signedIn ? state.uid : null;
     if (uid === watchedUid) return;
     watching?.(); watching = null;
@@ -47,7 +47,10 @@ export function startCredits(): void {
       credits.set({ ready: true, balance: Number(data.balance ?? 0) + Number(data.reserved ?? 0), plan: data.plan === 'plus' ? 'plus' : 'free', granted: Number(data.granted ?? 0), spent: Number(data.spent ?? 0) });
     }, () => {});
     void httpsCallable(functions, 'creditsBalance')().catch(() => {});
-  });
+  };
+  session.subscribe(follow);
+  // The gate mounts after the session is already known, so the signed-in state never arrives as a change.
+  follow(session.get());
 }
 
 export interface AtelierInput {
@@ -82,7 +85,7 @@ export interface BookInput {
 }
 export type BookResult = Metered<{ book: string | null; say: string }>;
 
-export type AtelierFailure = 'credits' | 'paused' | 'signedOut' | 'network';
+export type AtelierFailure = 'credits' | 'paused' | 'rate' | 'signedOut' | 'network';
 export class AtelierError extends Error {
   constructor(readonly reason: AtelierFailure, readonly balance: number | null = null) { super(reason); }
 }
@@ -97,8 +100,9 @@ async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progr
     return await data;
   } catch (error) {
     const code = (error as { code?: string }).code ?? '';
-    const details = (error as { details?: { balance?: number } }).details;
+    const details = (error as { details?: { balance?: number; reason?: string } }).details;
     if (code === 'functions/resource-exhausted') throw new AtelierError('credits', details?.balance ?? null);
+    if (code === 'functions/unavailable' && details?.reason === 'rate') throw new AtelierError('rate');
     if (code === 'functions/unavailable' || code === 'functions/failed-precondition') throw new AtelierError('paused');
     if (code === 'functions/unauthenticated') throw new AtelierError('signedOut');
     throw new AtelierError('network');
@@ -106,6 +110,14 @@ async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progr
 }
 export const atelierTurn = (input: AtelierInput, onProgress: (progress: Progress) => void) => aiTurn<AtelierInput, AtelierResult>('atelierTurn', input, onProgress);
 export const bookTurn = (input: BookInput, onProgress: (progress: Progress) => void) => aiTurn<BookInput, BookResult>('bookTurn', input, onProgress);
+
+/** One line for the chat when a turn could not run. */
+export const failureText: Record<Exclude<AtelierFailure, 'credits'>, string> = {
+  paused: 'AI は いま おやすみちゅうです。',
+  rate: 'たくさん たのんだので、すこし やすんでから もういちど たのんでください。',
+  signedOut: 'サインインが きれました。',
+  network: 'AI に つながりませんでした。',
+};
 
 export type Product = 'plus' | 'pack';
 

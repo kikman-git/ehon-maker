@@ -1,4 +1,5 @@
 import { FieldValue, Timestamp, type Firestore } from 'firebase-admin/firestore';
+import { releaseStaleHolds } from './usage';
 
 async function purgeExpired(db: Firestore, name: string, now: number): Promise<number> {
   let removed = 0;
@@ -13,9 +14,9 @@ async function purgeExpired(db: Firestore, name: string, now: number): Promise<n
   return removed;
 }
 
-/** Expired jobs and spent or abandoned QR login requests; both carry an `expiresAt`. */
+/** Expired jobs and spent or abandoned QR login requests (both carry an `expiresAt`), and credit holds a crashed turn left behind. */
 export async function cleanupJobs(db: Firestore, now = Date.now()): Promise<number> {
-  return await purgeExpired(db, 'jobs', now) + await purgeExpired(db, 'loginRequests', now);
+  return await purgeExpired(db, 'jobs', now) + await purgeExpired(db, 'loginRequests', now) + await releaseStaleHolds(db, now);
 }
 
 export async function applyBudgetAlert(db: Firestore, alert: unknown, thresholdYen: number): Promise<boolean> {

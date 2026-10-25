@@ -14,6 +14,9 @@ test('a new account gets 100 credits, the atelier spends them per turn, and the 
   await signIn(page, account);
   const chip = page.getByRole('button', { name: /^AI クレジット/ });
   await expect(chip).toHaveText(/100/);
+  // A reload mounts the gate after the session is already known; the watcher must still start.
+  await page.reload();
+  await expect(chip).toHaveText(/100/);
   await chip.click();
   const dialog = page.getByRole('dialog', { name: 'アカウント' });
   await expect(dialog.getByText('100', { exact: true })).toBeVisible();

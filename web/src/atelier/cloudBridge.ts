@@ -1,6 +1,6 @@
 import type { AiBridge } from '../ai/bridge';
 import { aiStore, type AiEntry } from '../ai/state';
-import { atelierTurn, AtelierError, credits, type AtelierInput } from '../cloud/credits';
+import { atelierTurn, AtelierError, credits, failureText, type AtelierInput } from '../cloud/credits';
 
 /** The atelier over the metered `atelierTurn` callable. */
 export function cloudAtelierBridge(): AiBridge {
@@ -37,7 +37,7 @@ export function cloudAtelierBridge(): AiBridge {
         if (id !== turn) return;
         const reason = error instanceof AtelierError ? error.reason : 'network';
         if (reason === 'credits') { credits.update({ balance: (error as AtelierError).balance ?? 0 }); push({ kind: 'notice', text: 'クレジットが たりません。' }); }
-        else push({ kind: 'log', level: 'error', text: reason === 'paused' ? 'AI は いま おやすみちゅうです。' : reason === 'signedOut' ? 'サインインが きれました。' : 'AI に つながりませんでした。' });
+        else push({ kind: 'log', level: 'error', text: failureText[reason] });
       }).finally(() => { if (id === turn) state.update({ running: false, progress: null, step: null }); });
     },
     stop() { turn++; state.update({ running: false, progress: null, step: null }); },

@@ -1,7 +1,8 @@
 import type { Firestore } from 'firebase-admin/firestore';
 import { HttpsError } from 'firebase-functions/v2/https';
-import { type CreditService, type TokenUsage } from './credits';
-import { ModelError, textOf, toolCalls, type ChatModel, type Message, type ToolChoice, type ToolDef } from './model';
+import { usdFor, type CreditService, type TokenUsage } from './credits';
+import { ModelError, textOf, toolCalls, type ChatModel, type Message, type StopReason, type ToolChoice, type ToolDef } from './model';
+import { UsageService } from './usage';
 
 // One harness for every AI feature (decision #67): a task brings its tools and rules, the agent runs the loop, credits meter the whole turn.
 
@@ -47,6 +48,9 @@ const add = (sum: TokenUsage, usage: TokenUsage): TokenUsage => ({ input: sum.in
 export class Agent {
   usage: TokenUsage = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 };
   modelId = '';
+  rounds = 0;
+  drawings = 0;
+  lastStop: StopReason = 'end';
   constructor(readonly model: ChatModel, readonly send: (chunk: Chunk<never>) => Promise<unknown>, readonly signal?: AbortSignal) {}
 
   async run<I, S, O>(task: Task<I, S, O>, input: I): Promise<O> {
@@ -58,6 +62,8 @@ export class Agent {
       const reply = await this.model.reply({ system: task.system, messages, tools, toolChoice: task.toolChoice(state, round), signal: this.signal, onProgress });
       this.usage = add(this.usage, reply.usage);
       this.modelId = reply.model;
+      this.rounds++;
+      this.lastStop = reply.stop;
       messages.push(reply.message);
       const calls = toolCalls(reply.message);
       if (!calls.length || reply.stop === 'refusal' || reply.stop === 'length') return task.finish(state, textOf(reply.message), reply.stop === 'tool' ? 'end' : reply.stop);
@@ -85,36 +91,42 @@ export class Agent {
   async ask(request: { system: string; messages: Message[]; tools: ToolDef[]; toolChoice: ToolChoice }) {
     const reply = await this.model.reply({ ...request, signal: this.signal });
     this.usage = add(this.usage, reply.usage);
+    this.drawings++;
     return reply;
   }
 }
 
-export interface Flags { aiEnabled: boolean }
-
-/** Metering around the agent: hold credits, run, settle what the turn's tokens cost. */
+/** Metering and guards around the agent: hold credits, run, settle what the turn's tokens cost, record it. */
 export class AiService {
-  constructor(private readonly db: Firestore, private readonly credits: CreditService, private readonly model: ChatModel) {}
-
-  private async flags(): Promise<Flags> {
-    const data = (await this.db.doc('config/flags').get()).data();
-    return { aiEnabled: data?.aiEnabled !== false };
-  }
+  private readonly usage: UsageService;
+  constructor(db: Firestore, private readonly credits: CreditService, private readonly model: ChatModel) { this.usage = new UsageService(db); }
 
   async turn<I, S, O>(task: Task<I, S, O>, uid: string, raw: unknown, send: (chunk: Chunk<O>) => Promise<unknown>, signal?: AbortSignal): Promise<Metered<O>> {
     const input = task.validate(raw);
-    if (!(await this.flags()).aiEnabled) throw new HttpsError('unavailable', 'AI is paused right now.');
+    const guards = await this.usage.guards();
+    if (!guards.aiEnabled) throw new HttpsError('unavailable', 'AI is paused right now.', { reason: 'paused' });
+    await this.usage.checkDailyCap(guards.dailyUsdCap);
+    await this.usage.checkRate(uid, guards.turnsPerHour);
     await this.credits.ensure(uid);
     const reservation = await this.credits.reserve(uid, task.id, task.hold);
     const agent = new Agent(this.model, send as (chunk: Chunk<never>) => Promise<unknown>, signal);
+    const started = Date.now();
+    const record = (status: 'ok' | 'refusal' | 'error', credits: number, error?: string) => this.usage.record({
+      uid, task: task.id, model: agent.modelId || this.model.id, rounds: agent.rounds, drawings: agent.drawings, usage: agent.usage,
+      usd: usdFor(agent.modelId || this.model.id, agent.usage), credits, durationMs: Date.now() - started, status, ...(error ? { error } : {}),
+    });
     let output: O;
     try {
       output = await agent.run(task, input);
     } catch (error) {
       await this.credits.release(uid, reservation.id);
-      if (error instanceof ModelError) throw new HttpsError(error.kind === 'busy' ? 'unavailable' : 'internal', error.kind === 'busy' ? 'The AI is busy; try again in a moment.' : `The AI could not answer (${error.message}).`);
+      const message = error instanceof Error ? error.message : String(error);
+      await record('error', 0, error instanceof ModelError ? `${error.kind}: ${message}` : message);
+      if (error instanceof ModelError) throw new HttpsError(error.kind === 'busy' ? 'unavailable' : 'internal', error.kind === 'busy' ? 'The AI is busy; try again in a moment.' : `The AI could not answer (${error.message}).`, { reason: error.kind });
       throw error;
     }
     const settled = await this.credits.settle(uid, reservation.id, { model: agent.modelId || this.model.id, usage: agent.usage });
+    await record(agent.lastStop === 'refusal' ? 'refusal' : 'ok', settled.credits);
     const result: Metered<O> = { ...output, credits: settled.credits, balance: settled.balance };
     await send({ type: 'result', result });
     return result;

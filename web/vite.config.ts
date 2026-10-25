@@ -10,6 +10,7 @@ function cleanRoutes(): Plugin {
     if (/^\/app(\/|\?|$)/.test(url)) return '/app.html';
     if (/^\/(read|g)(\/|\?|$)/.test(url)) return '/read.html';
     if (/^\/login(\/|\?|$)/.test(url)) return '/login.html';
+    if (/^\/admin(\/|\?|$)/.test(url)) return '/admin.html';
     return null;
   };
   const middleware = (req: { url?: string }, _res: unknown, next: () => void) => {
@@ -66,8 +67,6 @@ function localTemplates(): Plugin {
 export default defineConfig({
   appType: 'mpa',
   plugins: [react(), publicSeo(), cleanRoutes(), localTemplates()],
-  // The AI desk's per-book workspaces live under the root but are not part of the app.
-  server: { watch: { ignored: ['**/.ehon-ai/**'] } },
   build: {
     target: 'safari17',
     rolldownOptions: {
@@ -76,6 +75,7 @@ export default defineConfig({
         login: fileURLToPath(new URL('login.html', import.meta.url)),
         app: fileURLToPath(new URL('app.html', import.meta.url)),
         read: fileURLToPath(new URL('read.html', import.meta.url)),
+        admin: fileURLToPath(new URL('admin.html', import.meta.url)),
       },
     },
   },
