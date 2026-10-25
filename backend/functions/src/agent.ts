@@ -25,11 +25,19 @@ export interface Task<I, S, O> {
   /** The call that ends the turn once it succeeds, if the task has one; otherwise the model ends by answering in text. */
   finishTool?: string;
   toolChoice(state: S, round: number): ToolChoice;
+  /** The book so far, for the studio to show while the turn runs; null until something has changed. */
+  draft?(state: S): string | null;
   finish(state: S, text: string, stop: 'end' | 'refusal' | 'length' | 'rounds'): O;
 }
 
 export type Metered<O> = O & { credits: number; balance: number };
-export type Chunk<O> = { type: 'progress'; chars?: number; step?: string } | { type: 'result'; result: Metered<O> };
+export type Chunk<O> =
+  | { type: 'progress'; chars?: number; step?: string }
+  /** The document as it stands mid-turn, pictures named but not carried; the studio applies it live. */
+  | { type: 'draft'; book: string }
+  /** One picture drawn this turn, sent once so a draft stays small. */
+  | { type: 'art'; key: string; name: string; svg: string }
+  | { type: 'result'; result: Metered<O> };
 
 export const text = (value: unknown, max: number) => (typeof value === 'string' && value.length <= max ? value : null);
 /** A PNG under the size limit, or nothing: a page too heavy to look at should not cost the user the whole turn. */
@@ -58,6 +66,7 @@ export class Agent {
   async run<I, S, O>(task: Task<I, S, O>, input: I): Promise<O> {
     const { state, messages } = task.start(input);
     let last = 0;
+    let lastDraft = '';
     const onProgress = (chars: number) => { if (chars - last >= 400) { last = chars; void this.send({ type: 'progress', chars }); } };
     for (let round = 0; round < task.maxRounds; round++) {
       const tools = task.tools(state);
@@ -84,6 +93,11 @@ export class Agent {
         if (tool && tool.name === task.finishTool && !outcome.isError) finished = true;
       }
       messages.push({ role: 'user', content: results });
+      // One draft a round, only when it differs, so the studio shows the pages appearing without re-sending the book per tool.
+      if (task.draft && !finished) {
+        const draft = task.draft(state);
+        if (draft && draft !== lastDraft) { lastDraft = draft; void this.send({ type: 'draft', book: draft }); }
+      }
       if (finished) return task.finish(state, textOf(reply.message), 'end');
     }
     return task.finish(state, '', 'rounds');

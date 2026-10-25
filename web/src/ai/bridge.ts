@@ -22,7 +22,8 @@ export interface AiBridge {
   reset(bookId: string): void;
   /** A studio-side outcome shown in the chat, never sent to the model. */
   note(entry: AiEntry): void;
-  onBook(listener: (bookId: string, json: string) => void): () => void;
+  /** `draft` marks the book as it stands mid-turn; the studio applies it the same way but says nothing until the turn ends. */
+  onBook(listener: (bookId: string, json: string, draft?: boolean) => void): () => void;
 }
 
 /** The book desk: a chat over the whole open book. Present whenever there is a backend, which the emulators also are. */

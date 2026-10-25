@@ -9,6 +9,7 @@ import { UploadError, uploadIllustration, type UploadFailure, type UploadStage }
 import { Workspace } from './cloud/workspace';
 import { AiPanel } from './ai/AiPanel';
 import { aiBridge, atelierBridge } from './ai/bridge';
+import { APPLIED_NOTE } from './ai/state';
 import { Atelier } from './atelier/Atelier';
 import type { Mark } from './ai/prompt';
 import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, loadFonts, parts, type WebEditor } from './core';
@@ -274,18 +275,19 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   }, [editor, revision]);
 
   /** The harness's document is validated like an opened file, then applied as one undo step. */
-  const applyAiDocument = (json: string, attempt = 0) => {
+  const applyAiDocument = (json: string, attempt = 0, draft = false) => {
     if (!aiBridge) return;
-    if (editor.isGestureActive) { if (attempt < 20) setTimeout(() => applyAiDocument(json, attempt + 1), 250); return; }
-    if (readOnlyRef.current) { aiBridge.note({ kind: 'rejected', text: '閲覧モードなので 反映しませんでした。' }); return; }
+    if (editor.isGestureActive) { if (attempt < 20) setTimeout(() => applyAiDocument(json, attempt + 1, draft), 250); return; }
+    if (readOnlyRef.current) { if (!draft) aiBridge.note({ kind: 'rejected', text: '閲覧モードなので 反映しませんでした。' }); return; }
     try {
       const migrated = codec.migrate(json);
       editor.applyDocument(migrated);
       void bookGlyphs(migrated);
       changed();
-      aiBridge.note({ kind: 'applied', text: 'えほんに 反映しました。「元に戻す」で 取り消せます。' });
+      // A draft lands on the page as the AI works; only the finished turn says so in the chat.
+      if (!draft) aiBridge.note({ kind: 'applied', text: APPLIED_NOTE });
     } catch (raw) {
-      aiBridge.note({ kind: 'rejected', text: `反映できませんでした: ${raw instanceof Error ? raw.message : String(raw)}` });
+      if (!draft) aiBridge.note({ kind: 'rejected', text: `反映できませんでした: ${raw instanceof Error ? raw.message : String(raw)}` });
     }
   };
   const readOnlyRef = useRef(readOnly);
@@ -294,7 +296,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     const bridge = aiBridge;
     if (!aiOpen || !bridge) return;
     bridge.open(editor.bookId, editor.bookJson());
-    return bridge.onBook((id, json) => { if (id === editor.bookId) applyAiDocument(json); });
+    return bridge.onBook((id, json, draft) => { if (id === editor.bookId) applyAiDocument(json, 0, draft); });
   }, [aiOpen, editor]);
   useEffect(() => {
     const bridge = aiBridge;

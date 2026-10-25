@@ -1,7 +1,7 @@
 import { AtelierError, bookTurn, credits, failureText, type BookInput } from '../cloud/credits';
 import type { AiBridge } from './bridge';
 import { referenceArt } from './art';
-import { aiStore, appendStep, type AiEntry } from './state';
+import { aiStore, appendStep, APPLIED_NOTE, type AiEntry } from './state';
 
 interface Document { version?: number; book?: { art?: Record<string, { svg?: string; name?: string }> } }
 
@@ -14,13 +14,16 @@ export function withoutArt(json: string): { book: string; bookArt: string[] } {
   return { book: JSON.stringify(document), bookArt };
 }
 
-/** The harness's answer with the book's own pictures put back and its new ones kept, so the studio validates a complete document. */
-export function withArtOf(original: string, answer: string): string {
+/**
+ * The harness's answer with the book's own pictures put back and its new ones kept, so the studio validates a complete
+ * document. `drawn` carries the pictures that arrived in their own chunks while the turn ran.
+ */
+export function withArtOf(original: string, answer: string, drawn: Record<string, { name: string; svg: string }> = {}): string {
   const art = (JSON.parse(original) as Document).book?.art ?? {};
   const document = JSON.parse(answer) as Document;
   if (document.book) {
-    const drawn = Object.fromEntries(Object.entries(document.book.art ?? {}).filter(([, entry]) => typeof entry?.svg === 'string'));
-    document.book.art = { ...art, ...drawn };
+    const carried = Object.fromEntries(Object.entries(document.book.art ?? {}).filter(([, entry]) => typeof entry?.svg === 'string'));
+    document.book.art = { ...art, ...drawn, ...carried };
   }
   return JSON.stringify(document);
 }
@@ -28,7 +31,7 @@ export function withArtOf(original: string, answer: string): string {
 /** The book desk over the metered `bookTurn` callable: the picture-book harness edits the open book through its tools. */
 export function cloudBookBridge(): AiBridge {
   const state = aiStore();
-  const bookListeners = new Set<(bookId: string, json: string) => void>();
+  const bookListeners = new Set<(bookId: string, json: string, draft?: boolean) => void>();
   let context: { bookId: string; json: string } | null = null;
   let turn = 0;
   const push = (entry: AiEntry) => state.update({ entries: [...state.get().entries, entry] });
@@ -49,13 +52,24 @@ export function cloudBookBridge(): AiBridge {
       push({ kind: 'user', text: input.text, mark: input.mark, at: started });
       state.update({ running: true, progress: 0, step: null, steps: [] });
       const request: BookInput = { ...input.book, ...stripped, request: input.text, image: input.image };
-      void bookTurn(request, (progress) => { if (id === turn) state.update({ ...(progress.chars !== undefined ? { progress: progress.chars } : {}), ...(progress.step ? { step: progress.step, steps: appendStep(state.get().steps, progress.step) } : {}) }); }).then((result) => {
+      // Pictures arrive one at a time and drafts arrive without them, so the turn keeps its own art to merge into both.
+      const drawn: Record<string, { name: string; svg: string }> = {};
+      let applied: string | null = null;
+      const apply = (answer: string, draft: boolean) => {
+        let json: string;
+        try { json = withArtOf(original, answer, drawn); } catch { if (!draft) push({ kind: 'rejected', text: '反映できませんでした: AI の こたえが えほんの かたちでは ありませんでした。' }); return; }
+        // Drafts already put this on the page; say so without a second apply, which would cost another undo step.
+        if (json === applied) { if (!draft) push({ kind: 'applied', text: APPLIED_NOTE }); return; }
+        applied = json;
+        for (const listener of [...bookListeners]) listener(bookId, json, draft);
+      };
+      void bookTurn(request, (progress) => { if (id === turn) state.update({ ...(progress.chars !== undefined ? { progress: progress.chars } : {}), ...(progress.step ? { step: progress.step, steps: appendStep(state.get().steps, progress.step) } : {}) }); }, (event) => {
         if (id !== turn) return;
-        if (result.book) {
-          let json: string | null = null;
-          try { json = withArtOf(original, result.book); } catch { push({ kind: 'rejected', text: '反映できませんでした: AI の こたえが えほんの かたちでは ありませんでした。' }); }
-          if (json) for (const listener of [...bookListeners]) listener(bookId, json);
-        }
+        if (event.kind === 'art') { drawn[event.art.key] = { name: event.art.name, svg: event.art.svg }; return; }
+        apply(event.book, true);
+      }).then((result) => {
+        if (id !== turn) return;
+        if (result.book) apply(result.book, false);
         if (result.say) push({ kind: 'assistant', text: result.say });
         push({ kind: 'notice', text: `${((Date.now() - started) / 1000).toFixed(1)}秒 · ${result.credits} クレジット · のこり ${result.balance}` });
         credits.update({ balance: result.balance });

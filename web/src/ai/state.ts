@@ -1,5 +1,8 @@
 import { createStore } from '../cloud/store';
 
+/** What the studio says once a turn's edits are on the page, whether they landed as drafts or all at the end. */
+export const APPLIED_NOTE = 'えほんに 反映しました。「元に戻す」で 取り消せます。';
+
 /** One thing the harness is doing or has done this turn; `active` is the step still in progress. */
 export interface TurnStep { text: string; active: boolean }
 

@@ -67,7 +67,12 @@ export type Metered<T> = T & { credits: number; balance: number };
 export type AtelierResult = Metered<{ candidates: string[]; piece: string | null; say: string }>;
 /** What the harness streams while it works: characters of the answer so far, or a step in the user's language. */
 export interface Progress { chars?: number; step?: string }
-type Chunk<R> = ({ type: 'progress' } & Progress) | { type: 'result'; result: R };
+type Chunk<R> = ({ type: 'progress' } & Progress) | { type: 'draft'; book: string } | ({ type: 'art' } & LiveArt) | { type: 'result'; result: R };
+
+/** One picture the harness drew, sent on its own while the turn runs. */
+export interface LiveArt { key: string; name: string; svg: string }
+/** The book as it is being made: a draft document, or a picture to merge into it. */
+export type LiveEvent = { kind: 'draft'; book: string } | { kind: 'art'; art: LiveArt };
 
 /** What the book desk sends: the page in view, the mark and its items, and the document without its art. */
 export interface BookInput {
@@ -92,12 +97,16 @@ export class AtelierError extends Error {
 }
 
 /** One metered turn on the server, with its progress as it streams. */
-async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progress) => void): Promise<R> {
+async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progress) => void, onLive?: (event: LiveEvent) => void): Promise<R> {
   const { functions } = firebase();
   const callable = httpsCallable<I, R, Chunk<R>>(functions, name, { timeout: 600_000 });
   try {
     const { stream, data } = await callable.stream(input);
-    for await (const chunk of stream) if (chunk.type === 'progress') onProgress(chunk);
+    for await (const chunk of stream) {
+      if (chunk.type === 'progress') onProgress(chunk);
+      else if (chunk.type === 'draft') onLive?.({ kind: 'draft', book: chunk.book });
+      else if (chunk.type === 'art') onLive?.({ kind: 'art', art: { key: chunk.key, name: chunk.name, svg: chunk.svg } });
+    }
     return await data;
   } catch (error) {
     const code = (error as { code?: string }).code ?? '';
@@ -111,7 +120,7 @@ async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progr
   }
 }
 export const atelierTurn = (input: AtelierInput, onProgress: (progress: Progress) => void) => aiTurn<AtelierInput, AtelierResult>('atelierTurn', input, onProgress);
-export const bookTurn = (input: BookInput, onProgress: (progress: Progress) => void) => aiTurn<BookInput, BookResult>('bookTurn', input, onProgress);
+export const bookTurn = (input: BookInput, onProgress: (progress: Progress) => void, onLive?: (event: LiveEvent) => void) => aiTurn<BookInput, BookResult>('bookTurn', input, onProgress, onLive);
 
 /** One line for the chat when a turn could not run. */
 export const failureText: Record<Exclude<AtelierFailure, 'credits'>, string> = {

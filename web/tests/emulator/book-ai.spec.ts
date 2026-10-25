@@ -82,6 +82,20 @@ test('a story request makes a page with a drawn picture and words, and the steps
   expect(book.book.pages[1].items[0].partId?.value).toBe('art:art');
 });
 
+test('the page appears while the turn is still running, not only when it ends', async ({ page }) => {
+  await openAi(page);
+  const panel = page.getByTestId('ai-panel');
+  await panel.getByLabel('AIへの たのみごと').fill('slow くまの えほんを つくって');
+  await panel.getByRole('button', { name: '頼む' }).click();
+  const working = panel.getByRole('status', { name: 'AI の ようす' });
+  await expect(working).toBeVisible();
+  // The second page lands from a draft, so it is on the strip before the turn says it has finished.
+  await expect(page.getByText('1 / 2 ページ')).toBeVisible();
+  await expect(working).toBeVisible();
+  await expect(panel.locator('.ai-message.status[data-done]')).toHaveCount(0);
+  await expect(panel.locator('.ai-message.status[data-done]')).toHaveText('えほんに 反映しました。「元に戻す」で 取り消せます。');
+});
+
 test('a turn that changes nothing says so, and the book is left alone', async ({ page }) => {
   await openAi(page);
   const panel = page.getByTestId('ai-panel');

@@ -321,6 +321,7 @@ const TOOLS: Tool<State>[] = [
       const key = freshArtKey(state, name);
       state.newArt[key] = { name, svg };
       touched(state);
+      void agent.send({ type: 'art', key, name, svg });
       return { result: { ok: true, partId: `art:${key}`, square: kind === 'sprite' }, step: `「${name}」の えが できました` };
     } },
   { name: 'finish', description: 'Ends the turn with your words to the user: one or two short sentences in the language of the request.', schema: schema({ say: { type: 'string' } }, ['say']),
@@ -338,6 +339,8 @@ export const BOOK_TASK: Task<BookInput, State, BookOutput> = {
   },
   tools: () => TOOLS,
   toolChoice: () => 'auto',
+  // Pictures travel in their own chunks, so the draft stays the small art-free document.
+  draft: (state) => (state.changed ? JSON.stringify({ ...state.doc, version: FORMAT_VERSION }) : null),
   finish(state, text, stop) {
     const say = state.say ?? text ?? '';
     const fallback = stop === 'refusal' ? 'その おねがいは できません。べつの ことを たのんでみましょう。' : stop === 'rounds' || stop === 'length' ? 'とちゅうまで できました。つづきは もういちど たのんでください。' : state.changed ? 'できました。' : 'えほんは かわりませんでした。';
