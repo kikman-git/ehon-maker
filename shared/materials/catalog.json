@@ -947,6 +947,174 @@
       "bytes": 2578794,
       "sha256": "a3067b64bb06b2d046d0962fc544d9f7d54cba79b5c8c68a7a4128ac8fee26c1",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-standing",
+      "slug": "turtle-standing",
+      "name": "かめ・たつ",
+      "nameEn": "Turtle standing",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "standing",
+      "tags": [
+        "亀",
+        "かめ",
+        "たつ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/38ee5d075b702a03020fec8df30a9aab5d1c4d3f0656970e54fe4cb1cbe033b0",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2256096,
+      "sha256": "38ee5d075b702a03020fec8df30a9aab5d1c4d3f0656970e54fe4cb1cbe033b0",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-sitting",
+      "slug": "turtle-sitting",
+      "name": "かめ・すわる",
+      "nameEn": "Turtle sitting",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "sitting",
+      "tags": [
+        "亀",
+        "かめ",
+        "すわる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c61c2bc46b5e7b22c9535b2c34b5f99d51205094d53f1b2231fc510801123e53",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2386308,
+      "sha256": "c61c2bc46b5e7b22c9535b2c34b5f99d51205094d53f1b2231fc510801123e53",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-jumping",
+      "slug": "turtle-jumping",
+      "name": "かめ・ジャンプ",
+      "nameEn": "Turtle jumping",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "jumping",
+      "tags": [
+        "亀",
+        "かめ",
+        "ジャンプ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/80e3ae909d2f688941b9b4ee4be5ba8627a3b4e580260d722b063a9172cf4adc",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1892668,
+      "sha256": "80e3ae909d2f688941b9b4ee4be5ba8627a3b4e580260d722b063a9172cf4adc",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-smiling",
+      "slug": "turtle-smiling",
+      "name": "かめ・にっこり",
+      "nameEn": "Turtle smiling",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "smiling",
+      "tags": [
+        "亀",
+        "かめ",
+        "にっこり"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/830b6b9a454a80feb2fdefc497c7b51a645f99c3ccbdbf4f47853853b9c63019",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2244293,
+      "sha256": "830b6b9a454a80feb2fdefc497c7b51a645f99c3ccbdbf4f47853853b9c63019",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-surprised",
+      "slug": "turtle-surprised",
+      "name": "かめ・びっくり",
+      "nameEn": "Turtle surprised",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "surprised",
+      "tags": [
+        "亀",
+        "かめ",
+        "びっくり"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/e8609fb7c80ec75d9d8bececc9bc66f7176546594adbd876338b647716cc0d4f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2336190,
+      "sha256": "e8609fb7c80ec75d9d8bececc9bc66f7176546594adbd876338b647716cc0d4f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-waving",
+      "slug": "turtle-waving",
+      "name": "かめ・てをふる",
+      "nameEn": "Turtle waving",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "waving",
+      "tags": [
+        "亀",
+        "かめ",
+        "てをふる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/8d662e8aab75733667665c45ad33f8441e92d3e1e0077d5c245e415724d6c76a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2095031,
+      "sha256": "8d662e8aab75733667665c45ad33f8441e92d3e1e0077d5c245e415724d6c76a",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-looking-left",
+      "slug": "turtle-looking-left",
+      "name": "かめ・ひだりをみる",
+      "nameEn": "Turtle looking left",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "looking-left",
+      "tags": [
+        "亀",
+        "かめ",
+        "ひだりをみる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/ea1155b09842b5d13ee28951de61b279f691e84797a0edaeea492c0b0e84984e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2282121,
+      "sha256": "ea1155b09842b5d13ee28951de61b279f691e84797a0edaeea492c0b0e84984e",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-looking-right",
+      "slug": "turtle-looking-right",
+      "name": "かめ・みぎをみる",
+      "nameEn": "Turtle looking right",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "looking-right",
+      "tags": [
+        "亀",
+        "かめ",
+        "みぎをみる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/7da65fa4bc28d8502d3dc9a3cafe290e398fb27574b9f91e1ec56b39086e34f0",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2334738,
+      "sha256": "7da65fa4bc28d8502d3dc9a3cafe290e398fb27574b9f91e1ec56b39086e34f0",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

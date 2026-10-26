@@ -792,6 +792,143 @@
       "sourceFile": "fern.png",
       "referenceAsset": "bird",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG nature asset for an editable picture book. The attached bird is ONLY a painting style reference: match its broad gouache strokes, soft warm volume and charming simplified forms. Do not include a bird or any animal.\nSubject: One lush woodland fern, seven gracefully arching fronds unfurling outward from a central base, simplified soft paired leaflets in moss and jade green, one curled young fiddlehead. Entire fronds visible.\nFull isolated subject centered on square canvas with 12% clear margins, natural organic painted edges and actual transparent alpha. No ground, cast shadow, sky, landscape, pot, frame, text, watermark, faces or extra objects. Not photorealistic, not vector. Rich tactile paint, restrained leaf detail, two or three broad values, clean readable silhouette.\nKeep the complete plant comfortably inside the image, with empty space around every outermost tip."
+    },
+    {
+      "id": "turtle-standing",
+      "name": "かめ・たつ",
+      "nameEn": "Turtle standing",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "standing",
+      "tags": [
+        "亀",
+        "かめ",
+        "たつ"
+      ],
+      "legacyIds": [],
+      "sourceFile": "turtle-standing.png",
+      "referenceAsset": "turtle",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: Standing still, all four feet planted evenly, almost frontal three-quarter view, head upright and attentive, closed gentle smile. A compact grounded pose distinct from the walking reference.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales."
+    },
+    {
+      "id": "turtle-sitting",
+      "name": "かめ・すわる",
+      "nameEn": "Turtle sitting",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "sitting",
+      "tags": [
+        "亀",
+        "かめ",
+        "すわる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "turtle-sitting.png",
+      "referenceAsset": "turtle",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: Sitting comfortably with shell resting low, rear legs tucked and two forelegs resting forward, head tilted slightly upward with a peaceful curious expression. Natural squat turtle posture.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales."
+    },
+    {
+      "id": "turtle-jumping",
+      "name": "かめ・ジャンプ",
+      "nameEn": "Turtle jumping",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "jumping",
+      "tags": [
+        "亀",
+        "かめ",
+        "ジャンプ"
+      ],
+      "legacyIds": [],
+      "sourceFile": "turtle-jumping.png",
+      "referenceAsset": "turtle",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: A tiny playful storybook hop, shell tilted diagonally, all four short legs visibly lifted and spread gently, neck stretched upward with delighted small smile. Entire turtle airborne, no ground or motion symbols.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales."
+    },
+    {
+      "id": "turtle-smiling",
+      "name": "かめ・にっこり",
+      "nameEn": "Turtle smiling",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "smiling",
+      "tags": [
+        "亀",
+        "かめ",
+        "にっこり"
+      ],
+      "legacyIds": [],
+      "sourceFile": "turtle-smiling.png",
+      "referenceAsset": "turtle",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: An exuberantly happy turtle leaning its head forward, eyes closed in joyful crescents, mouth open in a little smile, both forelegs lifted slightly in a welcoming gesture while back legs support shell. Distinct full-body happy gesture.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales."
+    },
+    {
+      "id": "turtle-surprised",
+      "name": "かめ・びっくり",
+      "nameEn": "Turtle surprised",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "surprised",
+      "tags": [
+        "亀",
+        "かめ",
+        "びっくり"
+      ],
+      "legacyIds": [],
+      "sourceFile": "turtle-surprised.png",
+      "referenceAsset": "turtle",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: A startled curious turtle with neck pulled tall, both small ink eyes wide, tiny round open mouth, body leaning back and front feet braced apart. Friendly surprise, not fear.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales."
+    },
+    {
+      "id": "turtle-waving",
+      "name": "かめ・てをふる",
+      "nameEn": "Turtle waving",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "waving",
+      "tags": [
+        "亀",
+        "かめ",
+        "てをふる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "turtle-waving.png",
+      "referenceAsset": "turtle",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: A friendly turtle in three-quarter front view raising one foreleg high to wave, other foreleg and both hind legs supporting body. Head turned toward viewer and cheerful closed smile. Exactly four limbs total.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales.",
+      "editPrompt": "Correct the anatomy of this waving turtle ONLY. It currently has five legs. REMOVE the grounded leg at the lower RIGHT beneath the waving arm (the foot at approximately 80% canvas width, 76% canvas height). Leave transparent empty space where that extra leg was. Keep exactly FOUR limbs: the raised waving foreleg at upper right, the large grounded foreleg at lower center, the hind leg at lower left, and the partly hidden hind foot beneath the shell near center-left. Preserve the face, head, shell, tiny tail, all colors and broad gouache painting style. Full silhouette and transparent background, no other changes."
+    },
+    {
+      "id": "turtle-looking-left",
+      "name": "かめ・ひだりをみる",
+      "nameEn": "Turtle looking left",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "looking-left",
+      "tags": [
+        "亀",
+        "かめ",
+        "ひだりをみる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "turtle-looking-left.png",
+      "referenceAsset": "turtle",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: A turtle with body at a gentle frontal three-quarter angle, head and neck turning clearly toward left edge of image. Four feet settled, eyes curious, full shell and small tail visible. Newly painted composition, not mirrored reference.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales."
+    },
+    {
+      "id": "turtle-looking-right",
+      "name": "かめ・みぎをみる",
+      "nameEn": "Turtle looking right",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "looking-right",
+      "tags": [
+        "亀",
+        "かめ",
+        "みぎをみる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "turtle-looking-right.png",
+      "referenceAsset": "turtle",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: A turtle seen from a gentle rear three-quarter angle, broad domed shell prominent, neck curving around right side to look back toward right edge, cheek and small smiling face visible, four legs naturally below shell, small tail at left. Distinct looking-back composition.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales."
     }
   ]
 }

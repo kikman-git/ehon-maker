@@ -43,6 +43,14 @@ internal object StorybookMaterials {
         Material("pack.storybook:tulips", "チューリップ", "Tulips", "しぜん", "a/7c31b82164d00f58f5b944d03731c485ad4ce41267d5e17cb26686ceb22f88a7", "tulips", "default", listOf("花", "春", "赤"), listOf()),
         Material("pack.storybook:daisies", "デイジー", "Daisies", "しぜん", "a/7fee6b0beb8dbd4fcc360c5c89990cebeab26ddd5c8bf1c5f04018416c60a530", "daisies", "default", listOf("花", "白", "春"), listOf()),
         Material("pack.storybook:rose-bush", "ばらのしげみ", "Rose bush", "しぜん", "a/1555f73bef65cb01efe9cdda4e521042b8a4a959d202902e5d67ab486d3a47ee", "rose-bush", "default", listOf("薔薇", "花", "ピンク"), listOf()),
-        Material("pack.storybook:fern", "シダ", "Fern", "しぜん", "a/a3067b64bb06b2d046d0962fc544d9f7d54cba79b5c8c68a7a4128ac8fee26c1", "fern", "default", listOf("羊歯", "森", "葉"), listOf())
+        Material("pack.storybook:fern", "シダ", "Fern", "しぜん", "a/a3067b64bb06b2d046d0962fc544d9f7d54cba79b5c8c68a7a4128ac8fee26c1", "fern", "default", listOf("羊歯", "森", "葉"), listOf()),
+        Material("pack.storybook:turtle-standing", "かめ・たつ", "Turtle standing", "どうぶつ", "a/38ee5d075b702a03020fec8df30a9aab5d1c4d3f0656970e54fe4cb1cbe033b0", "turtle", "standing", listOf("亀", "かめ", "たつ"), listOf()),
+        Material("pack.storybook:turtle-sitting", "かめ・すわる", "Turtle sitting", "どうぶつ", "a/c61c2bc46b5e7b22c9535b2c34b5f99d51205094d53f1b2231fc510801123e53", "turtle", "sitting", listOf("亀", "かめ", "すわる"), listOf()),
+        Material("pack.storybook:turtle-jumping", "かめ・ジャンプ", "Turtle jumping", "どうぶつ", "a/80e3ae909d2f688941b9b4ee4be5ba8627a3b4e580260d722b063a9172cf4adc", "turtle", "jumping", listOf("亀", "かめ", "ジャンプ"), listOf()),
+        Material("pack.storybook:turtle-smiling", "かめ・にっこり", "Turtle smiling", "どうぶつ", "a/830b6b9a454a80feb2fdefc497c7b51a645f99c3ccbdbf4f47853853b9c63019", "turtle", "smiling", listOf("亀", "かめ", "にっこり"), listOf()),
+        Material("pack.storybook:turtle-surprised", "かめ・びっくり", "Turtle surprised", "どうぶつ", "a/e8609fb7c80ec75d9d8bececc9bc66f7176546594adbd876338b647716cc0d4f", "turtle", "surprised", listOf("亀", "かめ", "びっくり"), listOf()),
+        Material("pack.storybook:turtle-waving", "かめ・てをふる", "Turtle waving", "どうぶつ", "a/8d662e8aab75733667665c45ad33f8441e92d3e1e0077d5c245e415724d6c76a", "turtle", "waving", listOf("亀", "かめ", "てをふる"), listOf()),
+        Material("pack.storybook:turtle-looking-left", "かめ・ひだりをみる", "Turtle looking left", "どうぶつ", "a/ea1155b09842b5d13ee28951de61b279f691e84797a0edaeea492c0b0e84984e", "turtle", "looking-left", listOf("亀", "かめ", "ひだりをみる"), listOf()),
+        Material("pack.storybook:turtle-looking-right", "かめ・みぎをみる", "Turtle looking right", "どうぶつ", "a/7da65fa4bc28d8502d3dc9a3cafe290e398fb27574b9f91e1ec56b39086e34f0", "turtle", "looking-right", listOf("亀", "かめ", "みぎをみる"), listOf())
     )
 }

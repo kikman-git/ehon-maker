@@ -4,8 +4,8 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **40 accepted PNGs / 500 target; 460 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
-- Animals: 21 images across the requested 10 species. Bird has 10 poses, turtle and penguin have 2 each; the other 7 species have 1 each.
+- **48 accepted PNGs / 500 target; 452 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
+- Animals: 29 images across the requested 10 species. Bird and turtle each have 10 poses; penguin has 2; the other 7 species have 1 each.
 - Nature has 11 images. Each remaining category has 1: child, lantern, bus, apple, cottage, cloud, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
@@ -15,9 +15,16 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S03 — Turtle:** eight remaining poses: standing, sitting, jumping, smiling, surprised, waving, looking-left, looking-right. Existing walking and sleeping images retain their IDs. Target total: 48.
+**S04 — People A:** existing child × standing, walking, sitting; curly-haired child × standing, walking, sitting, waving; child with glasses × standing, walking. Nine new images; target total 57.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S03 artwork milestone
+
+- Added eight turtle PNGs: standing, sitting, jumping, smiling, surprised, waving, looking-left, looking-right. Existing walking and sleeping IDs preserved.
+- Built-in image generator with `turtle` identity reference; exact prompts and waving anatomy correction in `generation.json`. Removed an extra leg before accepting waving.
+- Reviewed all ten poses on cream/dark backgrounds. Source, pose and hash validation passed for 48 assets; app browsing, insertion, reload persistence and PNG export passed for eight new poses.
+- Commit: `feat(materials): S03 complete turtle variations (48/500)`. Check remote against Git.
 
 ## S02 artwork milestone
 
