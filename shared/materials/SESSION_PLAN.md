@@ -2,11 +2,11 @@
 
 ## Scope and session size
 
-**Current: 22 saved illustrations. Target: 500. Remaining: 478.**
+**Current: 30 saved illustrations. Target: 500. Remaining: 470.**
 
 Plan for **54 artwork sessions**, normally 7–10 accepted illustrations per session, plus **3 dedicated engineering/review sessions**. Complex scene sessions contain only 3 illustrations. These are work packages, not a promise that every package fits one conversation: retries or context limits may split a package into `Sxx-a` and `Sxx-b`. Never reduce quality to meet the batch count.
 
-The earlier suggestion of 20–30 assets per batch is superseded by this smaller session plan. Each completed session is a milestone and must be **committed and pushed**, as explicitly requested by the user. The major collection milestones are 100 after S09, 250 after S27, and 500 after S54. No new artwork was generated while writing this plan.
+The earlier suggestion of 20–30 assets per batch is superseded by this smaller session plan. Each completed session is a milestone and must be **committed and pushed**, as explicitly requested by the user. The major collection milestones are 100 after S09, 250 after S27, and 500 after S54. S01 is complete: eight new bird paintings.
 
 ## Start here in every new session
 
@@ -35,10 +35,12 @@ Scene assets are standalone transparent painted vignettes, with feathered/organi
 
 No mirrored copies, alternate resolutions, recolors, unreviewed outputs or failed generations count toward 500.
 
+The user has explicitly prioritized image assets. Continue S02 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
+
 ## Engineering checkpoints
 
 - [x] **M00 — Foundation:** 22 transparent illustrations across all 10 categories; generation metadata and raster catalog; web/native integration; legacy replacement picker; full-resolution web export. Validation recorded in `HANDOFF.md`.
-- [ ] **E01 — Before S01: delivery and progress infrastructure.** Inspect existing database/storage and deployment conventions. Add a versioned curated catalog, on-demand master downloads and offline caching while retaining the bundled starter set. Preserve existing account uploads. Verify new catalog refresh, offline reopening, content-hash integrity and fallback behavior. Add a small progress/validation command to report accepted counts, duplicate IDs, missing masters and character/pose coverage. Keep future remote-only asset metadata available to native builds. Commit and push this engineering milestone. Publishing or deploying is separate from pushing source.
+- [ ] **E01 — Deferred at user direction: delivery and progress infrastructure.** Inspect existing database/storage and deployment conventions. Add a versioned curated catalog, on-demand master downloads and offline caching while retaining the bundled starter set. Preserve existing account uploads. Verify new catalog refresh, offline reopening, content-hash integrity and fallback behavior. Add a small progress/validation command to report accepted counts, duplicate IDs, missing masters and character/pose coverage. Keep future remote-only asset metadata available to native builds. Commit and push this engineering milestone. Publishing or deploying is separate from pushing source.
 - [ ] **E02 — After S27: 250-asset audit.** Review contact sheets by category and character family; replace style drift or duplicate compositions. Check browse/search performance, thumbnails, full-resolution export, offline use and legacy migration with the larger catalog. Resolve packing/storage issues. Commit and push the audit milestone.
 - [ ] **E03 — After S54: 500-asset release audit.** Verify exactly 500 distinct accepted assets, category quotas, 30 animal families with 10 variants each, metadata and master links. Exercise web/native browse, search, insertion, drag/drop where supported, transforms, undo, save/reopen and export. Record remaining issues and delivery status. Commit and push. Do not equate a Git push with a deployed release.
 
@@ -48,7 +50,7 @@ Counts below are **new accepted artwork**, with cumulative totals including the 
 
 | Done | Session | Category | Exact batch | New PNGs | Total |
 | --- | --- | --- | --- | ---: | ---: |
-| [ ] | S01 | Animals | Bird: finish its 10-variation set | 8 | **30** |
+| [x] | S01 | Animals | Bird: finish its 10-variation set | 8 | **30** |
 | [ ] | S02 | Nature | A: cherry tree, pine tree, palm tree, apple tree, sapling, sunflower, tulips, daisies, rose bush, fern | 10 | **40** |
 | [ ] | S03 | Animals | Turtle: finish its 10-variation set | 8 | **48** |
 | [ ] | S04 | People | A: existing child × 3 missing poses; curly-haired child × 4; child with glasses × standing and walking | 9 | **57** |

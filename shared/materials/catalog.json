@@ -555,6 +555,188 @@
       "bytes": 3106633,
       "sha256": "af0c1485707b4a3602692bdc595f2e08b48493be2a286366e1670489b26e44fe",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-walking",
+      "slug": "bird-walking",
+      "name": "ことり・あるく",
+      "nameEn": "Little bird walking",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "walking",
+      "tags": [
+        "鳥",
+        "とり",
+        "あるく",
+        "歩く"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/cc9baa1c534bf90037fef15e28801f33df39ba76ac81f9b2479961f252bfdd13",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2161247,
+      "sha256": "cc9baa1c534bf90037fef15e28801f33df39ba76ac81f9b2479961f252bfdd13",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-sitting",
+      "slug": "bird-sitting",
+      "name": "ことり・すわる",
+      "nameEn": "Little bird sitting",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "sitting",
+      "tags": [
+        "鳥",
+        "とり",
+        "すわる",
+        "座る"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/cab18fa8edb679b421c477739472567846fe8cd9006a3b0df28e7440f1f88fad",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2267320,
+      "sha256": "cab18fa8edb679b421c477739472567846fe8cd9006a3b0df28e7440f1f88fad",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-sleeping",
+      "slug": "bird-sleeping",
+      "name": "ことり・ねむる",
+      "nameEn": "Little bird sleeping",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "sleeping",
+      "tags": [
+        "鳥",
+        "とり",
+        "ねむる",
+        "寝る",
+        "おやすみ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/0dac8c162c2acfdd20b4fd0b4814734d41a5d7015b33e58927a87e7244c0dd4f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2302668,
+      "sha256": "0dac8c162c2acfdd20b4fd0b4814734d41a5d7015b33e58927a87e7244c0dd4f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-smiling",
+      "slug": "bird-smiling",
+      "name": "ことり・にっこり",
+      "nameEn": "Little bird smiling",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "smiling",
+      "tags": [
+        "鳥",
+        "とり",
+        "にっこり",
+        "うれしい",
+        "笑う"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/08d9a3c96fc093148a84d79251d41678673f8eae291451d49d15ed6b6a2d24ab",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2505016,
+      "sha256": "08d9a3c96fc093148a84d79251d41678673f8eae291451d49d15ed6b6a2d24ab",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-surprised",
+      "slug": "bird-surprised",
+      "name": "ことり・びっくり",
+      "nameEn": "Little bird surprised",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "surprised",
+      "tags": [
+        "鳥",
+        "とり",
+        "びっくり",
+        "おどろく",
+        "驚く"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/91696e52833511a6dd487e672783b1d4348ac74df1f481071514616dc79cb59f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2397824,
+      "sha256": "91696e52833511a6dd487e672783b1d4348ac74df1f481071514616dc79cb59f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-waving",
+      "slug": "bird-waving",
+      "name": "ことり・てをふる",
+      "nameEn": "Little bird waving",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "waving",
+      "tags": [
+        "鳥",
+        "とり",
+        "あいさつ",
+        "てをふる",
+        "こんにちは"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/baedcdbca5990fd8da5eb101c7e2d7689e2684a6a7cc8a70086b5f3c47d05249",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2195306,
+      "sha256": "baedcdbca5990fd8da5eb101c7e2d7689e2684a6a7cc8a70086b5f3c47d05249",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-looking-left",
+      "slug": "bird-looking-left",
+      "name": "ことり・ひだりをみる",
+      "nameEn": "Little bird looking left",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "looking-left",
+      "tags": [
+        "鳥",
+        "とり",
+        "ひだり",
+        "左",
+        "みる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/6e33e921d7f7ba13f9f086d28852df7b78f9861ce4444fe29f733fd3800a9b1d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2200311,
+      "sha256": "6e33e921d7f7ba13f9f086d28852df7b78f9861ce4444fe29f733fd3800a9b1d",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-looking-right",
+      "slug": "bird-looking-right",
+      "name": "ことり・みぎをみる",
+      "nameEn": "Little bird looking right",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "looking-right",
+      "tags": [
+        "鳥",
+        "とり",
+        "みぎ",
+        "右",
+        "みる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/2c6b66bccb51253b21a10fa302e3ccb6e829f3caf5c7c139b283bbe4c0a5d663",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2013216,
+      "sha256": "2c6b66bccb51253b21a10fa302e3ccb6e829f3caf5c7c139b283bbe4c0a5d663",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

@@ -94,7 +94,8 @@
       "legacyIds": [],
       "sourceFile": "bird-flying.png",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nReference is the character identity AND painting style anchor. Create one new pose of this same character: The SAME blue-and-ochre little bird taking flight joyfully, both wings spread, small feet tucked, looking left. Keep its blue crown, ochre breast, cream belly, tiny ink eyes and blush cheeks.\nPreserve exact character colors, proportions, loose painted texture and detail level. One standalone full body centered with 12% clear margins, actual transparent background, no props, floor, shadow, text or frame.",
-      "referenceAsset": "bird"
+      "referenceAsset": "bird",
+      "poseEquivalent": "jumping / airborne"
     },
     {
       "id": "butterfly",
@@ -469,6 +470,156 @@
       "legacyIds": [],
       "sourceFile": "pumpkin.png",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse the attached bird ONLY as the style reference: match its loose brushwork, charming simplicity, soft shading and detail level. Generate a DIFFERENT subject: One round burnt-orange autumn pumpkin with a curved brown stem, one sage-green leaf and a curled tendril. Broad painted ribs, soft warm shaded volume, no carved face.\nONE full isolated subject, centered, 12% clear margin, actual transparent background, no external haze, outline, text or border. Do not include the reference bird.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bird-walking",
+      "name": "ことり・あるく",
+      "nameEn": "Little bird walking",
+      "pose": "walking",
+      "tags": [
+        "鳥",
+        "とり",
+        "あるく",
+        "歩く"
+      ],
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Asset type: one transparent PNG character pose for an editable picture-book material library.\nInput image 1 is the saved bird identity and painting-style reference. Preserve its sky-blue crown, wings and tail, golden-ochre throat and breast, cream cheek and belly, peach blush cheeks, orange-brown beak, warm-brown legs, chubby proportions and broad painted feather groupings.\nSubject: The SAME blue-and-ochre little bird striding cheerfully toward the left, one slender warm-brown leg planted and the other lifted forward in a clear walking step, body tipped slightly forward, short wings comfortably folded, full little tail counterbalancing behind. Curious small ink eye and closed tiny beak. This is a walking bird, clearly a different silhouette from the standing reference.\nOne standalone full-body bird only, centered in a square canvas with generous 12% transparent margins on every side. All wing tips, tail and toes must be fully inside the image. Actual transparent background and clean organic painted alpha edges. No ground, drop shadow, backdrop, props, text, frame, watermark or additional characters. Preserve the saved character identity and painterly texture. Do not create a pose sheet or collage.",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "legacyIds": [],
+      "sourceFile": "bird-walking.png",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bird-sitting",
+      "name": "ことり・すわる",
+      "nameEn": "Little bird sitting",
+      "pose": "sitting",
+      "tags": [
+        "鳥",
+        "とり",
+        "すわる",
+        "座る"
+      ],
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Asset type: one transparent PNG character pose for an editable picture-book material library.\nInput image 1 is the saved bird identity and painting-style reference. Preserve its sky-blue crown, wings and tail, golden-ochre throat and breast, cream cheek and belly, peach blush cheeks, orange-brown beak, warm-brown legs, chubby proportions and broad painted feather groupings.\nSubject: The SAME blue-and-ochre little bird sitting low and cozily on its plump cream belly, body visibly squashed into a softly rounded seated shape, tiny brown toes peeking out in front, wings folded loosely at its sides, head tilted attentively toward the viewer in a three-quarter pose. Tail fully visible to one side. Calm open little ink eyes. A distinct seated silhouette, without a perch or floor.\nOne standalone full-body bird only, centered in a square canvas with generous 12% transparent margins on every side. All wing tips, tail and toes must be fully inside the image. Actual transparent background and clean organic painted alpha edges. No ground, drop shadow, backdrop, props, text, frame, watermark or additional characters. Preserve the saved character identity and painterly texture. Do not create a pose sheet or collage.",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "legacyIds": [],
+      "sourceFile": "bird-sitting.png",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bird-sleeping",
+      "name": "ことり・ねむる",
+      "nameEn": "Little bird sleeping",
+      "pose": "sleeping",
+      "tags": [
+        "鳥",
+        "とり",
+        "ねむる",
+        "寝る",
+        "おやすみ"
+      ],
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Asset type: one transparent PNG character pose for an editable picture-book material library.\nInput image 1 is the saved bird identity and painting-style reference. Preserve its sky-blue crown, wings and tail, golden-ochre throat and breast, cream cheek and belly, peach blush cheeks, orange-brown beak, warm-brown legs, chubby proportions and broad painted feather groupings.\nSubject: The SAME blue-and-ochre little bird curled into a compact sleepy ball, head nestled into one softly folded blue wing, eyelid a tender closed ink curve, tiny beak partly nestled in its shoulder, feet tucked under the cream belly and tail resting visibly alongside. Keep a recognizable complete bird silhouette and its ochre bib. No bed, branch, nest, moon, stars or Z letters.\nOne standalone full-body bird only, centered in a square canvas with generous 12% transparent margins on every side. All wing tips, tail and toes must be fully inside the image. Actual transparent background and clean organic painted alpha edges. No ground, drop shadow, backdrop, props, text, frame, watermark or additional characters. Preserve the saved character identity and painterly texture. Do not create a pose sheet or collage.",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "legacyIds": [],
+      "sourceFile": "bird-sleeping.png",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bird-smiling",
+      "name": "ことり・にっこり",
+      "nameEn": "Little bird smiling",
+      "pose": "smiling",
+      "tags": [
+        "鳥",
+        "とり",
+        "にっこり",
+        "うれしい",
+        "笑う"
+      ],
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Asset type: one transparent PNG character pose for an editable picture-book material library.\nInput image 1 is the saved bird identity and painting-style reference. Preserve its sky-blue crown, wings and tail, golden-ochre throat and breast, cream cheek and belly, peach blush cheeks, orange-brown beak, warm-brown legs, chubby proportions and broad painted feather groupings.\nSubject: The SAME blue-and-ochre little bird beaming with joy, chest lifted and plump body leaning forward in a delighted bow toward the viewer, both little feet planted, wings held slightly away from the sides in a welcoming gesture, cheerful crescent-shaped eyes, rosy cheeks and a tiny open smiling beak. A full-body expression, clearly distinct from the neutral standing bird and the fully spread flying pose.\nOne standalone full-body bird only, centered in a square canvas with generous 12% transparent margins on every side. All wing tips, tail and toes must be fully inside the image. Actual transparent background and clean organic painted alpha edges. No ground, drop shadow, backdrop, props, text, frame, watermark or additional characters. Preserve the saved character identity and painterly texture. Do not create a pose sheet or collage.",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "legacyIds": [],
+      "sourceFile": "bird-smiling.png",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bird-surprised",
+      "name": "ことり・びっくり",
+      "nameEn": "Little bird surprised",
+      "pose": "surprised",
+      "tags": [
+        "鳥",
+        "とり",
+        "びっくり",
+        "おどろく",
+        "驚く"
+      ],
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Asset type: one transparent PNG character pose for an editable picture-book material library.\nInput image 1 is the saved bird identity and painting-style reference. Preserve its sky-blue crown, wings and tail, golden-ochre throat and breast, cream cheek and belly, peach blush cheeks, orange-brown beak, warm-brown legs, chubby proportions and broad painted feather groupings.\nSubject: The SAME blue-and-ochre little bird startled in a sweet gentle way: plump body leaning backward, neck and little blue crown perked up, two small wings lifted out at the sides, brown feet bracing apart, short tail fanning slightly, tiny round ink eyes and a little open beak. Not frightened or distressed. A clear expressive whole-body surprised pose, no punctuation marks or symbols.\nOne standalone full-body bird only, centered in a square canvas with generous 12% transparent margins on every side. All wing tips, tail and toes must be fully inside the image. Actual transparent background and clean organic painted alpha edges. No ground, drop shadow, backdrop, props, text, frame, watermark or additional characters. Preserve the saved character identity and painterly texture. Do not create a pose sheet or collage.",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "legacyIds": [],
+      "sourceFile": "bird-surprised.png",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bird-waving",
+      "name": "ことり・てをふる",
+      "nameEn": "Little bird waving",
+      "pose": "waving",
+      "tags": [
+        "鳥",
+        "とり",
+        "あいさつ",
+        "てをふる",
+        "こんにちは"
+      ],
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Asset type: one transparent PNG character pose for an editable picture-book material library.\nInput image 1 is the saved bird identity and painting-style reference. Preserve its sky-blue crown, wings and tail, golden-ochre throat and breast, cream cheek and belly, peach blush cheeks, orange-brown beak, warm-brown legs, chubby proportions and broad painted feather groupings.\nSubject: The SAME blue-and-ochre little bird greeting the viewer with ONE blue wing lifted high in a friendly wave, the other wing folded against its side, both feet on an implied invisible surface, round body angled three-quarter toward the viewer, head gently tilted, cheerful small ink eye and a tiny friendly open beak. Wing tips remain feather shapes, no human hands or fingers. Not flying; full tail and feet visible.\nOne standalone full-body bird only, centered in a square canvas with generous 12% transparent margins on every side. All wing tips, tail and toes must be fully inside the image. Actual transparent background and clean organic painted alpha edges. No ground, drop shadow, backdrop, props, text, frame, watermark or additional characters. Preserve the saved character identity and painterly texture. Do not create a pose sheet or collage.",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "legacyIds": [],
+      "sourceFile": "bird-waving.png",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bird-looking-left",
+      "name": "ことり・ひだりをみる",
+      "nameEn": "Little bird looking left",
+      "pose": "looking-left",
+      "tags": [
+        "鳥",
+        "とり",
+        "ひだり",
+        "左",
+        "みる"
+      ],
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Asset type: one transparent PNG character pose for an editable picture-book material library.\nInput image 1 is the saved bird identity and painting-style reference. Preserve its sky-blue crown, wings and tail, golden-ochre throat and breast, cream cheek and belly, peach blush cheeks, orange-brown beak, warm-brown legs, chubby proportions and broad painted feather groupings.\nSubject: The SAME blue-and-ochre little bird with its plump body facing mostly toward the viewer and both feet planted close together, tilting and turning its head inquisitively to look toward the LEFT of the image. The small beak points left, the folded wings frame the ochre chest and cream belly, tail peeks out to the right. A newly painted frontal-body, side-looking composition, not a mirrored version of the standing reference.\nOne standalone full-body bird only, centered in a square canvas with generous 12% transparent margins on every side. All wing tips, tail and toes must be fully inside the image. Actual transparent background and clean organic painted alpha edges. No ground, drop shadow, backdrop, props, text, frame, watermark or additional characters. Preserve the saved character identity and painterly texture. Do not create a pose sheet or collage.",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "legacyIds": [],
+      "sourceFile": "bird-looking-left.png",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bird-looking-right",
+      "name": "ことり・みぎをみる",
+      "nameEn": "Little bird looking right",
+      "pose": "looking-right",
+      "tags": [
+        "鳥",
+        "とり",
+        "みぎ",
+        "右",
+        "みる"
+      ],
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Asset type: one transparent PNG character pose for an editable picture-book material library.\nInput image 1 is the saved bird identity and painting-style reference. Preserve its sky-blue crown, wings and tail, golden-ochre throat and breast, cream cheek and belly, peach blush cheeks, orange-brown beak, warm-brown legs, chubby proportions and broad painted feather groupings.\nSubject: The SAME blue-and-ochre little bird viewed from a gentle three-quarter BACK angle, its small round body and folded blue wings turned away, with its head turning over its RIGHT shoulder to look toward the right edge of the image. Show its cream cheek, little ink eye, orange beak and a glimpse of its ochre breast along the right side. Short tail dips left and two warm-brown feet are visible. A distinct newly painted looking-back pose, not a mirror or duplicate of the standing or left-looking image.\nOne standalone full-body bird only, centered in a square canvas with generous 12% transparent margins on every side. All wing tips, tail and toes must be fully inside the image. Actual transparent background and clean organic painted alpha edges. No ground, drop shadow, backdrop, props, text, frame, watermark or additional characters. Preserve the saved character identity and painterly texture. Do not create a pose sheet or collage.",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "legacyIds": [],
+      "sourceFile": "bird-looking-right.png",
       "referenceAsset": "bird"
     }
   ]

@@ -25,6 +25,14 @@ internal object StorybookMaterials {
         Material("pack.storybook:cottage", "おうち", "Cottage", "たてもの・ばしょ", "a/63f2bf70e259717c09703e9a02838b1b1220ed632a699cf7d7c80e9e64d0d4be", "cottage", "default", listOf("家", "いえ", "house"), listOf()),
         Material("pack.storybook:cloud", "くも", "Cloud", "はいけい", "a/beba58775344a11b68d5eae6735831ffe41eb8be53c5f4720b08d20142366b41", "cloud", "default", listOf("雲", "そら", "空", "しろ"), listOf("しぜん:くも")),
         Material("pack.storybook:forest-scene", "もりのこみち", "Forest path", "おはなしの ばめん", "a/908c09d585bf74d5b550f56f0f9b3d0559f7c39a3e50bcc54ea99e28369777e7", "forest", "default", listOf("森", "きのこ", "みち", "木"), listOf()),
-        Material("pack.storybook:pumpkin", "かぼちゃ", "Pumpkin", "きせつ・ぎょうじ", "a/af0c1485707b4a3602692bdc595f2e08b48493be2a286366e1670489b26e44fe", "pumpkin", "default", listOf("秋", "あき", "ハロウィン", "野菜"), listOf())
+        Material("pack.storybook:pumpkin", "かぼちゃ", "Pumpkin", "きせつ・ぎょうじ", "a/af0c1485707b4a3602692bdc595f2e08b48493be2a286366e1670489b26e44fe", "pumpkin", "default", listOf("秋", "あき", "ハロウィン", "野菜"), listOf()),
+        Material("pack.storybook:bird-walking", "ことり・あるく", "Little bird walking", "どうぶつ", "a/cc9baa1c534bf90037fef15e28801f33df39ba76ac81f9b2479961f252bfdd13", "bird", "walking", listOf("鳥", "とり", "あるく", "歩く"), listOf()),
+        Material("pack.storybook:bird-sitting", "ことり・すわる", "Little bird sitting", "どうぶつ", "a/cab18fa8edb679b421c477739472567846fe8cd9006a3b0df28e7440f1f88fad", "bird", "sitting", listOf("鳥", "とり", "すわる", "座る"), listOf()),
+        Material("pack.storybook:bird-sleeping", "ことり・ねむる", "Little bird sleeping", "どうぶつ", "a/0dac8c162c2acfdd20b4fd0b4814734d41a5d7015b33e58927a87e7244c0dd4f", "bird", "sleeping", listOf("鳥", "とり", "ねむる", "寝る", "おやすみ"), listOf()),
+        Material("pack.storybook:bird-smiling", "ことり・にっこり", "Little bird smiling", "どうぶつ", "a/08d9a3c96fc093148a84d79251d41678673f8eae291451d49d15ed6b6a2d24ab", "bird", "smiling", listOf("鳥", "とり", "にっこり", "うれしい", "笑う"), listOf()),
+        Material("pack.storybook:bird-surprised", "ことり・びっくり", "Little bird surprised", "どうぶつ", "a/91696e52833511a6dd487e672783b1d4348ac74df1f481071514616dc79cb59f", "bird", "surprised", listOf("鳥", "とり", "びっくり", "おどろく", "驚く"), listOf()),
+        Material("pack.storybook:bird-waving", "ことり・てをふる", "Little bird waving", "どうぶつ", "a/baedcdbca5990fd8da5eb101c7e2d7689e2684a6a7cc8a70086b5f3c47d05249", "bird", "waving", listOf("鳥", "とり", "あいさつ", "てをふる", "こんにちは"), listOf()),
+        Material("pack.storybook:bird-looking-left", "ことり・ひだりをみる", "Little bird looking left", "どうぶつ", "a/6e33e921d7f7ba13f9f086d28852df7b78f9861ce4444fe29f733fd3800a9b1d", "bird", "looking-left", listOf("鳥", "とり", "ひだり", "左", "みる"), listOf()),
+        Material("pack.storybook:bird-looking-right", "ことり・みぎをみる", "Little bird looking right", "どうぶつ", "a/2c6b66bccb51253b21a10fa302e3ccb6e829f3caf5c7c139b283bbe4c0a5d663", "bird", "looking-right", listOf("鳥", "とり", "みぎ", "右", "みる"), listOf())
     )
 }

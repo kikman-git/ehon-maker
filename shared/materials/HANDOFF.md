@@ -4,20 +4,30 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **22 accepted PNGs / 500 target; 478 remaining.** No additional images were generated in the planning session.
-- Animals: 13 images across the requested 10 species. Bird, turtle and penguin have 2 poses each; the other 7 species have 1 each.
+- **30 accepted PNGs / 500 target; 470 remaining.** S01 adds eight bird illustrations.
+- Animals: 21 images across the requested 10 species. Bird has 10 poses, turtle and penguin have 2 each; the other 7 species have 1 each.
 - Each of the other nine categories has 1 image: tree, child, lantern, bus, apple, cottage, cloud, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
-- The catalog is currently bundled. Remote catalog expansion and on-demand delivery are planned, not implemented.
+- The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
 - Old procedural catalog artwork has been removed. Twelve legacy IDs resolve to new paintings. Other retired instances have a visible replacement picker in web/native editors, preserving geometry, drawing edits and undo.
 - Web PNG export now loads full-resolution masters and reports failed image loads.
 
 ## Next session
 
-**E01 — delivery and progress infrastructure**, as defined in `SESSION_PLAN.md`. Complete that package only, update this handoff, then commit and push. Artwork S01 follows E01 and adds the bird's 8 remaining variations for 30 total assets.
+**S02 — Nature A:** cherry tree, pine tree, palm tree, apple tree, sapling, sunflower, tulips, daisies, rose bush, fern. Ten new paintings bring the total to 40.
 
-Before generating, inspect existing bird and flying-bird artwork and explicitly map the flying image to the airborne/jumping slot. Keep their IDs stable. Do not regenerate existing approved poses merely to rename them.
+The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S01 artwork milestone
+
+- Complete bird set: added `bird-walking`, `bird-sitting`, `bird-sleeping`, `bird-smiling`, `bird-surprised`, `bird-waving`, `bird-looking-left`, `bird-looking-right`.
+- All eight use `bird` as the identity/style reference and the built-in image generator. Exact prompts are saved in `generation.json`.
+- Existing `bird-flying` fills the jumping/airborne slot; its stable ID and flying pose label remain unchanged, with equivalence recorded in source metadata.
+- Reviewed all ten bird images on cream and dark blue backgrounds for consistent identity, full silhouettes and alpha edges. No unresolved artwork issues; no mirrored or recolored copies counted.
+- Packaging and source/hash/pose validation passed for all 30 assets. Review previews: `build/bird-review-fffaf0.png` and `build/bird-review-405d67.png` (ignored).
+- App smoke check passed: ten searchable birds, all eight new poses inserted and persisted after reload, and 2048px PNG export.
+- Artwork commit: `feat(materials): S01 complete bird variations (30/500)`. Verify delivery from Git history and upstream; exclude all E01 and Love Letter changes.
 
 ## Verified foundation
 
