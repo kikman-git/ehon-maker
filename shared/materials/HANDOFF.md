@@ -4,9 +4,9 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **30 accepted PNGs / 500 target; 470 remaining.** S01 adds eight bird illustrations.
+- **40 accepted PNGs / 500 target; 460 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
 - Animals: 21 images across the requested 10 species. Bird has 10 poses, turtle and penguin have 2 each; the other 7 species have 1 each.
-- Each of the other nine categories has 1 image: tree, child, lantern, bus, apple, cottage, cloud, forest scene, pumpkin.
+- Nature has 11 images. Each remaining category has 1: child, lantern, bus, apple, cottage, cloud, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,17 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S02 — Nature A:** cherry tree, pine tree, palm tree, apple tree, sapling, sunflower, tulips, daisies, rose bush, fern. Ten new paintings bring the total to 40.
+**S03 — Turtle:** eight remaining poses: standing, sitting, jumping, smiling, surprised, waving, looking-left, looking-right. Existing walking and sleeping images retain their IDs. Target total: 48.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S02 artwork milestone
+
+- Ten accepted PNGs: `cherry-tree`, `pine-tree`, `palm-tree`, `apple-tree`, `sapling`, `sunflower`, `tulips`, `daisies`, `rose-bush`, `fern`. Built-in image generator; bird style reference; exact prompts and sunflower framing correction in `generation.json`.
+- Reviewed on cream and dark blue backgrounds; corrected clipped sunflower framing. Packaging and source/hash validation passed for 40 assets.
+- User explicitly requested continuous artwork work across milestones; proceed without another confirmation. Engineering remains deferred.
+- App smoke check passed: eleven nature tiles, ten new assets inserted, persisted after reload and exported to PNG.
+- Commit: `feat(materials): S02 nature illustrations (40/500)`. Remote delivery is verified against Git.
 
 ## S01 artwork milestone
 

@@ -737,6 +737,216 @@
       "bytes": 2013216,
       "sha256": "2c6b66bccb51253b21a10fa302e3ccb6e829f3caf5c7c139b283bbe4c0a5d663",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:cherry-tree",
+      "slug": "cherry-tree",
+      "name": "さくらのき",
+      "nameEn": "Cherry tree",
+      "category": "しぜん",
+      "characterId": "cherry-tree",
+      "pose": "default",
+      "tags": [
+        "桜",
+        "春",
+        "花"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/ba0ad29073377d9d32f240a0d66f883d53fdc5a20f4e69cdbb2a5fd45df41977",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2828999,
+      "sha256": "ba0ad29073377d9d32f240a0d66f883d53fdc5a20f4e69cdbb2a5fd45df41977",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:pine-tree",
+      "slug": "pine-tree",
+      "name": "まつのき",
+      "nameEn": "Pine tree",
+      "category": "しぜん",
+      "characterId": "pine-tree",
+      "pose": "default",
+      "tags": [
+        "松",
+        "常緑樹",
+        "森"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/66854924ed1d54b994ef31ece2a263de893c72bd80cadb3b71e50eb392e7ca7c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2368162,
+      "sha256": "66854924ed1d54b994ef31ece2a263de893c72bd80cadb3b71e50eb392e7ca7c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:palm-tree",
+      "slug": "palm-tree",
+      "name": "やしのき",
+      "nameEn": "Palm tree",
+      "category": "しぜん",
+      "characterId": "palm-tree",
+      "pose": "default",
+      "tags": [
+        "椰子",
+        "南国",
+        "夏"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5f5a3317537e2ae12b2f686fbc323856ce59502f63c0de29c9b5759e7e0a3fc0",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2148880,
+      "sha256": "5f5a3317537e2ae12b2f686fbc323856ce59502f63c0de29c9b5759e7e0a3fc0",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:apple-tree",
+      "slug": "apple-tree",
+      "name": "りんごのき",
+      "nameEn": "Apple tree",
+      "category": "しぜん",
+      "characterId": "apple-tree",
+      "pose": "default",
+      "tags": [
+        "林檎",
+        "果樹",
+        "秋"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/009136aaca6e921091c419214f6e0b34c5e7df687eaba2928d851e571b11a14a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2813722,
+      "sha256": "009136aaca6e921091c419214f6e0b34c5e7df687eaba2928d851e571b11a14a",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:sapling",
+      "slug": "sapling",
+      "name": "わかぎ",
+      "nameEn": "Sapling",
+      "category": "しぜん",
+      "characterId": "sapling",
+      "pose": "default",
+      "tags": [
+        "若木",
+        "苗",
+        "成長"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/e2949f5193cf977566d0343320b686cc178179117a3e58c0a5ff8d54ef71171d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1417121,
+      "sha256": "e2949f5193cf977566d0343320b686cc178179117a3e58c0a5ff8d54ef71171d",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:sunflower",
+      "slug": "sunflower",
+      "name": "ひまわり",
+      "nameEn": "Sunflower",
+      "category": "しぜん",
+      "characterId": "sunflower",
+      "pose": "default",
+      "tags": [
+        "向日葵",
+        "夏",
+        "黄色"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/30107a4c8a12afc4c068211c8e32f215184ecade72903a56acd57fdae7a13f1e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1698487,
+      "sha256": "30107a4c8a12afc4c068211c8e32f215184ecade72903a56acd57fdae7a13f1e",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:tulips",
+      "slug": "tulips",
+      "name": "チューリップ",
+      "nameEn": "Tulips",
+      "category": "しぜん",
+      "characterId": "tulips",
+      "pose": "default",
+      "tags": [
+        "花",
+        "春",
+        "赤"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/7c31b82164d00f58f5b944d03731c485ad4ce41267d5e17cb26686ceb22f88a7",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2558217,
+      "sha256": "7c31b82164d00f58f5b944d03731c485ad4ce41267d5e17cb26686ceb22f88a7",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:daisies",
+      "slug": "daisies",
+      "name": "デイジー",
+      "nameEn": "Daisies",
+      "category": "しぜん",
+      "characterId": "daisies",
+      "pose": "default",
+      "tags": [
+        "花",
+        "白",
+        "春"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/7fee6b0beb8dbd4fcc360c5c89990cebeab26ddd5c8bf1c5f04018416c60a530",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2557913,
+      "sha256": "7fee6b0beb8dbd4fcc360c5c89990cebeab26ddd5c8bf1c5f04018416c60a530",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:rose-bush",
+      "slug": "rose-bush",
+      "name": "ばらのしげみ",
+      "nameEn": "Rose bush",
+      "category": "しぜん",
+      "characterId": "rose-bush",
+      "pose": "default",
+      "tags": [
+        "薔薇",
+        "花",
+        "ピンク"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/1555f73bef65cb01efe9cdda4e521042b8a4a959d202902e5d67ab486d3a47ee",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3106228,
+      "sha256": "1555f73bef65cb01efe9cdda4e521042b8a4a959d202902e5d67ab486d3a47ee",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fern",
+      "slug": "fern",
+      "name": "シダ",
+      "nameEn": "Fern",
+      "category": "しぜん",
+      "characterId": "fern",
+      "pose": "default",
+      "tags": [
+        "羊歯",
+        "森",
+        "葉"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a3067b64bb06b2d046d0962fc544d9f7d54cba79b5c8c68a7a4128ac8fee26c1",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2578794,
+      "sha256": "a3067b64bb06b2d046d0962fc544d9f7d54cba79b5c8c68a7a4128ac8fee26c1",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

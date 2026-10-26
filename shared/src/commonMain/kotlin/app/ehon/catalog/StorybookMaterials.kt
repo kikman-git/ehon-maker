@@ -33,6 +33,16 @@ internal object StorybookMaterials {
         Material("pack.storybook:bird-surprised", "ことり・びっくり", "Little bird surprised", "どうぶつ", "a/91696e52833511a6dd487e672783b1d4348ac74df1f481071514616dc79cb59f", "bird", "surprised", listOf("鳥", "とり", "びっくり", "おどろく", "驚く"), listOf()),
         Material("pack.storybook:bird-waving", "ことり・てをふる", "Little bird waving", "どうぶつ", "a/baedcdbca5990fd8da5eb101c7e2d7689e2684a6a7cc8a70086b5f3c47d05249", "bird", "waving", listOf("鳥", "とり", "あいさつ", "てをふる", "こんにちは"), listOf()),
         Material("pack.storybook:bird-looking-left", "ことり・ひだりをみる", "Little bird looking left", "どうぶつ", "a/6e33e921d7f7ba13f9f086d28852df7b78f9861ce4444fe29f733fd3800a9b1d", "bird", "looking-left", listOf("鳥", "とり", "ひだり", "左", "みる"), listOf()),
-        Material("pack.storybook:bird-looking-right", "ことり・みぎをみる", "Little bird looking right", "どうぶつ", "a/2c6b66bccb51253b21a10fa302e3ccb6e829f3caf5c7c139b283bbe4c0a5d663", "bird", "looking-right", listOf("鳥", "とり", "みぎ", "右", "みる"), listOf())
+        Material("pack.storybook:bird-looking-right", "ことり・みぎをみる", "Little bird looking right", "どうぶつ", "a/2c6b66bccb51253b21a10fa302e3ccb6e829f3caf5c7c139b283bbe4c0a5d663", "bird", "looking-right", listOf("鳥", "とり", "みぎ", "右", "みる"), listOf()),
+        Material("pack.storybook:cherry-tree", "さくらのき", "Cherry tree", "しぜん", "a/ba0ad29073377d9d32f240a0d66f883d53fdc5a20f4e69cdbb2a5fd45df41977", "cherry-tree", "default", listOf("桜", "春", "花"), listOf()),
+        Material("pack.storybook:pine-tree", "まつのき", "Pine tree", "しぜん", "a/66854924ed1d54b994ef31ece2a263de893c72bd80cadb3b71e50eb392e7ca7c", "pine-tree", "default", listOf("松", "常緑樹", "森"), listOf()),
+        Material("pack.storybook:palm-tree", "やしのき", "Palm tree", "しぜん", "a/5f5a3317537e2ae12b2f686fbc323856ce59502f63c0de29c9b5759e7e0a3fc0", "palm-tree", "default", listOf("椰子", "南国", "夏"), listOf()),
+        Material("pack.storybook:apple-tree", "りんごのき", "Apple tree", "しぜん", "a/009136aaca6e921091c419214f6e0b34c5e7df687eaba2928d851e571b11a14a", "apple-tree", "default", listOf("林檎", "果樹", "秋"), listOf()),
+        Material("pack.storybook:sapling", "わかぎ", "Sapling", "しぜん", "a/e2949f5193cf977566d0343320b686cc178179117a3e58c0a5ff8d54ef71171d", "sapling", "default", listOf("若木", "苗", "成長"), listOf()),
+        Material("pack.storybook:sunflower", "ひまわり", "Sunflower", "しぜん", "a/30107a4c8a12afc4c068211c8e32f215184ecade72903a56acd57fdae7a13f1e", "sunflower", "default", listOf("向日葵", "夏", "黄色"), listOf()),
+        Material("pack.storybook:tulips", "チューリップ", "Tulips", "しぜん", "a/7c31b82164d00f58f5b944d03731c485ad4ce41267d5e17cb26686ceb22f88a7", "tulips", "default", listOf("花", "春", "赤"), listOf()),
+        Material("pack.storybook:daisies", "デイジー", "Daisies", "しぜん", "a/7fee6b0beb8dbd4fcc360c5c89990cebeab26ddd5c8bf1c5f04018416c60a530", "daisies", "default", listOf("花", "白", "春"), listOf()),
+        Material("pack.storybook:rose-bush", "ばらのしげみ", "Rose bush", "しぜん", "a/1555f73bef65cb01efe9cdda4e521042b8a4a959d202902e5d67ab486d3a47ee", "rose-bush", "default", listOf("薔薇", "花", "ピンク"), listOf()),
+        Material("pack.storybook:fern", "シダ", "Fern", "しぜん", "a/a3067b64bb06b2d046d0962fc544d9f7d54cba79b5c8c68a7a4128ac8fee26c1", "fern", "default", listOf("羊歯", "森", "葉"), listOf())
     )
 }

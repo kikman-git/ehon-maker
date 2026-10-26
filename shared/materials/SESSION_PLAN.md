@@ -2,7 +2,7 @@
 
 ## Scope and session size
 
-**Current: 30 saved illustrations. Target: 500. Remaining: 470.**
+**Current: 40 saved illustrations. Target: 500. Remaining: 460.**
 
 Plan for **54 artwork sessions**, normally 7–10 accepted illustrations per session, plus **3 dedicated engineering/review sessions**. Complex scene sessions contain only 3 illustrations. These are work packages, not a promise that every package fits one conversation: retries or context limits may split a package into `Sxx-a` and `Sxx-b`. Never reduce quality to meet the batch count.
 
@@ -13,7 +13,7 @@ The earlier suggestion of 20–30 assets per batch is superseded by this smaller
 1. Read this file, `HANDOFF.md`, `README.md`, and the master prompt/refinement in `generation.json`. Read the imagegen skill before generating.
 2. Inspect `git status`, branch/upstream, and recent milestone commits. Preserve unrelated work. Use the latest handoff to resume a partial batch before starting another.
 3. Count the actual entries in `generation.json` and inspect their saved PNGs. Only accepted, saved, integrated artwork counts. Planned entries stay here, not in the runtime manifest.
-4. Complete one session package, review it, update the handoff and checklist, and commit/push before ending. Do not begin all 54 sessions in one conversation.
+4. Complete each session package, review it, update the handoff and checklist, and commit/push. The user has now explicitly requested continuous work across batches without waiting for another continue; proceed to the next artwork session after each milestone.
 
 ## Art and variation rules
 
@@ -35,7 +35,7 @@ Scene assets are standalone transparent painted vignettes, with feathered/organi
 
 No mirrored copies, alternate resolutions, recolors, unreviewed outputs or failed generations count toward 500.
 
-The user has explicitly prioritized image assets. Continue S02 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
+The user has explicitly prioritized image assets. Continue S03 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
 
 ## Engineering checkpoints
 
@@ -51,7 +51,7 @@ Counts below are **new accepted artwork**, with cumulative totals including the 
 | Done | Session | Category | Exact batch | New PNGs | Total |
 | --- | --- | --- | --- | ---: | ---: |
 | [x] | S01 | Animals | Bird: finish its 10-variation set | 8 | **30** |
-| [ ] | S02 | Nature | A: cherry tree, pine tree, palm tree, apple tree, sapling, sunflower, tulips, daisies, rose bush, fern | 10 | **40** |
+| [x] | S02 | Nature | A: cherry tree, pine tree, palm tree, apple tree, sapling, sunflower, tulips, daisies, rose bush, fern | 10 | **40** |
 | [ ] | S03 | Animals | Turtle: finish its 10-variation set | 8 | **48** |
 | [ ] | S04 | People | A: existing child × 3 missing poses; curly-haired child × 4; child with glasses × standing and walking | 9 | **57** |
 | [ ] | S05 | Animals | Penguin: finish its 10-variation set | 8 | **65** |
