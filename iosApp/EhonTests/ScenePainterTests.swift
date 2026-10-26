@@ -8,7 +8,18 @@ import EhonCore
 /// draws it the right way up.
 final class ScenePainterTests: XCTestCase {
 
-    private let builder = SceneBuilder(measurer: UIKitTextMeasurer())
+    func testBundledStorybookMaterialsHaveTransparentMasters() throws {
+        for part in PartCatalog.shared.all {
+            let raster = try XCTUnwrap(part.def as? PartDefRaster)
+            let image = try XCTUnwrap(AssetLoader.shared.image(raster.assetRef, master: true), part.id.value)
+            XCTAssertEqual(image.size.width, 1536)
+            XCTAssertEqual(image.size.height, 1536)
+            let corner = try colour(of: image, atFractionX: 0, y: 0)
+            XCTAssertEqual(corner.a, 0, accuracy: 0.01)
+        }
+    }
+
+    private let builder = SceneBuilder(measurer: UIKitTextMeasurer(), resolver: PainterFixtureParts())
     // Argb is an inline value class with no Swift type; read the token instead.
     private let cream = Organic.shared.surface
 
@@ -23,7 +34,7 @@ final class ScenePainterTests: XCTestCase {
                     x: x,
                     y: y,
                     rotationDeg: 0,
-                    partId: PartId(value: "かたち:しかく"),
+                    partId: PartId(value: "fixture:square"),
                     sizePct: 24, heightPct: nil, drawing: nil
                 )
             ],
@@ -75,7 +86,7 @@ final class ScenePainterTests: XCTestCase {
         let wide = Page.companion.of(
             background: cream, promptKey: nil,
             items: [PartItem(id: ItemId(value: "wide"), x: 50, y: 50, rotationDeg: 0,
-                             partId: PartId(value: "かたち:しかく"), sizePct: 80, heightPct: KotlinFloat(value: 10), drawing: nil)],
+                             partId: PartId(value: "fixture:square"), sizePct: 80, heightPct: KotlinFloat(value: 10), drawing: nil)],
             strokes: []
         )
         let image = render(wide, shape: .landscape, side: 600)
@@ -89,7 +100,7 @@ final class ScenePainterTests: XCTestCase {
     }
 
     func testPartIsDrawnInItsCatalogColour() throws {
-        // かたち:しかく is a single squircle at crayon index 3 — Organic's sage.
+
         let image = render(page(x: 50, y: 50))
         let drawn = try colour(of: image, atFractionX: 0.5, y: 0.5)
         let sage = UIColor(cgColor: Organic.shared.crayon(index: 3).cgColor)
@@ -110,7 +121,7 @@ final class ScenePainterTests: XCTestCase {
             promptKey: nil,
             items: [
                 PartItem(id: ItemId(value: "i1"), x: 50, y: 50, rotationDeg: 0,
-                         partId: PartId(value: "しぜん:たいよう"), sizePct: 80, heightPct: nil, drawing: nil)
+                         partId: PartId(value: "fixture:ring"), sizePct: 80, heightPct: nil, drawing: nil)
             ],
             strokes: []
         )
@@ -158,7 +169,7 @@ final class ScenePainterTests: XCTestCase {
     }
 
     func testPageEraserOnlyRemovesPageInk() throws {
-        let document = ##"{"version":4,"book":{"id":{"value":"ink"},"title":"ink","shape":"SQUARE","contentLocale":"en","updatedAtEpochMs":0,"pages":[{"id":"p1","background":"#ffffff","items":[{"type":"part","id":{"value":"square"},"x":50,"y":50,"partId":{"value":"かたち:しかく"},"sizePct":60}],"strokes":[{"ink":{"type":"crayon","index":6},"brushStep":1,"points":[{"x":0.3,"y":0.5},{"x":0.7,"y":0.5}]},{"ink":{"type":"eraser"},"brushStep":3,"points":[{"x":0.5,"y":0.4},{"x":0.5,"y":0.6}]}]}]}}"##
+        let document = ##"{"version":4,"book":{"id":{"value":"ink"},"title":"ink","shape":"SQUARE","contentLocale":"en","updatedAtEpochMs":0,"pages":[{"id":"p1","background":"#ffffff","items":[{"type":"part","id":{"value":"square"},"x":50,"y":50,"partId":{"value":"fixture:square"},"sizePct":60}],"strokes":[{"ink":{"type":"crayon","index":6},"brushStep":1,"points":[{"x":0.3,"y":0.5},{"x":0.7,"y":0.5}]},{"ink":{"type":"eraser"},"brushStep":3,"points":[{"x":0.5,"y":0.4},{"x":0.5,"y":0.6}]}]}]}}"##
         let book = try XCTUnwrap(BookCodec.shared.decodeOrNull(text: document))
         let center = try colour(of: render(book.page(index: 0)), atFractionX: 0.5, y: 0.5)
         let sage = UIColor(cgColor: Organic.shared.crayon(index: 3).cgColor)
@@ -259,5 +270,19 @@ final class ScenePainterTests: XCTestCase {
                                          width: CGFloat(cgImage.width), height: CGFloat(cgImage.height)))
         return Pixel(r: CGFloat(bytes[0]) / 255, g: CGFloat(bytes[1]) / 255,
                      b: CGFloat(bytes[2]) / 255, a: CGFloat(bytes[3]) / 255)
+    }
+}
+
+private final class PainterFixtureParts: PartResolver {
+    func find(id: PartId) -> Part? {
+        let layer: Layer
+        switch id.value {
+        case "fixture:square":
+            layer = Layer(kind: .squircle, x: 12, y: 12, w: 76, h: 76, colorIndex: 3, rotationDeg: 0)
+        case "fixture:ring":
+            layer = Layer(kind: .ring, x: 0, y: 0, w: 100, h: 100, colorIndex: 2, rotationDeg: 0)
+        default: return PartCatalog.shared.find(id: id)
+        }
+        return Part(id: id, nameKey: id.value, category: "fixture", def: PartDefPrimitives(layers: [layer]))
     }
 }

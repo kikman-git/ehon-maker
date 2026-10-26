@@ -58,7 +58,7 @@ class RasterSceneTest {
 
     @Test
     fun `custom resolver retains builtins and unknown references are harmless`() {
-        val cat = part.copy(partId = PartId("いきもの:ねこ"))
+        val cat = part.copy(partId = PartId("pack.storybook:bird"))
         assertTrue(builder.build(page(cat), RenderTarget.share(PageShape.SQUARE)).nodes.isNotEmpty())
         val missing = part.copy(partId = PartId("lib:missing"))
         assertTrue(builder.build(page(missing), RenderTarget.share(PageShape.SQUARE)).nodes.isEmpty())

@@ -1,6 +1,7 @@
 import { EhonCodec, WebEditor, WebReader } from '@ehon/core';
 import { createStore } from './cloud/store';
 import { fontFaces, fontRanges } from './fonts.generated';
+import { materials } from './materials';
 
 export const codec = EhonCodec.getInstance();
 export { WebEditor, WebReader };
@@ -65,7 +66,7 @@ export function blankBook(shape = 'SQUARE'): string {
   return codec.blankBook(`b-${crypto.randomUUID()}`, '無題のえほん', 'ja-JP', Date.now(), shape);
 }
 
-export const parts: { id: string; name: string; category: string }[] = JSON.parse(codec.catalogJson('ja'));
+export const parts = materials;
 export const fontChoices: { id: string; name: string }[] = JSON.parse(codec.fontsJson('ja'));
 export const backgrounds: number[] = JSON.parse(codec.backgroundsJson());
 export const drawingColors: number[] = JSON.parse(codec.drawingColorsJson());

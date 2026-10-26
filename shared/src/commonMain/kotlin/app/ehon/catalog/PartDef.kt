@@ -111,14 +111,6 @@ data class Layer(
     val rotationDeg: Float = 0f,
 )
 
-/**
- * How a part is drawn.
- *
- * v1 ships raster illustrations, but [Primitives] is kept permanently rather than
- * deleted: it is the development placeholder that lets the app build and its golden
- * tests run before any commissioned art exists, and it decouples the engineering
- * schedule from the illustrator's.
- */
 sealed interface PartDef {
     data class Primitives(val layers: List<Layer>) : PartDef
 

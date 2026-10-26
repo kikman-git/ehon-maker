@@ -37,7 +37,7 @@ async function createBook(page: Page): Promise<string> {
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await expect(page.getByLabel('えほんの ページ')).toBeVisible();
   await page.getByRole('button', { name: '素材', exact: true }).click();
-  await page.getByLabel('しゅるい').selectOption('かたち');
+  await page.getByLabel('しゅるい').selectOption('どうぶつ');
   return page.url().split('/').pop()!;
 }
 
@@ -62,7 +62,7 @@ test('two browsers on one account converge, coalesce bursts and catch up after g
   await expect(b.page.locator('.read-page').first()).toBeVisible();
 
   const before = itemCount(await bookJson(a.page, id));
-  await a.page.getByRole('button', { name: 'まる', exact: true }).click();
+  await a.page.getByRole('button', { name: 'ことり', exact: true }).click();
   await expect.poll(() => bookJson(b.page, id).then((json) => itemCount(json)), { timeout: 20_000 }).toBe(before + 1);
   await expect.poll(() => pending(a.page)).toBe(false);
 
@@ -87,7 +87,7 @@ test('an edit lease makes the second composer read-only until the first one clos
   await b.page.goto(`/app/${id}`);
   await expect(b.page.getByText('ほかの たんまつで へんしゅうちゅう')).toBeVisible({ timeout: 20_000 });
   await b.page.getByRole('button', { name: '素材', exact: true }).click();
-  await expect(b.page.getByRole('button', { name: 'まる', exact: true })).toBeDisabled();
+  await expect(b.page.getByRole('button', { name: 'ことり', exact: true })).toBeDisabled();
   await expect(a.page.getByText('ほかの たんまつで へんしゅうちゅう')).toHaveCount(0);
 
   await a.page.evaluate(async () => (await (window as unknown as Hooked).__ehonRepository()).close());
@@ -95,7 +95,7 @@ test('an edit lease makes the second composer read-only until the first one clos
   await expect(b.page.getByLabel('えほんの ページ')).toBeVisible();
   await expect(b.page.getByText('ほかの たんまつで へんしゅうちゅう')).toHaveCount(0);
   await b.page.getByRole('button', { name: '素材', exact: true }).click();
-  await expect(b.page.getByRole('button', { name: 'まる', exact: true })).toBeEnabled();
+  await expect(b.page.getByRole('button', { name: 'ことり', exact: true })).toBeEnabled();
   await a.context.close();
   await b.context.close();
 });

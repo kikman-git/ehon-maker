@@ -1,0 +1,560 @@
+{
+  "version": 1,
+  "styleId": "painterly-storybook-v1",
+  "categories": [
+    {
+      "id": "animals",
+      "name": "どうぶつ",
+      "nameEn": "Animals"
+    },
+    {
+      "id": "nature",
+      "name": "しぜん",
+      "nameEn": "Nature"
+    },
+    {
+      "id": "people",
+      "name": "ひと",
+      "nameEn": "People"
+    },
+    {
+      "id": "objects",
+      "name": "もの",
+      "nameEn": "Objects"
+    },
+    {
+      "id": "vehicles",
+      "name": "のりもの",
+      "nameEn": "Vehicles"
+    },
+    {
+      "id": "food",
+      "name": "たべもの",
+      "nameEn": "Food"
+    },
+    {
+      "id": "places",
+      "name": "たてもの・ばしょ",
+      "nameEn": "Buildings / Places"
+    },
+    {
+      "id": "backgrounds",
+      "name": "はいけい",
+      "nameEn": "Background elements"
+    },
+    {
+      "id": "scenes",
+      "name": "おはなしの ばめん",
+      "nameEn": "Storybook scenes"
+    },
+    {
+      "id": "seasonal",
+      "name": "きせつ・ぎょうじ",
+      "nameEn": "Seasonal / events"
+    }
+  ],
+  "assets": [
+    {
+      "id": "pack.storybook:bird",
+      "slug": "bird",
+      "name": "ことり",
+      "nameEn": "Little bird",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "standing",
+      "tags": [
+        "鳥",
+        "とり",
+        "そら",
+        "blue",
+        "smiling"
+      ],
+      "legacyIds": [
+        "うみと そら:ことり"
+      ],
+      "masterRef": "a/0482542a34af1169336321f23373a1e71654a61d93bed0697e83e174265ba4c2",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2040220,
+      "sha256": "0482542a34af1169336321f23373a1e71654a61d93bed0697e83e174265ba4c2",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bird-flying",
+      "slug": "bird-flying",
+      "name": "ことり・とぶ",
+      "nameEn": "Little bird flying",
+      "category": "どうぶつ",
+      "characterId": "bird",
+      "pose": "flying",
+      "tags": [
+        "鳥",
+        "とり",
+        "とぶ",
+        "飛ぶ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/cb86d58993531be3553807aa72dc1a155100e970ace11e65e55041b9a915ee0e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2386727,
+      "sha256": "cb86d58993531be3553807aa72dc1a155100e970ace11e65e55041b9a915ee0e",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly",
+      "slug": "butterfly",
+      "name": "ちょうちょ",
+      "nameEn": "Butterfly",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "wings-open",
+      "tags": [
+        "蝶",
+        "むし",
+        "はね",
+        "春"
+      ],
+      "legacyIds": [
+        "うみと そら:ちょうちょ"
+      ],
+      "masterRef": "a/ca7b75af03bc35d4565f3afd8d13184797518951e984b04c9f27d67f27db431d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2754547,
+      "sha256": "ca7b75af03bc35d4565f3afd8d13184797518951e984b04c9f27d67f27db431d",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish",
+      "slug": "fish",
+      "name": "さかな",
+      "nameEn": "Fish",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "swimming",
+      "tags": [
+        "魚",
+        "うみ",
+        "きんぎょ",
+        "金魚"
+      ],
+      "legacyIds": [
+        "うみと そら:さかな"
+      ],
+      "masterRef": "a/11bd332c7a4aec8531cec9dc2e700b0df5e7440c432e47074c94a023403bb13f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2341609,
+      "sha256": "11bd332c7a4aec8531cec9dc2e700b0df5e7440c432e47074c94a023403bb13f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle",
+      "slug": "turtle",
+      "name": "かめ",
+      "nameEn": "Turtle",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "walking",
+      "tags": [
+        "亀",
+        "あるく",
+        "緑"
+      ],
+      "legacyIds": [
+        "うみと そら:かめ"
+      ],
+      "masterRef": "a/66d60f0b8961be9ee8a05a4b1572832e6c4f021af3e9eb11318077ae194d552c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2295212,
+      "sha256": "66d60f0b8961be9ee8a05a4b1572832e6c4f021af3e9eb11318077ae194d552c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:turtle-sleeping",
+      "slug": "turtle-sleeping",
+      "name": "かめ・おやすみ",
+      "nameEn": "Turtle sleeping",
+      "category": "どうぶつ",
+      "characterId": "turtle",
+      "pose": "sleeping",
+      "tags": [
+        "亀",
+        "ねむる",
+        "寝る",
+        "おやすみ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b31323b47f77812580ee3b1c2667096b180ed817bb1e47a170ee06126220e21f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2203953,
+      "sha256": "b31323b47f77812580ee3b1c2667096b180ed817bb1e47a170ee06126220e21f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus",
+      "slug": "octopus",
+      "name": "たこ",
+      "nameEn": "Octopus",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "smiling",
+      "tags": [
+        "蛸",
+        "うみ",
+        "海"
+      ],
+      "legacyIds": [
+        "うみと そら:たこ"
+      ],
+      "masterRef": "a/9129c2c0a3ef30da337f2bab6fa19260d814a54a112abcd63ac71cff62c5ef0a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2370359,
+      "sha256": "9129c2c0a3ef30da337f2bab6fa19260d814a54a112abcd63ac71cff62c5ef0a",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:whale",
+      "slug": "whale",
+      "name": "くじら",
+      "nameEn": "Whale",
+      "category": "どうぶつ",
+      "characterId": "whale",
+      "pose": "swimming",
+      "tags": [
+        "鯨",
+        "うみ",
+        "海"
+      ],
+      "legacyIds": [
+        "うみと そら:くじら"
+      ],
+      "masterRef": "a/c4bf398e639305abc0bd6899612031ed5abdb954b6d1882b4b345492a44abbf8",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2027319,
+      "sha256": "c4bf398e639305abc0bd6899612031ed5abdb954b6d1882b4b345492a44abbf8",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin",
+      "slug": "penguin",
+      "name": "ペンギン",
+      "nameEn": "Penguin",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "standing",
+      "tags": [
+        "ぺんぎん",
+        "雪",
+        "冬"
+      ],
+      "legacyIds": [
+        "うみと そら:ペンギン"
+      ],
+      "masterRef": "a/1581b4a7762a2e6dd7f7e085fa8cd2eb42b924da0d2f35df51884ae863607b07",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2186884,
+      "sha256": "1581b4a7762a2e6dd7f7e085fa8cd2eb42b924da0d2f35df51884ae863607b07",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-waving",
+      "slug": "penguin-waving",
+      "name": "ペンギン・てをふる",
+      "nameEn": "Penguin waving",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "waving",
+      "tags": [
+        "ぺんぎん",
+        "てをふる",
+        "手",
+        "あいさつ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/bad9525e2fe08a5e858cf342fee3afd3cfd6a7c3f8bb96a59793eaf836e85055",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2212659,
+      "sha256": "bad9525e2fe08a5e858cf342fee3afd3cfd6a7c3f8bb96a59793eaf836e85055",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:crab",
+      "slug": "crab",
+      "name": "かに",
+      "nameEn": "Crab",
+      "category": "どうぶつ",
+      "characterId": "crab",
+      "pose": "smiling",
+      "tags": [
+        "蟹",
+        "うみ",
+        "はさみ"
+      ],
+      "legacyIds": [
+        "うみと そら:かに"
+      ],
+      "masterRef": "a/c9ac29f0f3e18464fa35ba27dda7450da03562694e6a4a486f2e9aa1c70c91c5",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2344272,
+      "sha256": "c9ac29f0f3e18464fa35ba27dda7450da03562694e6a4a486f2e9aa1c70c91c5",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:ladybug",
+      "slug": "ladybug",
+      "name": "てんとうむし",
+      "nameEn": "Ladybug",
+      "category": "どうぶつ",
+      "characterId": "ladybug",
+      "pose": "walking",
+      "tags": [
+        "むし",
+        "虫",
+        "赤",
+        "春"
+      ],
+      "legacyIds": [
+        "うみと そら:てんとうむし"
+      ],
+      "masterRef": "a/f432afc4525c6c209d614a197df437bfdccd7c1235ea783dced400ea7ff34166",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2139429,
+      "sha256": "f432afc4525c6c209d614a197df437bfdccd7c1235ea783dced400ea7ff34166",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:owl",
+      "slug": "owl",
+      "name": "ふくろう",
+      "nameEn": "Owl",
+      "category": "どうぶつ",
+      "characterId": "owl",
+      "pose": "standing",
+      "tags": [
+        "梟",
+        "とり",
+        "鳥",
+        "もり",
+        "夜"
+      ],
+      "legacyIds": [
+        "うみと そら:ふくろう"
+      ],
+      "masterRef": "a/d87c0f07a121c782f80fb91541e5ea875863167f0aefdc94cf7ecc9d45772f87",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2168559,
+      "sha256": "d87c0f07a121c782f80fb91541e5ea875863167f0aefdc94cf7ecc9d45772f87",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:tree",
+      "slug": "tree",
+      "name": "き",
+      "nameEn": "Tree",
+      "category": "しぜん",
+      "characterId": "tree",
+      "pose": "default",
+      "tags": [
+        "木",
+        "森",
+        "みどり",
+        "もり"
+      ],
+      "legacyIds": [
+        "しぜん:き"
+      ],
+      "masterRef": "a/7cd30abffb15ace33a395c881f19dd7f9df37de214bd97f7aed764dedbf3da8c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2844447,
+      "sha256": "7cd30abffb15ace33a395c881f19dd7f9df37de214bd97f7aed764dedbf3da8c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child",
+      "slug": "child",
+      "name": "こども",
+      "nameEn": "Child",
+      "category": "ひと",
+      "characterId": "child",
+      "pose": "waving",
+      "tags": [
+        "子供",
+        "ひと",
+        "あいさつ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/d45a916506051477912decf9a97303a2cd04c7c387dd417d8ed46b03dd598f08",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2140904,
+      "sha256": "d45a916506051477912decf9a97303a2cd04c7c387dd417d8ed46b03dd598f08",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:lantern",
+      "slug": "lantern",
+      "name": "ランタン",
+      "nameEn": "Lantern",
+      "category": "もの",
+      "characterId": "lantern",
+      "pose": "default",
+      "tags": [
+        "あかり",
+        "灯り",
+        "ろうそく",
+        "夜"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5d5346b79f557d355d30daf348b8bb515412ed7cb4f61be69209fd18f2980be2",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1907993,
+      "sha256": "5d5346b79f557d355d30daf348b8bb515412ed7cb4f61be69209fd18f2980be2",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bus",
+      "slug": "bus",
+      "name": "バス",
+      "nameEn": "Bus",
+      "category": "のりもの",
+      "characterId": "bus",
+      "pose": "default",
+      "tags": [
+        "くるま",
+        "車",
+        "りょこう"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/76effb7adb5aa7e3a9b074f81267bcf63637ec79285974c7f199aabb8c690a5d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3109529,
+      "sha256": "76effb7adb5aa7e3a9b074f81267bcf63637ec79285974c7f199aabb8c690a5d",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:apple",
+      "slug": "apple",
+      "name": "りんご",
+      "nameEn": "Apple",
+      "category": "たべもの",
+      "characterId": "apple",
+      "pose": "default",
+      "tags": [
+        "林檎",
+        "果物",
+        "くだもの",
+        "赤"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b4fd324f5c29cd0cae084b20684c5aab1ee973b02b2d7ee2c6134cf072356944",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2596539,
+      "sha256": "b4fd324f5c29cd0cae084b20684c5aab1ee973b02b2d7ee2c6134cf072356944",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:cottage",
+      "slug": "cottage",
+      "name": "おうち",
+      "nameEn": "Cottage",
+      "category": "たてもの・ばしょ",
+      "characterId": "cottage",
+      "pose": "default",
+      "tags": [
+        "家",
+        "いえ",
+        "house"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/63f2bf70e259717c09703e9a02838b1b1220ed632a699cf7d7c80e9e64d0d4be",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3003461,
+      "sha256": "63f2bf70e259717c09703e9a02838b1b1220ed632a699cf7d7c80e9e64d0d4be",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:cloud",
+      "slug": "cloud",
+      "name": "くも",
+      "nameEn": "Cloud",
+      "category": "はいけい",
+      "characterId": "cloud",
+      "pose": "default",
+      "tags": [
+        "雲",
+        "そら",
+        "空",
+        "しろ"
+      ],
+      "legacyIds": [
+        "しぜん:くも"
+      ],
+      "masterRef": "a/beba58775344a11b68d5eae6735831ffe41eb8be53c5f4720b08d20142366b41",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1423214,
+      "sha256": "beba58775344a11b68d5eae6735831ffe41eb8be53c5f4720b08d20142366b41",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:forest-scene",
+      "slug": "forest-scene",
+      "name": "もりのこみち",
+      "nameEn": "Forest path",
+      "category": "おはなしの ばめん",
+      "characterId": "forest",
+      "pose": "default",
+      "tags": [
+        "森",
+        "きのこ",
+        "みち",
+        "木"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/908c09d585bf74d5b550f56f0f9b3d0559f7c39a3e50bcc54ea99e28369777e7",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3581583,
+      "sha256": "908c09d585bf74d5b550f56f0f9b3d0559f7c39a3e50bcc54ea99e28369777e7",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:pumpkin",
+      "slug": "pumpkin",
+      "name": "かぼちゃ",
+      "nameEn": "Pumpkin",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "pumpkin",
+      "pose": "default",
+      "tags": [
+        "秋",
+        "あき",
+        "ハロウィン",
+        "野菜"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/af0c1485707b4a3602692bdc595f2e08b48493be2a286366e1670489b26e44fe",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3106633,
+      "sha256": "af0c1485707b4a3602692bdc595f2e08b48493be2a286366e1670489b26e44fe",
+      "styleId": "painterly-storybook-v1"
+    }
+  ]
+}

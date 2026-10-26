@@ -41,7 +41,7 @@ class SceneBuilderTest {
         id = ItemId("i1"),
         x = 50f,
         y = 50f,
-        partId = PartId("いきもの:ねこ"),
+        partId = PartId("pack.storybook:bird"),
         sizePct = 40f,
     )
 
@@ -145,10 +145,11 @@ class SceneBuilderTest {
     }
 
     @Test
-    fun `the cat renders all five of its layers`() {
+    fun `the material renders one saved raster image`() {
         val group = builder.build(page(listOf(cat)), screenTarget())
             .nodes.filterIsInstance<SceneNode.Group>().single()
-        assertEquals(5, group.children.size)
+        assertEquals(1, group.children.size)
+        assertTrue(group.children.single() is SceneNode.Image)
     }
 
     @Test

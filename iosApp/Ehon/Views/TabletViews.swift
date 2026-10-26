@@ -59,6 +59,7 @@ struct TabletRootView: View {
 // MARK: - たてもち · つくる
 
 struct TabletEditorView: View {
+    @State private var materialQuery = ""
     @EnvironmentObject var app: AppModel
     @ObservedObject var model: EditorModel
     let onRead: () -> Void
@@ -69,6 +70,7 @@ struct TabletEditorView: View {
         VStack(spacing: 0) {
             header
             LeaseNotice(model: model)
+            RetiredMaterialsNotice(model: model)
             thumbnails
             EditorPage(model: model)
                 .allowsHitTesting(!model.isReadOnly)
@@ -235,8 +237,11 @@ struct TabletEditorView: View {
 
     private var partGrid: some View {
         ScrollView {
-            LazyVGrid(columns: Array(repeating: GridItem(spacing: 14), count: 8), spacing: 14) {
-                ForEach(PartCatalog.shared.inCategory(category: model.controller.category), id: \.id.value) { part in
+            TextField("素材をさがす", text: $materialQuery)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal, 30)
+            LazyVGrid(columns: Array(repeating: GridItem(spacing: 14), count: 6), spacing: 14) {
+                ForEach(PartCatalog.shared.search(category: materialQuery.isEmpty ? model.controller.category : "", query: materialQuery), id: \.id.value) { part in
                     PartTile(part: part) { model.apply { $0.addPart(partId: part.id) } }
                 }
             }

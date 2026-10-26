@@ -15,6 +15,7 @@ struct EditorView: View {
         VStack(spacing: 0) {
             header
             LeaseNotice(model: model)
+            RetiredMaterialsNotice(model: model)
             thumbnails
             EditorPage(model: model)
                 .allowsHitTesting(!model.isReadOnly)

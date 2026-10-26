@@ -25,7 +25,7 @@ test.beforeEach(async ({ page }) => {
 test('placing and dragging can be undone independently', async ({ page }) => {
   const original = await savedBook(page);
   await page.getByRole('button', { name: '素材', exact: true }).click();
-  await page.getByRole('button', { name: 'まる', exact: true }).click();
+  await page.getByRole('button', { name: 'ことり', exact: true }).click();
   const added = await savedBook(page);
   expect(added.version).toBe(6);
   expect(added.book.pages[0].items).toHaveLength(original.book.pages[0].items.length + 1);
@@ -120,11 +120,11 @@ test('a library part lands on the active page', async ({ page }) => {
   const target = page.locator('[data-frame="1"] canvas');
   await expect(target).toBeInViewport();
   const box = (await target.boundingBox())!;
-  const source = (await page.getByRole('button', { name: 'まる', exact: true }).boundingBox())!;
+  const source = (await page.getByRole('button', { name: 'ことり', exact: true }).boundingBox())!;
   await page.mouse.move(source.x + source.width / 2, source.y + source.height / 2);
   await page.mouse.down();
   await page.mouse.move(box.x + box.width * 0.25, box.y + box.height * 0.4, { steps: 12 });
-  await expect(page.locator('.drag-ghost')).toHaveText('まる');
+  await expect(page.locator('.drag-ghost')).toHaveText('ことり');
   await page.mouse.up();
   await expect(page.getByText('2 / 2 ページ')).toBeVisible();
   const book = await savedBook(page);

@@ -35,9 +35,10 @@ struct EditorDrawer: View {
 
 private struct StickPanel: View {
     @ObservedObject var model: EditorModel
+    @State private var materialQuery = ""
 
     private var parts: [Part] {
-        PartCatalog.shared.inCategory(category: model.controller.category)
+        PartCatalog.shared.search(category: materialQuery.isEmpty ? model.controller.category : "", query: materialQuery)
     }
 
     var body: some View {
@@ -56,8 +57,12 @@ private struct StickPanel: View {
             .padding(.top, 12)
             .padding(.bottom, 10)
 
+            TextField("素材をさがす", text: $materialQuery)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal, 14)
+                .padding(.bottom, 8)
             ScrollView {
-                LazyVGrid(columns: Array(repeating: GridItem(spacing: 9), count: 5), spacing: 9) {
+                LazyVGrid(columns: Array(repeating: GridItem(spacing: 9), count: 3), spacing: 9) {
                     ForEach(parts, id: \.id.value) { part in
                         PartTile(part: part) {
                             model.apply { $0.addPart(partId: part.id) }

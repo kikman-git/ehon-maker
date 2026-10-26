@@ -55,7 +55,7 @@ class VectorSceneTest {
     @Test
     fun `art the book does not carry paints nothing while catalog parts still resolve`() {
         val missing = PartItem(ItemId("i1"), 50f, 50f, partId = Artwork.partId("ghost"))
-        val cat = PartItem(ItemId("i2"), 50f, 50f, partId = PartId("いきもの:ねこ"))
+        val cat = PartItem(ItemId("i2"), 50f, 50f, partId = PartId("pack.storybook:bird"))
         val scene = builder.build(page(missing, cat), RenderTarget.share(PageShape.SQUARE), null, art)
         assertEquals(1, scene.nodes.size)
         assertTrue((scene.nodes.single() as SceneNode.Group).children.isNotEmpty())

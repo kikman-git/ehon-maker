@@ -8,8 +8,8 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "node tools/slice-fonts.mjs && vite --host 127.0.0.1",
-    "build": "node tools/slice-fonts.mjs && tsc --noEmit && vite build",
+    "dev": "node ../backend/tools/materials.mjs && node tools/slice-fonts.mjs && vite --host 127.0.0.1",
+    "build": "node ../backend/tools/materials.mjs && node tools/slice-fonts.mjs && tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "playwright test",
     "fonts": "node tools/slice-fonts.mjs",

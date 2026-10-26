@@ -707,3 +707,15 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .admin-account p { margin: 0; font-size: 13px; }
 .admin-links { margin: 0; padding-left: 18px; font-size: 13px; line-height: 2; }
 button.link { padding: 0; border: 0; background: none; color: var(--accent); text-decoration: underline; cursor: pointer; font: inherit; }
+
+.material-intro { font-size: 15px; color: #4c6558; margin: 4px 0 14px; }
+.material-image { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; }
+.material-grid button { background: #fffdf8; }
+.material-empty { padding: 20px 8px; color: #65736a; font-size: 13px; line-height: 1.8; }
+#material-search { width: 100%; margin-bottom: 12px; }
+
+.material-migration { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 8px 18px; background: #fff2d8; font-size: 12px; flex-wrap: wrap; }
+.material-migration button { padding: 5px 10px; }
+.material-replacement { display: grid; gap: 8px; padding: 12px; margin-bottom: 16px; border-radius: 10px; background: #fff2d8; font-size: 12px; }
+.material-replacement select { width: 100%; }
+.material-replacement p { margin: 0; line-height: 1.6; }

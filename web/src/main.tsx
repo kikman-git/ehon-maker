@@ -1,3 +1,4 @@
+import { materialCategories, materialUrl, searchMaterials } from './materials';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { assets } from './cloud/assetLoader';
@@ -12,7 +13,7 @@ import { aiBridge, atelierBridge } from './ai/bridge';
 import { APPLIED_NOTE } from './ai/state';
 import { Atelier } from './atelier/Atelier';
 import type { Mark } from './ai/prompt';
-import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, loadFonts, parts, type WebEditor } from './core';
+import { backgrounds, blankBook, bookGlyphs, codec, createEditor, cssColor, drawingColors, ensureGlyphs, loadFonts, type WebEditor } from './core';
 import { loadTemplates, templateBook, templateStore } from './templates';
 import { Desk, type DeskHandle } from './desk/Desk';
 import { dragging, startPartDrag } from './desk/drag';
@@ -65,6 +66,7 @@ const uploadStages: Record<UploadStage, string> = {
   finishing: 'しあげています…',
 };
 type UploadStatus = { file: File; name: string; preview: string; stage: UploadStage | 'done' | 'failed'; message?: string; partId?: string };
+type RetiredMaterial = { pageId: string; pageNumber: number; itemId: string; name: string };
 
 const uploadMessages: Record<UploadFailure, string> = {
   type: 'PNG か WebP の ファイルを えらんでください。',
@@ -96,10 +98,17 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const [panelOpen, setPanelOpen] = useState(() => aiBridge !== null || remembered('studio.panel', true));
   const [stripOpen, setStripOpen] = useState(() => remembered('studio.strip', true));
   const bookArt = useMemo(() => JSON.parse(editor.artJson()) as { id: string; name: string; aspect: number }[], [editor, revision]);
-  const [category, setCategory] = useState(() => (bookArt.length ? 'art' : parts[0].category));
+  const [category, setCategory] = useState(() => (bookArt.length ? 'art' : 'all'));
+  const [materialQuery, setMaterialQuery] = useState('');
+  const matchingMaterials = searchMaterials(category, materialQuery);
+  const retiredMaterials = useMemo(() => JSON.parse(editor.retiredMaterialsJson()) as RetiredMaterial[], [editor, revision]);
+  const [replacement, setReplacement] = useState<RetiredMaterial | null>(null);
+  const replacementTarget = retiredMaterials.find(item => item.pageId === replacement?.pageId && item.itemId === replacement?.itemId);
+  useEffect(() => { setReplacement(null); }, [editor]);
   const [draft, setDraft] = useState('');
   const [ruby, setRuby] = useState('');
   const [error, setError] = useState('');
+  const [exporting, setExporting] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<UploadStatus | null>(null);
   const uploading = uploadStatus != null && uploadStatus.stage !== 'done' && uploadStatus.stage !== 'failed';
   useEffect(() => { if (uploadStatus) return () => URL.revokeObjectURL(uploadStatus.preview); }, [uploadStatus?.preview]);
@@ -380,17 +389,20 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     }
   };
 
-  /** Library buttons place on a tap and drag onto a frame or the desk; a finished drag swallows its click. */
+  // A completed drag consumes its click to prevent placing a second copy.
   const partButton = (partId: string, label: string, size: number, content: React.ReactNode, fresh = false) => <button
     key={partId}
     data-new={fresh || undefined}
-    disabled={readOnly}
-    onPointerDown={(event) => startPartDrag(event, partId, label, (x, y) => {
+    disabled={readOnly || (!!replacementTarget && !partId.startsWith('pack.storybook:'))}
+    onPointerDown={(event) => !replacementTarget && startPartDrag(event, partId, label, (x, y) => {
       if (!deskRef.current?.drop(partId, x, y)) setError(partId.startsWith('lib:') && !workspace ? 'イラストは ページの うえに おいてください。' : 'パーツは ページの うえに おいてください。');
     })}
     onClick={(event) => {
       if (event.currentTarget.dataset.dragged) { delete event.currentTarget.dataset.dragged; return; }
-      edit(() => editor.addPartAt(partId, 50, 52, size, editor.partHeightPct(partId, size)));
+      if (replacementTarget) {
+        edit(() => editor.replaceRetiredMaterial(replacementTarget.pageId, replacementTarget.itemId, partId));
+        setReplacement(null);
+      } else edit(() => editor.addPartAt(partId, 50, 52, size, editor.partHeightPct(partId, size)));
     }}
   >{content}</button>;
 
@@ -400,15 +412,35 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     edit(() => editor.setDraftText(value));
   };
 
-  const exportPage = () => {
+  const exportPage = async () => {
+    if (exporting) return;
+    setExporting(true);
+    const json = editor.bookJson();
+    const pageIndex = editor.pageIndex;
+    const snapshot = createEditor(json);
+    repo.library.apply(snapshot);
+    const images = new Map<string, HTMLImageElement>();
     const canvas = document.createElement('canvas');
-    canvas.width = Math.round(2048 * Math.min(1, editor.pageAspect));
-    canvas.height = Math.round(2048 / Math.max(1, editor.pageAspect));
-    editor.render(canvas.getContext('2d')!, canvas.width, canvas.height, editor.pageIndex, true);
-    canvas.toBlob((blob) => {
-      if (blob) download(blob, editor.title + '-' + (editor.pageIndex + 1) + '.png');
+    try {
+      await bookGlyphs(json);
+      // Sequential loads keep failed exports from leaving other decodes running.
+      for (const ref of snapshot.pageAssetRefs(pageIndex)) images.set(ref, await assets.loadMaster(ref));
+      snapshot.setImageProvider(ref => images.get(ref) ?? null);
+      canvas.width = Math.round(2048 * Math.min(1, snapshot.pageAspect));
+      canvas.height = Math.round(2048 / Math.max(1, snapshot.pageAspect));
+      snapshot.render(canvas.getContext('2d')!, canvas.width, canvas.height, pageIndex, true);
+      const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve));
+      if (!blob) throw new Error('PNG export failed');
+      download(blob, snapshot.title + '-' + (pageIndex + 1) + '.png');
+      setError('');
+    } catch {
+      setError('画像を読み込めませんでした。PNGの書き出しをもういちどおためしください。');
+    } finally {
+      snapshot.dispose();
+      for (const image of images.values()) image.src = '';
       canvas.width = canvas.height = 0;
-    });
+      setExporting(false);
+    }
   };
 
   const activeTool = tools.find((item) => item.id === tool)!;
@@ -438,7 +470,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
                   if (request !== generation.current) return;
                   const next = createEditor(json);
                   setEditor(next); setRevision(next.revision); setDraft(''); setRuby(''); setError(''); setTool(next.artJson() !== '[]' ? 'select' : 'brush');
-                  setCategory(JSON.parse(next.artJson()).length ? 'art' : parts[0].category);
+                  setCategory(JSON.parse(next.artJson()).length ? 'art' : 'all');
                 }).catch(() => { if (request === generation.current) setError('テンプレートを よみこめませんでした。'); });
               }}>
                 <option value="" disabled>ファイルから</option>
@@ -450,10 +482,14 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         <input ref={importRef} type="file" accept=".ehon,application/json" hidden onChange={(event) => {
           const file = event.target.files?.[0]; event.target.value = ''; if (file) void openBook(file);
         }} />
-        <button className="primary export-button" aria-label="PNGを書き出す" onClick={exportPage}><Icon name="image" size={17} /><span>PNGを書き出す</span></button>
+        <button className="primary export-button" aria-label="PNGを書き出す" disabled={exporting} onClick={() => void exportPage()}><Icon name="image" size={17} /><span>{exporting ? '書き出しています…' : 'PNGを書き出す'}</span></button>
       </div>
     </header>
     {readOnly && <div className="lease-banner" role="status">ほかの たんまつで へんしゅうちゅう。<a href={paths.reader(editor.bookId)}>この えほんを よむ</a></div>}
+    {retiredMaterials.length > 0 && <div className="material-migration" role="status">
+      <span>以前の素材 {retiredMaterials.length} 点は表示されません。新しい絵に置きかえられます。</span>
+      <button disabled={readOnly} onClick={() => { chooseTool('parts'); setCategory('all'); }}>素材を置きかえる</button>
+    </div>}
     {error && <p role="alert" className="error">{error}</p>}
     {repoState.syncError === 'diskError' && <p role="alert" className="error">保存できませんでした。ファイルメニューからえほんを保存してください。</p>}
     <div className="studio-toolbar">
@@ -500,11 +536,27 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
           </>}
         </fieldset>}
         {tool === 'parts' && <>
+          {retiredMaterials.length > 0 && <div className="material-replacement">
+            <label htmlFor="material-replacement">置きかえる素材</label>
+            <select id="material-replacement" disabled={readOnly} value={replacementTarget ? JSON.stringify([replacementTarget.pageId, replacementTarget.itemId]) : ''} onChange={event => {
+              setReplacement(retiredMaterials.find(item => JSON.stringify([item.pageId, item.itemId]) === event.target.value) ?? null);
+              setCategory('all');
+            }}>
+              <option value="">選んでください</option>
+              {retiredMaterials.map(item => <option key={JSON.stringify([item.pageId, item.itemId])} value={JSON.stringify([item.pageId, item.itemId])}>{item.pageNumber} ページ · {item.name}</option>)}
+            </select>
+            {replacementTarget && <><p>下から新しい絵をクリック。位置と大きさを保って置きかえます。</p><button onClick={() => setReplacement(null)}>置きかえをやめる</button></>}
+          </div>}
           {atelierBridge && <button className="atelier-open ai-cta" disabled={readOnly} onClick={() => setAtelierOpen(true)}><span><Icon name="sparkles" size={16} />AIで 素材を つくる</span><CreditNudge /></button>}
-          <label className="field" htmlFor="material-category">しゅるい</label><select id="material-category" value={category} onChange={(event) => setCategory(event.target.value)}>{bookArt.length > 0 && <option value="art">この えほんの え</option>}{[...new Set(parts.map((part) => part.category))].map((item) => <option key={item}>{item}</option>)}</select>
+          <p className="material-intro">絵本の世界を、ひとつずつ。</p>
+          <label className="field" htmlFor="material-search">素材をさがす</label>
+          <input id="material-search" type="search" placeholder="どうぶつ、なまえ、ポーズ…" value={materialQuery} onChange={event => { setMaterialQuery(event.target.value); if (category === 'art') setCategory('all'); }} />
+          <label className="field" htmlFor="material-category">しゅるい</label><select id="material-category" value={category} onChange={(event) => setCategory(event.target.value)}><option value="all">すべての素材</option>{bookArt.length > 0 && <option value="art">この えほんの え</option>}{materialCategories.map(item => <option key={item.id} value={item.name}>{item.name}</option>)}</select>
+          {category !== 'art' && <p className="hint" role="status">{matchingMaterials.length} 点の素材 · {replacementTarget ? 'クリックで置きかえ' : 'クリック・ドラッグで追加'}</p>}
           <div className="parts material-grid">{category === 'art'
             ? bookArt.map((art) => partButton(art.id, art.name, 30, <><PartPreview editor={editor} partId={art.id} /><span className="part-name">{art.name}<Icon name="plus" size={12} /></span></>))
-            : parts.filter((part) => part.category === category).map((part) => partButton(part.id, part.name, 26, <><PartPreview editor={editor} partId={part.id} /><span className="part-name">{part.name}<Icon name="plus" size={12} /></span></>))}</div>
+            : matchingMaterials.map((part) => partButton(part.id, part.name, 30, <><img className="material-image" src={materialUrl(part.masterRef)} alt="" loading="lazy" decoding="async" draggable={false} /><span className="part-name">{part.name}<Icon name="plus" size={12} /></span></>))}</div>
+          {category !== 'art' && matchingMaterials.length === 0 && <p className="material-empty">素材が見つかりませんでした。別のことばや種類でさがしてみてね。</p>}
           {cloud && <>
             <h3>マイイラスト</h3>
             {account.signedIn ? <div className="upload">

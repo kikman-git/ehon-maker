@@ -62,7 +62,7 @@ class ModelTwoATest {
     }
 
     @Test
-    fun `a stroke is painted from the drawing palette, a part from the part ramp`() {
+    fun `drawing colors do not alter the saved raster artwork`() {
         val c = controller()
         c.setMode(EditorMode.DRAW)
         c.setCrayon(10) // pastel green — does not exist in the nine-colour ramp
@@ -71,10 +71,10 @@ class ModelTwoATest {
         val scene = SceneBuilder(FakeMeasurer).build(c.page, RenderTarget.screen(c.book.shape, Size(322f, 322f)))
         val stroke = scene.nodes.filterIsInstance<SceneNode.StrokePath>().single()
         assertEquals(Organic.drawingCrayons[10], stroke.fill)
-        // The seeded ねこ is still brown (part ramp 6), untouched by the palette split.
-        val partFills = scene.nodes.filterIsInstance<SceneNode.Group>()
-            .flatMap { it.children }.filterIsInstance<SceneNode.Ellipse>().map { it.fill }
-        assertTrue(Organic.crayons[6] in partFills, "part colours must come from Organic.crayons")
+        val images = scene.nodes.filterIsInstance<SceneNode.Group>()
+            .flatMap { it.children }.filterIsInstance<SceneNode.Image>()
+        val bird = app.ehon.catalog.PartCatalog.material("pack.storybook:bird")!!
+        assertTrue(images.any { it.assetName == bird.masterRef })
     }
 
     @Test
@@ -197,7 +197,7 @@ class ModelTwoATest {
     @Test
     fun `reordering is adult-only and needs a selection and company`() {
         val c = controller()
-        c.selectAt(50f, 68f, Size(322f, 322f)) // ねこ
+        c.selectAt(50f, 68f, Size(322f, 322f))
         assertFalse(c.canReorder)
         c.setUiLevel(UiLevel.ADULT)
         assertTrue(c.canReorder)
@@ -211,7 +211,7 @@ class ModelTwoATest {
     fun `bring forward and send backward move one step and are undoable`() {
         val c = controller()
         c.setUiLevel(UiLevel.ADULT)
-        c.addPart(PartId("かたち:まる"))
+        c.addPart(PartId("pack.storybook:fish"))
         val id = c.selectedId!!
         val last = c.page.items.lastIndex
         assertEquals(last, c.page.indexOf(id))
@@ -229,11 +229,9 @@ class ModelTwoATest {
 
         c.undo()
         assertEquals(0, c.page.indexOf(id))
-        // Front-most wins the tap, so z-order is also hit-test order: (50,60) lies inside both
-        // まる (y 39..65) and the seeded ねこ (y 55..81), and ねこ is now in front.
         val hit = c.selectAt(50f, 60f, Size(322f, 322f))
         assertNotEquals(id, hit?.id, "the sent-back item should no longer win the tap")
-        assertEquals("いきもの:ねこ", (hit as app.ehon.model.PartItem).partId.value)
+        assertEquals("pack.storybook:bird", (hit as app.ehon.model.PartItem).partId.value)
     }
 
     // ── page order ───────────────────────────────────────────────────────────

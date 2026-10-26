@@ -43,6 +43,13 @@ else
   REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 fi
 cd "$REPO_ROOT"
+NODE_BIN="$(command -v node || true)"
+if [[ -z "$NODE_BIN" ]]; then
+  for candidate in /opt/homebrew/bin/node /usr/local/bin/node; do
+    [[ -x "$candidate" ]] && NODE_BIN="$candidate" && break
+  done
+fi
+"${NODE_BIN:?Node is required to stage the material library}" backend/tools/materials.mjs
 
 kn_target_for_arch() {
   case "$SDK" in

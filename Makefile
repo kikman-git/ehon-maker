@@ -35,6 +35,7 @@ test: ## Shared tests on JVM, Node and headless Chrome + Compose painter
 
 .PHONY: web-core
 web-core: ## Build and stage the typed Kotlin/JS library for Vite, and assemble the story templates
+	cd backend && pnpm materials
 	./gradlew :shared:assembleTemplates :shared:jsBrowserProductionLibraryDistribution
 	node tools/stage-web-core.mjs
 

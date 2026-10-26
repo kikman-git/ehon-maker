@@ -144,7 +144,7 @@ object EhonCodec {
         val strings = Strings.forLocale(locale)
         PartCatalog.all.forEach { part -> addJsonObject {
             put("id", part.id.value)
-            put("name", strings[part.nameKey])
+            put("name", PartCatalog.localizedName(part.nameKey, locale) ?: strings[part.nameKey])
             put("category", part.category)
         } }
     }.toString()

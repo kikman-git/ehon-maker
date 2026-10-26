@@ -1,6 +1,7 @@
 package app.ehon.engine
 
 import app.ehon.design.Argb
+import app.ehon.catalog.PartCatalog
 import app.ehon.model.Artwork
 import app.ehon.geom.Size
 import app.ehon.model.Book
@@ -229,6 +230,24 @@ class EditorController(
     // ── parts ────────────────────────────────────────────────────────────────
 
     fun addPart(partId: PartId) = addPartAt(partId, 50f, 52f, 26f)
+
+    fun replaceRetiredMaterial(pageId: String, itemId: String, partId: PartId) {
+        if (isGestureActive || PartCatalog.find(partId) == null) return
+        val targetPage = book.pages.indexOfFirst { it.id == pageId }
+        if (targetPage < 0) return
+        val targetItem = book.pages[targetPage].items.indexOfFirst { it.id.value == itemId }
+        val old = book.pages[targetPage].items.getOrNull(targetItem) as? PartItem ?: return
+        if (!PartCatalog.isRetired(old.partId)) return
+        change {
+            store.edit { current ->
+                current.mapPage(targetPage) { page ->
+                    page.copy(items = page.items.set(targetItem, old.copy(partId = partId)))
+                }.copy(updatedAtEpochMs = clock())
+            }
+            pageIndex = targetPage
+            selectedId = old.id
+        }
+    }
 
     fun addPartAt(
         partId: PartId,

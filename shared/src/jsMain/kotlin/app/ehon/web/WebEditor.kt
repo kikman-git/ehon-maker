@@ -3,6 +3,8 @@
 package app.ehon.web
 
 import app.ehon.design.Argb
+import app.ehon.catalog.PartCatalog
+import app.ehon.catalog.PartDef
 import app.ehon.engine.EditorController
 import app.ehon.engine.EditorIntentBatch
 import app.ehon.engine.UiLevel
@@ -83,6 +85,22 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
     fun pageJson(i: Int): String = BookCodec.encodePage(controller.book.pages[checkedPage(i)])
     fun pageId(i: Int): String = controller.book.pages[checkedPage(i)].id
     fun rasterPartIds(): Array<String> = WebParts.rasterPartIds(controller.book)
+    fun pageAssetRefs(i: Int): Array<String> = controller.book.pages[checkedPage(i)].items
+        .filterIsInstance<PartItem>()
+        .mapNotNull { (parts.resolver.find(it.partId)?.def as? PartDef.Raster)?.assetRef }
+        .distinct().toTypedArray()
+    fun retiredMaterialsJson(): String = buildJsonArray {
+        PartCatalog.retiredIn(controller.book).forEach { material ->
+            add(buildJsonObject {
+                put("pageId", material.pageId)
+                put("pageNumber", material.pageNumber)
+                put("itemId", material.itemId)
+                put("name", material.name)
+            })
+        }
+    }.toString()
+    fun replaceRetiredMaterial(pageId: String, itemId: String, partId: String) =
+        controller.replaceRetiredMaterial(pageId, itemId, PartId(partId))
     /** The book's embedded pictures as `[{id, name, aspect}]`; empty for a book without art. */
     fun artJson(): String = parts.artJson()
     fun goToPage(i: Int) = controller.goToPage(checkedPage(i))

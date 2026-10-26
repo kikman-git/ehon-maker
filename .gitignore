@@ -57,3 +57,5 @@ iosApp/Config/Cloud.local.xcconfig
 
 # Workspaces left by the retired dev-server AI desk.
 web/.ehon-ai/
+
+web/public/materials/

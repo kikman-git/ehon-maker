@@ -14,7 +14,7 @@ async function savedBook(page: Page): Promise<Book> {
 
 async function placeCircle(page: Page) {
   await page.getByRole('button', { name: '素材', exact: true }).click();
-  await page.getByRole('button', { name: 'まる', exact: true }).click();
+  await page.getByRole('button', { name: 'ことり', exact: true }).click();
 }
 
 async function dragFrom(page: Page, from: { x: number; y: number }, to: { x: number; y: number }) {

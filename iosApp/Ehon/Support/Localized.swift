@@ -32,14 +32,7 @@ enum Localized {
     }
 
     static func categoryName(_ category: String) -> String {
-        switch category {
-        case PartCatalog.shared.CAT_SHAPES: return s("cat.shapes")
-        case PartCatalog.shared.CAT_CREATURES: return s("cat.creatures")
-        case PartCatalog.shared.CAT_SEA_SKY: return s("cat.seaSky")
-        case PartCatalog.shared.CAT_NATURE: return s("cat.nature")
-        case PartCatalog.shared.CAT_MAGIC: return s("cat.magic")
-        default: return category
-        }
+        category
     }
 
     static func shapeName(_ shape: PageShape) -> String {

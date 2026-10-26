@@ -30,10 +30,10 @@ class StringsTest {
     }
 
     @Test
-    fun `english covers all 56 part names`() {
+    fun `english covers the curated material names`() {
         val absent = PartCatalog.all
             .map { "part.${it.nameKey}" }
-            .filter { StringsEn.table[it] == null }
+            .filter { en[it] == it }
         assertTrue(absent.isEmpty(), "English is missing: $absent")
     }
 

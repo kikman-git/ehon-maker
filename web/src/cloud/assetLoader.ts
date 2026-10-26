@@ -1,13 +1,10 @@
 import { cloud } from './config';
+import { bundledMaterialUrl } from '../materials';
 
 const REF = /^a\/[0-9a-f]{64}$/;
 export const MAX_MASTER_BYTES = 25 * 1024 * 1024;
 export const MAX_MASTER_PIXELS = 2048;
 
-/**
- * Decoded bitmaps under one pixel budget. Eviction drops the element's source so the decoder
- * memory returns; a miss paints the painter's placeholder and repaints when the load lands.
- */
 export class AssetLoader {
   onChange: () => void = () => {};
   private readonly cache = new Map<string, { image: HTMLImageElement; bytes: number }>();
@@ -19,7 +16,6 @@ export class AssetLoader {
 
   static validRef(ref: string): boolean { return REF.test(ref); }
 
-  /** The 1024px derivative for screens; the master for exports. Never blocks. */
   image(ref: string, master = false): HTMLImageElement | null {
     if (!REF.test(ref)) return null;
     const key = `${ref}/${master ? 'm.png' : '1024.webp'}`;
@@ -29,9 +25,27 @@ export class AssetLoader {
     return this.touch(`${ref}/256.webp`) ?? (master ? this.touch(`${ref}/1024.webp`) : null);
   }
 
-  /** Warms the cache for every raster part on a page before it is shown. */
   prefetch(refs: string[]): void {
     for (const ref of refs) if (REF.test(ref)) this.request(`${ref}/1024.webp`);
+  }
+
+  async loadMaster(ref: string): Promise<HTMLImageElement> {
+    if (!REF.test(ref)) throw new Error('Invalid asset reference');
+    const key = `${ref}/m.png`;
+    const base = this.baseUrl();
+    const url = bundledMaterialUrl(key) ?? (base ? `${base}/${key}` : null);
+    if (!url) throw new Error('Asset unavailable');
+    const image = new Image();
+    image.crossOrigin = 'anonymous';
+    image.src = url;
+    try {
+      await image.decode();
+      if (!image.naturalWidth || image.naturalWidth > MAX_MASTER_PIXELS || image.naturalHeight > MAX_MASTER_PIXELS) throw new Error('Invalid image dimensions');
+      return image;
+    } catch (error) {
+      image.src = '';
+      throw error;
+    }
   }
 
   clear(): void {
@@ -50,12 +64,13 @@ export class AssetLoader {
 
   private request(key: string): void {
     const base = this.baseUrl();
-    if (!base || this.loading.has(key) || this.cache.has(key) || (this.retryAfter.get(key) ?? 0) > Date.now()) return;
+    const url = bundledMaterialUrl(key) ?? (base ? `${base}/${key}` : null);
+    if (!url || this.loading.has(key) || this.cache.has(key) || (this.retryAfter.get(key) ?? 0) > Date.now()) return;
     this.loading.add(key);
     const image = new Image();
     image.crossOrigin = 'anonymous';
     image.decoding = 'async';
-    image.src = `${base}/${key}`;
+    image.src = url;
     image.decode().then(() => {
       if (image.naturalWidth === 0 || image.naturalWidth > MAX_MASTER_PIXELS || image.naturalHeight > MAX_MASTER_PIXELS) throw new Error('bad image');
       this.remember(key, image);

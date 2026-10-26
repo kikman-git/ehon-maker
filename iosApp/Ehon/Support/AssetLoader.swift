@@ -83,7 +83,9 @@ final class AssetLoader: @unchecked Sendable {
     }
     private func cached(_ key: String) -> UIImage? {
         if let image = memory.object(forKey: key as NSString) { return image }
-        guard let data = try? Data(contentsOf: disk(key)), let image = decode(data) else { return nil }
+        let bundled = Bundle.main.resourceURL?.appendingPathComponent("materials/\(key)")
+        let data = (bundled.flatMap { try? Data(contentsOf: $0) }) ?? (try? Data(contentsOf: disk(key)))
+        guard let data, let image = decode(data) else { return nil }
         remember(image, key: key)
         return image
     }

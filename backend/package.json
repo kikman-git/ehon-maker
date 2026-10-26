@@ -13,7 +13,8 @@
     "emulators": "firebase emulators:start --project demo-ehon --only auth,firestore,functions",
     "assets-dev": "wrangler dev --config assets-worker/wrangler.jsonc",
     "fonts": "tsx tools/fonts.ts",
-    "templates": "tsx tools/templates.ts"
+    "templates": "tsx tools/templates.ts",
+    "materials": "node tools/materials.mjs"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20260910.1",

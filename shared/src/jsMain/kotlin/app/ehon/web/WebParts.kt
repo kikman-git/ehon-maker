@@ -38,7 +38,7 @@ internal class WebParts(private val bookArt: () -> Map<String, Artwork>) {
     fun aspect(partId: String): Double? {
         val id = PartId(partId)
         if (id.category == Artwork.CATEGORY) return art[id.name]?.let { SvgParser.cached(it.svg).aspect.toDouble() }
-        return parts[id]?.aspect
+        return parts[id]?.aspect ?: PartCatalog.material(partId)?.let { 1.0 }
     }
 
     fun name(partId: String, locale: String): String {

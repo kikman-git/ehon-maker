@@ -1,26 +1,18 @@
 import { expect, test } from '@playwright/test';
 
-test('even-odd masks and rotated layers paint correctly', async ({ page }) => {
+test('retired geometric materials cannot be inserted', async ({ page }) => {
   await page.goto('/app.html');
-  await expect(page.getByRole('heading', { name: 'ぺたぺた', exact: true })).toBeVisible();
-  await page.evaluate(async () => {
+  const rejected = await page.evaluate(async () => {
     const moduleUrl = '/vendor/ehon-core/ehon-shared.mjs';
     const { WebEditor, EhonCodec } = await import(moduleUrl) as typeof import('@ehon/core');
-    const codec = EhonCodec.getInstance();
-    const editor = new WebEditor(codec.blankBook('masks', '', 'ja', 0, 'SQUARE'), () => 0);
-    editor.addPartAt('しぜん:たいよう', 25, 25, 35, null);
-    editor.addPartAt('しぜん:おつきさま', 75, 25, 35, null);
-    editor.addPartAt('かたち:にじ', 25, 75, 35, null);
-    editor.addPartAt('しぜん:はっぱ', 75, 75, 35, null);
-    editor.rotateSelected();
-    const canvas = document.createElement('canvas');
-    canvas.id = 'mask-fixture';
-    canvas.width = canvas.height = 400;
-    editor.render(canvas.getContext('2d')!, 400, 400, 0, true);
-    document.body.replaceChildren(canvas);
-    editor.dispose();
+    const editor = new WebEditor(EhonCodec.getInstance().blankBook('retired', '', 'ja', 0, 'SQUARE'), () => 0);
+    try {
+      editor.addPartAt('かたち:まる', 50, 50, 30, null);
+      return false;
+    } catch { return true; }
+    finally { editor.dispose(); }
   });
-  await expect(page.locator('#mask-fixture')).toHaveScreenshot('masks.png');
+  expect(rejected).toBe(true);
 });
 
 test('raster bounds, missing assets and context state are respected', async ({ page }) => {
@@ -75,7 +67,7 @@ test('the facade rejects stale results and groups valid intents into one undo', 
     const original = editor.bookJson();
     const revision = editor.revision;
     editor.applyIntents(JSON.stringify({ bookId: 'intents', revision, intents: [
-      { type: 'addPart', partId: 'かたち:まる', xPct: 30, yPct: 40 },
+      { type: 'addPart', partId: 'pack.storybook:bird', xPct: 30, yPct: 40 },
       { type: 'resizeSelected', bigger: true },
     ] }));
     const after = editor.bookJson();

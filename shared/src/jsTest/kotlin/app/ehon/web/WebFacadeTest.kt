@@ -96,7 +96,7 @@ class WebFacadeTest {
     fun replaceBookKeepsThePageDropsHistoryAndAdvancesRevision() {
         val editor = WebEditor(base, measure)
         editor.goToPage(2)
-        editor.addPartAt("かたち:まる", 40.0, 40.0, 20.0, null)
+        editor.addPartAt("pack.storybook:bird", 40.0, 40.0, 20.0, null)
         assertTrue(editor.canUndo)
         val before = editor.revision
         val remote = edited(base, 2, "Remote")

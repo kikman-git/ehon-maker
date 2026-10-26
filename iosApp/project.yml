@@ -72,6 +72,9 @@ targets:
         name: Build shared KMP framework
         basedOnDependencyAnalysis: false
     postBuildScripts:
+      - script: /bin/bash "$SRCROOT/scripts/bundle-materials.sh"
+        name: Bundle painterly materials
+        basedOnDependencyAnalysis: false
       # Debug only: the assembled stories land in the bundle after Copy Bundle Resources, before signing.
       - script: exec "$SRCROOT/scripts/bundle-templates.sh"
         name: Bundle story templates (Debug)
