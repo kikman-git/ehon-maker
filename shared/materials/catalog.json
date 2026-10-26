@@ -1304,6 +1304,166 @@
       "bytes": 1594229,
       "sha256": "84fee9105efde90a1d8f0a4299384271343b503742a536640231e701c7c36cef",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-walking",
+      "slug": "penguin-walking",
+      "name": "ペンギン・あるく",
+      "nameEn": "Penguin walking",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "walking",
+      "tags": [
+        "ペンギン",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/e44e25d10565d9ce04c4daf1b2c46398a0810afe32de7ed602567a8bc9473df0",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2076877,
+      "sha256": "e44e25d10565d9ce04c4daf1b2c46398a0810afe32de7ed602567a8bc9473df0",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-sitting",
+      "slug": "penguin-sitting",
+      "name": "ペンギン・すわる",
+      "nameEn": "Penguin sitting",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "sitting",
+      "tags": [
+        "ペンギン",
+        "すわる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/3075099aec0b4a597b87341516d2c26652909938af3d46556083fb5ccfbf8334",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2408015,
+      "sha256": "3075099aec0b4a597b87341516d2c26652909938af3d46556083fb5ccfbf8334",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-jumping",
+      "slug": "penguin-jumping",
+      "name": "ペンギン・ジャンプ",
+      "nameEn": "Penguin jumping",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "jumping",
+      "tags": [
+        "ペンギン",
+        "ジャンプ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/711a90887b7c068f361ca741b28f7bd4fec48958bc41ac683653c6e77b3dbc3a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2156835,
+      "sha256": "711a90887b7c068f361ca741b28f7bd4fec48958bc41ac683653c6e77b3dbc3a",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-sleeping",
+      "slug": "penguin-sleeping",
+      "name": "ペンギン・ねむる",
+      "nameEn": "Penguin sleeping",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "sleeping",
+      "tags": [
+        "ペンギン",
+        "ねむる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/7c9b5e107e43fc4e8d493cc24d2feb6bc212e37c6794fbf9e018f1e0ae8b04f5",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2579348,
+      "sha256": "7c9b5e107e43fc4e8d493cc24d2feb6bc212e37c6794fbf9e018f1e0ae8b04f5",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-smiling",
+      "slug": "penguin-smiling",
+      "name": "ペンギン・にっこり",
+      "nameEn": "Penguin smiling",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "smiling",
+      "tags": [
+        "ペンギン",
+        "にっこり"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/2509b38461cfdd93fe3b71d9cb6f9a064fbc28ea5d4f5f11052a86af32f84ae8",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1615709,
+      "sha256": "2509b38461cfdd93fe3b71d9cb6f9a064fbc28ea5d4f5f11052a86af32f84ae8",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-surprised",
+      "slug": "penguin-surprised",
+      "name": "ペンギン・びっくり",
+      "nameEn": "Penguin surprised",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "surprised",
+      "tags": [
+        "ペンギン",
+        "びっくり"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/9b3eb94718012b4d0e99c6db2a8054d4c91a2276a679039e17d419e83ba195af",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2339397,
+      "sha256": "9b3eb94718012b4d0e99c6db2a8054d4c91a2276a679039e17d419e83ba195af",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-looking-left",
+      "slug": "penguin-looking-left",
+      "name": "ペンギン・ひだりをみる",
+      "nameEn": "Penguin looking left",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "looking-left",
+      "tags": [
+        "ペンギン",
+        "ひだりをみる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/73efcf8e2b39ce0e88ea783fca161d57207c50332be72d31f2f62189207257a3",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1982113,
+      "sha256": "73efcf8e2b39ce0e88ea783fca161d57207c50332be72d31f2f62189207257a3",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:penguin-looking-right",
+      "slug": "penguin-looking-right",
+      "name": "ペンギン・みぎをみる",
+      "nameEn": "Penguin looking right",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "looking-right",
+      "tags": [
+        "ペンギン",
+        "みぎをみる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c8fba436f1d9a30d083e3c36e1b182e2913203317a0d6e83e4854fea0bcf473a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2306956,
+      "sha256": "c8fba436f1d9a30d083e3c36e1b182e2913203317a0d6e83e4854fea0bcf473a",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

@@ -60,6 +60,14 @@ internal object StorybookMaterials {
         Material("pack.storybook:child-curly-walking", "まきげのこ・あるく", "Curly-haired child walking", "ひと", "a/95b9fee7947c6a5a758fd266d25eae48194cb6e167990c3058747abda4ab3e2c", "child-curly", "walking", listOf("子供", "まきげ", "あるく"), listOf()),
         Material("pack.storybook:child-curly-sitting", "まきげのこ・すわる", "Curly-haired child sitting", "ひと", "a/4446761e80a0b3e6f86e9897fa730caed445674fd49aad08d9cc675440b74b44", "child-curly", "sitting", listOf("子供", "まきげ", "すわる"), listOf()),
         Material("pack.storybook:child-curly-waving", "まきげのこ・てをふる", "Curly-haired child waving", "ひと", "a/8e6bfc13fb87a847b051cfb3441dea1528560272619abf45217fea95f563099a", "child-curly", "waving", listOf("子供", "まきげ", "てをふる"), listOf()),
-        Material("pack.storybook:child-glasses-walking", "めがねのこ・あるく", "Child with glasses walking", "ひと", "a/84fee9105efde90a1d8f0a4299384271343b503742a536640231e701c7c36cef", "child-glasses", "walking", listOf("子供", "めがね", "あるく"), listOf())
+        Material("pack.storybook:child-glasses-walking", "めがねのこ・あるく", "Child with glasses walking", "ひと", "a/84fee9105efde90a1d8f0a4299384271343b503742a536640231e701c7c36cef", "child-glasses", "walking", listOf("子供", "めがね", "あるく"), listOf()),
+        Material("pack.storybook:penguin-walking", "ペンギン・あるく", "Penguin walking", "どうぶつ", "a/e44e25d10565d9ce04c4daf1b2c46398a0810afe32de7ed602567a8bc9473df0", "penguin", "walking", listOf("ペンギン", "あるく"), listOf()),
+        Material("pack.storybook:penguin-sitting", "ペンギン・すわる", "Penguin sitting", "どうぶつ", "a/3075099aec0b4a597b87341516d2c26652909938af3d46556083fb5ccfbf8334", "penguin", "sitting", listOf("ペンギン", "すわる"), listOf()),
+        Material("pack.storybook:penguin-jumping", "ペンギン・ジャンプ", "Penguin jumping", "どうぶつ", "a/711a90887b7c068f361ca741b28f7bd4fec48958bc41ac683653c6e77b3dbc3a", "penguin", "jumping", listOf("ペンギン", "ジャンプ"), listOf()),
+        Material("pack.storybook:penguin-sleeping", "ペンギン・ねむる", "Penguin sleeping", "どうぶつ", "a/7c9b5e107e43fc4e8d493cc24d2feb6bc212e37c6794fbf9e018f1e0ae8b04f5", "penguin", "sleeping", listOf("ペンギン", "ねむる"), listOf()),
+        Material("pack.storybook:penguin-smiling", "ペンギン・にっこり", "Penguin smiling", "どうぶつ", "a/2509b38461cfdd93fe3b71d9cb6f9a064fbc28ea5d4f5f11052a86af32f84ae8", "penguin", "smiling", listOf("ペンギン", "にっこり"), listOf()),
+        Material("pack.storybook:penguin-surprised", "ペンギン・びっくり", "Penguin surprised", "どうぶつ", "a/9b3eb94718012b4d0e99c6db2a8054d4c91a2276a679039e17d419e83ba195af", "penguin", "surprised", listOf("ペンギン", "びっくり"), listOf()),
+        Material("pack.storybook:penguin-looking-left", "ペンギン・ひだりをみる", "Penguin looking left", "どうぶつ", "a/73efcf8e2b39ce0e88ea783fca161d57207c50332be72d31f2f62189207257a3", "penguin", "looking-left", listOf("ペンギン", "ひだりをみる"), listOf()),
+        Material("pack.storybook:penguin-looking-right", "ペンギン・みぎをみる", "Penguin looking right", "どうぶつ", "a/c8fba436f1d9a30d083e3c36e1b182e2913203317a0d6e83e4854fea0bcf473a", "penguin", "looking-right", listOf("ペンギン", "みぎをみる"), listOf())
     )
 }

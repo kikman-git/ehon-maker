@@ -1083,6 +1083,135 @@
       "sourceFile": "child-glasses-walking.png",
       "referenceAsset": "child-glasses",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the EXACT child in the reference image: same skin tone, face, hair, clothing, footwear and proportions. Only change the pose.\nSubject: Walking toward the left, one foot forward with opposite arm swinging, head turned toward viewer, gentle smile.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector.\nFull silhouette comfortably within central 78% of square canvas."
+    },
+    {
+      "id": "penguin-walking",
+      "name": "ペンギン・あるく",
+      "nameEn": "Penguin walking",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "walking",
+      "tags": [
+        "ペンギン",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "sourceFile": "penguin-walking.png",
+      "referenceAsset": "penguin",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: Waddling to the left with one webbed foot lifted forward and the other planted, body tipped slightly, flippers balancing low.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame."
+    },
+    {
+      "id": "penguin-sitting",
+      "name": "ペンギン・すわる",
+      "nameEn": "Penguin sitting",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "sitting",
+      "tags": [
+        "ペンギン",
+        "すわる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "penguin-sitting.png",
+      "referenceAsset": "penguin",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: Sitting on its rounded bottom with both orange feet extended forward, flippers resting at sides, head tilted gently toward viewer.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame."
+    },
+    {
+      "id": "penguin-jumping",
+      "name": "ペンギン・ジャンプ",
+      "nameEn": "Penguin jumping",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "jumping",
+      "tags": [
+        "ペンギン",
+        "ジャンプ"
+      ],
+      "legacyIds": [],
+      "sourceFile": "penguin-jumping.png",
+      "referenceAsset": "penguin",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: A joyful little leap with both feet tucked up, both flippers lifted out wide, body diagonal and face delighted. No ground or motion marks.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame."
+    },
+    {
+      "id": "penguin-sleeping",
+      "name": "ペンギン・ねむる",
+      "nameEn": "Penguin sleeping",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "sleeping",
+      "tags": [
+        "ペンギン",
+        "ねむる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "penguin-sleeping.png",
+      "referenceAsset": "penguin",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: Curled into a compact cozy sleepy shape, eyes closed, head tucked toward one flipper, belly resting low and feet peeking out.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame."
+    },
+    {
+      "id": "penguin-smiling",
+      "name": "ペンギン・にっこり",
+      "nameEn": "Penguin smiling",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "smiling",
+      "tags": [
+        "ペンギン",
+        "にっこり"
+      ],
+      "legacyIds": [],
+      "sourceFile": "penguin-smiling.png",
+      "referenceAsset": "penguin",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: Laughing with crescent closed eyes and little open beak, body leaning forward, both flippers extended in a welcoming gesture, two feet planted.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame.",
+      "editPrompt": "Correct only framing of this smiling penguin. Preserve exact character, pose, smiling closed eyes, open beak, both spread flippers, colors and broad gouache texture. Make the whole penguin smaller inside a square transparent canvas, leaving at least 12% blank transparent margin on ALL sides. Repaint clipped right flipper tip naturally; both flipper tips, feet and crown must be fully visible. No new objects, ground, shadow or text."
+    },
+    {
+      "id": "penguin-surprised",
+      "name": "ペンギン・びっくり",
+      "nameEn": "Penguin surprised",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "surprised",
+      "tags": [
+        "ペンギン",
+        "びっくり"
+      ],
+      "legacyIds": [],
+      "sourceFile": "penguin-surprised.png",
+      "referenceAsset": "penguin",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: Surprised with small wide eyes, beak open in a little O, body leaning backward and two flippers lifted slightly, feet braced apart.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame."
+    },
+    {
+      "id": "penguin-looking-left",
+      "name": "ペンギン・ひだりをみる",
+      "nameEn": "Penguin looking left",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "looking-left",
+      "tags": [
+        "ペンギン",
+        "ひだりをみる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "penguin-looking-left.png",
+      "referenceAsset": "penguin",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: Mostly frontal body with head turned clearly toward left edge, flippers relaxed low, two feet settled, curious little expression.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame."
+    },
+    {
+      "id": "penguin-looking-right",
+      "name": "ペンギン・みぎをみる",
+      "nameEn": "Penguin looking right",
+      "category": "どうぶつ",
+      "characterId": "penguin",
+      "pose": "looking-right",
+      "tags": [
+        "ペンギン",
+        "みぎをみる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "penguin-looking-right.png",
+      "referenceAsset": "penguin",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: Rear three-quarter view with slate-blue back visible, head turning over its right shoulder toward right edge, cream cheek and orange beak visible, short tail and both feet. A distinct looking-back composition.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame."
     }
   ]
 }

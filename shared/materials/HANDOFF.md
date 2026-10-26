@@ -4,8 +4,8 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **57 accepted PNGs / 500 target; 443 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
-- Animals: 29 images across the requested 10 species. Bird and turtle each have 10 poses; penguin has 2; the other 7 species have 1 each.
+- **65 accepted PNGs / 500 target; 435 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
+- Animals: 37 images across the requested 10 species. Bird, turtle and penguin each have 10 poses; the other 7 species have 1 each.
 - Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Each remaining category has 1: lantern, bus, apple, cottage, cloud, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
@@ -15,9 +15,15 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S05 — Penguin:** eight missing poses: walking, sitting, jumping, sleeping, smiling, surprised, looking-left, looking-right. Preserve existing standing and waving images. Target total 65.
+**S06 — Objects A:** open book, closed book, backpack, basket, umbrella, teddy bear, kite, ball, crayon box, treasure chest. Ten new paintings; target total 75.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S05 artwork milestone
+
+- Eight new penguin poses complete its ten-image set. Existing standing/waving IDs unchanged. Built-in generator with saved penguin identity; exact prompts and smiling framing correction in manifest.
+- Reviewed on light/dark backgrounds; source/hash/pose validation passed for 65 assets. App browsing, eight insertions, reload persistence and PNG export passed.
+- Commit: `feat(materials): S05 complete penguin variations (65/500)`. Verify upstream in Git.
 
 ## S04 artwork milestone
 

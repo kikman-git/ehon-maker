@@ -2,7 +2,7 @@
 
 ## Scope and session size
 
-**Current: 57 saved illustrations. Target: 500. Remaining: 443.**
+**Current: 65 saved illustrations. Target: 500. Remaining: 435.**
 
 Plan for **54 artwork sessions**, normally 7–10 accepted illustrations per session, plus **3 dedicated engineering/review sessions**. Complex scene sessions contain only 3 illustrations. These are work packages, not a promise that every package fits one conversation: retries or context limits may split a package into `Sxx-a` and `Sxx-b`. Never reduce quality to meet the batch count.
 
@@ -35,7 +35,7 @@ Scene assets are standalone transparent painted vignettes, with feathered/organi
 
 No mirrored copies, alternate resolutions, recolors, unreviewed outputs or failed generations count toward 500.
 
-The user has explicitly prioritized image assets. Continue S05 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
+The user has explicitly prioritized image assets. Continue S06 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
 
 ## Engineering checkpoints
 
@@ -54,7 +54,7 @@ Counts below are **new accepted artwork**, with cumulative totals including the 
 | [x] | S02 | Nature | A: cherry tree, pine tree, palm tree, apple tree, sapling, sunflower, tulips, daisies, rose bush, fern | 10 | **40** |
 | [x] | S03 | Animals | Turtle: finish its 10-variation set | 8 | **48** |
 | [x] | S04 | People | A: existing child × 3 missing poses; curly-haired child × 4; child with glasses × standing and walking | 9 | **57** |
-| [ ] | S05 | Animals | Penguin: finish its 10-variation set | 8 | **65** |
+| [x] | S05 | Animals | Penguin: finish its 10-variation set | 8 | **65** |
 | [ ] | S06 | Objects | A: open book, closed book, backpack, basket, umbrella, teddy bear, kite, ball, crayon box, treasure chest | 10 | **75** |
 | [ ] | S07 | Vehicles | A: car, bicycle, tricycle, train, tram, fire engine, ambulance, tractor, sailboat, hot-air balloon | 10 | **85** |
 | [ ] | S08 | Food | A: banana, strawberry, orange, pear, grapes, watermelon, cherries, peach | 8 | **93** |
