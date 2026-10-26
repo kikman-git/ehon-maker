@@ -1115,6 +1115,195 @@
       "bytes": 2334738,
       "sha256": "7da65fa4bc28d8502d3dc9a3cafe290e398fb27574b9f91e1ec56b39086e34f0",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-standing",
+      "slug": "child-standing",
+      "name": "こども・たつ",
+      "nameEn": "Child standing",
+      "category": "ひと",
+      "characterId": "child",
+      "pose": "standing",
+      "tags": [
+        "子供",
+        "こども",
+        "たつ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/d02d00281e30e586fd46242e7acc7a7456a8896cc5713a6416f668ddcbdedd8f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1898757,
+      "sha256": "d02d00281e30e586fd46242e7acc7a7456a8896cc5713a6416f668ddcbdedd8f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-walking",
+      "slug": "child-walking",
+      "name": "こども・あるく",
+      "nameEn": "Child walking",
+      "category": "ひと",
+      "characterId": "child",
+      "pose": "walking",
+      "tags": [
+        "子供",
+        "こども",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c3e8811e3b544caf10881d3e051d196c702f8fe6f69dd8a13655266ec17e3321",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2020741,
+      "sha256": "c3e8811e3b544caf10881d3e051d196c702f8fe6f69dd8a13655266ec17e3321",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-sitting",
+      "slug": "child-sitting",
+      "name": "こども・すわる",
+      "nameEn": "Child sitting",
+      "category": "ひと",
+      "characterId": "child",
+      "pose": "sitting",
+      "tags": [
+        "子供",
+        "こども",
+        "すわる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/14542d85dc61008759cd9aec340d35253b9aa905b3ce39855f9a4e5baa0f9a08",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1697216,
+      "sha256": "14542d85dc61008759cd9aec340d35253b9aa905b3ce39855f9a4e5baa0f9a08",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-curly",
+      "slug": "child-curly",
+      "name": "まきげのこ・たつ",
+      "nameEn": "Curly-haired child standing",
+      "category": "ひと",
+      "characterId": "child-curly",
+      "pose": "standing",
+      "tags": [
+        "子供",
+        "まきげ",
+        "たつ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4b90c362f57223b18613fc880a2808dc26490b4a09c522d58e9cbe27264694b6",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1741523,
+      "sha256": "4b90c362f57223b18613fc880a2808dc26490b4a09c522d58e9cbe27264694b6",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-glasses",
+      "slug": "child-glasses",
+      "name": "めがねのこ・たつ",
+      "nameEn": "Child with glasses standing",
+      "category": "ひと",
+      "characterId": "child-glasses",
+      "pose": "standing",
+      "tags": [
+        "子供",
+        "めがね",
+        "たつ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/8a637a8a0c92d30a52a1da2561569c674d58b477637fa0b2815ac77d48791812",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1930837,
+      "sha256": "8a637a8a0c92d30a52a1da2561569c674d58b477637fa0b2815ac77d48791812",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-curly-walking",
+      "slug": "child-curly-walking",
+      "name": "まきげのこ・あるく",
+      "nameEn": "Curly-haired child walking",
+      "category": "ひと",
+      "characterId": "child-curly",
+      "pose": "walking",
+      "tags": [
+        "子供",
+        "まきげ",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/95b9fee7947c6a5a758fd266d25eae48194cb6e167990c3058747abda4ab3e2c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1546298,
+      "sha256": "95b9fee7947c6a5a758fd266d25eae48194cb6e167990c3058747abda4ab3e2c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-curly-sitting",
+      "slug": "child-curly-sitting",
+      "name": "まきげのこ・すわる",
+      "nameEn": "Curly-haired child sitting",
+      "category": "ひと",
+      "characterId": "child-curly",
+      "pose": "sitting",
+      "tags": [
+        "子供",
+        "まきげ",
+        "すわる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4446761e80a0b3e6f86e9897fa730caed445674fd49aad08d9cc675440b74b44",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2030288,
+      "sha256": "4446761e80a0b3e6f86e9897fa730caed445674fd49aad08d9cc675440b74b44",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-curly-waving",
+      "slug": "child-curly-waving",
+      "name": "まきげのこ・てをふる",
+      "nameEn": "Curly-haired child waving",
+      "category": "ひと",
+      "characterId": "child-curly",
+      "pose": "waving",
+      "tags": [
+        "子供",
+        "まきげ",
+        "てをふる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/8e6bfc13fb87a847b051cfb3441dea1528560272619abf45217fea95f563099a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1578204,
+      "sha256": "8e6bfc13fb87a847b051cfb3441dea1528560272619abf45217fea95f563099a",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-glasses-walking",
+      "slug": "child-glasses-walking",
+      "name": "めがねのこ・あるく",
+      "nameEn": "Child with glasses walking",
+      "category": "ひと",
+      "characterId": "child-glasses",
+      "pose": "walking",
+      "tags": [
+        "子供",
+        "めがね",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/84fee9105efde90a1d8f0a4299384271343b503742a536640231e701c7c36cef",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1594229,
+      "sha256": "84fee9105efde90a1d8f0a4299384271343b503742a536640231e701c7c36cef",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

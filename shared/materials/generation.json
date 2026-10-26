@@ -929,6 +929,160 @@
       "sourceFile": "turtle-looking-right.png",
       "referenceAsset": "turtle",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG turtle pose. The attached turtle is the EXACT character identity reference: preserve sage-green skin, pale cream face and underside, peach cheeks, small dark ink eyes, domed ochre-and-olive segmented shell with broad painted scutes, chunky short legs and cream toes, tiny pointed tail. Preserve its warm gentle character and broad gouache brush texture.\nSubject: A turtle seen from a gentle rear three-quarter angle, broad domed shell prominent, neck curving around right side to look back toward right edge, cheek and small smiling face visible, four legs naturally below shell, small tail at left. Distinct looking-back composition.\nAnatomy: exactly one head, four short turtle legs and one small tail, no extra limbs. Full subject isolated on actual transparent background, generous blank margins around every outermost tip. No cropping, ground, cast shadow, props, lettering, frame or other character. Square canvas; entire character fits within central 78% of canvas. Not photorealistic, not vector, no realistic scales."
+    },
+    {
+      "id": "child-standing",
+      "name": "こども・たつ",
+      "nameEn": "Child standing",
+      "category": "ひと",
+      "characterId": "child",
+      "pose": "standing",
+      "tags": [
+        "子供",
+        "こども",
+        "たつ"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-standing.png",
+      "referenceAsset": "child",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the EXACT reference child: tousled short dark brown hair, warm peach skin, tiny dark ink eyes, rosy cheeks, ivory rolled-sleeve shirt, mustard-yellow bib overalls with two dark round buttons and square front pocket, rolled cuffs, brown shoes with cream soles. Same clothing, face and age.\nSubject: Standing comfortably facing front three-quarter, both arms relaxed at sides, feet planted, gentle closed smile.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector."
+    },
+    {
+      "id": "child-walking",
+      "name": "こども・あるく",
+      "nameEn": "Child walking",
+      "category": "ひと",
+      "characterId": "child",
+      "pose": "walking",
+      "tags": [
+        "子供",
+        "こども",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-walking.png",
+      "referenceAsset": "child",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the EXACT reference child: tousled short dark brown hair, warm peach skin, tiny dark ink eyes, rosy cheeks, ivory rolled-sleeve shirt, mustard-yellow bib overalls with two dark round buttons and square front pocket, rolled cuffs, brown shoes with cream soles. Same clothing, face and age.\nSubject: Walking toward left with one foot stepping forward, opposite arm swinging naturally, head turned slightly toward viewer and a cheerful smile.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector."
+    },
+    {
+      "id": "child-sitting",
+      "name": "こども・すわる",
+      "nameEn": "Child sitting",
+      "category": "ひと",
+      "characterId": "child",
+      "pose": "sitting",
+      "tags": [
+        "子供",
+        "こども",
+        "すわる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-sitting.png",
+      "referenceAsset": "child",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the EXACT reference child: tousled short dark brown hair, warm peach skin, tiny dark ink eyes, rosy cheeks, ivory rolled-sleeve shirt, mustard-yellow bib overalls with two dark round buttons and square front pocket, rolled cuffs, brown shoes with cream soles. Same clothing, face and age.\nSubject: Sitting cross-legged comfortably, hands resting on knees, torso upright, head tilted with a thoughtful sweet smile. Show full shoes and crossed legs clearly.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector.",
+      "editPrompt": "Correct framing ONLY: preserve this exact seated child, face, mustard overalls, cream shirt, brown shoes, crossed legs and gouache style. Fit the entire child inside a larger square transparent canvas with at least 12% completely empty transparent margin on all sides. Repaint the clipped upper hair tip naturally. Entire hair and both shoes must be fully visible and comfortably inside the edges. No background, ground, shadow, text or other changes."
+    },
+    {
+      "id": "child-curly",
+      "name": "まきげのこ・たつ",
+      "nameEn": "Curly-haired child standing",
+      "category": "ひと",
+      "characterId": "child-curly",
+      "pose": "standing",
+      "tags": [
+        "子供",
+        "まきげ",
+        "たつ"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-curly.png",
+      "referenceAsset": "child",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Reference child is STYLE ONLY for this new character.\nSubject: Establish a NEW character: a cheerful child about six years old with deep warm brown skin, short rounded dark curly hair painted in broad soft clusters, small simple ink eyes, rosy cheeks, sage-green short-sleeve T-shirt, terracotta knee-length shorts, cream socks and warm ochre sneakers. Standing in a relaxed front three-quarter pose with both arms down. Distinct identity from reference; preserve only the reference painting style and charming proportions.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector."
+    },
+    {
+      "id": "child-glasses",
+      "name": "めがねのこ・たつ",
+      "nameEn": "Child with glasses standing",
+      "category": "ひと",
+      "characterId": "child-glasses",
+      "pose": "standing",
+      "tags": [
+        "子供",
+        "めがね",
+        "たつ"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-glasses.png",
+      "referenceAsset": "child",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Reference child is STYLE ONLY for this new character.\nSubject: Establish a NEW character: a cheerful child about seven years old with light warm beige skin, a straight black bob haircut with rounded bangs, round rust-red glasses with clear transparent lenses revealing small ink eyes, a dusty-coral cardigan over an ivory shirt, muted navy trousers and mustard yellow shoes. Standing calmly facing front, arms relaxed, sweet small smile. Distinct identity from reference; preserve only painting style and charming proportions.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector."
+    },
+    {
+      "id": "child-curly-walking",
+      "name": "まきげのこ・あるく",
+      "nameEn": "Curly-haired child walking",
+      "category": "ひと",
+      "characterId": "child-curly",
+      "pose": "walking",
+      "tags": [
+        "子供",
+        "まきげ",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-curly-walking.png",
+      "referenceAsset": "child-curly",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the EXACT child in the reference image: same skin tone, face, hair, clothing, footwear and proportions. Only change the pose.\nSubject: Walking energetically to the right, one foot forward and opposite arm swinging.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector.\nFull silhouette comfortably within central 78% of square canvas."
+    },
+    {
+      "id": "child-curly-sitting",
+      "name": "まきげのこ・すわる",
+      "nameEn": "Curly-haired child sitting",
+      "category": "ひと",
+      "characterId": "child-curly",
+      "pose": "sitting",
+      "tags": [
+        "子供",
+        "まきげ",
+        "すわる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-curly-sitting.png",
+      "referenceAsset": "child-curly",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the EXACT child in the reference image: same skin tone, face, hair, clothing, footwear and proportions. Only change the pose.\nSubject: Sitting cross-legged, both hands relaxed on knees, gentle smile, head tilted slightly.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector.\nFull silhouette comfortably within central 78% of square canvas."
+    },
+    {
+      "id": "child-curly-waving",
+      "name": "まきげのこ・てをふる",
+      "nameEn": "Curly-haired child waving",
+      "category": "ひと",
+      "characterId": "child-curly",
+      "pose": "waving",
+      "tags": [
+        "子供",
+        "まきげ",
+        "てをふる"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-curly-waving.png",
+      "referenceAsset": "child-curly",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the EXACT child in the reference image: same skin tone, face, hair, clothing, footwear and proportions. Only change the pose.\nSubject: Standing with feet apart, one arm raised in a warm wave and other at side, cheerful smile.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector.\nFull silhouette comfortably within central 78% of square canvas."
+    },
+    {
+      "id": "child-glasses-walking",
+      "name": "めがねのこ・あるく",
+      "nameEn": "Child with glasses walking",
+      "category": "ひと",
+      "characterId": "child-glasses",
+      "pose": "walking",
+      "tags": [
+        "子供",
+        "めがね",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-glasses-walking.png",
+      "referenceAsset": "child-glasses",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the EXACT child in the reference image: same skin tone, face, hair, clothing, footwear and proportions. Only change the pose.\nSubject: Walking toward the left, one foot forward with opposite arm swinging, head turned toward viewer, gentle smile.\nOne full-body child alone, exactly two arms and two legs, natural simple hands. Actual transparent background, generous clear margins around hair, hands and shoes. No ground, shadow, props, lettering or frame. Broad gouache texture, simplified warm storybook forms, not realistic or vector.\nFull silhouette comfortably within central 78% of square canvas."
     }
   ]
 }

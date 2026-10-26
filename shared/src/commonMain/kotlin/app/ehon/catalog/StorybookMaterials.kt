@@ -51,6 +51,15 @@ internal object StorybookMaterials {
         Material("pack.storybook:turtle-surprised", "かめ・びっくり", "Turtle surprised", "どうぶつ", "a/e8609fb7c80ec75d9d8bececc9bc66f7176546594adbd876338b647716cc0d4f", "turtle", "surprised", listOf("亀", "かめ", "びっくり"), listOf()),
         Material("pack.storybook:turtle-waving", "かめ・てをふる", "Turtle waving", "どうぶつ", "a/8d662e8aab75733667665c45ad33f8441e92d3e1e0077d5c245e415724d6c76a", "turtle", "waving", listOf("亀", "かめ", "てをふる"), listOf()),
         Material("pack.storybook:turtle-looking-left", "かめ・ひだりをみる", "Turtle looking left", "どうぶつ", "a/ea1155b09842b5d13ee28951de61b279f691e84797a0edaeea492c0b0e84984e", "turtle", "looking-left", listOf("亀", "かめ", "ひだりをみる"), listOf()),
-        Material("pack.storybook:turtle-looking-right", "かめ・みぎをみる", "Turtle looking right", "どうぶつ", "a/7da65fa4bc28d8502d3dc9a3cafe290e398fb27574b9f91e1ec56b39086e34f0", "turtle", "looking-right", listOf("亀", "かめ", "みぎをみる"), listOf())
+        Material("pack.storybook:turtle-looking-right", "かめ・みぎをみる", "Turtle looking right", "どうぶつ", "a/7da65fa4bc28d8502d3dc9a3cafe290e398fb27574b9f91e1ec56b39086e34f0", "turtle", "looking-right", listOf("亀", "かめ", "みぎをみる"), listOf()),
+        Material("pack.storybook:child-standing", "こども・たつ", "Child standing", "ひと", "a/d02d00281e30e586fd46242e7acc7a7456a8896cc5713a6416f668ddcbdedd8f", "child", "standing", listOf("子供", "こども", "たつ"), listOf()),
+        Material("pack.storybook:child-walking", "こども・あるく", "Child walking", "ひと", "a/c3e8811e3b544caf10881d3e051d196c702f8fe6f69dd8a13655266ec17e3321", "child", "walking", listOf("子供", "こども", "あるく"), listOf()),
+        Material("pack.storybook:child-sitting", "こども・すわる", "Child sitting", "ひと", "a/14542d85dc61008759cd9aec340d35253b9aa905b3ce39855f9a4e5baa0f9a08", "child", "sitting", listOf("子供", "こども", "すわる"), listOf()),
+        Material("pack.storybook:child-curly", "まきげのこ・たつ", "Curly-haired child standing", "ひと", "a/4b90c362f57223b18613fc880a2808dc26490b4a09c522d58e9cbe27264694b6", "child-curly", "standing", listOf("子供", "まきげ", "たつ"), listOf()),
+        Material("pack.storybook:child-glasses", "めがねのこ・たつ", "Child with glasses standing", "ひと", "a/8a637a8a0c92d30a52a1da2561569c674d58b477637fa0b2815ac77d48791812", "child-glasses", "standing", listOf("子供", "めがね", "たつ"), listOf()),
+        Material("pack.storybook:child-curly-walking", "まきげのこ・あるく", "Curly-haired child walking", "ひと", "a/95b9fee7947c6a5a758fd266d25eae48194cb6e167990c3058747abda4ab3e2c", "child-curly", "walking", listOf("子供", "まきげ", "あるく"), listOf()),
+        Material("pack.storybook:child-curly-sitting", "まきげのこ・すわる", "Curly-haired child sitting", "ひと", "a/4446761e80a0b3e6f86e9897fa730caed445674fd49aad08d9cc675440b74b44", "child-curly", "sitting", listOf("子供", "まきげ", "すわる"), listOf()),
+        Material("pack.storybook:child-curly-waving", "まきげのこ・てをふる", "Curly-haired child waving", "ひと", "a/8e6bfc13fb87a847b051cfb3441dea1528560272619abf45217fea95f563099a", "child-curly", "waving", listOf("子供", "まきげ", "てをふる"), listOf()),
+        Material("pack.storybook:child-glasses-walking", "めがねのこ・あるく", "Child with glasses walking", "ひと", "a/84fee9105efde90a1d8f0a4299384271343b503742a536640231e701c7c36cef", "child-glasses", "walking", listOf("子供", "めがね", "あるく"), listOf())
     )
 }

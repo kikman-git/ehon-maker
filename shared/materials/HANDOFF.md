@@ -4,9 +4,9 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **48 accepted PNGs / 500 target; 452 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
+- **57 accepted PNGs / 500 target; 443 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
 - Animals: 29 images across the requested 10 species. Bird and turtle each have 10 poses; penguin has 2; the other 7 species have 1 each.
-- Nature has 11 images. Each remaining category has 1: child, lantern, bus, apple, cottage, cloud, forest scene, pumpkin.
+- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Each remaining category has 1: lantern, bus, apple, cottage, cloud, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,16 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S04 — People A:** existing child × standing, walking, sitting; curly-haired child × standing, walking, sitting, waving; child with glasses × standing, walking. Nine new images; target total 57.
+**S05 — Penguin:** eight missing poses: walking, sitting, jumping, sleeping, smiling, surprised, looking-left, looking-right. Preserve existing standing and waving images. Target total 65.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S04 artwork milestone
+
+- Nine new people PNGs: original child standing/walking/sitting; curly-haired child standing/walking/sitting/waving; child with glasses standing/walking.
+- Built-in generator; original child as style reference, saved new identities used for their variants. Exact prompts and seated-child framing correction recorded.
+- Reviewed on cream/dark backgrounds; packaging and source/hash validation passed for 57. App browsing, nine insertions, reload persistence and PNG export passed.
+- Commit: `feat(materials): S04 children character poses (57/500)`. Verify remote in Git.
 
 ## S03 artwork milestone
 
