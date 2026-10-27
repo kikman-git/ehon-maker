@@ -1380,6 +1380,172 @@
       "sourceFile": "treasure-chest.png",
       "referenceAsset": "bird",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One small open wooden treasure chest with rounded raised lid, honey-brown planks and dark teal metal bands, a few broad gold coin shapes and one coral jewel visible inside. Whimsical simple hinges and clasp. Full chest, no surrounding objects.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "car",
+      "name": "くるま",
+      "nameEn": "Car",
+      "category": "のりもの",
+      "characterId": "car",
+      "pose": "default",
+      "tags": [
+        "車",
+        "自動車"
+      ],
+      "legacyIds": [],
+      "sourceFile": "car.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: A small rounded coral-red family car, cream roof, blue windows, warm yellow headlights, chunky dark wheels, friendly vintage proportions, front three-quarter view. No people.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "bicycle",
+      "name": "じてんしゃ",
+      "nameEn": "Bicycle",
+      "category": "のりもの",
+      "characterId": "bicycle",
+      "pose": "default",
+      "tags": [
+        "自転車",
+        "のりもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "bicycle.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One mint-teal child's bicycle shown in clear side view, exactly two complete round wheels, simple brown saddle, curved handlebars, pedals and frame clearly connected. Cream tires and a small front wicker basket. Simplify spokes to a few painted lines.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "tricycle",
+      "name": "さんりんしゃ",
+      "nameEn": "Tricycle",
+      "category": "のりもの",
+      "characterId": "tricycle",
+      "pose": "default",
+      "tags": [
+        "三輪車",
+        "あそび"
+      ],
+      "legacyIds": [],
+      "sourceFile": "tricycle.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One little red and golden-yellow tricycle in three-quarter view, exactly three wheels: one large front wheel with pedals and two small rear wheels, curved handlebars, small cream saddle. Whole vehicle visible.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "train",
+      "name": "きかんしゃ",
+      "nameEn": "Train",
+      "category": "のりもの",
+      "characterId": "train",
+      "pose": "default",
+      "tags": [
+        "汽車",
+        "電車",
+        "鉄道"
+      ],
+      "legacyIds": [],
+      "sourceFile": "train.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One charming small steam locomotive, forest-green boiler, coral-red cab, cream trim, short chimney, three large near-side wheels with simple connecting rod. No smoke, no rails, no carriages, three-quarter view.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "tram",
+      "name": "ろめんでんしゃ",
+      "nameEn": "Tram",
+      "category": "のりもの",
+      "characterId": "tram",
+      "pose": "default",
+      "tags": [
+        "路面電車",
+        "電車",
+        "街"
+      ],
+      "legacyIds": [],
+      "sourceFile": "tram.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One short vintage city tram, butter-yellow lower body and cream upper body, rounded corners, blue windows, simple front door and roof pantograph, small dark rail wheels. Three-quarter view, no rails, no overhead wires.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "fire-engine",
+      "name": "しょうぼうしゃ",
+      "nameEn": "Fire engine",
+      "category": "のりもの",
+      "characterId": "fire-engine",
+      "pose": "default",
+      "tags": [
+        "消防車",
+        "はたらくくるま"
+      ],
+      "legacyIds": [],
+      "sourceFile": "fire-engine.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One bright coral-red fire engine, cream bumper, blue cab windows, a neatly folded gray ladder on top, simple side hose reel and warm yellow roof beacon, chunky wheels. Three-quarter view. No lettering.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "ambulance",
+      "name": "きゅうきゅうしゃ",
+      "nameEn": "Ambulance",
+      "category": "のりもの",
+      "characterId": "ambulance",
+      "pose": "default",
+      "tags": [
+        "救急車",
+        "はたらくくるま"
+      ],
+      "legacyIds": [],
+      "sourceFile": "ambulance.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One rounded ivory ambulance van with coral-orange side stripe, blue windows, amber roof lights, a simple blue six-point medical star on side without text, chunky dark tires. Friendly three-quarter view.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "tractor",
+      "name": "トラクター",
+      "nameEn": "Tractor",
+      "category": "のりもの",
+      "characterId": "tractor",
+      "pose": "default",
+      "tags": [
+        "農場",
+        "農機",
+        "はたらくくるま"
+      ],
+      "legacyIds": [],
+      "sourceFile": "tractor.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One small forest-green farm tractor, two huge rear tires and two small front tires, ochre wheel hubs, open brown seat, curved green engine bonnet and short exhaust pipe. Three-quarter view, no driver or trailer.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons.",
+      "editPrompt": "Use case: precise-object-edit. Correct ONLY framing of this painted green tractor. Preserve the tractor design, gouache brushwork, color palette and view. Zoom out so the whole tractor including the complete leftmost rear tire and all front tires is comfortably inside the square canvas, with clear transparent space on every side. Restore the clipped left tire edge naturally. No ground, shadow, text or added objects. Actual transparent background."
+    },
+    {
+      "id": "sailboat",
+      "name": "ヨット",
+      "nameEn": "Sailboat",
+      "category": "のりもの",
+      "characterId": "sailboat",
+      "pose": "default",
+      "tags": [
+        "帆船",
+        "船",
+        "海"
+      ],
+      "legacyIds": [],
+      "sourceFile": "sailboat.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One small wooden sailboat, warm russet hull with teal trim, one slender mast and two cream triangular sails, tiny coral pennant, full keel and rudder visible. Three-quarter view, no water, no people.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "hot-air-balloon",
+      "name": "ききゅう",
+      "nameEn": "Hot-air balloon",
+      "category": "のりもの",
+      "characterId": "hot-air-balloon",
+      "pose": "default",
+      "tags": [
+        "気球",
+        "空",
+        "旅"
+      ],
+      "legacyIds": [],
+      "sourceFile": "hot-air-balloon.png",
+      "referenceAsset": "bus",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One cheerful hot-air balloon with broad coral, mustard and teal vertical panels, rounded pear-shaped envelope, simple ropes connecting a small honey wicker basket beneath. Full balloon and basket visible. No people, sky or clouds.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
     }
   ]
 }

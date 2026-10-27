@@ -1671,6 +1671,211 @@
       "bytes": 2672813,
       "sha256": "1d3920ef1b8bd7167e187f5bd424e07babe940a239e75f71d17c42a7a43302c2",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:car",
+      "slug": "car",
+      "name": "くるま",
+      "nameEn": "Car",
+      "category": "のりもの",
+      "characterId": "car",
+      "pose": "default",
+      "tags": [
+        "車",
+        "自動車"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c071c70f22cca69af1ca2d3a856823a23566c919845c07d5c13ae7e1046c6fae",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2799082,
+      "sha256": "c071c70f22cca69af1ca2d3a856823a23566c919845c07d5c13ae7e1046c6fae",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bicycle",
+      "slug": "bicycle",
+      "name": "じてんしゃ",
+      "nameEn": "Bicycle",
+      "category": "のりもの",
+      "characterId": "bicycle",
+      "pose": "default",
+      "tags": [
+        "自転車",
+        "のりもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4a1149eb8020b0f6e74db1017dd2192abbcadd8942fdac1fc2142e44a092c6fb",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1895292,
+      "sha256": "4a1149eb8020b0f6e74db1017dd2192abbcadd8942fdac1fc2142e44a092c6fb",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:tricycle",
+      "slug": "tricycle",
+      "name": "さんりんしゃ",
+      "nameEn": "Tricycle",
+      "category": "のりもの",
+      "characterId": "tricycle",
+      "pose": "default",
+      "tags": [
+        "三輪車",
+        "あそび"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/e76159faeedd83850d20a87e3c2a913a87b696e5ead812302ee0cb2aa1da0b46",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1968884,
+      "sha256": "e76159faeedd83850d20a87e3c2a913a87b696e5ead812302ee0cb2aa1da0b46",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:train",
+      "slug": "train",
+      "name": "きかんしゃ",
+      "nameEn": "Train",
+      "category": "のりもの",
+      "characterId": "train",
+      "pose": "default",
+      "tags": [
+        "汽車",
+        "電車",
+        "鉄道"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/2675dfc329fc7440436e471506012f14f95b064fd3d69bd5869246cbc5a4c920",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3068598,
+      "sha256": "2675dfc329fc7440436e471506012f14f95b064fd3d69bd5869246cbc5a4c920",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:tram",
+      "slug": "tram",
+      "name": "ろめんでんしゃ",
+      "nameEn": "Tram",
+      "category": "のりもの",
+      "characterId": "tram",
+      "pose": "default",
+      "tags": [
+        "路面電車",
+        "電車",
+        "街"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/aa79ba09dc5e4c292915a2a683d116cd068ce24d25e41c03e9e45896707575c0",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3027753,
+      "sha256": "aa79ba09dc5e4c292915a2a683d116cd068ce24d25e41c03e9e45896707575c0",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fire-engine",
+      "slug": "fire-engine",
+      "name": "しょうぼうしゃ",
+      "nameEn": "Fire engine",
+      "category": "のりもの",
+      "characterId": "fire-engine",
+      "pose": "default",
+      "tags": [
+        "消防車",
+        "はたらくくるま"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a89e7051eac3fa7e96f1c18c92496d1d90ec4565a8cafab7608bb8bdf3f26d65",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3098607,
+      "sha256": "a89e7051eac3fa7e96f1c18c92496d1d90ec4565a8cafab7608bb8bdf3f26d65",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:ambulance",
+      "slug": "ambulance",
+      "name": "きゅうきゅうしゃ",
+      "nameEn": "Ambulance",
+      "category": "のりもの",
+      "characterId": "ambulance",
+      "pose": "default",
+      "tags": [
+        "救急車",
+        "はたらくくるま"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a1f1975cc9abfa4ac0b36b31cb2d286683faf918a707bab880960d1e17e936e2",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2874844,
+      "sha256": "a1f1975cc9abfa4ac0b36b31cb2d286683faf918a707bab880960d1e17e936e2",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:tractor",
+      "slug": "tractor",
+      "name": "トラクター",
+      "nameEn": "Tractor",
+      "category": "のりもの",
+      "characterId": "tractor",
+      "pose": "default",
+      "tags": [
+        "農場",
+        "農機",
+        "はたらくくるま"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5ed5e776dd6ad1654ef8b90d10ef9e867429ad0f128089b8ed09329c9e723486",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2226573,
+      "sha256": "5ed5e776dd6ad1654ef8b90d10ef9e867429ad0f128089b8ed09329c9e723486",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:sailboat",
+      "slug": "sailboat",
+      "name": "ヨット",
+      "nameEn": "Sailboat",
+      "category": "のりもの",
+      "characterId": "sailboat",
+      "pose": "default",
+      "tags": [
+        "帆船",
+        "船",
+        "海"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/147e1b2a12abafe3f581eef26c918a0d2b133950093f81fa891ee8f5162a461b",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2277010,
+      "sha256": "147e1b2a12abafe3f581eef26c918a0d2b133950093f81fa891ee8f5162a461b",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:hot-air-balloon",
+      "slug": "hot-air-balloon",
+      "name": "ききゅう",
+      "nameEn": "Hot-air balloon",
+      "category": "のりもの",
+      "characterId": "hot-air-balloon",
+      "pose": "default",
+      "tags": [
+        "気球",
+        "空",
+        "旅"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/549d23f5bb301d91aa4bcb8d901c68250190bf4acc5360aeefb935daec4f45a9",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2099845,
+      "sha256": "549d23f5bb301d91aa4bcb8d901c68250190bf4acc5360aeefb935daec4f45a9",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

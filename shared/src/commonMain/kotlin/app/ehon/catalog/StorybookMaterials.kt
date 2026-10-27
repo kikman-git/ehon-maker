@@ -78,6 +78,16 @@ internal object StorybookMaterials {
         Material("pack.storybook:kite", "たこ", "Kite", "もの", "a/681edc79127416b15a30a2b4fb2f3f98cadd83a3bc5183f5985c985940d520e2", "kite", "default", listOf("凧", "空", "あそび"), listOf()),
         Material("pack.storybook:ball", "ボール", "Ball", "もの", "a/33a6896d0834ce5a2b9d13728f5b9113a21224c851014b31586d3a2e50b22c5c", "ball", "default", listOf("球", "あそび", "玩具"), listOf()),
         Material("pack.storybook:crayon-box", "クレヨン", "Crayon box", "もの", "a/936eaa9d6afefcd19616a5d700d83347cec2cf10d0032731311dcb51a4ff5953", "crayon-box", "default", listOf("文具", "おえかき", "色"), listOf()),
-        Material("pack.storybook:treasure-chest", "たからばこ", "Treasure chest", "もの", "a/1d3920ef1b8bd7167e187f5bd424e07babe940a239e75f71d17c42a7a43302c2", "treasure-chest", "default", listOf("宝箱", "宝", "冒険"), listOf())
+        Material("pack.storybook:treasure-chest", "たからばこ", "Treasure chest", "もの", "a/1d3920ef1b8bd7167e187f5bd424e07babe940a239e75f71d17c42a7a43302c2", "treasure-chest", "default", listOf("宝箱", "宝", "冒険"), listOf()),
+        Material("pack.storybook:car", "くるま", "Car", "のりもの", "a/c071c70f22cca69af1ca2d3a856823a23566c919845c07d5c13ae7e1046c6fae", "car", "default", listOf("車", "自動車"), listOf()),
+        Material("pack.storybook:bicycle", "じてんしゃ", "Bicycle", "のりもの", "a/4a1149eb8020b0f6e74db1017dd2192abbcadd8942fdac1fc2142e44a092c6fb", "bicycle", "default", listOf("自転車", "のりもの"), listOf()),
+        Material("pack.storybook:tricycle", "さんりんしゃ", "Tricycle", "のりもの", "a/e76159faeedd83850d20a87e3c2a913a87b696e5ead812302ee0cb2aa1da0b46", "tricycle", "default", listOf("三輪車", "あそび"), listOf()),
+        Material("pack.storybook:train", "きかんしゃ", "Train", "のりもの", "a/2675dfc329fc7440436e471506012f14f95b064fd3d69bd5869246cbc5a4c920", "train", "default", listOf("汽車", "電車", "鉄道"), listOf()),
+        Material("pack.storybook:tram", "ろめんでんしゃ", "Tram", "のりもの", "a/aa79ba09dc5e4c292915a2a683d116cd068ce24d25e41c03e9e45896707575c0", "tram", "default", listOf("路面電車", "電車", "街"), listOf()),
+        Material("pack.storybook:fire-engine", "しょうぼうしゃ", "Fire engine", "のりもの", "a/a89e7051eac3fa7e96f1c18c92496d1d90ec4565a8cafab7608bb8bdf3f26d65", "fire-engine", "default", listOf("消防車", "はたらくくるま"), listOf()),
+        Material("pack.storybook:ambulance", "きゅうきゅうしゃ", "Ambulance", "のりもの", "a/a1f1975cc9abfa4ac0b36b31cb2d286683faf918a707bab880960d1e17e936e2", "ambulance", "default", listOf("救急車", "はたらくくるま"), listOf()),
+        Material("pack.storybook:tractor", "トラクター", "Tractor", "のりもの", "a/5ed5e776dd6ad1654ef8b90d10ef9e867429ad0f128089b8ed09329c9e723486", "tractor", "default", listOf("農場", "農機", "はたらくくるま"), listOf()),
+        Material("pack.storybook:sailboat", "ヨット", "Sailboat", "のりもの", "a/147e1b2a12abafe3f581eef26c918a0d2b133950093f81fa891ee8f5162a461b", "sailboat", "default", listOf("帆船", "船", "海"), listOf()),
+        Material("pack.storybook:hot-air-balloon", "ききゅう", "Hot-air balloon", "のりもの", "a/549d23f5bb301d91aa4bcb8d901c68250190bf4acc5360aeefb935daec4f45a9", "hot-air-balloon", "default", listOf("気球", "空", "旅"), listOf())
     )
 }
