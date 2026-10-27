@@ -4,8 +4,8 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **116 accepted PNGs / 500 target; 384 remaining.** S11 is complete.
-- Animals: 46 images across the requested 10 species. Bird, butterfly, turtle and penguin each have 10 poses; the other 6 species have 1 each.
+- **125 accepted PNGs / 500 target; 375 remaining.** S12 is complete.
+- Animals: 55 images across the requested 10 species. Bird, butterfly, fish, turtle and penguin each have 10 poses; the other 5 species have 1 each.
 - Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Scenes and seasonal each have 1: forest scene and pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
@@ -15,9 +15,15 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S12 — Fish:** nine new poses are generated and awaiting integration; target 125. Existing swimming fills cruising. Continue artwork across batches until the session limit; use compact prompts and minimal updates as requested.
+**S13 — Seasonal / event assets:** snowman, decorated-fir, wrapped-present, easter-eggs, sakura-garland, koinobori, tanabata-bamboo, festival-fan, autumn-wreath. Generation started; target 134. Continue artwork until session limit using compact prompts.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S12 artwork milestone — 125 assets
+
+- Nine fish poses: hovering, resting-low, leaping, sleeping, smiling, surprised, fin-greeting, looking-left, looking-right. Saved fish identity reference, built-in imagegen; exact prompts in manifest. Existing swimming maps to cruising. Left-facing tail framing corrected.
+- Reviewed on cream/dark backgrounds. Source/hash validation passed; shared-core compilation and app insertion/reload/export checks logged locally. No known artwork issues.
+- Commit: `feat(materials): S12 complete fish variations (125/500)`. Push and verify origin/master.
 
 ## S11 artwork milestone — 116 assets
 

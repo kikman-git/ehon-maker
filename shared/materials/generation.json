@@ -136,7 +136,8 @@
       ],
       "sourceFile": "fish.png",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse the attached bird ONLY as the style reference: match its loose brushwork, charming simplicity, soft shading and detail level. Generate a DIFFERENT subject: One plump ochre-orange fish swimming right, expressive small dark eye, smiling curved mouth, flowing peach tail and clearly separate fins. Indicate scales with just a few broad loose brush marks.\nONE full-body isolated subject, centered, 12% clear margin, actual transparent background, no ground, haze, outline, text or border. Do not include the reference bird.",
-      "referenceAsset": "bird"
+      "referenceAsset": "bird",
+      "poseEquivalent": "cruising (walking slot)"
     },
     {
       "id": "turtle",
@@ -2072,6 +2073,161 @@
       "referenceAsset": "bird",
       "generationNotes": "Regenerated initial cropped roof with stronger framing constraint.",
       "initialPrompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One small storybook railway station building, warm cream walls, red-brown pitched roof, central round clock with simple hands and no numbers, teal double doors, two windows and an attached short covered platform canopy. Entire building and canopy visible, no train or track, no lettering. Three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail."
+    },
+    {
+      "id": "fish-hovering",
+      "name": "さかな・うかぶ",
+      "nameEn": "Hovering fish",
+      "pose": "hovering",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "うかぶ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-hovering.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is saved fish identity and painting-style reference. Preserve plump round ochre-orange body, cream face and belly, peach blush cheek, small dark ink eye, broad pale gold brush marks suggesting scales, flowing peach-and-cream forked tail, one dorsal fin and simple peach paired lower and pectoral fins. No realistic scales or glossy eyes.\nSubject: The SAME fish hovering nearly upright in a calm three-quarter front view, head raised slightly, tail hanging gently down and to left, both pectoral fins held out for balance, relaxed closed smile.\nONE full-body isolated fish, entire tail and every fin visible, centered square composition with ample 12% clear margin. Actual transparent background, no water, ground, shadow, haze, props, text, other fish, frame or collage. Preserve soft broad gouache brushwork and character identity.",
+      "referenceAsset": "fish"
+    },
+    {
+      "id": "fish-resting-low",
+      "name": "さかな・ひとやすみ",
+      "nameEn": "Resting fish",
+      "pose": "resting-low",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "ひとやすみ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-resting-low.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is saved fish identity and painting-style reference. Preserve plump round ochre-orange body, cream face and belly, peach blush cheek, small dark ink eye, broad pale gold brush marks suggesting scales, flowing peach-and-cream forked tail, one dorsal fin and simple peach paired lower and pectoral fins. No realistic scales or glossy eyes.\nSubject: The SAME fish settled in a low relaxed horizontal pose facing left, body slightly curled, belly low and fins relaxed downward, tail softly draping behind. Awake with a calm half-lidded ink eye. No ground or seabed.\nONE full-body isolated fish, entire tail and every fin visible, centered square composition with ample 12% clear margin. Actual transparent background, no water, ground, shadow, haze, props, text, other fish, frame or collage. Preserve soft broad gouache brushwork and character identity.",
+      "referenceAsset": "fish"
+    },
+    {
+      "id": "fish-leaping",
+      "name": "さかな・ジャンプ",
+      "nameEn": "Leaping fish",
+      "pose": "leaping",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "ジャンプ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-leaping.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is saved fish identity and painting-style reference. Preserve plump round ochre-orange body, cream face and belly, peach blush cheek, small dark ink eye, broad pale gold brush marks suggesting scales, flowing peach-and-cream forked tail, one dorsal fin and simple peach paired lower and pectoral fins. No realistic scales or glossy eyes.\nSubject: The SAME fish in a joyful steep upward leap, head pointing upper left, body curving in a clear C, peach tail sweeping downward right, fins spread. No water, splash or droplets.\nONE full-body isolated fish, entire tail and every fin visible, centered square composition with ample 12% clear margin. Actual transparent background, no water, ground, shadow, haze, props, text, other fish, frame or collage. Preserve soft broad gouache brushwork and character identity.",
+      "referenceAsset": "fish"
+    },
+    {
+      "id": "fish-sleeping",
+      "name": "さかな・ねむる",
+      "nameEn": "Sleeping fish",
+      "pose": "sleeping",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "ねむる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-sleeping.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is saved fish identity and painting-style reference. Preserve plump round ochre-orange body, cream face and belly, peach blush cheek, small dark ink eye, broad pale gold brush marks suggesting scales, flowing peach-and-cream forked tail, one dorsal fin and simple peach paired lower and pectoral fins. No realistic scales or glossy eyes.\nSubject: The SAME fish asleep, round body tucked into a gentle curl, head drooping right, closed curved ink eye, mouth relaxed, dorsal fin lowered, flowing tail folded softly around toward belly. No bed or bubbles.\nONE full-body isolated fish, entire tail and every fin visible, centered square composition with ample 12% clear margin. Actual transparent background, no water, ground, shadow, haze, props, text, other fish, frame or collage. Preserve soft broad gouache brushwork and character identity.",
+      "referenceAsset": "fish"
+    },
+    {
+      "id": "fish-smiling",
+      "name": "さかな・にこにこ",
+      "nameEn": "Smiling fish",
+      "pose": "smiling",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "にこにこ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-smiling.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is saved fish identity and painting-style reference. Preserve plump round ochre-orange body, cream face and belly, peach blush cheek, small dark ink eye, broad pale gold brush marks suggesting scales, flowing peach-and-cream forked tail, one dorsal fin and simple peach paired lower and pectoral fins. No realistic scales or glossy eyes.\nSubject: The SAME fish with exuberant happy curved eyes and small open delighted smile, three-quarter front view, head tilted upward right, body arched and peach tail dramatically fanned upward left, paired fins spread in celebration.\nONE full-body isolated fish, entire tail and every fin visible, centered square composition with ample 12% clear margin. Actual transparent background, no water, ground, shadow, haze, props, text, other fish, frame or collage. Preserve soft broad gouache brushwork and character identity.",
+      "referenceAsset": "fish"
+    },
+    {
+      "id": "fish-surprised",
+      "name": "さかな・びっくり",
+      "nameEn": "Surprised fish",
+      "pose": "surprised",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "びっくり"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-surprised.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is saved fish identity and painting-style reference. Preserve plump round ochre-orange body, cream face and belly, peach blush cheek, small dark ink eye, broad pale gold brush marks suggesting scales, flowing peach-and-cream forked tail, one dorsal fin and simple peach paired lower and pectoral fins. No realistic scales or glossy eyes.\nSubject: The SAME fish startled, head lifted facing left and body recoiling backward, tiny round O mouth and widened small dark eye, dorsal fin erect and flowing tail sharply curled down to right, pectoral fins out.\nONE full-body isolated fish, entire tail and every fin visible, centered square composition with ample 12% clear margin. Actual transparent background, no water, ground, shadow, haze, props, text, other fish, frame or collage. Preserve soft broad gouache brushwork and character identity.",
+      "referenceAsset": "fish"
+    },
+    {
+      "id": "fish-fin-greeting",
+      "name": "さかな・こんにちは",
+      "nameEn": "Fish fin greeting",
+      "pose": "fin-greeting",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "こんにちは"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-fin-greeting.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is saved fish identity and painting-style reference. Preserve plump round ochre-orange body, cream face and belly, peach blush cheek, small dark ink eye, broad pale gold brush marks suggesting scales, flowing peach-and-cream forked tail, one dorsal fin and simple peach paired lower and pectoral fins. No realistic scales or glossy eyes.\nSubject: The SAME fish greeting the viewer in a three-quarter front-facing pose, one peach pectoral fin raised outward and high in a wave, other fin low, friendly small smile, body slightly upright and tail flowing down-left. No hands or fingers.\nONE full-body isolated fish, entire tail and every fin visible, centered square composition with ample 12% clear margin. Actual transparent background, no water, ground, shadow, haze, props, text, other fish, frame or collage. Preserve soft broad gouache brushwork and character identity.",
+      "referenceAsset": "fish"
+    },
+    {
+      "id": "fish-looking-left",
+      "name": "さかな・ひだりを みる",
+      "nameEn": "Fish looking left",
+      "pose": "looking-left",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "ひだりを みる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-looking-left.png",
+      "prompt": "Same fish as reference, orange body, cream face, peach flowing fins, broad painterly gouache. Left-facing full side profile, curious small eye, mouth closed, tail fanned right. Entire fish SMALL within canvas, maximum 70% canvas width, wide transparent margins on every side. No clipped tail tips, no water, props, shadow or text. True transparent background.",
+      "referenceAsset": "fish",
+      "initialPrompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is saved fish identity and painting-style reference. Preserve plump round ochre-orange body, cream face and belly, peach blush cheek, small dark ink eye, broad pale gold brush marks suggesting scales, flowing peach-and-cream forked tail, one dorsal fin and simple peach paired lower and pectoral fins. No realistic scales or glossy eyes.\nSubject: The SAME fish looking intently toward left, broad side profile with level body, head clearly turned left and tail fully spread to right, near peach pectoral fin swept backward, dorsal fin relaxed, tiny closed curious mouth.\nONE full-body isolated fish, entire tail and every fin visible, centered square composition with ample 12% clear margin. Actual transparent background, no water, ground, shadow, haze, props, text, other fish, frame or collage. Preserve soft broad gouache brushwork and character identity.",
+      "generationNotes": "Regenerated to keep complete tail within clear margins."
+    },
+    {
+      "id": "fish-looking-right",
+      "name": "さかな・みぎを みる",
+      "nameEn": "Fish looking right",
+      "pose": "looking-right",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "みぎを みる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "legacyIds": [],
+      "sourceFile": "fish-looking-right.png",
+      "prompt": "Same orange-and-peach fish as reference; preserve identity, broad gouache brushwork, cream face/belly, tiny ink eye and flowing fins. The SAME fish looking curiously up to the right, three-quarter view with round body tipped head-up, tail curving beneath and toward left, near fin extended forward and lower fins tucked, alert small ink eye and gently pursed mouth. Distinct poised body gesture. Full body, all fin/tail tips inside generous transparent margins. True transparent background. No water, shadow, text or props.",
+      "referenceAsset": "fish"
     }
   ]
 }

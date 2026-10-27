@@ -119,6 +119,15 @@ internal object StorybookMaterials {
         Material("pack.storybook:bookshop", "ほんやさん", "Bookshop", "たてもの・ばしょ", "a/d836aabdc912b3e428e918d429f30d7c9b32a4ba1d3b5451305dd5732bcc7a0c", "bookshop", "default", listOf("本屋", "おみせ"), listOf()),
         Material("pack.storybook:post-office", "ゆうびんきょく", "Post office", "たてもの・ばしょ", "a/4592c82042911e6cacc797bd6bb744404827b9440d2a89b6d0280bbbc4d32fc4", "post-office", "default", listOf("郵便局", "手紙"), listOf()),
         Material("pack.storybook:hospital", "びょういん", "Hospital", "たてもの・ばしょ", "a/4b89daa6cd421f3685a92acd4eaabddabb1961d1ac8eaf28de17057407a48712", "hospital", "default", listOf("病院", "医者"), listOf()),
-        Material("pack.storybook:train-station", "えき", "Train station", "たてもの・ばしょ", "a/64b98f8cfcf65985624e0eee7af39c4d6c40d364e6e69c0d6467f47db4300bbe", "train-station", "default", listOf("駅", "鉄道"), listOf())
+        Material("pack.storybook:train-station", "えき", "Train station", "たてもの・ばしょ", "a/64b98f8cfcf65985624e0eee7af39c4d6c40d364e6e69c0d6467f47db4300bbe", "train-station", "default", listOf("駅", "鉄道"), listOf()),
+        Material("pack.storybook:fish-hovering", "さかな・うかぶ", "Hovering fish", "どうぶつ", "a/fd2765022f1ccbbdf5c29c856875ae950194c86135942ee2b52e8240980277a6", "fish", "hovering", listOf("魚", "きんぎょ", "うかぶ"), listOf()),
+        Material("pack.storybook:fish-resting-low", "さかな・ひとやすみ", "Resting fish", "どうぶつ", "a/0e9a5f50f9a27ffdf660d2759370485b1a1bb338a5e88d2c91e56873f79e539f", "fish", "resting-low", listOf("魚", "きんぎょ", "ひとやすみ"), listOf()),
+        Material("pack.storybook:fish-leaping", "さかな・ジャンプ", "Leaping fish", "どうぶつ", "a/6f31bb31151dd4d42bdbed5860c17328f775a114c0c5d4493efc53aa2c7679ce", "fish", "leaping", listOf("魚", "きんぎょ", "ジャンプ"), listOf()),
+        Material("pack.storybook:fish-sleeping", "さかな・ねむる", "Sleeping fish", "どうぶつ", "a/a990a385af095b0cbffff522134d5a399f2b7425f29f12a8e395d514a618b412", "fish", "sleeping", listOf("魚", "きんぎょ", "ねむる"), listOf()),
+        Material("pack.storybook:fish-smiling", "さかな・にこにこ", "Smiling fish", "どうぶつ", "a/2a86b6286f73c8d755ce6a56438d569e33522562b9bd79e698bc677d80e37874", "fish", "smiling", listOf("魚", "きんぎょ", "にこにこ"), listOf()),
+        Material("pack.storybook:fish-surprised", "さかな・びっくり", "Surprised fish", "どうぶつ", "a/34a48a7efe73c6557091f5c74b2b4a3e5189a84ae77e629e5f670f9f11c7aca6", "fish", "surprised", listOf("魚", "きんぎょ", "びっくり"), listOf()),
+        Material("pack.storybook:fish-fin-greeting", "さかな・こんにちは", "Fish fin greeting", "どうぶつ", "a/e736298cec81e469afd1d7c5fc2721823f2d4c67d097a53412693f9615554d14", "fish", "fin-greeting", listOf("魚", "きんぎょ", "こんにちは"), listOf()),
+        Material("pack.storybook:fish-looking-left", "さかな・ひだりを みる", "Fish looking left", "どうぶつ", "a/c0f017a7daa210f4d7777d4a89fc8e1490134a681a45cbbebe3b5ebb174f098d", "fish", "looking-left", listOf("魚", "きんぎょ", "ひだりを みる"), listOf()),
+        Material("pack.storybook:fish-looking-right", "さかな・みぎを みる", "Fish looking right", "どうぶつ", "a/2b76d03f85641b6736be6307bb39dffde946b64463fdf8ec4aa3558fbedc450d", "fish", "looking-right", listOf("魚", "きんぎょ", "みぎを みる"), listOf())
     )
 }

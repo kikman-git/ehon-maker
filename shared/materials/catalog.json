@@ -2519,6 +2519,195 @@
       "bytes": 1834016,
       "sha256": "64b98f8cfcf65985624e0eee7af39c4d6c40d364e6e69c0d6467f47db4300bbe",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-hovering",
+      "slug": "fish-hovering",
+      "name": "さかな・うかぶ",
+      "nameEn": "Hovering fish",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "hovering",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "うかぶ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/fd2765022f1ccbbdf5c29c856875ae950194c86135942ee2b52e8240980277a6",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2045235,
+      "sha256": "fd2765022f1ccbbdf5c29c856875ae950194c86135942ee2b52e8240980277a6",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-resting-low",
+      "slug": "fish-resting-low",
+      "name": "さかな・ひとやすみ",
+      "nameEn": "Resting fish",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "resting-low",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "ひとやすみ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/0e9a5f50f9a27ffdf660d2759370485b1a1bb338a5e88d2c91e56873f79e539f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2013056,
+      "sha256": "0e9a5f50f9a27ffdf660d2759370485b1a1bb338a5e88d2c91e56873f79e539f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-leaping",
+      "slug": "fish-leaping",
+      "name": "さかな・ジャンプ",
+      "nameEn": "Leaping fish",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "leaping",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "ジャンプ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/6f31bb31151dd4d42bdbed5860c17328f775a114c0c5d4493efc53aa2c7679ce",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2123439,
+      "sha256": "6f31bb31151dd4d42bdbed5860c17328f775a114c0c5d4493efc53aa2c7679ce",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-sleeping",
+      "slug": "fish-sleeping",
+      "name": "さかな・ねむる",
+      "nameEn": "Sleeping fish",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "sleeping",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "ねむる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a990a385af095b0cbffff522134d5a399f2b7425f29f12a8e395d514a618b412",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2265499,
+      "sha256": "a990a385af095b0cbffff522134d5a399f2b7425f29f12a8e395d514a618b412",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-smiling",
+      "slug": "fish-smiling",
+      "name": "さかな・にこにこ",
+      "nameEn": "Smiling fish",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "smiling",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "にこにこ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/2a86b6286f73c8d755ce6a56438d569e33522562b9bd79e698bc677d80e37874",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2412444,
+      "sha256": "2a86b6286f73c8d755ce6a56438d569e33522562b9bd79e698bc677d80e37874",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-surprised",
+      "slug": "fish-surprised",
+      "name": "さかな・びっくり",
+      "nameEn": "Surprised fish",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "surprised",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "びっくり"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/34a48a7efe73c6557091f5c74b2b4a3e5189a84ae77e629e5f670f9f11c7aca6",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2138255,
+      "sha256": "34a48a7efe73c6557091f5c74b2b4a3e5189a84ae77e629e5f670f9f11c7aca6",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-fin-greeting",
+      "slug": "fish-fin-greeting",
+      "name": "さかな・こんにちは",
+      "nameEn": "Fish fin greeting",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "fin-greeting",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "こんにちは"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/e736298cec81e469afd1d7c5fc2721823f2d4c67d097a53412693f9615554d14",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2246555,
+      "sha256": "e736298cec81e469afd1d7c5fc2721823f2d4c67d097a53412693f9615554d14",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-looking-left",
+      "slug": "fish-looking-left",
+      "name": "さかな・ひだりを みる",
+      "nameEn": "Fish looking left",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "looking-left",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "ひだりを みる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c0f017a7daa210f4d7777d4a89fc8e1490134a681a45cbbebe3b5ebb174f098d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1351147,
+      "sha256": "c0f017a7daa210f4d7777d4a89fc8e1490134a681a45cbbebe3b5ebb174f098d",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fish-looking-right",
+      "slug": "fish-looking-right",
+      "name": "さかな・みぎを みる",
+      "nameEn": "Fish looking right",
+      "category": "どうぶつ",
+      "characterId": "fish",
+      "pose": "looking-right",
+      "tags": [
+        "魚",
+        "きんぎょ",
+        "みぎを みる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/2b76d03f85641b6736be6307bb39dffde946b64463fdf8ec4aa3558fbedc450d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2183618,
+      "sha256": "2b76d03f85641b6736be6307bb39dffde946b64463fdf8ec4aa3558fbedc450d",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }
