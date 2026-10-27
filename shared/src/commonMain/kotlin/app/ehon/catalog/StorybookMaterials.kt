@@ -146,6 +146,9 @@ internal object StorybookMaterials {
         Material("pack.storybook:octopus-surprised", "たこ・びっくり", "Surprised octopus", "どうぶつ", "a/b248920b9097d81852278555ad48256abbab813ffb2aa3c979fedf3c53dffddf", "octopus", "surprised", listOf("蛸", "たこ", "びっくり"), listOf()),
         Material("pack.storybook:octopus-waving", "たこ・こんにちは", "Waving octopus", "どうぶつ", "a/5e6cf0b8cd9c1b68a201ae7f6b7a55d8a0552309ad979ff0e35b879426840f9c", "octopus", "waving", listOf("蛸", "たこ", "こんにちは"), listOf()),
         Material("pack.storybook:octopus-looking-left", "たこ・ひだりを みる", "Octopus looking left", "どうぶつ", "a/4569e44c9291c35e25da99b225516e6d962904ae10d8ffee12e74a93778c27a8", "octopus", "looking-left", listOf("蛸", "たこ", "ひだりを みる"), listOf()),
-        Material("pack.storybook:octopus-looking-right", "たこ・みぎを みる", "Octopus looking right", "どうぶつ", "a/6798a04f4125200dafa877ceae01f2d26798302949e0e7e23c69040bb034a21f", "octopus", "looking-right", listOf("蛸", "たこ", "みぎを みる"), listOf())
+        Material("pack.storybook:octopus-looking-right", "たこ・みぎを みる", "Octopus looking right", "どうぶつ", "a/6798a04f4125200dafa877ceae01f2d26798302949e0e7e23c69040bb034a21f", "octopus", "looking-right", listOf("蛸", "たこ", "みぎを みる"), listOf()),
+        Material("pack.storybook:woodland-picnic", "もりの ピクニック", "Woodland picnic", "おはなしの ばめん", "a/b68dee66353793fe51dd02a09ffab88b2df1a4ec952b15c0b6edb90a69412f43", "woodland-picnic", "default", listOf("森", "ピクニック"), listOf()),
+        Material("pack.storybook:pondside-garden", "いけの ほとり", "Pondside garden", "おはなしの ばめん", "a/1c94eab009b93befa5546f38a3ac1858a9f933bc9ef57afb6a11a1970dfb4762", "pondside-garden", "default", listOf("池", "庭"), listOf()),
+        Material("pack.storybook:vegetable-garden", "やさいばたけ", "Vegetable garden", "おはなしの ばめん", "a/dcbdbf0c5375c39324da1729439fca58a9bc741f6073058b37b6ab41f4b51213", "vegetable-garden", "default", listOf("畑", "野菜"), listOf())
     )
 }

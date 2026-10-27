@@ -3077,6 +3077,66 @@
       "bytes": 1274888,
       "sha256": "6798a04f4125200dafa877ceae01f2d26798302949e0e7e23c69040bb034a21f",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:woodland-picnic",
+      "slug": "woodland-picnic",
+      "name": "もりの ピクニック",
+      "nameEn": "Woodland picnic",
+      "category": "おはなしの ばめん",
+      "characterId": "woodland-picnic",
+      "pose": "default",
+      "tags": [
+        "森",
+        "ピクニック"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b68dee66353793fe51dd02a09ffab88b2df1a4ec952b15c0b6edb90a69412f43",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3207204,
+      "sha256": "b68dee66353793fe51dd02a09ffab88b2df1a4ec952b15c0b6edb90a69412f43",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:pondside-garden",
+      "slug": "pondside-garden",
+      "name": "いけの ほとり",
+      "nameEn": "Pondside garden",
+      "category": "おはなしの ばめん",
+      "characterId": "pondside-garden",
+      "pose": "default",
+      "tags": [
+        "池",
+        "庭"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/1c94eab009b93befa5546f38a3ac1858a9f933bc9ef57afb6a11a1970dfb4762",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1854253,
+      "sha256": "1c94eab009b93befa5546f38a3ac1858a9f933bc9ef57afb6a11a1970dfb4762",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:vegetable-garden",
+      "slug": "vegetable-garden",
+      "name": "やさいばたけ",
+      "nameEn": "Vegetable garden",
+      "category": "おはなしの ばめん",
+      "characterId": "vegetable-garden",
+      "pose": "default",
+      "tags": [
+        "畑",
+        "野菜"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/dcbdbf0c5375c39324da1729439fca58a9bc741f6073058b37b6ab41f4b51213",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2320486,
+      "sha256": "dcbdbf0c5375c39324da1729439fca58a9bc741f6073058b37b6ab41f4b51213",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

@@ -1,12 +1,12 @@
 # 素材 library handoff
 
-Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
+Updated: 2026-10-28. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **143 accepted PNGs / 500 target; 357 remaining.** S14 is complete.
+- **146 accepted PNGs / 500 target; 354 remaining.** S15 is complete.
 - Animals: 64 images across the requested 10 species. Bird, butterfly, fish, octopus, turtle and penguin each have 10 poses; the other 4 species have 1 each.
-- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 1 forest scene.
+- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 4 scenes.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,15 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S15 — Scenes:** woodland-picnic, pondside-garden, vegetable-garden generated; reviewing framing before integration. Target 146.
+**S16 — Whale:** nine remaining poses. Target 155.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S15 artwork milestone — 146 assets
+
+- Three scenes: woodland-picnic, pondside-garden, vegetable-garden. Built-in imagegen; exact prompts in generation.json. Garden edge framing corrected with a compact reference edit.
+- Light/dark visual review, source/hash validation, shared-core build and app browsing, three insertions, reload persistence and PNG export passed.
+- Commit and push this artwork milestone; preserve deferred engineering and Love Letter work.
 
 ## S14 artwork milestone — 143 assets
 

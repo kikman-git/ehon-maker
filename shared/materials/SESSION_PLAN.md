@@ -35,7 +35,7 @@ Scene assets are standalone transparent painted vignettes, with feathered/organi
 
 No mirrored copies, alternate resolutions, recolors, unreviewed outputs or failed generations count toward 500.
 
-The user has explicitly prioritized image assets. Continue S15 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
+The user has explicitly prioritized image assets. Continue S16 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
 
 ## Engineering checkpoints
 
@@ -64,7 +64,7 @@ Counts below are **new accepted artwork**, with cumulative totals including the 
 | [x] | S12 | Animals | Fish: finish its 10-variation set | 9 | **125** |
 | [x] | S13 | Seasonal / event assets | Snowman, decorated fir, wrapped present, Easter eggs, sakura garland, koinobori, Tanabata bamboo, summer festival fan, autumn wreath | 9 | **134** |
 | [x] | S14 | Animals | Octopus: finish its 10-variation set | 9 | **143** |
-| [ ] | S15 | Storybook scenes | A: woodland picnic, pondside garden, vegetable garden | 3 | **146** |
+| [x] | S15 | Storybook scenes | A: woodland picnic, pondside garden, vegetable garden | 3 | **146** |
 | [ ] | S16 | Animals | Whale: finish its 10-variation set | 9 | **155** |
 | [ ] | S17 | Nature | B: mushroom cluster, berry bush, acorn, pinecone, fallen leaves, wildflower patch, grassy tuft, reeds, lily pad, cattails | 10 | **165** |
 | [ ] | S18 | Animals | Crab: finish its 10-variation set | 9 | **174** |

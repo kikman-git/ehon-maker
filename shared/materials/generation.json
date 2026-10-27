@@ -2537,6 +2537,58 @@
       "referenceAsset": "octopus",
       "initialPrompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Looking right, curious head tilted right and slightly up, eight arms arranged in broad low asymmetric fan, all eight distinct tips visible. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text. Redraw with head right-facing, body low, FOUR separate curled arm tips to the left and FOUR to the right. All eight visible and separated.",
       "generationNotes": "Framing corrected."
+    },
+    {
+      "id": "woodland-picnic",
+      "name": "もりの ピクニック",
+      "nameEn": "Woodland picnic",
+      "tags": [
+        "森",
+        "ピクニック"
+      ],
+      "pose": "default",
+      "category": "おはなしの ばめん",
+      "characterId": "woodland-picnic",
+      "legacyIds": [],
+      "sourceFile": "woodland-picnic.png",
+      "prompt": "Reference bird is ONLY painting style: loose playful children's picture-book gouache, broad brushwork, simple warm forms. No bird. A cozy woodland picnic vignette: small red-check cloth with basket, apple, bread and two cups beneath one rounded leafy tree, a few daisies and a low stump. No people or animals. One standalone painted scene vignette, organic irregular edges around a small grass patch. Entire tree and composition visible with wide clear margins. Square canvas, true transparent background outside vignette. No sky, rectangular backdrop, external haze, border or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "pondside-garden",
+      "name": "いけの ほとり",
+      "nameEn": "Pondside garden",
+      "tags": [
+        "池",
+        "庭"
+      ],
+      "pose": "default",
+      "category": "おはなしの ばめん",
+      "characterId": "pondside-garden",
+      "legacyIds": [],
+      "sourceFile": "pondside-garden.png",
+      "prompt": "Reference bird is ONLY painting style: loose playful children's picture-book gouache, broad brushwork, simple warm forms. No bird. A peaceful small pondside garden vignette: irregular oval blue-green pond, three lily pads, soft reeds, yellow irises, rounded stones and a low curved wooden footbridge at back. No people or animals. One standalone painted scene vignette, organic irregular edges around a small grass patch. Entire composition visible with wide clear margins. Square canvas, true transparent background outside vignette. No sky, rectangular backdrop, external haze, border or text. CRITICAL: entire vignette must be SMALL, at most 70% canvas width and height. Wide empty transparent margins, every outer leaf and stone fully inside canvas.",
+      "referenceAsset": "bird",
+      "initialPrompt": "Reference bird is ONLY painting style: loose playful children's picture-book gouache, broad brushwork, simple warm forms. No bird. A peaceful small pondside garden vignette: irregular oval blue-green pond, three lily pads, soft reeds, yellow irises, rounded stones and a low curved wooden footbridge at back. No people or animals. One standalone painted scene vignette, organic irregular edges around a small grass patch. Entire composition visible with wide clear margins. Square canvas, true transparent background outside vignette. No sky, rectangular backdrop, external haze, border or text.",
+      "generationNotes": "Regenerated with wider transparent margins."
+    },
+    {
+      "id": "vegetable-garden",
+      "name": "やさいばたけ",
+      "nameEn": "Vegetable garden",
+      "tags": [
+        "畑",
+        "野菜"
+      ],
+      "pose": "default",
+      "category": "おはなしの ばめん",
+      "characterId": "vegetable-garden",
+      "legacyIds": [],
+      "sourceFile": "vegetable-garden.png",
+      "prompt": "Same gouache garden vignette, fully visible centered at 70% canvas width with wide transparent margins on every side. Preserve contents and style. Square canvas, no text.",
+      "referenceAsset": "bird",
+      "initialPrompt": "Reference bird is ONLY painting style: loose playful children's picture-book gouache, broad brushwork, simple warm forms. No bird. A small storybook vegetable garden vignette: three short brown soil rows with carrot tops, round cabbages and red tomatoes on simple stakes, a small wooden watering can beside a low woven fence. No people or animals. One standalone painted scene vignette, organic irregular edges around a small grass patch. Entire composition visible with wide clear margins. Square canvas, true transparent background outside vignette. No sky, rectangular backdrop, external haze, border or text. Composition occupies at most 75% canvas width and height, large clear margins.",
+      "generationNotes": "Built-in imagegen framing correction using previous vegetable-garden image as edit target."
     }
   ]
 }
