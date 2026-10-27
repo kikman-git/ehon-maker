@@ -2379,6 +2379,146 @@
       "bytes": 2506773,
       "sha256": "ce0ec7c5f7d61d8fb9cbc3af68883c0880683471bb0382967ea4b1a814b0677e",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:school",
+      "slug": "school",
+      "name": "がっこう",
+      "nameEn": "School",
+      "category": "たてもの・ばしょ",
+      "characterId": "school",
+      "pose": "default",
+      "tags": [
+        "学校",
+        "まなぶ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/d72e398978b317f48715337872fba42a807adf5bea4ec0476084607bd96ce843",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2995159,
+      "sha256": "d72e398978b317f48715337872fba42a807adf5bea4ec0476084607bd96ce843",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:library",
+      "slug": "library",
+      "name": "としょかん",
+      "nameEn": "Library",
+      "category": "たてもの・ばしょ",
+      "characterId": "library",
+      "pose": "default",
+      "tags": [
+        "図書館",
+        "本"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/20923b925e910df7843a350e64648de1f710f8838ea3cff21febda48da92c659",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3246510,
+      "sha256": "20923b925e910df7843a350e64648de1f710f8838ea3cff21febda48da92c659",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bakery",
+      "slug": "bakery",
+      "name": "パンやさん",
+      "nameEn": "Bakery",
+      "category": "たてもの・ばしょ",
+      "characterId": "bakery",
+      "pose": "default",
+      "tags": [
+        "パン屋",
+        "パン"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/2daa1ced0e2562e787a61295c61fb83a955865eafb27d05701248d56d89a25b9",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3449607,
+      "sha256": "2daa1ced0e2562e787a61295c61fb83a955865eafb27d05701248d56d89a25b9",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bookshop",
+      "slug": "bookshop",
+      "name": "ほんやさん",
+      "nameEn": "Bookshop",
+      "category": "たてもの・ばしょ",
+      "characterId": "bookshop",
+      "pose": "default",
+      "tags": [
+        "本屋",
+        "おみせ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/d836aabdc912b3e428e918d429f30d7c9b32a4ba1d3b5451305dd5732bcc7a0c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3042029,
+      "sha256": "d836aabdc912b3e428e918d429f30d7c9b32a4ba1d3b5451305dd5732bcc7a0c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:post-office",
+      "slug": "post-office",
+      "name": "ゆうびんきょく",
+      "nameEn": "Post office",
+      "category": "たてもの・ばしょ",
+      "characterId": "post-office",
+      "pose": "default",
+      "tags": [
+        "郵便局",
+        "手紙"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4592c82042911e6cacc797bd6bb744404827b9440d2a89b6d0280bbbc4d32fc4",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 3058421,
+      "sha256": "4592c82042911e6cacc797bd6bb744404827b9440d2a89b6d0280bbbc4d32fc4",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:hospital",
+      "slug": "hospital",
+      "name": "びょういん",
+      "nameEn": "Hospital",
+      "category": "たてもの・ばしょ",
+      "characterId": "hospital",
+      "pose": "default",
+      "tags": [
+        "病院",
+        "医者"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4b89daa6cd421f3685a92acd4eaabddabb1961d1ac8eaf28de17057407a48712",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2395048,
+      "sha256": "4b89daa6cd421f3685a92acd4eaabddabb1961d1ac8eaf28de17057407a48712",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:train-station",
+      "slug": "train-station",
+      "name": "えき",
+      "nameEn": "Train station",
+      "category": "たてもの・ばしょ",
+      "characterId": "train-station",
+      "pose": "default",
+      "tags": [
+        "駅",
+        "鉄道"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/64b98f8cfcf65985624e0eee7af39c4d6c40d364e6e69c0d6467f47db4300bbe",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1834016,
+      "sha256": "64b98f8cfcf65985624e0eee7af39c4d6c40d364e6e69c0d6467f47db4300bbe",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

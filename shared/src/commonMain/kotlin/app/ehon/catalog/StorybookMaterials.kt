@@ -112,6 +112,13 @@ internal object StorybookMaterials {
         Material("pack.storybook:butterfly-startled", "ちょうちょ・びっくり", "Startled butterfly", "どうぶつ", "a/5e1ccf4ebece89b787379d1223e0c7df252ca9677f20ee61ceb6dc63a5df3db6", "butterfly", "startled", listOf("蝶", "むし", "ちょうちょ", "びっくり"), listOf()),
         Material("pack.storybook:butterfly-wing-greeting", "ちょうちょ・こんにちは", "Butterfly wing greeting", "どうぶつ", "a/eb27b94978a8c7d42d32f60698e0da977beed90a7d92a5eebaa44eeee6d48d42", "butterfly", "wing-greeting", listOf("蝶", "むし", "ちょうちょ", "こんにちは"), listOf()),
         Material("pack.storybook:butterfly-facing-left", "ちょうちょ・ひだりを みる", "Butterfly facing left", "どうぶつ", "a/aa9d41467460ad4f492b65c8a7a6d420e9666868cabc3011829888288e9bd5c7", "butterfly", "facing-left", listOf("蝶", "むし", "ちょうちょ", "ひだりを みる"), listOf()),
-        Material("pack.storybook:butterfly-facing-right", "ちょうちょ・みぎを みる", "Butterfly facing right", "どうぶつ", "a/ce0ec7c5f7d61d8fb9cbc3af68883c0880683471bb0382967ea4b1a814b0677e", "butterfly", "facing-right", listOf("蝶", "むし", "ちょうちょ", "みぎを みる"), listOf())
+        Material("pack.storybook:butterfly-facing-right", "ちょうちょ・みぎを みる", "Butterfly facing right", "どうぶつ", "a/ce0ec7c5f7d61d8fb9cbc3af68883c0880683471bb0382967ea4b1a814b0677e", "butterfly", "facing-right", listOf("蝶", "むし", "ちょうちょ", "みぎを みる"), listOf()),
+        Material("pack.storybook:school", "がっこう", "School", "たてもの・ばしょ", "a/d72e398978b317f48715337872fba42a807adf5bea4ec0476084607bd96ce843", "school", "default", listOf("学校", "まなぶ"), listOf()),
+        Material("pack.storybook:library", "としょかん", "Library", "たてもの・ばしょ", "a/20923b925e910df7843a350e64648de1f710f8838ea3cff21febda48da92c659", "library", "default", listOf("図書館", "本"), listOf()),
+        Material("pack.storybook:bakery", "パンやさん", "Bakery", "たてもの・ばしょ", "a/2daa1ced0e2562e787a61295c61fb83a955865eafb27d05701248d56d89a25b9", "bakery", "default", listOf("パン屋", "パン"), listOf()),
+        Material("pack.storybook:bookshop", "ほんやさん", "Bookshop", "たてもの・ばしょ", "a/d836aabdc912b3e428e918d429f30d7c9b32a4ba1d3b5451305dd5732bcc7a0c", "bookshop", "default", listOf("本屋", "おみせ"), listOf()),
+        Material("pack.storybook:post-office", "ゆうびんきょく", "Post office", "たてもの・ばしょ", "a/4592c82042911e6cacc797bd6bb744404827b9440d2a89b6d0280bbbc4d32fc4", "post-office", "default", listOf("郵便局", "手紙"), listOf()),
+        Material("pack.storybook:hospital", "びょういん", "Hospital", "たてもの・ばしょ", "a/4b89daa6cd421f3685a92acd4eaabddabb1961d1ac8eaf28de17057407a48712", "hospital", "default", listOf("病院", "医者"), listOf()),
+        Material("pack.storybook:train-station", "えき", "Train station", "たてもの・ばしょ", "a/64b98f8cfcf65985624e0eee7af39c4d6c40d364e6e69c0d6467f47db4300bbe", "train-station", "default", listOf("駅", "鉄道"), listOf())
     )
 }

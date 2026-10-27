@@ -4,9 +4,9 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **109 accepted PNGs / 500 target; 391 remaining.** S10 is complete.
+- **116 accepted PNGs / 500 target; 384 remaining.** S11 is complete.
 - Animals: 46 images across the requested 10 species. Bird, butterfly, turtle and penguin each have 10 poses; the other 6 species have 1 each.
-- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Each remaining category has 1: cottage, forest scene, pumpkin.
+- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Scenes and seasonal each have 1: forest scene and pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,16 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S11 — Buildings / Places A:** school, library, bakery, bookshop, post office, hospital, train station. Seven new illustrations; target total 116. Use the saved bird as painting-style reference. No S11 generation started.
+**S12 — Fish:** nine new poses are generated and awaiting integration; target 125. Existing swimming fills cruising. Continue artwork across batches until the session limit; use compact prompts and minimal updates as requested.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S11 artwork milestone — 116 assets
+
+- Seven new buildings: school, library, bakery, bookshop, post-office, hospital, train-station. Built-in imagegen with bird style reference; exact prompts saved. Station regenerated to avoid clipped roof tips.
+- Reviewed on cream/dark backgrounds. Packaging and source/hash validation passed. Shared-core build and app insertion/reload/export check recorded in local S11 logs.
+- Commit: `feat(materials): S11 village buildings (116/500)`. Push and verify origin/master.
+- User now requests continuous image work until session limit, compact prompts and minimal token use; engineering stays deferred.
 
 ## S10 artwork milestone — 109 assets
 

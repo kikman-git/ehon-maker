@@ -1958,6 +1958,120 @@
       "sourceFile": "butterfly-facing-right.png",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Curious right-facing three-quarter pose, head and antennae reaching right with body at a gentle downward diagonal, four wings softly spread backward in a low fan, distinct composition from an upright left-facing butterfly.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
       "referenceAsset": "butterfly"
+    },
+    {
+      "id": "school",
+      "name": "がっこう",
+      "nameEn": "School",
+      "tags": [
+        "学校",
+        "まなぶ"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "school",
+      "legacyIds": [],
+      "sourceFile": "school.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One welcoming little village school building, warm cream plaster and ochre brick base, broad blue roof, small central bell tower, rounded teal double entrance and two generous classroom windows. Modest two-storey proportions, friendly simplified architecture, three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "library",
+      "name": "としょかん",
+      "nameEn": "Library",
+      "tags": [
+        "図書館",
+        "本"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "library",
+      "legacyIds": [],
+      "sourceFile": "library.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One cozy public library building, warm pale ochre walls, rounded arched entrance, a broad sage green roof and two tall windows revealing simple colorful book spines. A small pictorial open-book plaque above the door with NO letters. Quiet welcoming civic architecture, three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bakery",
+      "name": "パンやさん",
+      "nameEn": "Bakery",
+      "tags": [
+        "パン屋",
+        "パン"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "bakery",
+      "legacyIds": [],
+      "sourceFile": "bakery.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One small village bakery shop with creamy peach walls, terracotta roof, teal door, striped cream and muted ochre fabric awning, a large window displaying a few chunky painted bread loaves and croissants. Pictorial bread-shaped hanging sign, no lettering. Three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bookshop",
+      "name": "ほんやさん",
+      "nameEn": "Bookshop",
+      "tags": [
+        "本屋",
+        "おみせ"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "bookshop",
+      "legacyIds": [],
+      "sourceFile": "bookshop.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One narrow charming two-storey bookshop with dusty blue walls, warm red tiled roof, ochre door and broad shop window with colorful simple book spines, one small upstairs window and a little closed-book-shaped hanging sign. No lettering. Three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "post-office",
+      "name": "ゆうびんきょく",
+      "nameEn": "Post office",
+      "tags": [
+        "郵便局",
+        "手紙"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "post-office",
+      "legacyIds": [],
+      "sourceFile": "post-office.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One friendly small village post office, pale butter-yellow walls, muted red roof, deep teal entrance, a built-in red mail slot and a simple envelope pictogram plaque over the door. Two rounded windows. No words or letters. Three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "hospital",
+      "name": "びょういん",
+      "nameEn": "Hospital",
+      "tags": [
+        "病院",
+        "医者"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "hospital",
+      "legacyIds": [],
+      "sourceFile": "hospital.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One friendly compact neighborhood hospital building, cream walls, pale blue roof, central accessible broad doorway with short integrated ramp, four warm windows, a simple teal medical plus symbol above the door. Rounded reassuring forms, no lettering, no people or vehicles. Three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "train-station",
+      "name": "えき",
+      "nameEn": "Train station",
+      "tags": [
+        "駅",
+        "鉄道"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "train-station",
+      "legacyIds": [],
+      "sourceFile": "train-station.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One small storybook railway station building, warm cream walls, red-brown pitched roof, central round clock with simple hands and no numbers, teal double doors, two windows and an attached short covered platform canopy. Entire building and canopy visible, no train or track, no lettering. Three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail.\nCRITICAL FRAMING: Paint the building substantially smaller, occupying at most 72% of canvas width and height. Leave wide fully transparent empty space on ALL FOUR SIDES. Both roof ends and all canopy corners must be visibly separated from the canvas edge. Do not crop any roof tip.",
+      "referenceAsset": "bird",
+      "generationNotes": "Regenerated initial cropped roof with stronger framing constraint.",
+      "initialPrompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Input image is ONLY the painting-style reference, match its broad tactile brushwork and simplified warm volume. Do not include the bird.\nSubject: One small storybook railway station building, warm cream walls, red-brown pitched roof, central round clock with simple hands and no numbers, teal double doors, two windows and an attached short covered platform canopy. Entire building and canopy visible, no train or track, no lettering. Three-quarter front view.\nOne standalone building only, whole subject centered in square canvas, generous 12% clear margins beyond roof and base. Actual transparent background, clean organic painted edges. No ground patch, drop shadow, sky, haze, backdrop, border, watermark, text or additional buildings. Full isolated silhouette, soft hand-painted gouache with no realistic architectural microdetail."
     }
   ]
 }
