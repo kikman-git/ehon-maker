@@ -115,7 +115,8 @@
       ],
       "sourceFile": "butterfly.png",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse the attached bird ONLY as the style reference: match its loose brushwork, charming simplicity, soft shading and detail level. Generate a DIFFERENT subject: One peach-and-lavender butterfly, four elegant wings spread symmetrically, loose painted markings in teal and ochre, slender body, two antennae, only a few expressive painted wing details.\nONE full-body isolated subject, centered, 12% clear margin, actual transparent background, no ground, haze, outline, text or border. Do not include the reference bird.",
-      "referenceAsset": "bird"
+      "referenceAsset": "bird",
+      "poseEquivalent": "perched/resting-open-wing (standing slot)"
     },
     {
       "id": "fish",
@@ -1795,6 +1796,168 @@
       "sourceFile": "winding-path.png",
       "referenceAsset": "bird",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bird is painting-style reference ONLY; match broad loose gouache brushwork and simple warm storybook design. Do not draw any bird.\nSubject: One winding sandy ochre footpath seen in gentle elevated perspective, broad at the bottom and narrowing into a soft S bend toward the top. Small soft sage grassy edges on both sides, organic ends, no trees, buildings, sky or characters. A standalone storybook landscape cutout.\nEntire composition fully visible, clear transparent margins on all sides, actual transparent background. No text, border, ground shadow, photographic detail, glossy 3D, vector art or opaque rectangular backdrop.\nCRITICAL: square canvas. This is an isolated cutout asset, with crisp organic painted silhouette and empty transparent space outside it. Absolutely no atmospheric haze, blur, glow, gradient backdrop or colored mist. Keep the entire cutout in the middle 75% of a square image."
+    },
+    {
+      "id": "butterfly-fluttering",
+      "name": "ちょうちょ・ひらひら",
+      "nameEn": "Fluttering butterfly",
+      "pose": "fluttering",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "ひらひら"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-fluttering.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Flying gently diagonally upward left, body angled, four wings in an asymmetric mid-flap with near wings broad and far wings foreshortened.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
+    },
+    {
+      "id": "butterfly-wings-folded",
+      "name": "ちょうちょ・はねを とじる",
+      "nameEn": "Butterfly with folded wings",
+      "pose": "wings-folded",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "はねを とじる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-wings-folded.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Calm upright side view with wings held together vertically above its body, showing overlapping peach lavender wing silhouettes, tiny feet tucked below.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
+    },
+    {
+      "id": "butterfly-taking-flight",
+      "name": "ちょうちょ・とびたつ",
+      "nameEn": "Butterfly taking flight",
+      "pose": "taking-flight",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "とびたつ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-taking-flight.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Lifting off steeply upward, slim body pointing upward-right, wings swept down and back in a powerful upstroke silhouette, tiny legs trailing.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
+    },
+    {
+      "id": "butterfly-resting",
+      "name": "ちょうちょ・おやすみ",
+      "nameEn": "Resting butterfly",
+      "pose": "resting",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "おやすみ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-resting.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Sleeping peacefully, body curled slightly horizontally, eyes closed, antennae relaxed down, four wings draped low like a soft tent; no bed or perch.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
+    },
+    {
+      "id": "butterfly-cheerful-flutter",
+      "name": "ちょうちょ・うれしい",
+      "nameEn": "Cheerful butterfly",
+      "pose": "cheerful-flutter",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "うれしい"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-cheerful-flutter.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Joyful playful airborne dance, body leaning diagonally right, head tilted up with tiny happy curved eye and small smile, wings lifted in a high open V with smaller hindwings visible.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
+    },
+    {
+      "id": "butterfly-startled",
+      "name": "ちょうちょ・びっくり",
+      "nameEn": "Startled butterfly",
+      "pose": "startled",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "びっくり"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-startled.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Surprised recoil, body curving backward, round small ink eyes and tiny open O mouth, antennae sprung apart, wings spread forward unevenly as though braking midair.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
+    },
+    {
+      "id": "butterfly-wing-greeting",
+      "name": "ちょうちょ・こんにちは",
+      "nameEn": "Butterfly wing greeting",
+      "pose": "wing-greeting",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "こんにちは"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-wing-greeting.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Friendly three-quarter pose, body upright and head tilted, one forewing raised high outward in a greeting while opposite forewing rests low, both smaller hindwings visible. Wave with wing, no human hands.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
+    },
+    {
+      "id": "butterfly-facing-left",
+      "name": "ちょうちょ・ひだりを みる",
+      "nameEn": "Butterfly facing left",
+      "pose": "facing-left",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "ひだりを みる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-facing-left.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Alert left-facing three-quarter profile, head clearly turned left, body almost horizontal, near forewing held tall and rounded and far wing partly open behind, two lower hindwings peeking beneath, antennae gently pointing left.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
+    },
+    {
+      "id": "butterfly-facing-right",
+      "name": "ちょうちょ・みぎを みる",
+      "nameEn": "Butterfly facing right",
+      "pose": "facing-right",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "みぎを みる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "legacyIds": [],
+      "sourceFile": "butterfly-facing-right.png",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One transparent PNG character variation.\nInput image is the saved butterfly identity and painting-style reference. Preserve peach and cream wings with lavender borders, broad teal and ochre painted markings, warm ochre-brown slender body, tiny dark ink eyes, peach blush, two brown antennae with ochre tips. Four wings total, two forewings and two smaller hindwings; no extra wings. Preserve loose tactile gouache, simplified detail.\nSubject: SAME butterfly. Curious right-facing three-quarter pose, head and antennae reaching right with body at a gentle downward diagonal, four wings softly spread backward in a low fan, distinct composition from an upright left-facing butterfly.\nFull isolated body centered in square canvas, entire antennae and wing tips visible with 12% clear margin. Actual transparent background. No ground, shadow, haze, props, text, frame, other animals, collage or pose sheet.",
+      "referenceAsset": "butterfly"
     }
   ]
 }

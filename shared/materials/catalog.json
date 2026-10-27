@@ -2181,6 +2181,204 @@
       "bytes": 2396103,
       "sha256": "dae4e6b369270c6351423620e33f891d32823539bb454d6de8fe2c2a1a7e8e84",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-fluttering",
+      "slug": "butterfly-fluttering",
+      "name": "ちょうちょ・ひらひら",
+      "nameEn": "Fluttering butterfly",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "fluttering",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "ひらひら"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/0628132ea37600170e3ff22e857d3799f7972182500c9883553163bb6c3bda2e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2480445,
+      "sha256": "0628132ea37600170e3ff22e857d3799f7972182500c9883553163bb6c3bda2e",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-wings-folded",
+      "slug": "butterfly-wings-folded",
+      "name": "ちょうちょ・はねを とじる",
+      "nameEn": "Butterfly with folded wings",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "wings-folded",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "はねを とじる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/d366b77541ff88b98fe6471cba24174fd049f5d79cef5ee40f572dcab93a3843",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2068956,
+      "sha256": "d366b77541ff88b98fe6471cba24174fd049f5d79cef5ee40f572dcab93a3843",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-taking-flight",
+      "slug": "butterfly-taking-flight",
+      "name": "ちょうちょ・とびたつ",
+      "nameEn": "Butterfly taking flight",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "taking-flight",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "とびたつ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4e85e0b6d0d37e127b91e4d9e232cac801bf87b277cd6bc25085409aa9a4b681",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2281710,
+      "sha256": "4e85e0b6d0d37e127b91e4d9e232cac801bf87b277cd6bc25085409aa9a4b681",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-resting",
+      "slug": "butterfly-resting",
+      "name": "ちょうちょ・おやすみ",
+      "nameEn": "Resting butterfly",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "resting",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "おやすみ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/e939f53b9c92885c0db4f9b5215ee7da32ab22b6190bb8dbca39a786680efc9c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2544647,
+      "sha256": "e939f53b9c92885c0db4f9b5215ee7da32ab22b6190bb8dbca39a786680efc9c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-cheerful-flutter",
+      "slug": "butterfly-cheerful-flutter",
+      "name": "ちょうちょ・うれしい",
+      "nameEn": "Cheerful butterfly",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "cheerful-flutter",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "うれしい"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4f32565eb3914ab006da0880b55ba751a6c9ae2bb996c46e8572b481de39e43c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2824719,
+      "sha256": "4f32565eb3914ab006da0880b55ba751a6c9ae2bb996c46e8572b481de39e43c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-startled",
+      "slug": "butterfly-startled",
+      "name": "ちょうちょ・びっくり",
+      "nameEn": "Startled butterfly",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "startled",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "びっくり"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5e1ccf4ebece89b787379d1223e0c7df252ca9677f20ee61ceb6dc63a5df3db6",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2659641,
+      "sha256": "5e1ccf4ebece89b787379d1223e0c7df252ca9677f20ee61ceb6dc63a5df3db6",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-wing-greeting",
+      "slug": "butterfly-wing-greeting",
+      "name": "ちょうちょ・こんにちは",
+      "nameEn": "Butterfly wing greeting",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "wing-greeting",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "こんにちは"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/eb27b94978a8c7d42d32f60698e0da977beed90a7d92a5eebaa44eeee6d48d42",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2605607,
+      "sha256": "eb27b94978a8c7d42d32f60698e0da977beed90a7d92a5eebaa44eeee6d48d42",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-facing-left",
+      "slug": "butterfly-facing-left",
+      "name": "ちょうちょ・ひだりを みる",
+      "nameEn": "Butterfly facing left",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "facing-left",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "ひだりを みる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/aa9d41467460ad4f492b65c8a7a6d420e9666868cabc3011829888288e9bd5c7",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2620546,
+      "sha256": "aa9d41467460ad4f492b65c8a7a6d420e9666868cabc3011829888288e9bd5c7",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:butterfly-facing-right",
+      "slug": "butterfly-facing-right",
+      "name": "ちょうちょ・みぎを みる",
+      "nameEn": "Butterfly facing right",
+      "category": "どうぶつ",
+      "characterId": "butterfly",
+      "pose": "facing-right",
+      "tags": [
+        "蝶",
+        "むし",
+        "ちょうちょ",
+        "みぎを みる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/ce0ec7c5f7d61d8fb9cbc3af68883c0880683471bb0382967ea4b1a814b0677e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2506773,
+      "sha256": "ce0ec7c5f7d61d8fb9cbc3af68883c0880683471bb0382967ea4b1a814b0677e",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

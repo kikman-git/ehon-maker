@@ -4,8 +4,8 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **100 accepted PNGs / 500 target; 400 remaining.** The first 100-asset milestone is complete.
-- Animals: 37 images across the requested 10 species. Bird, turtle and penguin each have 10 poses; the other 7 species have 1 each.
+- **109 accepted PNGs / 500 target; 391 remaining.** S10 is complete.
+- Animals: 46 images across the requested 10 species. Bird, butterfly, turtle and penguin each have 10 poses; the other 6 species have 1 each.
 - Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Each remaining category has 1: cottage, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
@@ -15,11 +15,21 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S10 — Butterfly:** add nine distinct poses to the existing wings-open illustration; target total 109. The existing peach/lavender butterfly with teal/ochre markings is the identity reference. Its wings-open pose fills the perched/resting-open-wing slot. Record the pose equivalence when starting S10. No S10 images have been generated.
-
-The user requested stopping after the 100-asset milestone to start a new session. S01–S09 are complete; resume at S10 on the next request.
+**S11 — Buildings / Places A:** school, library, bakery, bookshop, post office, hospital, train station. Seven new illustrations; target total 116. Use the saved bird as painting-style reference. No S11 generation started.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S10 artwork milestone — 109 assets
+
+- Complete: nine new butterfly PNGs: butterfly-fluttering, butterfly-wings-folded, butterfly-taking-flight, butterfly-resting, butterfly-cheerful-flutter, butterfly-startled, butterfly-wing-greeting, butterfly-facing-left, butterfly-facing-right.
+- Built-in image generator using the existing peach/lavender butterfly identity and painting-style reference. Exact prompts saved in `generation.json`.
+- Existing `butterfly` keeps its `wings-open` pose and stable ID; `poseEquivalent` records perched/resting-open-wing (standing slot). The nine new species-specific poses fill walking, sitting, jumping, sleeping, smiling, surprised, waving, looking-left and looking-right respectively.
+- Reviewed all ten on cream and dark blue backgrounds: consistent identity, full silhouettes, distinct poses and clean alpha. No known unresolved artwork issues.
+- Packaging and source/hash/pose validation passed for all 109 assets. App check passed: 46 animal tiles, nine new insertions, reload persistence and PNG export. All ten butterfly search results and thumbnails checked. Shared Kotlin/JS and web production builds passed.
+- Local review previews: `build/butterfly-review-fffaf0.png`, `build/butterfly-review-405d67.png`; exported app image: `build/s10-editor-export.png` (ignored).
+- Deferred E01 packager only stages starter images locally; full generated derivatives were copied into ignored `web/public/materials/a` for app verification. No E01 source changes included.
+- Commit: `feat(materials): S10 complete butterfly variations (109/500)`. Verify push against origin/master before reporting completion.
+- Next: S11. Preserve E01 and Love Letter changes outside artwork commits.
 
 ## S09 artwork milestone — 100 assets
 

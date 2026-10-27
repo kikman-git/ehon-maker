@@ -103,6 +103,15 @@ internal object StorybookMaterials {
         Material("pack.storybook:star-cluster", "ほし", "Star cluster", "はいけい", "a/c2470a25ed9c7e1b332e1b7b77ba7bddb34df0d313cd50c72c9e59fcb1859d77", "star-cluster", "default", listOf("星", "夜空"), listOf()),
         Material("pack.storybook:rolling-hills", "おか", "Rolling hills", "はいけい", "a/0c8a7f8cd86d3351c37ad1b5c183dbc1ff136823250532d121159ec268c9c218", "rolling-hills", "default", listOf("丘", "草原", "風景"), listOf()),
         Material("pack.storybook:mountain-range", "やま", "Mountain range", "はいけい", "a/38bdb947d3e8ebb18f1149162f70af7ff9004c731cfeb32c6dcc426bd2f99c2b", "mountain-range", "default", listOf("山", "風景"), listOf()),
-        Material("pack.storybook:winding-path", "こみち", "Winding path", "はいけい", "a/dae4e6b369270c6351423620e33f891d32823539bb454d6de8fe2c2a1a7e8e84", "winding-path", "default", listOf("道", "小道", "風景"), listOf())
+        Material("pack.storybook:winding-path", "こみち", "Winding path", "はいけい", "a/dae4e6b369270c6351423620e33f891d32823539bb454d6de8fe2c2a1a7e8e84", "winding-path", "default", listOf("道", "小道", "風景"), listOf()),
+        Material("pack.storybook:butterfly-fluttering", "ちょうちょ・ひらひら", "Fluttering butterfly", "どうぶつ", "a/0628132ea37600170e3ff22e857d3799f7972182500c9883553163bb6c3bda2e", "butterfly", "fluttering", listOf("蝶", "むし", "ちょうちょ", "ひらひら"), listOf()),
+        Material("pack.storybook:butterfly-wings-folded", "ちょうちょ・はねを とじる", "Butterfly with folded wings", "どうぶつ", "a/d366b77541ff88b98fe6471cba24174fd049f5d79cef5ee40f572dcab93a3843", "butterfly", "wings-folded", listOf("蝶", "むし", "ちょうちょ", "はねを とじる"), listOf()),
+        Material("pack.storybook:butterfly-taking-flight", "ちょうちょ・とびたつ", "Butterfly taking flight", "どうぶつ", "a/4e85e0b6d0d37e127b91e4d9e232cac801bf87b277cd6bc25085409aa9a4b681", "butterfly", "taking-flight", listOf("蝶", "むし", "ちょうちょ", "とびたつ"), listOf()),
+        Material("pack.storybook:butterfly-resting", "ちょうちょ・おやすみ", "Resting butterfly", "どうぶつ", "a/e939f53b9c92885c0db4f9b5215ee7da32ab22b6190bb8dbca39a786680efc9c", "butterfly", "resting", listOf("蝶", "むし", "ちょうちょ", "おやすみ"), listOf()),
+        Material("pack.storybook:butterfly-cheerful-flutter", "ちょうちょ・うれしい", "Cheerful butterfly", "どうぶつ", "a/4f32565eb3914ab006da0880b55ba751a6c9ae2bb996c46e8572b481de39e43c", "butterfly", "cheerful-flutter", listOf("蝶", "むし", "ちょうちょ", "うれしい"), listOf()),
+        Material("pack.storybook:butterfly-startled", "ちょうちょ・びっくり", "Startled butterfly", "どうぶつ", "a/5e1ccf4ebece89b787379d1223e0c7df252ca9677f20ee61ceb6dc63a5df3db6", "butterfly", "startled", listOf("蝶", "むし", "ちょうちょ", "びっくり"), listOf()),
+        Material("pack.storybook:butterfly-wing-greeting", "ちょうちょ・こんにちは", "Butterfly wing greeting", "どうぶつ", "a/eb27b94978a8c7d42d32f60698e0da977beed90a7d92a5eebaa44eeee6d48d42", "butterfly", "wing-greeting", listOf("蝶", "むし", "ちょうちょ", "こんにちは"), listOf()),
+        Material("pack.storybook:butterfly-facing-left", "ちょうちょ・ひだりを みる", "Butterfly facing left", "どうぶつ", "a/aa9d41467460ad4f492b65c8a7a6d420e9666868cabc3011829888288e9bd5c7", "butterfly", "facing-left", listOf("蝶", "むし", "ちょうちょ", "ひだりを みる"), listOf()),
+        Material("pack.storybook:butterfly-facing-right", "ちょうちょ・みぎを みる", "Butterfly facing right", "どうぶつ", "a/ce0ec7c5f7d61d8fb9cbc3af68883c0880683471bb0382967ea4b1a814b0677e", "butterfly", "facing-right", listOf("蝶", "むし", "ちょうちょ", "みぎを みる"), listOf())
     )
 }
