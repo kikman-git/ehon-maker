@@ -2,7 +2,7 @@
 
 ## Scope and session size
 
-**Current: 93 saved illustrations. Target: 500. Remaining: 407.**
+**Current: 100 saved illustrations. Target: 500. Remaining: 400.**
 
 Plan for **54 artwork sessions**, normally 7–10 accepted illustrations per session, plus **3 dedicated engineering/review sessions**. Complex scene sessions contain only 3 illustrations. These are work packages, not a promise that every package fits one conversation: retries or context limits may split a package into `Sxx-a` and `Sxx-b`. Never reduce quality to meet the batch count.
 
@@ -13,7 +13,7 @@ The earlier suggestion of 20–30 assets per batch is superseded by this smaller
 1. Read this file, `HANDOFF.md`, `README.md`, and the master prompt/refinement in `generation.json`. Read the imagegen skill before generating.
 2. Inspect `git status`, branch/upstream, and recent milestone commits. Preserve unrelated work. Use the latest handoff to resume a partial batch before starting another.
 3. Count the actual entries in `generation.json` and inspect their saved PNGs. Only accepted, saved, integrated artwork counts. Planned entries stay here, not in the runtime manifest.
-4. Complete each session package, review it, update the handoff and checklist, and commit/push. The user has now explicitly requested continuous work across batches without waiting for another continue; proceed to the next artwork session after each milestone.
+4. Complete each session package, review it, update the handoff and checklist, and commit/push. The latest user instruction is to finish the 100-asset milestone and then hand off for a new session. S09 completes that milestone. Resume S10 when the user starts the next session.
 
 ## Art and variation rules
 
@@ -35,7 +35,7 @@ Scene assets are standalone transparent painted vignettes, with feathered/organi
 
 No mirrored copies, alternate resolutions, recolors, unreviewed outputs or failed generations count toward 500.
 
-The user has explicitly prioritized image assets. Continue S09 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
+The user has explicitly prioritized image assets. Continue S10 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
 
 ## Engineering checkpoints
 
@@ -58,7 +58,7 @@ Counts below are **new accepted artwork**, with cumulative totals including the 
 | [x] | S06 | Objects | A: open book, closed book, backpack, basket, umbrella, teddy bear, kite, ball, crayon box, treasure chest | 10 | **75** |
 | [x] | S07 | Vehicles | A: car, bicycle, tricycle, train, tram, fire engine, ambulance, tractor, sailboat, hot-air balloon | 10 | **85** |
 | [x] | S08 | Food | A: banana, strawberry, orange, pear, grapes, watermelon, cherries, peach | 8 | **93** |
-| [ ] | S09 | Background elements | A: sun, moon, rainbow, star cluster, rolling hills, mountain range, winding path | 7 | **100** |
+| [x] | S09 | Background elements | A: sun, moon, rainbow, star cluster, rolling hills, mountain range, winding path | 7 | **100** |
 | [ ] | S10 | Animals | Butterfly: finish its 10-variation set | 9 | **109** |
 | [ ] | S11 | Buildings / Places | A: school, library, bakery, bookshop, post office, hospital, train station | 7 | **116** |
 | [ ] | S12 | Animals | Fish: finish its 10-variation set | 9 | **125** |

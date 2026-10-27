@@ -2036,6 +2036,151 @@
       "bytes": 2634735,
       "sha256": "3297f1fc02e02ef6aff7ab8551b2617fad00a7013e814e37aa53fbfe40286897",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:sun",
+      "slug": "sun",
+      "name": "たいよう",
+      "nameEn": "Sun",
+      "category": "はいけい",
+      "characterId": "sun",
+      "pose": "default",
+      "tags": [
+        "太陽",
+        "空",
+        "晴れ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5d52b2553e54ca92462252b2471113444691c20e7262c81ec2e83d080f519ec2",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1810898,
+      "sha256": "5d52b2553e54ca92462252b2471113444691c20e7262c81ec2e83d080f519ec2",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:moon",
+      "slug": "moon",
+      "name": "つき",
+      "nameEn": "Moon",
+      "category": "はいけい",
+      "characterId": "moon",
+      "pose": "default",
+      "tags": [
+        "月",
+        "夜",
+        "空"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/09e943a35bf7dcb3c4c828dd7caf21144604840c19c1d9377b4c2103db6b4f94",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1651869,
+      "sha256": "09e943a35bf7dcb3c4c828dd7caf21144604840c19c1d9377b4c2103db6b4f94",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:rainbow",
+      "slug": "rainbow",
+      "name": "にじ",
+      "nameEn": "Rainbow",
+      "category": "はいけい",
+      "characterId": "rainbow",
+      "pose": "default",
+      "tags": [
+        "虹",
+        "空",
+        "雨あがり"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/db8e281007ac711a75765d6bd1cf24a415aa2dc470686bc40f66d628bf57db74",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1532972,
+      "sha256": "db8e281007ac711a75765d6bd1cf24a415aa2dc470686bc40f66d628bf57db74",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:star-cluster",
+      "slug": "star-cluster",
+      "name": "ほし",
+      "nameEn": "Star cluster",
+      "category": "はいけい",
+      "characterId": "star-cluster",
+      "pose": "default",
+      "tags": [
+        "星",
+        "夜空"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c2470a25ed9c7e1b332e1b7b77ba7bddb34df0d313cd50c72c9e59fcb1859d77",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1981250,
+      "sha256": "c2470a25ed9c7e1b332e1b7b77ba7bddb34df0d313cd50c72c9e59fcb1859d77",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:rolling-hills",
+      "slug": "rolling-hills",
+      "name": "おか",
+      "nameEn": "Rolling hills",
+      "category": "はいけい",
+      "characterId": "rolling-hills",
+      "pose": "default",
+      "tags": [
+        "丘",
+        "草原",
+        "風景"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/0c8a7f8cd86d3351c37ad1b5c183dbc1ff136823250532d121159ec268c9c218",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1241429,
+      "sha256": "0c8a7f8cd86d3351c37ad1b5c183dbc1ff136823250532d121159ec268c9c218",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:mountain-range",
+      "slug": "mountain-range",
+      "name": "やま",
+      "nameEn": "Mountain range",
+      "category": "はいけい",
+      "characterId": "mountain-range",
+      "pose": "default",
+      "tags": [
+        "山",
+        "風景"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/38bdb947d3e8ebb18f1149162f70af7ff9004c731cfeb32c6dcc426bd2f99c2b",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2149430,
+      "sha256": "38bdb947d3e8ebb18f1149162f70af7ff9004c731cfeb32c6dcc426bd2f99c2b",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:winding-path",
+      "slug": "winding-path",
+      "name": "こみち",
+      "nameEn": "Winding path",
+      "category": "はいけい",
+      "characterId": "winding-path",
+      "pose": "default",
+      "tags": [
+        "道",
+        "小道",
+        "風景"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/dae4e6b369270c6351423620e33f891d32823539bb454d6de8fe2c2a1a7e8e84",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2396103,
+      "sha256": "dae4e6b369270c6351423620e33f891d32823539bb454d6de8fe2c2a1a7e8e84",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

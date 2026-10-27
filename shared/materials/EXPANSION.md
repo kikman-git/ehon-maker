@@ -1,6 +1,6 @@
 # Full library target
 
-The target is **500 distinct, approved transparent PNG illustrations**. The current 93 assets include completed bird, turtle and penguin sets, eleven nature paintings, ten people poses eleven objects, eleven vehicles and nine foods; 407 remain. Thumbnail derivatives, resolutions, mirrored copies and recolors do not count as additional illustrations.
+The target is **500 distinct, approved transparent PNG illustrations**. The current 100 assets include completed bird, turtle and penguin sets, eleven nature paintings, ten people poses, eleven objects, eleven vehicles, nine foods and eight background elements; 400 remain. Thumbnail derivatives, resolutions, mirrored copies and recolors do not count as additional illustrations.
 
 | Category | Target |
 | --- | ---: |
@@ -22,6 +22,6 @@ The ten variation slots are standing, walking, sitting, jumping, sleeping, smili
 
 Continue the less-realistic painterly storybook direction in `generation.json`: broad gouache brushwork, soft watercolor texture, expressive simple faces and warm color. All subjects are isolated, fully visible, transparent raster paintings.
 
-Production milestones are 100, 250 and 500 approved assets. The [session checklist](SESSION_PLAN.md) divides expansion beyond the original 22 into 54 artwork sessions (S01–S08 complete), normally 7–10 accepted assets each, plus three engineering/review sessions. Each completed batch is committed and pushed. Complex scenes use smaller batches; unfinished batches carry forward with a handoff. Track actual completed assets through the generation manifest and [handoff](HANDOFF.md), not these target counts.
+Production milestones are 100, 250 and 500 approved assets. The [session checklist](SESSION_PLAN.md) divides expansion beyond the original 22 into 54 artwork sessions (S01–S09 complete), normally 7–10 accepted assets each, plus three engineering/review sessions. Each completed batch is committed and pushed. Complex scenes use smaller batches; unfinished batches carry forward with a handoff. Track actual completed assets through the generation manifest and [handoff](HANDOFF.md), not these target counts.
 
 Before distributing hundreds of masters, extend the bundled starter catalog with versioned remote catalog/storage and on-demand downloads plus offline caching. Keep stable IDs and immutable content hashes. Avoid adding hundreds of full-resolution masters to every app installation; retain locally available starter content. This delivery expansion is pending implementation.

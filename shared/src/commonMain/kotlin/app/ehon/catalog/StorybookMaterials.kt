@@ -96,6 +96,13 @@ internal object StorybookMaterials {
         Material("pack.storybook:grapes", "ぶどう", "Grapes", "たべもの", "a/efcd044520c6f4b75bd98c3c364fe1ea14a95565babe3543223ee13bdd04e1cb", "grapes", "default", listOf("果物", "くだもの"), listOf()),
         Material("pack.storybook:watermelon", "すいか", "Watermelon", "たべもの", "a/a95a0d0f11bbf9d780c58d90152d08ede9eb37dfa2e9737e49ce8cea8a176da1", "watermelon", "default", listOf("果物", "くだもの"), listOf()),
         Material("pack.storybook:cherries", "さくらんぼ", "Cherries", "たべもの", "a/f8e34ddd22515c8467fecfa16bc43e6244fb9c28b8fbcceea6ea67784f308109", "cherries", "default", listOf("果物", "くだもの"), listOf()),
-        Material("pack.storybook:peach", "もも", "Peach", "たべもの", "a/3297f1fc02e02ef6aff7ab8551b2617fad00a7013e814e37aa53fbfe40286897", "peach", "default", listOf("果物", "くだもの"), listOf())
+        Material("pack.storybook:peach", "もも", "Peach", "たべもの", "a/3297f1fc02e02ef6aff7ab8551b2617fad00a7013e814e37aa53fbfe40286897", "peach", "default", listOf("果物", "くだもの"), listOf()),
+        Material("pack.storybook:sun", "たいよう", "Sun", "はいけい", "a/5d52b2553e54ca92462252b2471113444691c20e7262c81ec2e83d080f519ec2", "sun", "default", listOf("太陽", "空", "晴れ"), listOf()),
+        Material("pack.storybook:moon", "つき", "Moon", "はいけい", "a/09e943a35bf7dcb3c4c828dd7caf21144604840c19c1d9377b4c2103db6b4f94", "moon", "default", listOf("月", "夜", "空"), listOf()),
+        Material("pack.storybook:rainbow", "にじ", "Rainbow", "はいけい", "a/db8e281007ac711a75765d6bd1cf24a415aa2dc470686bc40f66d628bf57db74", "rainbow", "default", listOf("虹", "空", "雨あがり"), listOf()),
+        Material("pack.storybook:star-cluster", "ほし", "Star cluster", "はいけい", "a/c2470a25ed9c7e1b332e1b7b77ba7bddb34df0d313cd50c72c9e59fcb1859d77", "star-cluster", "default", listOf("星", "夜空"), listOf()),
+        Material("pack.storybook:rolling-hills", "おか", "Rolling hills", "はいけい", "a/0c8a7f8cd86d3351c37ad1b5c183dbc1ff136823250532d121159ec268c9c218", "rolling-hills", "default", listOf("丘", "草原", "風景"), listOf()),
+        Material("pack.storybook:mountain-range", "やま", "Mountain range", "はいけい", "a/38bdb947d3e8ebb18f1149162f70af7ff9004c731cfeb32c6dcc426bd2f99c2b", "mountain-range", "default", listOf("山", "風景"), listOf()),
+        Material("pack.storybook:winding-path", "こみち", "Winding path", "はいけい", "a/dae4e6b369270c6351423620e33f891d32823539bb454d6de8fe2c2a1a7e8e84", "winding-path", "default", listOf("道", "小道", "風景"), listOf())
     )
 }

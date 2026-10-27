@@ -4,9 +4,9 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **93 accepted PNGs / 500 target; 407 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
+- **100 accepted PNGs / 500 target; 400 remaining.** The first 100-asset milestone is complete.
 - Animals: 37 images across the requested 10 species. Bird, turtle and penguin each have 10 poses; the other 7 species have 1 each.
-- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Each remaining category has 1: cottage, cloud, forest scene, pumpkin.
+- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Each remaining category has 1: cottage, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,20 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S09 — Background elements A:** sun, moon, rainbow, star-cluster, rolling-hills, mountain-range, winding-path. Seven new paintings; target total 100.
+**S10 — Butterfly:** add nine distinct poses to the existing wings-open illustration; target total 109. The existing peach/lavender butterfly with teal/ochre markings is the identity reference. Its wings-open pose fills the perched/resting-open-wing slot. Record the pose equivalence when starting S10. No S10 images have been generated.
+
+The user requested stopping after the 100-asset milestone to start a new session. S01–S09 are complete; resume at S10 on the next request.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S09 artwork milestone — 100 assets
+
+- Seven new background elements: sun, moon, rainbow, star-cluster, rolling-hills, mountain-range, winding-path. Built-in image generator using the bird painting-style reference. Exact prompts and framing corrections are recorded in `generation.json`.
+- Rejected mountain/path attempts with external haze; regenerated clean transparent cutouts. Corrected the sun framing and rainbow/hills source dimensions. All accepted sources meet the alpha and minimum-resolution checks.
+- Reviewed on light/dark backgrounds; packaging and source/hash validation passed for all 100 assets.
+- App check passed: eight background tiles, seven new insertions, reload persistence and PNG export.
+- Commit: `feat(materials): S09 background illustrations (100/500)`. Push to origin/master and verify remote HEAD before reporting completion.
+- No S10 generation started. Next session begins with nine butterfly variants. Keep E01 and Love Letter changes outside artwork commits.
 
 ## S08 artwork milestone
 
