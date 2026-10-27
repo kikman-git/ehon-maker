@@ -4,8 +4,8 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **134 accepted PNGs / 500 target; 366 remaining.** S13 is complete.
-- Animals: 55 images across the requested 10 species. Bird, butterfly, fish, turtle and penguin each have 10 poses; the other 5 species have 1 each.
+- **143 accepted PNGs / 500 target; 357 remaining.** S14 is complete.
+- Animals: 64 images across the requested 10 species. Bird, butterfly, fish, octopus, turtle and penguin each have 10 poses; the other 4 species have 1 each.
 - Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 1 forest scene.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
@@ -15,9 +15,16 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S14 — Octopus:** finish nine new poses; target 143. Crawling generated with an eight-arm correction; remaining poses pending. Compact prompts and continuous artwork requested.
+**S15 — Scenes:** woodland-picnic, pondside-garden, vegetable-garden generated; reviewing framing before integration. Target 146.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S14 artwork milestone — 143 assets
+
+- Nine octopus PNGs: crawling, settled, buoyant-leap, sleeping, smiling, surprised, waving, looking-left, looking-right. Saved octopus reference, built-in imagegen. Eight arms checked in every pose; missing arms corrected in crawling, settled and left view; right-view framing corrected.
+- Existing smiling pose label preserved and mapped to resting-upright; new octopus-smiling uses joyful-smiling pose. Exact prompts/corrections in manifest.
+- Cream/dark review, source/hash validation, core build and app insertion/reload/export checks passed. No known artwork issues.
+- Commit: `feat(materials): S14 complete octopus variations (143/500)`. Push and verify origin/master.
 
 ## S13 artwork milestone — 134 assets
 

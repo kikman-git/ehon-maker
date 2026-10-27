@@ -137,6 +137,15 @@ internal object StorybookMaterials {
         Material("pack.storybook:koinobori", "こいのぼり", "Koinobori", "きせつ・ぎょうじ", "a/a5ccc203c6e9edc352ddfc3659329dd6eb8132de499eb682f9bfbf4bc5e43229", "koinobori", "default", listOf("こどもの日", "五月"), listOf()),
         Material("pack.storybook:tanabata-bamboo", "たなばたの ささ", "Tanabata bamboo", "きせつ・ぎょうじ", "a/228fa668553f5a72d25d5eb8fcbb82edb39d0a761a4da1178cbed38f3f04514b", "tanabata-bamboo", "default", listOf("七夕", "夏"), listOf()),
         Material("pack.storybook:festival-fan", "うちわ", "Summer festival fan", "きせつ・ぎょうじ", "a/b31f613947bc2c6757de0cd775ff9d76f77d3c742be038acfa86b20adaa928cd", "festival-fan", "default", listOf("夏祭り", "夏"), listOf()),
-        Material("pack.storybook:autumn-wreath", "あきの リース", "Autumn wreath", "きせつ・ぎょうじ", "a/b22dbf6957dec7c372ace1d2affedd57263b72f972618d87972b20dd5ca13d39", "autumn-wreath", "default", listOf("秋", "葉"), listOf())
+        Material("pack.storybook:autumn-wreath", "あきの リース", "Autumn wreath", "きせつ・ぎょうじ", "a/b22dbf6957dec7c372ace1d2affedd57263b72f972618d87972b20dd5ca13d39", "autumn-wreath", "default", listOf("秋", "葉"), listOf()),
+        Material("pack.storybook:octopus-crawling", "たこ・あるく", "Crawling octopus", "どうぶつ", "a/4de8d9b86fea5f727f24c6268b6821fe741ce1ece1a7a340a58ad5400d56eb75", "octopus", "crawling", listOf("蛸", "たこ", "あるく"), listOf()),
+        Material("pack.storybook:octopus-settled", "たこ・ひとやすみ", "Settled octopus", "どうぶつ", "a/6789774372f706ea7cb7f889c09dab25e16865a32755e6e7b05bbb663367d1bc", "octopus", "settled", listOf("蛸", "たこ", "ひとやすみ"), listOf()),
+        Material("pack.storybook:octopus-buoyant-leap", "たこ・ジャンプ", "Leaping octopus", "どうぶつ", "a/631be5887d31887c920e24c324106292ed0feeaf1043f7365bdb77f50ac1ca4d", "octopus", "buoyant-leap", listOf("蛸", "たこ", "ジャンプ"), listOf()),
+        Material("pack.storybook:octopus-sleeping", "たこ・ねむる", "Sleeping octopus", "どうぶつ", "a/060564cdcc3ad6ef37a63ee1163d248583f436958b49b273613e8e6643fd991a", "octopus", "sleeping", listOf("蛸", "たこ", "ねむる"), listOf()),
+        Material("pack.storybook:octopus-smiling", "たこ・にこにこ", "Smiling octopus", "どうぶつ", "a/10255d57de95077b68c85a29476078b1143b197ebb518cfddf4d430a90433c30", "octopus", "joyful-smiling", listOf("蛸", "たこ", "にこにこ"), listOf()),
+        Material("pack.storybook:octopus-surprised", "たこ・びっくり", "Surprised octopus", "どうぶつ", "a/b248920b9097d81852278555ad48256abbab813ffb2aa3c979fedf3c53dffddf", "octopus", "surprised", listOf("蛸", "たこ", "びっくり"), listOf()),
+        Material("pack.storybook:octopus-waving", "たこ・こんにちは", "Waving octopus", "どうぶつ", "a/5e6cf0b8cd9c1b68a201ae7f6b7a55d8a0552309ad979ff0e35b879426840f9c", "octopus", "waving", listOf("蛸", "たこ", "こんにちは"), listOf()),
+        Material("pack.storybook:octopus-looking-left", "たこ・ひだりを みる", "Octopus looking left", "どうぶつ", "a/4569e44c9291c35e25da99b225516e6d962904ae10d8ffee12e74a93778c27a8", "octopus", "looking-left", listOf("蛸", "たこ", "ひだりを みる"), listOf()),
+        Material("pack.storybook:octopus-looking-right", "たこ・みぎを みる", "Octopus looking right", "どうぶつ", "a/6798a04f4125200dafa877ceae01f2d26798302949e0e7e23c69040bb034a21f", "octopus", "looking-right", listOf("蛸", "たこ", "みぎを みる"), listOf())
     )
 }

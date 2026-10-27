@@ -193,7 +193,8 @@
       ],
       "sourceFile": "octopus.png",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse the attached bird ONLY as the style reference: match its loose brushwork, charming simplicity, soft shading and detail level. Generate a DIFFERENT subject: One friendly coral octopus, round small mantle and EIGHT distinct curling arms with eight clearly separated visible tips: four on the left and four on the right. Simple little friendly eyes and smile. A few pale suction cup dabs. Every arm visible and countable.\nONE full-body isolated subject, centered, 12% clear margin, actual transparent background, no ground, haze, outline, text or border. Do not include the reference bird.",
-      "referenceAsset": "bird"
+      "referenceAsset": "bird",
+      "poseEquivalent": "resting upright (standing slot)"
     },
     {
       "id": "whale",
@@ -2374,6 +2375,168 @@
       "sourceFile": "autumn-wreath.png",
       "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. One round autumn wreath of broad ochre, rust and muted red maple and oak leaves with three small acorns, loosely arranged around slender twig ring, clear transparent opening in center. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects. Square canvas.",
       "referenceAsset": "bird"
+    },
+    {
+      "id": "octopus-crawling",
+      "name": "たこ・あるく",
+      "nameEn": "Crawling octopus",
+      "pose": "crawling",
+      "tags": [
+        "蛸",
+        "たこ",
+        "あるく"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-crawling.png",
+      "prompt": "Correct this octopus to EXACTLY EIGHT arms. It currently has seven visible curled tips. Add ONE extra coral-orange arm emerging behind the upper-left side of the head and curling upward-left into the empty space, with cream suction cups. Keep the existing seven arms, face, colors and gouache style unchanged. Full silhouette, true transparent background.",
+      "referenceAsset": "octopus",
+      "initialPrompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Crawling left, body leaning forward, eight arms arranged as alternating forward-reaching and trailing curls, all eight tips visible. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text.",
+      "generationNotes": "Missing eighth arm corrected using initial generated pose."
+    },
+    {
+      "id": "octopus-settled",
+      "name": "たこ・ひとやすみ",
+      "nameEn": "Settled octopus",
+      "pose": "settled",
+      "tags": [
+        "蛸",
+        "たこ",
+        "ひとやすみ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-settled.png",
+      "prompt": "This octopus has seven curled arm tips. Add exactly ONE small eighth arm behind the head on the upper-left, its curled tip clearly visible above the existing leftmost back arm. Preserve all seven existing arms, lowered relaxed head, face, colors, cream suckers, gouache and transparency. Exactly eight arms total, no other changes.",
+      "referenceAsset": "octopus",
+      "initialPrompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Settled low with head lowered and eight arms loosely coiled around its base, relaxed half-lidded eyes, all eight tips visible. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text.",
+      "generationNotes": "Missing eighth arm corrected using initial generated pose."
+    },
+    {
+      "id": "octopus-buoyant-leap",
+      "name": "たこ・ジャンプ",
+      "nameEn": "Leaping octopus",
+      "pose": "buoyant-leap",
+      "tags": [
+        "蛸",
+        "たこ",
+        "ジャンプ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-buoyant-leap.png",
+      "prompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Buoyant upward leap, body tilted right, eight arms streaming below in distinct curved arcs with all eight tips separated and visible. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text. Arrange four arms on each side with clear gaps so eight tips can be counted.",
+      "referenceAsset": "octopus"
+    },
+    {
+      "id": "octopus-sleeping",
+      "name": "たこ・ねむる",
+      "nameEn": "Sleeping octopus",
+      "pose": "sleeping",
+      "tags": [
+        "蛸",
+        "たこ",
+        "ねむる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-sleeping.png",
+      "prompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Sleeping with head tilted left, eyes closed, eight arms tucked in soft short curls around body, eight distinct visible tips. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text. Arrange four arms on each side with clear gaps so eight tips can be counted.",
+      "referenceAsset": "octopus"
+    },
+    {
+      "id": "octopus-smiling",
+      "name": "たこ・にこにこ",
+      "nameEn": "Smiling octopus",
+      "pose": "joyful-smiling",
+      "tags": [
+        "蛸",
+        "たこ",
+        "にこにこ"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-smiling.png",
+      "prompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Joyful delighted smile and happy curved eyes, head tilted up, eight arms spread broadly in celebratory curling arcs, all eight tips visible. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text. Arrange four arms on each side with clear gaps so eight tips can be counted.",
+      "referenceAsset": "octopus",
+      "poseEquivalent": "smiling slot; existing octopus smiling label retained for resting-upright slot"
+    },
+    {
+      "id": "octopus-surprised",
+      "name": "たこ・びっくり",
+      "nameEn": "Surprised octopus",
+      "pose": "surprised",
+      "tags": [
+        "蛸",
+        "たこ",
+        "びっくり"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-surprised.png",
+      "prompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Startled recoil, head leaning back, small round eyes and O mouth, eight arms splayed in short asymmetric curls, all eight tips visible. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text. Arrange four arms on each side with clear gaps so eight tips can be counted.",
+      "referenceAsset": "octopus"
+    },
+    {
+      "id": "octopus-waving",
+      "name": "たこ・こんにちは",
+      "nameEn": "Waving octopus",
+      "pose": "waving",
+      "tags": [
+        "蛸",
+        "たこ",
+        "こんにちは"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-waving.png",
+      "prompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Friendly greeting: exactly one arm lifted high beside head, seven other arms spread low around body, all eight tips visible, small smile. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text. Redraw the pose: one long arm straight up on right, other seven short arms spread at base, head turned left. Do not reuse reference arm layout.",
+      "referenceAsset": "octopus"
+    },
+    {
+      "id": "octopus-looking-left",
+      "name": "たこ・ひだりを みる",
+      "nameEn": "Octopus looking left",
+      "pose": "looking-left",
+      "tags": [
+        "蛸",
+        "たこ",
+        "ひだりを みる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-looking-left.png",
+      "prompt": "Add exactly ONE eighth arm to this seven-arm octopus, behind the head at upper-right with a distinct curled tip above the existing right rear arm. Keep all seven existing arms and the left-facing profile unchanged. Same coral gouache, cream suction cups, true transparent background, full silhouette.",
+      "referenceAsset": "octopus",
+      "initialPrompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Looking left in three-quarter view, head leaning toward left, eight arms fanned underneath with two reaching left, all eight distinct tips visible. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text. Redraw with head in left profile and eight low arms, four reaching left and four curling behind right. Do not reuse reference arm layout.",
+      "generationNotes": "Missing eighth arm corrected using initial generated pose."
+    },
+    {
+      "id": "octopus-looking-right",
+      "name": "たこ・みぎを みる",
+      "nameEn": "Octopus looking right",
+      "pose": "looking-right",
+      "tags": [
+        "蛸",
+        "たこ",
+        "みぎを みる"
+      ],
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "legacyIds": [],
+      "sourceFile": "octopus-looking-right.png",
+      "prompt": "Repaint this same eight-arm octopus SMALLER centered on square transparent canvas. Entire character occupies at most 70% width and height, wide empty transparent margins on ALL sides. Show every arm tip fully; none touches image edge. Preserve right-looking face, exactly eight arms, coral gouache, cream suckers. No ground, shadow, props or text.",
+      "referenceAsset": "octopus",
+      "initialPrompt": "Same coral-orange octopus as reference: round peach face, small ink eyes, blush cheeks, cream suction cups, broad soft gouache brushwork. Looking right, curious head tilted right and slightly up, eight arms arranged in broad low asymmetric fan, all eight distinct tips visible. Exactly EIGHT arms total, no extras or missing limbs. Whole body inside wide transparent margins, square canvas. True transparent background, no ground, water, shadows, props or text. Redraw with head right-facing, body low, FOUR separate curled arm tips to the left and FOUR to the right. All eight visible and separated.",
+      "generationNotes": "Framing corrected."
     }
   ]
 }

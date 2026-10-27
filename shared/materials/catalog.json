@@ -2888,6 +2888,195 @@
       "bytes": 2544386,
       "sha256": "b22dbf6957dec7c372ace1d2affedd57263b72f972618d87972b20dd5ca13d39",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-crawling",
+      "slug": "octopus-crawling",
+      "name": "たこ・あるく",
+      "nameEn": "Crawling octopus",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "crawling",
+      "tags": [
+        "蛸",
+        "たこ",
+        "あるく"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4de8d9b86fea5f727f24c6268b6821fe741ce1ece1a7a340a58ad5400d56eb75",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2046006,
+      "sha256": "4de8d9b86fea5f727f24c6268b6821fe741ce1ece1a7a340a58ad5400d56eb75",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-settled",
+      "slug": "octopus-settled",
+      "name": "たこ・ひとやすみ",
+      "nameEn": "Settled octopus",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "settled",
+      "tags": [
+        "蛸",
+        "たこ",
+        "ひとやすみ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/6789774372f706ea7cb7f889c09dab25e16865a32755e6e7b05bbb663367d1bc",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1758599,
+      "sha256": "6789774372f706ea7cb7f889c09dab25e16865a32755e6e7b05bbb663367d1bc",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-buoyant-leap",
+      "slug": "octopus-buoyant-leap",
+      "name": "たこ・ジャンプ",
+      "nameEn": "Leaping octopus",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "buoyant-leap",
+      "tags": [
+        "蛸",
+        "たこ",
+        "ジャンプ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/631be5887d31887c920e24c324106292ed0feeaf1043f7365bdb77f50ac1ca4d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2336046,
+      "sha256": "631be5887d31887c920e24c324106292ed0feeaf1043f7365bdb77f50ac1ca4d",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-sleeping",
+      "slug": "octopus-sleeping",
+      "name": "たこ・ねむる",
+      "nameEn": "Sleeping octopus",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "sleeping",
+      "tags": [
+        "蛸",
+        "たこ",
+        "ねむる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/060564cdcc3ad6ef37a63ee1163d248583f436958b49b273613e8e6643fd991a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2337011,
+      "sha256": "060564cdcc3ad6ef37a63ee1163d248583f436958b49b273613e8e6643fd991a",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-smiling",
+      "slug": "octopus-smiling",
+      "name": "たこ・にこにこ",
+      "nameEn": "Smiling octopus",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "joyful-smiling",
+      "tags": [
+        "蛸",
+        "たこ",
+        "にこにこ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/10255d57de95077b68c85a29476078b1143b197ebb518cfddf4d430a90433c30",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2254257,
+      "sha256": "10255d57de95077b68c85a29476078b1143b197ebb518cfddf4d430a90433c30",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-surprised",
+      "slug": "octopus-surprised",
+      "name": "たこ・びっくり",
+      "nameEn": "Surprised octopus",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "surprised",
+      "tags": [
+        "蛸",
+        "たこ",
+        "びっくり"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b248920b9097d81852278555ad48256abbab813ffb2aa3c979fedf3c53dffddf",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2174213,
+      "sha256": "b248920b9097d81852278555ad48256abbab813ffb2aa3c979fedf3c53dffddf",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-waving",
+      "slug": "octopus-waving",
+      "name": "たこ・こんにちは",
+      "nameEn": "Waving octopus",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "waving",
+      "tags": [
+        "蛸",
+        "たこ",
+        "こんにちは"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5e6cf0b8cd9c1b68a201ae7f6b7a55d8a0552309ad979ff0e35b879426840f9c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2200758,
+      "sha256": "5e6cf0b8cd9c1b68a201ae7f6b7a55d8a0552309ad979ff0e35b879426840f9c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-looking-left",
+      "slug": "octopus-looking-left",
+      "name": "たこ・ひだりを みる",
+      "nameEn": "Octopus looking left",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "looking-left",
+      "tags": [
+        "蛸",
+        "たこ",
+        "ひだりを みる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4569e44c9291c35e25da99b225516e6d962904ae10d8ffee12e74a93778c27a8",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2140987,
+      "sha256": "4569e44c9291c35e25da99b225516e6d962904ae10d8ffee12e74a93778c27a8",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:octopus-looking-right",
+      "slug": "octopus-looking-right",
+      "name": "たこ・みぎを みる",
+      "nameEn": "Octopus looking right",
+      "category": "どうぶつ",
+      "characterId": "octopus",
+      "pose": "looking-right",
+      "tags": [
+        "蛸",
+        "たこ",
+        "みぎを みる"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/6798a04f4125200dafa877ceae01f2d26798302949e0e7e23c69040bb034a21f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1274888,
+      "sha256": "6798a04f4125200dafa877ceae01f2d26798302949e0e7e23c69040bb034a21f",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }
