@@ -1464,6 +1464,213 @@
       "bytes": 2306956,
       "sha256": "c8fba436f1d9a30d083e3c36e1b182e2913203317a0d6e83e4854fea0bcf473a",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:open-book",
+      "slug": "open-book",
+      "name": "ひらいたほん",
+      "nameEn": "Open book",
+      "category": "もの",
+      "characterId": "open-book",
+      "pose": "default",
+      "tags": [
+        "本",
+        "読書",
+        "絵本"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c7509bcc2c599d7fd24ccc059abb9ec1d1f273e8e433ea10112515bcf7db06e5",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1671821,
+      "sha256": "c7509bcc2c599d7fd24ccc059abb9ec1d1f273e8e433ea10112515bcf7db06e5",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:closed-book",
+      "slug": "closed-book",
+      "name": "とじたほん",
+      "nameEn": "Closed book",
+      "category": "もの",
+      "characterId": "closed-book",
+      "pose": "default",
+      "tags": [
+        "本",
+        "読書"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b8aa8ea9c6eed84c1db5a1724fa54859b47a6ea6f87dc64ca59db3956db40e0e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2150775,
+      "sha256": "b8aa8ea9c6eed84c1db5a1724fa54859b47a6ea6f87dc64ca59db3956db40e0e",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:backpack",
+      "slug": "backpack",
+      "name": "リュック",
+      "nameEn": "Backpack",
+      "category": "もの",
+      "characterId": "backpack",
+      "pose": "default",
+      "tags": [
+        "鞄",
+        "かばん",
+        "学校"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/9f5b18446990ad8bdd4f5ae3b13ef3bf4b4218b6c230fd7319673ce8c56a8ee1",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2888874,
+      "sha256": "9f5b18446990ad8bdd4f5ae3b13ef3bf4b4218b6c230fd7319673ce8c56a8ee1",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:basket",
+      "slug": "basket",
+      "name": "かご",
+      "nameEn": "Basket",
+      "category": "もの",
+      "characterId": "basket",
+      "pose": "default",
+      "tags": [
+        "籠",
+        "ピクニック"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/ec670a626df415c50ad9d4b70e9d1867db509402bfc5ce7181b30abae27e011e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2452394,
+      "sha256": "ec670a626df415c50ad9d4b70e9d1867db509402bfc5ce7181b30abae27e011e",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:umbrella",
+      "slug": "umbrella",
+      "name": "かさ",
+      "nameEn": "Umbrella",
+      "category": "もの",
+      "characterId": "umbrella",
+      "pose": "default",
+      "tags": [
+        "傘",
+        "雨"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/232d7256669d3605e189eb5d004a7df553deda9ddbcc5a4f8567b2d9117e8f61",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1580831,
+      "sha256": "232d7256669d3605e189eb5d004a7df553deda9ddbcc5a4f8567b2d9117e8f61",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:teddy-bear",
+      "slug": "teddy-bear",
+      "name": "くまのぬいぐるみ",
+      "nameEn": "Teddy bear",
+      "category": "もの",
+      "characterId": "teddy-bear",
+      "pose": "default",
+      "tags": [
+        "玩具",
+        "くま",
+        "ぬいぐるみ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/cb859ed6739738abf7225646e580eaa2da797b55308869320a624093cb5bda6b",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2570461,
+      "sha256": "cb859ed6739738abf7225646e580eaa2da797b55308869320a624093cb5bda6b",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:kite",
+      "slug": "kite",
+      "name": "たこ",
+      "nameEn": "Kite",
+      "category": "もの",
+      "characterId": "kite",
+      "pose": "default",
+      "tags": [
+        "凧",
+        "空",
+        "あそび"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/681edc79127416b15a30a2b4fb2f3f98cadd83a3bc5183f5985c985940d520e2",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1145081,
+      "sha256": "681edc79127416b15a30a2b4fb2f3f98cadd83a3bc5183f5985c985940d520e2",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:ball",
+      "slug": "ball",
+      "name": "ボール",
+      "nameEn": "Ball",
+      "category": "もの",
+      "characterId": "ball",
+      "pose": "default",
+      "tags": [
+        "球",
+        "あそび",
+        "玩具"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/33a6896d0834ce5a2b9d13728f5b9113a21224c851014b31586d3a2e50b22c5c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2041869,
+      "sha256": "33a6896d0834ce5a2b9d13728f5b9113a21224c851014b31586d3a2e50b22c5c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:crayon-box",
+      "slug": "crayon-box",
+      "name": "クレヨン",
+      "nameEn": "Crayon box",
+      "category": "もの",
+      "characterId": "crayon-box",
+      "pose": "default",
+      "tags": [
+        "文具",
+        "おえかき",
+        "色"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/936eaa9d6afefcd19616a5d700d83347cec2cf10d0032731311dcb51a4ff5953",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2607474,
+      "sha256": "936eaa9d6afefcd19616a5d700d83347cec2cf10d0032731311dcb51a4ff5953",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:treasure-chest",
+      "slug": "treasure-chest",
+      "name": "たからばこ",
+      "nameEn": "Treasure chest",
+      "category": "もの",
+      "characterId": "treasure-chest",
+      "pose": "default",
+      "tags": [
+        "宝箱",
+        "宝",
+        "冒険"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/1d3920ef1b8bd7167e187f5bd424e07babe940a239e75f71d17c42a7a43302c2",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2672813,
+      "sha256": "1d3920ef1b8bd7167e187f5bd424e07babe940a239e75f71d17c42a7a43302c2",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

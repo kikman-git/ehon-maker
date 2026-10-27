@@ -1212,6 +1212,174 @@
       "sourceFile": "penguin-looking-right.png",
       "referenceAsset": "penguin",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Preserve the exact attached penguin identity: round chubby body, slate-blue crown/back/flippers, cream face patches and belly, tiny brown ink eyes, peach cheeks, small orange beak and orange webbed feet, soft head tuft. Broad gouache strokes, warm creamy highlights, no individual feathers.\nSubject: Rear three-quarter view with slate-blue back visible, head turning over its right shoulder toward right edge, cream cheek and orange beak visible, short tail and both feet. A distinct looking-back composition.\nExactly two flippers, two feet, one head and one small tail. One full-body isolated character only, actual transparent background. Entire silhouette within central 78% of square canvas with ample clear margins around all tips. No ground, cast shadow, props, snow, text or frame."
+    },
+    {
+      "id": "open-book",
+      "name": "ひらいたほん",
+      "nameEn": "Open book",
+      "category": "もの",
+      "characterId": "open-book",
+      "pose": "default",
+      "tags": [
+        "本",
+        "読書",
+        "絵本"
+      ],
+      "legacyIds": [],
+      "sourceFile": "open-book.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: An open beloved picture book in gentle three-quarter view, thick warm ivory pages softly curved at the spine, teal cloth cover peeking beneath, one tiny painted sun and simple hill on the page, no words or letters.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector.",
+      "editPrompt": "Correct ONLY the framing of this open picture-book illustration. Preserve the teal hardcover, warm ivory curved pages, painted hills, flowers and sun, exact composition and broad gouache texture. Make the entire book smaller within a square transparent canvas, with at least 12% empty transparent margin on ALL sides. Repaint the clipped far-right cover corner naturally. All page and cover corners must be fully visible, comfortably inside the image. Actual transparent alpha background; no shadow, ground, text or new objects."
+    },
+    {
+      "id": "closed-book",
+      "name": "とじたほん",
+      "nameEn": "Closed book",
+      "category": "もの",
+      "characterId": "closed-book",
+      "pose": "default",
+      "tags": [
+        "本",
+        "読書"
+      ],
+      "legacyIds": [],
+      "sourceFile": "closed-book.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One closed thick storybook in three-quarter view, warm coral cloth hardcover with a small gold star embossed on front, cream page edges and a teal ribbon bookmark peeking out. No lettering.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "backpack",
+      "name": "リュック",
+      "nameEn": "Backpack",
+      "category": "もの",
+      "characterId": "backpack",
+      "pose": "default",
+      "tags": [
+        "鞄",
+        "かばん",
+        "学校"
+      ],
+      "legacyIds": [],
+      "sourceFile": "backpack.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One small mustard-yellow canvas child's backpack, rounded flap, brown leather buckle straps, front pocket and top carry loop, softly slumped cozy form, front three-quarter view.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "basket",
+      "name": "かご",
+      "nameEn": "Basket",
+      "category": "もの",
+      "characterId": "basket",
+      "pose": "default",
+      "tags": [
+        "籠",
+        "ピクニック"
+      ],
+      "legacyIds": [],
+      "sourceFile": "basket.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: An empty round honey-brown wicker basket with one broad arched handle, loosely indicated woven texture using broad strokes, oval open rim with warm shaded interior, three-quarter view.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "umbrella",
+      "name": "かさ",
+      "nameEn": "Umbrella",
+      "category": "もの",
+      "characterId": "umbrella",
+      "pose": "default",
+      "tags": [
+        "傘",
+        "雨"
+      ],
+      "legacyIds": [],
+      "sourceFile": "umbrella.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One open coral-red umbrella with soft alternating apricot panels, curved wooden J handle and slender shaft fully visible, tilted diagonally for charming silhouette. No rain.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "teddy-bear",
+      "name": "くまのぬいぐるみ",
+      "nameEn": "Teddy bear",
+      "category": "もの",
+      "characterId": "teddy-bear",
+      "pose": "default",
+      "tags": [
+        "玩具",
+        "くま",
+        "ぬいぐるみ"
+      ],
+      "legacyIds": [],
+      "sourceFile": "teddy-bear.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One soft honey-brown teddy bear toy seated with short rounded arms and plump legs, cream muzzle and paw pads, little stitched nose and simple ink eyes, a sage-green ribbon around neck. Clearly a cloth toy, broad painted texture not individual fur.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "kite",
+      "name": "たこ",
+      "nameEn": "Kite",
+      "category": "もの",
+      "characterId": "kite",
+      "pose": "default",
+      "tags": [
+        "凧",
+        "空",
+        "あそび"
+      ],
+      "legacyIds": [],
+      "sourceFile": "kite.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One classic diamond kite divided into coral, golden yellow, teal and cream panels, a gently curving short tail with three cloth bows and a short curled string entirely visible. Diagonal playful composition.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "ball",
+      "name": "ボール",
+      "nameEn": "Ball",
+      "category": "もの",
+      "characterId": "ball",
+      "pose": "default",
+      "tags": [
+        "球",
+        "あそび",
+        "玩具"
+      ],
+      "legacyIds": [],
+      "sourceFile": "ball.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One charming round children's play ball made of broad curved panels in muted coral, mustard yellow and sky blue, soft gouache volume and matte texture, clearly spherical without glossy reflections.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "crayon-box",
+      "name": "クレヨン",
+      "nameEn": "Crayon box",
+      "category": "もの",
+      "characterId": "crayon-box",
+      "pose": "default",
+      "tags": [
+        "文具",
+        "おえかき",
+        "色"
+      ],
+      "legacyIds": [],
+      "sourceFile": "crayon-box.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One open small kraft cardboard crayon box with six chunky wax crayons in red, orange, yellow, green, blue and purple peeking out at varied heights. Simple colored paper wrappers without text. Three-quarter view.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
+    },
+    {
+      "id": "treasure-chest",
+      "name": "たからばこ",
+      "nameEn": "Treasure chest",
+      "category": "もの",
+      "characterId": "treasure-chest",
+      "pose": "default",
+      "tags": [
+        "宝箱",
+        "宝",
+        "冒険"
+      ],
+      "legacyIds": [],
+      "sourceFile": "treasure-chest.png",
+      "referenceAsset": "bird",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. One standalone transparent PNG story prop. Attached bird is ONLY the painting-style reference; match its broad gouache strokes, warm simple volume and charming organic shapes. Do not include the bird.\nSubject: One small open wooden treasure chest with rounded raised lid, honey-brown planks and dark teal metal bands, a few broad gold coin shapes and one coral jewel visible inside. Whimsical simple hinges and clasp. Full chest, no surrounding objects.\nSquare canvas, entire object comfortably within central 76% with generous transparent margins around EVERY tip. Actual transparent alpha, no ground, cast shadow, backdrop, labels, text, watermark or border. Hand-painted simplified forms, not realistic product photography, not glossy 3D, not vector."
     }
   ]
 }

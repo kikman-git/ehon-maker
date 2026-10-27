@@ -1,12 +1,12 @@
 # 素材 library handoff
 
-Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
+Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **65 accepted PNGs / 500 target; 435 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
+- **75 accepted PNGs / 500 target; 425 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
 - Animals: 37 images across the requested 10 species. Bird, turtle and penguin each have 10 poses; the other 7 species have 1 each.
-- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Each remaining category has 1: lantern, bus, apple, cottage, cloud, forest scene, pumpkin.
+- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects has 11 images. Each remaining category has 1: bus, apple, cottage, cloud, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,16 @@ Updated: 2026-10-26. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S06 — Objects A:** open book, closed book, backpack, basket, umbrella, teddy bear, kite, ball, crayon box, treasure chest. Ten new paintings; target total 75.
+**S07 — Vehicles A:** car, bicycle, tricycle, train, tram, fire engine, ambulance, tractor, sailboat, hot-air balloon. Ten new paintings; target total 85.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S06 artwork milestone
+
+- Ten new transparent story props: open-book, closed-book, backpack, basket, umbrella, teddy-bear, kite, ball, crayon-box, treasure-chest. Built-in generator using bird painting-style reference; exact prompts and open-book framing correction recorded.
+- Reviewed on light/dark backgrounds; packaging and source/hash validation passed for 75.
+- App check passed: eleven object tiles, ten new insertions, reload persistence and PNG export.
+- Commit: `feat(materials): S06 story props (75/500)`. Verify remote in Git.
 
 ## S05 artwork milestone
 

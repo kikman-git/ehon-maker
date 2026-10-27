@@ -68,6 +68,16 @@ internal object StorybookMaterials {
         Material("pack.storybook:penguin-smiling", "ペンギン・にっこり", "Penguin smiling", "どうぶつ", "a/2509b38461cfdd93fe3b71d9cb6f9a064fbc28ea5d4f5f11052a86af32f84ae8", "penguin", "smiling", listOf("ペンギン", "にっこり"), listOf()),
         Material("pack.storybook:penguin-surprised", "ペンギン・びっくり", "Penguin surprised", "どうぶつ", "a/9b3eb94718012b4d0e99c6db2a8054d4c91a2276a679039e17d419e83ba195af", "penguin", "surprised", listOf("ペンギン", "びっくり"), listOf()),
         Material("pack.storybook:penguin-looking-left", "ペンギン・ひだりをみる", "Penguin looking left", "どうぶつ", "a/73efcf8e2b39ce0e88ea783fca161d57207c50332be72d31f2f62189207257a3", "penguin", "looking-left", listOf("ペンギン", "ひだりをみる"), listOf()),
-        Material("pack.storybook:penguin-looking-right", "ペンギン・みぎをみる", "Penguin looking right", "どうぶつ", "a/c8fba436f1d9a30d083e3c36e1b182e2913203317a0d6e83e4854fea0bcf473a", "penguin", "looking-right", listOf("ペンギン", "みぎをみる"), listOf())
+        Material("pack.storybook:penguin-looking-right", "ペンギン・みぎをみる", "Penguin looking right", "どうぶつ", "a/c8fba436f1d9a30d083e3c36e1b182e2913203317a0d6e83e4854fea0bcf473a", "penguin", "looking-right", listOf("ペンギン", "みぎをみる"), listOf()),
+        Material("pack.storybook:open-book", "ひらいたほん", "Open book", "もの", "a/c7509bcc2c599d7fd24ccc059abb9ec1d1f273e8e433ea10112515bcf7db06e5", "open-book", "default", listOf("本", "読書", "絵本"), listOf()),
+        Material("pack.storybook:closed-book", "とじたほん", "Closed book", "もの", "a/b8aa8ea9c6eed84c1db5a1724fa54859b47a6ea6f87dc64ca59db3956db40e0e", "closed-book", "default", listOf("本", "読書"), listOf()),
+        Material("pack.storybook:backpack", "リュック", "Backpack", "もの", "a/9f5b18446990ad8bdd4f5ae3b13ef3bf4b4218b6c230fd7319673ce8c56a8ee1", "backpack", "default", listOf("鞄", "かばん", "学校"), listOf()),
+        Material("pack.storybook:basket", "かご", "Basket", "もの", "a/ec670a626df415c50ad9d4b70e9d1867db509402bfc5ce7181b30abae27e011e", "basket", "default", listOf("籠", "ピクニック"), listOf()),
+        Material("pack.storybook:umbrella", "かさ", "Umbrella", "もの", "a/232d7256669d3605e189eb5d004a7df553deda9ddbcc5a4f8567b2d9117e8f61", "umbrella", "default", listOf("傘", "雨"), listOf()),
+        Material("pack.storybook:teddy-bear", "くまのぬいぐるみ", "Teddy bear", "もの", "a/cb859ed6739738abf7225646e580eaa2da797b55308869320a624093cb5bda6b", "teddy-bear", "default", listOf("玩具", "くま", "ぬいぐるみ"), listOf()),
+        Material("pack.storybook:kite", "たこ", "Kite", "もの", "a/681edc79127416b15a30a2b4fb2f3f98cadd83a3bc5183f5985c985940d520e2", "kite", "default", listOf("凧", "空", "あそび"), listOf()),
+        Material("pack.storybook:ball", "ボール", "Ball", "もの", "a/33a6896d0834ce5a2b9d13728f5b9113a21224c851014b31586d3a2e50b22c5c", "ball", "default", listOf("球", "あそび", "玩具"), listOf()),
+        Material("pack.storybook:crayon-box", "クレヨン", "Crayon box", "もの", "a/936eaa9d6afefcd19616a5d700d83347cec2cf10d0032731311dcb51a4ff5953", "crayon-box", "default", listOf("文具", "おえかき", "色"), listOf()),
+        Material("pack.storybook:treasure-chest", "たからばこ", "Treasure chest", "もの", "a/1d3920ef1b8bd7167e187f5bd424e07babe940a239e75f71d17c42a7a43302c2", "treasure-chest", "default", listOf("宝箱", "宝", "冒険"), listOf())
     )
 }
