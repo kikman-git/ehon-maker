@@ -2589,6 +2589,70 @@
       "referenceAsset": "bird",
       "initialPrompt": "Reference bird is ONLY painting style: loose playful children's picture-book gouache, broad brushwork, simple warm forms. No bird. A small storybook vegetable garden vignette: three short brown soil rows with carrot tops, round cabbages and red tomatoes on simple stakes, a small wooden watering can beside a low woven fence. No people or animals. One standalone painted scene vignette, organic irregular edges around a small grass patch. Entire composition visible with wide clear margins. Square canvas, true transparent background outside vignette. No sky, rectangular backdrop, external haze, border or text. Composition occupies at most 75% canvas width and height, large clear margins.",
       "generationNotes": "Built-in imagegen framing correction using previous vegetable-garden image as edit target."
+    },
+    {
+      "id": "grandmother",
+      "name": "おばあちゃん・てをふる",
+      "nameEn": "Waving grandmother",
+      "pose": "waving",
+      "category": "ひと",
+      "characterId": "grandmother",
+      "tags": [
+        "おばあちゃん",
+        "ひと"
+      ],
+      "legacyIds": [],
+      "sourceFile": "grandmother.png",
+      "prompt": "Style reference only: same loose playful gouache, broad brushwork, small ink eyes. One warm grandmother standing, silver hair in bun, round glasses, lavender cardigan, cream blouse, teal skirt, brown shoes. Full body centered, wide clear margins. Transparent background, no ground, haze, shadow or text.",
+      "referenceAsset": "child"
+    },
+    {
+      "id": "grandfather",
+      "name": "おじいちゃん・たつ",
+      "nameEn": "Standing grandfather",
+      "pose": "standing",
+      "category": "ひと",
+      "characterId": "grandfather",
+      "tags": [
+        "おじいちゃん",
+        "ひと"
+      ],
+      "legacyIds": [],
+      "sourceFile": "grandfather.png",
+      "prompt": "Style reference only: same loose playful gouache, broad brushwork, small ink eyes. One kind elderly grandfather, short silver hair, bushy grey eyebrows and moustache, round glasses, rust cardigan, cream shirt, navy trousers, brown shoes. Standing relaxed, arms down. Full body centered with wide margins. Transparent background, no ground, haze, shadow or text.",
+      "referenceAsset": "child"
+    },
+    {
+      "id": "toddler",
+      "name": "おさなご・すわる",
+      "nameEn": "Sitting toddler",
+      "pose": "sitting",
+      "category": "ひと",
+      "characterId": "toddler",
+      "tags": [
+        "おさなご",
+        "ひと"
+      ],
+      "legacyIds": [],
+      "sourceFile": "toddler.png",
+      "prompt": "Style reference only: same playful loose gouache, broad brushwork, small ink eyes. One happy toddler aged two, short curly black hair, dark brown skin, mint romper over cream shirt, red little shoes. Sitting with legs forward, hands resting on knees. Baby proportions. Full body centered with wide clear margins. Transparent background, no ground, haze, shadow, toys or text.",
+      "referenceAsset": "child"
+    },
+    {
+      "id": "child-wheelchair",
+      "name": "くるまいすのこ・すわる",
+      "nameEn": "Child using wheelchair",
+      "pose": "sitting",
+      "category": "ひと",
+      "characterId": "child-wheelchair",
+      "tags": [
+        "くるまいすのこ",
+        "ひと"
+      ],
+      "legacyIds": [],
+      "sourceFile": "child-wheelchair.png",
+      "prompt": "Style reference only: same loose playful gouache, broad brushwork, small ink eyes. One cheerful child with straight black bob, tan skin, coral sweater, navy trousers and yellow shoes, seated in teal manual wheelchair. Hands on lap, feet on footplates; two large rear wheels and two small front casters, coherent frame. Three-quarter view, full child and chair centered within wide clear margins. Transparent background, no ground, haze, shadow or text.",
+      "referenceAsset": "child"
     }
   ]
 }

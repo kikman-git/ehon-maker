@@ -3137,6 +3137,86 @@
       "bytes": 2320486,
       "sha256": "dcbdbf0c5375c39324da1729439fca58a9bc741f6073058b37b6ab41f4b51213",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:grandmother",
+      "slug": "grandmother",
+      "name": "おばあちゃん・てをふる",
+      "nameEn": "Waving grandmother",
+      "category": "ひと",
+      "characterId": "grandmother",
+      "pose": "waving",
+      "tags": [
+        "おばあちゃん",
+        "ひと"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/8ee20b7d13aec5efd38dcb614cc29bdb831ca3ed967ce8959df422a06f8e88a0",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2013121,
+      "sha256": "8ee20b7d13aec5efd38dcb614cc29bdb831ca3ed967ce8959df422a06f8e88a0",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:grandfather",
+      "slug": "grandfather",
+      "name": "おじいちゃん・たつ",
+      "nameEn": "Standing grandfather",
+      "category": "ひと",
+      "characterId": "grandfather",
+      "pose": "standing",
+      "tags": [
+        "おじいちゃん",
+        "ひと"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/3faf95f1ac5ba6b9b87984f80aac7fef1518a99adf80cac628f22f601888d136",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1716983,
+      "sha256": "3faf95f1ac5ba6b9b87984f80aac7fef1518a99adf80cac628f22f601888d136",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:toddler",
+      "slug": "toddler",
+      "name": "おさなご・すわる",
+      "nameEn": "Sitting toddler",
+      "category": "ひと",
+      "characterId": "toddler",
+      "pose": "sitting",
+      "tags": [
+        "おさなご",
+        "ひと"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/bbf3d1bd967d255a940f39c0b07000ef32571a61d7e5201106730439467c9ff0",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2105880,
+      "sha256": "bbf3d1bd967d255a940f39c0b07000ef32571a61d7e5201106730439467c9ff0",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:child-wheelchair",
+      "slug": "child-wheelchair",
+      "name": "くるまいすのこ・すわる",
+      "nameEn": "Child using wheelchair",
+      "category": "ひと",
+      "characterId": "child-wheelchair",
+      "pose": "sitting",
+      "tags": [
+        "くるまいすのこ",
+        "ひと"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/cdca1cc4da8c7cde1f6b43056a9a5491d0d0ebcb10e2fdb25b6008438590027e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2374072,
+      "sha256": "cdca1cc4da8c7cde1f6b43056a9a5491d0d0ebcb10e2fdb25b6008438590027e",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

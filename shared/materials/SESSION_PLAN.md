@@ -35,7 +35,7 @@ Scene assets are standalone transparent painted vignettes, with feathered/organi
 
 No mirrored copies, alternate resolutions, recolors, unreviewed outputs or failed generations count toward 500.
 
-The user has explicitly prioritized image assets. Continue S16 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
+The user has explicitly prioritized image assets. Follow the budget priority override below; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
 
 ## Engineering checkpoints
 
@@ -43,6 +43,10 @@ The user has explicitly prioritized image assets. Continue S16 next; do not resu
 - [ ] **E01 — Deferred at user direction: delivery and progress infrastructure.** Inspect existing database/storage and deployment conventions. Add a versioned curated catalog, on-demand master downloads and offline caching while retaining the bundled starter set. Preserve existing account uploads. Verify new catalog refresh, offline reopening, content-hash integrity and fallback behavior. Add a small progress/validation command to report accepted counts, duplicate IDs, missing masters and character/pose coverage. Keep future remote-only asset metadata available to native builds. Commit and push this engineering milestone. Publishing or deploying is separate from pushing source.
 - [ ] **E02 — After S27: 250-asset audit.** Review contact sheets by category and character family; replace style drift or duplicate compositions. Check browse/search performance, thumbnails, full-resolution export, offline use and legacy migration with the larger catalog. Resolve packing/storage issues. Commit and push the audit milestone.
 - [ ] **E03 — After S54: 500-asset release audit.** Verify exactly 500 distinct accepted assets, category quotas, 30 animal families with 10 variants each, metadata and master links. Exercise web/native browse, search, insertion, drag/drop where supported, transforms, undo, save/reopen and export. Record remaining issues and delivery status. Commit and push. Do not equate a Git push with a deployed release.
+
+## Budget priority override — 2026-10-28
+
+User requested important categories first with 17% weekly allowance remaining. P01 adds four distinct people: grandmother waving, grandfather standing, toddler sitting, child using wheelchair sitting. Count these toward S19/S30; do not regenerate them. Defer S16 and other extra animal poses. Next week prioritize everyday props, nature elements and meals; generate one useful version per subject before variants. Keep original session rows unchecked until their remaining poses are complete.
 
 ## Artwork sessions
 

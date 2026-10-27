@@ -4,9 +4,9 @@ Updated: 2026-10-28. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **146 accepted PNGs / 500 target; 354 remaining.** S15 is complete.
+- **150 accepted PNGs / 500 target; 350 remaining.** Priority people batch P01 integrated.
 - Animals: 64 images across the requested 10 species. Bird, butterfly, fish, octopus, turtle and penguin each have 10 poses; the other 4 species have 1 each.
-- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 4 scenes.
+- Nature has 11 images. People has 14 illustrations across 7 characters. Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 4 scenes.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,17 @@ Updated: 2026-10-28. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S16 — Whale:** nine remaining poses. Target 155.
+**Budget priority override (2026-10-28):** user has 17% weekly allowance remaining. Prioritize distinct reusable subjects over extra animal poses. Pause after P01; resume next week with everyday props (chair, table, bed, watering can), nature (grass, mushrooms, reeds, lily pad), then meals (bread, rice ball, soup, sandwich). Animal variations including S16 are deferred. No whale output was accepted.
+
+P01 adds grandmother/waving, grandfather/standing, toddler/sitting and child-wheelchair/sitting. These count toward S19 and S30, not as extra quota: skip these existing poses when returning to those sessions. Original cumulative targets in the plan assume the original order.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## P01 priority people milestone — 150 assets
+
+- Four new characters saved in masters; compact built-in imagegen prompts recorded in generation.json, child used as style reference.
+- Cream/dark review, alpha/hash validation, shared-core build and app browsing, four insertions, reload persistence and PNG export passed.
+- Budget-limited checkpoint; S19/S30 remain partial and S16 deferred.
 
 ## S15 artwork milestone — 146 assets
 

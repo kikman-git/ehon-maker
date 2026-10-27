@@ -149,6 +149,10 @@ internal object StorybookMaterials {
         Material("pack.storybook:octopus-looking-right", "たこ・みぎを みる", "Octopus looking right", "どうぶつ", "a/6798a04f4125200dafa877ceae01f2d26798302949e0e7e23c69040bb034a21f", "octopus", "looking-right", listOf("蛸", "たこ", "みぎを みる"), listOf()),
         Material("pack.storybook:woodland-picnic", "もりの ピクニック", "Woodland picnic", "おはなしの ばめん", "a/b68dee66353793fe51dd02a09ffab88b2df1a4ec952b15c0b6edb90a69412f43", "woodland-picnic", "default", listOf("森", "ピクニック"), listOf()),
         Material("pack.storybook:pondside-garden", "いけの ほとり", "Pondside garden", "おはなしの ばめん", "a/1c94eab009b93befa5546f38a3ac1858a9f933bc9ef57afb6a11a1970dfb4762", "pondside-garden", "default", listOf("池", "庭"), listOf()),
-        Material("pack.storybook:vegetable-garden", "やさいばたけ", "Vegetable garden", "おはなしの ばめん", "a/dcbdbf0c5375c39324da1729439fca58a9bc741f6073058b37b6ab41f4b51213", "vegetable-garden", "default", listOf("畑", "野菜"), listOf())
+        Material("pack.storybook:vegetable-garden", "やさいばたけ", "Vegetable garden", "おはなしの ばめん", "a/dcbdbf0c5375c39324da1729439fca58a9bc741f6073058b37b6ab41f4b51213", "vegetable-garden", "default", listOf("畑", "野菜"), listOf()),
+        Material("pack.storybook:grandmother", "おばあちゃん・てをふる", "Waving grandmother", "ひと", "a/8ee20b7d13aec5efd38dcb614cc29bdb831ca3ed967ce8959df422a06f8e88a0", "grandmother", "waving", listOf("おばあちゃん", "ひと"), listOf()),
+        Material("pack.storybook:grandfather", "おじいちゃん・たつ", "Standing grandfather", "ひと", "a/3faf95f1ac5ba6b9b87984f80aac7fef1518a99adf80cac628f22f601888d136", "grandfather", "standing", listOf("おじいちゃん", "ひと"), listOf()),
+        Material("pack.storybook:toddler", "おさなご・すわる", "Sitting toddler", "ひと", "a/bbf3d1bd967d255a940f39c0b07000ef32571a61d7e5201106730439467c9ff0", "toddler", "sitting", listOf("おさなご", "ひと"), listOf()),
+        Material("pack.storybook:child-wheelchair", "くるまいすのこ・すわる", "Child using wheelchair", "ひと", "a/cdca1cc4da8c7cde1f6b43056a9a5491d0d0ebcb10e2fdb25b6008438590027e", "child-wheelchair", "sitting", listOf("くるまいすのこ", "ひと"), listOf())
     )
 }
