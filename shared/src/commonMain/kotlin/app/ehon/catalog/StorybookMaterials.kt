@@ -88,6 +88,14 @@ internal object StorybookMaterials {
         Material("pack.storybook:ambulance", "きゅうきゅうしゃ", "Ambulance", "のりもの", "a/a1f1975cc9abfa4ac0b36b31cb2d286683faf918a707bab880960d1e17e936e2", "ambulance", "default", listOf("救急車", "はたらくくるま"), listOf()),
         Material("pack.storybook:tractor", "トラクター", "Tractor", "のりもの", "a/5ed5e776dd6ad1654ef8b90d10ef9e867429ad0f128089b8ed09329c9e723486", "tractor", "default", listOf("農場", "農機", "はたらくくるま"), listOf()),
         Material("pack.storybook:sailboat", "ヨット", "Sailboat", "のりもの", "a/147e1b2a12abafe3f581eef26c918a0d2b133950093f81fa891ee8f5162a461b", "sailboat", "default", listOf("帆船", "船", "海"), listOf()),
-        Material("pack.storybook:hot-air-balloon", "ききゅう", "Hot-air balloon", "のりもの", "a/549d23f5bb301d91aa4bcb8d901c68250190bf4acc5360aeefb935daec4f45a9", "hot-air-balloon", "default", listOf("気球", "空", "旅"), listOf())
+        Material("pack.storybook:hot-air-balloon", "ききゅう", "Hot-air balloon", "のりもの", "a/549d23f5bb301d91aa4bcb8d901c68250190bf4acc5360aeefb935daec4f45a9", "hot-air-balloon", "default", listOf("気球", "空", "旅"), listOf()),
+        Material("pack.storybook:banana", "バナナ", "Banana", "たべもの", "a/5915645a5e0d1122ed8403a551f5c86f2d793a75a47cf7a108c1598a3b0de51c", "banana", "default", listOf("果物", "くだもの"), listOf()),
+        Material("pack.storybook:strawberry", "いちご", "Strawberry", "たべもの", "a/0689364890f8567c185848a91d4437840dee3701a65ba0d19cbe13442d3aa87d", "strawberry", "default", listOf("果物", "くだもの"), listOf()),
+        Material("pack.storybook:orange", "オレンジ", "Orange", "たべもの", "a/6ac624282c5302df269b73d54958b4f80d1eefd91ae14e088e83cc69c9acbe7b", "orange", "default", listOf("果物", "くだもの"), listOf()),
+        Material("pack.storybook:pear", "なし", "Pear", "たべもの", "a/4ec9e5df63eec3c771f622caa3bcd4bab553f8a9f786f77d8985c382660995cb", "pear", "default", listOf("果物", "くだもの"), listOf()),
+        Material("pack.storybook:grapes", "ぶどう", "Grapes", "たべもの", "a/efcd044520c6f4b75bd98c3c364fe1ea14a95565babe3543223ee13bdd04e1cb", "grapes", "default", listOf("果物", "くだもの"), listOf()),
+        Material("pack.storybook:watermelon", "すいか", "Watermelon", "たべもの", "a/a95a0d0f11bbf9d780c58d90152d08ede9eb37dfa2e9737e49ce8cea8a176da1", "watermelon", "default", listOf("果物", "くだもの"), listOf()),
+        Material("pack.storybook:cherries", "さくらんぼ", "Cherries", "たべもの", "a/f8e34ddd22515c8467fecfa16bc43e6244fb9c28b8fbcceea6ea67784f308109", "cherries", "default", listOf("果物", "くだもの"), listOf()),
+        Material("pack.storybook:peach", "もも", "Peach", "たべもの", "a/3297f1fc02e02ef6aff7ab8551b2617fad00a7013e814e37aa53fbfe40286897", "peach", "default", listOf("果物", "くだもの"), listOf())
     )
 }

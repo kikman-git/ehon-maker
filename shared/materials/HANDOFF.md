@@ -4,9 +4,9 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **85 accepted PNGs / 500 target; 415 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
+- **93 accepted PNGs / 500 target; 407 remaining.** S01 adds eight bird illustrations; S02 adds ten nature paintings.
 - Animals: 37 images across the requested 10 species. Bird, turtle and penguin each have 10 poses; the other 7 species have 1 each.
-- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Each remaining category has 1: apple, cottage, cloud, forest scene, pumpkin.
+- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Each remaining category has 1: cottage, cloud, forest scene, pumpkin.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,16 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S08 — Food A:** banana, strawberry, orange, pear, grapes, watermelon, cherries, peach. Eight new paintings; target total 93.
+**S09 — Background elements A:** sun, moon, rainbow, star-cluster, rolling-hills, mountain-range, winding-path. Seven new paintings; target total 100.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S08 artwork milestone
+
+- Eight new fruit illustrations: banana, strawberry, orange, pear, grapes, watermelon, cherries, peach. Built-in generator with apple style reference; exact prompts and banana transparency correction recorded.
+- Reviewed on light/dark backgrounds; packaging and source/hash validation passed for 93.
+- App check passed: nine food tiles, eight new insertions, reload persistence and PNG export.
+- Commit: `feat(materials): S08 fruit illustrations (93/500)`. Verify remote in Git.
 
 ## S07 artwork milestone
 

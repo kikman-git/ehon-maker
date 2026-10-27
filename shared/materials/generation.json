@@ -1546,6 +1546,135 @@
       "sourceFile": "hot-air-balloon.png",
       "referenceAsset": "bus",
       "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached bus is painting-style and vehicle-design reference only. Match broad gouache strokes, warm simplified volume, rounded charming forms and restrained detail. Create a DIFFERENT vehicle.\nSubject: One cheerful hot-air balloon with broad coral, mustard and teal vertical panels, rounded pear-shaped envelope, simple ropes connecting a small honey wicker basket beneath. Full balloon and basket visible. No people, sky or clouds.\nOne standalone vehicle on actual transparent background, entire silhouette and all wheels comfortably inside square canvas with 12% clear margins. No ground, cast shadow, scenery, text, logos or border. Keep mechanically coherent simplified shapes, no photorealism, no glossy 3D, no vector icons."
+    },
+    {
+      "id": "banana",
+      "name": "バナナ",
+      "nameEn": "Banana",
+      "category": "たべもの",
+      "characterId": "banana",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "banana.png",
+      "referenceAsset": "apple",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached apple is painting-style reference only; match its broad gouache brushwork and soft simple volume. Create a different fruit.\nSubject: One gently curved ripe golden-yellow banana, unpeeled, warm ochre underside and brown stem tips. Simple broad painted color patches.\nOne isolated fruit composition, no face, actual transparent background. Entire fruit and leaves inside the canvas with generous clear margins. No plate, ground, cast shadow, text, border, scenery, photorealistic microdetail, glossy 3D or vector styling.",
+      "editPrompt": "Use case: background-extraction. Preserve this hand-painted yellow banana and its brushwork. Remove ALL background and ALL yellow/brown glow outside the fruit. Clean standalone banana cutout with real transparent alpha right up to its painted edge. Center the complete banana smaller inside a square canvas with ample transparent space on all sides. No shadow, halo, haze, background color, text or added objects."
+    },
+    {
+      "id": "strawberry",
+      "name": "いちご",
+      "nameEn": "Strawberry",
+      "category": "たべもの",
+      "characterId": "strawberry",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "strawberry.png",
+      "referenceAsset": "apple",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached apple is painting-style reference only; match its broad gouache brushwork and soft simple volume. Create a different fruit.\nSubject: One plump red strawberry with a leafy sage-green crown, loosely dotted golden seeds, irregular heart shape. Few simple painted highlights.\nOne isolated fruit composition, no face, actual transparent background. Entire fruit and leaves inside the canvas with generous clear margins. No plate, ground, cast shadow, text, border, scenery, photorealistic microdetail, glossy 3D or vector styling."
+    },
+    {
+      "id": "orange",
+      "name": "オレンジ",
+      "nameEn": "Orange",
+      "category": "たべもの",
+      "characterId": "orange",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "orange.png",
+      "referenceAsset": "apple",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached apple is painting-style reference only; match its broad gouache brushwork and soft simple volume. Create a different fruit.\nSubject: One round orange fruit with a short stem and two small green leaves, broad warm orange and ochre paint patches. No tiny pore detail.\nOne isolated fruit composition, no face, actual transparent background. Entire fruit and leaves inside the canvas with generous clear margins. No plate, ground, cast shadow, text, border, scenery, photorealistic microdetail, glossy 3D or vector styling."
+    },
+    {
+      "id": "pear",
+      "name": "なし",
+      "nameEn": "Pear",
+      "category": "たべもの",
+      "characterId": "pear",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "pear.png",
+      "referenceAsset": "apple",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached apple is painting-style reference only; match its broad gouache brushwork and soft simple volume. Create a different fruit.\nSubject: One chubby green-gold pear with a narrow crooked neck, brown stem and one sage leaf, soft yellow and terracotta blush.\nOne isolated fruit composition, no face, actual transparent background. Entire fruit and leaves inside the canvas with generous clear margins. No plate, ground, cast shadow, text, border, scenery, photorealistic microdetail, glossy 3D or vector styling."
+    },
+    {
+      "id": "grapes",
+      "name": "ぶどう",
+      "nameEn": "Grapes",
+      "category": "たべもの",
+      "characterId": "grapes",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "grapes.png",
+      "referenceAsset": "apple",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached apple is painting-style reference only; match its broad gouache brushwork and soft simple volume. Create a different fruit.\nSubject: One hanging bunch of plump violet and dusty-purple grapes attached to a short branching brown stem and one green leaf. Distinct overlapping berries, not a geometric grid.\nOne isolated fruit composition, no face, actual transparent background. Entire fruit and leaves inside the canvas with generous clear margins. No plate, ground, cast shadow, text, border, scenery, photorealistic microdetail, glossy 3D or vector styling."
+    },
+    {
+      "id": "watermelon",
+      "name": "すいか",
+      "nameEn": "Watermelon",
+      "category": "たべもの",
+      "characterId": "watermelon",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "watermelon.png",
+      "referenceAsset": "apple",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached apple is painting-style reference only; match its broad gouache brushwork and soft simple volume. Create a different fruit.\nSubject: One generous triangular watermelon wedge, coral-red flesh with sparse dark teardrop seeds, pale cream rind and dark green outer skin. Three-quarter view shows thickness.\nOne isolated fruit composition, no face, actual transparent background. Entire fruit and leaves inside the canvas with generous clear margins. No plate, ground, cast shadow, text, border, scenery, photorealistic microdetail, glossy 3D or vector styling."
+    },
+    {
+      "id": "cherries",
+      "name": "さくらんぼ",
+      "nameEn": "Cherries",
+      "category": "たべもの",
+      "characterId": "cherries",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "cherries.png",
+      "referenceAsset": "apple",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached apple is painting-style reference only; match its broad gouache brushwork and soft simple volume. Create a different fruit.\nSubject: Two ripe deep-red cherries joined by curved brown-green stems with one small green leaf. Distinct rounded fruit shapes, broad soft painted highlights.\nOne isolated fruit composition, no face, actual transparent background. Entire fruit and leaves inside the canvas with generous clear margins. No plate, ground, cast shadow, text, border, scenery, photorealistic microdetail, glossy 3D or vector styling."
+    },
+    {
+      "id": "peach",
+      "name": "もも",
+      "nameEn": "Peach",
+      "category": "たべもの",
+      "characterId": "peach",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "sourceFile": "peach.png",
+      "referenceAsset": "apple",
+      "prompt": "Create a beautiful children’s picture-book illustration in a painterly storybook style. Use soft watercolor and gouache-like textures, gentle expressive linework, dimensional shading, warm whimsical charm, natural but adorable anatomy, rich yet tasteful color, and a premium hand-illustrated editorial finish. The subject should feel like it belongs in a professionally published children’s storybook for ages 3–8. The illustration must be expressive, polished, cute, and visually rich, with a transparent background and a clean standalone composition.\nArt direction refinement: MUCH LESS REALISTIC, a loose painterly contemporary children's picture book. Broad visible gouache brush strokes, soft washes, playfully exaggerated chubby proportions, sweet small simple ink eyes, rounded organic asymmetry, restrained detail, tactile drybrush texture. Two or three soft painted color values suggest volume. No glossy big eyes, no anatomical microdetail, no individual realistic feathers or scales, no 3D rendering, no photographic lighting. It must still be a rich hand-painted illustration, never flat vector icon or emoji.\nUse case: illustration-story. Attached apple is painting-style reference only; match its broad gouache brushwork and soft simple volume. Create a different fruit.\nSubject: One plump peach, warm creamy yellow and coral-pink blush, a gentle central crease, short brown stem and one narrow sage leaf. Suggest velvety softness with drybrush, no realistic fuzz.\nOne isolated fruit composition, no face, actual transparent background. Entire fruit and leaves inside the canvas with generous clear margins. No plate, ground, cast shadow, text, border, scenery, photorealistic microdetail, glossy 3D or vector styling."
     }
   ]
 }

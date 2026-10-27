@@ -1876,6 +1876,166 @@
       "bytes": 2099845,
       "sha256": "549d23f5bb301d91aa4bcb8d901c68250190bf4acc5360aeefb935daec4f45a9",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:banana",
+      "slug": "banana",
+      "name": "バナナ",
+      "nameEn": "Banana",
+      "category": "たべもの",
+      "characterId": "banana",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5915645a5e0d1122ed8403a551f5c86f2d793a75a47cf7a108c1598a3b0de51c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1333314,
+      "sha256": "5915645a5e0d1122ed8403a551f5c86f2d793a75a47cf7a108c1598a3b0de51c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:strawberry",
+      "slug": "strawberry",
+      "name": "いちご",
+      "nameEn": "Strawberry",
+      "category": "たべもの",
+      "characterId": "strawberry",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/0689364890f8567c185848a91d4437840dee3701a65ba0d19cbe13442d3aa87d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2791557,
+      "sha256": "0689364890f8567c185848a91d4437840dee3701a65ba0d19cbe13442d3aa87d",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:orange",
+      "slug": "orange",
+      "name": "オレンジ",
+      "nameEn": "Orange",
+      "category": "たべもの",
+      "characterId": "orange",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/6ac624282c5302df269b73d54958b4f80d1eefd91ae14e088e83cc69c9acbe7b",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2667423,
+      "sha256": "6ac624282c5302df269b73d54958b4f80d1eefd91ae14e088e83cc69c9acbe7b",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:pear",
+      "slug": "pear",
+      "name": "なし",
+      "nameEn": "Pear",
+      "category": "たべもの",
+      "characterId": "pear",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4ec9e5df63eec3c771f622caa3bcd4bab553f8a9f786f77d8985c382660995cb",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2431690,
+      "sha256": "4ec9e5df63eec3c771f622caa3bcd4bab553f8a9f786f77d8985c382660995cb",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:grapes",
+      "slug": "grapes",
+      "name": "ぶどう",
+      "nameEn": "Grapes",
+      "category": "たべもの",
+      "characterId": "grapes",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/efcd044520c6f4b75bd98c3c364fe1ea14a95565babe3543223ee13bdd04e1cb",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2396982,
+      "sha256": "efcd044520c6f4b75bd98c3c364fe1ea14a95565babe3543223ee13bdd04e1cb",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:watermelon",
+      "slug": "watermelon",
+      "name": "すいか",
+      "nameEn": "Watermelon",
+      "category": "たべもの",
+      "characterId": "watermelon",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a95a0d0f11bbf9d780c58d90152d08ede9eb37dfa2e9737e49ce8cea8a176da1",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2862481,
+      "sha256": "a95a0d0f11bbf9d780c58d90152d08ede9eb37dfa2e9737e49ce8cea8a176da1",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:cherries",
+      "slug": "cherries",
+      "name": "さくらんぼ",
+      "nameEn": "Cherries",
+      "category": "たべもの",
+      "characterId": "cherries",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/f8e34ddd22515c8467fecfa16bc43e6244fb9c28b8fbcceea6ea67784f308109",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2607901,
+      "sha256": "f8e34ddd22515c8467fecfa16bc43e6244fb9c28b8fbcceea6ea67784f308109",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:peach",
+      "slug": "peach",
+      "name": "もも",
+      "nameEn": "Peach",
+      "category": "たべもの",
+      "characterId": "peach",
+      "pose": "default",
+      "tags": [
+        "果物",
+        "くだもの"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/3297f1fc02e02ef6aff7ab8551b2617fad00a7013e814e37aa53fbfe40286897",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2634735,
+      "sha256": "3297f1fc02e02ef6aff7ab8551b2617fad00a7013e814e37aa53fbfe40286897",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }
