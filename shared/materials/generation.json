@@ -2228,6 +2228,152 @@
       "sourceFile": "fish-looking-right.png",
       "prompt": "Same orange-and-peach fish as reference; preserve identity, broad gouache brushwork, cream face/belly, tiny ink eye and flowing fins. The SAME fish looking curiously up to the right, three-quarter view with round body tipped head-up, tail curving beneath and toward left, near fin extended forward and lower fins tucked, alert small ink eye and gently pursed mouth. Distinct poised body gesture. Full body, all fin/tail tips inside generous transparent margins. True transparent background. No water, shadow, text or props.",
       "referenceAsset": "fish"
+    },
+    {
+      "id": "snowman",
+      "name": "ゆきだるま",
+      "nameEn": "Snowman",
+      "tags": [
+        "雪",
+        "冬"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "snowman",
+      "legacyIds": [],
+      "sourceFile": "snowman.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. Friendly snowman, two rounded snowballs, tiny coal eyes, carrot nose, red scarf, blue knit hat and two simple twig arms. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "decorated-fir",
+      "name": "クリスマスツリー",
+      "nameEn": "Decorated fir",
+      "tags": [
+        "クリスマス",
+        "冬"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "decorated-fir",
+      "legacyIds": [],
+      "sourceFile": "decorated-fir.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. One small Christmas fir tree, chunky layered green boughs, a few red and gold round ornaments, warm golden star on top, short brown trunk. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "wrapped-present",
+      "name": "プレゼント",
+      "nameEn": "Wrapped present",
+      "tags": [
+        "贈り物",
+        "誕生日"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "wrapped-present",
+      "legacyIds": [],
+      "sourceFile": "wrapped-present.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. One rounded rectangular gift box wrapped in muted teal paper with peach ribbon and generous soft bow, three-quarter view. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "easter-eggs",
+      "name": "イースターエッグ",
+      "nameEn": "Easter eggs",
+      "tags": [
+        "春",
+        "たまご"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "easter-eggs",
+      "legacyIds": [],
+      "sourceFile": "easter-eggs.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. Three decorated Easter eggs in a small close cluster, peach, pale teal and lavender shells with simple ochre dots and wavy hand-painted bands. No basket. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "sakura-garland",
+      "name": "さくらの ガーランド",
+      "nameEn": "Sakura garland",
+      "tags": [
+        "桜",
+        "春"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "sakura-garland",
+      "legacyIds": [],
+      "sourceFile": "sakura-garland.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. One gently curved hanging garland of pale pink five-petaled cherry blossoms and small green leaves attached to a slender warm-brown string, entire string ends visible. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects. REQUIRED: square 1536 by 1536 canvas, not a wide strip. Center the entire curved garland inside the square with large transparent area above and below. Both source dimensions must exceed 1024 pixels.",
+      "referenceAsset": "bird",
+      "initialPrompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. One gently curved hanging garland of pale pink five-petaled cherry blossoms and small green leaves attached to a slender warm-brown string, entire string ends visible. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects.",
+      "generationNotes": "Regenerated on square canvas for minimum source dimensions."
+    },
+    {
+      "id": "koinobori",
+      "name": "こいのぼり",
+      "nameEn": "Koinobori",
+      "tags": [
+        "こどもの日",
+        "五月"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "koinobori",
+      "legacyIds": [],
+      "sourceFile": "koinobori.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. Traditional Japanese koinobori windsock display: one slim bamboo pole with gold ball finial, a short multicolor streamer, three hollow carp windsocks black, red and blue hanging horizontally right in descending size. Round open mouths at pole end, forked tails, broad painted scale marks. Entire pole and tails visible. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects. Square canvas, at least 1024 pixels on both sides.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "tanabata-bamboo",
+      "name": "たなばたの ささ",
+      "nameEn": "Tanabata bamboo",
+      "tags": [
+        "七夕",
+        "夏"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "tanabata-bamboo",
+      "legacyIds": [],
+      "sourceFile": "tanabata-bamboo.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. One small leafy bamboo sprig arrangement in a simple ochre pot, hanging blank colorful tanzaku paper strips and a few folded paper star ornaments. Slender green stalks, loose pointed leaves, no writing. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects. Square canvas, whole object at most 75% canvas height.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "festival-fan",
+      "name": "うちわ",
+      "nameEn": "Summer festival fan",
+      "tags": [
+        "夏祭り",
+        "夏"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "festival-fan",
+      "legacyIds": [],
+      "sourceFile": "festival-fan.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. One Japanese round uchiwa fan, short bamboo handle, pale cream paper with a simple painted blue wave and small red goldfish motif, angled slightly left, full handle visible. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects. Square canvas.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "autumn-wreath",
+      "name": "あきの リース",
+      "nameEn": "Autumn wreath",
+      "tags": [
+        "秋",
+        "葉"
+      ],
+      "pose": "default",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "autumn-wreath",
+      "legacyIds": [],
+      "sourceFile": "autumn-wreath.png",
+      "prompt": "Use reference ONLY for loose painterly children's picture-book gouache style, broad brushwork and soft warm volume. Do not include bird. One round autumn wreath of broad ochre, rust and muted red maple and oak leaves with three small acorns, loosely arranged around slender twig ring, clear transparent opening in center. One isolated full subject, generous clear margins, true transparent background. No ground, shadow, haze, text, border or extra objects. Square canvas.",
+      "referenceAsset": "bird"
     }
   ]
 }

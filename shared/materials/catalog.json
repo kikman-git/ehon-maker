@@ -2708,6 +2708,186 @@
       "bytes": 2183618,
       "sha256": "2b76d03f85641b6736be6307bb39dffde946b64463fdf8ec4aa3558fbedc450d",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:snowman",
+      "slug": "snowman",
+      "name": "ゆきだるま",
+      "nameEn": "Snowman",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "snowman",
+      "pose": "default",
+      "tags": [
+        "雪",
+        "冬"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/36859cc6622a23dbf20c473b74c3845b66bd29f4d2408b4501f5e8b70cb4d7a9",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2048047,
+      "sha256": "36859cc6622a23dbf20c473b74c3845b66bd29f4d2408b4501f5e8b70cb4d7a9",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:decorated-fir",
+      "slug": "decorated-fir",
+      "name": "クリスマスツリー",
+      "nameEn": "Decorated fir",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "decorated-fir",
+      "pose": "default",
+      "tags": [
+        "クリスマス",
+        "冬"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/6f821de0306a3192c774852fd619821b7c2bb2d9db490a1322aaf8ce6b190c8f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1965240,
+      "sha256": "6f821de0306a3192c774852fd619821b7c2bb2d9db490a1322aaf8ce6b190c8f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:wrapped-present",
+      "slug": "wrapped-present",
+      "name": "プレゼント",
+      "nameEn": "Wrapped present",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "wrapped-present",
+      "pose": "default",
+      "tags": [
+        "贈り物",
+        "誕生日"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5f8296f727a6ade02aaa75b0748a8addd426acbf98b015f52cfe5cbb785f1046",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2738946,
+      "sha256": "5f8296f727a6ade02aaa75b0748a8addd426acbf98b015f52cfe5cbb785f1046",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:easter-eggs",
+      "slug": "easter-eggs",
+      "name": "イースターエッグ",
+      "nameEn": "Easter eggs",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "easter-eggs",
+      "pose": "default",
+      "tags": [
+        "春",
+        "たまご"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/5d686801082fb7f38e63176c1c05ca424e36de0921893582788a1156882fc704",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2518934,
+      "sha256": "5d686801082fb7f38e63176c1c05ca424e36de0921893582788a1156882fc704",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:sakura-garland",
+      "slug": "sakura-garland",
+      "name": "さくらの ガーランド",
+      "nameEn": "Sakura garland",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "sakura-garland",
+      "pose": "default",
+      "tags": [
+        "桜",
+        "春"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/bb9e8e09bb4228eeb58c8c3324dbc7dd0ca0c3ae482ce1c6aed30f862f66b017",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 575538,
+      "sha256": "bb9e8e09bb4228eeb58c8c3324dbc7dd0ca0c3ae482ce1c6aed30f862f66b017",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:koinobori",
+      "slug": "koinobori",
+      "name": "こいのぼり",
+      "nameEn": "Koinobori",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "koinobori",
+      "pose": "default",
+      "tags": [
+        "こどもの日",
+        "五月"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a5ccc203c6e9edc352ddfc3659329dd6eb8132de499eb682f9bfbf4bc5e43229",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1989333,
+      "sha256": "a5ccc203c6e9edc352ddfc3659329dd6eb8132de499eb682f9bfbf4bc5e43229",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:tanabata-bamboo",
+      "slug": "tanabata-bamboo",
+      "name": "たなばたの ささ",
+      "nameEn": "Tanabata bamboo",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "tanabata-bamboo",
+      "pose": "default",
+      "tags": [
+        "七夕",
+        "夏"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/228fa668553f5a72d25d5eb8fcbb82edb39d0a761a4da1178cbed38f3f04514b",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1787430,
+      "sha256": "228fa668553f5a72d25d5eb8fcbb82edb39d0a761a4da1178cbed38f3f04514b",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:festival-fan",
+      "slug": "festival-fan",
+      "name": "うちわ",
+      "nameEn": "Summer festival fan",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "festival-fan",
+      "pose": "default",
+      "tags": [
+        "夏祭り",
+        "夏"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b31f613947bc2c6757de0cd775ff9d76f77d3c742be038acfa86b20adaa928cd",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1801658,
+      "sha256": "b31f613947bc2c6757de0cd775ff9d76f77d3c742be038acfa86b20adaa928cd",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:autumn-wreath",
+      "slug": "autumn-wreath",
+      "name": "あきの リース",
+      "nameEn": "Autumn wreath",
+      "category": "きせつ・ぎょうじ",
+      "characterId": "autumn-wreath",
+      "pose": "default",
+      "tags": [
+        "秋",
+        "葉"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b22dbf6957dec7c372ace1d2affedd57263b72f972618d87972b20dd5ca13d39",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2544386,
+      "sha256": "b22dbf6957dec7c372ace1d2affedd57263b72f972618d87972b20dd5ca13d39",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

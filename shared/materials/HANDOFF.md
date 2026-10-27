@@ -4,9 +4,9 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **125 accepted PNGs / 500 target; 375 remaining.** S12 is complete.
+- **134 accepted PNGs / 500 target; 366 remaining.** S13 is complete.
 - Animals: 55 images across the requested 10 species. Bird, butterfly, fish, turtle and penguin each have 10 poses; the other 5 species have 1 each.
-- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Scenes and seasonal each have 1: forest scene and pumpkin.
+- Nature has 11 images. People has 10 poses across 3 children (4 original, 4 curly-haired, 2 with glasses). Objects and vehicles each have 11 images. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 1 forest scene.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,9 +15,15 @@ Updated: 2026-10-27. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**S13 — Seasonal / event assets:** snowman, decorated-fir, wrapped-present, easter-eggs, sakura-garland, koinobori, tanabata-bamboo, festival-fan, autumn-wreath. Generation started; target 134. Continue artwork until session limit using compact prompts.
+**S14 — Octopus:** finish nine new poses; target 143. Crawling generated with an eight-arm correction; remaining poses pending. Compact prompts and continuous artwork requested.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## S13 artwork milestone — 134 assets
+
+- Nine seasonal PNGs: snowman, decorated-fir, wrapped-present, easter-eggs, sakura-garland, koinobori, tanabata-bamboo, festival-fan, autumn-wreath. Bird style reference, built-in imagegen. Exact prompts and garland resolution correction saved.
+- Reviewed on cream/dark backgrounds. Source/hash validation, shared-core build and app insertion/reload/export checks passed. No known artwork issues.
+- Commit: `feat(materials): S13 seasonal illustrations (134/500)`. Push and verify origin/master.
 
 ## S12 artwork milestone — 125 assets
 

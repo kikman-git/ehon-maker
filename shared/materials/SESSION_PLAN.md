@@ -2,7 +2,7 @@
 
 ## Scope and session size
 
-**Current: 125 saved illustrations. Target: 500. Remaining: 375.**
+**Current: 134 saved illustrations. Target: 500. Remaining: 366.**
 
 Plan for **54 artwork sessions**, normally 7–10 accepted illustrations per session, plus **3 dedicated engineering/review sessions**. Complex scene sessions contain only 3 illustrations. These are work packages, not a promise that every package fits one conversation: retries or context limits may split a package into `Sxx-a` and `Sxx-b`. Never reduce quality to meet the batch count.
 
@@ -13,7 +13,7 @@ The earlier suggestion of 20–30 assets per batch is superseded by this smaller
 1. Read this file, `HANDOFF.md`, `README.md`, and the master prompt/refinement in `generation.json`. Read the imagegen skill before generating.
 2. Inspect `git status`, branch/upstream, and recent milestone commits. Preserve unrelated work. Use the latest handoff to resume a partial batch before starting another.
 3. Count the actual entries in `generation.json` and inspect their saved PNGs. Only accepted, saved, integrated artwork counts. Planned entries stay here, not in the runtime manifest.
-4. Complete each session package, review it, update the handoff and checklist, and commit/push. S12 is complete at 125 assets. Resume S13 next.
+4. Complete each session package, review it, update the handoff and checklist, and commit/push. S13 is complete at 134 assets. Resume S14 next.
 
 ## Art and variation rules
 
@@ -35,7 +35,7 @@ Scene assets are standalone transparent painted vignettes, with feathered/organi
 
 No mirrored copies, alternate resolutions, recolors, unreviewed outputs or failed generations count toward 500.
 
-The user has explicitly prioritized image assets. Continue S13 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
+The user has explicitly prioritized image assets. Continue S14 next; do not resume engineering changes without a new request. Existing E01 work remains uncommitted.
 
 ## Engineering checkpoints
 
@@ -62,7 +62,7 @@ Counts below are **new accepted artwork**, with cumulative totals including the 
 | [x] | S10 | Animals | Butterfly: finish its 10-variation set | 9 | **109** |
 | [x] | S11 | Buildings / Places | A: school, library, bakery, bookshop, post office, hospital, train station | 7 | **116** |
 | [x] | S12 | Animals | Fish: finish its 10-variation set | 9 | **125** |
-| [ ] | S13 | Seasonal / event assets | Snowman, decorated fir, wrapped present, Easter eggs, sakura garland, koinobori, Tanabata bamboo, summer festival fan, autumn wreath | 9 | **134** |
+| [x] | S13 | Seasonal / event assets | Snowman, decorated fir, wrapped present, Easter eggs, sakura garland, koinobori, Tanabata bamboo, summer festival fan, autumn wreath | 9 | **134** |
 | [ ] | S14 | Animals | Octopus: finish its 10-variation set | 9 | **143** |
 | [ ] | S15 | Storybook scenes | A: woodland picnic, pondside garden, vegetable garden | 3 | **146** |
 | [ ] | S16 | Animals | Whale: finish its 10-variation set | 9 | **155** |

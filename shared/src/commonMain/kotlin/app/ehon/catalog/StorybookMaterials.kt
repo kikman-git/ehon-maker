@@ -128,6 +128,15 @@ internal object StorybookMaterials {
         Material("pack.storybook:fish-surprised", "さかな・びっくり", "Surprised fish", "どうぶつ", "a/34a48a7efe73c6557091f5c74b2b4a3e5189a84ae77e629e5f670f9f11c7aca6", "fish", "surprised", listOf("魚", "きんぎょ", "びっくり"), listOf()),
         Material("pack.storybook:fish-fin-greeting", "さかな・こんにちは", "Fish fin greeting", "どうぶつ", "a/e736298cec81e469afd1d7c5fc2721823f2d4c67d097a53412693f9615554d14", "fish", "fin-greeting", listOf("魚", "きんぎょ", "こんにちは"), listOf()),
         Material("pack.storybook:fish-looking-left", "さかな・ひだりを みる", "Fish looking left", "どうぶつ", "a/c0f017a7daa210f4d7777d4a89fc8e1490134a681a45cbbebe3b5ebb174f098d", "fish", "looking-left", listOf("魚", "きんぎょ", "ひだりを みる"), listOf()),
-        Material("pack.storybook:fish-looking-right", "さかな・みぎを みる", "Fish looking right", "どうぶつ", "a/2b76d03f85641b6736be6307bb39dffde946b64463fdf8ec4aa3558fbedc450d", "fish", "looking-right", listOf("魚", "きんぎょ", "みぎを みる"), listOf())
+        Material("pack.storybook:fish-looking-right", "さかな・みぎを みる", "Fish looking right", "どうぶつ", "a/2b76d03f85641b6736be6307bb39dffde946b64463fdf8ec4aa3558fbedc450d", "fish", "looking-right", listOf("魚", "きんぎょ", "みぎを みる"), listOf()),
+        Material("pack.storybook:snowman", "ゆきだるま", "Snowman", "きせつ・ぎょうじ", "a/36859cc6622a23dbf20c473b74c3845b66bd29f4d2408b4501f5e8b70cb4d7a9", "snowman", "default", listOf("雪", "冬"), listOf()),
+        Material("pack.storybook:decorated-fir", "クリスマスツリー", "Decorated fir", "きせつ・ぎょうじ", "a/6f821de0306a3192c774852fd619821b7c2bb2d9db490a1322aaf8ce6b190c8f", "decorated-fir", "default", listOf("クリスマス", "冬"), listOf()),
+        Material("pack.storybook:wrapped-present", "プレゼント", "Wrapped present", "きせつ・ぎょうじ", "a/5f8296f727a6ade02aaa75b0748a8addd426acbf98b015f52cfe5cbb785f1046", "wrapped-present", "default", listOf("贈り物", "誕生日"), listOf()),
+        Material("pack.storybook:easter-eggs", "イースターエッグ", "Easter eggs", "きせつ・ぎょうじ", "a/5d686801082fb7f38e63176c1c05ca424e36de0921893582788a1156882fc704", "easter-eggs", "default", listOf("春", "たまご"), listOf()),
+        Material("pack.storybook:sakura-garland", "さくらの ガーランド", "Sakura garland", "きせつ・ぎょうじ", "a/bb9e8e09bb4228eeb58c8c3324dbc7dd0ca0c3ae482ce1c6aed30f862f66b017", "sakura-garland", "default", listOf("桜", "春"), listOf()),
+        Material("pack.storybook:koinobori", "こいのぼり", "Koinobori", "きせつ・ぎょうじ", "a/a5ccc203c6e9edc352ddfc3659329dd6eb8132de499eb682f9bfbf4bc5e43229", "koinobori", "default", listOf("こどもの日", "五月"), listOf()),
+        Material("pack.storybook:tanabata-bamboo", "たなばたの ささ", "Tanabata bamboo", "きせつ・ぎょうじ", "a/228fa668553f5a72d25d5eb8fcbb82edb39d0a761a4da1178cbed38f3f04514b", "tanabata-bamboo", "default", listOf("七夕", "夏"), listOf()),
+        Material("pack.storybook:festival-fan", "うちわ", "Summer festival fan", "きせつ・ぎょうじ", "a/b31f613947bc2c6757de0cd775ff9d76f77d3c742be038acfa86b20adaa928cd", "festival-fan", "default", listOf("夏祭り", "夏"), listOf()),
+        Material("pack.storybook:autumn-wreath", "あきの リース", "Autumn wreath", "きせつ・ぎょうじ", "a/b22dbf6957dec7c372ace1d2affedd57263b72f972618d87972b20dd5ca13d39", "autumn-wreath", "default", listOf("秋", "葉"), listOf())
     )
 }
