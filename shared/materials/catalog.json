@@ -3379,6 +3379,86 @@
       "bytes": 2862591,
       "sha256": "7e5af4790e963b77415688c4e2ae42467e2b51b7efb2de548136a0a7ceb0be8d",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bread-loaf",
+      "slug": "bread-loaf",
+      "name": "パン",
+      "nameEn": "Bread loaf",
+      "category": "たべもの",
+      "characterId": "bread-loaf",
+      "pose": "default",
+      "tags": [
+        "パン",
+        "朝ごはん"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b6f72e1966f5a4b04fb7dbccd11c5f853bb201dc8047ccffabf2ad6f4910a702",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2728166,
+      "sha256": "b6f72e1966f5a4b04fb7dbccd11c5f853bb201dc8047ccffabf2ad6f4910a702",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:rice-ball",
+      "slug": "rice-ball",
+      "name": "おにぎり",
+      "nameEn": "Rice ball",
+      "category": "たべもの",
+      "characterId": "rice-ball",
+      "pose": "default",
+      "tags": [
+        "ごはん",
+        "お弁当"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a4b8a659d8d478cd62ae01194f6b319f9021591c435f2c4240b73396beb46c9f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1532177,
+      "sha256": "a4b8a659d8d478cd62ae01194f6b319f9021591c435f2c4240b73396beb46c9f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:soup",
+      "slug": "soup",
+      "name": "スープ",
+      "nameEn": "Soup",
+      "category": "たべもの",
+      "characterId": "soup",
+      "pose": "default",
+      "tags": [
+        "野菜",
+        "ごはん"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a0f7ab27bcd06b08888a2e04cc497882a5be3ee55d810df40a89320d7cf9f7ff",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2197706,
+      "sha256": "a0f7ab27bcd06b08888a2e04cc497882a5be3ee55d810df40a89320d7cf9f7ff",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:sandwich",
+      "slug": "sandwich",
+      "name": "サンドイッチ",
+      "nameEn": "Sandwich",
+      "category": "たべもの",
+      "characterId": "sandwich",
+      "pose": "default",
+      "tags": [
+        "パン",
+        "お弁当"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/eb02c62dda6bb8ba8d94cd0a2addbcdbcbb8dc05abef40e6ff804dfe5fa9a00a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1885178,
+      "sha256": "eb02c62dda6bb8ba8d94cd0a2addbcdbcbb8dc05abef40e6ff804dfe5fa9a00a",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

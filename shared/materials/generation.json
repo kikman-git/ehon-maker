@@ -2785,6 +2785,70 @@
       "sourceFile": "lily-pad.png",
       "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One round green water-lily pad with V-shaped notch, gently curved rim, simple radiating veins, oblique top view. Whole leaf centered in middle 65% of square canvas. Transparent background. No bird, flower, water, shadow, haze or text.",
       "referenceAsset": "bird"
+    },
+    {
+      "id": "bread-loaf",
+      "name": "パン",
+      "nameEn": "Bread loaf",
+      "tags": [
+        "パン",
+        "朝ごはん"
+      ],
+      "pose": "default",
+      "category": "たべもの",
+      "characterId": "bread-loaf",
+      "legacyIds": [],
+      "sourceFile": "bread-loaf.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One golden crusty bread loaf with three scoring marks and one cut slice leaning beside it, soft cream crumb. Full subject centered with clear margins. Transparent background. No bird, plate, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "rice-ball",
+      "name": "おにぎり",
+      "nameEn": "Rice ball",
+      "tags": [
+        "ごはん",
+        "お弁当"
+      ],
+      "pose": "default",
+      "category": "たべもの",
+      "characterId": "rice-ball",
+      "legacyIds": [],
+      "sourceFile": "rice-ball.png",
+      "prompt": "Style reference only: loose children's-book gouache, broad simple brushwork, soft volume. One rounded triangular Japanese rice ball, white rice suggested with restrained strokes, dark nori rectangle wrapping lower center. Three-quarter view, small centered subject, wide margins. Transparent background. No bird, plate, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "soup",
+      "name": "スープ",
+      "nameEn": "Soup",
+      "tags": [
+        "野菜",
+        "ごはん"
+      ],
+      "pose": "default",
+      "category": "たべもの",
+      "characterId": "soup",
+      "legacyIds": [],
+      "sourceFile": "soup.png",
+      "prompt": "Style reference only: loose playful gouache, broad brushwork, soft volume. One small cream ceramic bowl of golden vegetable soup with a few carrot rounds, peas and potato pieces, blue rim, three-quarter view. Entire bowl centered with wide margins. Transparent background. No bird, spoon, steam, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "sandwich",
+      "name": "サンドイッチ",
+      "nameEn": "Sandwich",
+      "tags": [
+        "パン",
+        "お弁当"
+      ],
+      "pose": "default",
+      "category": "たべもの",
+      "characterId": "sandwich",
+      "legacyIds": [],
+      "sourceFile": "sandwich.png",
+      "prompt": "Style reference only: loose playful gouache, broad brushwork, soft volume. One triangular sandwich with cream bread, golden crust, green lettuce, red tomato and yellow cheese, three-quarter view showing filling. Small centered subject with wide margins. Transparent background. No bird, plate, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
     }
   ]
 }

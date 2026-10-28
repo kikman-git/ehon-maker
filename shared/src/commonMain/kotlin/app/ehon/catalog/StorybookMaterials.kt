@@ -161,6 +161,10 @@ internal object StorybookMaterials {
         Material("pack.storybook:grassy-tuft", "くさ", "Grass tuft", "しぜん", "a/a8a789f8eff8af2bb5fe76d7765a03dd693b2de30c632297a0c0f6c7df2b124a", "grassy-tuft", "default", listOf("草", "草むら"), listOf()),
         Material("pack.storybook:mushroom-cluster", "きのこ", "Mushroom cluster", "しぜん", "a/4ac6f94d2949d971f03205884e3a14208aa6b8b98518ceb436190ed7261fa687", "mushroom-cluster", "default", listOf("茸", "森"), listOf()),
         Material("pack.storybook:reeds", "あし", "Reeds", "しぜん", "a/346c6843589fe409945e77564824e26bdf8b5797d4293f3dcd8c731795319cb4", "reeds", "default", listOf("葦", "池", "水辺"), listOf()),
-        Material("pack.storybook:lily-pad", "すいれんの は", "Lily pad", "しぜん", "a/7e5af4790e963b77415688c4e2ae42467e2b51b7efb2de548136a0a7ceb0be8d", "lily-pad", "default", listOf("睡蓮", "葉", "池"), listOf())
+        Material("pack.storybook:lily-pad", "すいれんの は", "Lily pad", "しぜん", "a/7e5af4790e963b77415688c4e2ae42467e2b51b7efb2de548136a0a7ceb0be8d", "lily-pad", "default", listOf("睡蓮", "葉", "池"), listOf()),
+        Material("pack.storybook:bread-loaf", "パン", "Bread loaf", "たべもの", "a/b6f72e1966f5a4b04fb7dbccd11c5f853bb201dc8047ccffabf2ad6f4910a702", "bread-loaf", "default", listOf("パン", "朝ごはん"), listOf()),
+        Material("pack.storybook:rice-ball", "おにぎり", "Rice ball", "たべもの", "a/a4b8a659d8d478cd62ae01194f6b319f9021591c435f2c4240b73396beb46c9f", "rice-ball", "default", listOf("ごはん", "お弁当"), listOf()),
+        Material("pack.storybook:soup", "スープ", "Soup", "たべもの", "a/a0f7ab27bcd06b08888a2e04cc497882a5be3ee55d810df40a89320d7cf9f7ff", "soup", "default", listOf("野菜", "ごはん"), listOf()),
+        Material("pack.storybook:sandwich", "サンドイッチ", "Sandwich", "たべもの", "a/eb02c62dda6bb8ba8d94cd0a2addbcdbcbb8dc05abef40e6ff804dfe5fa9a00a", "sandwich", "default", listOf("パン", "お弁当"), listOf())
     )
 }
