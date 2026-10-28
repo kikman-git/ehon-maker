@@ -3217,6 +3217,86 @@
       "bytes": 2374072,
       "sha256": "cdca1cc4da8c7cde1f6b43056a9a5491d0d0ebcb10e2fdb25b6008438590027e",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:chair",
+      "slug": "chair",
+      "name": "いす",
+      "nameEn": "Chair",
+      "category": "もの",
+      "characterId": "chair",
+      "pose": "default",
+      "tags": [
+        "椅子",
+        "家具"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/1731c739bf44d45cd7ea5506032f701e9958001bc8e9d7f0bb78ce18e41790b9",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1473508,
+      "sha256": "1731c739bf44d45cd7ea5506032f701e9958001bc8e9d7f0bb78ce18e41790b9",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:table",
+      "slug": "table",
+      "name": "テーブル",
+      "nameEn": "Table",
+      "category": "もの",
+      "characterId": "table",
+      "pose": "default",
+      "tags": [
+        "机",
+        "家具"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4fa99a2e960ae643331c3d57bcb8d578e180e6c4d999f4b9c27a2b4d79165cef",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1663506,
+      "sha256": "4fa99a2e960ae643331c3d57bcb8d578e180e6c4d999f4b9c27a2b4d79165cef",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bed",
+      "slug": "bed",
+      "name": "ベッド",
+      "nameEn": "Bed",
+      "category": "もの",
+      "characterId": "bed",
+      "pose": "default",
+      "tags": [
+        "寝る",
+        "家具"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/55082eaa2d0b23415b8542ae3456921bc517c3d2c52f7fae0a355aee7a6ef086",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2482557,
+      "sha256": "55082eaa2d0b23415b8542ae3456921bc517c3d2c52f7fae0a355aee7a6ef086",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:watering-can",
+      "slug": "watering-can",
+      "name": "じょうろ",
+      "nameEn": "Watering can",
+      "category": "もの",
+      "characterId": "watering-can",
+      "pose": "default",
+      "tags": [
+        "水やり",
+        "庭"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/813167de126f2a6726767b35896cf19722b55e1be258dd016370bbd2da1d09f2",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 651741,
+      "sha256": "813167de126f2a6726767b35896cf19722b55e1be258dd016370bbd2da1d09f2",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

@@ -46,7 +46,7 @@ The user has explicitly prioritized image assets. Follow the budget priority ove
 
 ## Budget priority override — 2026-10-28
 
-User requested important categories first with 17% weekly allowance remaining. P01 adds four distinct people: grandmother waving, grandfather standing, toddler sitting, child using wheelchair sitting. Count these toward S19/S30; do not regenerate them. Defer S16 and other extra animal poses. Next week prioritize everyday props, nature elements and meals; generate one useful version per subject before variants. Keep original session rows unchecked until their remaining poses are complete.
+User requested important categories first with 17% weekly allowance remaining. P01 adds four distinct people: grandmother waving, grandfather standing, toddler sitting, child using wheelchair sitting. Count these toward S19/S30; do not regenerate them. Defer S16 and other extra animal poses. P02 completed chair, table, bed and watering can from S21. Skip these four when resuming S21. Next prioritize nature elements and meals; generate one useful version per subject before variants. Keep original session rows unchecked until their remaining poses are complete.
 
 ## Artwork sessions
 

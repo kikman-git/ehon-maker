@@ -2653,6 +2653,72 @@
       "sourceFile": "child-wheelchair.png",
       "prompt": "Style reference only: same loose playful gouache, broad brushwork, small ink eyes. One cheerful child with straight black bob, tan skin, coral sweater, navy trousers and yellow shoes, seated in teal manual wheelchair. Hands on lap, feet on footplates; two large rear wheels and two small front casters, coherent frame. Three-quarter view, full child and chair centered within wide clear margins. Transparent background, no ground, haze, shadow or text.",
       "referenceAsset": "child"
+    },
+    {
+      "id": "chair",
+      "name": "いす",
+      "nameEn": "Chair",
+      "tags": [
+        "椅子",
+        "家具"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "chair",
+      "legacyIds": [],
+      "sourceFile": "chair.png",
+      "prompt": "Reference is painting style only: playful loose gouache, broad brushwork, soft volume. One small honey-colored wooden chair, rounded backrest, four sturdy legs, three-quarter view. Whole chair centered with wide clear margins. Transparent background. No bird, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "table",
+      "name": "テーブル",
+      "nameEn": "Table",
+      "tags": [
+        "机",
+        "家具"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "table",
+      "legacyIds": [],
+      "sourceFile": "table.png",
+      "prompt": "Reference is painting style only: playful loose gouache, broad brushwork, soft volume. One honey-colored wooden rectangular table, rounded corners, four sturdy legs, empty tabletop, three-quarter view. Whole table centered with wide clear margins. Transparent background. No bird, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bed",
+      "name": "ベッド",
+      "nameEn": "Bed",
+      "tags": [
+        "寝る",
+        "家具"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "bed",
+      "legacyIds": [],
+      "sourceFile": "bed.png",
+      "prompt": "Reference is painting style only: playful loose gouache, broad brushwork, soft volume. One cozy single wooden bed, honey-colored rounded headboard and footboard, cream pillow, blue patchwork quilt, four short legs, three-quarter view. Entire bed centered at 75% canvas size. Transparent background. No bird, people, room, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "watering-can",
+      "name": "じょうろ",
+      "nameEn": "Watering can",
+      "tags": [
+        "水やり",
+        "庭"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "watering-can",
+      "legacyIds": [],
+      "sourceFile": "watering-can.png",
+      "prompt": "Paint one small teal watering can centered in the middle HALF of a square canvas. Same loose gouache style. Complete curved handle and spout fully visible; huge empty transparent margins on all four sides. No bird, ground, shadow, haze or text.",
+      "referenceAsset": "bird",
+      "initialPrompt": "Reference is painting style only: playful loose gouache, broad brushwork, soft volume. One teal metal watering can, rounded body, curved handle, long spout with perforated rose, three-quarter view. Entire can centered at 70% canvas size with wide margins. Transparent background. No bird, plants, water, ground, shadow, haze or text.",
+      "generationNotes": "Regenerated for complete handle and clear margins."
     }
   ]
 }

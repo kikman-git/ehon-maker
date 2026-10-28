@@ -153,6 +153,10 @@ internal object StorybookMaterials {
         Material("pack.storybook:grandmother", "おばあちゃん・てをふる", "Waving grandmother", "ひと", "a/8ee20b7d13aec5efd38dcb614cc29bdb831ca3ed967ce8959df422a06f8e88a0", "grandmother", "waving", listOf("おばあちゃん", "ひと"), listOf()),
         Material("pack.storybook:grandfather", "おじいちゃん・たつ", "Standing grandfather", "ひと", "a/3faf95f1ac5ba6b9b87984f80aac7fef1518a99adf80cac628f22f601888d136", "grandfather", "standing", listOf("おじいちゃん", "ひと"), listOf()),
         Material("pack.storybook:toddler", "おさなご・すわる", "Sitting toddler", "ひと", "a/bbf3d1bd967d255a940f39c0b07000ef32571a61d7e5201106730439467c9ff0", "toddler", "sitting", listOf("おさなご", "ひと"), listOf()),
-        Material("pack.storybook:child-wheelchair", "くるまいすのこ・すわる", "Child using wheelchair", "ひと", "a/cdca1cc4da8c7cde1f6b43056a9a5491d0d0ebcb10e2fdb25b6008438590027e", "child-wheelchair", "sitting", listOf("くるまいすのこ", "ひと"), listOf())
+        Material("pack.storybook:child-wheelchair", "くるまいすのこ・すわる", "Child using wheelchair", "ひと", "a/cdca1cc4da8c7cde1f6b43056a9a5491d0d0ebcb10e2fdb25b6008438590027e", "child-wheelchair", "sitting", listOf("くるまいすのこ", "ひと"), listOf()),
+        Material("pack.storybook:chair", "いす", "Chair", "もの", "a/1731c739bf44d45cd7ea5506032f701e9958001bc8e9d7f0bb78ce18e41790b9", "chair", "default", listOf("椅子", "家具"), listOf()),
+        Material("pack.storybook:table", "テーブル", "Table", "もの", "a/4fa99a2e960ae643331c3d57bcb8d578e180e6c4d999f4b9c27a2b4d79165cef", "table", "default", listOf("机", "家具"), listOf()),
+        Material("pack.storybook:bed", "ベッド", "Bed", "もの", "a/55082eaa2d0b23415b8542ae3456921bc517c3d2c52f7fae0a355aee7a6ef086", "bed", "default", listOf("寝る", "家具"), listOf()),
+        Material("pack.storybook:watering-can", "じょうろ", "Watering can", "もの", "a/813167de126f2a6726767b35896cf19722b55e1be258dd016370bbd2da1d09f2", "watering-can", "default", listOf("水やり", "庭"), listOf())
     )
 }
