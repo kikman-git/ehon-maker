@@ -4,9 +4,9 @@ Updated: 2026-10-28. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Current state
 
-- **154 accepted PNGs / 500 target; 346 remaining.** Priority props batch P02 integrated.
+- **158 accepted PNGs / 500 target; 342 remaining.** Priority nature batch P03 integrated.
 - Animals: 64 images across the requested 10 species. Bird, butterfly, fish, octopus, turtle and penguin each have 10 poses; the other 4 species have 1 each.
-- Nature has 11 images. People has 14 illustrations across 7 characters. Objects has 15 images; vehicles has 11. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 4 scenes.
+- Nature has 15 images. People has 14 illustrations across 7 characters. Objects has 15 images; vehicles has 11. Food has 9 images. Background elements have 8 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 4 scenes.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,11 +15,17 @@ Updated: 2026-10-28. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**Budget priority override (2026-10-28):** user has 17% weekly allowance remaining. Prioritize distinct reusable subjects over extra animal poses. User subsequently authorized P02 (chair, table, bed, watering can), now integrated. Next priority: nature (grass, mushrooms, reeds, lily pad), then meals (bread, rice ball, soup, sandwich). Animal variations including S16 are deferred. No whale output was accepted.
+**Budget priority override (2026-10-28):** user has 17% weekly allowance remaining. Prioritize distinct reusable subjects over extra animal poses. User subsequently authorized P02 (chair, table, bed, watering can), now integrated. P03 added grass, mushrooms, reeds and lily pad. Next priority: meals (bread, rice ball, soup, sandwich). Animal variations including S16 are deferred. No whale output was accepted.
 
 P01 adds grandmother/waving, grandfather/standing, toddler/sitting and child-wheelchair/sitting. These count toward S19 and S30, not as extra quota: skip these existing poses when returning to those sessions. Original cumulative targets in the plan assume the original order.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## P03 priority nature milestone — 158 assets
+
+- grassy-tuft, mushroom-cluster, reeds and lily-pad added with built-in imagegen and bird style reference. Exact compact prompts in generation.json.
+- Cream/dark review, alpha/hash validation, shared-core build and app browsing, four insertions, reload persistence and PNG export passed.
+- These four count toward S17; skip them when resuming that session.
 
 ## P02 priority props milestone — 154 assets
 

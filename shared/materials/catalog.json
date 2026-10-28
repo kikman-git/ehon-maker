@@ -3297,6 +3297,88 @@
       "bytes": 651741,
       "sha256": "813167de126f2a6726767b35896cf19722b55e1be258dd016370bbd2da1d09f2",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:grassy-tuft",
+      "slug": "grassy-tuft",
+      "name": "くさ",
+      "nameEn": "Grass tuft",
+      "category": "しぜん",
+      "characterId": "grassy-tuft",
+      "pose": "default",
+      "tags": [
+        "草",
+        "草むら"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/a8a789f8eff8af2bb5fe76d7765a03dd693b2de30c632297a0c0f6c7df2b124a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1879240,
+      "sha256": "a8a789f8eff8af2bb5fe76d7765a03dd693b2de30c632297a0c0f6c7df2b124a",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:mushroom-cluster",
+      "slug": "mushroom-cluster",
+      "name": "きのこ",
+      "nameEn": "Mushroom cluster",
+      "category": "しぜん",
+      "characterId": "mushroom-cluster",
+      "pose": "default",
+      "tags": [
+        "茸",
+        "森"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/4ac6f94d2949d971f03205884e3a14208aa6b8b98518ceb436190ed7261fa687",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2864061,
+      "sha256": "4ac6f94d2949d971f03205884e3a14208aa6b8b98518ceb436190ed7261fa687",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:reeds",
+      "slug": "reeds",
+      "name": "あし",
+      "nameEn": "Reeds",
+      "category": "しぜん",
+      "characterId": "reeds",
+      "pose": "default",
+      "tags": [
+        "葦",
+        "池",
+        "水辺"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/346c6843589fe409945e77564824e26bdf8b5797d4293f3dcd8c731795319cb4",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1994417,
+      "sha256": "346c6843589fe409945e77564824e26bdf8b5797d4293f3dcd8c731795319cb4",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:lily-pad",
+      "slug": "lily-pad",
+      "name": "すいれんの は",
+      "nameEn": "Lily pad",
+      "category": "しぜん",
+      "characterId": "lily-pad",
+      "pose": "default",
+      "tags": [
+        "睡蓮",
+        "葉",
+        "池"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/7e5af4790e963b77415688c4e2ae42467e2b51b7efb2de548136a0a7ceb0be8d",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2862591,
+      "sha256": "7e5af4790e963b77415688c4e2ae42467e2b51b7efb2de548136a0a7ceb0be8d",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

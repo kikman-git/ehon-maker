@@ -2719,6 +2719,72 @@
       "referenceAsset": "bird",
       "initialPrompt": "Reference is painting style only: playful loose gouache, broad brushwork, soft volume. One teal metal watering can, rounded body, curved handle, long spout with perforated rose, three-quarter view. Entire can centered at 70% canvas size with wide margins. Transparent background. No bird, plants, water, ground, shadow, haze or text.",
       "generationNotes": "Regenerated for complete handle and clear margins."
+    },
+    {
+      "id": "grassy-tuft",
+      "name": "くさ",
+      "nameEn": "Grass tuft",
+      "tags": [
+        "草",
+        "草むら"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "grassy-tuft",
+      "legacyIds": [],
+      "sourceFile": "grassy-tuft.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One small lush grass tuft, varied curved green blades, compact natural base. Entire tuft in middle 65% of square canvas. Transparent background. No bird, flowers, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "mushroom-cluster",
+      "name": "きのこ",
+      "nameEn": "Mushroom cluster",
+      "tags": [
+        "茸",
+        "森"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "mushroom-cluster",
+      "legacyIds": [],
+      "sourceFile": "mushroom-cluster.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One cluster of three woodland mushrooms, rounded chestnut and ochre caps, cream stems, varied heights. Complete cluster in middle 65% of square canvas. Transparent background. No bird, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "reeds",
+      "name": "あし",
+      "nameEn": "Reeds",
+      "tags": [
+        "葦",
+        "池",
+        "水辺"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "reeds",
+      "legacyIds": [],
+      "sourceFile": "reeds.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. Small clump of pond reeds: slender green stems, long arching leaves, three airy tan seed plumes, compact base. Whole plant in middle 65% of square canvas; all tips visible. Transparent background. No bird, cattail cylinders, water, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "lily-pad",
+      "name": "すいれんの は",
+      "nameEn": "Lily pad",
+      "tags": [
+        "睡蓮",
+        "葉",
+        "池"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "lily-pad",
+      "legacyIds": [],
+      "sourceFile": "lily-pad.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One round green water-lily pad with V-shaped notch, gently curved rim, simple radiating veins, oblique top view. Whole leaf centered in middle 65% of square canvas. Transparent background. No bird, flower, water, shadow, haze or text.",
+      "referenceAsset": "bird"
     }
   ]
 }

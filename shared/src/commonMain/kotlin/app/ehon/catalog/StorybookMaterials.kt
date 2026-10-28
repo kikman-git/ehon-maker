@@ -157,6 +157,10 @@ internal object StorybookMaterials {
         Material("pack.storybook:chair", "いす", "Chair", "もの", "a/1731c739bf44d45cd7ea5506032f701e9958001bc8e9d7f0bb78ce18e41790b9", "chair", "default", listOf("椅子", "家具"), listOf()),
         Material("pack.storybook:table", "テーブル", "Table", "もの", "a/4fa99a2e960ae643331c3d57bcb8d578e180e6c4d999f4b9c27a2b4d79165cef", "table", "default", listOf("机", "家具"), listOf()),
         Material("pack.storybook:bed", "ベッド", "Bed", "もの", "a/55082eaa2d0b23415b8542ae3456921bc517c3d2c52f7fae0a355aee7a6ef086", "bed", "default", listOf("寝る", "家具"), listOf()),
-        Material("pack.storybook:watering-can", "じょうろ", "Watering can", "もの", "a/813167de126f2a6726767b35896cf19722b55e1be258dd016370bbd2da1d09f2", "watering-can", "default", listOf("水やり", "庭"), listOf())
+        Material("pack.storybook:watering-can", "じょうろ", "Watering can", "もの", "a/813167de126f2a6726767b35896cf19722b55e1be258dd016370bbd2da1d09f2", "watering-can", "default", listOf("水やり", "庭"), listOf()),
+        Material("pack.storybook:grassy-tuft", "くさ", "Grass tuft", "しぜん", "a/a8a789f8eff8af2bb5fe76d7765a03dd693b2de30c632297a0c0f6c7df2b124a", "grassy-tuft", "default", listOf("草", "草むら"), listOf()),
+        Material("pack.storybook:mushroom-cluster", "きのこ", "Mushroom cluster", "しぜん", "a/4ac6f94d2949d971f03205884e3a14208aa6b8b98518ceb436190ed7261fa687", "mushroom-cluster", "default", listOf("茸", "森"), listOf()),
+        Material("pack.storybook:reeds", "あし", "Reeds", "しぜん", "a/346c6843589fe409945e77564824e26bdf8b5797d4293f3dcd8c731795319cb4", "reeds", "default", listOf("葦", "池", "水辺"), listOf()),
+        Material("pack.storybook:lily-pad", "すいれんの は", "Lily pad", "しぜん", "a/7e5af4790e963b77415688c4e2ae42467e2b51b7efb2de548136a0a7ceb0be8d", "lily-pad", "default", listOf("睡蓮", "葉", "池"), listOf())
     )
 }
