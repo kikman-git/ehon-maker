@@ -11,8 +11,9 @@
       "characterId": "teacher",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Friendly teacher standing, dark curly hair, warm brown skin, teal cardigan, holding a closed book.",
       "referenceAsset": "child",
-      "status": "queued",
-      "outputFile": "pending/teacher.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/teacher.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-3ba54bca-4b90-4d14-8bb2-98e48f329d36.png"
     },
     {
       "id": "mail-carrier",
@@ -22,8 +23,9 @@
       "characterId": "mail-carrier",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Friendly mail carrier standing, navy cap and jacket, tan shoulder mailbag, holding an envelope.",
       "referenceAsset": "child",
-      "status": "queued",
-      "outputFile": "pending/mail-carrier.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/mail-carrier.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-11893391-4bb0-49cc-b226-a90fc18ca80a.png"
     },
     {
       "id": "gardener",
@@ -33,8 +35,9 @@
       "characterId": "gardener",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Friendly gardener standing, straw hat, green overalls, holding a small hand trowel.",
       "referenceAsset": "child",
-      "status": "queued",
-      "outputFile": "pending/gardener.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/gardener.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ab1849a0-dc00-46db-8cd6-64f36e63d101.png"
     },
     {
       "id": "airplane",
@@ -44,8 +47,9 @@
       "characterId": "airplane",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One airplane, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/airplane.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/airplane.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-22c150cc-1dd5-4a11-aee7-9e047ccdbdc9.png"
     },
     {
       "id": "helicopter",
@@ -55,8 +59,9 @@
       "characterId": "helicopter",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One helicopter, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/helicopter.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/helicopter.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-7270087c-2b0c-45b2-b827-76c485155191.png"
     },
     {
       "id": "rocket",
@@ -66,8 +71,9 @@
       "characterId": "rocket",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One rocket, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/rocket.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/rocket.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-b633df76-1926-4da9-8d76-951d5e9381c4.png"
     },
     {
       "id": "submarine",
@@ -77,8 +83,9 @@
       "characterId": "submarine",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One submarine, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/submarine.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/submarine.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-13495143-6efd-4279-a475-dda7ca8a2621.png"
     },
     {
       "id": "rowboat",
@@ -88,8 +95,9 @@
       "characterId": "rowboat",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One rowboat, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/rowboat.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/rowboat.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-1f8d2ab2-09ca-4eb5-9ddd-5bc90c3eb66d.png"
     },
     {
       "id": "scooter",
@@ -99,8 +107,9 @@
       "characterId": "scooter",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One scooter, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/scooter.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/scooter.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-0f055ef0-9ec1-431b-bafc-fcf71d64dbf8.png"
     },
     {
       "id": "snowplow",
@@ -110,8 +119,9 @@
       "characterId": "snowplow",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One snowplow, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/snowplow.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/snowplow.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-6cea8e3a-460d-4a32-928f-2bec080efc6e.png"
     },
     {
       "id": "garbage-truck",
@@ -121,8 +131,9 @@
       "characterId": "garbage-truck",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One garbage truck, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/garbage-truck.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/garbage-truck.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-946edbf0-f811-438b-a7a6-7babfc486f5b.png"
     },
     {
       "id": "delivery-van",
@@ -132,8 +143,9 @@
       "characterId": "delivery-van",
       "prompt": "Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One delivery van, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/delivery-van.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/delivery-van.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a2cc9434-6bd0-46d2-b386-512317034d3d.png"
     },
     {
       "id": "boulder",
