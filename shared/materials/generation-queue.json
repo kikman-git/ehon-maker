@@ -719,8 +719,9 @@
       "characterId": "undersea-reef",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Undersea reef with coral, seaweed and small fish. Standalone painted vignette with organic feathered boundaries, no rectangular backdrop.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/undersea-reef.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/undersea-reef.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-d1836bfb-a23e-4e0b-a83e-8a440b04b971.png"
     },
     {
       "id": "snowy-sledding-hill",
@@ -730,8 +731,9 @@
       "characterId": "snowy-sledding-hill",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Snowy sledding hill with a child riding a sled. Standalone painted vignette with organic feathered boundaries, no rectangular backdrop.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/snowy-sledding-hill.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/snowy-sledding-hill.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a4982685-ed4a-4e08-ad86-b0d748e54580.png"
     },
     {
       "id": "night-campsite",
@@ -741,8 +743,9 @@
       "characterId": "night-campsite",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Cozy night campsite with tent, campfire and moon. Standalone painted vignette with organic feathered boundaries, no rectangular backdrop.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/night-campsite.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/night-campsite.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-f49544c2-59e1-441c-bf68-0db0a0b0ab48.png"
     },
     {
       "id": "village-festival",
@@ -752,8 +755,9 @@
       "characterId": "village-festival",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Small cheerful village festival with bunting and food stalls. Standalone painted vignette with organic feathered boundaries, no rectangular backdrop.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/village-festival.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/village-festival.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-308983ce-8747-437c-99d9-ff098bdfdaa5.png"
     },
     {
       "id": "rainy-day-walk",
@@ -763,8 +767,9 @@
       "characterId": "rainy-day-walk",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Child walking in rain with umbrella and puddles. Standalone painted vignette with organic feathered boundaries, no rectangular backdrop.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/rainy-day-walk.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/rainy-day-walk.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-32587aa1-2a22-47b7-960f-85101a251504.png"
     },
     {
       "id": "cozy-reading-nook",
@@ -774,8 +779,9 @@
       "characterId": "cozy-reading-nook",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Cozy reading nook with child, armchair, bookshelf and warm lamp. Standalone painted vignette with organic feathered boundaries, no rectangular backdrop.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/cozy-reading-nook.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cozy-reading-nook.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-dbb9735a-9679-4576-b597-c5896853a85c.png"
     },
     {
       "id": "child-glasses-sitting",
