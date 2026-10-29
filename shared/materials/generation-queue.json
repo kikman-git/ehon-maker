@@ -791,8 +791,9 @@
       "characterId": "child-glasses",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; sitting. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "child-glasses",
-      "status": "queued",
-      "outputFile": "pending/child-glasses-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/child-glasses-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-861f83f3-144a-4951-b6da-c2d7dc5972fc.png"
     },
     {
       "id": "child-glasses-waving",
@@ -802,8 +803,9 @@
       "characterId": "child-glasses",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; waving. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "child-glasses",
-      "status": "queued",
-      "outputFile": "pending/child-glasses-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/child-glasses-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-25fcdac3-6bd6-423d-8586-ef71061ea77a.png"
     },
     {
       "id": "grandmother-standing",
@@ -813,8 +815,9 @@
       "characterId": "grandmother",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; standing. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "grandmother",
-      "status": "queued",
-      "outputFile": "pending/grandmother-standing.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/grandmother-standing.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-c7a96fc8-f929-4e24-bd8f-7c62979aab24.png"
     },
     {
       "id": "grandmother-walking",
@@ -824,8 +827,9 @@
       "characterId": "grandmother",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; walking. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "grandmother",
-      "status": "queued",
-      "outputFile": "pending/grandmother-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/grandmother-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-c669d333-80a5-4818-ba3d-e69fba043f64.png"
     },
     {
       "id": "grandmother-sitting",
@@ -835,8 +839,9 @@
       "characterId": "grandmother",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; sitting. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "grandmother",
-      "status": "queued",
-      "outputFile": "pending/grandmother-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/grandmother-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-9ecef09b-bc83-4622-94b5-67119e887b97.png"
     },
     {
       "id": "grandfather-walking",
@@ -846,8 +851,9 @@
       "characterId": "grandfather",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; walking. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "grandfather",
-      "status": "queued",
-      "outputFile": "pending/grandfather-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/grandfather-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-424f5225-981b-4173-b80c-b05b108c1772.png"
     },
     {
       "id": "grandfather-sitting",
@@ -857,8 +863,9 @@
       "characterId": "grandfather",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; sitting. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "grandfather",
-      "status": "queued",
-      "outputFile": "pending/grandfather-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/grandfather-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-8a3c033a-d8b0-47c5-9970-4efd318647c8.png"
     },
     {
       "id": "grandfather-waving",
@@ -868,8 +875,9 @@
       "characterId": "grandfather",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; waving. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "grandfather",
-      "status": "queued",
-      "outputFile": "pending/grandfather-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/grandfather-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-fbe420a8-c7f5-4cc1-90bd-58645df132b2.png"
     },
     {
       "id": "toddler-standing",
@@ -879,8 +887,9 @@
       "characterId": "toddler",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; standing. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "toddler",
-      "status": "queued",
-      "outputFile": "pending/toddler-standing.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/toddler-standing.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-1cdfa99b-fe5a-4f33-9c12-c80c9eb94310.png"
     },
     {
       "id": "toddler-walking",
@@ -890,8 +899,9 @@
       "characterId": "toddler",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; walking. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "toddler",
-      "status": "queued",
-      "outputFile": "pending/toddler-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/toddler-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-4ac5e744-fa8f-43a4-af32-3374684cd56c.png"
     },
     {
       "id": "toddler-waving",
@@ -901,8 +911,9 @@
       "characterId": "toddler",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; waving. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "toddler",
-      "status": "queued",
-      "outputFile": "pending/toddler-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/toddler-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-40887fe2-f217-4f2a-9995-be6925088bce.png"
     },
     {
       "id": "child-wheelchair-standing",
@@ -912,8 +923,9 @@
       "characterId": "child-wheelchair",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; upright attentive seated posture in wheelchair. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "child-wheelchair",
-      "status": "queued",
-      "outputFile": "pending/child-wheelchair-standing.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/child-wheelchair-standing.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-403c559b-0092-40f4-af81-f9ef2b388c92.png"
     },
     {
       "id": "child-wheelchair-walking",
@@ -923,8 +935,9 @@
       "characterId": "child-wheelchair",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; rolling wheelchair forward. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "child-wheelchair",
-      "status": "queued",
-      "outputFile": "pending/child-wheelchair-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/child-wheelchair-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-0d478e1d-13cf-4650-9edf-b2db9a39bb28.png"
     },
     {
       "id": "child-wheelchair-waving",
@@ -934,8 +947,9 @@
       "characterId": "child-wheelchair",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; waving from wheelchair. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "child-wheelchair",
-      "status": "queued",
-      "outputFile": "pending/child-wheelchair-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/child-wheelchair-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-1ad74280-baa4-4fe6-9ab7-3f2f156afec7.png"
     },
     {
       "id": "teacher-walking",
@@ -945,8 +959,9 @@
       "characterId": "teacher",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; walking. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "teacher",
-      "status": "queued",
-      "outputFile": "pending/teacher-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/teacher-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-025a8e13-bd22-4963-8642-c84d197b4d4a.png"
     },
     {
       "id": "teacher-sitting",
@@ -956,8 +971,9 @@
       "characterId": "teacher",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; sitting. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "teacher",
-      "status": "queued",
-      "outputFile": "pending/teacher-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/teacher-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a81d3877-ed84-4d8e-98b5-80b311209021.png"
     },
     {
       "id": "teacher-waving",
@@ -967,8 +983,9 @@
       "characterId": "teacher",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; waving. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "teacher",
-      "status": "queued",
-      "outputFile": "pending/teacher-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/teacher-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-15e66f21-a6db-4155-8e75-220a2dbed6b7.png"
     },
     {
       "id": "mail-carrier-walking",
@@ -978,8 +995,9 @@
       "characterId": "mail-carrier",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; walking. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "mail-carrier",
-      "status": "queued",
-      "outputFile": "pending/mail-carrier-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/mail-carrier-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-b66c450b-27c9-4449-a7e6-081444e5daf9.png"
     },
     {
       "id": "mail-carrier-sitting",
@@ -989,8 +1007,9 @@
       "characterId": "mail-carrier",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; sitting. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "mail-carrier",
-      "status": "queued",
-      "outputFile": "pending/mail-carrier-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/mail-carrier-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ad150b7a-a3d3-41d0-87ba-48db407953fd.png"
     },
     {
       "id": "mail-carrier-waving",
@@ -1000,8 +1019,9 @@
       "characterId": "mail-carrier",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; waving. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "mail-carrier",
-      "status": "queued",
-      "outputFile": "pending/mail-carrier-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/mail-carrier-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a960a821-d22c-4333-9327-6351f7e655b6.png"
     },
     {
       "id": "gardener-walking",
@@ -1011,8 +1031,9 @@
       "characterId": "gardener",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; walking. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "gardener",
-      "status": "queued",
-      "outputFile": "pending/gardener-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/gardener-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-d7ff64a2-fedc-4848-b08b-f2250b0725cf.png"
     },
     {
       "id": "gardener-sitting",
@@ -1022,8 +1043,9 @@
       "characterId": "gardener",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; sitting. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "gardener",
-      "status": "queued",
-      "outputFile": "pending/gardener-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/gardener-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-113498c7-4b40-4d07-be4e-9f1128802fc5.png"
     },
     {
       "id": "gardener-waving",
@@ -1033,8 +1055,9 @@
       "characterId": "gardener",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same character as reference, same face, hair, skin and clothes; waving. Distinct full-body gesture, preserve identity.",
       "referenceAsset": "gardener",
-      "status": "queued",
-      "outputFile": "pending/gardener-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/gardener-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-0c9c44a3-7a6f-4b68-8b48-c31cd62d806d.png"
     },
     {
       "id": "whale-hovering",
