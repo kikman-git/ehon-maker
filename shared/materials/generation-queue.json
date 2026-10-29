@@ -1403,8 +1403,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; sitting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-057098a5-6f9b-486b-8ed1-93e8208b7ecd.png"
     },
     {
       "id": "owl-jumping",
@@ -1414,8 +1415,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; jumping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-jumping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-jumping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-b57c713c-653e-4d56-a3ea-2bbc7d085456.png"
     },
     {
       "id": "owl-sleeping",
@@ -1425,8 +1427,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-02771a2d-6dca-4734-a761-f6243fef6f38.png"
     },
     {
       "id": "owl-smiling",
@@ -1436,8 +1439,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a5680276-f605-414c-a4cb-9e2ee30472e6.png"
     },
     {
       "id": "owl-surprised",
@@ -1447,8 +1451,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-0ebf78c3-a65f-46b3-a3fa-4e390caa3d15.png"
     },
     {
       "id": "owl-waving",
@@ -1458,8 +1463,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; waving. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-8677c5f2-c07d-492b-ac5f-93b00385a174.png"
     },
     {
       "id": "owl-looking-left",
@@ -1469,8 +1475,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-8f07e6dc-f9f2-4ba6-ad7a-807ec771a3a6.png"
     },
     {
       "id": "owl-looking-right",
@@ -1480,8 +1487,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-314c36a8-a99b-4868-9b4a-98f96f7e8aa4.png"
     },
     {
       "id": "cat-walking",
