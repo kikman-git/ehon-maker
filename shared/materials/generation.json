@@ -3169,6 +3169,120 @@
       "sourceFile": "bear.png",
       "prompt": "Reference bird is style only: loose playful gouache, broad brushwork, chubby picture-book proportions, small ink eyes. One friendly cinnamon-brown bear cub, round ears, cream muzzle and belly, dark nose, standing upright on two short hind legs with forepaws relaxed beside belly. Three-quarter view. Small centered full body, wide transparent margins. No bird, clothing, ground, shadow, haze or text.",
       "referenceAsset": "bird"
+    },
+    {
+      "id": "rain-cloud",
+      "name": "あまぐも",
+      "nameEn": "Rain cloud",
+      "tags": [
+        "雨",
+        "天気"
+      ],
+      "pose": "default",
+      "category": "はいけい",
+      "characterId": "rain-cloud",
+      "legacyIds": [],
+      "sourceFile": "rain-cloud.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One rounded blue-grey rain cloud with seven separate blue raindrops below, gentle storybook weather. Full cloud and drops centered with wide transparent margins. No bird, face, sky, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "snow-cloud",
+      "name": "ゆきぐも",
+      "nameEn": "Snow cloud",
+      "tags": [
+        "雪",
+        "天気"
+      ],
+      "pose": "default",
+      "category": "はいけい",
+      "characterId": "snow-cloud",
+      "legacyIds": [],
+      "sourceFile": "snow-cloud.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One rounded pale lavender snow cloud with five separate simple six-armed icy-blue snowflakes below. Full cloud and flakes centered with wide transparent margins. No bird, face, sky, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "pond",
+      "name": "いけ",
+      "nameEn": "Pond",
+      "tags": [
+        "池",
+        "水辺"
+      ],
+      "pose": "default",
+      "category": "はいけい",
+      "characterId": "pond",
+      "legacyIds": [],
+      "sourceFile": "pond.png",
+      "prompt": "Loose playful gouache with broad painted strokes. A SMALL oval turquoise pond with thin grassy bank and three rounded stones, oblique top view. Occupies only central HALF of square canvas; huge empty margins on every side. Entire bank visible, no cropped edges. Transparent outside pond. No sky, trees, animals, text, shadows or haze.",
+      "initialPrompt": "Reference style only: loose playful gouache, broad brushwork, restrained detail. One small irregular oval turquoise pond with a thin soft grassy bank and three rounded stones, gentle painted ripples, oblique top view. Complete standalone element centered in middle 65% canvas. Transparent outside pond and bank. No bird, animals, trees, sky, rectangle, haze or text.",
+      "generationNotes": "Regenerated without image reference for complete framing."
+    },
+    {
+      "id": "stream",
+      "name": "おがわ",
+      "nameEn": "Stream",
+      "tags": [
+        "小川",
+        "川"
+      ],
+      "pose": "default",
+      "category": "はいけい",
+      "characterId": "stream",
+      "legacyIds": [],
+      "sourceFile": "stream.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, restrained detail. A short winding blue stream segment with narrow grassy banks and a few smooth stones, oblique top view, softly rounded ends. Entire element small in central HALF of square canvas with wide margins. Transparent outside stream and banks. No bird, trees, sky, rectangle, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "waterfall",
+      "name": "たき",
+      "nameEn": "Waterfall",
+      "tags": [
+        "滝",
+        "水"
+      ],
+      "pose": "default",
+      "category": "はいけい",
+      "characterId": "waterfall",
+      "legacyIds": [],
+      "sourceFile": "waterfall.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, restrained detail. One small waterfall cascading over rounded grey rocks into a compact turquoise pool, sparse moss on rocks. Complete standalone vignette small centered in central HALF of square canvas, wide clear margins. Transparent outside rocks and pool. No bird, trees, sky, rectangle, mist, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "shoreline",
+      "name": "なぎさ",
+      "nameEn": "Shoreline",
+      "tags": [
+        "渚",
+        "海",
+        "浜辺"
+      ],
+      "pose": "default",
+      "category": "はいけい",
+      "characterId": "shoreline",
+      "legacyIds": [],
+      "sourceFile": "shoreline.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, restrained detail. Small curved shoreline element: warm sandy crescent beside a shallow turquoise wave with a thin white foam edge, two shells. Complete organic standalone patch centered in central HALF of square canvas with wide margins. Transparent outside patch. No bird, horizon, sky, rectangle, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "garden-fence",
+      "name": "にわの さく",
+      "nameEn": "Garden fence",
+      "tags": [
+        "柵",
+        "庭"
+      ],
+      "pose": "default",
+      "category": "はいけい",
+      "characterId": "garden-fence",
+      "legacyIds": [],
+      "sourceFile": "garden-fence.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One short white wooden garden picket fence, five rounded pickets joined by two horizontal rails, gentle three-quarter angle. Complete fence with both end posts fully visible, small centered in central HALF of square canvas. Transparent background. No bird, flowers, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
     }
   ]
 }

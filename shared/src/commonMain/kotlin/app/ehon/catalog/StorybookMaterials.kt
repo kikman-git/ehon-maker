@@ -185,6 +185,13 @@ internal object StorybookMaterials {
         Material("pack.storybook:cat", "ねこ", "Cat", "どうぶつ", "a/557143ff0fee552226e6721d81546ebc9dae674f7ba7bc0c867116c9b31f2cef", "cat", "standing", listOf("猫", "ペット"), listOf()),
         Material("pack.storybook:dog", "いぬ", "Dog", "どうぶつ", "a/ae84140480dccda470651cad02886092165be5cff68ad6c320ed0d9c32a8c292", "dog", "standing", listOf("犬", "ペット"), listOf()),
         Material("pack.storybook:rabbit", "うさぎ", "Rabbit", "どうぶつ", "a/3413015b3d6bbdd9679ca8cdcf6bd70c4acce420672202df51afdcef7bfed986", "rabbit", "standing", listOf("兎", "森"), listOf()),
-        Material("pack.storybook:bear", "くま", "Bear", "どうぶつ", "a/60c6190bbf17b98424011e7512dd7a5ad6b59f695a8ab10611687e7b31e61b60", "bear", "standing", listOf("熊", "森"), listOf())
+        Material("pack.storybook:bear", "くま", "Bear", "どうぶつ", "a/60c6190bbf17b98424011e7512dd7a5ad6b59f695a8ab10611687e7b31e61b60", "bear", "standing", listOf("熊", "森"), listOf()),
+        Material("pack.storybook:rain-cloud", "あまぐも", "Rain cloud", "はいけい", "a/cf5268d94a024770f397b3c1a15bbc3733ccd3ba786b124ba1113241efaae465", "rain-cloud", "default", listOf("雨", "天気"), listOf()),
+        Material("pack.storybook:snow-cloud", "ゆきぐも", "Snow cloud", "はいけい", "a/3868c4013c38e1db3c3b8af46d4b5854a2d44d587436949cdf57cad28b8216ad", "snow-cloud", "default", listOf("雪", "天気"), listOf()),
+        Material("pack.storybook:pond", "いけ", "Pond", "はいけい", "a/867ef0ba184fa29675a16d1b7ba23f9cbbda4b3383f921ea1d38a64a1ceeaf37", "pond", "default", listOf("池", "水辺"), listOf()),
+        Material("pack.storybook:stream", "おがわ", "Stream", "はいけい", "a/316299809e281a5938dc34273f5ec0b09c77a65ab69faf144a4761e5a423f7f3", "stream", "default", listOf("小川", "川"), listOf()),
+        Material("pack.storybook:waterfall", "たき", "Waterfall", "はいけい", "a/c26a98773ef967305425261df4f9f6cb35d8fe57e33ac4e994d8dff744e8b246", "waterfall", "default", listOf("滝", "水"), listOf()),
+        Material("pack.storybook:shoreline", "なぎさ", "Shoreline", "はいけい", "a/935ac996619a2652647073dadec126cae0de554adb7dba79aed5dc326a9438ec", "shoreline", "default", listOf("渚", "海", "浜辺"), listOf()),
+        Material("pack.storybook:garden-fence", "にわの さく", "Garden fence", "はいけい", "a/68553106949067bfd7ac163d6503e7839e5a64fb06ae31db0db0f1054e29641a", "garden-fence", "default", listOf("柵", "庭"), listOf())
     )
 }

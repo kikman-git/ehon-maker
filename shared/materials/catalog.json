@@ -3859,6 +3859,147 @@
       "bytes": 1406464,
       "sha256": "60c6190bbf17b98424011e7512dd7a5ad6b59f695a8ab10611687e7b31e61b60",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:rain-cloud",
+      "slug": "rain-cloud",
+      "name": "あまぐも",
+      "nameEn": "Rain cloud",
+      "category": "はいけい",
+      "characterId": "rain-cloud",
+      "pose": "default",
+      "tags": [
+        "雨",
+        "天気"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/cf5268d94a024770f397b3c1a15bbc3733ccd3ba786b124ba1113241efaae465",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1740558,
+      "sha256": "cf5268d94a024770f397b3c1a15bbc3733ccd3ba786b124ba1113241efaae465",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:snow-cloud",
+      "slug": "snow-cloud",
+      "name": "ゆきぐも",
+      "nameEn": "Snow cloud",
+      "category": "はいけい",
+      "characterId": "snow-cloud",
+      "pose": "default",
+      "tags": [
+        "雪",
+        "天気"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/3868c4013c38e1db3c3b8af46d4b5854a2d44d587436949cdf57cad28b8216ad",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1488613,
+      "sha256": "3868c4013c38e1db3c3b8af46d4b5854a2d44d587436949cdf57cad28b8216ad",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:pond",
+      "slug": "pond",
+      "name": "いけ",
+      "nameEn": "Pond",
+      "category": "はいけい",
+      "characterId": "pond",
+      "pose": "default",
+      "tags": [
+        "池",
+        "水辺"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/867ef0ba184fa29675a16d1b7ba23f9cbbda4b3383f921ea1d38a64a1ceeaf37",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 898990,
+      "sha256": "867ef0ba184fa29675a16d1b7ba23f9cbbda4b3383f921ea1d38a64a1ceeaf37",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:stream",
+      "slug": "stream",
+      "name": "おがわ",
+      "nameEn": "Stream",
+      "category": "はいけい",
+      "characterId": "stream",
+      "pose": "default",
+      "tags": [
+        "小川",
+        "川"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/316299809e281a5938dc34273f5ec0b09c77a65ab69faf144a4761e5a423f7f3",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1766110,
+      "sha256": "316299809e281a5938dc34273f5ec0b09c77a65ab69faf144a4761e5a423f7f3",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:waterfall",
+      "slug": "waterfall",
+      "name": "たき",
+      "nameEn": "Waterfall",
+      "category": "はいけい",
+      "characterId": "waterfall",
+      "pose": "default",
+      "tags": [
+        "滝",
+        "水"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c26a98773ef967305425261df4f9f6cb35d8fe57e33ac4e994d8dff744e8b246",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1963455,
+      "sha256": "c26a98773ef967305425261df4f9f6cb35d8fe57e33ac4e994d8dff744e8b246",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:shoreline",
+      "slug": "shoreline",
+      "name": "なぎさ",
+      "nameEn": "Shoreline",
+      "category": "はいけい",
+      "characterId": "shoreline",
+      "pose": "default",
+      "tags": [
+        "渚",
+        "海",
+        "浜辺"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/935ac996619a2652647073dadec126cae0de554adb7dba79aed5dc326a9438ec",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2185244,
+      "sha256": "935ac996619a2652647073dadec126cae0de554adb7dba79aed5dc326a9438ec",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:garden-fence",
+      "slug": "garden-fence",
+      "name": "にわの さく",
+      "nameEn": "Garden fence",
+      "category": "はいけい",
+      "characterId": "garden-fence",
+      "pose": "default",
+      "tags": [
+        "柵",
+        "庭"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/68553106949067bfd7ac163d6503e7839e5a64fb06ae31db0db0f1054e29641a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1164952,
+      "sha256": "68553106949067bfd7ac163d6503e7839e5a64fb06ae31db0db0f1054e29641a",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }
