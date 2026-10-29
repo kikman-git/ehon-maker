@@ -9,7 +9,7 @@ const MAX_SESSIONS = 8;
 const key = (bookId: string) => `ehon-ai-chat:${bookId}`;
 
 /** A turn that was running when the page went away: its request and how far it had got. */
-export interface Unfinished { text: string; steps: string[] }
+export interface Unfinished { text: string; steps: string[]; turnId?: string }
 export interface SavedChat { past: ChatSession[]; entries: AiEntry[]; unfinished: Unfinished | null }
 
 const str = (value: unknown, max: number): string | null => (typeof value === 'string' && value.length <= max ? value : null);
@@ -50,7 +50,8 @@ export function loadChat(bookId: string): SavedChat {
     const raw = saved.unfinished as Partial<Unfinished> | undefined;
     const text = str(raw?.text, 10_000);
     const steps = Array.isArray(raw?.steps) ? raw.steps.map((item) => str(item, 400)).filter((item): item is string => item !== null) : [];
-    return { past: parseSessions(saved.past), entries: parseEntries(saved.entries), unfinished: text === null ? null : { text, steps } };
+    const turnId = str(raw?.turnId, 64) ?? undefined;
+    return { past: parseSessions(saved.past), entries: parseEntries(saved.entries), unfinished: text === null ? null : { text, steps, ...(turnId ? { turnId } : {}) } };
   } catch { return { past: [], entries: [], unfinished: null }; }
 }
 

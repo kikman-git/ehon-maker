@@ -539,7 +539,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .ai-message.assistant { align-self: flex-start; max-width: 94%; background: #f2f5f2; border-radius: 12px 12px 12px 3px; padding: 8px 11px; font-size: 13px; }
 .ai-message.tool { display: inline-flex; align-items: center; gap: 5px; align-self: flex-start; font-size: 11px; color: #7a6a2f; background: #fbf5dd; border-radius: 6px; padding: 3px 8px; }
 .ai-message.status { align-self: center; font-size: 11px; color: var(--muted); text-align: center; }
-.ai-message.status[data-error] { color: #b13a2a; background: #fbecea; border-radius: 6px; padding: 4px 8px; align-self: stretch; }
+.ai-message.status[data-error] { color: #b13a2a; background: #fbecea; border-radius: 6px; padding: 4px 8px; align-self: stretch; min-width: 0; overflow-wrap: anywhere; }
 /* Earlier conversations about this book, folded away above the current one. */
 .ai-past { display: flex; flex-direction: column; gap: 4px; padding-bottom: 8px; margin-bottom: 4px; border-bottom: 1px dashed var(--border); }
 .ai-past-title { margin: 0; font-size: 10px; font-weight: 700; letter-spacing: .06em; color: var(--muted); }
@@ -571,7 +571,13 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .mark-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
 .mark-path { fill: rgba(220, 60, 40, .12); stroke: rgba(220, 60, 40, .9); stroke-width: 2.5px; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .mark-path[d=""] { display: none; }
-@media (max-width: 720px) { .studio-workspace[data-ai] { grid-template-columns: minmax(0, 1fr); } .tool-panel[data-tool="ai"] { max-height: 300px; } }
+@media (max-width: 720px) {
+  .studio-workspace[data-ai] { grid-template-columns: minmax(0, 1fr); }
+  .tool-panel[data-tool="ai"] { max-height: 46vh; }
+  .studio-toolbar .tool-button span { display: none; }
+  .tool-button { white-space: nowrap; }
+}
+.lease-banner[data-ai] { background: var(--ai-light); color: var(--ai); }
 
 .status[data-error] { color: #b13a2a; }
 /* Every way into the AI shares one look, set apart from the ordinary tools: the paid feature should be the first thing the eye finds. */

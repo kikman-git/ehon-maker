@@ -4,7 +4,7 @@ For multi-session work, start with [SESSION_PLAN.md](SESSION_PLAN.md) and [HANDO
 
 The library now contains 196 AI-generated raster illustrations across ten categories (39.2% of 500). Bird, butterfly, fish, octopus, turtle and penguin each have all 10 poses. The visual direction is loose, playful gouache with broad brushwork, simple expressive faces and soft volume. The earlier naturalistic drafts are not part of this library.
 
-`masters/` contains the selected original transparent PNGs from the built-in image generation tool. `generation.json` records the exact prompts, the user's master prompt, the less-realistic refinement, character families, pose labels, bilingual names, search tags and reference relationships. `catalog.json` and `StorybookMaterials.kt` are generated from those sources.
+`masters/` contains the selected original transparent PNGs from the built-in image generation tool. `generation.json` records the exact prompts, the user's master prompt, the less-realistic refinement, character families, pose labels, bilingual names, search tags and reference relationships. `catalog.json`, `StorybookMaterials.kt` and `backend/functions/src/materials.ts` are generated from those sources; the last carries each picture's own part of its prompt, which the book harness reads when a story needs the character and paints a new pose from (decision #70), so every entry needs a `prompt`.
 
 From the repository root, run:
 

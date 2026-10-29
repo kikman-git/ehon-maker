@@ -43,11 +43,12 @@ function renderPageAt(editor: WebEditor, pageIndex: number, mark: Mark | null, w
   } catch { return null; }
 }
 
-const ideas: { icon: IconName; text: string }[] = [
-  { icon: 'plus', text: 'つぎの ページを つくって' },
-  { icon: 'text', text: 'この ページの ことばを やさしく' },
+/** Starters that fit the book in front of the user: a blank book is offered a story, a page with words a rewrite. */
+const ideas: { icon: IconName; text: string; when?: 'words' | 'content' }[] = [
   { icon: 'book', text: 'うさぎと かめの えほんを つくって' },
-  { icon: 'sparkles', text: 'タイトルを かんがえて' },
+  { icon: 'plus', text: 'つぎの ページを つくって', when: 'content' },
+  { icon: 'text', text: 'この ページの ことばを やさしく', when: 'words' },
+  { icon: 'sparkles', text: 'タイトルを かんがえて', when: 'content' },
 ];
 
 interface Props {
@@ -72,6 +73,9 @@ export function AiPanel({ bridge, editor, revision, mark, onClearMark, readOnly 
     try { return JSON.parse(editor.itemBoundsJson(1000, 1000 / editor.pageAspect)) as ItemBox[]; } catch { return []; }
   }, [editor, revision]);
   const marked = mark && mark.pageIndex === editor.pageIndex ? itemsInMark(pageItems, mark.box) : [];
+  const hasWords = pageItems.some((item) => item.kind === 'text');
+  const hasContent = editor.pageCount > 1 || pageItems.length > 0;
+  const starters = ideas.filter((idea) => (idea.when === 'words' ? hasWords : idea.when === 'content' ? hasContent : true));
   // The server refuses a turn under the minimum, so the offers take the compose box's place before a request fails.
   const outOfCredits = wallet.ready && wallet.balance < MIN_TURN_CREDITS;
   const busy = state.running || outOfCredits;
@@ -104,7 +108,7 @@ export function AiPanel({ bridge, editor, revision, mark, onClearMark, readOnly 
   return <div className="ai-panel" data-testid="ai-panel">
     <div className="ai-head">
       <h2><span className="ai-head-mark"><Icon name="sparkles" size={15} /></span>AI と つくる</h2>
-      {messages.length > 0 && <button className="ghost ai-reset" aria-label="新しい会話を始める" title="新しい会話" disabled={busy} onClick={() => bridge.reset(editor.bookId)}><Icon name="redo" size={14} />新しい会話</button>}
+      {messages.length > 0 && <button className="ghost ai-reset" aria-label="新しい会話を始める" title="新しい会話" disabled={state.running} onClick={() => bridge.reset(editor.bookId)}><Icon name="redo" size={14} />新しい会話</button>}
     </div>
     <div ref={listRef} className="ai-messages" aria-live="polite">
       <PastSessions sessions={state.past} />
@@ -112,7 +116,7 @@ export function AiPanel({ bridge, editor, revision, mark, onClearMark, readOnly 
         <p className="ai-intro-lead">この えほんを 見ながら、AI が いっしょに つくります。</p>
         <p className="ai-intro-cue">まずは ひとつ、たのんでみる</p>
         <div className="ai-starters">
-          {ideas.map((idea) => <button key={idea.text} className="ai-starter" disabled={busy || readOnly} onClick={() => send(idea.text)}><Icon name={idea.icon} size={15} /><span>{idea.text}</span><Icon name="chevron" size={14} /></button>)}
+          {starters.map((idea) => <button key={idea.text} className="ai-starter" disabled={busy || readOnly} onClick={() => send(idea.text)}><Icon name={idea.icon} size={15} /><span>{idea.text}</span><Icon name="chevron" size={14} /></button>)}
         </div>
         <p className="ai-intro-tip"><Icon name="select" size={13} />ページの上を ドラッグで 囲むと、その部分だけを たのめます。</p>
         {wallet.ready && wallet.plan !== 'plus' && <p className="ai-intro-plan">はじめの {WELCOME_CREDITS} クレジットは 無料。ぺたぺた プラスなら 毎月 {PLUS_CREDITS.toLocaleString()} クレジットで、つくりほうだい。</p>}

@@ -784,14 +784,18 @@ class EditorController(
         clampAfterHistory()
     }
 
-    /** A revised whole document as one undo step; the page is kept by id, the selection only if its item survived. */
-    fun replaceDocument(next: Book) {
+    /**
+     * A revised whole document as one undo step; the page is kept by id, the selection only if its item survived.
+     * With [amend], the revision joins the previous one, so an AI turn's drafts and its result undo together.
+     */
+    fun replaceDocument(next: Book, amend: Boolean = false) {
         check(!store.isGestureActive) { "finish the current gesture before replacing the document" }
         require(next.id == book.id) { "a different book cannot replace the open one" }
         require(next.pages.isNotEmpty()) { "an editor needs at least one page" }
         change {
             val pageId = page.id
-            store.edit { next.copy(updatedAtEpochMs = clock()) }
+            val revised = next.copy(updatedAtEpochMs = clock())
+            if (amend) store.amend { revised } else store.edit { revised }
             pageIndex = next.pages.indexOfFirst { it.id == pageId }.takeIf { it >= 0 } ?: pageIndex.coerceIn(0, next.pageCount - 1)
             if (selected == null) selectedId = null
         }

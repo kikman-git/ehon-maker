@@ -50,6 +50,22 @@ class DocumentReplaceTest {
     }
 
     @Test
+    fun amendedRevisionsUndoAsOneStep() {
+        val controller = EditorController(original, FakeMeasurer, clock = { 99L })
+        val first = book(Page(Argb.hex("ffffff"), id = "p1", items = persistentListOf(cat, caption)), Page(Argb.hex("ffffff"), id = "p2", items = persistentListOf(cat)))
+        val second = book(Page(Argb.hex("ffffff"), id = "p1", items = persistentListOf(cat, caption)), Page(Argb.hex("ffffff"), id = "p2", items = persistentListOf(cat, caption)))
+        controller.replaceDocument(first)
+        controller.replaceDocument(second, amend = true)
+        assertEquals(second.pages, controller.book.pages)
+        controller.undo()
+        assertEquals(original, controller.book)
+        assertTrue(!controller.canUndo)
+        // Without a step to join, an amendment is an ordinary edit, so it is never lost to undo.
+        controller.replaceDocument(first, amend = true)
+        assertTrue(controller.canUndo)
+    }
+
+    @Test
     fun selectionSurvivesOnlyWhileItsItemDoes() {
         val controller = EditorController(original, FakeMeasurer)
         controller.selectItem(ItemId("cat"))

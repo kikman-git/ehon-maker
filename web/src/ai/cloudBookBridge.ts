@@ -1,8 +1,8 @@
-import { AtelierError, bookTurn, credits, failureText, type BookInput } from '../cloud/credits';
+import { aiStop, AtelierError, bookTurn, credits, failureText, type BookInput } from '../cloud/credits';
 import type { AiBridge } from './bridge';
 import { referenceArt } from './art';
 import { loadChat, saveChat, type Unfinished } from './history';
-import { aiStore, appendStep, APPLIED_NOTE, type AiEntry } from './state';
+import { aiStore, appendStep, type AiEntry } from './state';
 
 interface Document { version?: number; book?: { art?: Record<string, { svg?: string; name?: string }> } }
 
@@ -35,6 +35,11 @@ export function cloudBookBridge(): AiBridge {
   const bookListeners = new Set<(bookId: string, json: string, draft?: boolean) => void>();
   let context: { bookId: string; json: string } | null = null;
   let turn = 0;
+  let controller: AbortController | null = null;
+  let turnId: string | null = null;
+  // Leaving the page closes the stream; the server charges what was done, and the panel says so on return.
+  let leaving = false;
+  if (typeof window !== 'undefined') window.addEventListener('pagehide', () => { leaving = true; controller?.abort(); });
   // The request a turn was on when the page last went away, so returning can say it stopped partway.
   let unfinished: Unfinished | null = null;
   const remember = () => { if (context) saveChat(context.bookId, state.get().past, state.get().entries, unfinished); };
@@ -45,8 +50,9 @@ export function cloudBookBridge(): AiBridge {
       if (context?.bookId !== bookId) {
         const saved = loadChat(bookId);
         const entries = [...saved.entries];
-        // A turn cut off by a reload: its finished steps are already in the book, so say so and show them.
+        // A turn cut off by a reload: its finished steps are already in the book, so say so and show them, and stop it if it is still running.
         if (saved.unfinished) {
+          if (saved.unfinished.turnId) void aiStop(saved.unfinished.turnId);
           if (saved.unfinished.steps.length) entries.push({ kind: 'steps', texts: saved.unfinished.steps });
           entries.push({ kind: 'notice', text: 'とちゅうで とまりました。ここまでは えほんに のこっています。' });
         }
@@ -65,10 +71,12 @@ export function cloudBookBridge(): AiBridge {
       try { stripped = withoutArt(original); } catch { push({ kind: 'log', level: 'error', text: 'えほんを おくれませんでした。' }); return; }
       const started = Date.now();
       const id = ++turn;
-      unfinished = { text: input.text, steps: [] };
+      controller = new AbortController();
+      turnId = crypto.randomUUID();
+      unfinished = { text: input.text, steps: [], turnId };
       push({ kind: 'user', text: input.text, mark: input.mark, at: started });
       state.update({ running: true, progress: 0, step: null, steps: [] });
-      const request: BookInput = { ...input.book, ...stripped, request: input.text, image: input.image };
+      const request: BookInput = { ...input.book, ...stripped, turnId, request: input.text, image: input.image };
       // Pictures arrive one at a time and drafts arrive without them, so the turn keeps its own art to merge into both.
       const drawn: Record<string, { name: string; svg: string }> = {};
       let applied: string | null = null;
@@ -76,8 +84,8 @@ export function cloudBookBridge(): AiBridge {
       const apply = (answer: string, draft: boolean) => {
         let json: string;
         try { json = withArtOf(original, answer, drawn); } catch { if (!draft) push({ kind: 'rejected', text: '反映できませんでした: AI の こたえが えほんの かたちでは ありませんでした。' }); return; }
-        // Drafts already put this on the page; say so without a second apply, which would cost another undo step.
-        if (json === applied) { if (!draft) push({ kind: 'applied', text: APPLIED_NOTE }); return; }
+        // A draft identical to the last changes nothing; the result always reaches the studio, which joins it to the turn's undo step and says where it landed.
+        if (json === applied && draft) return;
         applied = json;
         for (const listener of [...bookListeners]) listener(bookId, json, draft);
       };
@@ -87,23 +95,31 @@ export function cloudBookBridge(): AiBridge {
         if (event.kind === 'art') { drawn[event.art.key] = { name: event.art.name, svg: event.art.svg }; apply(latest, true); return; }
         latest = event.book;
         apply(latest, true);
-      }).then((result) => {
+      }, controller.signal).then((result) => {
         if (id !== turn) return;
-        if (result.book) apply(result.book, false);
-        // The working card goes; its list stays in the transcript as the record of what this turn did.
+        // The working card goes; its list stays in the transcript as the record of what this turn did, then the AI's word, then where it landed.
         const did = state.get().steps.map((item) => item.text);
         if (did.length) push({ kind: 'steps', texts: did });
         if (result.say) push({ kind: 'assistant', text: result.say });
+        if (result.book) apply(result.book, false);
         push({ kind: 'notice', text: `${((Date.now() - started) / 1000).toFixed(1)}秒 · ${result.credits} クレジット · のこり ${result.balance}` });
         credits.update({ balance: result.balance });
       }).catch((error: unknown) => {
-        if (id !== turn) return;
+        if (id !== turn || leaving) return;
         const reason = error instanceof AtelierError ? error.reason : 'network';
-        if (reason === 'credits') { credits.update({ balance: (error as AtelierError).balance ?? 0 }); push({ kind: 'notice', text: 'クレジットが たりません。' }); }
-        else push({ kind: 'log', level: 'error', text: failureText[reason] + (error instanceof AtelierError && error.detail ? ` (${error.detail})` : '') });
-      }).finally(() => { if (id === turn) { unfinished = null; state.update({ running: false, progress: null, step: null, steps: [] }); remember(); } });
+        if (reason === 'credits') { credits.update({ balance: (error as AtelierError).balance ?? 0 }); push({ kind: 'notice', text: 'クレジットが たりません。' }); return; }
+        if (reason === 'stopped') {
+          const did = state.get().steps.filter((item) => !item.active).map((item) => item.text);
+          if (did.length) push({ kind: 'steps', texts: did });
+          push({ kind: 'notice', text: failureText.stopped });
+          return;
+        }
+        push({ kind: 'log', level: 'error', text: failureText[reason] + (error instanceof AtelierError && error.detail ? ` (${error.detail})` : '') });
+      // On the way out, the unfinished record stays so the return can say the turn stopped and stop it for sure.
+      }).finally(() => { if (id === turn && !leaving) { unfinished = null; controller = null; turnId = null; state.update({ running: false, progress: null, step: null, steps: [] }); remember(); } });
     },
-    stop() { turn++; unfinished = null; state.update({ running: false, progress: null, step: null, steps: [] }); remember(); },
+    // Stopping closes the stream and names the turn to the server; the catch above records what was done.
+    stop() { controller?.abort(); if (turnId) void aiStop(turnId); },
     // 「新しい会話」 puts the old one away rather than throwing it out, so what the AI did stays readable.
     reset(bookId) {
       if (context?.bookId !== bookId) return;

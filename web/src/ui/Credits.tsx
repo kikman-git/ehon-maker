@@ -44,7 +44,7 @@ export function CreditNudge() {
   const state = useStore(credits);
   if (!cloud || !state.ready || state.plan === 'plus') return null;
   if (state.balance < MIN_TURN_CREDITS) return <span className="credit-nudge" data-out="">クレジットが なくなりました · プラスで つづけられます</span>;
-  if (state.balance < LOW_CREDITS) return <span className="credit-nudge" data-low="">のこり {state.balance} クレジット · プラスなら 毎月 {PLUS_CREDITS.toLocaleString()}</span>;
+  if (state.balance < LOW_CREDITS) return <span className="credit-nudge" data-low="">のこり {state.balance} クレジット · おおきな おねがいは とちゅうで とまるかも</span>;
   return null;
 }
 

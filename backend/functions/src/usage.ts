@@ -15,11 +15,14 @@ export interface TurnRecord {
   model: string;
   rounds: number;
   drawings: number;
+  /** Pictures an image model painted this turn; their tokens are in `usd`, not in `usage`. */
+  paintings: number;
   usage: TokenUsage;
   usd: number;
   credits: number;
   durationMs: number;
-  status: 'ok' | 'refusal' | 'error';
+  /** `stopped`: the user ended the turn early; what was done is charged. */
+  status: 'ok' | 'refusal' | 'error' | 'stopped';
   error?: string;
 }
 
@@ -70,7 +73,7 @@ export class UsageService {
       batch.set(this.db.collection('aiTurns').doc(), { ...record, day, createdAt: Timestamp.fromMillis(now) });
       batch.set(this.db.doc(`aiDaily/${day}`), {
         day, turns: FieldValue.increment(1), errors: FieldValue.increment(failed), refusals: FieldValue.increment(record.status === 'refusal' ? 1 : 0),
-        usd: FieldValue.increment(record.usd), credits: FieldValue.increment(record.credits), drawings: FieldValue.increment(record.drawings),
+        usd: FieldValue.increment(record.usd), credits: FieldValue.increment(record.credits), drawings: FieldValue.increment(record.drawings), paintings: FieldValue.increment(record.paintings),
         tokensIn: FieldValue.increment(record.usage.input + record.usage.cacheRead + record.usage.cacheWrite), tokensOut: FieldValue.increment(record.usage.output),
         durationMs: FieldValue.increment(record.durationMs),
         byTask: { [mapKey(record.task)]: { turns: FieldValue.increment(1), usd: FieldValue.increment(record.usd), credits: FieldValue.increment(record.credits), errors: FieldValue.increment(failed) } },

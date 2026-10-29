@@ -1,13 +1,24 @@
-import type { Firestore } from 'firebase-admin/firestore';
+import { Timestamp, type Firestore } from 'firebase-admin/firestore';
 import { logger } from 'firebase-functions';
 import { HttpsError } from 'firebase-functions/v2/https';
-import { usdFor, type CreditService, type TokenUsage } from './credits';
+import { usdFor, type Charge, type CreditService, type TokenUsage } from './credits';
 import { ModelError, textOf, toolCalls, type ChatModel, type Message, type StopReason, type ToolChoice, type ToolDef } from './model';
-import { UsageService } from './usage';
+import { UsageService, type TurnRecord } from './usage';
 
 // One harness for every AI feature (decision #67): a task brings its tools and rules, the agent runs the loop, credits meter the whole turn.
 
 export const MAX_REQUEST_CHARS = 10_000;
+const TURN_ID = /^[A-Za-z0-9_-]{8,64}$/;
+const STOP_TTL_MS = 3_600_000;
+/** The id the browser chose for this turn, so its stop can be addressed; absent on an old client. */
+export const turnIdOf = (raw: unknown): string | null => { const id = (raw as { turnId?: unknown } | null)?.turnId; return typeof id === 'string' && TURN_ID.test(id) ? id : null; };
+const stopDoc = (db: Firestore, uid: string, turnId: string) => db.doc(`turnStops/${uid}_${turnId}`);
+/** The user's stop for a turn: the turn watches this document beside its connection, which a proxy may keep open after the browser has gone. */
+export async function stopTurn(db: Firestore, uid: string, turnId: unknown): Promise<{ ok: true }> {
+  if (typeof turnId !== 'string' || !TURN_ID.test(turnId)) throw new HttpsError('invalid-argument', 'A turn id is required.');
+  await stopDoc(db, uid, turnId).set({ uid, expiresAt: Timestamp.fromMillis(Date.now() + STOP_TTL_MS) });
+  return { ok: true };
+}
 export const MAX_IMAGE_BYTES = 1_500_000;
 
 export interface ToolOutcome { result: unknown; isError?: boolean; /** A line for the user's working card, in the user's language. */ step?: string }
@@ -20,7 +31,8 @@ export interface Task<I, S, O> {
   maxRounds: number;
   system: string;
   validate(raw: unknown): I;
-  start(input: I): { state: S; messages: Message[] };
+  /** `uid` is the signed-in account, for a tool that stores something on its behalf. */
+  start(input: I, uid: string): { state: S; messages: Message[] };
   tools(state: S): Tool<S>[];
   /** The call that ends the turn once it succeeds, if the task has one; otherwise the model ends by answering in text. */
   finishTool?: string;
@@ -60,11 +72,13 @@ export class Agent {
   modelId = '';
   rounds = 0;
   drawings = 0;
+  /** Other models' tokens on this turn, such as an image model's paintings; settled beside the chat model's. */
+  charges: Charge[] = [];
   lastStop: StopReason = 'end';
   constructor(readonly model: ChatModel, readonly send: (chunk: Chunk<never>) => Promise<unknown>, readonly signal?: AbortSignal) {}
 
-  async run<I, S, O>(task: Task<I, S, O>, input: I): Promise<O> {
-    const { state, messages } = task.start(input);
+  async run<I, S, O>(task: Task<I, S, O>, input: I, uid = ''): Promise<O> {
+    const { state, messages } = task.start(input, uid);
     let last = 0;
     let lastDraft = '';
     const onProgress = (chars: number) => { if (chars - last >= 400) { last = chars; void this.send({ type: 'progress', chars }); } };
@@ -110,12 +124,16 @@ export class Agent {
     this.drawings++;
     return reply;
   }
+
+  charge(charge: Charge) { this.charges.push(charge); }
+  get paintings() { return this.charges.length; }
+  usd() { return usdFor(this.modelId || this.model.id, this.usage) + this.charges.reduce((sum, charge) => sum + usdFor(charge.model, charge.usage), 0); }
 }
 
 /** Metering and guards around the agent: hold credits, run, settle what the turn's tokens cost, record it. */
 export class AiService {
   private readonly usage: UsageService;
-  constructor(db: Firestore, private readonly credits: CreditService, private readonly model: ChatModel) { this.usage = new UsageService(db); }
+  constructor(private readonly db: Firestore, private readonly credits: CreditService, private readonly model: ChatModel) { this.usage = new UsageService(db); }
 
   async turn<I, S, O>(task: Task<I, S, O>, uid: string, raw: unknown, send: (chunk: Chunk<O>) => Promise<unknown>, signal?: AbortSignal): Promise<Metered<O>> {
     let input: I;
@@ -127,23 +145,37 @@ export class AiService {
     await this.usage.checkRate(uid, guards.turnsPerHour);
     await this.credits.ensure(uid);
     const reservation = await this.credits.reserve(uid, task.id, task.hold);
-    const agent = new Agent(this.model, send as (chunk: Chunk<never>) => Promise<unknown>, signal);
+    // Two ways to stop: the connection closing, and the stop document `aiStop` writes for this turn id.
+    const stop = new AbortController();
+    signal?.addEventListener('abort', () => stop.abort(), { once: true });
+    const turnId = turnIdOf(raw);
+    const unwatch = turnId ? stopDoc(this.db, uid, turnId).onSnapshot(snapshot => { if (snapshot.exists) stop.abort(); }, () => {}) : () => {};
+    const agent = new Agent(this.model, send as (chunk: Chunk<never>) => Promise<unknown>, stop.signal);
     const started = Date.now();
-    const record = (status: 'ok' | 'refusal' | 'error', credits: number, error?: string) => this.usage.record({
-      uid, task: task.id, model: agent.modelId || this.model.id, rounds: agent.rounds, drawings: agent.drawings, usage: agent.usage,
-      usd: usdFor(agent.modelId || this.model.id, agent.usage), credits, durationMs: Date.now() - started, status, ...(error ? { error } : {}),
+    const record = (status: TurnRecord['status'], credits: number, error?: string) => this.usage.record({
+      uid, task: task.id, model: agent.modelId || this.model.id, rounds: agent.rounds, drawings: agent.drawings, paintings: agent.paintings, usage: agent.usage,
+      usd: agent.usd(), credits, durationMs: Date.now() - started, status, ...(error ? { error } : {}),
     });
     let output: O;
     try {
-      output = await agent.run(task, input);
+      output = await agent.run(task, input, uid);
     } catch (error) {
+      // The user stopped the turn (or left): what the model already did is on their page and is charged; the rest is not.
+      if (stop.signal.aborted) {
+        const settled = await this.credits.settle(uid, reservation.id, { model: agent.modelId || this.model.id, usage: agent.usage, extras: agent.charges });
+        await record('stopped', settled.credits);
+        throw new HttpsError('cancelled', 'The turn was stopped.', { reason: 'stopped', credits: settled.credits, balance: settled.balance });
+      }
       await this.credits.release(uid, reservation.id);
       const message = error instanceof Error ? error.message : String(error);
       await record('error', 0, error instanceof ModelError ? `${error.kind}: ${message}` : message);
       if (error instanceof ModelError) throw new HttpsError(error.kind === 'busy' ? 'unavailable' : 'internal', error.kind === 'busy' ? 'The AI is busy; try again in a moment.' : `The AI could not answer (${error.message}).`, { reason: error.kind });
       throw error;
+    } finally {
+      unwatch();
+      if (turnId) void stopDoc(this.db, uid, turnId).delete().catch(() => {});
     }
-    const settled = await this.credits.settle(uid, reservation.id, { model: agent.modelId || this.model.id, usage: agent.usage });
+    const settled = await this.credits.settle(uid, reservation.id, { model: agent.modelId || this.model.id, usage: agent.usage, extras: agent.charges });
     await record(agent.lastStop === 'refusal' ? 'refusal' : 'ok', settled.credits);
     const result: Metered<O> = { ...output, credits: settled.credits, balance: settled.balance };
     await send({ type: 'result', result });

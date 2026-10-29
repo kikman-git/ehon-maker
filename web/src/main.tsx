@@ -1,4 +1,5 @@
-import { materialCategories, materialUrl, searchMaterials } from './materials';
+import { MaterialImage } from './ui/MaterialImage';
+import { materialCategories, materialStore, loadMaterials, searchMaterials } from './materials';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { assets } from './cloud/assetLoader';
@@ -36,7 +37,6 @@ function download(contents: Blob, name: string) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-/** Layout choices survive reloads; a blocked storage just means the defaults. */
 function remembered(key: string, fallback: boolean) {
   try { const saved = localStorage.getItem(key); return saved === null ? fallback : saved === '1'; } catch { return fallback; }
 }
@@ -44,7 +44,6 @@ function remember(key: string, value: boolean) {
   try { localStorage.setItem(key, value ? '1' : '0'); } catch { /* the choice still holds for this page */ }
 }
 
-// The AI tool appears only where an AI layer exists: the dev server's Claude CLI bridge for now.
 // Squared so the thin end, where small differences show, gets most of the track.
 const sliderSteps = 1000;
 function brushStepAt(editor: WebEditor, position: number) {
@@ -54,6 +53,18 @@ function brushStepAt(editor: WebEditor, position: number) {
 function brushSliderPosition(editor: WebEditor) {
   return Math.round(Math.sqrt((editor.brushStep - editor.minBrushStep) / (editor.maxBrushStep - editor.minBrushStep)) * sliderSteps);
 }
+
+/** Each page's serialized form by id, to tell which pages an AI revision touched. */
+function pagesOf(json: string): { order: string[]; byId: Map<string, string> } {
+  try {
+    const pages = (JSON.parse(json) as { book?: { pages?: { id?: string }[] } }).book?.pages ?? [];
+    const order = pages.map((page, index) => page.id ?? `#${index}`);
+    return { order, byId: new Map(pages.map((page, index) => [order[index], JSON.stringify(page)])) };
+  } catch { return { order: [], byId: new Map() }; }
+}
+/** Indices, in the new order, of pages that are new or changed. */
+const changedPages = (before: ReturnType<typeof pagesOf>, after: ReturnType<typeof pagesOf>) =>
+  after.order.flatMap((id, index) => (before.byId.get(id) === after.byId.get(id) ? [] : [index]));
 
 // Outlives one composer, so a copy in one book pastes into the next; the system clipboard carries it across tabs.
 let memoryClip: { clip: string; text: string } | null = null;
@@ -77,11 +88,6 @@ const uploadMessages: Record<UploadFailure, string> = {
   signedOut: 'サインインすると イラストを アップロードできます。',
 };
 
-/**
- * The composer. Without a book id it is the local harness (file open/save, templates); with one it
- * edits a repository book: autosave, lease, remote replacement, the personal illustration library
- * and the scratch desk.
- */
 function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId: string | null; initialJson: string }) {
   const cloudBook = bookId !== null;
   const repoState = useStore(repo.state);
@@ -100,6 +106,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const bookArt = useMemo(() => JSON.parse(editor.artJson()) as { id: string; name: string; aspect: number }[], [editor, revision]);
   const [category, setCategory] = useState(() => (bookArt.length ? 'art' : 'all'));
   const [materialQuery, setMaterialQuery] = useState('');
+  const materialState = useStore(materialStore);
   const matchingMaterials = searchMaterials(category, materialQuery);
   const retiredMaterials = useMemo(() => JSON.parse(editor.retiredMaterialsJson()) as RetiredMaterial[], [editor, revision]);
   const [replacement, setReplacement] = useState<RetiredMaterial | null>(null);
@@ -126,6 +133,16 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const generation = useRef(0);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const readOnly = cloudBook && repoState.readOnly;
+  // A running AI turn owns the book: hand edits would be swept away by its next draft, so the desk waits with it.
+  const [aiRunning, setAiRunning] = useState(false);
+  useEffect(() => aiBridge?.state.subscribe((ai) => {
+    if (ai.running && !aiWasRunning.current) turnTouched.current = [];
+    if (!ai.running) aiTurnOpen.current = false;
+    aiWasRunning.current = ai.running;
+    setAiRunning(ai.running);
+  }), []);
+  const aiWasRunning = useRef(false);
+  const locked = readOnly || aiRunning;
   const assetsUrl = cloud?.assetsUrl ?? null;
 
   const persist = () => { if (cloudBook && !editor.isGestureActive) repo.save(editor.bookJson()); };
@@ -144,7 +161,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     repo.flushRemote();
   };
   const edit = (action: () => void) => {
-    if (readOnly || editor.isGestureActive) return;
+    if (locked || editor.isGestureActive) return;
     try { action(); changed(); setError(''); }
     catch { setError('へんこう できませんでした。もういちど おためしください。'); }
   };
@@ -200,7 +217,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
       if (event.type === 'cut') edit(() => editor.deleteSelected());
     };
     const paste = (event: ClipboardEvent) => {
-      if (typing(event.target) || readOnly || editor.isGestureActive) return;
+      if (typing(event.target) || locked || editor.isGestureActive) return;
       const clip = event.clipboardData?.getData(editor.clipboardType);
       const text = event.clipboardData?.getData('text/plain') ?? '';
       event.preventDefault();
@@ -213,7 +230,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     document.addEventListener('cut', copy);
     document.addEventListener('paste', paste);
     return () => { document.removeEventListener('copy', copy); document.removeEventListener('cut', copy); document.removeEventListener('paste', paste); };
-  }, [editor, readOnly]);
+  }, [editor, locked]);
 
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => {
@@ -234,7 +251,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     };
     window.addEventListener('keydown', keydown);
     return () => window.removeEventListener('keydown', keydown);
-  }, [editor, readOnly, tool]);
+  }, [editor, locked, tool]);
 
   useEffect(() => {
     const save = () => { if (!editor.isGestureActive) saveNow(); };
@@ -283,18 +300,31 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     if (mark && (mark.pageIndex !== editor.pageIndex || mark.pageIndex >= editor.pageCount || editor.pageId(mark.pageIndex) !== mark.pageId)) setMark(null);
   }, [editor, revision]);
 
-  /** The harness's document is validated like an opened file, then applied as one undo step. */
+  // True between a turn's first draft and its end, while later drafts amend the same undo step.
+  const aiTurnOpen = useRef(false);
+  // Pages this turn changed so far, so the note at the end can say where the work landed.
+  const turnTouched = useRef<number[]>([]);
   const applyAiDocument = (json: string, attempt = 0, draft = false) => {
     if (!aiBridge) return;
     if (editor.isGestureActive) { if (attempt < 20) setTimeout(() => applyAiDocument(json, attempt + 1, draft), 250); return; }
     if (readOnlyRef.current) { if (!draft) aiBridge.note({ kind: 'rejected', text: '閲覧モードなので 反映しませんでした。' }); return; }
     try {
       const migrated = codec.migrate(json);
-      editor.applyDocument(migrated);
+      const before = pagesOf(editor.bookJson());
+      // Every draft after the first joins it, so one 元に戻す takes the whole turn back.
+      if (aiTurnOpen.current) editor.amendDocument(migrated); else editor.applyDocument(migrated);
+      aiTurnOpen.current = draft;
       void bookGlyphs(migrated);
       changed();
-      // A draft lands on the page as the AI works; only the finished turn says so in the chat.
-      if (!draft) aiBridge.note({ kind: 'applied', text: APPLIED_NOTE });
+      // The desk follows the AI to the page it changed, so the family sees the work rather than a blank page.
+      const touched = changedPages(before, pagesOf(editor.bookJson()));
+      turnTouched.current.push(...touched);
+      if (touched.length && !touched.includes(editor.pageIndex)) editor.goToPage(touched[touched.length - 1]);
+      // A draft lands on the page as the AI works; only the finished turn says so in the chat, naming the page it landed on.
+      if (!draft) {
+        const landed = turnTouched.current.at(-1);
+        aiBridge.note({ kind: 'applied', text: landed === undefined ? APPLIED_NOTE : `${landed + 1}ページめに 反映しました。「元に戻す」で 取り消せます。` });
+      }
     } catch (raw) {
       if (!draft) aiBridge.note({ kind: 'rejected', text: `反映できませんでした: ${raw instanceof Error ? raw.message : String(raw)}` });
     }
@@ -354,7 +384,6 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
     location.assign(paths.composer(editor.bookId));
   };
 
-  /** Reading needs a shelf copy, so a template preview is kept first. */
   const readBook = async () => {
     if (editor.isGestureActive) return;
     saveNow();
@@ -393,7 +422,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const partButton = (partId: string, label: string, size: number, content: React.ReactNode, fresh = false) => <button
     key={partId}
     data-new={fresh || undefined}
-    disabled={readOnly || (!!replacementTarget && !partId.startsWith('pack.storybook:'))}
+    disabled={locked || (!!replacementTarget && !partId.startsWith('pack.storybook:'))}
     onPointerDown={(event) => !replacementTarget && startPartDrag(event, partId, label, (x, y) => {
       if (!deskRef.current?.drop(partId, x, y)) setError(partId.startsWith('lib:') && !workspace ? 'イラストは ページの うえに おいてください。' : 'パーツは ページの うえに おいてください。');
     })}
@@ -449,7 +478,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   return <div className="studio-app">
     <header className="topbar studio-header">
       <a className="brand" href={paths.shelf} onClick={(event) => void goHome(event)} aria-label="ぺたぺた ホーム"><span className="brand-mark"><Icon name="brush" /></span><h1>ぺたぺた</h1><span className="studio-wordmark">STUDIO</span></a>
-      <div className="document-title"><strong>{editor.title}</strong><span>{cloudBook ? 'このブラウザに自動保存' : 'おためし · 本棚に保存して続けられます'}</span></div>
+      <div className="document-title"><strong>{editor.title}</strong><span>{cloudBook ? 'アカウントに 自動保存' : 'おためし · 本棚に保存して続けられます'}</span></div>
       <div className="actions">
         <a className="button ghost shelf-link" href={paths.shelf} onClick={(event) => void goHome(event)}><Icon name="home" size={17} />ホーム</a>
         {cloudBook && account.signedIn && <span className="status" data-pending={repoState.pendingChanges} data-error={(repoState.pendingChanges && repoState.syncError) || undefined} title={syncStatus(repoState)}>{repoState.pendingChanges ? (repoState.syncError ? '同期できていません' : '同期中…') : '同期済み'}</span>}
@@ -486,9 +515,10 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
       </div>
     </header>
     {readOnly && <div className="lease-banner" role="status">ほかの たんまつで へんしゅうちゅう。<a href={paths.reader(editor.bookId)}>この えほんを よむ</a></div>}
+    {aiRunning && !readOnly && <div className="lease-banner" data-ai="" role="status">AI が はたらいています。おわるまで ページは そのままに。</div>}
     {retiredMaterials.length > 0 && <div className="material-migration" role="status">
       <span>以前の素材 {retiredMaterials.length} 点は表示されません。新しい絵に置きかえられます。</span>
-      <button disabled={readOnly} onClick={() => { chooseTool('parts'); setCategory('all'); }}>素材を置きかえる</button>
+      <button disabled={locked} onClick={() => { chooseTool('parts'); setCategory('all'); }}>素材を置きかえる</button>
     </div>}
     {error && <p role="alert" className="error">{error}</p>}
     {repoState.syncError === 'diskError' && <p role="alert" className="error">保存できませんでした。ファイルメニューからえほんを保存してください。</p>}
@@ -504,20 +534,20 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
           <button aria-label="ページ一覧" aria-pressed={stripOpen} title={stripOpen ? 'ページ一覧を隠す' : 'ページ一覧を表示'} onClick={() => showStrip(!stripOpen)}><Icon name="pages" size={18} /></button>
         </div>
         <div className="history-tools">
-          <button aria-label="もどす" title="元に戻す (⌘ / Ctrl + Z)" disabled={!editor.canUndo || readOnly} onClick={() => edit(() => editor.undo())}><Icon name="undo" size={18} /><span>元に戻す</span></button>
-          <button aria-label="やりなおす" title="やり直す (⌘ / Ctrl + Shift + Z)" disabled={!editor.canRedo || readOnly} onClick={() => edit(() => editor.redo())}><Icon name="redo" size={18} /></button>
+          <button aria-label="もどす" title="元に戻す (⌘ / Ctrl + Z)" disabled={!editor.canUndo || locked} onClick={() => edit(() => editor.undo())}><Icon name="undo" size={18} /><span>元に戻す</span></button>
+          <button aria-label="やりなおす" title="やり直す (⌘ / Ctrl + Shift + Z)" disabled={!editor.canRedo || locked} onClick={() => edit(() => editor.redo())}><Icon name="redo" size={18} /></button>
         </div>
       </div>
     </div>
-    <main className="workspace studio-workspace" data-readonly={readOnly || undefined} data-panel={panelOpen ? undefined : 'hidden'} data-ai={tool === 'ai' || undefined}>
-      <aside className="tool-panel" data-tool={tool} aria-label={activeTool.label + 'の設定'}>
+    <main className="workspace studio-workspace" data-readonly={locked || undefined} data-panel={panelOpen ? undefined : 'hidden'} data-ai={tool === 'ai' || undefined}>
+      <aside className="tool-panel" data-tool={tool} aria-label={tool === 'ai' ? 'AI と つくる' : activeTool.label + 'の設定'}>
         {tool !== 'ai' && <div className="panel-heading"><span className="eyebrow">{isDrawing ? 'DRAWING' : 'TOOLS'}</span><h2>{activeTool.label}</h2><p>{editor.isEditingIllustration ? '選んだイラストの一部を消して、描き直せます。' : activeTool.hint}</p></div>}
         {editor.isEditingIllustration && <div className="illustration-editing" role="status">
           <strong>{editor.partName(editor.selectedPartId!, 'ja')}を編集中</strong>
           <p>このイラストだけを消したり、描き直したりできます。</p>
-          <button disabled={readOnly} onClick={() => chooseTool('select')}><Icon name="check" size={16} />編集を完了</button>
+          <button disabled={locked} onClick={() => chooseTool('select')}><Icon name="check" size={16} />編集を完了</button>
         </div>}
-        {isDrawing && <fieldset disabled={readOnly}>
+        {isDrawing && <fieldset disabled={locked}>
           <div className="brush-preview" aria-hidden="true">
             <svg viewBox="0 0 200 64"><path d="M18 43 C40 43 45 16 70 20 S100 53 124 35 S161 13 182 26" fill="none" stroke={tool === 'eraser' ? '#b1b6b4' : cssColor(editor.brushColor)} strokeWidth={Math.min(56, Math.max(1, editor.brushStep * 4))} strokeLinecap="round" /></svg>
             <span>{tool === 'eraser' ? '消しゴム' : editor.hasCustomInk ? cssColor(editor.brushColor).toUpperCase() : colorNames[editor.crayonIndex]}</span>
@@ -538,7 +568,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         {tool === 'parts' && <>
           {retiredMaterials.length > 0 && <div className="material-replacement">
             <label htmlFor="material-replacement">置きかえる素材</label>
-            <select id="material-replacement" disabled={readOnly} value={replacementTarget ? JSON.stringify([replacementTarget.pageId, replacementTarget.itemId]) : ''} onChange={event => {
+            <select id="material-replacement" disabled={locked} value={replacementTarget ? JSON.stringify([replacementTarget.pageId, replacementTarget.itemId]) : ''} onChange={event => {
               setReplacement(retiredMaterials.find(item => JSON.stringify([item.pageId, item.itemId]) === event.target.value) ?? null);
               setCategory('all');
             }}>
@@ -547,22 +577,23 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
             </select>
             {replacementTarget && <><p>下から新しい絵をクリック。位置と大きさを保って置きかえます。</p><button onClick={() => setReplacement(null)}>置きかえをやめる</button></>}
           </div>}
-          {atelierBridge && <button className="atelier-open ai-cta" disabled={readOnly} onClick={() => setAtelierOpen(true)}><span><Icon name="sparkles" size={16} />AIで 素材を つくる</span><CreditNudge /></button>}
+          {atelierBridge && <button className="atelier-open ai-cta" disabled={locked} onClick={() => setAtelierOpen(true)}><span><Icon name="sparkles" size={16} />AIで 素材を つくる</span><CreditNudge /></button>}
           <p className="material-intro">絵本の世界を、ひとつずつ。</p>
+          <button disabled={materialState.status === 'loading'} onClick={() => void loadMaterials()}>素材を更新</button>
           <label className="field" htmlFor="material-search">素材をさがす</label>
           <input id="material-search" type="search" placeholder="どうぶつ、なまえ、ポーズ…" value={materialQuery} onChange={event => { setMaterialQuery(event.target.value); if (category === 'art') setCategory('all'); }} />
           <label className="field" htmlFor="material-category">しゅるい</label><select id="material-category" value={category} onChange={(event) => setCategory(event.target.value)}><option value="all">すべての素材</option>{bookArt.length > 0 && <option value="art">この えほんの え</option>}{materialCategories.map(item => <option key={item.id} value={item.name}>{item.name}</option>)}</select>
           {category !== 'art' && <p className="hint" role="status">{matchingMaterials.length} 点の素材 · {replacementTarget ? 'クリックで置きかえ' : 'クリック・ドラッグで追加'}</p>}
           <div className="parts material-grid">{category === 'art'
             ? bookArt.map((art) => partButton(art.id, art.name, 30, <><PartPreview editor={editor} partId={art.id} /><span className="part-name">{art.name}<Icon name="plus" size={12} /></span></>))
-            : matchingMaterials.map((part) => partButton(part.id, part.name, 30, <><img className="material-image" src={materialUrl(part.masterRef)} alt="" loading="lazy" decoding="async" draggable={false} /><span className="part-name">{part.name}<Icon name="plus" size={12} /></span></>))}</div>
+            : matchingMaterials.map((part) => partButton(part.id, part.name, 30, <><MaterialImage masterRef={part.masterRef} epoch={materialState.epoch} /><span className="part-name">{part.name}<Icon name="plus" size={12} /></span></>))}</div>
           {category !== 'art' && matchingMaterials.length === 0 && <p className="material-empty">素材が見つかりませんでした。別のことばや種類でさがしてみてね。</p>}
           {cloud && <>
             <h3>マイイラスト</h3>
             {account.signedIn ? <div className="upload">
               <input ref={uploadRef} type="file" accept="image/png,image/webp" hidden onChange={(event) => { const file = event.target.files?.[0]; event.target.value = ''; if (file) void upload(file); }} />
               <label className="field">なまえ<input value={uploadName} maxLength={40} placeholder="イラストの名前" onChange={(event) => setUploadName(event.target.value)} /></label>
-              <button disabled={uploading || readOnly} onClick={() => uploadRef.current?.click()}><Icon name="upload" size={16} />{uploading ? 'アップロード中…' : '画像をアップロード'}</button>
+              <button disabled={uploading || locked} onClick={() => uploadRef.current?.click()}><Icon name="upload" size={16} />{uploading ? 'アップロード中…' : '画像をアップロード'}</button>
               <p className="hint">PNG / WebP、2048px まで。背景が透明なら切り抜きとして置けます。</p>
               {uploadStatus && <div className="upload-status" data-stage={uploadStatus.stage} role={uploadStatus.stage === 'failed' ? 'alert' : 'status'}>
                 <img src={uploadStatus.preview} alt="" />
@@ -571,7 +602,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
                   <p>{uploadStatus.stage === 'done' ? 'マイイラストに 追加しました' : uploadStatus.stage === 'failed' ? uploadStatus.message : uploadStages[uploadStatus.stage]}</p>
                   {uploading && <span className="upload-progress" />}
                 </div>
-                {uploadStatus.stage === 'done' && uploadStatus.partId && <button className="primary upload-action" disabled={readOnly} onClick={() => { edit(() => editor.addPartAt(uploadStatus.partId!, 50, 52, 30, editor.partHeightPct(uploadStatus.partId!, 30))); setUploadStatus(null); }}><Icon name="plus" size={14} />ページに置く</button>}
+                {uploadStatus.stage === 'done' && uploadStatus.partId && <button className="primary upload-action" disabled={locked} onClick={() => { edit(() => editor.addPartAt(uploadStatus.partId!, 50, 52, 30, editor.partHeightPct(uploadStatus.partId!, 30))); setUploadStatus(null); }}><Icon name="plus" size={14} />ページに置く</button>}
                 {uploadStatus.stage === 'failed' && <button className="upload-action" onClick={() => void upload(uploadStatus.file, uploadStatus.name)}>もういちど</button>}
                 {!uploading && <button className="upload-dismiss" aria-label="とじる" onClick={() => setUploadStatus(null)}><Icon name="close" size={14} /></button>}
               </div>}
@@ -579,32 +610,32 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
             <div className="parts library-parts">{library.parts.map((part) => partButton(part.partId, part.title || 'イラスト', 30, <>{assetsUrl && <img src={assetsUrl + '/' + part.masterRef + '/256.webp'} alt="" loading="lazy" decoding="async" draggable={false} />}<span>{part.title || 'イラスト'}</span></>, part.partId === uploadStatus?.partId))}</div>
           </>}
         </>}
-        {(tool === 'text' || editor.selectedText != null) && <fieldset disabled={readOnly} className="text-tools">
+        {(tool === 'text' || editor.selectedText != null) && <fieldset disabled={locked} className="text-tools">
           <label className="field" htmlFor="story-text">ことば</label><textarea id="story-text" value={editor.selectedText ?? draft} onChange={(event) => setDraftValue(event.target.value)} placeholder="物語の言葉をここに…" />
           <label className="field">ふりがな<input value={editor.selectedText != null ? editor.selectedRuby ?? '' : ruby} onChange={(event) => {
             const value = event.target.value; setRuby(value); void ensureGlyphs({ [editor.fontId]: value }); edit(() => editor.setDraftRuby(value));
           }} /></label>
           <span className="field">書式</span>
-          <TextStyleControls editor={editor} disabled={readOnly} act={edit} />
+          <TextStyleControls editor={editor} disabled={locked} act={edit} />
           {editor.selectedText == null && <button className="text-commit primary" aria-label="ことばを はる" onClick={() => edit(() => { if (editor.commitText()) { setDraft(''); setRuby(''); } })}><Icon name="plus" size={16} />ページに追加</button>}
         </fieldset>}
         {(tool === 'select' || ((tool === 'parts' || tool === 'text') && editor.selectedId)) && <>
           <h3>選択したもの</h3>
           {!editor.selectedId && <p className="hint">ページ上のイラストや文字を選択してください。</p>}
           {editor.selectedPartId && <div className="illustration-action">
-            <button className="primary" disabled={readOnly} onClick={() => edit(() => { editor.beginIllustrationEdit(); showPanel(true); chooseTool('eraser'); })}><Icon name="brush" size={16} />イラストを編集</button>
+            <button className="primary" disabled={locked} onClick={() => edit(() => { editor.beginIllustrationEdit(); showPanel(true); chooseTool('eraser'); })}><Icon name="brush" size={16} />イラストを編集</button>
             <p className="hint">消しゴムで一部を消し、ブラシで描き直せます。</p>
-            {atelierBridge && editor.selectedPartId.startsWith('art:') && <button className="ai-cta" disabled={readOnly} onClick={() => setAtelierOpen(true)}><Icon name="sparkles" size={16} />アトリエで AIと なおす</button>}
+            {atelierBridge && editor.selectedPartId.startsWith('art:') && <button className="ai-cta" disabled={locked} onClick={() => setAtelierOpen(true)}><Icon name="sparkles" size={16} />アトリエで AIと なおす</button>}
           </div>}
-          <fieldset disabled={!editor.selectedId || readOnly} className="selection-tools">
+          <fieldset disabled={!editor.selectedId || locked} className="selection-tools">
             <button onClick={() => edit(() => editor.resizeSelected(false))}><Icon name="compress" size={15} />小さく</button><button onClick={() => edit(() => editor.resizeSelected(true))}><Icon name="expand" size={15} />大きく</button>
             <button onClick={() => edit(() => editor.rotateSelected())}><Icon name="rotate" size={15} />回転</button><button onClick={() => edit(() => editor.deleteSelected())}><Icon name="trash" size={15} />削除</button>
             <button onClick={() => edit(() => editor.sendBackward())}><Icon name="toBack" size={15} />背面へ</button><button onClick={() => edit(() => editor.bringForward())}><Icon name="toFront" size={15} />前面へ</button>
             <button title="コピー (⌘C)" onClick={() => copySelection(null)}><Icon name="copy" size={15} />コピー</button><button title="切り取り (⌘X)" onClick={() => { if (copySelection(null)) edit(() => editor.deleteSelected()); }}><Icon name="cut" size={15} />切り取り</button>
           </fieldset>
           <div className="selection-tools clipboard-tools">
-            <button disabled={!hasClip || readOnly} title="貼り付け (⌘V)" onClick={() => memoryClip && pasteClip(memoryClip.clip)}><Icon name="paste" size={15} />貼り付け</button>
-            {editor.pageCount > 1 && <label className="move-page"><select aria-label="ページへ移動" disabled={!editor.selectedId || readOnly} value="" onChange={(event) => { const target = Number(event.target.value); edit(() => editor.moveSelectedToPage(target, null, null)); }}>
+            <button disabled={!hasClip || locked} title="貼り付け (⌘V)" onClick={() => memoryClip && pasteClip(memoryClip.clip)}><Icon name="paste" size={15} />貼り付け</button>
+            {editor.pageCount > 1 && <label className="move-page"><select aria-label="ページへ移動" disabled={!editor.selectedId || locked} value="" onChange={(event) => { const target = Number(event.target.value); edit(() => editor.moveSelectedToPage(target, null, null)); }}>
               <option value="" disabled>ページへ移動…</option>
               {Array.from({ length: editor.pageCount }, (_, index) => index).filter((index) => index !== editor.pageIndex).map((index) => <option key={index} value={index}>{index + 1} ページへ</option>)}
             </select></label>}
@@ -613,13 +644,13 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         </>}
         {tool === 'ai' && aiBridge && <AiPanel bridge={aiBridge} editor={editor} revision={revision} mark={mark} onClearMark={() => setMark(null)} readOnly={readOnly} />}
         {tool === 'hand' && <div className="navigation-guide"><Icon name="hand" size={40} /><p>細かいところまで、自由に。</p><span>⌘ / Ctrl + スクロールで拡大・縮小。<br />「ページに合わせる」で全体に戻れます。</span></div>}
-        <div className="paper-settings"><h3>用紙の色</h3><div className="swatches">{[-1, ...backgrounds].map((color, index) => <button key={color} disabled={readOnly} aria-label={'ページの いろ ' + (index + 1)} title={index === 0 ? '白' : '用紙の色 ' + (index + 1)} style={{ backgroundColor: cssColor(color) }} onClick={() => edit(() => editor.setPageBackground(color))} />)}</div></div>
+        <div className="paper-settings"><h3>用紙の色</h3><div className="swatches">{[-1, ...backgrounds].map((color, index) => <button key={color} disabled={locked} aria-label={'ページの いろ ' + (index + 1)} title={index === 0 ? '白' : '用紙の色 ' + (index + 1)} style={{ backgroundColor: cssColor(color) }} onClick={() => edit(() => editor.setPageBackground(color))} />)}</div></div>
         <div className="panel-shortcuts"><span><kbd>Space</kbd> 押しながらドラッグで移動</span><span><kbd>⌘ / Ctrl Z</kbd> 元に戻す</span></div>
       </aside>
       <section className="desk" aria-label="えほんを つくる">
-        <Desk ref={deskRef} editor={editor} revision={revision} readOnly={readOnly} onChange={changed} workspace={workspace} library={repo.library} assetsUrl={assetsUrl} tool={tool} showStrip={stripOpen} mark={mark} onMark={setMark} />
+        <Desk ref={deskRef} editor={editor} revision={revision} readOnly={locked} onChange={changed} workspace={workspace} library={repo.library} assetsUrl={assetsUrl} tool={tool} showStrip={stripOpen} mark={mark} onMark={setMark} />
         {accountOpen && <AccountPanel repo={repo} onClose={() => setAccountOpen(false)} />}
-        {atelierBridge && atelierOpen && <Atelier key={editor.bookId} bridge={atelierBridge} editor={editor} readOnly={readOnly} act={edit} onClose={() => setAtelierOpen(false)} />}
+        {atelierBridge && atelierOpen && <Atelier key={editor.bookId} bridge={atelierBridge} editor={editor} readOnly={locked} act={edit} onClose={() => setAtelierOpen(false)} />}
       </section>
     </main>
     {ghost && <div className="drag-ghost" style={{ left: ghost.x, top: ghost.y }} aria-hidden="true">{ghost.label}</div>}
@@ -630,7 +661,6 @@ function Missing({ text }: { text: string }) {
   return <main className="stage-message" role="alert"><p>{text}</p><a className="button" href={paths.shelf}><Icon name="home" size={16} />ほんだなへ</a></main>;
 }
 
-/** Waits for the local row, or for the shelf listener to deliver a book made on another device. */
 function CloudBoot({ repo, id }: { repo: BookRepository; id: string }) {
   useStore(repo.state);
   const [waited, setWaited] = useState(false);

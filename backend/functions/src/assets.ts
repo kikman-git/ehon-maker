@@ -102,37 +102,48 @@ export class AssetService {
     if (input.length === 0 || input.length > MAX_UPLOAD_BYTES || sha256(input) !== parsed.hash) {
       throw new HttpsError('invalid-argument', 'Upload size or checksum is invalid.');
     }
-    let objects: { key: string; data: Buffer; mime: string }[];
-    let asset: Record<string, unknown> | undefined;
-    let result: Finalized;
-    if (parsed.kind === 'master') {
-      const options = { limitInputPixels: 2048 * 2048, failOn: 'warning' as const };
-      const metadata = await sharp(input, options).metadata().catch(() => { throw new HttpsError('invalid-argument', 'Invalid image.'); });
-      if (metadata.format !== parsed.mime.split('/')[1] || !metadata.width || !metadata.height
-        || metadata.width > 2048 || metadata.height > 2048 || (metadata.pages ?? 1) > 1) {
-        throw new HttpsError('invalid-argument', 'Use a single PNG/WebP no larger than 2048 pixels.');
-      }
-      // Normalizing removes metadata; the public key hashes the exact stored master bytes.
-      const master = await sharp(input, options).rotate().ensureAlpha().png().toBuffer({ resolveWithObject: true });
-      const hash = sha256(master.data);
-      const ref = `a/${hash}`;
-      const [medium, thumb] = await Promise.all([1024, 256].map(size =>
-        sharp(master.data).resize({ width: size, height: size, fit: 'inside', withoutEnlargement: true }).webp({ quality: 90 }).toBuffer()));
-      objects = [{ key: `${ref}/m.png`, data: master.data, mime: 'image/png' },
-        { key: `${ref}/1024.webp`, data: medium, mime: 'image/webp' }, { key: `${ref}/256.webp`, data: thumb, mime: 'image/webp' }];
-      result = { key: objects[0].key, ref, bytes: master.data.length, w: master.info.width, h: master.info.height };
-      asset = { bytes: result.bytes, mime: 'image/png', w: result.w, h: result.h, hasAlpha: true,
-        derivatives: objects.map(item => item.key), createdBy: uid, createdAt: FieldValue.serverTimestamp() };
-    } else {
+    let stored: Stored;
+    if (parsed.kind === 'master') stored = await this.derive(uid, input, parsed.mime);
+    else {
       if (parsed.kind === 'source' && !(input[0] === 0x50 && input[1] === 0x4b && [3, 5, 7].includes(input[2]))) {
         throw new HttpsError('invalid-argument', 'Invalid ZIP source.');
       }
       if (parsed.kind === 'voice' && (input.length < 12 || input.toString('ascii', 4, 8) !== 'ftyp')) {
         throw new HttpsError('invalid-argument', 'Invalid M4A voice.');
       }
-      objects = [{ key: parsed.target, data: input, mime: parsed.mime }];
-      result = { key: parsed.target, ref: parsed.target, bytes: input.length };
+      stored = { objects: [{ key: parsed.target, data: input, mime: parsed.mime }], result: { key: parsed.target, ref: parsed.target, bytes: input.length } };
     }
+    return this.commit(uid, stored, receipt);
+  }
+
+  /** A master the server made itself, such as a painted pose: the same normalization, quota and public keys as an upload. */
+  async storeMaster(uid: string, png: Buffer): Promise<Finalized> {
+    validId(uid);
+    return this.commit(uid, await this.derive(uid, png, 'image/png'), null);
+  }
+
+  private async derive(uid: string, input: Buffer, mime: string): Promise<Stored> {
+    const options = { limitInputPixels: 2048 * 2048, failOn: 'warning' as const };
+    const metadata = await sharp(input, options).metadata().catch(() => { throw new HttpsError('invalid-argument', 'Invalid image.'); });
+    if (metadata.format !== mime.split('/')[1] || !metadata.width || !metadata.height
+      || metadata.width > 2048 || metadata.height > 2048 || (metadata.pages ?? 1) > 1) {
+      throw new HttpsError('invalid-argument', 'Use a single PNG/WebP no larger than 2048 pixels.');
+    }
+    // Normalizing removes metadata; the public key hashes the exact stored master bytes.
+    const master = await sharp(input, options).rotate().ensureAlpha().png().toBuffer({ resolveWithObject: true });
+    const hash = sha256(master.data);
+    const ref = `a/${hash}`;
+    const [medium, thumb] = await Promise.all([1024, 256].map(size =>
+      sharp(master.data).resize({ width: size, height: size, fit: 'inside', withoutEnlargement: true }).webp({ quality: 90 }).toBuffer()));
+    const objects = [{ key: `${ref}/m.png`, data: master.data, mime: 'image/png' },
+      { key: `${ref}/1024.webp`, data: medium, mime: 'image/webp' }, { key: `${ref}/256.webp`, data: thumb, mime: 'image/webp' }];
+    const result = { key: objects[0].key, ref, bytes: master.data.length, w: master.info.width, h: master.info.height };
+    const asset = { bytes: result.bytes, mime: 'image/png', w: result.w, h: result.h, hasAlpha: true,
+      derivatives: objects.map(item => item.key), createdBy: uid, createdAt: FieldValue.serverTimestamp() };
+    return { objects, asset, result };
+  }
+
+  private async commit(uid: string, { objects, asset, result }: Stored, receipt: FirebaseFirestore.DocumentReference | null): Promise<Finalized> {
     const cost = objects.reduce((sum, item) => sum + item.data.length, 0);
     const owned = this.db.doc(`users/${uid}/blobs/${sha256(result.key)}`);
     const usage = this.db.doc(`storageUsage/${uid}`);
@@ -154,8 +165,10 @@ export class AssetService {
       const existing = assetRef ? await tx.get(assetRef) : null;
       if (assetRef && !existing!.exists) tx.create(assetRef, asset!);
       tx.update(owned, { status: 'done' });
-      tx.set(receipt, { ownerId: uid, result, createdAt: FieldValue.serverTimestamp() });
+      if (receipt) tx.set(receipt, { ownerId: uid, result, createdAt: FieldValue.serverTimestamp() });
     });
     return result;
   }
 }
+
+interface Stored { objects: { key: string; data: Buffer; mime: string }[]; asset?: Record<string, unknown>; result: Finalized }

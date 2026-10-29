@@ -42,12 +42,12 @@ test('the panel is a plain chat: a marked request edits the page through the har
   await expect(panel.getByText(/はじめの 100 クレジットは 無料/)).toBeVisible();
   await drawMark(page, [[0.3, 0.3], [0.6, 0.3], [0.6, 0.6], [0.3, 0.6], [0.3, 0.3]]);
   await expect(page.getByTestId('mark')).toBeVisible();
-  await expect(page.locator('.ai-mark')).toContainText('x 30%–60%');
+  await expect(page.locator('.ai-mark')).toContainText('1ページの かこんだ ところ');
 
   await panel.getByLabel('AIへの たのみごと').fill('ここに ねこを かいて');
   await panel.getByRole('button', { name: '頼む' }).click();
   await expect(panel.locator('.ai-message.user')).toContainText('ここに ねこを かいて');
-  await expect(panel.locator('.ai-message.user .ai-mark-chip')).toContainText('x 30%–60%');
+  await expect(panel.locator('.ai-message.user .ai-mark-chip')).toContainText('1ページの かこんだ ところ');
   await expect(panel.locator('.ai-message.status[data-done]')).toHaveText('えほんに 反映しました。「元に戻す」で 取り消せます。');
   await expect(panel.locator('.ai-message.assistant').last()).toHaveText('ページに ことばを たしました。');
   await expect(panel.locator('.ai-message.status', { hasText: /11 クレジット · のこり 89/ })).toBeVisible();
@@ -72,14 +72,34 @@ test('a story request makes a page with a drawn picture and words, and the steps
   // The stand-in draws instantly, so the drawing step may already read できました by the time the chunk lands.
   await expect(working).toContainText(/「くま」の えを かいています…|「くま」の えが できました/);
   await expect(working).toContainText('ことばを かきました');
-  await expect(panel.locator('.ai-message.status[data-done]')).toHaveText('えほんに 反映しました。「元に戻す」で 取り消せます。');
+  await expect(panel.locator('.ai-message.status[data-done]')).toHaveText('2ページめに 反映しました。「元に戻す」で 取り消せます。');
   await expect(panel.locator('.ai-message.assistant').last()).toHaveText('あたらしい ページに くまを かきました。');
-  await expect(page.getByText('1 / 2 ページ')).toBeVisible();
+  // The desk follows the AI to the page it made, so the family sees the bear instead of the blank first page.
+  await expect(page.getByText('2 / 2 ページ')).toBeVisible();
   const book = await savedBook(page);
   expect(book.book.pages).toHaveLength(2);
   expect(Object.values(book.book.art ?? {}).map((entry) => entry.name)).toEqual(['くま']);
   expect(book.book.pages[1].items.map((item) => item.type)).toEqual(['part', 'text']);
   expect(book.book.pages[1].items[0].partId?.value).toBe('art:art');
+  // Two drafts and a result landed, but the turn is one undo step.
+  await page.getByRole('button', { name: 'もどす', exact: true }).click();
+  expect((await savedBook(page)).book.pages).toHaveLength(1);
+  await expect(page.getByRole('button', { name: 'もどす', exact: true })).toBeDisabled();
+});
+
+test('やめる closes the stream: the server keeps what was done, charges only that, and the chat says so', async ({ page }) => {
+  await openAi(page);
+  const panel = page.getByTestId('ai-panel');
+  await panel.getByLabel('AIへの たのみごと').fill('slow8 くまの えほんを つくって');
+  await panel.getByRole('button', { name: '頼む' }).click();
+  await expect(panel.getByRole('status', { name: 'AI の ようす' })).toBeVisible();
+  await expect(page.getByText('AI が はたらいています。')).toBeVisible();
+  await panel.getByRole('button', { name: 'やめる' }).click();
+  await expect(panel.locator('.ai-message.status').last()).toHaveText('やめました。ここまでは えほんに のこっています。');
+  await expect(panel.getByLabel('AIへの たのみごと')).toBeEnabled();
+  await expect(page.getByText('AI が はたらいています。')).toHaveCount(0);
+  // Stopped in the first round, before the model answered: the minimum one credit, never the whole hold.
+  await expect(page.getByRole('button', { name: /^AI クレジット/ })).toHaveText(/99/);
 });
 
 test('the page appears while the turn is still running, not only when it ends', async ({ page }) => {
@@ -90,10 +110,10 @@ test('the page appears while the turn is still running, not only when it ends', 
   const working = panel.getByRole('status', { name: 'AI の ようす' });
   await expect(working).toBeVisible();
   // The second page lands from a draft, so it is on the strip before the turn says it has finished.
-  await expect(page.getByText('1 / 2 ページ')).toBeVisible();
+  await expect(page.getByText('2 / 2 ページ')).toBeVisible();
   await expect(working).toBeVisible();
   await expect(panel.locator('.ai-message.status[data-done]')).toHaveCount(0);
-  await expect(panel.locator('.ai-message.status[data-done]')).toHaveText('えほんに 反映しました。「元に戻す」で 取り消せます。');
+  await expect(panel.locator('.ai-message.status[data-done]')).toHaveText('2ページめに 反映しました。「元に戻す」で 取り消せます。');
 });
 
 test('a picture reaches the book as soon as it is drawn, not only when the turn ends', async ({ page }) => {

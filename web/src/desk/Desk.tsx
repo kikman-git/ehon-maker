@@ -93,6 +93,8 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
 
   useEffect(() => {
     const viewport = viewportRef.current!;
+    // A pointer that already lifted, or a synthetic one, cannot be captured; the gesture still runs.
+    const capture = (id: number) => { try { viewport.setPointerCapture(id); } catch { /* see above */ } };
     const surface = surfaceRef.current!;
     const lifetime = new AbortController();
     const { signal } = lifetime;
@@ -225,7 +227,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
 
     const startPan = (event: PointerEvent) => {
       gesture = { kind: 'pan', pointerId: event.pointerId, last: { x: event.clientX, y: event.clientY } };
-      viewport.setPointerCapture(event.pointerId);
+      capture(event.pointerId);
       viewport.classList.add('panning');
     };
     const appendSample = (stroke: Extract<Gesture, { kind: 'stroke' }>, event: PointerEvent) => {
@@ -263,7 +265,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         if (touches.size === 2) {
           cancel(false);
           const [a, b] = [...touches.values()];
-          for (const id of touches.keys()) viewport.setPointerCapture(id);
+          for (const id of touches.keys()) capture(id);
           gesture = { kind: 'pinch', distance: Math.hypot(a.x - b.x, a.y - b.y), centre: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 } };
           return;
         }
@@ -278,7 +280,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         const rect = canvas.getBoundingClientRect();
         const centre = { x: rect.left + bounds[0] / 100 * rect.width, y: rect.top + bounds[1] / 100 * rect.height };
         gesture = { kind: 'rotate', pointerId: event.pointerId, index: editor.pageIndex, centre, start: angleAt(centre, event.clientX, event.clientY), base: bounds[4] };
-        viewport.setPointerCapture(event.pointerId);
+        capture(event.pointerId);
         setGestureFlag('rotate');
         editor.beginDrag();
         return;
@@ -294,7 +296,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         if (!item || live.current.readOnly) { startPan(event); return; }
         const d = toDesk(view, ...Object.values(inViewport(event.clientX, event.clientY)) as [number, number]);
         gesture = { kind: 'scratch', pointerId: event.pointerId, item, element: scratchElement, grab: { x: d.x - item.x, y: d.y - item.y }, moved: false };
-        viewport.setPointerCapture(event.pointerId);
+        capture(event.pointerId);
         scratchElement.classList.add('dragging');
         return;
       }
@@ -309,7 +311,7 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         if (live.current.readOnly) { startPan(event); return; }
         event.preventDefault();
         gesture = { kind: 'mark', pointerId: event.pointerId, index, canvas, points: [{ x: p.x, y: p.y }], path: frame.querySelector('[data-live-mark]') };
-        viewport.setPointerCapture(event.pointerId);
+        capture(event.pointerId);
         markAll();
         notify();
         return;
@@ -319,14 +321,14 @@ export const Desk = forwardRef<DeskHandle, Props>(function Desk({ editor, revisi
         editor.setEraser(live.current.tool === 'eraser');
         editor.beginStroke(p.x / 100, p.y / 100);
         gesture = { kind: 'stroke', pointerId: event.pointerId, index, canvas };
-        viewport.setPointerCapture(event.pointerId);
+        capture(event.pointerId);
         repaintPage(index);
         return;
       }
       const hit = editor.selectAt(p.x, p.y, p.w, p.h);
       if (hit && !live.current.readOnly) {
         gesture = { kind: 'item', pointerId: event.pointerId, index, canvas, offset: { x: p.x - (editor.selectedX ?? p.x), y: p.y - (editor.selectedY ?? p.y) }, moved: false, pending: null, target: null };
-        viewport.setPointerCapture(event.pointerId);
+        capture(event.pointerId);
         setGestureFlag('item');
         editor.beginDrag();
       } else startPan(event);

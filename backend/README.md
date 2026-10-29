@@ -143,7 +143,13 @@ to the web app's origins so browsers may fetch it; the phone builds links from `
     `functions:secrets:set` (both secrets must exist, an unused one may be empty). A new model id is
     priced by its family in `functions/src/credits.ts`; add a row when a new family appears. Without a
     key the emulator answers with a stand-in model, so `make web-sync-test` needs no account; with a
-    key in `functions/.secret.local` the emulator uses the real model.
+    key in `functions/.secret.local` the emulator uses the real model. Poses the library lacks are painted
+    by OpenAI's image model (`IMAGE_MODEL`, default `gpt-image-1`) with `OPENAI_API_KEY`, whichever chat
+    provider is set; without that key the book harness offers no `paint_pose`. A painted pose is stored like
+    an upload and listed in `illustrations` for the account, so it counts toward the storage allowance.
+    やめる: the browser aborts the stream and calls `aiStop` with its turn id; the turn watches both the
+    connection and `turnStops/{uid}_{turnId}` (decision #71), settles what was used and records `stopped`.
+    The functions emulator never passes a disconnect through, so only the document stops a turn there.
 13. Stripe: create the products in the Dashboard — a monthly price for ぺたぺた プラス and a one-off
     price for the credit pack — and put their ids in `STRIPE_PRICE_PLUS` / `STRIPE_PRICE_PACK`, with
     `PLUS_CREDITS` / `PACK_CREDITS` matching what you sell. Store `STRIPE_SECRET_KEY`, then add a

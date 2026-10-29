@@ -69,8 +69,8 @@ function Shelf({ repo }: { repo: BookRepository }) {
     {createError && <p role="alert" className="error">{createError}</p>}
     <main className="shelf" aria-label="ほんだな">
       <section className="shelf-intro">
-        <div><span className="eyebrow">YOUR ILLUSTRATION STUDIO</span><h2>一筆から、物語を。</h2><p>白いページに自由に描く。言葉を添えて、えほんにする。<br />あなただけの一冊を、ここから。</p><div className="actions">
-          <button className="primary" disabled={creating} onClick={() => void create()}><Icon name="brush" />{creating ? '準備しています…' : '白紙から描きはじめる'}</button>
+        <div><span className="eyebrow">YOUR ILLUSTRATION STUDIO</span><h2>一筆から、物語を。</h2><p>{cloud ? 'AI に たのんでも、白いページに描いても。言葉を添えて、えほんにする。' : '白いページに自由に描く。言葉を添えて、えほんにする。'}<br />あなただけの一冊を、ここから。</p><div className="actions">
+          <button className="primary" disabled={creating} onClick={() => void create()}><Icon name={cloud ? 'sparkles' : 'brush'} />{creating ? '準備しています…' : cloud ? 'AI と つくりはじめる' : '白紙から描きはじめる'}</button>
           <button aria-label="あたらしい えほん" onClick={() => setPanel('templates')}><Icon name="sparkles" size={17} />テンプレートから</button>
         </div></div>
         <div className="start-sheet" aria-hidden="true"><svg viewBox="0 0 180 180" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M28 138c23-14 52-5 73-9s38-13 54-6M50 123c-9-18-9-31 5-43-4-16 1-29 5-33l17 20c9-3 17-3 24 0l18-20c5 11 9 23 4 34 11 13 13 28 4 42M77 91v3m25-3v3m-21 12c5 5 9 5 15 0M65 123c-13-7-26-7-25-20" /><path d="m30 43 2-8 3 8 8 3-8 3-3 8-2-8-8-3 8-3Zm114 38 2-7 2 7 7 2-7 2-2 7-2-7-7-2 7-2Z" stroke="#c8b569" /></svg></div>

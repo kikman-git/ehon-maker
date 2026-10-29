@@ -36,6 +36,12 @@ class DocumentStore(initial: Book, private val capacity: Int = DEFAULT_CAPACITY)
         current = next
     }
 
+    /** Revises the last edit in place, so a series of drafts refining one change stays one undo step. */
+    fun amend(transform: (Book) -> Book) {
+        if (!canUndo) return edit(transform)
+        current = transform(current)
+    }
+
     /**
      * Start a continuous gesture — a drag, a pinch, a stroke in progress.
      *

@@ -1,5 +1,7 @@
+import sharp from 'sharp';
 import { SUBMIT } from './atelier';
-import { DEFAULT_MODEL, type ChatModel, type Content, type ModelReply, type ModelRequest } from './model';
+import { DEFAULT_MODEL, ModelError, type ChatModel, type Content, type ModelReply, type ModelRequest } from './model';
+import { DEFAULT_IMAGE_MODEL, type ImageModel, type Painting } from './painter';
 
 // The emulator's stand-in model: scripted answers through the same tools, so the whole flow runs without a key.
 
@@ -18,7 +20,14 @@ export class FakeModel implements ChatModel {
     const content: Content[] = request.tools.some(tool => tool.name === SUBMIT) ? this.atelier(prompt, wants) : this.book(request, prompt, wants);
     // `slow` paces the answer so a browser test can watch the working card; `slow8` holds it for eight seconds.
     const paced = /slow(\d*)/i.exec(wants);
-    if (paced) { request.onProgress?.(0); await new Promise(resolve => setTimeout(resolve, (Number(paced[1]) || 2) * 1_000)); }
+    if (paced) {
+      request.onProgress?.(0);
+      // A stopped turn must abort here as a real stream would, so the emulator exercises the stop path.
+      await new Promise<void>((resolve, reject) => {
+        const timer = setTimeout(resolve, (Number(paced[1]) || 2) * 1_000);
+        request.signal?.addEventListener('abort', () => { clearTimeout(timer); reject(new ModelError('failed', 'aborted')); }, { once: true });
+      });
+    }
     const answer = JSON.stringify(content);
     request.onProgress?.(answer.length);
     const expensive = /expensive/i.test(text);
@@ -44,6 +53,7 @@ export class FakeModel implements ChatModel {
     const last = request.messages.at(-1)!;
     const results = last.content.filter((block): block is Extract<Content, { type: 'tool_result' }> => block.type === 'tool_result');
     const pageId = /\(id "([^"]+)"\)/.exec(prompt)?.[1] ?? 'p1';
+    if (/ポーズ/.test(wants)) return this.pose(request, pageId);
     if (!results.length) {
       if (/break/i.test(wants)) return [call('set_text', { id: 'nope', text: 'x' }, ++this.calls)];
       // A round that only draws: the document is unchanged, so the picture has to reach the book on its own chunk.
@@ -63,5 +73,25 @@ export class FakeModel implements ChatModel {
     const placed = made.some(result => result.id?.startsWith('ai-p'));
     if (page && part && !placed) return [call('add_part', { pageId: page, partId: part, x: 50, y: 45, sizePct: 40 }, ++this.calls), call('add_text', { pageId: page, text: 'くまが てを ふった。', x: 50, y: 84 }, ++this.calls)];
     return [call('finish', { say: page ? 'あたらしい ページに くまを かきました。' : part ? 'くまの えを かきました。' : 'ページに ことばを たしました。' }, ++this.calls)];
+  }
+
+  /** `ポーズ`: look the cat up, paint it asleep, place it, and say so. */
+  private pose(request: ModelRequest, pageId: string): Content[] {
+    const outputs = request.messages.flatMap(message => message.content).filter((block): block is Extract<Content, { type: 'tool_result' }> => block.type === 'tool_result').map(result => result.output);
+    const partId = outputs.map(output => /"partId":"(lib:[^"]+)"/.exec(output)?.[1]).find(Boolean);
+    if (!outputs.some(output => output.includes('"characters"'))) return [call('find_pictures', { words: ['ねこ'] }, ++this.calls)];
+    if (!partId) return [call('paint_pose', { slug: 'cat', pose: 'sleeping curled up, eyes closed', name: 'ねこ・ねむる' }, ++this.calls)];
+    if (!outputs.some(output => output.includes('"id":"ai-p'))) return [call('add_part', { pageId, partId, x: 50, y: 50, sizePct: 40 }, ++this.calls)];
+    return [call('finish', { say: 'ねむる ねこを かいて おきました。' }, ++this.calls)];
+  }
+}
+
+/** The emulator's image model: a painted circle on transparent paper, with a realistic token count. */
+export class FakeImageModel implements ImageModel {
+  readonly id = DEFAULT_IMAGE_MODEL;
+  async paint(): Promise<Painting> {
+    const png = await sharp({ create: { width: 256, height: 256, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+      .composite([{ input: Buffer.from('<svg width="256" height="256"><circle cx="128" cy="140" r="90" fill="#c67139"/></svg>'), top: 0, left: 0 }]).png().toBuffer();
+    return { png, model: this.id, usage: { input: 1_000, output: 4_000, cacheRead: 0, cacheWrite: 0 } };
   }
 }

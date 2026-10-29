@@ -20,7 +20,8 @@ export interface CreditsState {
 export const WELCOME_CREDITS = 100;
 /** Under this a turn is refused by the server, so the UI offers the upgrade instead. */
 export const MIN_TURN_CREDITS = 3;
-export const LOW_CREDITS = 20;
+/** Under this a whole book in one turn may stop partway, so the compose box says so before the request is sent. */
+export const LOW_CREDITS = 60;
 export const PLUS_CREDITS = 1500;
 export const PACK_CREDITS = 600;
 
@@ -54,6 +55,8 @@ export function startCredits(): void {
 }
 
 export interface AtelierInput {
+  /** Chosen by the browser, so やめる can name the turn to the server. */
+  turnId: string;
   title: string;
   request: string;
   mode: 'new' | 'revise';
@@ -76,6 +79,7 @@ export type LiveEvent = { kind: 'draft'; book: string } | { kind: 'art'; art: Li
 
 /** What the book desk sends: the page in view, the mark and its items, and the document without its art. */
 export interface BookInput {
+  turnId: string;
   title: string;
   request: string;
   pageIndex: number;
@@ -90,18 +94,19 @@ export interface BookInput {
 }
 export type BookResult = Metered<{ book: string | null; say: string }>;
 
-export type AtelierFailure = 'credits' | 'paused' | 'rate' | 'signedOut' | 'rejected' | 'network';
+export type AtelierFailure = 'credits' | 'paused' | 'rate' | 'signedOut' | 'rejected' | 'network' | 'stopped';
 export class AtelierError extends Error {
   /** `detail` is the server's own words for a rejected request, shown so a bad payload is never mistaken for a dead network. */
   constructor(readonly reason: AtelierFailure, readonly balance: number | null = null, readonly detail = '') { super(reason); }
 }
 
 /** One metered turn on the server, with its progress as it streams. */
-async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progress) => void, onLive?: (event: LiveEvent) => void): Promise<R> {
+async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progress) => void, onLive?: (event: LiveEvent) => void, signal?: AbortSignal): Promise<R> {
   const { functions } = firebase();
   const callable = httpsCallable<I, R, Chunk<R>>(functions, name, { timeout: 600_000 });
   try {
-    const { stream, data } = await callable.stream(input);
+    // Aborting closes the connection; the server sees it, stops the model and charges only what was done.
+    const { stream, data } = await callable.stream(input, { signal });
     for await (const chunk of stream) {
       if (chunk.type === 'progress') onProgress(chunk);
       else if (chunk.type === 'draft') onLive?.({ kind: 'draft', book: chunk.book });
@@ -109,6 +114,7 @@ async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progr
     }
     return await data;
   } catch (error) {
+    if (signal?.aborted) throw new AtelierError('stopped');
     const code = (error as { code?: string }).code ?? '';
     const details = (error as { details?: { balance?: number; reason?: string } }).details;
     if (code === 'functions/resource-exhausted') throw new AtelierError('credits', details?.balance ?? null);
@@ -119,11 +125,18 @@ async function aiTurn<I, R>(name: string, input: I, onProgress: (progress: Progr
     throw new AtelierError('network');
   }
 }
-export const atelierTurn = (input: AtelierInput, onProgress: (progress: Progress) => void) => aiTurn<AtelierInput, AtelierResult>('atelierTurn', input, onProgress);
-export const bookTurn = (input: BookInput, onProgress: (progress: Progress) => void, onLive?: (event: LiveEvent) => void) => aiTurn<BookInput, BookResult>('bookTurn', input, onProgress, onLive);
+export const atelierTurn = (input: AtelierInput, onProgress: (progress: Progress) => void, signal?: AbortSignal) => aiTurn<AtelierInput, AtelierResult>('atelierTurn', input, onProgress, undefined, signal);
+export const bookTurn = (input: BookInput, onProgress: (progress: Progress) => void, onLive?: (event: LiveEvent) => void, signal?: AbortSignal) => aiTurn<BookInput, BookResult>('bookTurn', input, onProgress, onLive, signal);
+
+/** Tells the server to stop the turn; the stream's own abort already closed the connection, this reaches a turn a proxy kept alive. */
+export const aiStop = (turnId: string): Promise<void> => {
+  const { functions } = firebase();
+  return httpsCallable<{ turnId: string }, unknown>(functions, 'aiStop')({ turnId }).then(() => undefined, () => undefined);
+};
 
 /** One line for the chat when a turn could not run. */
 export const failureText: Record<Exclude<AtelierFailure, 'credits'>, string> = {
+  stopped: 'やめました。ここまでは えほんに のこっています。',
   paused: 'AI は いま おやすみちゅうです。',
   rate: 'たくさん たのんだので、すこし やすんでから もういちど たのんでください。',
   signedOut: 'サインインが きれました。',

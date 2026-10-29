@@ -6,15 +6,19 @@ import { setGlobalOptions } from 'firebase-functions/v2';
 import { HttpsError, onCall, onRequest, type CallableRequest } from 'firebase-functions/v2/https';
 import { onSchedule } from 'firebase-functions/v2/scheduler';
 import { onMessagePublished } from 'firebase-functions/v2/pubsub';
+import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import Stripe from 'stripe';
+import { stopTurn } from './agent';
 import { AssetService, type BlobStore, type Upload } from './assets';
 import { AtelierService, type AtelierChunk } from './atelier';
 import { BillingService } from './billing';
 import { BookService, type BookChunk } from './book';
 import { CreditService } from './credits';
-import { FakeModel } from './fake';
+import { FakeImageModel, FakeModel } from './fake';
+import { LibraryPainter } from './library';
 import { DEFAULT_MODEL, modelFor, type ChatModel, type Provider } from './model';
+import { DEFAULT_IMAGE_MODEL, OpenAIImageModel, type ImageModel } from './painter';
 import { LocalBlobStore } from './localBlobs';
 import { LoginService } from './login';
 import { R2Store } from './r2';
@@ -37,6 +41,7 @@ const openaiKey = defineSecret('OPENAI_API_KEY');
 /** The harness is model-agnostic (decision #67): the provider and model are configuration, not code. */
 const aiProvider = defineString('AI_PROVIDER', { default: 'anthropic' });
 const aiModel = defineString('AI_MODEL', { default: '' });
+const imageModel = defineString('IMAGE_MODEL', { default: '' });
 const stripeKey = defineSecret('STRIPE_SECRET_KEY');
 const stripeWebhookSecret = defineSecret('STRIPE_WEBHOOK_SECRET');
 const pricePlus = defineString('STRIPE_PRICE_PLUS', { default: '' });
@@ -69,6 +74,17 @@ function model(): ChatModel {
   if (emulated) return new FakeModel();
   throw new HttpsError('failed-precondition', 'AI is not configured.');
 }
+/** Poses are painted with OpenAI's image model whichever chat provider is chosen; without its key the book keeps to the library and its drawings. */
+function painter(): LibraryPainter | null {
+  const apiKey = openaiKey.value();
+  const images: ImageModel | null = apiKey ? new OpenAIImageModel(apiKey, imageModel.value() || DEFAULT_IMAGE_MODEL) : emulated ? new FakeImageModel() : null;
+  if (!images) return null;
+  const store = blobs();
+  // The emulator reads the assembled masters from the repository when its blob store has none (decision #61).
+  const local = resolve(__dirname, '..', '..', '..', 'shared', 'build', 'materials');
+  const reference = (masterRef: string) => store.read(`${masterRef}/m.png`).catch((error: unknown) => (emulated ? readFile(resolve(local, masterRef, 'm.png')) : Promise.reject(error)));
+  return new LibraryPainter(getFirestore(), images, assets(), reference);
+}
 const billing = () => {
   const key = stripeKey.value();
   if (!key) throw new HttpsError('failed-precondition', 'Billing is not configured.');
@@ -98,9 +114,11 @@ export const atelierTurn = onCall<unknown, Promise<unknown>, AtelierChunk>(aiOpt
 });
 export const bookTurn = onCall<unknown, Promise<unknown>, BookChunk>(aiOptions, (request, response) => {
   const uid = user(request);
-  return new BookService(getFirestore(), credits(), model()).turn(uid, request.data, chunk => response?.sendChunk(chunk) ?? Promise.resolve(false), response?.signal);
+  return new BookService(getFirestore(), credits(), model(), painter()).turn(uid, request.data, chunk => response?.sendChunk(chunk) ?? Promise.resolve(false), response?.signal);
 });
 /** Admin (decision #68): credits and plans for one account; the admins are the uids in `config/admins`. */
+/** Stops the turn the browser named: the server settles what was done and the hold goes back. */
+export const aiStop = onCall({ enforceAppCheck: options.enforceAppCheck }, request => { const uid = user(request); return stopTurn(getFirestore(), uid, request.data?.turnId); });
 export const adminAdjust = onCall({ enforceAppCheck: options.enforceAppCheck }, async request => {
   const uid = user(request);
   if (!(await isAdmin(getFirestore(), uid))) throw new HttpsError('permission-denied', 'Admins only.');

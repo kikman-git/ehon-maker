@@ -1,25 +1,21 @@
 import type { Firestore } from 'firebase-admin/firestore';
 import { HttpsError } from 'firebase-functions/v2/https';
 import { AiService, imageOf, requestOf, text, type Chunk, type Metered, type Task, type Tool } from './agent';
-import { acceptableSvg, drawOne, DRAWING_RULES, MAX_BOOK_ART, SAFETY } from './atelier';
+import { acceptableSvg, drawOne, MAX_BOOK_ART, SAFETY } from './atelier';
 import type { CreditService } from './credits';
+import { findPictures, LIBRARY_PREFIX, MATERIAL_IDS, materialOf, MAX_WORDS, type LibraryPainter } from './library';
+import { MATERIAL_CATEGORIES } from './materials';
 import type { ChatModel, Message } from './model';
 
-// The picture-book harness (decision #67): the model edits the open book through tools that know the format, and draws pictures with the atelier.
+// The picture-book harness (decision #67): the model edits the open book through tools that know the format, looks up and extends the painted library (decision #70) and draws pictures with the atelier.
 
 export const MAX_BOOK_CHARS = 200_000;
 export const MAX_ITEMS_DESCRIBED = 40;
 export const MAX_PICTURES_PER_TURN = 12;
+export const MAX_PAINTINGS_PER_TURN = 4;
 export const FORMAT_VERSION = 6;
 export const FONTS = ['yomogi', 'maru', 'kiwi', 'pop', 'marker', 'futo'];
-export const BUILT_IN_PARTS: Record<string, string[]> = {
-  'かたち': ['まる', 'さんかく', 'しかく', 'ほし', 'ハート', 'にじ'],
-  'いきもの': ['ねこ', 'いぬ', 'くま', 'うさぎ', 'ぞう', 'ぶた', 'ひつじ', 'きつね', 'パンダ', 'かえる', 'ライオン', 'ねずみ', 'とら', 'きりん', 'さる', 'うし', 'うま', 'コアラ', 'りす', 'はりねずみ', 'かたつむり'],
-  'うみと そら': ['ことり', 'ちょうちょ', 'さかな', 'かめ', 'たこ', 'くじら', 'ペンギン', 'かに', 'てんとうむし', 'ふくろう', 'いるか', 'くらげ', 'ヒトデ', 'あひる', 'にわとり', 'はち', 'とんぼ'],
-  'しぜん': ['き', 'おやま', 'たいよう', 'くも', 'おつきさま', 'はっぱ'],
-  'まほう': ['きらきら', 'まほうのつえ', 'おしろ', 'ロケット', 'まほうのたま', 'とびら'],
-};
-const BUILT_IN_IDS = new Set(Object.entries(BUILT_IN_PARTS).flatMap(([category, names]) => names.map(name => `${category}:${name}`)));
+const LIB = /^lib:[A-Za-z0-9_-]{1,128}$/;
 
 export interface ItemBox { id: string; kind: 'part' | 'text'; ref: string; x: number; y: number; w: number; h: number; rotationDeg: number }
 export interface MarkBox { pageIndex: number; pageId: string; x0: number; y0: number; x1: number; y1: number }
@@ -51,28 +47,28 @@ interface Doc { version: number; book: { title?: string; art?: Record<string, Ar
 
 interface State {
   input: BookInput;
+  uid: string;
   doc: Doc;
   /** Drawings made this turn; everything else in `art` stays as the browser has it. */
   newArt: Record<string, ArtEntry>;
+  /** The account's own `lib:` pictures the book may place: those it already uses and the poses painted this turn. */
+  libParts: Set<string>;
   changed: boolean;
   pictures: number;
+  paintings: number;
   say: string | null;
 }
 
-export const BOOK_SYSTEM = `You make and edit children's picture books in the ぺたぺた studio, through the tools. The user's request and the open book arrive each turn; you change the book only with tool calls, then call finish with one or two short sentences in the language of the request. Never describe JSON or ids to the user.
+export const bookSystem = (painting: boolean) => `You make and edit children's picture books in the ぺたぺた studio. Each turn brings the request and the open book; change the book only through the tools, then call finish with one or two short sentences in the request's language. Never mention JSON or ids to the user.
 
-The book: pages in order, each with a background colour and items painted in array order (backdrop first, then pieces, then words). Positions are percent of the page and name an item's centre; the origin is top-left. A piece (part) shows a picture: one drawn for this book (\`art:<key>\`) or a built-in shape such as いきもの:ねこ (categories かたち, いきもの, うみと そら, しぜん, まほう; the tools list the names). Its sizePct is its width in percent of the page width. Words (text) are one item per caption or line, sizePct 2 to 30 (about sixteen characters fit across the page at 5), fonts yomogi (handwriting), maru (rounded), kiwi, pop, marker, futo; optional furigana as ruby, one line per text line.
+Format: pages in order, each a background colour and items painted in array order (backdrop, then pieces, then words). x and y are an item's centre in percent of the page, origin top-left. A part shows a library picture (${LIBRARY_PREFIX}<slug>)${painting ? ', a pose painted this turn (lib:<id>)' : ''} or one drawn for this book (art:<key>); sizePct is its width in percent of the page width. A text item is one caption or line: sizePct 2 to 30 (about sixteen characters fit at 5), fonts yomogi (handwriting), maru (rounded), kiwi, pop, marker, futo, optional ruby furigana with one line per text line.
 
-How a Japanese picture book is bound, when making one from scratch or adding a story: a cover (title and the favourite picture), a title page (扉, the title again, small), then spreads where the odd page carries the picture and the even page the words, and a back cover with the colophon (発行 / さく / え). Words are one text item per line at sizePct 5 in yomogi, stacked about 7 percent apart, centred around x 50 in the lower part of the page. A picture page is a backdrop at x 50, y 50, sizePct 100, heightPct 100 with the characters as separate sprites placed over it, each 20 to 40 percent wide, so the child can move them. Write short, warm children's Japanese with spaces between phrases (わかちがき) when the book is Japanese. Plan the whole story before drawing: about six to ten spreads, one idea per spread, a gentle ending.
+Binding, for a new book or story: cover (title and the favourite picture), 扉 (title again, small), spreads with the picture on the odd page and the words on the even page, back cover with the colophon (発行 / さく / え). Words: one text item per line, sizePct 5, yomogi, about 7 percent apart, centred at x 50 in the lower part of the page. Picture page: a backdrop at x 50, y 50, sizePct 100, heightPct 100, each character a separate sprite 20 to 40 percent wide so the child can move it. Plan the whole story first: six to ten spreads, one idea each, a gentle ending, short warm Japanese in わかちがき when the book is Japanese.
 
-Pictures: draw_picture makes one sprite or backdrop with the house style and adds it to the book; place it with add_part. Place each picture on its page with add_part before drawing the next one, so the family watches the book fill in instead of waiting. Draw at most ${MAX_PICTURES_PER_TURN} pictures in one turn and reuse a character's sprite across pages instead of redrawing it. Match the book's existing pictures.
+Pictures: the painted library is the default (${MATERIAL_CATEGORIES.join(', ')}). find_pictures looks it up by word (ねこ, fox, でんしゃ) and answers with each character's look, as it was described to its painter, and the poses it comes in; look up every character and thing the story needs before planning, so the words match the pictures. Library pictures are square with a transparent surround, placed with add_part and sizePct only; おはなしの ばめん are whole scenes for backdrops.${painting ? ` When the story needs a pose the library lacks, paint_pose paints the character in that pose from its own prompt and keeps it with the family's pictures; place it like any other, at most ${MAX_PAINTINGS_PER_TURN} a turn.` : ''} draw_picture is for what the library has no character for, or for a book whose pictures are already drawn; describe the subject, pose, colours and mood. Place each picture with add_part before making the next, so the family watches the book fill in. At most ${MAX_PICTURES_PER_TURN} drawings a turn; reuse a picture across pages instead of remaking it.
 
-${DRAWING_RULES.replace('Drawing rules:', 'Rules for draw_picture descriptions:')}
-
-Rules:
-- Change only what the request asks; keep everything else, including the family's own strokes and drawings, which the tools never touch.
-- Keep what you were given when a tool reports an error, read the error, and try again differently.
-- ${SAFETY} Decline such a request gently with finish and change nothing.`;
+Rules: change only what the request asks and keep everything else, including the family's own strokes and drawings. On a tool error keep what you have, read it, and try differently. ${SAFETY} Decline such a request gently with finish and change nothing.`;
+export const BOOK_SYSTEM = bookSystem(true);
 
 const pct = (value: number) => `${Math.round(value)}%`;
 const shortText = (value: string, max = 60) => (value.length > max ? value.slice(0, max - 1) + '…' : value);
@@ -186,7 +182,8 @@ function freshArtKey(state: State, name: string): string {
 }
 function partIdOk(state: State, partId: string) {
   if (partId.startsWith('art:')) { const key = partId.slice(4); if (!(key in (state.doc.book.art ?? {})) && !(key in state.newArt)) fail(`No picture "${partId}" in this book. Draw it with draw_picture first.`); }
-  else if (!BUILT_IN_IDS.has(partId)) fail(`Unknown built-in part "${partId}". Use "<category>:<name>" from the list, or an art: key.`);
+  else if (partId.startsWith('lib:')) { if (!state.libParts.has(partId)) fail(`No picture "${partId}" in this book. Paint it with paint_pose first.`); }
+  else if (!MATERIAL_IDS.has(partId)) fail(`Unknown picture "${partId}". Use "${LIBRARY_PREFIX}<slug>" from the library (find_pictures lists them), or an art: key.`);
 }
 const touched = (state: State) => { state.changed = true; };
 
@@ -234,7 +231,7 @@ const TEXT_FIELDS = {
   bold: { type: 'boolean' }, lineHeight: { type: 'number', description: '0.8 to 3 ems, default 1.5.' },
 };
 const PART_FIELDS = {
-  partId: { type: 'string', description: '"art:<key>" or a built-in "<category>:<name>".' }, sizePct: { type: 'number', description: 'Width, percent of the page width.' },
+  partId: { type: 'string', description: `"${LIBRARY_PREFIX}<slug>" from the library or "art:<key>" drawn for this book.` }, sizePct: { type: 'number', description: 'Width, percent of the page width.' },
   heightPct: { type: 'number', description: 'Only for a non-square picture: height, percent of the page height.' }, rotationDeg: { type: 'number' },
 };
 const schema = (properties: Record<string, unknown>, required: string[]) => ({ type: 'object', properties, required, additionalProperties: false });
@@ -275,7 +272,7 @@ const TOOLS: Tool<State>[] = [
       position(input, item, false); textFields(input, item, false); touched(state);
       return { result: { ok: true }, step: 'ことばを なおしました' };
     } },
-  { name: 'add_part', description: 'Places a picture on a page: one drawn for this book (art:<key>) or a built-in shape. Returns the item id.', schema: schema({ ...PAGE, ...POSITION, ...PART_FIELDS }, ['pageId', 'partId', 'x', 'y', 'sizePct']),
+  { name: 'add_part', description: 'Places a picture on a page: one from the painted library (pack.storybook:<slug>) or one drawn for this book (art:<key>). Returns the item id.', schema: schema({ ...PAGE, ...POSITION, ...PART_FIELDS }, ['pageId', 'partId', 'x', 'y', 'sizePct']),
     run(input, state) {
       const page = pageOf(state, str(input, 'pageId', 120)!);
       const item: Item = { type: 'part', id: { value: freshId(state, 'ai-p') }, x: 0, y: 0 };
@@ -324,21 +321,49 @@ const TOOLS: Tool<State>[] = [
       void agent.send({ type: 'art', key, name, svg });
       return { result: { ok: true, partId: `art:${key}`, square: kind === 'sprite' }, step: `「${name}」の えが できました` };
     } },
+  { name: 'find_pictures', description: 'Looks up the painted library by word (ねこ, fox, でんしゃ). Answers with each matching character: how it looks, and every pose it comes in, with the slug to place as pack.storybook:<slug>.',
+    schema: schema({ words: { type: 'array', items: { type: 'string' }, description: `Up to ${MAX_WORDS} words, Japanese or English.` } }, ['words']),
+    run(input) {
+      const words = Array.isArray(input.words) ? input.words.filter((word): word is string => typeof word === 'string').slice(0, MAX_WORDS) : fail('"words" must be a list of words.');
+      const characters = findPictures(words);
+      return { result: characters.length ? { characters } : { characters, hint: 'Nothing in the library matches; try another word, or draw it with draw_picture.' }, step: 'えを さがしました' };
+    } },
   { name: 'finish', description: 'Ends the turn with your words to the user: one or two short sentences in the language of the request.', schema: schema({ say: { type: 'string' } }, ['say']),
     run(input, state) { state.say = str(input, 'say', 400)!; return { result: { ok: true } }; } },
 ];
 
-export const BOOK_TASK: Task<BookInput, State, BookOutput> = {
-  id: 'book', hold: 60, maxRounds: 40, system: BOOK_SYSTEM, finishTool: 'finish',
-  validate: validateBookInput,
-  start(input) {
-    const content: Message['content'] = [];
-    if (input.image) content.push({ type: 'image', dataUrl: input.image });
-    content.push({ type: 'text', text: composeBookPrompt(input) });
-    return { state: { input, doc: JSON.parse(input.book) as Doc, newArt: {}, changed: false, pictures: 0, say: null }, messages: [{ role: 'user', content }] };
+/** Paints a library character in a new pose and keeps it as the account's own picture; only on offer when an image model is configured. */
+const paintPose = (painter: LibraryPainter): Tool<State> => ({
+  name: 'paint_pose', description: 'Paints a library character in a pose the library lacks, from the character\'s own prompt, and keeps it with the family\'s pictures. Returns the partId to place with add_part.',
+  schema: schema({ slug: { type: 'string', description: 'A slug from find_pictures; any pose of the character will do.' }, pose: { type: 'string', description: 'The new pose, in English, such as "sleeping curled up, eyes closed".' }, name: { type: 'string', description: 'A short hiragana name the family will see, such as ねこ・ねむる.' } }, ['slug', 'pose', 'name']),
+  async run(input, state, agent) {
+    const material = materialOf(str(input, 'slug', 80)!) ?? fail('No such slug in the library; take one from find_pictures.');
+    const pose = str(input, 'pose', 300)!;
+    const name = str(input, 'name', 40)!;
+    if (state.paintings >= MAX_PAINTINGS_PER_TURN) fail(`Only ${MAX_PAINTINGS_PER_TURN} poses can be painted in one turn; place what exists or ask the user to continue next turn.`);
+    state.paintings++;
+    void agent.send({ type: 'progress', step: `「${name}」を かいています…` });
+    const painted = await painter.paint(agent, state.uid, material, pose, name);
+    state.libParts.add(painted.partId);
+    return { result: { ok: true, partId: painted.partId, square: painted.w === painted.h }, step: `「${name}」が できました` };
   },
-  tools: () => TOOLS,
-  toolChoice: () => 'auto',
+});
+
+export function bookTask(painter: LibraryPainter | null): Task<BookInput, State, BookOutput> {
+  const tools = painter ? [...TOOLS, paintPose(painter)] : TOOLS;
+  return {
+    id: 'book', hold: 60, maxRounds: 40, system: bookSystem(painter !== null), finishTool: 'finish',
+    validate: validateBookInput,
+    start(input, uid) {
+      const content: Message['content'] = [];
+      if (input.image) content.push({ type: 'image', dataUrl: input.image });
+      content.push({ type: 'text', text: composeBookPrompt(input) });
+      const doc = JSON.parse(input.book) as Doc;
+      const libParts = new Set(doc.book.pages.flatMap(page => page.items.map(item => (item?.partId as { value?: unknown } | undefined)?.value)).filter((id): id is string => typeof id === 'string' && LIB.test(id)));
+      return { state: { input, uid, doc, newArt: {}, libParts, changed: false, pictures: 0, paintings: 0, say: null }, messages: [{ role: 'user', content }] };
+    },
+    tools: () => tools,
+    toolChoice: () => 'auto',
   // Pictures travel in their own chunks, so the draft stays the small art-free document.
   draft: (state) => (state.changed ? JSON.stringify({ ...state.doc, version: FORMAT_VERSION }) : null),
   finish(state, text, stop) {
@@ -348,12 +373,15 @@ export const BOOK_TASK: Task<BookInput, State, BookOutput> = {
     const document: Doc = { ...state.doc, version: FORMAT_VERSION, book: { ...state.doc.book, art: { ...state.doc.book.art, ...state.newArt } } };
     return { book: JSON.stringify(document), say: say || fallback };
   },
-};
+  };
+}
+export const BOOK_TASK = bookTask(null);
 
 export class BookService {
   private readonly service: AiService;
-  constructor(db: Firestore, credits: CreditService, model: ChatModel) { this.service = new AiService(db, credits, model); }
+  private readonly task: Task<BookInput, State, BookOutput>;
+  constructor(db: Firestore, credits: CreditService, model: ChatModel, painter: LibraryPainter | null = null) { this.service = new AiService(db, credits, model); this.task = bookTask(painter); }
   turn(uid: string, raw: unknown, send: (chunk: BookChunk) => Promise<unknown>, signal?: AbortSignal): Promise<BookResult> {
-    return this.service.turn(BOOK_TASK, uid, raw, send, signal);
+    return this.service.turn(this.task, uid, raw, send, signal);
   }
 }

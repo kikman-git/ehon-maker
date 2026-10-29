@@ -196,6 +196,12 @@ class WebEditor(bookJson: String, measure: (String, Double, String) -> Double) {
         controller.replaceDocument(book)
     }
 
+    /** A further revision of the same AI turn: joins the previous one as a single undo step. */
+    fun amendDocument(json: String) {
+        val book = BookCodec.decode(json)
+        controller.replaceDocument(book, amend = true)
+    }
+
     /** The current page's items as `[{id, kind, ref, x, y, w, h, rotationDeg}]` in percent, measured at w×h. */
     fun itemBoundsJson(w: Double, h: Double): String = buildJsonArray {
         controller.itemBounds(size(w, h)).forEach { bounds ->

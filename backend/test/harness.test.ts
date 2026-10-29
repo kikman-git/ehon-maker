@@ -2,11 +2,14 @@ import assert from 'node:assert/strict';
 import { after, beforeEach, test } from 'node:test';
 import { initializeApp, deleteApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-import { Agent, AiService, imageOf, type Task, type Tool } from '../functions/src/agent.ts';
+import { Agent, AiService, imageOf, stopTurn, type Task, type Tool } from '../functions/src/agent.ts';
 import { acceptableSvg, AtelierService, composePrompt, MAX_SVG_CHARS, validateInput, type AtelierChunk } from '../functions/src/atelier.ts';
-import { BookService, BOOK_TASK, composeBookPrompt, validateBookInput, type BookChunk } from '../functions/src/book.ts';
+import { AssetService, type BlobStore } from '../functions/src/assets.ts';
+import { BookService, BOOK_SYSTEM, BOOK_TASK, bookSystem, bookTask, composeBookPrompt, validateBookInput, type BookChunk } from '../functions/src/book.ts';
 import { CreditService, pricesFor, WELCOME_CREDITS } from '../functions/src/credits.ts';
-import { FakeModel } from '../functions/src/fake.ts';
+import { FakeImageModel, FakeModel } from '../functions/src/fake.ts';
+import { findPictures, LibraryPainter, MATERIAL_IDS, materialOf, posePrompt } from '../functions/src/library.ts';
+import { STYLE_DIRECTION } from '../functions/src/materials.ts';
 import type { ChatModel, ModelReply, ModelRequest } from '../functions/src/model.ts';
 
 const app = initializeApp({ projectId: 'demo-ehon-ai' }, 'ai-tests');
@@ -73,6 +76,25 @@ test('an empty account is refused before the model runs, a costly turn is clampe
   await assert.rejects(service.turn('bob', { request: 'くま', bookArt: [] }, collect().send), { code: 'unavailable' });
 });
 
+test('a stopped turn settles what was done, records it as stopped, and answers cancelled', async () => {
+  const service = new BookService(db, credits, new FakeModel());
+  const controller = new AbortController();
+  setTimeout(() => controller.abort(), 300);
+  await assert.rejects(service.turn('gina', { request: 'ねこを かいて slow8', book: book(), pageId: 'p1' }, collect().send, controller.signal), { code: 'cancelled' });
+  const account = (await db.doc('credits/gina').get()).data()!;
+  assert.equal(account.reserved, 0);
+  assert.equal(account.balance, WELCOME_CREDITS - 1, 'a turn that reached the model costs at least one credit');
+  const turn = (await db.collection('aiTurns').where('uid', '==', 'gina').get()).docs[0].data();
+  assert.equal(turn.status, 'stopped');
+
+  // The same through the stop document, for a connection a proxy keeps open after the browser let go.
+  setTimeout(() => void stopTurn(db, 'hana', 'turn-stop-test-1'), 300);
+  await assert.rejects(service.turn('hana', { request: 'ねこを かいて slow8', book: book(), pageId: 'p1', turnId: 'turn-stop-test-1' }, collect().send), { code: 'cancelled' });
+  assert.equal((await db.doc('credits/hana').get()).data()!.reserved, 0);
+  assert.equal((await db.doc('turnStops/hana_turn-stop-test-1').get()).exists, false, 'the stop is cleared with the turn');
+  await assert.rejects(stopTurn(db, 'hana', 'x'), { code: 'invalid-argument' });
+});
+
 test('the book input strips drawings, keeps names, and describes the page the user is looking at', () => {
   const input = validateBookInput({ request: 'ことばを やさしく', book: book(), pageIndex: 0, pageId: 'p1', pageCount: 1, bookArt: [sprite], mark: { pageIndex: 0, pageId: 'p1', x0: 10, y0: 10, x1: 50, y1: 60 }, items: [{ id: 't1', kind: 'text', ref: 'こんにちは', x: 50, y: 80, w: 30, h: 6, rotationDeg: 0 }] });
   assert.equal(input.title, 'くまの ほん');
@@ -86,7 +108,7 @@ test('the book input strips drawings, keeps names, and describes the page the us
 });
 
 test('the book tools edit the document in place, refuse what the format forbids, and say so to the model', async () => {
-  const { state } = BOOK_TASK.start(validateBookInput({ request: 'x', book: book(2), pageId: 'p1' }));
+  const { state } = BOOK_TASK.start(validateBookInput({ request: 'x', book: book(2), pageId: 'p1' }), 'dave');
   const agent = new Agent(new FakeModel(), async () => {});
   const tools = Object.fromEntries(BOOK_TASK.tools(state).map(tool => [tool.name, tool])) as Record<string, Tool<typeof state>>;
   // Like the agent, a tool that throws is reported to the model as an error outcome.
@@ -97,9 +119,24 @@ test('the book tools edit the document in place, refuse what the format forbids,
   assert.match(await errorOf('add_text', { pageId: 'p1', text: 'x', x: 50, y: 50, font: 'comic' }), /"font" must be one of/);
   assert.match(await errorOf('add_text', { pageId: 'p1', text: 'x', x: 50, y: 50, sizePct: 40 }), /between 2 and 30/);
   assert.match(await errorOf('add_part', { pageId: 'p1', partId: 'art:ghost', x: 50, y: 50, sizePct: 20 }), /Draw it with draw_picture/);
-  assert.match(await errorOf('add_part', { pageId: 'p1', partId: 'いきもの:ドラゴン', x: 50, y: 50, sizePct: 20 }), /Unknown built-in part/);
-  const added = await run('add_part', { pageId: 'p2', partId: 'いきもの:ねこ', x: 30, y: 40, sizePct: 25 });
+  // The retired procedural shapes are unknown; the painted library and the aliases saved books carry are placed.
+  assert.match(await errorOf('add_part', { pageId: 'p1', partId: 'いきもの:ねこ', x: 50, y: 50, sizePct: 20 }), /Unknown picture "いきもの:ねこ"\. Use "pack\.storybook:<slug>"/);
+  assert.match(await errorOf('add_part', { pageId: 'p1', partId: 'pack.storybook:dragon', x: 50, y: 50, sizePct: 20 }), /Unknown picture/);
+  const added = await run('add_part', { pageId: 'p2', partId: 'pack.storybook:bird', x: 30, y: 40, sizePct: 25 });
   assert.deepEqual(added.result, { ok: true, id: 'ai-p1' });
+  assert.deepEqual((await run('set_part', { id: 'ai-p1', partId: 'うみと そら:ことり' })).result, { ok: true });
+  assert.match(await errorOf('add_part', { pageId: 'p1', partId: 'lib:nope', x: 50, y: 50, sizePct: 20 }), /Paint it with paint_pose first/);
+  assert.ok(MATERIAL_IDS.has('pack.storybook:forest-scene') && !MATERIAL_IDS.has('かたち:ほし'));
+  // The library is looked up on demand, so the prompt names the tool, not the pictures.
+  assert.match(BOOK_SYSTEM, /find_pictures looks it up by word/);
+  assert.ok(BOOK_SYSTEM.includes('paint_pose') && !bookSystem(false).includes('paint_pose') && !BOOK_SYSTEM.includes('pack.storybook:bird'));
+  assert.ok(!BOOK_TASK.tools(state).some(tool => tool.name === 'paint_pose'), 'no painter, no paint_pose');
+  const found = (await run('find_pictures', { words: ['ねこ', 'cat'] })).result as { characters: { character: string; name: string; look: string; pictures: { slug: string; pose: string }[] }[] };
+  assert.equal(found.characters.length, 1);
+  assert.equal(found.characters[0].name, 'ねこ');
+  assert.match(found.characters[0].look, /ginger tabby cat/);
+  assert.ok(found.characters[0].pictures.some(picture => picture.slug === 'cat'));
+  assert.ok(((await run('find_pictures', { words: ['ドラゴン'] })).result as { hint?: string }).hint);
   const page = await run('add_page', { afterPageId: 'p1', background: '#f0fae1' });
   assert.deepEqual(page.result, { ok: true, pageId: 'p3', pageNumber: 2 });
   assert.equal(page.step, '2ページめを つくりました');
@@ -121,6 +158,64 @@ test('the book tools edit the document in place, refuse what the format forbids,
   assert.match(document.book.art.art.svg!, /^<svg/);
   assert.equal(output.say, 'できました。');
   assert.ok(agent.usage.input > 0, 'drawing counted toward the turn');
+});
+
+
+class MemoryBlobs implements BlobStore {
+  files = new Map<string, Buffer>();
+  async presignPut(key: string) { return { url: `https://upload.invalid/${key}`, headers: {} }; }
+  async presignGet(key: string) { return `https://private.invalid/${key}`; }
+  async read(key: string) { const bytes = this.files.get(key); if (!bytes) throw Error(`missing ${key}`); return bytes; }
+  async write(key: string, bytes: Buffer) { this.files.set(key, bytes); }
+}
+const painterFor = (blobs: MemoryBlobs) => new LibraryPainter(db, new FakeImageModel(), new AssetService(db, blobs), async () => Buffer.alloc(0));
+
+test('a pose is painted from the character\'s own prompt, kept as the account\'s picture, charged as a painting and placed', async () => {
+  const cat = materialOf('cat-sitting') ?? materialOf('cat')!;
+  const prompt = posePrompt(cat, 'sleeping curled up');
+  assert.ok(prompt.startsWith(STYLE_DIRECTION));
+  assert.match(prompt, /Create one new pose of this same character: sleeping curled up\./);
+  assert.match(prompt, /The character was painted as: .*ginger tabby cat/);
+  assert.equal(findPictures(['fox']).length, findPictures(['きつね']).length);
+  assert.equal(findPictures([]).length, 0);
+
+  const blobs = new MemoryBlobs();
+  const task = bookTask(painterFor(blobs));
+  const { state } = task.start(validateBookInput({ request: 'x', book: book(), pageId: 'p1' }), 'erin');
+  const agent = new Agent(new FakeModel(), async () => {});
+  const tools = Object.fromEntries(task.tools(state).map(tool => [tool.name, tool])) as Record<string, Tool<typeof state>>;
+  const run = async (name: string, input: Record<string, unknown>) => { try { return await tools[name].run(input, state, agent); } catch (error) { return { result: { error: (error as Error).message }, isError: true }; } };
+  assert.match(((await run('paint_pose', { slug: 'dragon', pose: 'x', name: 'x' })).result as { error: string }).error, /No such slug/);
+  const painted = (await run('paint_pose', { slug: 'cat', pose: 'sleeping curled up', name: 'ねこ・ねむる' })).result as { partId: string; square: boolean };
+  assert.match(painted.partId, /^lib:/);
+  assert.ok(painted.square);
+  assert.equal(agent.paintings, 1);
+  const illustration = (await db.doc(`illustrations/${painted.partId.slice(4)}`).get()).data()!;
+  assert.equal(illustration.ownerId, 'erin');
+  assert.equal(illustration.title, 'ねこ・ねむる');
+  assert.deepEqual(illustration.library, { material: 'pack.storybook:cat', pose: 'sleeping curled up', model: 'gpt-image-1' });
+  assert.ok(blobs.files.has(`${illustration.masterRef}/m.png`) && blobs.files.has(`${illustration.masterRef}/256.webp`));
+  assert.equal((await db.doc('storageUsage/erin').get()).data()!.bytes, [...blobs.files.values()].reduce((sum, bytes) => sum + bytes.length, 0));
+  assert.deepEqual((await run('add_part', { pageId: 'p1', partId: painted.partId, x: 50, y: 50, sizePct: 40 })).result, { ok: true, id: 'ai-p1' });
+  for (let n = 1; n < 4; n++) await run('paint_pose', { slug: 'cat', pose: `pose ${n}`, name: 'ねこ' });
+  assert.match(((await run('paint_pose', { slug: 'cat', pose: 'one more', name: 'ねこ' })).result as { error: string }).error, /Only 4 poses/);
+  // 1,000 image tokens in and 4,000 out on gpt-image-1 are $0.17 a painting.
+  assert.equal(Math.round(agent.usd() * 100), 68);
+});
+
+test('a book turn looks the library up, paints the pose and settles the painting beside the chat tokens', async () => {
+  const service = new BookService(db, credits, new FakeModel(), painterFor(new MemoryBlobs()));
+  const { chunks, send } = collect();
+  const result = await service.turn('frank', { request: 'ねこの ねている ポーズを おいて', book: book(), pageIndex: 0, pageId: 'p1', pageCount: 1 }, send);
+  const document = JSON.parse(result.book!) as { book: { pages: { items: { type: string; partId?: { value: string } }[] }[] } };
+  assert.ok(document.book.pages[0].items.some(item => item.partId?.value.startsWith('lib:')));
+  assert.equal(result.say, 'ねむる ねこを かいて おきました。');
+  // Four rounds of chat at $0.054 and one painting at $0.17.
+  assert.equal(result.credits, 39);
+  assert.deepEqual(chunks.filter(chunk => chunk.step).map(chunk => chunk.step), ['えを さがしました', '「ねこ・ねむる」を かいています…', '「ねこ・ねむる」が できました', 'えを おきました']);
+  const turn = (await db.collection('aiTurns').where('uid', '==', 'frank').get()).docs[0].data();
+  assert.equal(turn.paintings, 1);
+  assert.equal(Math.round(turn.usd * 1000), 386);
 });
 
 test('a book turn runs the loop through the tools, meters every round, and reports its steps', async () => {

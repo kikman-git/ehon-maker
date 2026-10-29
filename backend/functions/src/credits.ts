@@ -24,7 +24,13 @@ export const PRICES: Record<string, Prices> = {
   'gpt-5': { input: 1.25, output: 10, cacheRead: 0.125, cacheWrite: 0 },
   'gpt-5-mini': { input: 0.25, output: 2, cacheRead: 0.025, cacheWrite: 0 },
   'gpt-5-nano': { input: 0.05, output: 0.4, cacheRead: 0.005, cacheWrite: 0 },
+  // Image models: image input and image output tokens; text input is cheaper but is charged at the image rate.
+  'gpt-image-1-mini': { input: 2.5, output: 8, cacheRead: 0.625, cacheWrite: 0 },
+  'gpt-image-1': { input: 10, output: 40, cacheRead: 2.5, cacheWrite: 0 },
 };
+
+/** One model's tokens on a turn; a turn that paints charges the image model's tokens beside the chat model's. */
+export interface Charge { model: string; usage: TokenUsage }
 
 /** A dated model id such as `gpt-5-2026-03-01` or `claude-opus-5-5-20260401` prices as its family. */
 export function pricesFor(model: string): Prices {
@@ -38,7 +44,8 @@ export function usdFor(model: string, usage: TokenUsage): number {
 }
 
 /** Never free: a turn that reached the model costs at least one credit. */
-export const creditsFor = (model: string, usage: TokenUsage): number => Math.max(1, Math.ceil(usdFor(model, usage) * CREDITS_PER_USD));
+export const creditsFor = (model: string, usage: TokenUsage, extras: Charge[] = []): number =>
+  Math.max(1, Math.ceil((usdFor(model, usage) + extras.reduce((sum, charge) => sum + usdFor(charge.model, charge.usage), 0)) * CREDITS_PER_USD));
 
 export type Plan = 'free' | 'plus';
 export interface Balance { balance: number; reserved: number; granted: number; spent: number; plan: Plan }
@@ -81,8 +88,8 @@ export class CreditService {
   }
 
   /** Charges the turn's real cost against its hold; the balance never drops below zero for one overrunning turn. */
-  async settle(uid: string, id: string, charge: { model: string; usage: TokenUsage }): Promise<{ credits: number; balance: number }> {
-    const credits = creditsFor(charge.model, charge.usage);
+  async settle(uid: string, id: string, charge: Charge & { extras?: Charge[] }): Promise<{ credits: number; balance: number }> {
+    const credits = creditsFor(charge.model, charge.usage, charge.extras);
     return this.db.runTransaction(async tx => {
       const entry = await tx.get(this.ledger(uid, id));
       const hold = reservedHold(entry.data());
@@ -90,7 +97,7 @@ export class CreditService {
       const charged = Math.min(credits, hold + account.balance);
       const balance = account.balance + hold - charged;
       tx.update(this.account(uid), { balance, reserved: FieldValue.increment(-hold), spent: FieldValue.increment(charged), updatedAt: FieldValue.serverTimestamp() });
-      tx.update(this.ledger(uid, id), { status: 'spent', delta: -charged, credits, model: charge.model, usage: charge.usage, settledAt: FieldValue.serverTimestamp() });
+      tx.update(this.ledger(uid, id), { status: 'spent', delta: -charged, credits, model: charge.model, usage: charge.usage, ...(charge.extras?.length ? { extras: charge.extras } : {}), settledAt: FieldValue.serverTimestamp() });
       return { credits: charged, balance };
     });
   }
