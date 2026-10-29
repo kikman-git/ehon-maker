@@ -2507,8 +2507,9 @@
       "characterId": "raccoon",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same raccoon as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "raccoon",
-      "status": "queued",
-      "outputFile": "pending/raccoon-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/raccoon-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-6171d315-12e8-4d49-85b2-14272ee50e5c.png"
     },
     {
       "id": "raccoon-smiling",
@@ -2518,8 +2519,9 @@
       "characterId": "raccoon",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same raccoon as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "raccoon",
-      "status": "queued",
-      "outputFile": "pending/raccoon-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/raccoon-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-329a0c80-b577-4510-acbb-60c43eb39a4a.png"
     },
     {
       "id": "raccoon-surprised",
@@ -2529,8 +2531,9 @@
       "characterId": "raccoon",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same raccoon as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "raccoon",
-      "status": "queued",
-      "outputFile": "pending/raccoon-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/raccoon-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-3e6e353a-e279-4479-9b96-c904c11c3375.png"
     },
     {
       "id": "raccoon-waving",
@@ -2540,8 +2543,9 @@
       "characterId": "raccoon",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same raccoon as reference, preserve colors and identity; waving. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "raccoon",
-      "status": "queued",
-      "outputFile": "pending/raccoon-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/raccoon-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-01e00b67-bb39-49d4-b533-ea89fa9abbb4.png"
     },
     {
       "id": "raccoon-looking-left",
@@ -2551,8 +2555,9 @@
       "characterId": "raccoon",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same raccoon as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "raccoon",
-      "status": "queued",
-      "outputFile": "pending/raccoon-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/raccoon-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ab0d82a3-c5b7-4efb-8abe-6eb5cf8faba7.png"
     },
     {
       "id": "raccoon-looking-right",
@@ -2562,8 +2567,9 @@
       "characterId": "raccoon",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same raccoon as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "raccoon",
-      "status": "queued",
-      "outputFile": "pending/raccoon-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/raccoon-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-df2d3dd3-8869-40fe-a72f-c4f1554591a3.png"
     },
     {
       "id": "panda-walking",
