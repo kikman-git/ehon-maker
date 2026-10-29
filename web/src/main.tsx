@@ -173,7 +173,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   // A running AI turn owns the book: hand edits would be swept away by its next draft, so the desk waits with it.
   const [aiRunning, setAiRunning] = useState(false);
   useEffect(() => aiBridge?.state.subscribe((ai) => {
-    if (ai.running && !aiWasRunning.current) turnTouched.current = [];
+    if (ai.running && !aiWasRunning.current) turnFollowed.current = null;
     if (!ai.running) aiTurnOpen.current = false;
     aiWasRunning.current = ai.running;
     setAiRunning(ai.running);
@@ -340,7 +340,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   // True between a turn's first draft and its end, while later drafts amend the same undo step.
   const aiTurnOpen = useRef(false);
   // Pages this turn changed so far, so the note at the end can say where the work landed.
-  const turnTouched = useRef<number[]>([]);
+  const turnFollowed = useRef<number | null>(null);
   const applyAiDocument = (json: string, attempt = 0, draft = false) => {
     if (!aiBridge) return;
     if (editor.isGestureActive) { if (attempt < 20) setTimeout(() => applyAiDocument(json, attempt + 1, draft), 250); return; }
@@ -355,12 +355,12 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
       changed();
       // The desk follows the AI to the page it changed, so the family sees the work rather than a blank page.
       const touched = changedPages(before, pagesOf(editor.bookJson()));
-      turnTouched.current.push(...touched);
-      if (touched.length && !touched.includes(editor.pageIndex)) editor.goToPage(touched[touched.length - 1]);
+      if (touched.length && !touched.includes(editor.pageIndex)) { editor.goToPage(touched[touched.length - 1]); turnFollowed.current = editor.pageIndex; }
       // A draft lands on the page as the AI works; only the finished turn says so in the chat, naming the page it landed on.
       if (!draft) {
-        const landed = turnTouched.current.at(-1);
-        aiBridge.note({ kind: 'applied', text: landed === undefined ? APPLIED_NOTE : `${landed + 1}ページめに 反映しました。「元に戻す」で 取り消せます。` });
+        // Named only when the desk moved there; a change on the page in view needs no address.
+        const landed = turnFollowed.current;
+        aiBridge.note({ kind: 'applied', text: landed === null ? APPLIED_NOTE : `${landed + 1}ページめに 反映しました。「元に戻す」で 取り消せます。` });
       }
     } catch (raw) {
       if (!draft) aiBridge.note({ kind: 'rejected', text: `反映できませんでした: ${raw instanceof Error ? raw.message : String(raw)}` });

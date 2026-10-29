@@ -45,5 +45,5 @@ test('a new account gets 100 credits, the atelier spends them per turn, and the 
   await expect(atelier.getByRole('button', { name: /ぺたぺた プラス/ })).toBeVisible();
   await expect(page.getByRole('button', { name: /^AI クレジット/ })).toHaveText(/\b0\b/);
   await atelier.getByRole('button', { name: 'アトリエを とじる' }).click();
-  await expect(page.getByRole('button', { name: /AIで 素材を つくる/ })).toContainText('クレジットが なくなりました');
+  await expect(page.getByRole('button', { name: /AIで 素材を つくる/ })).toContainText('クレジットなし');
 });

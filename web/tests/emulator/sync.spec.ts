@@ -82,7 +82,7 @@ test('two browsers on one account converge, coalesce bursts and catch up after g
   await expect.poll(() => pending(a.page)).toBe(false);
 
   await a.context.setOffline(true);
-  for (const name of ['さんかく', 'しかく', 'ほし']) await a.page.getByRole('button', { name, exact: true }).click();
+  for (const name of ['かめ', 'たこ', 'くじら']) await a.page.getByRole('button', { name, exact: true }).click();
   await a.page.waitForTimeout(2500);
   expect(await pending(a.page)).toBe(true);
   await a.context.setOffline(false);
