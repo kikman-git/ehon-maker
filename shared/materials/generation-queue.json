@@ -323,8 +323,9 @@
       "characterId": "paintbrush",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One paintbrush, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/paintbrush.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/paintbrush.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-01cbf8e3-0e29-4225-a813-36c195c39225.png"
     },
     {
       "id": "palette",
@@ -334,8 +335,9 @@
       "characterId": "palette",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One palette, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/palette.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/palette.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-bf99e795-40d8-4566-804e-e87f10cc3ff8.png"
     },
     {
       "id": "binoculars",
@@ -345,8 +347,9 @@
       "characterId": "binoculars",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One binoculars, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/binoculars.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/binoculars.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-7fa49626-21b9-4866-859a-fa7932ff7795.png"
     },
     {
       "id": "magnifying-glass",
@@ -356,8 +359,9 @@
       "characterId": "magnifying-glass",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One magnifying glass, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/magnifying-glass.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/magnifying-glass.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-de2a530d-d4e4-48bd-bc91-48d7eda4310d.png"
     },
     {
       "id": "compass",
@@ -367,8 +371,9 @@
       "characterId": "compass",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One compass, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/compass.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/compass.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-07b1f9e5-715c-47f2-ae06-da6f245bd8e3.png"
     },
     {
       "id": "suitcase",
@@ -378,8 +383,9 @@
       "characterId": "suitcase",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One suitcase, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/suitcase.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/suitcase.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ee6c7a7d-c3a4-4648-bdfc-cde85e2acd01.png"
     },
     {
       "id": "wheelbarrow",
@@ -389,8 +395,9 @@
       "characterId": "wheelbarrow",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One wheelbarrow, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/wheelbarrow.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/wheelbarrow.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-c0d68fc3-e00f-4d5a-855f-eea69a302ecb.png"
     },
     {
       "id": "toy-blocks",
@@ -400,8 +407,9 @@
       "characterId": "toy-blocks",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One toy blocks, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/toy-blocks.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/toy-blocks.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-301af72c-2f38-4d10-bb2f-1daaa93f764c.png"
     },
     {
       "id": "sled",
@@ -411,8 +419,9 @@
       "characterId": "sled",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One sled, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/sled.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/sled.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-c7608904-04c6-4833-bafd-3e874648cb6a.png"
     },
     {
       "id": "cupcake",
@@ -422,8 +431,9 @@
       "characterId": "cupcake",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One cupcake, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/cupcake.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cupcake.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-1219c5e0-aece-41cb-9c4d-ba074a6b8da9.png"
     },
     {
       "id": "birthday-cake",
@@ -433,8 +443,9 @@
       "characterId": "birthday-cake",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One birthday cake, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/birthday-cake.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/birthday-cake.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-8db67f0d-2027-45f3-9a74-145cdbf42773.png"
     },
     {
       "id": "cookies",
@@ -444,8 +455,9 @@
       "characterId": "cookies",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One cookies, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/cookies.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cookies.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-b2a80758-c141-4e33-8b3f-5760e8b2d62c.png"
     },
     {
       "id": "ice-cream",
@@ -455,8 +467,9 @@
       "characterId": "ice-cream",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One ice cream, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/ice-cream.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/ice-cream.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-d68515dc-c90a-47f0-986f-818b0eda87b9.png"
     },
     {
       "id": "pudding",
@@ -466,8 +479,9 @@
       "characterId": "pudding",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One pudding, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/pudding.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/pudding.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-fd07b999-7e6e-4bf9-99b1-59b40fc30724.png"
     },
     {
       "id": "milk",
@@ -477,8 +491,9 @@
       "characterId": "milk",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One milk, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/milk.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/milk.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-d8607a35-4057-49b8-9ace-11a6cf40a06d.png"
     },
     {
       "id": "juice",
@@ -488,8 +503,9 @@
       "characterId": "juice",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One juice, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/juice.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/juice.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-b75f1470-e208-477d-9fce-cb1c481f3834.png"
     },
     {
       "id": "filled-picnic-basket",
@@ -499,8 +515,9 @@
       "characterId": "filled-picnic-basket",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One filled picnic basket, charming standalone storybook prop. No people.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/filled-picnic-basket.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/filled-picnic-basket.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-005f0c46-6ae7-4087-8f98-c87f7c051b99.png"
     },
     {
       "id": "fox",
