@@ -8,6 +8,8 @@ export default defineConfig({
   // A developer's .env.local may point at a real project; this suite is the no-cloud one.
   webServer: {
     command: 'pnpm dev --port 4173 --strictPort', url: 'http://127.0.0.1:4173/app.html', reuseExistingServer: !process.env.CI,
+    // `pnpm dev` packages the material masters before Vite starts, which takes over a minute cold.
+    timeout: 240_000,
     // The AI desk runs stand-ins for the Claude and Codex CLIs that edit the book the way the real ones would.
     env: { VITE_EMULATOR_HOST: '', VITE_FIREBASE_PROJECT_ID: '', VITE_TEMPLATES_URL: '' },
   },
