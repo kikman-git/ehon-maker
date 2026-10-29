@@ -1931,8 +1931,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; walking. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-7c2012cf-cddc-4683-89d2-a0711b68ad79.png"
     },
     {
       "id": "fox-sitting",
@@ -1942,8 +1943,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; sitting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-df31fbb0-1561-42c1-ad98-ec66c397cc60.png"
     },
     {
       "id": "fox-jumping",
@@ -1953,8 +1955,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; jumping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-jumping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-jumping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-1e79c52a-d36a-4c0a-9328-2ed735ebe2bf.png"
     },
     {
       "id": "fox-sleeping",
@@ -1964,8 +1967,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a9e663e8-03de-47dd-840e-3ce16e6fc636.png"
     },
     {
       "id": "fox-smiling",
@@ -1975,8 +1979,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-f26d5a73-c317-49fb-9dc1-727cf01246f4.png"
     },
     {
       "id": "fox-surprised",
@@ -1986,8 +1991,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-3e87dcdb-7202-4689-b389-27b5da0311b8.png"
     },
     {
       "id": "fox-waving",
@@ -1997,8 +2003,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; waving. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-5f71a9a8-2f1d-415c-84c3-d942f01f0756.png"
     },
     {
       "id": "fox-looking-left",
@@ -2008,8 +2015,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-2596c880-536d-44c1-aede-f634763ea2e1.png"
     },
     {
       "id": "fox-looking-right",
@@ -2019,8 +2027,9 @@
       "characterId": "fox",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same fox as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "fox",
-      "status": "queued",
-      "outputFile": "pending/fox-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-9c50306b-57ca-4baf-b3aa-caf36faccafe.png"
     },
     {
       "id": "squirrel-walking",
