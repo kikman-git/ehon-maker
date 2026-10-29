@@ -1175,8 +1175,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; grounded upright. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-standing.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-standing.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ecb66af0-b6e8-414d-a4f9-f271c0427ad0.png"
     },
     {
       "id": "crab-walking",
@@ -1186,8 +1187,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; walking. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-73189fed-9b4e-419f-b701-30e62bc14342.png"
     },
     {
       "id": "crab-sitting",
@@ -1197,8 +1199,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; settled low. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-0d822ce7-9018-485e-9c47-8c88f659ddf4.png"
     },
     {
       "id": "crab-jumping",
@@ -1208,8 +1211,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; small playful hop. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-jumping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-jumping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-662c2c67-c76e-4798-acf1-55b344c911ef.png"
     },
     {
       "id": "crab-sleeping",
@@ -1219,8 +1223,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-d1a496dd-50db-4da8-a49c-a31446d076e8.png"
     },
     {
       "id": "crab-surprised",
@@ -1230,8 +1235,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-34cea29e-1ae3-4258-b5e0-7c016606513f.png"
     },
     {
       "id": "crab-waving",
@@ -1241,8 +1247,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; raised claw greeting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ea46666e-d3b4-4fc9-ba7d-39436b2ccc44.png"
     },
     {
       "id": "crab-looking-left",
@@ -1252,8 +1259,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-5f9b5606-ae0b-4a72-879b-813ad5a810e0.png"
     },
     {
       "id": "crab-looking-right",
@@ -1263,8 +1271,9 @@
       "characterId": "crab",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same crab as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "crab",
-      "status": "queued",
-      "outputFile": "pending/crab-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/crab-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-8be6e248-80c6-4877-8a61-cf32294e588d.png"
     },
     {
       "id": "ladybug-standing",
