@@ -3459,6 +3459,126 @@
       "bytes": 1885178,
       "sha256": "eb02c62dda6bb8ba8d94cd0a2addbcdbcbb8dc05abef40e6ff804dfe5fa9a00a",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:teapot",
+      "slug": "teapot",
+      "name": "ティーポット",
+      "nameEn": "Teapot",
+      "category": "もの",
+      "characterId": "teapot",
+      "pose": "default",
+      "tags": [
+        "お茶",
+        "食器"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/1051823da989ff55505770d5b7d101a6499a19ae6f4e3c9d8b779502d83ac8b3",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1634669,
+      "sha256": "1051823da989ff55505770d5b7d101a6499a19ae6f4e3c9d8b779502d83ac8b3",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:flowerpot",
+      "slug": "flowerpot",
+      "name": "うえきばち",
+      "nameEn": "Flowerpot",
+      "category": "もの",
+      "characterId": "flowerpot",
+      "pose": "default",
+      "tags": [
+        "植木鉢",
+        "花"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/3efa72298df9d4c1d7a9a1e9ae462d79d6368291cd3cfa7fdf3ed00ab78d2538",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2150949,
+      "sha256": "3efa72298df9d4c1d7a9a1e9ae462d79d6368291cd3cfa7fdf3ed00ab78d2538",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:clock",
+      "slug": "clock",
+      "name": "とけい",
+      "nameEn": "Clock",
+      "category": "もの",
+      "characterId": "clock",
+      "pose": "default",
+      "tags": [
+        "時計",
+        "時間"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/bb620f2f762814655310dc327b1e510891e5530670770506200e4cf02df30e33",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2111900,
+      "sha256": "bb620f2f762814655310dc327b1e510891e5530670770506200e4cf02df30e33",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:mailbox",
+      "slug": "mailbox",
+      "name": "ポスト",
+      "nameEn": "Mailbox",
+      "category": "もの",
+      "characterId": "mailbox",
+      "pose": "default",
+      "tags": [
+        "郵便",
+        "手紙"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/09f042a64d273bef055ba51514556b363da51ad284b43acb67d23be242190464",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1490488,
+      "sha256": "09f042a64d273bef055ba51514556b363da51ad284b43acb67d23be242190464",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bucket",
+      "slug": "bucket",
+      "name": "バケツ",
+      "nameEn": "Bucket",
+      "category": "もの",
+      "characterId": "bucket",
+      "pose": "default",
+      "tags": [
+        "水",
+        "道具"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/851fde0cceee974daf000bd09ccbd536f35736d47b7e07ed76f3cbc6759c329f",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1874211,
+      "sha256": "851fde0cceee974daf000bd09ccbd536f35736d47b7e07ed76f3cbc6759c329f",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:hand-drum",
+      "slug": "hand-drum",
+      "name": "たいこ",
+      "nameEn": "Hand drum",
+      "category": "もの",
+      "characterId": "hand-drum",
+      "pose": "default",
+      "tags": [
+        "太鼓",
+        "楽器"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/c883be1608e8c26aeb52ba8915acfacdc1ca000533c16649f507734784237d06",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1859985,
+      "sha256": "c883be1608e8c26aeb52ba8915acfacdc1ca000533c16649f507734784237d06",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

@@ -46,7 +46,7 @@ The user has explicitly prioritized image assets. Follow the budget priority ove
 
 ## Budget priority override — 2026-10-28
 
-User requested important categories first with 17% weekly allowance remaining. P01 adds four distinct people: grandmother waving, grandfather standing, toddler sitting, child using wheelchair sitting. Count these toward S19/S30; do not regenerate them. Defer S16 and other extra animal poses. P02 completed chair, table, bed and watering can from S21. Skip these four when resuming S21. P03 completed grassy-tuft, mushroom-cluster, reeds and lily-pad from S17; skip these when resuming S17. P04 completed bread-loaf, rice-ball, soup and sandwich from S24. User requested continuous generation until stopped; prioritize remaining S21 objects, S17 nature and S24 meals before animal variations; generate one useful version per subject before variants. Keep original session rows unchecked until their remaining poses are complete.
+User requested important categories first with 17% weekly allowance remaining. P01 adds four distinct people: grandmother waving, grandfather standing, toddler sitting, child using wheelchair sitting. Count these toward S19/S30; do not regenerate them. Defer S16 and other extra animal poses. P02 completed chair, table, bed and watering can from S21. Skip these four when resuming S21. P03 completed grassy-tuft, mushroom-cluster, reeds and lily-pad from S17; skip these when resuming S17. P04 completed bread-loaf, rice-ball, soup and sandwich from S24. User requested continuous generation until stopped; P05 completed the six remaining S21 objects; prioritize remaining S17 nature and S24 meals before animal variations; generate one useful version per subject before variants. Keep original session rows unchecked until their remaining poses are complete.
 
 ## Artwork sessions
 
@@ -74,7 +74,7 @@ Counts below are **new accepted artwork**, with cumulative totals including the 
 | [ ] | S18 | Animals | Crab: finish its 10-variation set | 9 | **174** |
 | [ ] | S19 | People | B: child with glasses × sitting and waving; child using wheelchair × 4; toddler × 4 | 10 | **184** |
 | [ ] | S20 | Animals | Ladybug: finish its 10-variation set | 9 | **193** |
-| [ ] | S21 | Objects | B: chair, table, bed, teapot, watering can, flowerpot, clock, mailbox, bucket, hand drum | 10 | **203** |
+| [x] | S21 | Objects | B: chair, table, bed, teapot, watering can, flowerpot, clock, mailbox, bucket, hand drum | 10 | **203** |
 | [ ] | S22 | Animals | Owl: finish its 10-variation set | 9 | **212** |
 | [ ] | S23 | Vehicles | B: airplane, helicopter, rocket, submarine, rowboat, scooter, snowplow, garbage truck, delivery van | 9 | **221** |
 | [ ] | S24 | Food | B: bread loaf, croissant, pancakes, rice ball, noodles, curry, soup, sandwich | 8 | **229** |

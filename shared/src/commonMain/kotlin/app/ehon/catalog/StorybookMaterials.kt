@@ -165,6 +165,12 @@ internal object StorybookMaterials {
         Material("pack.storybook:bread-loaf", "パン", "Bread loaf", "たべもの", "a/b6f72e1966f5a4b04fb7dbccd11c5f853bb201dc8047ccffabf2ad6f4910a702", "bread-loaf", "default", listOf("パン", "朝ごはん"), listOf()),
         Material("pack.storybook:rice-ball", "おにぎり", "Rice ball", "たべもの", "a/a4b8a659d8d478cd62ae01194f6b319f9021591c435f2c4240b73396beb46c9f", "rice-ball", "default", listOf("ごはん", "お弁当"), listOf()),
         Material("pack.storybook:soup", "スープ", "Soup", "たべもの", "a/a0f7ab27bcd06b08888a2e04cc497882a5be3ee55d810df40a89320d7cf9f7ff", "soup", "default", listOf("野菜", "ごはん"), listOf()),
-        Material("pack.storybook:sandwich", "サンドイッチ", "Sandwich", "たべもの", "a/eb02c62dda6bb8ba8d94cd0a2addbcdbcbb8dc05abef40e6ff804dfe5fa9a00a", "sandwich", "default", listOf("パン", "お弁当"), listOf())
+        Material("pack.storybook:sandwich", "サンドイッチ", "Sandwich", "たべもの", "a/eb02c62dda6bb8ba8d94cd0a2addbcdbcbb8dc05abef40e6ff804dfe5fa9a00a", "sandwich", "default", listOf("パン", "お弁当"), listOf()),
+        Material("pack.storybook:teapot", "ティーポット", "Teapot", "もの", "a/1051823da989ff55505770d5b7d101a6499a19ae6f4e3c9d8b779502d83ac8b3", "teapot", "default", listOf("お茶", "食器"), listOf()),
+        Material("pack.storybook:flowerpot", "うえきばち", "Flowerpot", "もの", "a/3efa72298df9d4c1d7a9a1e9ae462d79d6368291cd3cfa7fdf3ed00ab78d2538", "flowerpot", "default", listOf("植木鉢", "花"), listOf()),
+        Material("pack.storybook:clock", "とけい", "Clock", "もの", "a/bb620f2f762814655310dc327b1e510891e5530670770506200e4cf02df30e33", "clock", "default", listOf("時計", "時間"), listOf()),
+        Material("pack.storybook:mailbox", "ポスト", "Mailbox", "もの", "a/09f042a64d273bef055ba51514556b363da51ad284b43acb67d23be242190464", "mailbox", "default", listOf("郵便", "手紙"), listOf()),
+        Material("pack.storybook:bucket", "バケツ", "Bucket", "もの", "a/851fde0cceee974daf000bd09ccbd536f35736d47b7e07ed76f3cbc6759c329f", "bucket", "default", listOf("水", "道具"), listOf()),
+        Material("pack.storybook:hand-drum", "たいこ", "Hand drum", "もの", "a/c883be1608e8c26aeb52ba8915acfacdc1ca000533c16649f507734784237d06", "hand-drum", "default", listOf("太鼓", "楽器"), listOf())
     )
 }

@@ -2849,6 +2849,102 @@
       "sourceFile": "sandwich.png",
       "prompt": "Style reference only: loose playful gouache, broad brushwork, soft volume. One triangular sandwich with cream bread, golden crust, green lettuce, red tomato and yellow cheese, three-quarter view showing filling. Small centered subject with wide margins. Transparent background. No bird, plate, ground, shadow, haze or text.",
       "referenceAsset": "bird"
+    },
+    {
+      "id": "teapot",
+      "name": "ティーポット",
+      "nameEn": "Teapot",
+      "tags": [
+        "お茶",
+        "食器"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "teapot",
+      "legacyIds": [],
+      "sourceFile": "teapot.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One round cream ceramic teapot with blue painted dots, curved spout, loop handle and fitted lid. Three-quarter view, entire object small centered with wide margins. Transparent background. No bird, steam, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "flowerpot",
+      "name": "うえきばち",
+      "nameEn": "Flowerpot",
+      "tags": [
+        "植木鉢",
+        "花"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "flowerpot",
+      "legacyIds": [],
+      "sourceFile": "flowerpot.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One terracotta flowerpot with dark soil and a small leafy plant bearing three coral pink flowers, three-quarter view. Whole plant and pot centered with wide margins. Transparent background. No bird, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "clock",
+      "name": "とけい",
+      "nameEn": "Clock",
+      "tags": [
+        "時計",
+        "時間"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "clock",
+      "legacyIds": [],
+      "sourceFile": "clock.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One round red alarm clock with two bells and small feet, cream face, twelve simple dark hour marks without numerals, two hands showing ten past ten. Front three-quarter view, full object centered with wide margins. Transparent background. No bird, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "mailbox",
+      "name": "ポスト",
+      "nameEn": "Mailbox",
+      "tags": [
+        "郵便",
+        "手紙"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "mailbox",
+      "legacyIds": [],
+      "sourceFile": "mailbox.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One red rounded-top mailbox on a short wooden post, closed front door, small raised side flag, three-quarter view. Complete post and box centered within wide clear margins. Transparent background. No bird, lettering, ground, shadow or haze.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bucket",
+      "name": "バケツ",
+      "nameEn": "Bucket",
+      "tags": [
+        "水",
+        "道具"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "bucket",
+      "legacyIds": [],
+      "sourceFile": "bucket.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One small blue metal bucket, open oval rim, empty interior, arched wire handle with wooden grip, three-quarter view. Entire bucket centered within wide margins. Transparent background. No bird, water, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "hand-drum",
+      "name": "たいこ",
+      "nameEn": "Hand drum",
+      "tags": [
+        "太鼓",
+        "楽器"
+      ],
+      "pose": "default",
+      "category": "もの",
+      "characterId": "hand-drum",
+      "legacyIds": [],
+      "sourceFile": "hand-drum.png",
+      "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One small round hand drum with cream hide head, warm wooden shallow rim and simple red painted zigzag band, three-quarter view. Entire instrument centered within wide margins. Transparent background. No bird, hands, sticks, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
     }
   ]
 }
