@@ -181,6 +181,10 @@ internal object StorybookMaterials {
         Material("pack.storybook:croissant", "クロワッサン", "Croissant", "たべもの", "a/86c4df3f3bd633af2035f7b3176fe0ea697479886e9fb10e676dfbc15c092d30", "croissant", "default", listOf("パン", "朝ごはん"), listOf()),
         Material("pack.storybook:pancakes", "ホットケーキ", "Pancakes", "たべもの", "a/fb99c9f9c335b6d70edfd5bcef94936117adf24ee8d83db7a96c7ff07246d5a1", "pancakes", "default", listOf("パンケーキ", "朝ごはん"), listOf()),
         Material("pack.storybook:noodles", "うどん", "Noodles", "たべもの", "a/9741ea489b66eb54773f31d80b3fcb8f08304c844a57247643c29fa83abcef71", "noodles", "default", listOf("麺", "ごはん"), listOf()),
-        Material("pack.storybook:curry", "カレーライス", "Curry rice", "たべもの", "a/197cc7367881d8d93916612f0e02dd21f94819637bca9da1570cc7343a0c42f4", "curry", "default", listOf("カレー", "ごはん"), listOf())
+        Material("pack.storybook:curry", "カレーライス", "Curry rice", "たべもの", "a/197cc7367881d8d93916612f0e02dd21f94819637bca9da1570cc7343a0c42f4", "curry", "default", listOf("カレー", "ごはん"), listOf()),
+        Material("pack.storybook:cat", "ねこ", "Cat", "どうぶつ", "a/557143ff0fee552226e6721d81546ebc9dae674f7ba7bc0c867116c9b31f2cef", "cat", "standing", listOf("猫", "ペット"), listOf()),
+        Material("pack.storybook:dog", "いぬ", "Dog", "どうぶつ", "a/ae84140480dccda470651cad02886092165be5cff68ad6c320ed0d9c32a8c292", "dog", "standing", listOf("犬", "ペット"), listOf()),
+        Material("pack.storybook:rabbit", "うさぎ", "Rabbit", "どうぶつ", "a/3413015b3d6bbdd9679ca8cdcf6bd70c4acce420672202df51afdcef7bfed986", "rabbit", "standing", listOf("兎", "森"), listOf()),
+        Material("pack.storybook:bear", "くま", "Bear", "どうぶつ", "a/60c6190bbf17b98424011e7512dd7a5ad6b59f695a8ab10611687e7b31e61b60", "bear", "standing", listOf("熊", "森"), listOf())
     )
 }

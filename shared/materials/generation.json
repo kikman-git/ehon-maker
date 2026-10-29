@@ -3105,6 +3105,70 @@
       "sourceFile": "curry.png",
       "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One oval cream plate of Japanese curry rice: white rice mound on one side, warm brown curry with carrot and potato chunks on the other. Three-quarter view, whole plate small centered with wide transparent margins. No bird, utensils, steam, ground, shadow, haze or text.",
       "referenceAsset": "bird"
+    },
+    {
+      "id": "cat",
+      "name": "ねこ",
+      "nameEn": "Cat",
+      "tags": [
+        "猫",
+        "ペット"
+      ],
+      "pose": "standing",
+      "category": "どうぶつ",
+      "characterId": "cat",
+      "legacyIds": [],
+      "sourceFile": "cat.png",
+      "prompt": "Reference bird is style only: loose playful gouache, broad brushwork, chubby picture-book proportions, small ink eyes, restrained detail. One ginger tabby cat with cream muzzle/chest/paws, soft stripes, pink nose, curved upright tail, standing on four paws in three-quarter view. Full body, wide transparent margins. No bird, clothing, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "dog",
+      "name": "いぬ",
+      "nameEn": "Dog",
+      "tags": [
+        "犬",
+        "ペット"
+      ],
+      "pose": "standing",
+      "category": "どうぶつ",
+      "characterId": "dog",
+      "legacyIds": [],
+      "sourceFile": "dog.png",
+      "prompt": "Reference bird is style only: loose playful gouache, broad brushwork, chubby picture-book proportions, small ink eyes. One golden-brown puppy with floppy darker ears, cream muzzle/chest/paws, dark nose, short curved tail, standing on four paws in three-quarter view. Full body in middle 65% canvas. Transparent background. No bird, collar, clothing, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "rabbit",
+      "name": "うさぎ",
+      "nameEn": "Rabbit",
+      "tags": [
+        "兎",
+        "森"
+      ],
+      "pose": "standing",
+      "category": "どうぶつ",
+      "characterId": "rabbit",
+      "legacyIds": [],
+      "sourceFile": "rabbit.png",
+      "prompt": "Reference bird is style only: loose playful gouache, broad brushwork, chubby picture-book proportions, small ink eyes. One cream rabbit with soft taupe ear tips, pink inner ears and nose, round tail, standing on four paws, three-quarter view. Two long ears and all paws fully visible. Small centered full body in middle 65% canvas. Transparent background. No bird, clothing, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "bear",
+      "name": "くま",
+      "nameEn": "Bear",
+      "tags": [
+        "熊",
+        "森"
+      ],
+      "pose": "standing",
+      "category": "どうぶつ",
+      "characterId": "bear",
+      "legacyIds": [],
+      "sourceFile": "bear.png",
+      "prompt": "Reference bird is style only: loose playful gouache, broad brushwork, chubby picture-book proportions, small ink eyes. One friendly cinnamon-brown bear cub, round ears, cream muzzle and belly, dark nose, standing upright on two short hind legs with forepaws relaxed beside belly. Three-quarter view. Small centered full body, wide transparent margins. No bird, clothing, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
     }
   ]
 }

@@ -3779,6 +3779,86 @@
       "bytes": 1863821,
       "sha256": "197cc7367881d8d93916612f0e02dd21f94819637bca9da1570cc7343a0c42f4",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:cat",
+      "slug": "cat",
+      "name": "ねこ",
+      "nameEn": "Cat",
+      "category": "どうぶつ",
+      "characterId": "cat",
+      "pose": "standing",
+      "tags": [
+        "猫",
+        "ペット"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/557143ff0fee552226e6721d81546ebc9dae674f7ba7bc0c867116c9b31f2cef",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2529266,
+      "sha256": "557143ff0fee552226e6721d81546ebc9dae674f7ba7bc0c867116c9b31f2cef",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:dog",
+      "slug": "dog",
+      "name": "いぬ",
+      "nameEn": "Dog",
+      "category": "どうぶつ",
+      "characterId": "dog",
+      "pose": "standing",
+      "tags": [
+        "犬",
+        "ペット"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/ae84140480dccda470651cad02886092165be5cff68ad6c320ed0d9c32a8c292",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2514839,
+      "sha256": "ae84140480dccda470651cad02886092165be5cff68ad6c320ed0d9c32a8c292",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:rabbit",
+      "slug": "rabbit",
+      "name": "うさぎ",
+      "nameEn": "Rabbit",
+      "category": "どうぶつ",
+      "characterId": "rabbit",
+      "pose": "standing",
+      "tags": [
+        "兎",
+        "森"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/3413015b3d6bbdd9679ca8cdcf6bd70c4acce420672202df51afdcef7bfed986",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1716858,
+      "sha256": "3413015b3d6bbdd9679ca8cdcf6bd70c4acce420672202df51afdcef7bfed986",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:bear",
+      "slug": "bear",
+      "name": "くま",
+      "nameEn": "Bear",
+      "category": "どうぶつ",
+      "characterId": "bear",
+      "pose": "standing",
+      "tags": [
+        "熊",
+        "森"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/60c6190bbf17b98424011e7512dd7a5ad6b59f695a8ab10611687e7b31e61b60",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1406464,
+      "sha256": "60c6190bbf17b98424011e7512dd7a5ad6b59f695a8ab10611687e7b31e61b60",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }
