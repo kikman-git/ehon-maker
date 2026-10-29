@@ -28,7 +28,7 @@ test('the admin page shows the day and the turns, flips the kill switch, and gra
   await makeAdmin(uid);
 
   await page.goto('/');
-  await page.getByRole('button', { name: '白紙から描きはじめる' }).click();
+  await page.getByRole('button', { name: 'AI と つくりはじめる' }).click();
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await page.getByRole('button', { name: '素材', exact: true }).click();
   await page.getByRole('button', { name: /AIで 素材を つくる/ }).click();
@@ -61,7 +61,7 @@ test('the admin page shows the day and the turns, flips the kill switch, and gra
   await page.getByRole('button', { name: /AI クレジット/ }).click();
   await expect(page.getByRole('dialog', { name: 'アカウント' })).toContainText('144');
   await page.getByRole('button', { name: 'とじる' }).click();
-  await page.getByRole('button', { name: '白紙から描きはじめる' }).click();
+  await page.getByRole('button', { name: 'AI と つくりはじめる' }).click();
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await page.getByRole('button', { name: 'AI', exact: true }).click();
   await page.getByLabel('AIへの たのみごと').fill('ここに ねこを かいて');

@@ -18,6 +18,10 @@ export class SyncError extends Error {
 const ID = /^[A-Za-z0-9_-]{1,128}$/;
 const utf8Length = (text: string) => new TextEncoder().encode(text).length;
 const LEASE_SECONDS = 175;
+const TAB_KEY = 'syncTabId';
+const LEGACY_KEY = 'syncDeviceId';
+/** A refused lease is asked for again soon: the tab that held it usually lets go as soon as it is hidden. */
+const LEASE_RETRY_MS = 5_000;
 
 /**
  * Firebase transport only, a structural twin of the iOS SyncEngine. Kotlin owns document
@@ -34,7 +38,7 @@ export class SyncEngine {
   onIllustrations: (uid: string, docs: IllustrationDoc[]) => void = () => {};
 
   uid: string | null = null;
-  readonly deviceId: string;
+  deviceId: string;
   activePageListeners = 0;
   private epoch = 0;
   private abort = new AbortController();
@@ -51,17 +55,46 @@ export class SyncEngine {
   private readonly leaseWaiters = new Map<string, ReturnType<typeof setTimeout>>();
   private pageSequence = 0;
   private opened: string | null = null;
+  private channel: BroadcastChannel | null = null;
+  /** Leases another tab of this browser said it gave up; its release may never reach the server from a closing page. */
+  private readonly released = new Map<string, string>();
   private editing = false;
   private foreground = true;
 
   constructor(private readonly db: Firestore, deviceId?: string) {
+    // One identity per tab, kept across its reloads: two tabs sharing one would both pass the lease and overwrite each other's pages.
     let saved: string | null = null;
-    try { saved = localStorage.getItem('syncDeviceId'); } catch { /* storage may be blocked */ }
+    try { saved = sessionStorage.getItem(TAB_KEY); } catch { /* storage may be blocked */ }
     if (!saved) {
-      saved = crypto.randomUUID();
-      try { localStorage.setItem('syncDeviceId', saved); } catch { /* per-tab identity is still valid */ }
+      // The first tab after the switch from one shared id keeps it, so a lease it already holds is not refused for three minutes.
+      try { saved = localStorage.getItem(LEGACY_KEY); localStorage.removeItem(LEGACY_KEY); } catch { /* see below */ }
+      saved ||= crypto.randomUUID();
+      try { sessionStorage.setItem(TAB_KEY, saved); } catch { /* the identity still holds for this page */ }
     }
     this.deviceId = deviceId ?? saved;
+    if (!deviceId) this.claimIdentity();
+  }
+
+  /** A duplicated tab inherits its parent's session storage; the copy takes a fresh identity when the original answers. */
+  private claimIdentity(): void {
+    if (typeof BroadcastChannel === 'undefined') return;
+    const channel = new BroadcastChannel(TAB_KEY);
+    this.channel = channel;
+    channel.onmessage = (event: MessageEvent<{ hello?: string; taken?: string; released?: string; acquired?: string; by?: string }>) => {
+      const { hello, taken, released, acquired, by } = event.data;
+      // A tab that takes a book back holds a live lease again; its old release no longer counts.
+      if (acquired && by && this.released.get(acquired) === by) this.released.delete(acquired);
+      if (hello === this.deviceId) channel.postMessage({ taken: this.deviceId });
+      else if (taken === this.deviceId) {
+        this.deviceId = crypto.randomUUID();
+        try { sessionStorage.setItem(TAB_KEY, this.deviceId); } catch { /* see above */ }
+      } else if (released && by) {
+        this.released.set(released, by);
+        // A tab waiting on this book takes it now rather than when the lease runs out.
+        if (this.opened === released && this.editing && this.foreground) void this.acquireLease(released, this.epoch);
+      }
+    };
+    channel.postMessage({ hello: this.deviceId });
   }
 
   start(uid: string): void {
@@ -222,8 +255,8 @@ export class SyncEngine {
     this.heartbeat = controller;
     void (async () => {
       while (!controller.signal.aborted && this.epoch === generation && this.opened === id && this.foreground) {
-        await this.acquireLease(id, generation);
-        await sleep(60_000, controller.signal);
+        const held = await this.acquireLease(id, generation);
+        await sleep(held ? 60_000 : LEASE_RETRY_MS, controller.signal);
       }
     })();
   }
@@ -233,9 +266,9 @@ export class SyncEngine {
     this.heartbeat = null;
   }
 
-  private async acquireLease(id: string, generation: number): Promise<void> {
+  private async acquireLease(id: string, generation: number): Promise<boolean> {
     const uid = this.uid;
-    if (!uid) return;
+    if (!uid) return false;
     const device = this.deviceId;
     const ref = doc(this.db, 'books', id);
     try {
@@ -245,25 +278,29 @@ export class SyncEngine {
         const data = snapshot.data();
         if (data.ownerId !== uid || data.deleted !== false) return false;
         const lease = data.lease as Lease | null;
-        if (lease && lease.deviceId !== device && lease.expiresAt instanceof Timestamp && lease.expiresAt.toMillis() > Date.now()) return false;
+        if (lease && lease.deviceId !== device && lease.deviceId !== this.released.get(id) && lease.expiresAt instanceof Timestamp && lease.expiresAt.toMillis() > Date.now()) return false;
         transaction.update(ref, { lease: { deviceId: device, expiresAt: Timestamp.fromMillis(Date.now() + LEASE_SECONDS * 1000) } });
         return true;
       });
       if (!(this.epoch === generation && this.opened === id && this.editing && this.foreground)) {
         if (this.epoch === generation) this.releaseLease(id);
-        return;
+        return false;
       }
       this.onLease(!result);
-      if (result) this.startWriter(id);
+      if (result) { this.channel?.postMessage({ acquired: id, by: device }); this.startWriter(id); }
+      return result;
     } catch {
       // Offline creation and editing remain available. A known live lease still wins.
-      if (this.epoch === generation && this.opened === id) this.onLease(this.heldElsewhere(id));
+      const elsewhere = this.heldElsewhere(id);
+      if (this.epoch === generation && this.opened === id) this.onLease(elsewhere);
+      return !elsewhere;
     }
   }
 
   private releaseLease(id: string): void {
     const ref = doc(this.db, 'books', id);
     const device = this.deviceId;
+    this.channel?.postMessage({ released: id, by: device });
     void runTransaction(this.db, async (transaction) => {
       const snapshot = await transaction.get(ref);
       if ((snapshot.data()?.lease as Lease | null)?.deviceId === device) transaction.update(ref, { lease: null });
@@ -272,7 +309,7 @@ export class SyncEngine {
 
   private heldElsewhere(id: string): boolean {
     const lease = this.metadata.get(id)?.lease;
-    return !!lease && lease.deviceId !== this.deviceId && lease.expiresAt instanceof Timestamp && lease.expiresAt.toMillis() > Date.now();
+    return !!lease && lease.deviceId !== this.deviceId && lease.deviceId !== this.released.get(id) && lease.expiresAt instanceof Timestamp && lease.expiresAt.toMillis() > Date.now();
   }
 
   private scheduleLeaseRetry(id: string): void {

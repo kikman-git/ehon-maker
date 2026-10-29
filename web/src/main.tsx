@@ -44,6 +44,38 @@ function remember(key: string, value: boolean) {
   try { localStorage.setItem(key, value ? '1' : '0'); } catch { /* the choice still holds for this page */ }
 }
 
+const PANEL_MIN = 220;
+const PANEL_MAX = 520;
+const clampPanel = (width: number) => Math.round(Math.min(PANEL_MAX, Math.max(PANEL_MIN, width)));
+function rememberedWidth(): number | null {
+  try { const saved = Number(localStorage.getItem('studio.panelWidth')); return saved ? clampPanel(saved) : null; } catch { return null; }
+}
+
+/** The tool panel's right edge: drag it, or use the arrow keys, to make the panel wider; a double click goes back to the default. */
+function PanelResizer({ width, onWidth }: { width: number | null; onWidth: (width: number | null) => void }) {
+  const start = (event: React.PointerEvent<HTMLDivElement>) => {
+    const panel = event.currentTarget.parentElement?.querySelector('.tool-panel');
+    if (!panel || event.button !== 0) return;
+    event.preventDefault();
+    const handle = event.currentTarget;
+    const left = panel.getBoundingClientRect().left;
+    handle.setPointerCapture(event.pointerId);
+    handle.dataset.dragging = '';
+    const move = (next: PointerEvent) => onWidth(clampPanel(next.clientX - left));
+    const end = () => { delete handle.dataset.dragging; handle.removeEventListener('pointermove', move); handle.removeEventListener('pointerup', end); handle.removeEventListener('pointercancel', end); };
+    handle.addEventListener('pointermove', move);
+    handle.addEventListener('pointerup', end);
+    handle.addEventListener('pointercancel', end);
+  };
+  const [measured, setMeasured] = useState<number | null>(null);
+  useEffect(() => { setMeasured(Math.round(document.querySelector('.tool-panel')?.getBoundingClientRect().width ?? 0) || null); }, [width]);
+  const current = () => width ?? measured ?? 280;
+  return <div className="panel-resizer" role="separator" aria-orientation="vertical" aria-label="パネルの はば" tabIndex={0}
+    aria-valuemin={PANEL_MIN} aria-valuemax={PANEL_MAX} aria-valuenow={current()} title="ドラッグで はばを かえる · ダブルクリックで もとに"
+    onPointerDown={start} onDoubleClick={() => onWidth(null)}
+    onKeyDown={(event) => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); onWidth(clampPanel(current() + (event.key === 'ArrowRight' ? 16 : -16))); } }} />;
+}
+
 // Squared so the thin end, where small differences show, gets most of the track.
 const sliderSteps = 1000;
 function brushStepAt(editor: WebEditor, position: number) {
@@ -103,6 +135,11 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
   const [tool, setTool] = useState<DrawingTool>(() => aiBridge ? 'ai' : editor.artJson() !== '[]' ? 'select' : 'brush');
   const [panelOpen, setPanelOpen] = useState(() => aiBridge !== null || remembered('studio.panel', true));
   const [stripOpen, setStripOpen] = useState(() => remembered('studio.strip', true));
+  const [panelWidth, setPanelWidthState] = useState<number | null>(rememberedWidth);
+  const setPanelWidth = (width: number | null) => {
+    setPanelWidthState(width);
+    try { if (width === null) localStorage.removeItem('studio.panelWidth'); else localStorage.setItem('studio.panelWidth', String(width)); } catch { /* the width still holds for this page */ }
+  };
   const bookArt = useMemo(() => JSON.parse(editor.artJson()) as { id: string; name: string; aspect: number }[], [editor, revision]);
   const [category, setCategory] = useState(() => (bookArt.length ? 'art' : 'all'));
   const [materialQuery, setMaterialQuery] = useState('');
@@ -539,7 +576,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         </div>
       </div>
     </div>
-    <main className="workspace studio-workspace" data-readonly={locked || undefined} data-panel={panelOpen ? undefined : 'hidden'} data-ai={tool === 'ai' || undefined}>
+    <main className="workspace studio-workspace" data-readonly={locked || undefined} data-panel={panelOpen ? undefined : 'hidden'} data-ai={tool === 'ai' || undefined} style={panelWidth ? { '--panel-width': `${panelWidth}px` } as React.CSSProperties : undefined}>
       <aside className="tool-panel" data-tool={tool} aria-label={tool === 'ai' ? 'AI と つくる' : activeTool.label + 'の設定'}>
         {tool !== 'ai' && <div className="panel-heading"><span className="eyebrow">{isDrawing ? 'DRAWING' : 'TOOLS'}</span><h2>{activeTool.label}</h2><p>{editor.isEditingIllustration ? '選んだイラストの一部を消して、描き直せます。' : activeTool.hint}</p></div>}
         {editor.isEditingIllustration && <div className="illustration-editing" role="status">
@@ -647,6 +684,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
         <div className="paper-settings"><h3>用紙の色</h3><div className="swatches">{[-1, ...backgrounds].map((color, index) => <button key={color} disabled={locked} aria-label={'ページの いろ ' + (index + 1)} title={index === 0 ? '白' : '用紙の色 ' + (index + 1)} style={{ backgroundColor: cssColor(color) }} onClick={() => edit(() => editor.setPageBackground(color))} />)}</div></div>
         <div className="panel-shortcuts"><span><kbd>Space</kbd> 押しながらドラッグで移動</span><span><kbd>⌘ / Ctrl Z</kbd> 元に戻す</span></div>
       </aside>
+      {panelOpen && <PanelResizer width={panelWidth} onWidth={setPanelWidth} />}
       <section className="desk" aria-label="えほんを つくる">
         <Desk ref={deskRef} editor={editor} revision={revision} readOnly={locked} onChange={changed} workspace={workspace} library={repo.library} assetsUrl={assetsUrl} tool={tool} showStrip={stripOpen} mark={mark} onMark={setMark} />
         {accountOpen && <AccountPanel repo={repo} onClose={() => setAccountOpen(false)} />}

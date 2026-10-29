@@ -17,7 +17,7 @@ async function openAtelier(page: Page) {
   await page.goto('/');
   await page.getByLabel('エミュレーター アカウント').fill(`atelier-${Date.now()}-${Math.floor(Math.random() * 1e6)}`);
   await page.getByRole('button', { name: 'エミュレーターで サインイン' }).click();
-  await page.getByRole('button', { name: '白紙から描きはじめる' }).click();
+  await page.getByRole('button', { name: 'AI と つくりはじめる' }).click();
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await page.getByRole('button', { name: '素材', exact: true }).click();
   await page.getByRole('button', { name: /AIで 素材を つくる/ }).click();

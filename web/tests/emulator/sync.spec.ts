@@ -33,7 +33,7 @@ async function approveFromPhone(account: string, code: string) {
 
 /** The blank page from the shelf: one square frame, no art, the built-in shapes in the panel. */
 async function createBook(page: Page): Promise<string> {
-  await page.getByRole('button', { name: '白紙から描きはじめる' }).click();
+  await page.getByRole('button', { name: 'AI と つくりはじめる' }).click();
   await page.waitForURL(/\/app\/[A-Za-z0-9_-]+$/);
   await expect(page.getByLabel('えほんの ページ')).toBeVisible();
   await page.getByRole('button', { name: '素材', exact: true }).click();
@@ -51,6 +51,21 @@ async function peer(browser: Browser, account: string): Promise<{ context: Brows
   await signIn(page, account);
   return { context, page };
 }
+
+test('two tabs of one browser do not both edit a book: the second waits read-only and takes over when the first closes', async ({ browser }) => {
+  const account = subject();
+  const { context, page: first } = await peer(browser, account);
+  const id = await createBook(first);
+  await expect(first.locator('.lease-banner')).toHaveCount(0);
+  const second = await context.newPage();
+  await second.goto(`/app/${id}`);
+  await expect(second.getByText('ほかの たんまつで へんしゅうちゅう。')).toBeVisible({ timeout: 20_000 });
+  await expect(second.getByRole('button', { name: '素材', exact: true })).toBeVisible();
+  // Before #72 every tab shared one sync id, so both edited and each overwrote the other's pages: a moved item jumped back.
+  await first.close();
+  await expect(second.getByText('ほかの たんまつで へんしゅうちゅう。')).toHaveCount(0, { timeout: 10_000 });
+  await context.close();
+});
 
 test('two browsers on one account converge, coalesce bursts and catch up after going offline', async ({ browser }) => {
   const account = subject();

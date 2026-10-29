@@ -14,6 +14,8 @@ export default defineConfig({
     reuseExistingServer: false,
     // `pnpm dev` packages the material masters before Vite starts, which takes over a minute cold.
     timeout: 240_000,
+    // `pnpm dev` packages the material masters before Vite starts, which takes over a minute cold.
+    timeout: 240_000,
     // A developer's .env.local may name the real assets Worker; derivatives must come from the emulator's localBlob
     // here, and the story templates from the dev server's local copy.
     env: { VITE_EMULATOR_HOST: '127.0.0.1', VITE_ASSETS_URL: '', VITE_APPCHECK_SITE_KEY: '', VITE_TEMPLATES_URL: '/templates' },

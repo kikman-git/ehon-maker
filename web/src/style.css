@@ -71,7 +71,11 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .tool-button[aria-pressed="true"] { background: var(--accent-light); border-color: #d5e6d9; color: #245b45; font-weight: 650; }
 .history-tools button { display: flex; align-items: center; gap: 8px; border-color: transparent; min-height: 32px; padding: 5px 9px; }
 .history-tools { padding-left: 10px; border-left: 1px solid var(--border); }
-.studio-workspace { display: grid; grid-template-columns: 232px minmax(0, 1fr); flex: 1; min-height: 0; }
+.studio-workspace { --panel-default: 288px; display: grid; grid-template-columns: var(--panel-width, var(--panel-default)) minmax(0, 1fr); flex: 1; min-height: 0; position: relative; }
+.panel-resizer { position: absolute; top: 0; bottom: 0; left: calc(var(--panel-width, var(--panel-default)) - 4px); width: 8px; cursor: col-resize; z-index: 5; touch-action: none; }
+.panel-resizer::after { content: ""; position: absolute; top: 0; bottom: 0; left: 3px; width: 2px; background: transparent; transition: background .15s; }
+.panel-resizer:hover::after, .panel-resizer:focus-visible::after, .panel-resizer[data-dragging]::after { background: var(--accent); }
+.panel-resizer:focus-visible { outline: none; }
 .studio-workspace[data-panel="hidden"] { grid-template-columns: minmax(0, 1fr); }
 .studio-workspace[data-panel="hidden"] .tool-panel { display: none; }
 .tool-panel { padding: 16px 18px 14px; background: #fff; border-right: 1px solid var(--border); overflow-y: auto; scrollbar-width: thin; }
@@ -349,7 +353,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .dialog { background: #fff; color: #29332f; }
 
 @media (max-width: 1100px) {
-  .studio-workspace { grid-template-columns: 248px minmax(0, 1fr); }
+  .studio-workspace { --panel-default: 264px; }
   .desk-bar .view-tools button span, .desk-hint span { display: none; }
   .tool-panel { padding: 22px 17px; }
   .drawing-colors { gap: 9px 5px; }
@@ -367,7 +371,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
   .view-tools button span { display: none; }
   .studio-toolbar { padding: 9px 14px; gap: 10px; }
   .tool-button { gap: 6px; padding: 8px 9px; }
-  .studio-workspace { grid-template-columns: 224px minmax(0, 1fr); }
+  .studio-workspace { --panel-default: 236px; }
   .tool-panel { padding: 18px 14px; }
   .drawing-colors { grid-template-columns: repeat(7, 1fr); gap: 10px 4px; }
   .drawing-colors button { width: 19px; height: 19px; min-height: 19px; }
@@ -392,6 +396,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
   .history-tools button { min-height: 28px; padding: 4px 9px; }
   .history-tools button span { display: inline; font-size: 10px; }
   .studio-workspace { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; }
+  .panel-resizer { display: none; }
   .desk { grid-row: 1; }
   .tool-panel { grid-row: 2; border-right: 0; border-top: 1px solid var(--border); max-height: 177px; padding: 12px 16px; }
   .panel-heading, .brush-preview, .panel-shortcuts, .paper-settings { display: none; }
@@ -511,7 +516,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .template-status p { margin: 0; }
 
 /* AI desk: the chat panel and the mark over a page. */
-.studio-workspace[data-ai] { grid-template-columns: 340px minmax(0, 1fr); }
+.studio-workspace[data-ai] { --panel-default: 340px; }
 .tool-panel[data-tool="ai"] { display: flex; flex-direction: column; padding-bottom: 12px; }
 .tool-panel[data-tool="ai"] .paper-settings, .tool-panel[data-tool="ai"] .panel-shortcuts { display: none; }
 .ai-panel { display: flex; flex-direction: column; flex: 1; min-height: 0; gap: 10px; }
@@ -573,6 +578,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .mark-path[d=""] { display: none; }
 @media (max-width: 720px) {
   .studio-workspace[data-ai] { grid-template-columns: minmax(0, 1fr); }
+  .studio-workspace[data-ai] .panel-resizer { display: none; }
   .tool-panel[data-tool="ai"] { max-height: 46vh; }
   .studio-toolbar .tool-button span { display: none; }
   .tool-button { white-space: nowrap; }
