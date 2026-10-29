@@ -2363,8 +2363,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; walking. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ab04e375-b8e1-4959-b8f4-1587f3b8be7a.png"
     },
     {
       "id": "deer-sitting",
@@ -2374,8 +2375,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; sitting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-41d0e36c-dc0b-4819-86f2-a54724ea831f.png"
     },
     {
       "id": "deer-jumping",
@@ -2385,8 +2387,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; jumping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-jumping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-jumping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-fc73b4a7-716a-4cfa-b8de-b68af939abf8.png"
     },
     {
       "id": "deer-sleeping",
@@ -2396,8 +2399,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-edb6944c-5387-4dc1-b011-2d6b81c79b62.png"
     },
     {
       "id": "deer-smiling",
@@ -2407,8 +2411,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-4c712320-854f-4089-a6ac-489cfc9a7b85.png"
     },
     {
       "id": "deer-surprised",
@@ -2418,8 +2423,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-5351f263-586a-4a58-8355-613346703cf3.png"
     },
     {
       "id": "deer-waving",
@@ -2429,8 +2435,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; waving. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-e1d6cd50-d36c-4cdc-8e39-48ef7a10b4b0.png"
     },
     {
       "id": "deer-looking-left",
@@ -2440,8 +2447,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a40a7306-ea46-4c8b-93d7-41e20c85f503.png"
     },
     {
       "id": "deer-looking-right",
@@ -2451,8 +2459,9 @@
       "characterId": "deer",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same deer as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "deer",
-      "status": "queued",
-      "outputFile": "pending/deer-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a38d32ac-ae27-4e5f-a354-db9399e496d0.png"
     },
     {
       "id": "raccoon-walking",
