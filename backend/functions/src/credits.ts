@@ -27,6 +27,8 @@ export const PRICES: Record<string, Prices> = {
   // Image models: image input and image output tokens; text input is cheaper but is charged at the image rate.
   'gpt-image-1-mini': { input: 2.5, output: 8, cacheRead: 0.625, cacheWrite: 0 },
   'gpt-image-1': { input: 10, output: 40, cacheRead: 2.5, cacheWrite: 0 },
+  // TODO: confirm against the OpenAI price list; set at the gpt-image-1 rates when the dev project adopted it.
+  'gpt-image-2.5-sunburst': { input: 10, output: 40, cacheRead: 2.5, cacheWrite: 0 },
 };
 
 /** One model's tokens on a turn; a turn that paints charges the image model's tokens beside the chat model's. */
