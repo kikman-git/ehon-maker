@@ -2579,8 +2579,9 @@
       "characterId": "panda",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same panda as reference, preserve colors and identity; walking. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "panda",
-      "status": "queued",
-      "outputFile": "pending/panda-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-cf09ebf0-a80a-46b4-8284-d7dc4ea7c75c.png"
     },
     {
       "id": "panda-sitting",
@@ -2590,8 +2591,9 @@
       "characterId": "panda",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same panda as reference, preserve colors and identity; sitting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "panda",
-      "status": "queued",
-      "outputFile": "pending/panda-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a6d9d6e5-b3a1-4631-9cc2-6a64a5e85d29.png"
     },
     {
       "id": "panda-jumping",
@@ -2601,8 +2603,9 @@
       "characterId": "panda",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same panda as reference, preserve colors and identity; jumping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "panda",
-      "status": "queued",
-      "outputFile": "pending/panda-jumping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda-jumping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-13b44c84-821a-4c51-8b09-3a19a54335a7.png"
     },
     {
       "id": "panda-sleeping",
@@ -2612,8 +2615,9 @@
       "characterId": "panda",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same panda as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "panda",
-      "status": "queued",
-      "outputFile": "pending/panda-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-2e546794-a288-47b4-80a5-3feca5ac2fa8.png"
     },
     {
       "id": "panda-smiling",
@@ -2623,8 +2627,9 @@
       "characterId": "panda",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same panda as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "panda",
-      "status": "queued",
-      "outputFile": "pending/panda-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-12ee1ce0-f7a5-4233-9696-cf2620d28775.png"
     },
     {
       "id": "panda-surprised",
@@ -2634,8 +2639,9 @@
       "characterId": "panda",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same panda as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "panda",
-      "status": "queued",
-      "outputFile": "pending/panda-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-4fda4648-47fd-4efa-a0d5-4a333e6ac8eb.png"
     },
     {
       "id": "panda-waving",
@@ -2645,8 +2651,9 @@
       "characterId": "panda",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same panda as reference, preserve colors and identity; waving. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "panda",
-      "status": "queued",
-      "outputFile": "pending/panda-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-7964a585-d4c0-444c-bc45-0cd69497b3e9.png"
     },
     {
       "id": "panda-looking-left",
@@ -2656,8 +2663,9 @@
       "characterId": "panda",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same panda as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "panda",
-      "status": "queued",
-      "outputFile": "pending/panda-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-8daff03f-185e-417e-8b97-095b445cfa47.png"
     },
     {
       "id": "panda-looking-right",
