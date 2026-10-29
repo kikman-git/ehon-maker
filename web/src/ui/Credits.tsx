@@ -39,12 +39,12 @@ export function Offers({ compact }: { compact?: boolean }) {
   </div>;
 }
 
-/** What free users see on the AI entry points: the credits are a gift to spend, and the balance is always in view. */
-export function CreditNudge() {
+/** What free users see on the AI entry points; `short` is for a button label, where only the number fits. */
+export function CreditNudge({ short }: { short?: boolean } = {}) {
   const state = useStore(credits);
   if (!cloud || !state.ready || state.plan === 'plus') return null;
-  if (state.balance < MIN_TURN_CREDITS) return <span className="credit-nudge" data-out="">クレジットが なくなりました · プラスで つづけられます</span>;
-  if (state.balance < LOW_CREDITS) return <span className="credit-nudge" data-low="">のこり {state.balance} クレジット · おおきな おねがいは とちゅうで とまるかも</span>;
+  if (state.balance < MIN_TURN_CREDITS) return <span className="credit-nudge" data-out="">{short ? 'クレジットなし' : 'クレジットが なくなりました · プラスで つづけられます'}</span>;
+  if (state.balance < LOW_CREDITS) return <span className="credit-nudge" data-low="">{short ? `のこり ${state.balance}` : `のこり ${state.balance} クレジット · おおきな おねがいは とちゅうで とまるかも`}</span>;
   return null;
 }
 

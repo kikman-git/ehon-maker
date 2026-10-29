@@ -1,3 +1,4 @@
+import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -30,4 +31,14 @@ if (process.argv.includes('--upload')) {
   for (const object of objects) await store.write(object.key, await readFile(object.file), object.mime,
     object.key === 'materials/index.json' ? 'public, max-age=300' : 'public, max-age=31536000, immutable');
   console.log(`Published ${catalog.assets.length} materials; revision ${pointer.revision}`);
-} else console.log(`Validated ${objects.length} objects for ${catalog.assets.length} materials. Pass --upload to publish; no remote writes made.`);
+} else if (process.argv.includes('--wrangler')) {
+  // The signed-in Wrangler session, as `pnpm templates --wrangler` does; the pointer still goes last.
+  const bucket = process.argv[process.argv.indexOf('--bucket') + 1] || 'ehon-assets-dev';
+  for (const [index, object] of objects.entries()) {
+    const cache = object.key === 'materials/index.json' ? 'public, max-age=300' : 'public, max-age=31536000, immutable';
+    const result = spawnSync('pnpm', ['exec', 'wrangler', 'r2', 'object', 'put', `${bucket}/${object.key}`, '--file', object.file, '--content-type', object.mime, '--cache-control', cache, '--remote', '--force'], { stdio: 'pipe' });
+    if (result.status !== 0) throw Error(`wrangler could not upload ${object.key}: ${result.stderr}`);
+    if (index % 25 === 0) console.log(`${index + 1}/${objects.length} ${object.key}`);
+  }
+  console.log(`Published ${catalog.assets.length} materials to ${bucket}; revision ${pointer.revision}`);
+} else console.log(`Validated ${objects.length} objects for ${catalog.assets.length} materials. Pass --upload (R2 credentials) or --wrangler [--bucket NAME] to publish; no remote writes made.`);

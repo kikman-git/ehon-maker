@@ -349,7 +349,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .dialog { background: #fff; color: #29332f; }
 
 @media (max-width: 1100px) {
-  .studio-workspace { grid-template-columns: 212px minmax(0, 1fr); }
+  .studio-workspace { grid-template-columns: 248px minmax(0, 1fr); }
   .desk-bar .view-tools button span, .desk-hint span { display: none; }
   .tool-panel { padding: 22px 17px; }
   .drawing-colors { gap: 9px 5px; }
@@ -367,7 +367,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
   .view-tools button span { display: none; }
   .studio-toolbar { padding: 9px 14px; gap: 10px; }
   .tool-button { gap: 6px; padding: 8px 9px; }
-  .studio-workspace { grid-template-columns: 195px minmax(0, 1fr); }
+  .studio-workspace { grid-template-columns: 224px minmax(0, 1fr); }
   .tool-panel { padding: 18px 14px; }
   .drawing-colors { grid-template-columns: repeat(7, 1fr); gap: 10px 4px; }
   .drawing-colors button { width: 19px; height: 19px; min-height: 19px; }
@@ -589,6 +589,7 @@ kbd { font-family: inherit; font-size: 10px; color: #829087; font-weight: 400; }
 .tool-button[data-tool="ai"][aria-pressed="true"] { background: var(--ai); border-color: var(--ai); color: #fff; }
 .tool-button[data-tool="ai"][aria-pressed="true"] kbd { border-color: rgba(255, 255, 255, .45); color: rgba(255, 255, 255, .85); }
 .atelier-open { width: 100%; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; }
+.atelier-open .credit-nudge { white-space: nowrap; }
 .illustration-action > button + p + button { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
 .atelier-backdrop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 16px; background: #1b2e2347; }
 .atelier { width: min(1180px, 100%); height: min(820px, 100%); display: flex; flex-direction: column; overflow: hidden; background: #fff; border-radius: 14px; box-shadow: 0 24px 64px #1b2e2340; }

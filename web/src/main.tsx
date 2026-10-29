@@ -577,7 +577,7 @@ function Composer({ repo, bookId, initialJson }: { repo: BookRepository; bookId:
             </select>
             {replacementTarget && <><p>下から新しい絵をクリック。位置と大きさを保って置きかえます。</p><button onClick={() => setReplacement(null)}>置きかえをやめる</button></>}
           </div>}
-          {atelierBridge && <button className="atelier-open ai-cta" disabled={locked} onClick={() => setAtelierOpen(true)}><span><Icon name="sparkles" size={16} />AIで 素材を つくる</span><CreditNudge /></button>}
+          {atelierBridge && <button className="atelier-open ai-cta" disabled={locked} onClick={() => setAtelierOpen(true)}><span><Icon name="sparkles" size={16} />AIで 素材を つくる</span><CreditNudge short /></button>}
           <p className="material-intro">絵本の世界を、ひとつずつ。</p>
           <button disabled={materialState.status === 'loading'} onClick={() => void loadMaterials()}>素材を更新</button>
           <label className="field" htmlFor="material-search">素材をさがす</label>
