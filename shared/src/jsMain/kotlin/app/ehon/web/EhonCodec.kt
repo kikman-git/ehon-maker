@@ -20,19 +20,18 @@ import kotlinx.serialization.json.*
 
 @JsExport
 object EhonCodec {
+    fun installMaterials(json: String): Boolean = PartCatalog.installJson(json)
+    fun materialsJson(): String = PartCatalog.materialsJson()
     fun formatVersion(): Int = BookCodec.FORMAT_VERSION
     fun decodeOk(json: String): Boolean = BookCodec.decodeOrNull(json) != null
     fun migrate(json: String): String = BookCodec.encode(BookCodec.decode(json))
 
-    /** A creator starts with one clean sheet, the same one the phone makes (decision #62). */
     fun blankBook(bookId: String, title: String, locale: String, nowEpochMs: Double, shape: String): String {
         require(nowEpochMs.isFinite() && nowEpochMs <= 9_007_199_254_740_991.0)
         return BookCodec.encode(Templates.blankBook(BookId(bookId), title, locale, nowEpochMs.toLong(), PageShape.valueOf(shape)))
     }
 
-    // ── documents: a whole book, art included, written by a person or a model (decision #55) ──
 
-    /** A document becomes a new book on this shelf: its own id, saved now, everything else as written. */
     fun instantiateDocument(json: String, bookId: String, nowEpochMs: Double): String {
         require(bookId.isNotBlank())
         require(nowEpochMs.isFinite() && nowEpochMs >= 0 && nowEpochMs <= 9_007_199_254_740_991.0)
@@ -40,7 +39,6 @@ object EhonCodec {
         return BookCodec.encode(book.copy(id = BookId(bookId), updatedAtEpochMs = nowEpochMs.toLong()))
     }
 
-    /** The `art:` pictures a document carries, as `[{id, name, aspect}]`. */
     fun artJson(bookJson: String): String = buildJsonArray {
         BookCodec.decode(bookJson).art.forEach { (key, artwork) -> addJsonObject {
             put("id", Artwork.partId(key).value)
@@ -49,7 +47,6 @@ object EhonCodec {
         } }
     }.toString()
 
-    /** `{ok, error, unsupported, aspect, chars}` for one picture, so the atelier shows only art the painter draws. */
     fun checkArt(svg: String): String {
         val art = try { SvgParser.parse(svg) } catch (e: Exception) {
             return buildJsonObject { put("ok", false); put("error", e.message ?: "the picture does not parse") }.toString()
@@ -62,10 +59,6 @@ object EhonCodec {
         }.toString()
     }
 
-    /**
-     * `{ok, errors, warnings}` for an author's loop: whether the document opens, which parts
-     * point nowhere, which SVG features the painter skipped, which captions run off the page.
-     */
     fun checkDocument(json: String): String {
         val errors = mutableListOf<String>()
         val warnings = mutableListOf<String>()
@@ -112,7 +105,6 @@ object EhonCodec {
         put("warnings", buildJsonArray { warnings.forEach { add(it) } })
     }.toString()
 
-    /** `{id, title, shape, pageCount, contentLocale, updatedAtEpochMs, rasterParts}` for shelves. */
     fun summaryJson(bookJson: String): String {
         val book = BookCodec.decode(bookJson)
         return buildJsonObject {
@@ -126,13 +118,11 @@ object EhonCodec {
         }.toString()
     }
 
-    // ── sync: the same assembly and merge rules as the phone, so no client owns them ──
 
     fun syncMetadata(bookJson: String): String = BookSyncCodec.metadata(BookCodec.decode(bookJson))
     fun pageIds(bookJson: String): Array<String> = BookCodec.decode(bookJson).pages.map { it.id }.toTypedArray()
     fun pagesJson(bookJson: String): Array<String> = BookCodec.decode(bookJson).pages.map(BookCodec::encodePage).toTypedArray()
 
-    /** Null when the snapshot is malformed or incomplete; such a snapshot never replaces a local book. */
     fun assembleOrNull(metadata: String, pages: Array<String>): String? =
         BookSyncCodec.assembleOrNull(metadata, pages.toList())?.let(BookCodec::encode)
 
@@ -161,7 +151,6 @@ object EhonCodec {
         Organic.textColors.forEach { add(it.packed) }
     }.toString()
 
-    /** `[{id, name}]` for the six selectable faces, in picker order. */
     fun fontsJson(locale: String): String = buildJsonArray {
         val strings = Strings.forLocale(locale)
         FontFace.selectable.forEach { face -> addJsonObject {
@@ -170,10 +159,6 @@ object EhonCodec {
         } }
     }.toString()
 
-    /**
-     * Face id → every string drawn with that face (text, ruby and untouched-page prompts), so a
-     * platform can load exactly the font slices a book needs before painting it.
-     */
     fun textByFace(bookJson: String): String {
         val book = BookCodec.decode(bookJson)
         val strings = Strings.forLocale(book.contentLocale)

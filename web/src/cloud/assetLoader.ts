@@ -1,5 +1,6 @@
 import { cloud } from './config';
-import { bundledMaterialUrl } from '../materials';
+import { materialAssetUrl } from '../materials';
+import { decodeAsset } from './assetBytes';
 
 const REF = /^a\/[0-9a-f]{64}$/;
 export const MAX_MASTER_BYTES = 25 * 1024 * 1024;
@@ -33,19 +34,9 @@ export class AssetLoader {
     if (!REF.test(ref)) throw new Error('Invalid asset reference');
     const key = `${ref}/m.png`;
     const base = this.baseUrl();
-    const url = bundledMaterialUrl(key) ?? (base ? `${base}/${key}` : null);
+    const url = materialAssetUrl(key) ?? (base ? `${base}/${key}` : null);
     if (!url) throw new Error('Asset unavailable');
-    const image = new Image();
-    image.crossOrigin = 'anonymous';
-    image.src = url;
-    try {
-      await image.decode();
-      if (!image.naturalWidth || image.naturalWidth > MAX_MASTER_PIXELS || image.naturalHeight > MAX_MASTER_PIXELS) throw new Error('Invalid image dimensions');
-      return image;
-    } catch (error) {
-      image.src = '';
-      throw error;
-    }
+    return decodeAsset(url, key);
   }
 
   clear(): void {
@@ -64,19 +55,13 @@ export class AssetLoader {
 
   private request(key: string): void {
     const base = this.baseUrl();
-    const url = bundledMaterialUrl(key) ?? (base ? `${base}/${key}` : null);
+    const url = materialAssetUrl(key) ?? (base ? `${base}/${key}` : null);
     if (!url || this.loading.has(key) || this.cache.has(key) || (this.retryAfter.get(key) ?? 0) > Date.now()) return;
     this.loading.add(key);
-    const image = new Image();
-    image.crossOrigin = 'anonymous';
-    image.decoding = 'async';
-    image.src = url;
-    image.decode().then(() => {
-      if (image.naturalWidth === 0 || image.naturalWidth > MAX_MASTER_PIXELS || image.naturalHeight > MAX_MASTER_PIXELS) throw new Error('bad image');
+    decodeAsset(url, key).then(image => {
       this.remember(key, image);
       this.onChange();
     }).catch(() => {
-      image.src = '';
       this.retryAfter.set(key, Date.now() + 30_000);
     }).finally(() => this.loading.delete(key));
   }

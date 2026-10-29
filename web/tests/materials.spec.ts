@@ -1,7 +1,14 @@
 import { expect, test } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 
+type Material = { name: string; nameEn: string; category: string; characterId: string; pose: string; tags: string[] };
+const loadCatalog = async () => JSON.parse(await readFile('../shared/materials/catalog.json', 'utf8')).assets as Material[];
+const normalize = (value: string) => value.normalize('NFKC').toLowerCase().replace(/[ァ-ヶ]/g, char => String.fromCharCode(char.charCodeAt(0) - 0x60));
+const matching = (assets: Material[], query: string) =>
+  assets.filter(part => normalize([part.name, part.nameEn, part.characterId, part.pose, ...part.tags].join(' ')).includes(normalize(query))).length;
+
 test('painterly materials browse, search, place, and survive reopening', async ({ page }) => {
+  const assets = await loadCatalog();
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/app');
@@ -9,7 +16,8 @@ test('painterly materials browse, search, place, and survive reopening', async (
   await expect(page.locator('#material-category option')).toHaveCount(11);
   await expect(page.getByRole('button', { name: 'まる', exact: true })).toHaveCount(0);
   await page.getByLabel('素材をさがす').fill('ペンギン');
-  await expect(page.locator('.material-grid button')).toHaveCount(2);
+  expect(matching(assets, 'ペンギン')).toBeGreaterThan(1);
+  await expect(page.locator('.material-grid button')).toHaveCount(matching(assets, 'ペンギン'));
   await page.getByLabel('素材をさがす').fill('penguin waving');
   await expect(page.locator('.material-grid button')).toHaveCount(1);
   const preview = page.locator('.material-grid img');
@@ -34,10 +42,12 @@ test('painterly materials browse, search, place, and survive reopening', async (
 });
 
 test('category filters and empty search do not fall back to old icons', async ({ page }) => {
+  const nature = (await loadCatalog()).filter(part => part.category === 'しぜん').length;
+  expect(nature).toBeGreaterThan(0);
   await page.goto('/app');
   await page.getByRole('button', { name: '素材', exact: true }).click();
   await page.getByLabel('しゅるい').selectOption('しぜん');
-  await expect(page.locator('.material-grid button')).toHaveCount(1);
+  await expect(page.locator('.material-grid button')).toHaveCount(nature);
   await page.getByLabel('素材をさがす').fill('存在しない素材');
   await expect(page.locator('.material-grid button')).toHaveCount(0);
   await expect(page.getByText('素材が見つかりませんでした。別のことばや種類でさがしてみてね。')).toBeVisible();

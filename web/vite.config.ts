@@ -4,7 +4,6 @@ import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { publicSeo } from './tools/seo.ts';
 
-/** Mirrors public/_redirects for the dev and preview servers: clean paths land on their entry page. */
 function cleanRoutes(): Plugin {
   const rewrite = (url: string) => {
     if (/^\/app(\/|\?|$)/.test(url)) return '/app.html';
@@ -27,10 +26,6 @@ function cleanRoutes(): Plugin {
 
 type LocalTemplate = { id: string; url: string; path: string } & Record<string, unknown>;
 
-/**
- * Stands in for the assets Worker's `templates/` prefix on the dev and preview servers with the
- * stories Gradle assembled into shared/build/templates (decision #61).
- */
 function localTemplates(): Plugin {
   const built = fileURLToPath(new URL('../shared/build/templates/', import.meta.url));
   const entries = (): LocalTemplate[] => {
@@ -64,9 +59,26 @@ function localTemplates(): Plugin {
   };
 }
 
+function localMaterials(): Plugin {
+  const built = fileURLToPath(new URL('../shared/build/materials/', import.meta.url));
+  return {
+    name: 'ehon-local-materials',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const path = (req.url ?? '').split('?')[0];
+        const key = path.startsWith('/materials/') ? path.slice('/materials/'.length) : path.slice(1);
+        if (!/^(?:index\.json|catalogs\/[0-9a-f]{64}\.json|a\/[0-9a-f]{64}\/(?:m\.png|1024\.webp|256\.webp))$/.test(key) || !existsSync(`${built}${key}`)) { next(); return; }
+        res.setHeader('Content-Type', key.endsWith('.json') ? 'application/json' : key.endsWith('.png') ? 'image/png' : 'image/webp');
+        res.setHeader('Cache-Control', key === 'index.json' ? 'no-cache' : 'public, max-age=31536000, immutable');
+        res.end(readFileSync(`${built}${key}`));
+      });
+    },
+  };
+}
+
 export default defineConfig({
   appType: 'mpa',
-  plugins: [react(), publicSeo(), cleanRoutes(), localTemplates()],
+  plugins: [react(), publicSeo(), cleanRoutes(), localTemplates(), localMaterials()],
   build: {
     target: 'safari17',
     rolldownOptions: {

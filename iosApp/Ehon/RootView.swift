@@ -2,7 +2,6 @@ import SwiftUI
 import EhonCore
 import GoogleSignIn
 
-/// Routes between the five screens the prototype defined.
 struct RootView: View {
     @StateObject private var app = AppModel()
 
@@ -16,14 +15,13 @@ struct RootView: View {
         .onChange(of: scenePhaseValue) { _, phase in
             // Debounced saves are not safe across a backgrounding.
             if phase != .active { app.editor?.saveNow() }
+            if phase == .active { Task { await MaterialCatalog.shared.refresh() } }
             app.repository.setForeground(phase == .active)
         }
     }
 
     @Environment(\.scenePhase) private var scenePhaseValue
 
-    /// Decision 3a: the iPad gets its own make/read layouts; every other screen is
-    /// size-derived (decision #5) and simply renders wider.
     private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
 
     @ViewBuilder
@@ -70,8 +68,6 @@ struct RootView: View {
         }
     }
 
-    /// A book that vanished underneath a screen — deleted, or failed to decode. Returning to
-    /// the shelf is always safe, and never shows a child an error.
     private var recovery: some View {
         ShelfView().onAppear { app.openShelf() }
     }

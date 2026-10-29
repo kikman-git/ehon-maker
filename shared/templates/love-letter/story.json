@@ -143,7 +143,7 @@
         "file": "beach-sand.svg"
       },
       "hill": {
-        "name": "ちいさな おか",
+        "name": "ひとりの ゆうぐれの おか",
         "file": "hill.svg"
       },
       "garden-left": {
@@ -273,6 +273,10 @@
       "watering-spout": {
         "name": "はたけへ のびる じょうろ",
         "file": "watering-spout.svg"
+      },
+      "lonely-grass": {
+        "name": "ゆうぐれに ゆれる くさ",
+        "file": "lonely-grass.svg"
       }
     },
     "pages": [
@@ -638,10 +642,10 @@
             "partId": {
               "value": "art:hill"
             },
-            "x": 22,
-            "y": 54,
-            "sizePct": 44,
-            "heightPct": 49.5
+            "x": 50,
+            "y": 50,
+            "sizePct": 100,
+            "heightPct": 100
           },
           {
             "type": "part",
@@ -649,12 +653,12 @@
               "value": "p3-ground-2"
             },
             "partId": {
-              "value": "art:ground"
+              "value": "art:lonely-grass"
             },
-            "x": 52,
-            "y": 87,
-            "sizePct": 92,
-            "heightPct": 22.685
+            "x": 50,
+            "y": 91.5,
+            "sizePct": 100,
+            "heightPct": 16.25
           },
           {
             "type": "part",
@@ -664,10 +668,10 @@
             "partId": {
               "value": "art:flower-wilted"
             },
-            "x": 20,
-            "y": 29,
-            "sizePct": 30,
-            "heightPct": 30.625
+            "x": 29,
+            "y": 34,
+            "sizePct": 48,
+            "heightPct": 49.5
           },
           {
             "type": "part",
@@ -677,10 +681,10 @@
             "partId": {
               "value": "art:bear-lonely"
             },
-            "x": 63,
-            "y": 72,
-            "sizePct": 52,
-            "heightPct": 39.0
+            "x": 68,
+            "y": 65.5,
+            "sizePct": 48,
+            "heightPct": 34.5
           }
         ]
       },

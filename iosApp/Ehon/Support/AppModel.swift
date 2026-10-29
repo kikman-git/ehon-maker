@@ -2,16 +2,13 @@ import SwiftUI
 import Combine
 import EhonCore
 
-/// Which screen is showing. The prototype's five, unchanged.
 enum Screen: Equatable {
     case shelf
     case templates
     case editor(BookId)
     case read(BookId, page: Int)
     case done(BookId)
-    /// かぞくに おくる — model 2a.
     case share(BookId)
-    /// What a family member sees when they open the link — model 3b.
     case guest(BookId)
 }
 
@@ -22,10 +19,8 @@ final class AppModel: ObservableObject {
     @Published private(set) var books: [Book] = []
     @Published var editor: EditorModel?
 
-    /// Decision #12: `bigTargets` is a plain accessibility setting, not a kid/parent mode.
     @AppStorage("bigTargets") var bigTargets = false
 
-    /// こども / おとな (model 2a). Stored as its Kotlin id; kid also implies big targets.
     @AppStorage("uiLevel") private var uiLevelRaw = "kid"
 
     var uiLevel: UiLevel {
@@ -42,6 +37,8 @@ final class AppModel: ObservableObject {
     private var repositoryWatch: AnyCancellable?
 
     init() {
+        MaterialCatalog.shared.restore()
+        Task { await MaterialCatalog.shared.refresh() }
         repository.liveBook = { [weak self] id in self?.editor?.bookId.value == id ? self?.editor?.book : nil }
         repository.isGestureActive = { [weak self] in self?.editor?.controller.isGestureActive ?? false }
         repository.onRemote = { [weak self] book in self?.editor?.receive(book) }
@@ -51,8 +48,6 @@ final class AppModel: ObservableObject {
         applyDebugRoute()
     }
 
-    /// Jumps straight to a screen from a launch argument, creating a sample book if needed.
-    /// Used by `make shots`; a release build never passes these.
     private func applyDebugRoute() {
         let defaults = UserDefaults.standard
         guard let route = defaults.string(forKey: "startScreen") else { return }
@@ -93,8 +88,6 @@ final class AppModel: ObservableObject {
         books = repository.books
     }
 
-    // MARK: - navigation
-
     func openShelf() {
         editor?.saveNow()
         repository.close()
@@ -105,7 +98,6 @@ final class AppModel: ObservableObject {
 
     func openTemplates() { editor?.saveNow(); repository.close(); editor = nil; screen = .templates }
 
-    /// The blank start the web shelf offers too (decision #62): one white square page, the brush ready.
     func startBlankBook() {
         let book = Templates.shared.blankBook(
             bookId: BookId(value: "b\(UUID().uuidString)"),
@@ -119,7 +111,6 @@ final class AppModel: ObservableObject {
         open(book)
     }
 
-    /// A fetched story becomes a book on this shelf (decision #60).
     func startDocumentTemplate(json: String) {
         let book = Templates.shared.instantiateDocument(
             json: json,
@@ -152,7 +143,6 @@ final class AppModel: ObservableObject {
         repository.open(book, editing: false)
     }
 
-    /// A reply arrived (in v1: recorded on this device). Persist it and refresh the shelf.
     func attach(reply: PageReply?, toPage page: Int, of book: Book) {
         let updated = (self.book(book.id) ?? book).withReply(pageIndex: Int32(page), reply: reply)
         repository.save(updated)
@@ -162,8 +152,7 @@ final class AppModel: ObservableObject {
 
     func openRead(_ book: Book, page: Int = 0) {
         editor?.saveNow()
-        // The tablet read view is a mode of the tablet editor, so it needs the model even
-        // when reading starts from the shelf rather than from つくる.
+        // Tablet reading shares the editor model even when opened from the shelf.
         if UIDevice.current.userInterfaceIdiom == .pad, editor?.bookId != book.id {
             editor = EditorModel(book: book, uiLevel: uiLevel, repository: repository)
         }
@@ -190,19 +179,14 @@ final class AppModel: ObservableObject {
         editor?.bookId == id ? editor?.book : books.first { $0.id == id }
     }
 
-    /// A new book's content language follows the device at creation time, then stays put —
-    /// decision #2. Switching the phone to English must not restyle a Japanese book.
+    // Capture language at creation so a later UI language change cannot restyle a book.
     private var bookLocale: String {
         Localized.isJapaneseUI ? "ja-JP" : "en-US"
     }
 
-    // MARK: - shelf grouping, for the filter chips
-
     var inProgress: [Book] { books.filter { !isFinished($0) } }
     var finished: [Book] { books.filter { isFinished($0) } }
 
-    /// v1 has no explicit "finished" flag; reaching the done screen is what a parent means
-    /// by it, and that's a field to add when the paywall lands and it starts to matter.
     private func isFinished(_ book: Book) -> Bool {
         UserDefaults.standard.bool(forKey: "finished-\(book.id.value)")
     }

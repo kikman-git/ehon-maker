@@ -14,7 +14,9 @@
     "assets-dev": "wrangler dev --config assets-worker/wrangler.jsonc",
     "fonts": "tsx tools/fonts.ts",
     "templates": "tsx tools/templates.ts",
-    "materials": "node tools/materials.mjs"
+    "materials": "node tools/materials.mjs",
+    "materials:progress": "node tools/materials-progress.mjs",
+    "materials:publish": "tsx tools/materials-publish.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20260910.1",

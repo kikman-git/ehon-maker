@@ -3,7 +3,6 @@ import ImageIO
 import CryptoKit
 import EhonCore
 
-/// A bounded decoded-image cache backed by content-addressed disk files.
 final class AssetLoader: @unchecked Sendable {
     static let shared = AssetLoader()
     private let memory = NSCache<NSString, UIImage>()
@@ -69,6 +68,7 @@ final class AssetLoader: @unchecked Sendable {
                 if key.hasSuffix("/m.png"), Self.hash(data) != key.split(separator: "/")[1] { return nil }
                 guard let image = decode(data) else { return nil }
                 try data.write(to: disk(key), options: .atomic)
+                trimDisk()
                 remember(image, key: key)
                 DispatchQueue.main.async { NotificationCenter.default.post(name: .ehonAssetsChanged, object: nil) }
                 return image
@@ -85,10 +85,28 @@ final class AssetLoader: @unchecked Sendable {
         if let image = memory.object(forKey: key as NSString) { return image }
         let bundled = Bundle.main.resourceURL?.appendingPathComponent("materials/\(key)")
         let data = (bundled.flatMap { try? Data(contentsOf: $0) }) ?? (try? Data(contentsOf: disk(key)))
-        guard let data, let image = decode(data) else { return nil }
+        guard let data else { return nil }
+        if key.hasSuffix("/m.png"), Self.hash(data) != key.split(separator: "/")[1] {
+            try? FileManager.default.removeItem(at: disk(key))
+            return nil
+        }
+        guard let image = decode(data) else { return nil }
         remember(image, key: key)
         return image
     }
+    private func trimDisk() {
+        guard let files = try? FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: [.fileSizeKey, .contentModificationDateKey]) else { return }
+        let entries = files.compactMap { url -> (URL, Int, Date)? in
+            guard let values = try? url.resourceValues(forKeys: [.fileSizeKey, .contentModificationDateKey]) else { return nil }
+            return (url, values.fileSize ?? 0, values.contentModificationDate ?? .distantPast)
+        }.sorted { $0.2 < $1.2 }
+        var bytes = entries.reduce(0) { $0 + $1.1 }
+        for entry in entries where bytes > 256 * 1024 * 1024 {
+            try? FileManager.default.removeItem(at: entry.0)
+            bytes -= entry.1
+        }
+    }
+
     private func remember(_ image: UIImage, key: String) {
         memory.setObject(image, forKey: key as NSString, cost: (image.cgImage?.bytesPerRow ?? 0) * (image.cgImage?.height ?? 0))
     }

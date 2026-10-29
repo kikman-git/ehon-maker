@@ -1,20 +1,17 @@
 import { EhonCodec, WebEditor, WebReader } from '@ehon/core';
 import { createStore } from './cloud/store';
 import { fontFaces, fontRanges } from './fonts.generated';
-import { materials } from './materials';
+import { materials, materialStore, loadMaterials } from './materials';
 
 export const codec = EhonCodec.getInstance();
 export { WebEditor, WebReader };
 
 const fontsBase = (import.meta.env.VITE_FONTS_URL || `${import.meta.env.BASE_URL}fonts`).replace(/\/$/, '');
 
-/** Bumped when a batch of font slices has landed: canvases re-measure and repaint once. */
 export const fonts = createStore({ epoch: 0 });
+materialStore.subscribe(() => fonts.update({ epoch: fonts.get().epoch + 1 }));
+void loadMaterials();
 
-/**
- * Registers every face as unicode-range slices (decision 49) and waits only for the kana
- * slices of the body and UI faces; kanji blocks load as books and typing need them.
- */
 export async function loadFonts(): Promise<void> {
   const eager: FontFace[] = [];
   for (const face of fontFaces) {
@@ -30,7 +27,6 @@ export async function loadFonts(): Promise<void> {
   await Promise.allSettled(eager.map((font) => font.load()));
 }
 
-/** Starts loading the slices each face needs for its text; resolves when they are usable. */
 export function ensureGlyphs(textByFace: Record<string, string>): Promise<void> {
   const loads = Object.entries(textByFace).map(([id, text]) => (text ? document.fonts.load(`16px "Ehon-${id}"`, text).catch(() => []) : Promise.resolve([])));
   return Promise.all(loads).then(() => undefined);
@@ -38,7 +34,6 @@ export function ensureGlyphs(textByFace: Record<string, string>): Promise<void> 
 
 export const bookGlyphs = (json: string): Promise<void> => ensureGlyphs(JSON.parse(codec.textByFace(json)) as Record<string, string>);
 
-/** One hidden 2D context measures text for every editor and reader on the page. */
 const measureContext = (() => {
   let context: CanvasRenderingContext2D | null = null;
   return () => {
@@ -66,7 +61,7 @@ export function blankBook(shape = 'SQUARE'): string {
   return codec.blankBook(`b-${crypto.randomUUID()}`, '無題のえほん', 'ja-JP', Date.now(), shape);
 }
 
-export const parts = materials;
+export { materials as parts };
 export const fontChoices: { id: string; name: string }[] = JSON.parse(codec.fontsJson('ja'));
 export const backgrounds: number[] = JSON.parse(codec.backgroundsJson());
 export const drawingColors: number[] = JSON.parse(codec.drawingColorsJson());

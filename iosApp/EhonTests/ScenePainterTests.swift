@@ -3,15 +3,14 @@ import UIKit
 @testable import Ehon
 import EhonCore
 
-/// Tier-2 of the render-testing plan: the shared module's golden tests prove the layout
-/// maths, these prove the painter actually draws that tree — and, critically, that it
-/// draws it the right way up.
 final class ScenePainterTests: XCTestCase {
 
     func testBundledStorybookMaterialsHaveTransparentMasters() throws {
-        for part in PartCatalog.shared.all {
-            let raster = try XCTUnwrap(part.def as? PartDefRaster)
-            let image = try XCTUnwrap(AssetLoader.shared.image(raster.assetRef, master: true), part.id.value)
+        let folder = try XCTUnwrap(Bundle.main.resourceURL?.appendingPathComponent("materials/a"))
+        let refs = try FileManager.default.contentsOfDirectory(atPath: folder.path)
+        XCTAssertFalse(refs.isEmpty)
+        for hash in refs {
+            let image = try XCTUnwrap(AssetLoader.shared.image("a/\(hash)", master: true), hash)
             XCTAssertEqual(image.size.width, 1536)
             XCTAssertEqual(image.size.height, 1536)
             let corner = try colour(of: image, atFractionX: 0, y: 0)
@@ -23,7 +22,6 @@ final class ScenePainterTests: XCTestCase {
     // Argb is an inline value class with no Swift type; read the token instead.
     private let cream = Organic.shared.surface
 
-    /// A single sage square in the upper-left quadrant.
     private func page(x: Float, y: Float) -> Page {
         Page.companion.of(
             background: cream,
@@ -49,11 +47,6 @@ final class ScenePainterTests: XCTestCase {
         return SceneRenderer.image(builder.build(page: page, target: target, promptText: nil))
     }
 
-    // MARK: - orientation
-
-    /// The scene graph is y-down with a top-left origin. If the painter drew into a y-up
-    /// context, everything would be mirrored vertically and no shared golden test would
-    /// notice, because the scene tree itself would be identical.
     func testPainterHonoursTopLeftOrigin() throws {
         let image = render(page(x: 25, y: 25))
 
@@ -69,8 +62,6 @@ final class ScenePainterTests: XCTestCase {
         XCTAssertFalse(try isBackground(colour(of: image, atFractionX: 0.25, y: 0.5)))
         XCTAssertTrue(try isBackground(colour(of: image, atFractionX: 0.75, y: 0.5)))
     }
-
-    // MARK: - fidelity
 
     func testVersionTwoBookStillOpensAndGetsStablePageIDs() throws {
         let legacy = #"{"version":2,"book":{"id":{"value":"legacy"},"title":"もり","shape":"LANDSCAPE","contentLocale":"ja-JP","updatedAtEpochMs":1700000000000,"pages":[{"background":-984607,"items":[{"type":"part","id":{"value":"i1"},"x":50,"y":50,"partId":{"value":"いきもの:ねこ"},"sizePct":26}]},{"background":-984607}]}}"#
@@ -112,9 +103,6 @@ final class ScenePainterTests: XCTestCase {
         XCTAssertEqual(drawn.b, eb, accuracy: 0.02)
     }
 
-    /// The prototype's ring/crescent/arc were CSS radial-gradient masks; they are now
-    /// even-odd fills. A ring must be hollow in the middle — a naive non-zero fill
-    /// would produce a solid disc and look almost right.
     func testRingIsHollow() throws {
         let sun = Page.companion.of(
             background: cream,
@@ -126,8 +114,6 @@ final class ScenePainterTests: XCTestCase {
             strokes: []
         )
         let image = render(sun, side: 400)
-        // たいよう is a ring at 100% plus an inner disc inset to 22..78%, so the gap
-        // between the ring's inner edge and that disc must still show the page.
         let onRing = try colour(of: image, atFractionX: 0.5, y: 0.115)
         XCTAssertFalse(isBackground(onRing), "the ring itself did not draw")
     }
@@ -146,7 +132,6 @@ final class ScenePainterTests: XCTestCase {
 
         XCTAssertFalse(try isBackground(colour(of: small, atFractionX: 0.5, y: 0.5)))
         XCTAssertFalse(try isBackground(colour(of: large, atFractionX: 0.5, y: 0.5)))
-        // Same normalised geometry, so the line sits at mid-height in both.
         XCTAssertTrue(try isBackground(colour(of: small, atFractionX: 0.5, y: 0.1)))
     }
 
@@ -180,11 +165,6 @@ final class ScenePainterTests: XCTestCase {
         XCTAssertEqual(center.b, b, accuracy: 0.02)
     }
 
-    // MARK: - text
-
-    /// Canvas hands the painter a CGContext without making it UIKit's current one, and
-    /// `NSString.draw` only targets the current one. UIGraphicsImageRenderer hides that, so
-    /// this paints into a bare bitmap context the way the screen does.
     func testTextDrawsIntoAContextUIKitDidNotMakeCurrent() throws {
         let words = Page.companion.of(
             background: cream, promptKey: nil,
@@ -217,8 +197,6 @@ final class ScenePainterTests: XCTestCase {
         XCTAssertGreaterThan(inked, 0, "text drew nowhere: NSString.draw had no current UIKit context")
     }
 
-    // MARK: - export
-
     func testPrintablePdfHasOnePagePerBookPage() throws {
         let book = Templates.shared.instantiate(
             template: Templates.shared.blank,
@@ -236,19 +214,15 @@ final class ScenePainterTests: XCTestCase {
         let document = try XCTUnwrap(CGPDFDocument(provider))
         XCTAssertEqual(document.numberOfPages, Int(book.pageCount))
 
-        // A PDF page is measured in points, so it must be the page's physical size —
-        // not 1541 dots, which would be a 21-inch sheet.
+        // PDF dimensions use points, not the exported bitmap's pixel dimensions.
         let mediaBox = try XCTUnwrap(document.page(at: 1)).getBoxRect(.mediaBox)
         let expectedPt = CGFloat(book.shape.printSizeMm().w) / 25.4 * 72
         XCTAssertEqual(mediaBox.width, expectedPt, accuracy: 1.0)
     }
 
-    // MARK: - pixel helpers
-
     private struct Pixel { let r, g, b, a: CGFloat }
 
     private func isBackground(_ pixel: Pixel) -> Bool {
-        // Cream is f9f4ed.
         abs(pixel.r - 0xF9 / 255) < 0.02 &&
             abs(pixel.g - 0xF4 / 255) < 0.02 &&
             abs(pixel.b - 0xED / 255) < 0.02

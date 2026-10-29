@@ -7,7 +7,7 @@ JAVA_HOME ?= $(shell for d in /usr/local/opt/openjdk@21 /opt/homebrew/opt/openjd
                        [[ -x "$$d/bin/java" ]] && echo "$$d" && break; done)
 export JAVA_HOME
 
-SIM ?= iPhone 16
+SIM ?= iPhone 17
 BUNDLE := app.ehon.petapeta
 # Ad-hoc simulator signing gives Firebase Auth a working keychain without a developer team.
 XC := xcodebuild -project iosApp/Ehon.xcodeproj -scheme Ehon -sdk iphonesimulator CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM=

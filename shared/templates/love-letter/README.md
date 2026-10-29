@@ -62,6 +62,16 @@ Captions are real text items in the Yomogi handwriting font. The `○○○○` 
 narration are intentional, ready for the author to fill in, as are the names and date on the back
 cover.
 
+**App page 5** (`p3`, storyboard page 3) is a full-page hillside illustration. Layers of sage
+recede into warm ivory; the bowed flower at upper left echoes the bear's lowered head at lower
+right. The bear curls around his knees with both arms, with one blue tear on his cheek. An empty
+expanse beside the flower and a single fallen petal give the scene its sense of absence, before
+the next spread asks what is missing. The hillside, foreground grasses, flower and bear remain
+four separately editable pieces; the bear carries his shadow when moved. The facing narration
+stays on page 6.
+
+<p align="center"><img src="../../../docs/readme/love-letter-lonely.png" width="360" alt="Page 5: a bear hugs his knees beneath a drooping flower on a layered sage hillside"></p>
+
 Pages 1–12 keep the storyboard's picture/text rhythm, including the illustrated solar-system
 spread. The three encounters (13–18) are two-page pictures, as drawn: the planet's horizon runs
 across the gutter, the left page carries only the storyboard's own words (さいしょに ついたのは and

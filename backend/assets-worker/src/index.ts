@@ -2,13 +2,12 @@ interface Env { ASSETS: R2Bucket }
 
 export function publicKey(path: string): string | null {
   const key = path.replace(/^\//, '');
-  // Story templates (decision #60): a briefly cached index and content-addressed, immutable documents.
-  return /^(?:a\/[0-9a-f]{64}\/(?:m\.png|m\.webp|1024\.webp|256\.webp)|fonts\/[A-Za-z0-9_-]+\.(?:ttf|txt)|templates\/index\.json|templates\/[a-z0-9-]{1,64}\/[0-9a-f]{12}\.ehon\.json)$/.test(key) ? key : null;
+  return /^(?:a\/[0-9a-f]{64}\/(?:m\.png|m\.webp|1024\.webp|256\.webp)|fonts\/[A-Za-z0-9_-]+\.(?:ttf|txt)|materials\/index\.json|materials\/catalogs\/[0-9a-f]{64}\.json|templates\/index\.json|templates\/[a-z0-9-]{1,64}\/[0-9a-f]{12}\.ehon\.json)$/.test(key) ? key : null;
 }
 
 export function cacheControl(key: string): string {
-  if (key === 'templates/index.json') return 'public, max-age=300';
-  if (key.startsWith('a/') || key.startsWith('templates/')) return 'public, max-age=31536000, immutable';
+  if (key === 'templates/index.json' || key === 'materials/index.json') return 'public, max-age=300';
+  if (key.startsWith('a/') || key.startsWith('templates/') || key.startsWith('materials/catalogs/')) return 'public, max-age=31536000, immutable';
   return 'public, max-age=86400';
 }
 

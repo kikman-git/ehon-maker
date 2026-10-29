@@ -118,8 +118,11 @@ test('page switching keeps exactly one canvas and saves drawings across reload a
 test('erasing reveals the illustration below and PNG export includes the drawing', async ({ page }) => {
   await page.goto('/app');
   await page.getByRole('button', { name: '素材', exact: true }).click();
+  const blank = await pixel(page, .5, .5);
   await page.getByRole('button', { name: 'ことり', exact: true }).click();
   await page.getByRole('button', { name: '描く', exact: true }).click();
+  // The painting arrives asynchronously; sample the illustration only once it has been drawn.
+  await expect.poll(() => pixel(page, .5, .5)).not.toEqual(blank);
   const original = await pixel(page, .5, .5);
   await stroke(page);
   await expect.poll(() => pixel(page, .5, .5)).toEqual([46, 43, 37, 255]);

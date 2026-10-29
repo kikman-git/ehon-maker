@@ -1,6 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 245" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#6c5849" stroke-width="1.7">
-<title>しょんぼりした はな</title>
-<path d="M80 228C78 190 70 150 82 112C90 88 116 84 124 102C130 116 120 128 110 134" stroke="#8f967b" stroke-width="2"/>
-<path d="M79 190Q42 190 36 168Q60 160 79 190ZM80 168Q104 146 118 158Q110 176 80 176Z" fill="#96ae80" stroke-width="1.1"/>
-<g transform="translate(110 138)" fill="#fff0d9" stroke-width="1.2"><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(-72)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(-40)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(-14)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(12)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(38)"/><path d="M0 4C-9 14-12 30-5 38C2 42 6 30 4 16Z" transform="rotate(72)"/><ellipse cx="0" cy="0" rx="10" ry="9" fill="#e4d29e"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 330" fill="none" stroke="#727c59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<title>くまと おなじように うつむく はな</title>
+<path d="M73 313C71 253 45 163 67 83C82 29 136 27 163 55Q184 79 174 101" stroke-width="3"/>
+<path d="M67 245C30 241 16 211 21 193Q60 204 67 245ZM62 189Q106 157 122 173Q110 204 62 202Z" fill="#98a477"/>
+<path d="m29 206 34 33m8-45 41-17" stroke-width=".8"/>
+<g stroke="#a08c65" fill="#f6e2ad" stroke-width="1.2">
+<path d="M167 111C137 102 119 120 123 131S148 137 169 117C149 136 144 161 156 164S178 140 178 118C176 149 187 171 199 163S192 130 180 113C199 136 222 143 227 131S203 106 181 106Z"/>
+<ellipse cx="173" cy="107" rx="17" ry="11" transform="rotate(18 173 107)" fill="#d7b66c"/>
+<path d="m155 122-18 6m33 1-12 22m24-23 13 23m-4-33 22 11" fill="none" stroke-width=".7"/>
+</g>
 </svg>

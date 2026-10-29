@@ -1391,8 +1391,9 @@
       "characterId": "owl",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same owl as reference, preserve colors and identity; walking. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "owl",
-      "status": "queued",
-      "outputFile": "pending/owl-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/owl-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a2211a55-bb08-448c-896b-f91c4b1a01dc.png"
     },
     {
       "id": "owl-sitting",
