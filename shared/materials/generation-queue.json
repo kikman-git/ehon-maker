@@ -527,8 +527,9 @@
       "characterId": "fox",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly fox, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/fox.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/fox.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-077a53ab-a669-4b1d-82c1-c1de3cd3c8ce.png"
     },
     {
       "id": "squirrel",
@@ -538,8 +539,9 @@
       "characterId": "squirrel",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly squirrel, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/squirrel.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/squirrel.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-4b66910e-5bfe-4211-8b3d-013ed65b8edb.png"
     },
     {
       "id": "mouse",
@@ -549,8 +551,9 @@
       "characterId": "mouse",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly mouse, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/mouse.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/mouse.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-317ba86d-46b5-4d0c-8781-fe657f021556.png"
     },
     {
       "id": "hedgehog",
@@ -560,8 +563,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly hedgehog, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/hedgehog.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-8473abfb-0fb1-4c3a-8e5c-2eea5110f978.png"
     },
     {
       "id": "deer",
@@ -571,8 +575,9 @@
       "characterId": "deer",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly deer, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/deer.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/deer.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-0d05e671-eddd-49d5-8c1d-3accc862fcda.png"
     },
     {
       "id": "raccoon",
@@ -582,8 +587,9 @@
       "characterId": "raccoon",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly raccoon, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/raccoon.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/raccoon.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-1dbf6508-e6ab-40ef-86e1-2b9b71f5b148.png"
     },
     {
       "id": "panda",
@@ -593,8 +599,9 @@
       "characterId": "panda",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly panda, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/panda.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/panda.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-bba6f97c-ade0-4c5e-be52-90d3ce916333.png"
     },
     {
       "id": "elephant",
@@ -604,8 +611,9 @@
       "characterId": "elephant",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly elephant, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/elephant.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/elephant.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-7b3c4ccd-30ce-4883-97b7-8f682ce6ca9c.png"
     },
     {
       "id": "giraffe",
@@ -615,8 +623,9 @@
       "characterId": "giraffe",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly giraffe, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/giraffe.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/giraffe.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-32c8b415-d66c-4faf-8ef5-81a49e2ad974.png"
     },
     {
       "id": "lion",
@@ -626,8 +635,9 @@
       "characterId": "lion",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly lion, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/lion.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/lion.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-64ebd341-f3bd-46db-a680-32ddc05af7c9.png"
     },
     {
       "id": "monkey",
@@ -637,8 +647,9 @@
       "characterId": "monkey",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly monkey, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/monkey.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/monkey.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-34a360b6-60ff-4b29-9683-353a004d9343.png"
     },
     {
       "id": "horse",
@@ -648,8 +659,9 @@
       "characterId": "horse",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly horse, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/horse.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/horse.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-18922d8a-1d07-4722-a342-b0e3865aac36.png"
     },
     {
       "id": "cow",
@@ -659,8 +671,9 @@
       "characterId": "cow",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly cow, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/cow.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cow.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-1a9ab232-d6ad-4cb4-8298-6d3716711127.png"
     },
     {
       "id": "sheep",
@@ -670,8 +683,9 @@
       "characterId": "sheep",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly sheep, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/sheep.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/sheep.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-5c17934c-919e-4338-ba87-bb9770fb1431.png"
     },
     {
       "id": "pig",
@@ -681,8 +695,9 @@
       "characterId": "pig",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly pig, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/pig.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/pig.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-566c8600-6e2a-46c7-8a85-82b051ad6946.png"
     },
     {
       "id": "duck",
@@ -692,8 +707,9 @@
       "characterId": "duck",
       "prompt": "Reference image is STYLE ONLY; draw only the requested subject, not the reference bird. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. One friendly duck, standing, full body, species-appropriate anatomy.",
       "referenceAsset": "bird",
-      "status": "queued",
-      "outputFile": "pending/duck.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/duck.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-1e2b30ce-1d39-4112-9676-e8ad36ea497d.png"
     },
     {
       "id": "undersea-reef",
