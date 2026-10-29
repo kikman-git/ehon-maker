@@ -192,6 +192,13 @@ internal object StorybookMaterials {
         Material("pack.storybook:stream", "おがわ", "Stream", "はいけい", "a/316299809e281a5938dc34273f5ec0b09c77a65ab69faf144a4761e5a423f7f3", "stream", "default", listOf("小川", "川"), listOf()),
         Material("pack.storybook:waterfall", "たき", "Waterfall", "はいけい", "a/c26a98773ef967305425261df4f9f6cb35d8fe57e33ac4e994d8dff744e8b246", "waterfall", "default", listOf("滝", "水"), listOf()),
         Material("pack.storybook:shoreline", "なぎさ", "Shoreline", "はいけい", "a/935ac996619a2652647073dadec126cae0de554adb7dba79aed5dc326a9438ec", "shoreline", "default", listOf("渚", "海", "浜辺"), listOf()),
-        Material("pack.storybook:garden-fence", "にわの さく", "Garden fence", "はいけい", "a/68553106949067bfd7ac163d6503e7839e5a64fb06ae31db0db0f1054e29641a", "garden-fence", "default", listOf("柵", "庭"), listOf())
+        Material("pack.storybook:garden-fence", "にわの さく", "Garden fence", "はいけい", "a/68553106949067bfd7ac163d6503e7839e5a64fb06ae31db0db0f1054e29641a", "garden-fence", "default", listOf("柵", "庭"), listOf()),
+        Material("pack.storybook:treehouse", "きのうえの いえ", "Treehouse", "たてもの・ばしょ", "a/f1091957e06a1428cc56bb3e4dc9f6225b7cc061c00cde638330dee3c4885e09", "treehouse", "default", listOf("木", "家"), listOf()),
+        Material("pack.storybook:castle", "おしろ", "Castle", "たてもの・ばしょ", "a/54928b0072c1809e6dd3f9c529d51ea1c6ae4b5ca44787dd8777041380b741f8", "castle", "default", listOf("城", "おとぎ話"), listOf()),
+        Material("pack.storybook:windmill", "ふうしゃ", "Windmill", "たてもの・ばしょ", "a/b7abe374f11e6fe91d7cd3412dd4bf2a330ade5c0ed6f8b4426cdccda34b1ec4", "windmill", "default", listOf("風車", "村"), listOf()),
+        Material("pack.storybook:lighthouse", "とうだい", "Lighthouse", "たてもの・ばしょ", "a/b0d092763f638d2eef611de537de5aa720df70d1c77c9b86db55793a23e618d8", "lighthouse", "default", listOf("灯台", "海"), listOf()),
+        Material("pack.storybook:farm-barn", "のうじょうの なや", "Farm barn", "たてもの・ばしょ", "a/2e751a24ac834a939988ab205e7f56834bf1a8ac9dddc6b3d2ea75e67607b28c", "farm-barn", "default", listOf("農場", "納屋"), listOf()),
+        Material("pack.storybook:market-stall", "やさいの おみせ", "Market stall", "たてもの・ばしょ", "a/acf993a0c3bbec843e541650b58cd429a6fcfd798f71f93f7bbb77e70bc0e7fb", "market-stall", "default", listOf("市場", "野菜"), listOf()),
+        Material("pack.storybook:playground", "あそびば", "Playground", "たてもの・ばしょ", "a/77caf1c62db30dd2f3da8a24a1842905ac8f40f11e3d21bac455a5ad6b867862", "playground", "default", listOf("公園", "すべり台", "ぶらんこ"), listOf())
     )
 }

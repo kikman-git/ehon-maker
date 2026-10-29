@@ -4000,6 +4000,147 @@
       "bytes": 1164952,
       "sha256": "68553106949067bfd7ac163d6503e7839e5a64fb06ae31db0db0f1054e29641a",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:treehouse",
+      "slug": "treehouse",
+      "name": "きのうえの いえ",
+      "nameEn": "Treehouse",
+      "category": "たてもの・ばしょ",
+      "characterId": "treehouse",
+      "pose": "default",
+      "tags": [
+        "木",
+        "家"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/f1091957e06a1428cc56bb3e4dc9f6225b7cc061c00cde638330dee3c4885e09",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2274664,
+      "sha256": "f1091957e06a1428cc56bb3e4dc9f6225b7cc061c00cde638330dee3c4885e09",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:castle",
+      "slug": "castle",
+      "name": "おしろ",
+      "nameEn": "Castle",
+      "category": "たてもの・ばしょ",
+      "characterId": "castle",
+      "pose": "default",
+      "tags": [
+        "城",
+        "おとぎ話"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/54928b0072c1809e6dd3f9c529d51ea1c6ae4b5ca44787dd8777041380b741f8",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2500597,
+      "sha256": "54928b0072c1809e6dd3f9c529d51ea1c6ae4b5ca44787dd8777041380b741f8",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:windmill",
+      "slug": "windmill",
+      "name": "ふうしゃ",
+      "nameEn": "Windmill",
+      "category": "たてもの・ばしょ",
+      "characterId": "windmill",
+      "pose": "default",
+      "tags": [
+        "風車",
+        "村"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b7abe374f11e6fe91d7cd3412dd4bf2a330ade5c0ed6f8b4426cdccda34b1ec4",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1667880,
+      "sha256": "b7abe374f11e6fe91d7cd3412dd4bf2a330ade5c0ed6f8b4426cdccda34b1ec4",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:lighthouse",
+      "slug": "lighthouse",
+      "name": "とうだい",
+      "nameEn": "Lighthouse",
+      "category": "たてもの・ばしょ",
+      "characterId": "lighthouse",
+      "pose": "default",
+      "tags": [
+        "灯台",
+        "海"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/b0d092763f638d2eef611de537de5aa720df70d1c77c9b86db55793a23e618d8",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1224428,
+      "sha256": "b0d092763f638d2eef611de537de5aa720df70d1c77c9b86db55793a23e618d8",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:farm-barn",
+      "slug": "farm-barn",
+      "name": "のうじょうの なや",
+      "nameEn": "Farm barn",
+      "category": "たてもの・ばしょ",
+      "characterId": "farm-barn",
+      "pose": "default",
+      "tags": [
+        "農場",
+        "納屋"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/2e751a24ac834a939988ab205e7f56834bf1a8ac9dddc6b3d2ea75e67607b28c",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2372651,
+      "sha256": "2e751a24ac834a939988ab205e7f56834bf1a8ac9dddc6b3d2ea75e67607b28c",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:market-stall",
+      "slug": "market-stall",
+      "name": "やさいの おみせ",
+      "nameEn": "Market stall",
+      "category": "たてもの・ばしょ",
+      "characterId": "market-stall",
+      "pose": "default",
+      "tags": [
+        "市場",
+        "野菜"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/acf993a0c3bbec843e541650b58cd429a6fcfd798f71f93f7bbb77e70bc0e7fb",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2489648,
+      "sha256": "acf993a0c3bbec843e541650b58cd429a6fcfd798f71f93f7bbb77e70bc0e7fb",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:playground",
+      "slug": "playground",
+      "name": "あそびば",
+      "nameEn": "Playground",
+      "category": "たてもの・ばしょ",
+      "characterId": "playground",
+      "pose": "default",
+      "tags": [
+        "公園",
+        "すべり台",
+        "ぶらんこ"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/77caf1c62db30dd2f3da8a24a1842905ac8f40f11e3d21bac455a5ad6b867862",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1521540,
+      "sha256": "77caf1c62db30dd2f3da8a24a1842905ac8f40f11e3d21bac455a5ad6b867862",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

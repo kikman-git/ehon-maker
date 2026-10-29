@@ -3283,6 +3283,119 @@
       "sourceFile": "garden-fence.png",
       "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One short white wooden garden picket fence, five rounded pickets joined by two horizontal rails, gentle three-quarter angle. Complete fence with both end posts fully visible, small centered in central HALF of square canvas. Transparent background. No bird, flowers, ground, shadow, haze or text.",
       "referenceAsset": "bird"
+    },
+    {
+      "id": "treehouse",
+      "name": "きのうえの いえ",
+      "nameEn": "Treehouse",
+      "tags": [
+        "木",
+        "家"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "treehouse",
+      "legacyIds": [],
+      "sourceFile": "treehouse.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, simple storybook forms. One cozy wooden treehouse with red roof, round window and rope ladder in a short sturdy leafy tree. Whole tree and ladder small centered in central HALF of square canvas, wide clear margins. Transparent background. No bird, people, sky, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "castle",
+      "name": "おしろ",
+      "nameEn": "Castle",
+      "tags": [
+        "城",
+        "おとぎ話"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "castle",
+      "legacyIds": [],
+      "sourceFile": "castle.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, simple storybook forms. One small friendly stone castle, cream walls, three blue conical towers with tiny red flags, arched wooden gate. Entire castle and flag tips fully visible, centered in middle 65% square canvas. Transparent background. No bird, people, sky, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "windmill",
+      "name": "ふうしゃ",
+      "nameEn": "Windmill",
+      "tags": [
+        "風車",
+        "村"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "windmill",
+      "legacyIds": [],
+      "sourceFile": "windmill.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, simple storybook forms. One small cream windmill with red rounded roof, wooden arched door, four wooden lattice sails. Whole building and all four sail tips fully visible, centered in central HALF of square canvas with wide margins. Transparent background. No bird, people, sky, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "lighthouse",
+      "name": "とうだい",
+      "nameEn": "Lighthouse",
+      "tags": [
+        "灯台",
+        "海"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "lighthouse",
+      "legacyIds": [],
+      "sourceFile": "lighthouse.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, simple storybook forms. One red-and-white striped lighthouse, blue lantern room, small red roof, arched door and three windows. Entire tower centered in central HALF of square canvas with wide margins. Transparent background. No bird, people, sky, sea, ground, light beam, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "farm-barn",
+      "name": "のうじょうの なや",
+      "nameEn": "Farm barn",
+      "tags": [
+        "農場",
+        "納屋"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "farm-barn",
+      "legacyIds": [],
+      "sourceFile": "farm-barn.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, simple storybook forms. One cozy red farm barn with white trim, blue-grey pitched roof, large double doors with white X braces, small loft window. Three-quarter view, complete building small centered with wide transparent margins. No bird, animals, people, ground, sky, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "market-stall",
+      "name": "やさいの おみせ",
+      "nameEn": "Market stall",
+      "tags": [
+        "市場",
+        "野菜"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "market-stall",
+      "legacyIds": [],
+      "sourceFile": "market-stall.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, simple storybook forms. One small wooden market stall with green-and-cream striped canopy, counter holding three crates of apples, carrots and cabbages. Three-quarter view, entire stall and canopy fully visible, centered with wide transparent margins. No bird, people, lettering, ground, shadow or haze.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "playground",
+      "name": "あそびば",
+      "nameEn": "Playground",
+      "tags": [
+        "公園",
+        "すべり台",
+        "ぶらんこ"
+      ],
+      "pose": "default",
+      "category": "たてもの・ばしょ",
+      "characterId": "playground",
+      "legacyIds": [],
+      "sourceFile": "playground.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, simple storybook forms. One compact playground climbing frame: small wooden platform with red roof, blue slide at right, ladder at left, one yellow swing attached beside it. Clear coherent supports, empty equipment. Entire playground centered in central HALF of square canvas, wide margins. Transparent background. No bird, people, ground, sky, shadow, haze or text.",
+      "referenceAsset": "bird"
     }
   ]
 }

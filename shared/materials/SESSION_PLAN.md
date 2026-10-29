@@ -1,8 +1,12 @@
 # 素材 library: multi-session task list
 
+## Generation-only override — 2026-10-29
+
+User explicitly requested prewritten prompts and continuous generation without validation; user will review images. This overrides review, packaging and app-test requirements below for new outputs. `generation-queue.json` holds all 304 remaining prompts in priority order. Save outputs in `pending/` as generated-unreviewed; do not count them as accepted or integrate before review. Continue the queue until stopped, retaining exact prompts and image paths.
+
 ## Scope and session size
 
-**Current: 143 saved illustrations. Target: 500. Remaining: 357.**
+**Current: 196 integrated illustrations. Target: 500. Remaining: 304 queued for generation.**
 
 Plan for **54 artwork sessions**, normally 7–10 accepted illustrations per session, plus **3 dedicated engineering/review sessions**. Complex scene sessions contain only 3 illustrations. These are work packages, not a promise that every package fits one conversation: retries or context limits may split a package into `Sxx-a` and `Sxx-b`. Never reduce quality to meet the batch count.
 
@@ -46,7 +50,7 @@ The user has explicitly prioritized image assets. Follow the budget priority ove
 
 ## Budget priority override — 2026-10-28
 
-User requested important categories first with 17% weekly allowance remaining. P01 adds four distinct people: grandmother waving, grandfather standing, toddler sitting, child using wheelchair sitting. Count these toward S19/S30; do not regenerate them. Defer S16 and other extra animal poses. P02 completed chair, table, bed and watering can from S21. Skip these four when resuming S21. P03 completed grassy-tuft, mushroom-cluster, reeds and lily-pad from S17; skip these when resuming S17. P04 completed bread-loaf, rice-ball, soup and sandwich from S24. User requested continuous generation until stopped; P05 completed the six remaining S21 objects; P06 completed remaining S17 nature; P07 completed S24 meals; P08 established cat/dog/rabbit/bear standing identities (S28/S29/S31/S32 partial); P09 completed S25 background elements; prioritize S26 places before extra poses before animal variations; generate one useful version per subject before variants. Keep original session rows unchecked until their remaining poses are complete.
+User requested important categories first with 17% weekly allowance remaining. P01 adds four distinct people: grandmother waving, grandfather standing, toddler sitting, child using wheelchair sitting. Count these toward S19/S30; do not regenerate them. Defer S16 and other extra animal poses. P02 completed chair, table, bed and watering can from S21. Skip these four when resuming S21. P03 completed grassy-tuft, mushroom-cluster, reeds and lily-pad from S17; skip these when resuming S17. P04 completed bread-loaf, rice-ball, soup and sandwich from S24. User requested continuous generation until stopped; P05 completed the six remaining S21 objects; P06 completed remaining S17 nature; P07 completed S24 meals; P08 established cat/dog/rabbit/bear standing identities (S28/S29/S31/S32 partial); P09 completed S25 background elements; P10 completed S26 places; prioritize single teacher/mail-carrier/gardener identities and remaining vehicle types before extra poses before animal variations; generate one useful version per subject before variants. Keep original session rows unchecked until their remaining poses are complete.
 
 ## Artwork sessions
 

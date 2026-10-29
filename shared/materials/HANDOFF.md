@@ -2,11 +2,15 @@
 
 Updated: 2026-10-29. Repository: `/Users/Phat/Personal/ehon-maker`.
 
+## Generation-only mode — 2026-10-29
+
+User requested no further validation, packaging or app checks. Remaining 304 prompts are in `generation-queue.json`; new PNGs go to `pending/` and remain unreviewed. Continue first queued entry, save after each generation, and let user review. P10 was integrated before this change; do not claim additional checks passed.
+
 ## Current state
 
-- **189 accepted PNGs / 500 target; 311 remaining.** Backgrounds P09 integrated.
+- **196 accepted PNGs / 500 target; 304 remaining.** Places P10 integrated.
 - Animals: 68 images across 14 species. Bird, butterfly, fish, octopus, turtle and penguin each have 10 poses; the other 8 species have 1 each.
-- Nature has 21 images. People has 14 illustrations across 7 characters. Objects has 21 images; vehicles has 11. Food has 17 images. Background elements have 15 images. Buildings / places has 8 images. Seasonal has 10 images. Scenes has 4 scenes.
+- Nature has 21 images. People has 14 illustrations across 7 characters. Objects has 21 images; vehicles has 11. Food has 17 images. Background elements have 15 images. Buildings / places has 15 images. Seasonal has 10 images. Scenes has 4 scenes.
 - All originals are in `masters/`. Exact prompts, references and metadata are in `generation.json`. `catalog.json` and shared `StorybookMaterials.kt` are generated outputs.
 - Style is the user's latest direction: less realistic, more painterly picture book. Keep the saved art-direction refinement. Reference `masters/bird.png` for the world style and the corresponding saved character master for variants.
 - The committed foundation uses bundled delivery. Local E01 delivery changes are unfinished and uncommitted; no remote publication or deployment has occurred.
@@ -15,11 +19,15 @@ Updated: 2026-10-29. Repository: `/Users/Phat/Personal/ehon-maker`.
 
 ## Next session
 
-**Budget priority override (2026-10-28):** user has 17% weekly allowance remaining. Prioritize distinct reusable subjects over extra animal poses. User subsequently authorized P02 (chair, table, bed, watering can), now integrated. P03 added grass, mushrooms, reeds and lily pad. P04 added bread, rice ball, soup and sandwich. User now requests continuous work until stopped. S21 objects are complete. S17 nature is complete. S24 food is complete. Cat, dog, rabbit and bear identities established. S25 backgrounds complete. Next priority: S26 places. Animal variations including S16 are deferred. No whale output was accepted.
+**Budget priority override (2026-10-28):** user has 17% weekly allowance remaining. Prioritize distinct reusable subjects over extra animal poses. User subsequently authorized P02 (chair, table, bed, watering can), now integrated. P03 added grass, mushrooms, reeds and lily pad. P04 added bread, rice ball, soup and sandwich. User now requests continuous work until stopped. S21 objects are complete. S17 nature is complete. S24 food is complete. Cat, dog, rabbit and bear identities established. S25 backgrounds complete. S26 places complete. Next priority: single teacher, mail carrier and gardener, then remaining vehicle types. Animal variations including S16 are deferred. No whale output was accepted.
 
 P01 adds grandmother/waving, grandfather/standing, toddler/sitting and child-wheelchair/sitting. These count toward S19 and S30, not as extra quota: skip these existing poses when returning to those sessions. Original cumulative targets in the plan assume the original order.
 
 The user explicitly requested image assets and stopped unsolicited engineering work. E01 is deferred; preserve its uncommitted changes and do not resume code fixes unless requested.
+
+## P10 places milestone — 196 assets
+
+- treehouse, castle, windmill, lighthouse, farm-barn, market-stall and playground added. Exact compact built-in imagegen prompts and bird style reference saved. Completes S26 and the 15-place quota.
 
 ## P09 backgrounds milestone — 189 assets
 
