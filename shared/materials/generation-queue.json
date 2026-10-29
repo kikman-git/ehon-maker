@@ -2255,8 +2255,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; walking. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-f6367910-b2b7-4ace-8d30-c5f49f744bba.png"
     },
     {
       "id": "hedgehog-sitting",
@@ -2266,8 +2267,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; sitting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-5b0a50aa-0e73-42cc-a735-d1ed865f5fd6.png"
     },
     {
       "id": "hedgehog-jumping",
@@ -2277,8 +2279,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; jumping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-jumping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-jumping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-466844f1-6c11-4d56-9d8d-30ab4925dadb.png"
     },
     {
       "id": "hedgehog-sleeping",
@@ -2288,8 +2291,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-591d36d2-6f9f-422c-9537-e64ecdfe63e3.png"
     },
     {
       "id": "hedgehog-smiling",
@@ -2299,8 +2303,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ec1d9758-fdce-4dfe-b67a-ab1e9027eaa5.png"
     },
     {
       "id": "hedgehog-surprised",
@@ -2310,8 +2315,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-58f2b7d1-1716-4695-a0f8-5c8c77fdb1c0.png"
     },
     {
       "id": "hedgehog-waving",
@@ -2321,8 +2327,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; waving. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-d801e4b6-5787-4030-854e-045edae62552.png"
     },
     {
       "id": "hedgehog-looking-left",
@@ -2332,8 +2339,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-87201c44-07f6-4a3c-a2ad-befc138e76f9.png"
     },
     {
       "id": "hedgehog-looking-right",
@@ -2343,8 +2351,9 @@
       "characterId": "hedgehog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same hedgehog as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "hedgehog",
-      "status": "queued",
-      "outputFile": "pending/hedgehog-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/hedgehog-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-fabb3997-3596-4196-8d24-34241553fc64.png"
     },
     {
       "id": "deer-walking",
