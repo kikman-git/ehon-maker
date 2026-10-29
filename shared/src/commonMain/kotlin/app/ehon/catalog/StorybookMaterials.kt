@@ -177,6 +177,10 @@ internal object StorybookMaterials {
         Material("pack.storybook:pinecone", "まつぼっくり", "Pinecone", "しぜん", "a/90d69e8f90a0a4e283a57fc41e1157d68c137c7f69b2dc5414524ebad1685e36", "pinecone", "default", listOf("松", "森"), listOf()),
         Material("pack.storybook:fallen-leaves", "おちば", "Fallen leaves", "しぜん", "a/573375ef638b3054ea3444484e632a96dbca5bd9b3f5ed498d5a5a7c36bb85e4", "fallen-leaves", "default", listOf("落ち葉", "秋"), listOf()),
         Material("pack.storybook:wildflower-patch", "のばな", "Wildflower patch", "しぜん", "a/7d937ed76a18f19571051ab7e27fcfc95c1225904471306c0bf9ddd78901cf9a", "wildflower-patch", "default", listOf("野花", "草花"), listOf()),
-        Material("pack.storybook:cattails", "がま", "Cattails", "しぜん", "a/fa9c117c4d6b6e2567306b21b9b94d2f2501e4f20f745a373f326873d173bdf3", "cattails", "default", listOf("蒲", "池"), listOf())
+        Material("pack.storybook:cattails", "がま", "Cattails", "しぜん", "a/fa9c117c4d6b6e2567306b21b9b94d2f2501e4f20f745a373f326873d173bdf3", "cattails", "default", listOf("蒲", "池"), listOf()),
+        Material("pack.storybook:croissant", "クロワッサン", "Croissant", "たべもの", "a/86c4df3f3bd633af2035f7b3176fe0ea697479886e9fb10e676dfbc15c092d30", "croissant", "default", listOf("パン", "朝ごはん"), listOf()),
+        Material("pack.storybook:pancakes", "ホットケーキ", "Pancakes", "たべもの", "a/fb99c9f9c335b6d70edfd5bcef94936117adf24ee8d83db7a96c7ff07246d5a1", "pancakes", "default", listOf("パンケーキ", "朝ごはん"), listOf()),
+        Material("pack.storybook:noodles", "うどん", "Noodles", "たべもの", "a/9741ea489b66eb54773f31d80b3fcb8f08304c844a57247643c29fa83abcef71", "noodles", "default", listOf("麺", "ごはん"), listOf()),
+        Material("pack.storybook:curry", "カレーライス", "Curry rice", "たべもの", "a/197cc7367881d8d93916612f0e02dd21f94819637bca9da1570cc7343a0c42f4", "curry", "default", listOf("カレー", "ごはん"), listOf())
     )
 }

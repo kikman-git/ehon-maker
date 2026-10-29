@@ -3041,6 +3041,70 @@
       "sourceFile": "cattails.png",
       "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One small clump of cattails with three brown cylindrical seed heads on slender stems and long green blade leaves. Whole plant centered in middle 65% canvas, all tips fully visible. Transparent background. No bird, water, soil, ground, shadow, haze or text.",
       "referenceAsset": "bird"
+    },
+    {
+      "id": "croissant",
+      "name": "クロワッサン",
+      "nameEn": "Croissant",
+      "tags": [
+        "パン",
+        "朝ごはん"
+      ],
+      "pose": "default",
+      "category": "たべもの",
+      "characterId": "croissant",
+      "legacyIds": [],
+      "sourceFile": "croissant.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One golden crescent croissant, rounded flaky layers suggested simply, three-quarter view. Small centered subject with wide transparent margins. No bird, plate, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "pancakes",
+      "name": "ホットケーキ",
+      "nameEn": "Pancakes",
+      "tags": [
+        "パンケーキ",
+        "朝ごはん"
+      ],
+      "pose": "default",
+      "category": "たべもの",
+      "characterId": "pancakes",
+      "legacyIds": [],
+      "sourceFile": "pancakes.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. Three golden pancakes stacked on a small cream plate, square butter pat and modest amber syrup on top. Three-quarter view, whole plate centered with wide transparent margins. No bird, utensils, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "noodles",
+      "name": "うどん",
+      "nameEn": "Noodles",
+      "tags": [
+        "麺",
+        "ごはん"
+      ],
+      "pose": "default",
+      "category": "たべもの",
+      "characterId": "noodles",
+      "legacyIds": [],
+      "sourceFile": "noodles.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One blue ceramic bowl of udon noodles in amber broth, thick cream noodle loops, green scallions and one white fish-cake slice with pink spiral. Three-quarter view. Whole bowl small centered with wide transparent margins. No bird, chopsticks, steam, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "curry",
+      "name": "カレーライス",
+      "nameEn": "Curry rice",
+      "tags": [
+        "カレー",
+        "ごはん"
+      ],
+      "pose": "default",
+      "category": "たべもの",
+      "characterId": "curry",
+      "legacyIds": [],
+      "sourceFile": "curry.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One oval cream plate of Japanese curry rice: white rice mound on one side, warm brown curry with carrot and potato chunks on the other. Three-quarter view, whole plate small centered with wide transparent margins. No bird, utensils, steam, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
     }
   ]
 }

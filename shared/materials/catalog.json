@@ -3699,6 +3699,86 @@
       "bytes": 1994544,
       "sha256": "fa9c117c4d6b6e2567306b21b9b94d2f2501e4f20f745a373f326873d173bdf3",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:croissant",
+      "slug": "croissant",
+      "name": "クロワッサン",
+      "nameEn": "Croissant",
+      "category": "たべもの",
+      "characterId": "croissant",
+      "pose": "default",
+      "tags": [
+        "パン",
+        "朝ごはん"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/86c4df3f3bd633af2035f7b3176fe0ea697479886e9fb10e676dfbc15c092d30",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1380986,
+      "sha256": "86c4df3f3bd633af2035f7b3176fe0ea697479886e9fb10e676dfbc15c092d30",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:pancakes",
+      "slug": "pancakes",
+      "name": "ホットケーキ",
+      "nameEn": "Pancakes",
+      "category": "たべもの",
+      "characterId": "pancakes",
+      "pose": "default",
+      "tags": [
+        "パンケーキ",
+        "朝ごはん"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/fb99c9f9c335b6d70edfd5bcef94936117adf24ee8d83db7a96c7ff07246d5a1",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2254678,
+      "sha256": "fb99c9f9c335b6d70edfd5bcef94936117adf24ee8d83db7a96c7ff07246d5a1",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:noodles",
+      "slug": "noodles",
+      "name": "うどん",
+      "nameEn": "Noodles",
+      "category": "たべもの",
+      "characterId": "noodles",
+      "pose": "default",
+      "tags": [
+        "麺",
+        "ごはん"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/9741ea489b66eb54773f31d80b3fcb8f08304c844a57247643c29fa83abcef71",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1834359,
+      "sha256": "9741ea489b66eb54773f31d80b3fcb8f08304c844a57247643c29fa83abcef71",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:curry",
+      "slug": "curry",
+      "name": "カレーライス",
+      "nameEn": "Curry rice",
+      "category": "たべもの",
+      "characterId": "curry",
+      "pose": "default",
+      "tags": [
+        "カレー",
+        "ごはん"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/197cc7367881d8d93916612f0e02dd21f94819637bca9da1570cc7343a0c42f4",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1863821,
+      "sha256": "197cc7367881d8d93916612f0e02dd21f94819637bca9da1570cc7343a0c42f4",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }
