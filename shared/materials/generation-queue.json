@@ -1499,8 +1499,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; walking. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-b1c848de-94ac-41f3-b4fd-ead64963acb4.png"
     },
     {
       "id": "cat-sitting",
@@ -1510,8 +1511,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; sitting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-67bcea71-9a15-49d0-a2b2-d3dfd9424b66.png"
     },
     {
       "id": "cat-jumping",
@@ -1521,8 +1523,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; jumping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-jumping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-jumping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-bcd0b56f-d983-4731-8c61-ef38b2e9aecf.png"
     },
     {
       "id": "cat-sleeping",
@@ -1532,8 +1535,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-f4f05c39-451f-4132-a5ac-af4041992a51.png"
     },
     {
       "id": "cat-smiling",
@@ -1543,8 +1547,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-ae290362-c9da-4d82-9336-6d7210af9941.png"
     },
     {
       "id": "cat-surprised",
@@ -1554,8 +1559,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-60cdd443-40ef-4c1f-a5ce-92aeae4664b5.png"
     },
     {
       "id": "cat-waving",
@@ -1565,8 +1571,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; waving. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-face917c-ca16-4eaa-b7c2-dcf1b2d3ccf9.png"
     },
     {
       "id": "cat-looking-left",
@@ -1576,8 +1583,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-edc646cf-5d33-4f44-8454-74906dcfbdbe.png"
     },
     {
       "id": "cat-looking-right",
@@ -1587,8 +1595,9 @@
       "characterId": "cat",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same cat as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "cat",
-      "status": "queued",
-      "outputFile": "pending/cat-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/cat-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-6b68d661-3047-4ac8-93a4-769410a11937.png"
     },
     {
       "id": "dog-walking",
