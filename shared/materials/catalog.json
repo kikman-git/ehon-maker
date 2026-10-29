@@ -3579,6 +3579,126 @@
       "bytes": 1859985,
       "sha256": "c883be1608e8c26aeb52ba8915acfacdc1ca000533c16649f507734784237d06",
       "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:berry-bush",
+      "slug": "berry-bush",
+      "name": "きのみの しげみ",
+      "nameEn": "Berry bush",
+      "category": "しぜん",
+      "characterId": "berry-bush",
+      "pose": "default",
+      "tags": [
+        "木の実",
+        "茂み"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/cc7b1e52c30fcda93a5be38bf753307f35924226137f545252bd7b383534229e",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2572390,
+      "sha256": "cc7b1e52c30fcda93a5be38bf753307f35924226137f545252bd7b383534229e",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:acorn",
+      "slug": "acorn",
+      "name": "どんぐり",
+      "nameEn": "Acorn",
+      "category": "しぜん",
+      "characterId": "acorn",
+      "pose": "default",
+      "tags": [
+        "木の実",
+        "秋"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/562cdb6008614f2a3fb42edb329c9aa8f4b72a1737ab471df9db89c5379dc5cc",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1118894,
+      "sha256": "562cdb6008614f2a3fb42edb329c9aa8f4b72a1737ab471df9db89c5379dc5cc",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:pinecone",
+      "slug": "pinecone",
+      "name": "まつぼっくり",
+      "nameEn": "Pinecone",
+      "category": "しぜん",
+      "characterId": "pinecone",
+      "pose": "default",
+      "tags": [
+        "松",
+        "森"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/90d69e8f90a0a4e283a57fc41e1157d68c137c7f69b2dc5414524ebad1685e36",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2120002,
+      "sha256": "90d69e8f90a0a4e283a57fc41e1157d68c137c7f69b2dc5414524ebad1685e36",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:fallen-leaves",
+      "slug": "fallen-leaves",
+      "name": "おちば",
+      "nameEn": "Fallen leaves",
+      "category": "しぜん",
+      "characterId": "fallen-leaves",
+      "pose": "default",
+      "tags": [
+        "落ち葉",
+        "秋"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/573375ef638b3054ea3444484e632a96dbca5bd9b3f5ed498d5a5a7c36bb85e4",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2463136,
+      "sha256": "573375ef638b3054ea3444484e632a96dbca5bd9b3f5ed498d5a5a7c36bb85e4",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:wildflower-patch",
+      "slug": "wildflower-patch",
+      "name": "のばな",
+      "nameEn": "Wildflower patch",
+      "category": "しぜん",
+      "characterId": "wildflower-patch",
+      "pose": "default",
+      "tags": [
+        "野花",
+        "草花"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/7d937ed76a18f19571051ab7e27fcfc95c1225904471306c0bf9ddd78901cf9a",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 2250058,
+      "sha256": "7d937ed76a18f19571051ab7e27fcfc95c1225904471306c0bf9ddd78901cf9a",
+      "styleId": "painterly-storybook-v1"
+    },
+    {
+      "id": "pack.storybook:cattails",
+      "slug": "cattails",
+      "name": "がま",
+      "nameEn": "Cattails",
+      "category": "しぜん",
+      "characterId": "cattails",
+      "pose": "default",
+      "tags": [
+        "蒲",
+        "池"
+      ],
+      "legacyIds": [],
+      "masterRef": "a/fa9c117c4d6b6e2567306b21b9b94d2f2501e4f20f745a373f326873d173bdf3",
+      "w": 1536,
+      "h": 1536,
+      "bytes": 1994544,
+      "sha256": "fa9c117c4d6b6e2567306b21b9b94d2f2501e4f20f745a373f326873d173bdf3",
+      "styleId": "painterly-storybook-v1"
     }
   ]
 }

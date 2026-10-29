@@ -2945,6 +2945,102 @@
       "sourceFile": "hand-drum.png",
       "prompt": "Style reference only: playful loose gouache, broad brushwork, soft volume. One small round hand drum with cream hide head, warm wooden shallow rim and simple red painted zigzag band, three-quarter view. Entire instrument centered within wide margins. Transparent background. No bird, hands, sticks, ground, shadow, haze or text.",
       "referenceAsset": "bird"
+    },
+    {
+      "id": "berry-bush",
+      "name": "きのみの しげみ",
+      "nameEn": "Berry bush",
+      "tags": [
+        "木の実",
+        "茂み"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "berry-bush",
+      "legacyIds": [],
+      "sourceFile": "berry-bush.png",
+      "prompt": "Loose playful children's-book gouache, broad brushwork, soft volume, restrained detail. One small rounded green berry bush with clusters of red berries and short woody stems. Entire shrub centered with wide clear margins. Transparent background. No ground, shadow, haze, animals or text.",
+      "generationNotes": "Generated from compact saved art-direction description without image reference."
+    },
+    {
+      "id": "acorn",
+      "name": "どんぐり",
+      "nameEn": "Acorn",
+      "tags": [
+        "木の実",
+        "秋"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "acorn",
+      "legacyIds": [],
+      "sourceFile": "acorn.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One warm brown acorn with a textured tan cup and short curved stem, three-quarter view. Small centered subject, wide transparent margins. No bird, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "pinecone",
+      "name": "まつぼっくり",
+      "nameEn": "Pinecone",
+      "tags": [
+        "松",
+        "森"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "pinecone",
+      "legacyIds": [],
+      "sourceFile": "pinecone.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One brown pinecone, rounded overlapping woody scales, gently tilted three-quarter view. Full subject centered with wide transparent margins. No bird, branch, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "fallen-leaves",
+      "name": "おちば",
+      "nameEn": "Fallen leaves",
+      "tags": [
+        "落ち葉",
+        "秋"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "fallen-leaves",
+      "legacyIds": [],
+      "sourceFile": "fallen-leaves.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. A small loose cluster of five fallen autumn leaves: red maple, golden ginkgo, orange oak, two ochre oval leaves, gently overlapping, simple veins. Whole cluster centered with wide transparent margins. No bird, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "wildflower-patch",
+      "name": "のばな",
+      "nameEn": "Wildflower patch",
+      "tags": [
+        "野花",
+        "草花"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "wildflower-patch",
+      "legacyIds": [],
+      "sourceFile": "wildflower-patch.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. Small wildflower patch: mixed white daisies, tiny blue flowers and yellow buttercups among soft green leaves and short grasses. One compact low cluster fully visible with wide transparent margins. No bird, soil, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
+    },
+    {
+      "id": "cattails",
+      "name": "がま",
+      "nameEn": "Cattails",
+      "tags": [
+        "蒲",
+        "池"
+      ],
+      "pose": "default",
+      "category": "しぜん",
+      "characterId": "cattails",
+      "legacyIds": [],
+      "sourceFile": "cattails.png",
+      "prompt": "Reference style only: loose playful gouache, broad brushwork, soft volume. One small clump of cattails with three brown cylindrical seed heads on slender stems and long green blade leaves. Whole plant centered in middle 65% canvas, all tips fully visible. Transparent background. No bird, water, soil, ground, shadow, haze or text.",
+      "referenceAsset": "bird"
     }
   ]
 }

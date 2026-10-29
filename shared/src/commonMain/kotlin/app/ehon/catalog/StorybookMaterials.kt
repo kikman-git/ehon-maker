@@ -171,6 +171,12 @@ internal object StorybookMaterials {
         Material("pack.storybook:clock", "とけい", "Clock", "もの", "a/bb620f2f762814655310dc327b1e510891e5530670770506200e4cf02df30e33", "clock", "default", listOf("時計", "時間"), listOf()),
         Material("pack.storybook:mailbox", "ポスト", "Mailbox", "もの", "a/09f042a64d273bef055ba51514556b363da51ad284b43acb67d23be242190464", "mailbox", "default", listOf("郵便", "手紙"), listOf()),
         Material("pack.storybook:bucket", "バケツ", "Bucket", "もの", "a/851fde0cceee974daf000bd09ccbd536f35736d47b7e07ed76f3cbc6759c329f", "bucket", "default", listOf("水", "道具"), listOf()),
-        Material("pack.storybook:hand-drum", "たいこ", "Hand drum", "もの", "a/c883be1608e8c26aeb52ba8915acfacdc1ca000533c16649f507734784237d06", "hand-drum", "default", listOf("太鼓", "楽器"), listOf())
+        Material("pack.storybook:hand-drum", "たいこ", "Hand drum", "もの", "a/c883be1608e8c26aeb52ba8915acfacdc1ca000533c16649f507734784237d06", "hand-drum", "default", listOf("太鼓", "楽器"), listOf()),
+        Material("pack.storybook:berry-bush", "きのみの しげみ", "Berry bush", "しぜん", "a/cc7b1e52c30fcda93a5be38bf753307f35924226137f545252bd7b383534229e", "berry-bush", "default", listOf("木の実", "茂み"), listOf()),
+        Material("pack.storybook:acorn", "どんぐり", "Acorn", "しぜん", "a/562cdb6008614f2a3fb42edb329c9aa8f4b72a1737ab471df9db89c5379dc5cc", "acorn", "default", listOf("木の実", "秋"), listOf()),
+        Material("pack.storybook:pinecone", "まつぼっくり", "Pinecone", "しぜん", "a/90d69e8f90a0a4e283a57fc41e1157d68c137c7f69b2dc5414524ebad1685e36", "pinecone", "default", listOf("松", "森"), listOf()),
+        Material("pack.storybook:fallen-leaves", "おちば", "Fallen leaves", "しぜん", "a/573375ef638b3054ea3444484e632a96dbca5bd9b3f5ed498d5a5a7c36bb85e4", "fallen-leaves", "default", listOf("落ち葉", "秋"), listOf()),
+        Material("pack.storybook:wildflower-patch", "のばな", "Wildflower patch", "しぜん", "a/7d937ed76a18f19571051ab7e27fcfc95c1225904471306c0bf9ddd78901cf9a", "wildflower-patch", "default", listOf("野花", "草花"), listOf()),
+        Material("pack.storybook:cattails", "がま", "Cattails", "しぜん", "a/fa9c117c4d6b6e2567306b21b9b94d2f2501e4f20f745a373f326873d173bdf3", "cattails", "default", listOf("蒲", "池"), listOf())
     )
 }

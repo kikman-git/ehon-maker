@@ -2,7 +2,7 @@
 
 For multi-session work, start with [SESSION_PLAN.md](SESSION_PLAN.md) and [HANDOFF.md](HANDOFF.md). The full target is 500 distinct illustrations. The user requires a commit and push at each milestone.
 
-The library now contains 168 AI-generated raster illustrations across ten categories (33.6% of 500). Bird, butterfly, fish, octopus, turtle and penguin each have all 10 poses. The visual direction is loose, playful gouache with broad brushwork, simple expressive faces and soft volume. The earlier naturalistic drafts are not part of this library.
+The library now contains 174 AI-generated raster illustrations across ten categories (34.8% of 500). Bird, butterfly, fish, octopus, turtle and penguin each have all 10 poses. The visual direction is loose, playful gouache with broad brushwork, simple expressive faces and soft volume. The earlier naturalistic drafts are not part of this library.
 
 `masters/` contains the selected original transparent PNGs from the built-in image generation tool. `generation.json` records the exact prompts, the user's master prompt, the less-realistic refinement, character families, pose labels, bilingual names, search tags and reference relationships. `catalog.json` and `StorybookMaterials.kt` are generated from those sources.
 
