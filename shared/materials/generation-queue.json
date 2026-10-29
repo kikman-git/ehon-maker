@@ -1607,8 +1607,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; walking. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-walking.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-walking.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-137c50a9-df26-47ad-841c-7d7a984bd97f.png"
     },
     {
       "id": "dog-sitting",
@@ -1618,8 +1619,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; sitting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-sitting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-sitting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-cc06cc69-aeb4-4632-9b35-54d8543c91aa.png"
     },
     {
       "id": "dog-jumping",
@@ -1629,8 +1631,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; jumping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-jumping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-jumping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-300953b4-c676-4eff-a22a-928ae71ece73.png"
     },
     {
       "id": "dog-sleeping",
@@ -1640,8 +1643,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-aad09cc5-3278-4188-b521-9d31943b2b9e.png"
     },
     {
       "id": "dog-smiling",
@@ -1651,8 +1655,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-47beac0b-4213-49cf-8485-8a1e8d4fb0f9.png"
     },
     {
       "id": "dog-surprised",
@@ -1662,8 +1667,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-52914499-e61e-437f-9640-16feec9ff980.png"
     },
     {
       "id": "dog-waving",
@@ -1673,8 +1679,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; waving. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-waving.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-waving.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-f5e676d6-9444-4634-a0b1-5dc0bdf8b4a2.png"
     },
     {
       "id": "dog-looking-left",
@@ -1684,8 +1691,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-27e079d0-7997-4b1a-ac5d-be178a11c1eb.png"
     },
     {
       "id": "dog-looking-right",
@@ -1695,8 +1703,9 @@
       "characterId": "dog",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same dog as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "dog",
-      "status": "queued",
-      "outputFile": "pending/dog-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/dog-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-7c00f2a4-2e6d-47b1-b114-9dd2e194f2a8.png"
     },
     {
       "id": "rabbit-walking",
