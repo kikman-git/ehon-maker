@@ -1067,8 +1067,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; hovering. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-hovering.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-hovering.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-df60ed0b-e6ac-4141-9a50-de7ef6b14e1c.png"
     },
     {
       "id": "whale-resting-low",
@@ -1078,8 +1079,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; resting low. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-resting-low.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-resting-low.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-7f4a07bf-a6e5-405b-b99d-b5e95c0234f1.png"
     },
     {
       "id": "whale-breaching",
@@ -1089,8 +1091,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; breaching. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-breaching.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-breaching.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-297df837-2a94-407e-b55d-533ad659da91.png"
     },
     {
       "id": "whale-sleeping",
@@ -1100,8 +1103,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; sleeping. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-sleeping.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-sleeping.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-c148b20c-acdf-49d5-b58e-36417de2e68c.png"
     },
     {
       "id": "whale-smiling",
@@ -1111,8 +1115,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; smiling. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-smiling.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-smiling.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-94b1e20d-ffc2-4a48-9261-7c807382176d.png"
     },
     {
       "id": "whale-surprised",
@@ -1122,8 +1127,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; surprised. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-surprised.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-surprised.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-76a7f128-3b61-41c0-9766-3fc30970f0b7.png"
     },
     {
       "id": "whale-fin-greeting",
@@ -1133,8 +1139,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; fin greeting. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-fin-greeting.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-fin-greeting.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-a66c294b-b458-444b-a237-08bd104453b8.png"
     },
     {
       "id": "whale-looking-left",
@@ -1144,8 +1151,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; looking left. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-looking-left.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-looking-left.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-f7780801-d50a-4f70-b76b-399797c6999e.png"
     },
     {
       "id": "whale-looking-right",
@@ -1155,8 +1163,9 @@
       "characterId": "whale",
       "prompt": "Reference image defines the character identity. Loose playful picture-book gouache, broad brushwork, soft washes, simplified rounded forms, small ink eyes where appropriate. Entire subject centered with wide clear margins. Transparent background. No text, backdrop, haze or cast shadow. Same whale as reference, preserve colors and identity; looking right. Distinct expressive full-body gesture, correct species anatomy.",
       "referenceAsset": "whale",
-      "status": "queued",
-      "outputFile": "pending/whale-looking-right.png"
+      "status": "generated-unreviewed",
+      "outputFile": "pending/whale-looking-right.png",
+      "sourcePath": "/Users/Phat/.codex/generated_images/01a17fbe-8d40-7011-aeeb-d36f40693e47/exec-58ca1710-363e-400b-a84e-159e3262c375.png"
     },
     {
       "id": "crab-standing",
