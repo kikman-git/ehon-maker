@@ -4,6 +4,10 @@ const MAX_BYTES = 25 * 1024 * 1024;
 const CACHE_BUDGET = 256 * 1024 * 1024;
 const requests = new Map<string, Promise<Blob>>();
 let cacheWrite: Promise<void> = Promise.resolve();
+// Summed once; rescanning every entry on every write made each thumbnail wait on all the others.
+let cacheTotal: Promise<number> | null = null;
+const sizeOf = async (cache: Cache, request: Request) => Number((await cache.match(request))?.headers.get('Content-Length') ?? 0);
+const totalOf = (cache: Cache) => cacheTotal ??= cache.keys().then(async keys => (await Promise.all(keys.map(key => sizeOf(cache, key)))).reduce((a, b) => a + b, 0)).catch(() => 0);
 
 export function assetBytes(url: string, key: string): Promise<Blob> {
   const cacheKey = new URL(url, location.href).href;
@@ -28,16 +32,21 @@ export function assetBytes(url: string, key: string): Promise<Blob> {
       catch { await cache?.delete(cacheKey).catch(() => undefined); }
     }
     const blob = await validate(await fetch(cacheKey, { signal: AbortSignal.timeout(30_000) }));
+    // The picture shows now; the offline copy is written behind it, oldest entries going first when the budget is full.
     if (cache) {
       cacheWrite = cacheWrite.then(async () => {
-        const keys = await cache.keys();
-        let total = blob.size;
-        const sizes = await Promise.all(keys.map(async request => Number((await cache.match(request))?.headers.get('Content-Length') ?? 0)));
-        total += sizes.reduce((a, b) => a + b, 0);
-        for (let i = 0; i < keys.length && total > CACHE_BUDGET; i++) { await cache.delete(keys[i]); total -= sizes[i]; }
+        let total = await totalOf(cache) + blob.size;
+        if (total > CACHE_BUDGET) {
+          for (const key of await cache.keys()) {
+            if (total <= CACHE_BUDGET) break;
+            const size = await sizeOf(cache, key);
+            await cache.delete(key);
+            total -= size;
+          }
+        }
         await cache.put(cacheKey, new Response(blob, { headers: { 'Content-Type': blob.type, 'Content-Length': String(blob.size) } }));
+        cacheTotal = Promise.resolve(total);
       }).catch(() => undefined);
-      await cacheWrite;
     }
     return blob;
   })().finally(() => { requests.delete(cacheKey); });
